@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+  plugchaindnode0:
+    container_name: plugchaindnode0
+    image: "plugchain"
+    ports:
+      - "26656-26657:26656-26657"
+      - "1317:1317"
+      - "9090:9090"
+      - "6060:6060"
+    environment:
+      - ID=0
+      - LOG=${LOG:-plugchaind.log}
+    volumes:
+      - ../plugchain:/code
+    networks:
+      localnet:
+        ipv4_address: 172.17.0.2
+
+  plugchaindnode1:
+    container_name: plugchaindnode1
+    image: "plugchain"
+    ports:
+      - "26659-26660:26656-26657"
+      - "1318:1317"
+      - "9091:9090"
+      - "6061:6060"
+    environment:
+      - ID=1
+      - LOG=${LOG:-plugchaind.log}
+    volumes:
+      - ../plugchain:/code
+    networks:
+      localnet:
+        ipv4_address: 172.17.0.3
+
+  plugchaindnode2:
+    container_name: plugchaindnode2
+    image: "plugchain"
+    environment:
+      - ID=2
+      - LOG=${LOG:-plugchaind.log}
+    ports:
+      - "26661-26662:26656-26657"
+      - "1319:1317"
+      - "9092:9090"
+      - "6062:6060"
+    volumes:
+      - ../plugchain:/code
+    networks:
+      localnet:
+        ipv4_address: 172.17.0.4
+
+  plugchaindnode3:
+    container_name: plugchaindnode3
+    image: "plugchain"
+    environment:
+      - ID=3
+      - LOG=${LOG:-plugchaind.log}
+    ports:
+      - "26663-26664:26656-26657"
+      - "1320:1317"
+      - "9093:9090"
+      - "6063:6060"
+    volumes:
+      - ../plugchain:/code
+    networks:
+      localnet:
+        ipv4_address: 172.17.0.5
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+         : 172.17.0.0/16
+
