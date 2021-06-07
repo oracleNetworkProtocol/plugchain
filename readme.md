@@ -6,4 +6,4 @@ This repository hosts `plugchain`, the implementation of the plugchain based on 
 **Note**: Requires [Go 1.16](https://golang.org/dl/)
 
 ## Getting Started
-See the [documentation](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/cn).
+See the [documentation](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial/cn).

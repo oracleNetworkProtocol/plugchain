@@ -34,8 +34,6 @@ secret.yml
 chaintest
 nor
 #docs
-docs/work/*
-docs/cosmos-sdk-parse/*
 secret.yml
 node/*
 home/*
