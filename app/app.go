@@ -84,6 +84,7 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/docs"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
 	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
@@ -150,7 +151,7 @@ var (
 )
 
 var (
-	_ CosmosApp               = (*App)(nil)
+	_ PlugApp                 = (*App)(nil)
 	_ servertypes.Application = (*App)(nil)
 )
 
