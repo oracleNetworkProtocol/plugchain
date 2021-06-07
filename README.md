@@ -1,4 +1,4 @@
-#plugchain
+# plugchain
 test_plugchain
 
 This repository hosts `plugchain`, the implementation of theplugchain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
