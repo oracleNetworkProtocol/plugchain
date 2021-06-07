@@ -34,27 +34,27 @@ APP_HOME="home1"
 CHAIN_ID="localnet"
 
 #查询我们现在有多少代码
- plugchaind q wasm list-code 
+plugchaind q wasm list-code 
 
-RES=$( plugchaind tx wasm store ./cosmwasm-plus/target/wasm32-unknown-unknown/release/cw20_base.wasm --from mywallet --home ${APP_HOME} --chain-id ${CHAIN_ID} --gas-prices 0.01onp --gas 1800000 -y)
+RES=$(plugchaind tx wasm store ./cosmwasm-plus/target/wasm32-unknown-unknown/release/cw20_base.wasm --from mywallet --home ${APP_HOME} --chain-id ${CHAIN_ID} --gas-prices 0.01onp --gas 1800000 -y)
 
 CODE_ID=$(echo $RES | jq -r '.logs[0].events[0].attributes[-1].value')
 
 #合约实例化内容
-INIT=$(jq -n --arg mywallet $( plugchaind keys show -a mywallet --home ${APP_HOME}) --arg mymain $( plugchaind keys show -a mymain --home ${APP_HOME}) '{"name":"my one wasm","symbol":"OHOU","decimals":2,"initial_balances":[{"address":$mywallet,"amount":"100000000"}],"minter":$mywallet}')
+INIT=$(jq -n --arg mywallet $(plugchaind keys show -a mywallet --home ${APP_HOME}) --arg mymain $(plugchaind keys show -a mymain --home ${APP_HOME}) '{"name":"my one wasm","symbol":"OHOU","decimals":2,"initial_balances":[{"address":$mywallet,"amount":"100000000"}],"minter":$mywallet}')
 
 #合约实例化
- plugchaind tx wasm instantiate $CODE_ID "$INIT" --from mywallet --amount=50000onp  --label "escrow 1" --gas-prices="0.01onp" --gas 200000 --home ${APP_HOME} --chain-id ${CHAIN_ID}
+plugchaind tx wasm instantiate $CODE_ID "$INIT" --from mywallet --amount=50000onp  --label "escrow 1" --gas-prices="0.01onp" --gas 200000 --home ${APP_HOME} --chain-id ${CHAIN_ID}
 
 #获取合约地址
-CONTRACT=$( plugchaind query wasm list-contract-by-code $CODE_ID --output json --home ${APP_HOME} | jq -r '.contracts[-1]')
+CONTRACT=$(plugchaind query wasm list-contract-by-code $CODE_ID --output json --home ${APP_HOME} | jq -r '.contracts[-1]')
 
 #合约查询方法
 QUERY='{"balance":{"address":"onp16tmztx92nu3pthghs4k5dwe0hvhq0f57jsc27p"}}'
- plugchaind query wasm contract-state smart $CONTRACT "$QUERY" --home ${APP_HOME}
+plugchaind query wasm contract-state smart $CONTRACT "$QUERY" --home ${APP_HOME}
 
 #合约执行方法
 TRANSF='{"transfer":{"recipient":"接收地址","amount":"50000"}}'
- plugchaind tx wasm execute $CONTRACT "$TRANSF" --from mywallet --gas-prices "0.01onp" --gas 200000 --home ${APP_HOME} --chain-id ${CHAIN_ID} -y
+plugchaind tx wasm execute $CONTRACT "$TRANSF" --from mywallet --gas-prices "0.01onp" --gas 200000 --home ${APP_HOME} --chain-id ${CHAIN_ID} -y
 
 ```
