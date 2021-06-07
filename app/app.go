@@ -4,7 +4,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec/types"
@@ -112,7 +111,7 @@ func getGovProposalHandlers() []govclient.ProposalHandler {
 
 var (
 	// DefaultNodeHome default home directories for the application daemon
-	DefaultNodeHome string
+	DefaultNodeHome = os.ExpandEnv("$HOME/.plugchain")
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration
@@ -156,12 +155,10 @@ var (
 )
 
 func init() {
-	userHomeDir, err := os.UserHomeDir()
-	if err != nil {
-		panic(err)
-	}
+	// this changes the power reduction from 10e6 to 10e2, which will give
+	// every validator 10,000 times more voting power than they currently have
 
-	DefaultNodeHome = filepath.Join(userHomeDir, "."+Name)
+	//sdk.DefaultPowerReduction = sdk.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), big.NewInt(2), nil))
 }
 
 // App extends an ABCI application, but with most of its parameters exported.
