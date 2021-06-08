@@ -1,5 +1,5 @@
 ## INSTALL plugchain
-本指南将安装onpchaind入口点到系统上，您可以作为完整节点或验证者加入
+本指南将安装plugchaind入口点到系统上，您可以作为完整节点或验证者加入
 #### 安装依赖
 - centos系统示例如下:
 ```
@@ -27,7 +27,7 @@ go version
 ```
 - 在Windows下，你可以通过“系统”控制面板的“高级”选项卡上的“环境变量”按钮设置环境变量(HOME或GO111MODULE)。一些版本的Windows通过“系统”控制面板中的“高级系统设置”选项提供了这个控制面板。
 
-1.  安装最新版的onpchain,从仓库clone代码
+1.  安装最新版的plugchain,从仓库clone代码
 ```
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 ```
@@ -44,7 +44,7 @@ cd plugchain && make install
 ```
 ##### 默认编译主分支代码，可选择固定版本编译，例如: 
 > `cd plugchaind && git checkout v0.1.0 && make install`
-3. 安装完成之后，会有onpchaind二进制文件，可以验证下是否生效
+3. 安装完成之后，会有plugchaind二进制文件，可以验证下是否生效
 ```
 plugchaind version
 ```
