@@ -65,7 +65,10 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 	}
 
 	initRootCmd(rootCmd, encodingConfig)
-
+	overwriteFlagDefaults(rootCmd, map[string]string{
+		flags.FlagChainID:        ChainID,
+		flags.FlagKeyringBackend: "file",
+	})
 	return rootCmd, encodingConfig
 }
 

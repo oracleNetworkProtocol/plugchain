@@ -31,6 +31,8 @@ go version
 ```
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 ```
+> 如果克隆仓库比较慢或者没反应的情况，可以把克隆地址 `github.com` 换成国内镜像，已知的国内镜像有`github.com.cnpmjs.org`和`git.sdut.me/`
+
 2.  开启gomodule和设置终端GOPROXY
 ```
 go env -w GO111MODULE=on
