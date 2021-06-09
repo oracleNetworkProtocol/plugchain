@@ -14,7 +14,7 @@ func Handler(title, specURL string) http.HandlerFunc {
 	t, _ := template.ParseFS(Docs, "index.tpl")
 
 	return func(w http.ResponseWriter, req *http.Request) {
-		t.Execute(w, struct {
+		t.ExecuteTemplate(w, "index.html", struct {
 			Title string
 			URL   string
 		}{
