@@ -11,6 +11,9 @@
    <a href="https://github.com/oracleNetworkProtocol/plugchain">
     <img alt="Lines Of Code" src="https://tokei.rs/b1/github/oracleNetworkProtocol/plugchain" />
     </a>
+    <a href="https://github.com/oracleNetworkProtocol/plugchain/issues">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/oracleNetworkProtocol/plugchain">
+    </a>
 </div>
 
 This repository hosts `plugchain`, the implementation of the plugchain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
@@ -18,4 +21,12 @@ This repository hosts `plugchain`, the implementation of the plugchain based on 
 **Note**: Requires [Go 1.16](https://golang.org/dl/)
 
 ## Getting Started
-See the [documentation](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial/cn).
+See the [Getting Started](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial/cn) for instructions how to install and run the blockchain.
+
+## Talk to us!
+
+We have active, helpful communities on Twitter, Discord, and Telegram.
+
+* [Facebook](https://www.facebook.com/profile.php?id=100068750358187)
+* [Twitter](https://mobile.twitter.com/Plugchainclub)
+* [Telegram](https://t.me/plugchain)

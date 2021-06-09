@@ -2,6 +2,7 @@ package app
 
 import (
 	"io"
+	"net/http"
 	"os"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -82,6 +83,7 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
+	"github.com/oracleNetworkProtocol/plugchain/docs"
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
 	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
 	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
@@ -552,8 +554,8 @@ func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig
 	ModuleBasics.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 
 	// register app's OpenAPI routes.
-	// apiSvr.Router.Handle("/static/openapi.yml", http.FileServer(http.FS(docs.Docs)))
-	// apiSvr.Router.HandleFunc("/", docs.Handler(Name, "/static/openapi.yml"))
+	apiSvr.Router.Handle("/static/openapi.yml", http.FileServer(http.FS(docs.Docs)))
+	apiSvr.Router.HandleFunc("/", docs.Handler(Name, "/static/openapi.yml"))
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
