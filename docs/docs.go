@@ -11,10 +11,10 @@ var Docs embed.FS
 
 // Handler returns an http handler that servers OpenAPI console for an OpenAPI spec at specURL.
 func Handler(title, specURL string) http.HandlerFunc {
-	t, _ := template.ParseFS(Docs, "index.tpl")
+	t, _ := template.ParseFS(Docs, "./index.tpl")
 
 	return func(w http.ResponseWriter, req *http.Request) {
-		t.ExecuteTemplate(w, "index.html", struct {
+		t.Execute(w, struct {
 			Title string
 			URL   string
 		}{
