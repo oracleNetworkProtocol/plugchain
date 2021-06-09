@@ -554,8 +554,8 @@ func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig
 	ModuleBasics.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 
 	// register app's OpenAPI routes.
-	apiSvr.Router.Handle("/docs/static/openapi.yml", http.FileServer(http.FS(docs.Docs)))
-	apiSvr.Router.HandleFunc("/", docs.Handler(Name, "/docs/static/openapi.yml"))
+	apiSvr.Router.Handle("/static/openapi.yml", http.FileServer(http.FS(docs.Docs)))
+	apiSvr.Router.HandleFunc("/", docs.Handler(Name, "/static/openapi.yml"))
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
