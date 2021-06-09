@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>{{ .Title }}</title>
         <link rel="stylesheet" type="text/css" href="//unpkg.com/swagger-ui-dist@3.40.0/swagger-ui.css" />
+        <link rel="icon" href="data:image/ico;base64,aWNv">
         <style>
       html
       {
@@ -31,7 +32,6 @@
         <script src="//unpkg.com/swagger-ui-dist@3.40.0/swagger-ui-bundle.js"></script>
         <script>
             // init Swagger for faucet's openapi.yml.
-            /*
             window.onload = function() {
               window.ui = SwaggerUIBundle({
                 url: {{ .URL }},
@@ -39,22 +39,6 @@
                 deepLinking: true,
                 layout: "BaseLayout",
               });
-            }*/
-            window.onload = function() {
-              // Build a system
-              const ui = SwaggerUIBundle({
-                url: {{ .URL }},
-                dom_id: '#swagger-ui',
-                deepLinking: true,
-                presets: [
-                  SwaggerUIBundle.presets.apis
-                ],
-                plugins: [
-                  SwaggerUIBundle.plugins.DownloadUrl
-                ],
-                layout: "BaseLayout"
-              })
-              window.ui = ui
             }
           </script>
     </body>
