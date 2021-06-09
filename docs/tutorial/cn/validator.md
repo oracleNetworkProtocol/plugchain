@@ -20,11 +20,14 @@ plugchaind tx staking edit-validator --from mywallet \
 --commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
   
 ```
-**注意** : `commission-rate`的值必须符合如下的不变量检查：
+**注意** : 
+
+`commission-rate`的值必须符合如下的不变量检查：
 
 + 必须在 0 和 验证人的`commission-max-rate` 之间
 + 不得超过 验证人的`commission-max-change-rate`, 该参数标识**每日**最大的百分点变化数。也就是，一个验证人在`commission-max-change-rate`的界限内每日一次可调整的最大佣金变化。
 
+`min-self-delegation`的值单位是`10e-6`,所以此值最小为 `1000000`
 
 #### 查询验证者未提取收益
 * plugchaind query distribution rewards [delegator-addr] [validator-addr] [flags]
