@@ -52,7 +52,7 @@
                 plugins: [
                   SwaggerUIBundle.plugins.DownloadUrl
                 ],
-                layout: "StandaloneLayout"
+                layout: "BaseLayout"
               })
               window.ui = ui
             }
