@@ -1,6 +1,6 @@
 #### Become a validator and participate in the ecological management of the main chain
 
-- The following tutorials all rely on node execution, if not installed, please move to [Install Node](installation.md)
+- The following tutorials all rely on node execution, if not installed, please move to [Install Node](../installation.md)
 
 #### Become a validator
 * plugchaind tx staking create-validator [flags]
@@ -47,7 +47,7 @@ plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from myw
 ```
 
 
-#### Query the total amount of pledges of all the delegators of the validator. If you want to know the information of the delegators, please move to [Pledge of Delegators](delegator-setup.md)
+#### Query the total amount of pledges of all the delegators of the validator. If you want to know the information of the delegators, please move to [Pledge of Delegators](../delegators/delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
 plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
