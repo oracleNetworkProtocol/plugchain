@@ -1,6 +1,6 @@
 #### 成为验证者参与主链生态管理
 
-- 以下教程都依赖节点执行，如未安装，请移步到 [安装节点](README.md)
+- 以下教程都依赖节点执行，如未安装，请移步到 [安装节点](./installation.md)
 
 #### 添加验证者
 * plugchaind tx staking create-validator [flags]
@@ -67,7 +67,7 @@ plugchaind query staking unbonding-delegations-from onpvaloperxxxxxxxxxxxxxxxxxx
 为了能进入验证人集合，你的权重必须超过第100名的验证人。
 :::
 
-- 成为验证者之后，需要修改配置[validator config](./node/node_config.png)
+- 成为验证者之后，需要修改配置[validator config](../../images/node_config.png)
 
 
 ## 常见问题
