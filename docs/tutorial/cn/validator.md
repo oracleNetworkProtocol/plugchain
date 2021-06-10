@@ -50,7 +50,7 @@ plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from myw
 ```
 
 
-#### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](Principal-pledge.md)
+#### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
 plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
