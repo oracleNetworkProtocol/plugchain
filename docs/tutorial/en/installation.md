@@ -67,7 +67,10 @@ APPHOME="~/.plugchain"
 ```
 plugchaind keys add mywallet
 ```
-- Get the genesis file
+- Get the testnet genesis file
+::: warning
+The mainnet is being prepared. Join [Testnet](../../../testnet/README.md), the plugchain team warmly welcomes like-minded comrades...
+:::
 ```
 wget https://github.com/oracleNetworkProtocol/plugchain/tree/main/genesis.json
 ```
