@@ -33,3 +33,8 @@ We have active, helpful communities on Twitter, Discord, and Telegram.
 * [Facebook](https://www.facebook.com/profile.php?id=100068750358187)
 * [Twitter](https://mobile.twitter.com/Plugchainclub)
 * [Telegram](https://t.me/plugchain)
+
+
+## Testnet Status
+
+See [doc](./testnet/README.md)
