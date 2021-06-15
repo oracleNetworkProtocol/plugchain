@@ -67,7 +67,7 @@ APPHOME="~/.plugchain"
 ```
 plugchaind keys add mywallet
 ```
-- Get the genesis file
+- Get the testnet genesis file
 ```
 wget https://github.com/oracleNetworkProtocol/plugchain/tree/main/genesis.json
 ```

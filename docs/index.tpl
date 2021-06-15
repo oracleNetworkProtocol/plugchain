@@ -5,27 +5,6 @@
         <title>{{ .Title }}</title>
         <link rel="stylesheet" type="text/css" href="//unpkg.com/swagger-ui-dist@3.40.0/swagger-ui.css" />
         <link rel="icon" href="data:image/ico;base64,aWNv">
-        <style>
-      html
-      {
-        box-sizing: border-box;
-        overflow: -moz-scrollbars-vertical;
-        overflow-y: scroll;
-      }
-
-      *,
-      *:before,
-      *:after
-      {
-        box-sizing: inherit;
-      }
-
-      body
-      {
-        margin:0;
-        background: #fafafa;
-      }
-    </style>
     </head>
     <body>
         <div id="swagger-ui"></div>

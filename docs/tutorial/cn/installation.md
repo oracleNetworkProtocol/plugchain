@@ -63,7 +63,7 @@ APPHOME="~/.plugchain"
 ```
 - 生成自己的账户
 plugchaind keys add mywallet
-- 获取创世文件
+- 获取测试网创世文件
 ```
 wget https://github.com/oracleNetworkProtocol/plugchain/tree/main/genesis.json
 ```
