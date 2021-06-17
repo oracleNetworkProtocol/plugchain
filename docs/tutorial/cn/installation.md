@@ -41,14 +41,14 @@ export GOPROXY=https://goproxy.io,direct
 cd plugchain && make install
 ```
 ##### 默认编译主分支代码，可选择固定版本编译，例如: 
-> `cd plugchaind && git checkout v0.1.0 && make install`
+> `cd plugchaind && git checkout v0.2.0 && make install`
 3. 安装完成之后，会有plugchaind二进制文件，可以验证下是否生效
 ```
 plugchaind version
 ```
 输出内容示例如下
 ```
-v0.1.0
+v0.2.0
 ```
 #### 作为完整节点运行或者验证者节点运行，请先把创世文件复制到自己的数据目录
 - 初始化自己的节点

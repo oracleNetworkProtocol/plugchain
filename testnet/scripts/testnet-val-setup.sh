@@ -8,16 +8,16 @@ rm -rf ~/.plugchain
 YOUR_KEY_NAME=$1
 YOUR_NAME=$2
 DAEMON=plugchaind
-DENOM=uplug
+DENOM=line
 CHAIN_ID=plugchain-testnet-1
-PERSISTENT_PEERS=""
+SEEDS=""
 APPNAME="~/.plugchain"
 
 echo "install plugchain"
 git clone https://github.com/oracleNetworkProtocol/plugchain $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 cd $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 git fetch
-git checkout v0.1.0
+git checkout v0.2.0
 make install
 
 echo "Creating keys"
@@ -35,7 +35,7 @@ weget https://github.com/oracleNetworkProtocol/plugchain/testnet/latest/genesis.
 
 echo "----------Setting config for seed node---------"
 sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' $APPNAME/config/config.toml
-sed -i '/persistent_peers =/c\persistent_peers = "'"$PERSISTENT_PEERS"'"' $APPNAME/config/config.toml
+sed -i '/seeds =/c\seeds = "'"$SEEDS"'"' $APPNAME/config/config.toml
 
 DAEMON_PATH=$(which $DAEMON)
 
@@ -83,4 +83,4 @@ echo "Your node setup is done. You would need some tokens to start your validato
 echo
 echo
 echo "After receiving tokens, you can create your validator by running"
-echo "$DAEMON tx staking create-validator --amount 9000000000$DENOM --commission-max-change-rate \"0.1\" --commission-max-rate \"0.20\" --commission-rate \"0.1\" --details \"Some details about yourvalidator\" --from $YOUR_KEY_NAME   --pubkey=\"$($DAEMON tendermint show-validator)\" --moniker $YOUR_NAME --min-self-delegation \"1000000\" --chain-id $CHAIN_ID --node http://0.0.0.0:26657"
+echo "$DAEMON tx staking create-validator --amount 9000000000$DENOM --commission-max-change-rate \"0.1\" --commission-max-rate \"0.20\" --commission-rate \"0.1\" --details \"Some details about yourvalidator\" --from $YOUR_KEY_NAME   --pubkey=\"$($DAEMON tendermint show-validator)\" --moniker $YOUR_NAME --min-self-delegation \"1000000\" --chain-id $CHAIN_ID"

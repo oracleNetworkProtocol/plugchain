@@ -43,7 +43,7 @@ export GOPROXY=https://goproxy.io,direct
 cd plugchain && make install
 ```
 ##### The main branch code is compiled by default, and fixed version compilation can be selected, for example:
-> `cd plugchaind && git checkout v0.1.0 && make install`
+> `cd plugchaind && git checkout v0.2.0 && make install`
 
 3. After the installation is complete, there will be a plugchaind binary file, you can verify whether it takes effect
 ```
