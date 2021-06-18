@@ -10463,7 +10463,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /ibc/applications/transfer/v1beta1/denom_traces:
+  /ibc/apps/transfer/v1beta1/denom_traces:
     get:
       summary: DenomTraces queries all denomination traces.
       operationId: IbcApplicationsTransferV1DenomTraces
@@ -10753,7 +10753,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/applications/transfer/v1beta1/denom_traces/{hash}':
+  '/ibc/apps/transfer/v1beta1/denom_traces/{hash}':
     get:
       summary: DenomTrace queries a denomination trace information.
       operationId: IbcApplicationsTransferV1DenomTrace
@@ -10981,7 +10981,7 @@ paths:
           type: string
       tags:
         - Query
-  /ibc/applications/transfer/v1beta1/params:
+  /ibc/apps/transfer/v1beta1/params:
     get:
       summary: Params queries all parameters of the ibc-transfer module.
       operationId: IbcApplicationsTransferV1Params
