@@ -214,7 +214,6 @@ type App struct {
 	mm *module.Manager
 
 	//module configurator
-	configurator module.Configurator
 }
 
 // New returns a reference to an initialized Gaia.
