@@ -107,7 +107,7 @@ Additionally, validators are expected to be active members of the community. The
 
 ### What does 'participate in governance' entail?
 
-Validators and delegators on the Cosmos Hub can vote on proposals to change operational parameters (such as the block gas limit), coordinate upgrades, or make a decision on any given matter.
+Validators and delegators on the plugchain Hub can vote on proposals to change operational parameters (such as the block gas limit), coordinate upgrades, or make a decision on any given matter.
 
 Validators play a special role in the governance system. Being the pillars of the system, they are required to vote on every proposal. It is especially important since delegators who do not vote will inherit the vote of their validator.
 
@@ -127,9 +127,9 @@ Even though delegated funds cannot be stolen by their validators, delegators are
 
 The validator that is selected to propose the next block is called proposer. Each proposer is selected deterministically, and the frequency of being chosen is proportional to the voting power (i.e. amount of bonded plug) of the validator. For example, if the total bonded stake across all validators is 100 plug and a validator's total stake is 10 plug, then this validator will proposer ~10% of the blocks.
 
-### Will validators of the Cosmos Hub ever be required to validate other zones in the Cosmos ecosystem?
+### Will validators of the plugchain Hub ever be required to validate other zones in the plugchain ecosystem?
 
-Yes, they will. If governance decides so, validators of the Cosmos hub may be required to validate additional zones in the Cosmos ecosystem.
+Yes, they will. If governance decides so, validators of the plugchain hub may be required to validate additional zones in the plugchain ecosystem.
 
 ## Incentives
 
@@ -137,8 +137,8 @@ Yes, they will. If governance decides so, validators of the Cosmos hub may be re
 
 Each member of a validator's staking pool earns different types of revenue:
 
-- **Block rewards:** Native tokens of applications run by validators (e.g. plug on the Cosmos Hub) are inflated to produce block provisions. These provisions exist to incentivize plug holders to bond their stake, as non-bonded plug will be diluted over time.
-- **Transaction fees:** The Cosmos Hub maintains a whitelist of token that are accepted as fee payment. The initial fee token is the `plug`.
+- **Block rewards:** Native tokens of applications run by validators (e.g. plug on the plugchain Hub) are inflated to produce block provisions. These provisions exist to incentivize plug holders to bond their stake, as non-bonded plug will be diluted over time.
+- **Transaction fees:** The plugchain Hub maintains a whitelist of token that are accepted as fee payment. The initial fee token is the `plug`.
 
 This total revenue is divided among validators' staking pools according to each validator's weight. Then, within each validator's staking pool the revenue is divided among delegators in proportion to each delegator's stake. A commission on delegators' revenue is applied by the validator before it is distributed.
 
@@ -150,7 +150,7 @@ Validators also play a major role in governance. If a delegator does not vote, t
 
 ### What are validators commission?
 
-Revenue received by a validator's pool is split between the validator and their delegators. The validator can apply a commission on the part of the revenue that goes to their delegators. This commission is set as a percentage. Each validator is free to set their initial commission, maximum daily commission change rate and maximum commission. The Cosmos Hub enforces the parameter that each validator sets. Only the commission rate can change after the validator is created.
+Revenue received by a validator's pool is split between the validator and their delegators. The validator can apply a commission on the part of the revenue that goes to their delegators. This commission is set as a percentage. Each validator is free to set their initial commission, maximum daily commission change rate and maximum commission. The plugchain Hub enforces the parameter that each validator sets. Only the commission rate can change after the validator is created.
 
 ### How are block rewards distributed?
 
@@ -208,7 +208,7 @@ In order for delegators to have some guarantee about how much skin-in-the-game t
 
 ### How to prevent concentration of stake in the hands of a few top validators?
 
-For now the community is expected to behave in a smart and self-preserving way. When a mining pool in Bitcoin gets too much mining power the community usually stops contributing to that pool. The Cosmos Hub will rely on the same effect initially. Other mechanisms are in place to smoothen this process as much as possible:
+For now the community is expected to behave in a smart and self-preserving way. When a mining pool in Bitcoin gets too much mining power the community usually stops contributing to that pool. The plugchain Hub will rely on the same effect initially. Other mechanisms are in place to smoothen this process as much as possible:
 
 - **Penalty-free re-delegation:** This is to allow delegators to easily switch from one validator to another, in order to reduce validator stickiness.
 - **UI warning:** Wallets can implement warnings that will be displayed to users if they want to delegate to a validator that already has a significant amount of staking power.
@@ -223,11 +223,11 @@ We expect that a modest level of hardware specifications will be needed initiall
 
 ### What are software requirements?
 
-In addition to running a Cosmos Hub node, validators should develop monitoring, alerting and management solutions.
+In addition to running a plugchain Hub node, validators should develop monitoring, alerting and management solutions.
 
 ### What are bandwidth requirements?
 
-The Cosmos network has the capacity for very high throughput relative to chains like Ethereum or Bitcoin.
+The plugchain network has the capacity for very high throughput relative to chains like Ethereum or Bitcoin.
 
 We recommend that the data center nodes only connect to trusted full-nodes in the cloud or other validators that know each other socially. This relieves the data center node from the burden of mitigating denial-of-service attacks.
 

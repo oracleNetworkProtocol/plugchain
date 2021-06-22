@@ -6,7 +6,7 @@ People that cannot or do not want to operate [validator nodes](../validators/val
 
 **Delegators share the revenue of their validators, but they also share the risks.** In terms of revenue, validators and delegators differ in that validators can apply a commission on the revenue that goes to their delegator before it is distributed. This commission is known to delegators beforehand and can only change according to predefined constraints (see [section](#choosing-a-validator) below). In terms of risk, delegators' plug can be slashed if their validator misbehaves. For more, see [Risks](#risks) section.
 
-To become delegators, plug holders need to send a `Delegate transaction` where they specify how many plug they want to bond and to which validator. A list of validator candidates will be displayed in Cosmos Hub explorers. Later, if a delegator wants to unbond part or all of their stake, they needs to send an "Unbond transaction". From there, the delegator will have to wait 3 weeks to retrieve their plug. Delegators can also send a "Rebond Transaction" to switch from one validator to another, without having to go through the 3 weeks waiting period. 
+To become delegators, plug holders need to send a `Delegate transaction` where they specify how many plug they want to bond and to which validator. A list of validator candidates will be displayed in plugchain Hub explorers. Later, if a delegator wants to unbond part or all of their stake, they needs to send an "Unbond transaction". From there, the delegator will have to wait 3 weeks to retrieve their plug. Delegators can also send a "Rebond Transaction" to switch from one validator to another, without having to go through the 3 weeks waiting period. 
 
 For a practical guide on how to become a delegator, click [here](../delegators/delegator-setup.md).
 
@@ -33,7 +33,7 @@ Being a delegator is not a passive task. Here are the main directives of a deleg
 Validators and delegators earn revenue in exchange for their services. This revenue is given in three forms:
 
 - **Block provisions (plug):** They are paid in newly created plug. Block provisions exist to incentivize plug holders to stake. The yearly inflation rate is calculated to target 2/3 bonded stake. If the total bonded stake in the network is less than 2/3 of the total plug supply, inflation increases until it reaches 20%. If the total bonded stake is more than 2/3 of the plug supply, inflation decreases until it reaches 7%. This means that if total bonded stake stays less than 2/3 of the total plug supply for a prolonged period of time, unbonded plug holders can expect their plug value to deflate by 20% (compounded) per year.
-- **Transaction fees (various tokens):** Each transfer on the Cosmos Hub comes with transactions fees. These fees can be paid in any currency that is whitelisted by the Hub's governance. Fees are distributed to bonded plug holders in proportion to their stake. The first whitelisted token at launch is the plug.
+- **Transaction fees (various tokens):** Each transfer on the plugchain Hub comes with transactions fees. These fees can be paid in any currency that is whitelisted by the Hub's governance. Fees are distributed to bonded plug holders in proportion to their stake. The first whitelisted token at launch is the plug.
 
 ## Validator Commission
 
