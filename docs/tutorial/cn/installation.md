@@ -20,7 +20,7 @@ export PATH=$PATH:/usr/local/go/bin
 ```
 ```
 mkdir -p $HOME/go/bin
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bash_profile
+echo "export PATH=$PATH:$(go env GOPATH)/bin" >> ~/.bash_profile
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 ```
 
