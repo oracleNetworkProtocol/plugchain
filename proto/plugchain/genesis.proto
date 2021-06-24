@@ -7,6 +7,6 @@ option go_package = "github.com/oracleNetworkProtocol/plugchain/x/plugchain/type
 
 // GenesisState defines the plugchain module's genesis state.
 message GenesisState {
-    // this line is used by starport scaffolding # genesis/proto/state
-    // this line is used by starport scaffolding # ibc/genesis/proto
+  // this line is used by starport scaffolding # genesis/proto/state
+  // this line is used by starport scaffolding # ibc/genesis/proto
 }
