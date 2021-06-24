@@ -8,17 +8,22 @@ yum install make gcc git
 #### install Golang
 - golang 安装(>=1.16)
 - [golang各种版本下载](https://studygolang.com/dl)
-- 本教程下载的v1.16.4版本
+- 本教程下载的v1.16.4版本,官方安装golang教程[docs](https://golang.org/doc/install)
 ```sh
 wget https://studygolang.com/dl/golang/go1.16.4.linux-amd64.tar.gz
 ```
 ```sh
-rm -rf /usr/local/go && tar -C /usr/local -zxf go1.16.4.linux-amd64.tar.gz 
+rm -rf /usr/local/go && tar -C /usr/local -zxf go1.16.4.linux-amd64.tar.gz
 ```
-- 添加 `/usr/local/go/bin` 目录到PATH变量中。添加到 `/etc/profile` 或 `~/.bash_profile`都可以,以后者为例：
 ```
+export PATH=$PATH:/usr/local/go/bin 
+```
+```
+mkdir -p $HOME/go/bin
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bash_profile
+echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 ```
+
 ```
 source ~/.bash_profile
 go version

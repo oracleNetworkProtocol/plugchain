@@ -8,20 +8,21 @@ yum install make gcc git
 #### install Golang
 -  verison (>=1.16)
 - [golang version](https://studygolang.com/dl)
-- The v1.16.4 version downloaded in this tutorial
+- The v1.16.4 version downloaded in this tutorial.
 ```sh
 wget https://studygolang.com/dl/golang/go1.16.4.linux-amd64.tar.gz
 ```
 ```sh
-rm -rf /usr/local/go && tar -C /usr/local -zxf go1.16.4.linux-amd64.tar.gz 
+rm -rf /usr/local/go && tar -C /usr/local -zxf go1.16.4.linux-amd64.tar.gz
 ```
-- Add `/usr/local/go/bin` to the PATH environment variable. 
-    You can do this by adding the following line to your `/etc/profile` or `~/.bash_profile` (for a system-wide installation):
 ```
+export PATH=$PATH:/usr/local/go/bin 
+```
+```
+mkdir -p $HOME/go/bin
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bash_profile
+echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 ```
-**Note**
-Changes made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source `~/.bash_profile`.
 
 ```
 source ~/.bash_profile
