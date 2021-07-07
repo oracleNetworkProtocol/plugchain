@@ -6,7 +6,7 @@
 * plugchaind tx staking create-validator [flags]
 ```
 plugchaind tx staking create-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator) \
+--amount 1000000plug --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" --commission-rate="0.10" --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01"  --min-self-delegation="1000000" --chain-id plugchain
   
@@ -15,10 +15,8 @@ plugchaind tx staking create-validator --from mywallet \
 * plugchaind tx staking edit-validator [flags]
 ```
 plugchaind tx staking edit-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator  ) \
---moniker="my validator" --commission-rate="0.20" --commission-max-rate="0.30" \
---commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
-  
+--moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --chain-id plugchain
+
 ```
 **注意** : 
 
@@ -46,20 +44,20 @@ plugchaind tx distribution withdraw-all-rewards --from mywallet
 #### <span id="unbond">取消质押-锁仓21天 </span>
 * plugchaind tx staking unbond [validator-addr] [amount] --from mykey
 ```
-plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from mywallet --chain-id plugchain
+plugchaind tx staking unbond gxvaloperxxxxxxxxxxxxxxxxxx 10000000plug--from mywallet --chain-id plugchain
 ```
 
 
 #### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
-plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
+plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx  
 ```
 
 #### 根据验证者查询所有取消质押的记录
 *  plugchaind query staking unbonding-delegations-from [validator-addr] [flags]
 ```
-plugchaind query staking unbonding-delegations-from onpvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
 ```
 
 
