@@ -19,8 +19,15 @@ plugchaind tx staking edit-validator --from mywallet \
 --moniker="my validator" --commission-rate="0.20" --commission-max-rate="0.30" \
 --commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
   
+
+
+
 ```
-- `commission rate`: The commission rate on block rewards and fees charged to delegators.
+**warning** : 
+`commission-max-rate` and `commission-max-change-rate` cannot be modified after `create validator` is set. Please set them carefully
+When `edit-validator` modifies the verifier information, the modification interval of each field is 24h, and the `min self delegation` cannot be reduced, but can only be increased
+
+- `commission-rate`: The commission rate on block rewards and fees charged to delegators.
 - `commission-max-rate`: The maximum commission rate which this validator can charge. This parameter cannot be changed after `create-validator` is processed.
 - `commission-max-change-rate`: The maximum daily increase of the validator commission. This parameter cannot be changed after `create-validator` is processed.
 - `min-self-delegation`: Minimum amount of plug the validator needs to have bonded at all time. If the validator's self-delegated stake falls below this limit, their entire staking pool will unbond.
