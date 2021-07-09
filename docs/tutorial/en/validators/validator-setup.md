@@ -19,8 +19,9 @@ plugchaind tx staking edit-validator --from mywallet \
 
 ```
 **warning** : 
-`commission-max-rate` and `commission-max-change-rate` cannot be modified after `create validator` is set. Please set them carefully
-When `edit-validator` modifies the verifier information, the modification interval of each field is 24h, and the `min self delegation` cannot be reduced, but can only be increased
+
+- `commission-max-rate` and `commission-max-change-rate` cannot be modified after `create validator` is set. Please set them carefully
+- When `edit-validator` modifies the verifier information, the modification interval of each field is 24h, and the `min self delegation` cannot be reduced, but can only be increased
 
 - `commission-rate`: The commission rate on block rewards and fees charged to delegators.
 - `commission-max-rate`: The maximum commission rate which this validator can charge. This parameter cannot be changed after `create-validator` is processed.

@@ -19,8 +19,11 @@ plugchaind tx staking edit-validator --from mywallet \
 
 ```
 **注意** : 
+
 `commission-max-rate`,`commission-max-change-rate` 两个字段在`create-validator`设置完之后就不可以修改，请您慎重设置
+
 `edit-validator` 修改验证者信息时，各字段修改间隔24H，`min-self-delegation` 不可减小，只能增加
+
 `commission-rate`的值必须符合如下的不变量检查：
 
 + 必须在 0 和 验证人的`commission-max-rate` 之间
