@@ -6,21 +6,16 @@
 * plugchaind tx staking create-validator [flags]
 ```
 plugchaind tx staking create-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator) \
+--amount 2000000plug--pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" --commission-rate="0.10" --commission-max-rate="0.20" \
---commission-max-change-rate="0.01"  --min-self-delegation="1000000" --chain-id plugchain
+--commission-max-change-rate="0.01"  --min-self-delegation="1000000" --fees 5000plug --chain-id plugchain
   
 ```
 #### Modify validator configuration
 * plugchaind tx staking edit-validator [flags]
 ```
 plugchaind tx staking edit-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator  ) \
---moniker="my validator" --commission-rate="0.20" --commission-max-rate="0.30" \
---commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
-  
-
-
+--moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --fees 5000plug --chain-id plugchain
 
 ```
 **warning** : 
@@ -50,20 +45,20 @@ plugchaind tx distribution withdraw-all-rewards --from mywallet
 #### <span id="unbond">Cancel the pledge-lock the warehouse for 21 days </span>
 * plugchaind tx staking unbond [validator-addr] [amount] --from mykey
 ```
-plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from mywallet --chain-id plugchain
+plugchaind tx staking unbond gxvaloperxxxxxxxxxxxxxxxxxx 10000000plug--from mywallet --chain-id plugchain
 ```
 
 
 #### Query the total amount of pledges of all the delegators of the validator. If you want to know the information of the delegators, please move to [Pledge of Delegators](../delegators/delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
-plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
+plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx  
 ```
 
 #### Query all canceled pledge records according to the verifier
 *  plugchaind query staking unbonding-delegations-from [validator-addr] [flags]
 ```
-plugchaind query staking unbonding-delegations-from onpvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
 ```
 
 
