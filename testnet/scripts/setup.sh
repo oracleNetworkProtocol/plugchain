@@ -1,7 +1,8 @@
-APPNAME=node1
+APPNAME=node/token
 CHAINID=plugchain-token-1
 DEMON=line
 DAEMON=plugchaind
+rm -rf $APPNAME
 $DAEMON init node1 --home $APPNAME --chain-id $CHAINID
 sed -i "" 's#stake#line#g' $APPNAME/config/genesis.json
 sed -i "" 's#enable = false#enable = true#g' $APPNAME/config/app.toml
