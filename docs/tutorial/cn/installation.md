@@ -68,13 +68,13 @@ APPHOME="~/.plugchain"
 ```
 - 生成自己的账户
 plugchaind keys add mywallet
-- 获取测试网创世文件
+- 获取主网创世文件
 
 ::: warning
 主网正在准备中，加入[测试网](../../../testnet/README.md)，plugchain团队热烈欢迎志同道合的同志...
 :::
 ```
-wget https://github.com/oracleNetworkProtocol/plugchain/tree/main/genesis.json
+wget https://xxx//
 ```
 - 覆盖创世文件
 ```

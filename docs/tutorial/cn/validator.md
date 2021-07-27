@@ -6,7 +6,7 @@
 * plugchaind tx staking create-validator [flags]
 ```
 plugchaind tx staking create-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator) \
+--amount 1000000plug --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" --commission-rate="0.10" --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01"  --min-self-delegation="1000000" --chain-id plugchain
   
@@ -15,17 +15,19 @@ plugchaind tx staking create-validator --from mywallet \
 * plugchaind tx staking edit-validator [flags]
 ```
 plugchaind tx staking edit-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator  ) \
---moniker="my validator" --commission-rate="0.20" --commission-max-rate="0.30" \
---commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
-  
+--moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --chain-id plugchain
+
 ```
 **注意** : 
+
+`commission-max-rate`,`commission-max-change-rate` 两个字段在`create-validator`设置完之后就不可以修改，请您慎重设置
+
+`edit-validator` 修改验证者信息时，各字段修改间隔24H，`min-self-delegation` 不可减小，只能增加
 
 `commission-rate`的值必须符合如下的不变量检查：
 
 + 必须在 0 和 验证人的`commission-max-rate` 之间
-+ 不得超过 验证人的`commission-max-change-rate`, 该参数标识**每日**最大的百分点变化数。也就是，一个验证人在`commission-max-change-rate`的界限内每日一次可调整的最大佣金变化。
++ 不得超过 验证人的`commission-max-change-rate`, 该参数标识**每日**最大的百分点变化数。也就是，一个验证人在`commission-max-change-rate`的界限内每24H一次可调整的最大佣金变化。
 
 `min-self-delegation`的值单位是`10e-6`,所以此值最小为 `1000000`
 
@@ -46,20 +48,20 @@ plugchaind tx distribution withdraw-all-rewards --from mywallet
 #### <span id="unbond">取消质押-锁仓21天 </span>
 * plugchaind tx staking unbond [validator-addr] [amount] --from mykey
 ```
-plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from mywallet --chain-id plugchain
+plugchaind tx staking unbond gxvaloperxxxxxxxxxxxxxxxxxx 10000000plug--from mywallet --chain-id plugchain
 ```
 
 
 #### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
-plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
+plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx  
 ```
 
 #### 根据验证者查询所有取消质押的记录
 *  plugchaind query staking unbonding-delegations-from [validator-addr] [flags]
 ```
-plugchaind query staking unbonding-delegations-from onpvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
 ```
 
 

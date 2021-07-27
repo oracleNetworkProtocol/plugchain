@@ -36,5 +36,4 @@ We have active, helpful communities on Twitter, Discord, and Telegram.
 
 
 ## Testnet Status
-
-See [doc](./testnet/README.md)
+[Test process document](./docs/tutorial/en/testnet.md#1)

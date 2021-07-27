@@ -14,7 +14,7 @@ Faucet:
 
 Here are the instructions to run a validator for plugchain-testnet-1:
 
-1. Modify the `scripts/testnet-val-setup.sh` file according to the `chain-id` and `seeds` provided in the latest directory
+1. Modify the `scripts/testnet-val-setup.sh` file according to the `chain-id` and `seeds` provided in the `./latest/` directory
 2. Run the latest setup script
 ```
 cd testnet/scripts && chmod +x testnet-val-setup.sh

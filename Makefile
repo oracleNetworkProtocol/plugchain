@@ -79,3 +79,21 @@ go.sum: go.mod
 	go mod tidy
 
 .PHONY: all build-linux install
+
+###############################################################################
+###                               Localnet                                  ###
+###############################################################################
+
+# Run a single testnet locally
+localnet: 
+	@echo "start make install and ./testnet/scripts/setup.sh"
+	@make install 
+	./testnet/scripts/setup.sh
+
+.PHONY: localnet
+
+swagger: 
+	@echo "swagger install ......"
+	@./testnet/scripts/protoc-swagger-gen.sh
+
+.PHONY: swagger

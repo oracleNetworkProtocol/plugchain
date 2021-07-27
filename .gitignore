@@ -27,7 +27,7 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
-
+# third_party/
 
 vue/*
 secret.yml

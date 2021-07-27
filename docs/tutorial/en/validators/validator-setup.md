@@ -6,21 +6,24 @@
 * plugchaind tx staking create-validator [flags]
 ```
 plugchaind tx staking create-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator) \
+--amount 2000000plug--pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" --commission-rate="0.10" --commission-max-rate="0.20" \
---commission-max-change-rate="0.01"  --min-self-delegation="1000000" --chain-id plugchain
+--commission-max-change-rate="0.01"  --min-self-delegation="1000000" --fees 5000plug --chain-id plugchain
   
 ```
 #### Modify validator configuration
 * plugchaind tx staking edit-validator [flags]
 ```
 plugchaind tx staking edit-validator --from mywallet \
---amount 10000onp --pubkey $(plugchaind tendermint show-validator  ) \
---moniker="my validator" --commission-rate="0.20" --commission-max-rate="0.30" \
---commission-max-change-rate="0.02" --min-self-delegation="1000000" --chain-id plugchain
-  
+--moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --fees 5000plug --chain-id plugchain
+
 ```
-- `commission rate`: The commission rate on block rewards and fees charged to delegators.
+**warning** : 
+
+- `commission-max-rate` and `commission-max-change-rate` cannot be modified after `create validator` is set. Please set them carefully
+- When `edit-validator` modifies the verifier information, the modification interval of each field is 24h, and the `min self delegation` cannot be reduced, but can only be increased
+
+- `commission-rate`: The commission rate on block rewards and fees charged to delegators.
 - `commission-max-rate`: The maximum commission rate which this validator can charge. This parameter cannot be changed after `create-validator` is processed.
 - `commission-max-change-rate`: The maximum daily increase of the validator commission. This parameter cannot be changed after `create-validator` is processed.
 - `min-self-delegation`: Minimum amount of plug the validator needs to have bonded at all time. If the validator's self-delegated stake falls below this limit, their entire staking pool will unbond.
@@ -43,20 +46,20 @@ plugchaind tx distribution withdraw-all-rewards --from mywallet
 #### <span id="unbond">Cancel the pledge-lock the warehouse for 21 days </span>
 * plugchaind tx staking unbond [validator-addr] [amount] --from mykey
 ```
-plugchaind tx staking unbond onpvaloperxxxxxxxxxxxxxxxxxx 10000000onp --from mywallet --chain-id plugchain
+plugchaind tx staking unbond gxvaloperxxxxxxxxxxxxxxxxxx 10000000plug--from mywallet --chain-id plugchain
 ```
 
 
 #### Query the total amount of pledges of all the delegators of the validator. If you want to know the information of the delegators, please move to [Pledge of Delegators](../delegators/delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```
-plugchaind query staking delegations-to onpvaloperxxxxxxxxxxxxxxxxxx  
+plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx  
 ```
 
 #### Query all canceled pledge records according to the verifier
 *  plugchaind query staking unbonding-delegations-from [validator-addr] [flags]
 ```
-plugchaind query staking unbonding-delegations-from onpvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
+plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx  
 ```
 
 
