@@ -1,5 +1,5 @@
 syntax = "proto3";
-package oracleNetworkProtocol.plugchain.plugchain;
+package onp.plugchain.v1beta1;
 
 // this line is used by starport scaffolding # genesis/proto/import
 
