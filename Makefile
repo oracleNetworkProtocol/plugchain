@@ -97,3 +97,9 @@ swagger:
 	@./testnet/scripts/protoc-swagger-gen.sh
 
 .PHONY: swagger
+
+buf: 
+	@echo "buf proto file ing......"
+	@./testnet/scripts/protocgen.sh
+
+.PHONY: buf
