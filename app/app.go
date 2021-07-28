@@ -145,6 +145,8 @@ var (
 		stakingtypes.NotBondedPoolName: {authtypes.Burner, authtypes.Staking},
 		govtypes.ModuleName:            {authtypes.Burner},
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
+		//Allow plugchaintypes module to use authtypes minter and burner
+		plugchaintypes.ModuleName: {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -326,6 +328,8 @@ func New(
 		appCodec,
 		keys[plugchaintypes.StoreKey],
 		keys[plugchaintypes.MemStoreKey],
+		app.AccountKeeper,
+		app.BankKeeper,
 	)
 	plugchainModule := plugchain.NewAppModule(appCodec, app.PlugchainKeeper)
 

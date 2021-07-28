@@ -13,10 +13,11 @@ import (
 
 type (
 	Keeper struct {
-		cdc      codec.Marshaler
-		storeKey sdk.StoreKey
-		memKey   sdk.StoreKey
-		// this line is used by starport scaffolding # ibc/keeper/attribute
+		cdc           codec.Marshaler
+		storeKey      sdk.StoreKey
+		memKey        sdk.StoreKey
+		accountKeeper types.AccountKeeper
+		bankKeeper    types.BankKeeper
 	}
 )
 
@@ -24,13 +25,15 @@ func NewKeeper(
 	cdc codec.Marshaler,
 	storeKey,
 	memKey sdk.StoreKey,
-	// this line is used by starport scaffolding # ibc/keeper/parameter
+	ak types.AccountKeeper,
+	bk types.BankKeeper,
 ) *Keeper {
 	return &Keeper{
-		cdc:      cdc,
-		storeKey: storeKey,
-		memKey:   memKey,
-		// this line is used by starport scaffolding # ibc/keeper/return
+		cdc:           cdc,
+		storeKey:      storeKey,
+		memKey:        memKey,
+		accountKeeper: ak,
+		bankKeeper:    bk,
 	}
 }
 
