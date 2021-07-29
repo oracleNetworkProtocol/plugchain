@@ -1,5 +1,7 @@
 package types
 
+import sdk "github.com/cosmos/cosmos-sdk/types"
+
 const (
 	// ModuleName defines the module name
 	ModuleName = "plugchain"
@@ -28,8 +30,9 @@ const (
 )
 
 var (
-	TokenCountKey  = []byte("tokenCountKey")
-	TokenKeyPrefix = []byte{0x1}
+	TokenCountKey         = []byte("tokenCountKey")
+	TokenKeyPrefix        = []byte{0x1}
+	TokenAccAddressPrefix = []byte{0x2}
 )
 
 func KeyPrefix(p string) []byte {
@@ -43,5 +46,13 @@ func GetTokenKey(symbol string) []byte {
 	key := make([]byte, 10)
 	key[0] = TokenKeyPrefix[0]
 	copy(key[1:], KeyPrefix(symbol))
+	return key
+}
+
+func GetTokenAccAddressPrefix(accAddr sdk.AccAddress) []byte {
+	adrLen := len(accAddr)
+	key := make([]byte, adrLen+1)
+	key[0] = TokenAccAddressPrefix[0]
+	copy(key[1:], accAddr)
 	return key
 }

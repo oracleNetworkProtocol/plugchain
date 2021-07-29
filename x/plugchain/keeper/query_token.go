@@ -43,3 +43,28 @@ func (q Querier) TokenList(goCtx context.Context, req *types.QueryTokenListReque
 		Pagination: pageRes,
 	}, nil
 }
+
+func (q Querier) TokensByAccAddr(goCtx context.Context, req *types.QueryTokensByAccAddrRequest) (*types.QueryTokensByAccAddrResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+	if req.Address == "" {
+		return nil, status.Error(codes.NotFound, "invalid address")
+	}
+	accAdrBech32, err := sdk.AccAddressFromBech32(req.Address)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "address is invalid (%s)", req.Address)
+	}
+
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	tokenKeys := q.Keeper.GetAccTokens(ctx, accAdrBech32)
+	var tokenList []types.MsgCreateToken
+	if len(tokenKeys.Key) != 0 {
+		for _, v := range tokenKeys.Key {
+			val := q.GetToken(ctx, v)
+			tokenList = append(tokenList, val)
+		}
+	}
+	return &types.QueryTokensByAccAddrResponse{Token: tokenList}, nil
+}

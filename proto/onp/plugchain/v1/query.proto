@@ -12,6 +12,9 @@ service Query {
     rpc TokenList (QueryTokenListRequest) returns (QueryTokenListResponse) {
         option (google.api.http).get = "/onp/plugchain/v1/token_list";
     }
+    rpc TokensByAccAddr (QueryTokensByAccAddrRequest) returns (QueryTokensByAccAddrResponse) {
+        option (google.api.http).get = "/onp/plugchain/v1/tokens_addr/{address}";
+    }
 }
 
 // this line is used by starport scaffolding # 3
@@ -22,4 +25,12 @@ message QueryTokenListRequest{
 message QueryTokenListResponse {
     repeated MsgCreateToken tokens = 1 [(gogoproto.nullable) = false];
     cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryTokensByAccAddrRequest {
+    string address = 1;
+}
+
+message QueryTokensByAccAddrResponse {
+    repeated MsgCreateToken token = 1[(gogoproto.nullable) = false];
 }

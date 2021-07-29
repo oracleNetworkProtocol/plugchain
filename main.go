@@ -1,17 +1,15 @@
 package main
 
-import "log"
-
 var (
 	TokenKeyPrefix = []byte{0x1}
 )
 
 func main() {
-	sym := "token2222"
-	sym1 := "token2a"
-	log.Println(len(TokenKeyPrefix))
-	log.Println(GetTokenKey(sym1))
-	log.Println(GetTokenKey(sym))
+	// sym := "token2222"
+	// sym1 := "token2a"
+	// log.Println(len(TokenKeyPrefix))
+	// log.Println(GetTokenKey(sym1))
+	// log.Println(GetTokenKey(sym))
 }
 func GetTokenKey(symbol string) []byte {
 	// 10 = len([]byte(symbol))
