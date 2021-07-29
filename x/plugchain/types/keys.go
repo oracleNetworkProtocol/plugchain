@@ -16,11 +16,32 @@ const (
 	// MemStoreKey defines the in-memory store key
 	MemStoreKey = "mem_plugchain"
 
-	// this line is used by starport scaffolding # ibc/keys/name
+	//token name abbreviation prefix
+	TokenNamePrefix = "token"
+
+	//Maximum length of token shorthand
+	SymbolMaxLen int = 4
+	//Default decimal places
+	DefaultDecimal uint32 = 6
+
+	DescriptionMaxLen = 256
 )
 
-// this line is used by starport scaffolding # ibc/keys/port
+var (
+	TokenCountKey  = []byte("tokenCountKey")
+	TokenKeyPrefix = []byte{0x1}
+)
 
 func KeyPrefix(p string) []byte {
 	return []byte(p)
+}
+
+// GetPoolKey returns kv indexing key of the pool
+
+func GetTokenKey(symbol string) []byte {
+	// 10 = len([]byte(symbol))
+	key := make([]byte, 10)
+	key[0] = TokenKeyPrefix[0]
+	copy(key[1:], KeyPrefix(symbol))
+	return key
 }

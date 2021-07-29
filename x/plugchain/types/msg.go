@@ -7,6 +7,10 @@ import (
 
 var _ sdk.Msg = &MsgCreateToken{}
 
+const (
+	TypeMsgCreateToken = "create_token"
+)
+
 func NewMsgCreateToken(owner, wholeName, originalSymbol, description, symbol string, totalSupply *sdk.Int, decimal uint64, mintable bool) *MsgCreateToken {
 	return &MsgCreateToken{
 		Symbol:         symbol,
@@ -26,7 +30,7 @@ func (msg *MsgCreateToken) Route() string {
 }
 
 func (msg *MsgCreateToken) Type() string {
-	return "CreateToken"
+	return TypeMsgCreateToken
 }
 
 func (msg *MsgCreateToken) GetSigners() []sdk.AccAddress {
@@ -47,5 +51,20 @@ func (msg *MsgCreateToken) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+	if len(msg.Symbol) > SymbolMaxLen {
+		return ReturnErrSymbolLenNotValid(SymbolMaxLen)
+	}
+	if len(msg.Description) > DescriptionMaxLen {
+		return ReturnErrDescriptionNotValid(DescriptionMaxLen)
+	}
+
 	return nil
+}
+
+func (msg MsgCreateToken) GetTokenCreator() sdk.AccAddress {
+	addr, err := sdk.AccAddressFromBech32(msg.Owner)
+	if err != nil {
+		panic(err)
+	}
+	return addr
 }

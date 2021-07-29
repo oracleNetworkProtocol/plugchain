@@ -1,5 +1,5 @@
 syntax = "proto3";
-package onp.plugchain.v1beta1;
+package onp.plugchain.v1;
 
 // this line is used by starport scaffolding # genesis/proto/import
 

@@ -80,7 +80,6 @@ This example creates a token of symbol ABC and totalSupply 10000000000000 .
 			if err != nil {
 				return err
 			}
-
 			msg := types.NewMsgCreateToken(clientCtx.GetFromAddress().String(), argsWholeName, argsOriginalSymbol, argsDescription, argsSymbol, &newSupply, argsDecimal, argsMintable)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
