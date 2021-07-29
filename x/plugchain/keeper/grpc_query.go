@@ -4,4 +4,12 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
 )
 
-var _ types.QueryServer = Keeper{}
+type Querier struct {
+	Keeper
+}
+
+var _ types.QueryServer = Querier{}
+
+// func NewQuerierServer(keeper Keeper) types.QueryServer {
+// 	return &Querier{Keeper: keeper}
+// }

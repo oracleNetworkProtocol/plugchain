@@ -1,12 +1,25 @@
 syntax = "proto3";
 package onp.plugchain.v1;
 
-
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos_proto/pagination.proto";
+import "onp/plugchain/v1/token.proto";
 option go_package = "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types";
 
 // Query defines the gRPC querier service.
 service Query {
-    // this line is used by starport scaffolding # 2
+    rpc TokenList (QueryTokenListRequest) returns (QueryTokenListResponse) {
+        option (google.api.http).get = "/onp/plugchain/v1/token_list";
+    }
 }
 
 // this line is used by starport scaffolding # 3
+message QueryTokenListRequest{
+    cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryTokenListResponse {
+    repeated MsgCreateToken tokens = 1 [(gogoproto.nullable) = false];
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

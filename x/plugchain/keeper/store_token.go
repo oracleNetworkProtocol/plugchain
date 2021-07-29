@@ -54,3 +54,7 @@ func (k Keeper) GetNextTokenID(ctx sdk.Context) uint64 {
 	}
 	return TokenID
 }
+
+func (k Keeper) GetTokenList(ctx sdk.Context, req *types.QueryTokenListRequest) {
+
+}
