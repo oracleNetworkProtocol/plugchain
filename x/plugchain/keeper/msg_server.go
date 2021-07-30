@@ -24,7 +24,7 @@ func (k msgServer) CreateToken(goCtx context.Context, msg *types.MsgCreateToken)
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	tokenMsg := types.MsgCreateToken{
-		Symbol:         msg.Symbol,
+		Symbol:         types.GetSymbol(msg.Symbol),
 		OriginalSymbol: msg.OriginalSymbol,
 		Description:    msg.Description,
 		WholeName:      msg.WholeName,
@@ -34,7 +34,9 @@ func (k msgServer) CreateToken(goCtx context.Context, msg *types.MsgCreateToken)
 		Decimal:        msg.Decimal,
 		Mintable:       msg.Mintable,
 	}
-
+	if err := k.Keeper.ValildateCreateToken(ctx, tokenMsg); err != nil {
+		return &types.MsgCreateTokenResponse{}, err
+	}
 	err := k.Keeper.NewMintToken(ctx, tokenMsg)
 	if err != nil {
 		return &types.MsgCreateTokenResponse{}, err

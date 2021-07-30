@@ -1,6 +1,10 @@
 package types
 
-import sdk "github.com/cosmos/cosmos-sdk/types"
+import (
+	"strings"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+)
 
 const (
 	// ModuleName defines the module name
@@ -24,9 +28,10 @@ const (
 	//Maximum length of token shorthand
 	SymbolMaxLen int = 4
 	//Default decimal places
-	DefaultDecimal uint32 = 6
-
-	DescriptionMaxLen = 256
+	DefaultDecimal    uint32 = 6
+	MinTotalSupply    uint64 = 1
+	MinDecimal        uint64 = 10000
+	DescriptionMaxLen        = 256
 )
 
 var (
@@ -55,4 +60,9 @@ func GetTokenAccAddressPrefix(accAddr sdk.AccAddress) []byte {
 	key[0] = TokenAccAddressPrefix[0]
 	copy(key[1:], accAddr)
 	return key
+}
+
+//返回带前缀的token-symbol ，symbol全大写
+func GetSymbol(symbol string) string {
+	return TokenNamePrefix + strings.ToTitle(symbol)
 }

@@ -51,13 +51,6 @@ func (msg *MsgCreateToken) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
-	if len(msg.Symbol) > SymbolMaxLen {
-		return ReturnErrSymbolLenNotValid(SymbolMaxLen)
-	}
-	if len(msg.Description) > DescriptionMaxLen {
-		return ReturnErrDescriptionNotValid(DescriptionMaxLen)
-	}
-
 	return nil
 }
 
