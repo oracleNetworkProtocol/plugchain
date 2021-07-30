@@ -14,6 +14,7 @@ var (
 	ErrDecimalNotValid         = sdkerrors.Register(ModuleName, 5, "Invalid decimal")
 	ErrAccAddressNotPermission = sdkerrors.Register(ModuleName, 6, "Invalid address")
 	ErrBurnTokenNotPermission  = sdkerrors.Register(ModuleName, 7, "This symbol coinage is prohibited")
+	ErrBurnTokenInsufficient   = sdkerrors.Register(ModuleName, 8, "Invalid account")
 )
 
 func ReturnErrSymbolLenNotValid(maxLen int) error {
@@ -37,4 +38,8 @@ func ReturnErrDecimalNotValid(decimal uint64) error {
 }
 func ReturnErrAccAddressNotPermission(address string) error {
 	return sdkerrors.Wrapf(ErrAccAddressNotPermission, "The current address (%s) does not have the operation authority for this function", address)
+}
+
+func ReturnErrBurnTokenInsufficient(addrAccount, burnAccount string) error {
+	return sdkerrors.Wrapf(ErrBurnTokenInsufficient, "(%s) is smaller than (%s): insufficient funds", addrAccount, burnAccount)
 }
