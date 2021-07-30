@@ -13,7 +13,7 @@ var (
 	ErrSymbolIsExists          = sdkerrors.Register(ModuleName, 4, "Determine whether the symbol exists")
 	ErrDecimalNotValid         = sdkerrors.Register(ModuleName, 5, "Invalid decimal")
 	ErrAccAddressNotPermission = sdkerrors.Register(ModuleName, 6, "Invalid address")
-	ErrBurnTokenNotPermission  = sdkerrors.Register(ModuleName, 7, "This symbol coinage is prohibited")
+	ErrMintTokenNotPermission  = sdkerrors.Register(ModuleName, 7, "This symbol coinage is prohibited")
 	ErrBurnTokenInsufficient   = sdkerrors.Register(ModuleName, 8, "Invalid account")
 )
 

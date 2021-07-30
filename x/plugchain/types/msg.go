@@ -7,10 +7,12 @@ import (
 
 var _ sdk.Msg = &MsgCreateToken{}
 var _ sdk.Msg = &MsgBurnToken{}
+var _ sdk.Msg = &MsgMintToken{}
 
 const (
 	TypeMsgCreateToken = "create_token"
 	TypeMsgBurnToken   = "burn"
+	TypeMsgMintToken   = "mint"
 )
 
 func NewMsgCreateToken(owner, wholeName, originalSymbol, description, symbol string, totalSupply *sdk.Int, decimal uint64, mintable bool) *MsgCreateToken {
@@ -94,6 +96,43 @@ func (burn *MsgBurnToken) GetSignBytes() []byte {
 }
 
 func (burn *MsgBurnToken) ValidateBasic() error {
+	_, err := sdk.AccAddressFromBech32(burn.Address)
+	if err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
+	}
+	return nil
+}
+
+func NewMsgMintToken(symbol, address string, account *sdk.Int) *MsgMintToken {
+	return &MsgMintToken{
+		Symbol:  symbol,
+		Address: address,
+		Account: account,
+	}
+}
+
+func (burn *MsgMintToken) Route() string {
+	return RouterKey
+}
+
+func (burn *MsgMintToken) Type() string {
+	return TypeMsgMintToken
+}
+
+func (burn *MsgMintToken) GetSigners() []sdk.AccAddress {
+	creator, err := sdk.AccAddressFromBech32(burn.Address)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{creator}
+}
+
+func (burn *MsgMintToken) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(burn)
+	return sdk.MustSortJSON(bz)
+}
+
+func (burn *MsgMintToken) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(burn.Address)
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)

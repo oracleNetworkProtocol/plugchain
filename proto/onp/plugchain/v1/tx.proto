@@ -11,8 +11,10 @@ service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
   rpc CreateToken(MsgCreateToken) returns (MsgCreateTokenResponse);
   rpc BurnToken(MsgBurnToken) returns (MsgBurnTokenResponse);
+  rpc MintToken(MsgMintToken) returns (MsgMintTokenResponse);
 }
 
 message MsgCreateTokenResponse {}
 
 message MsgBurnTokenResponse {}
+message MsgMintTokenResponse {}

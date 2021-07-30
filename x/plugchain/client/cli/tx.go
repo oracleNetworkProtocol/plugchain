@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"log"
 	"time"
 
 	"errors"
@@ -41,6 +40,7 @@ func GetTxCmd() *cobra.Command {
 	cmd.AddCommand(
 		CmdCreateToken(),
 		CmdBurnToken(),
+		CmdMintToken(),
 	)
 
 	return cmd
@@ -131,7 +131,47 @@ This example burn a token of symbol ABC and total 10000000000000 .
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
-			log.Println("sadfasdfasdfasdfasfd")
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}
+func CmdMintToken() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "mint [symbol] [account] ",
+		Short: "Broadcast message mint-token",
+		Args:  cobra.ExactArgs(2),
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`mint Token.
+Example:
+$ %s tx %s mint ABC 10000000000000  --from mykey
+This example mint a token of symbol ABC and total 10000000000000 .
+
+[symbol]: The symbol is the abbreviation of the currency name
+[account]: Total amount of additional issuance
+`,
+				version.AppName, types.ModuleName,
+			),
+		),
+
+		RunE: func(cmd *cobra.Command, args []string) error {
+
+			argsSymbol := cast.ToString(args[0])
+			argsTotalSupply := cast.ToString(args[1])
+			newSupply, ok := sdk.NewIntFromString(argsTotalSupply)
+			if !ok {
+				return errors.New("total amount is failed")
+			}
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			msg := types.NewMsgMintToken(argsSymbol, clientCtx.GetFromAddress().String(), &newSupply)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
 		},
 	}

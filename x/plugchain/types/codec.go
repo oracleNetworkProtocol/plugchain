@@ -8,9 +8,9 @@ import (
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	// this line is used by starport scaffolding # 2
 	cdc.RegisterConcrete(&MsgCreateToken{}, "plugchain/CreateToken", nil)
 	cdc.RegisterConcrete(&MsgBurnToken{}, "plugchain/BurnToken", nil)
+	cdc.RegisterConcrete(&MsgMintToken{}, "plugchain/MintToken", nil)
 
 }
 
@@ -19,6 +19,7 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateToken{},
 		&MsgBurnToken{},
+		&MsgMintToken{},
 	)
 
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)

@@ -58,7 +58,7 @@ func (q Querier) TokensByAccAddr(goCtx context.Context, req *types.QueryTokensBy
 
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	tokenKeys := q.Keeper.GetAccTokens(ctx, accAdrBech32)
+	tokenKeys := q.GetAccTokens(ctx, accAdrBech32)
 	var tokenList []types.MsgCreateToken
 	if len(tokenKeys.Key) != 0 {
 		for _, v := range tokenKeys.Key {
@@ -67,4 +67,18 @@ func (q Querier) TokensByAccAddr(goCtx context.Context, req *types.QueryTokensBy
 		}
 	}
 	return &types.QueryTokensByAccAddrResponse{Token: tokenList}, nil
+}
+
+func (q Querier) TokenInfo(goCtx context.Context, req *types.QueryTokenInfoRequest) (*types.QueryTokenInfoResponse, error) {
+
+	if req.Symbol == "" {
+		return nil, status.Error(codes.InvalidArgument, "invalid symbol")
+	}
+	symbol := types.GetSymbol(req.Symbol)
+
+	ctx := sdk.UnwrapSDKContext(goCtx)
+	key := types.GetTokenKey(symbol)
+	token := q.GetToken(ctx, key)
+
+	return &types.QueryTokenInfoResponse{Token: token}, nil
 }

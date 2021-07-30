@@ -29,6 +29,7 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 	cmd.AddCommand(
 		QueryTokenList(),
 		QueryTokensByAccAddr(),
+		QueryTokenInfo(),
 	)
 	return cmd
 }
@@ -75,6 +76,30 @@ func QueryTokensByAccAddr() *cobra.Command {
 				return err
 			}
 			res, err := queryClient.TokensByAccAddr(context.Background(), &types.QueryTokensByAccAddrRequest{Address: address})
+			if err != nil {
+				return err
+			}
+			return clientCtx.PrintProto(res)
+		},
+	}
+	flags.AddQueryFlagsToCmd(cmd)
+	return cmd
+}
+
+func QueryTokenInfo() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "token-info [symbol]",
+		Short: "query tokens by symbol",
+		Args:  cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			symbol := string(args[0])
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+
+			res, err := queryClient.TokenInfo(context.Background(), &types.QueryTokenInfoRequest{Symbol: symbol})
 			if err != nil {
 				return err
 			}

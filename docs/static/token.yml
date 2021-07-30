@@ -8,6 +8,25 @@ consumes:
 produces:
   - application/json
 paths:
+  '/onp/plugchain/v1/token_info/{symbol}':
+    get:
+      operationId: TokenInfo
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/onp.plugchain.v1.QueryTokenInfoResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/grpc.gateway.runtime.Error'
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /onp/plugchain/v1/token_list:
     get:
       operationId: TokenList
@@ -201,6 +220,11 @@ definitions:
         format: uint64
       mintable:
         type: boolean
+  onp.plugchain.v1.QueryTokenInfoResponse:
+    type: object
+    properties:
+      token:
+        $ref: '#/definitions/onp.plugchain.v1.MsgCreateToken'
   onp.plugchain.v1.QueryTokenListResponse:
     type: object
     properties:
