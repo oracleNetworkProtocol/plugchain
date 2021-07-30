@@ -7,11 +7,13 @@ import (
 )
 
 var (
-	ErrSymbolLenNotValid   = sdkerrors.Register(ModuleName, 1, "Invalid symbol length")
-	ErrDescriptionNotValid = sdkerrors.Register(ModuleName, 2, "Invalid description length")
-	ErrTotalSupplyNotValid = sdkerrors.Register(ModuleName, 3, "Invalid total-supply")
-	ErrSymbolIsExists      = sdkerrors.Register(ModuleName, 4, "Determine whether the symbol exists")
-	ErrDecimalNotValid     = sdkerrors.Register(ModuleName, 5, "Invalid decimal")
+	ErrSymbolLenNotValid       = sdkerrors.Register(ModuleName, 1, "Invalid symbol length")
+	ErrDescriptionNotValid     = sdkerrors.Register(ModuleName, 2, "Invalid description length")
+	ErrTotalSupplyNotValid     = sdkerrors.Register(ModuleName, 3, "Invalid total-supply")
+	ErrSymbolIsExists          = sdkerrors.Register(ModuleName, 4, "Determine whether the symbol exists")
+	ErrDecimalNotValid         = sdkerrors.Register(ModuleName, 5, "Invalid decimal")
+	ErrAccAddressNotPermission = sdkerrors.Register(ModuleName, 6, "Invalid address")
+	ErrBurnTokenNotPermission  = sdkerrors.Register(ModuleName, 7, "This symbol coinage is prohibited")
 )
 
 func ReturnErrSymbolLenNotValid(maxLen int) error {
@@ -32,4 +34,7 @@ func ReturnErrTotalSupplyNotValid(total uint64) error {
 
 func ReturnErrDecimalNotValid(decimal uint64) error {
 	return sdkerrors.Wrapf(ErrDecimalNotValid, "The minimum number of decimal places is (%s)", decimal)
+}
+func ReturnErrAccAddressNotPermission(address string) error {
+	return sdkerrors.Wrapf(ErrAccAddressNotPermission, "The current address (%s) does not have the operation authority for this function", address)
 }

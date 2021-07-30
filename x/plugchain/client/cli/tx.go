@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"log"
 	"time"
 
 	"errors"
@@ -37,7 +38,10 @@ func GetTxCmd() *cobra.Command {
 	}
 
 	// this line is used by starport scaffolding # 1
-	cmd.AddCommand(CmdCreateToken())
+	cmd.AddCommand(
+		CmdCreateToken(),
+		CmdBurnToken(),
+	)
 
 	return cmd
 }
@@ -90,5 +94,48 @@ This example creates a token of symbol ABC and totalSupply 10000000000000 .
 
 	flags.AddTxFlagsToCmd(cmd)
 
+	return cmd
+}
+
+func CmdBurnToken() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "burn [symbol] [account] ",
+		Short: "Broadcast message burn-token",
+		Args:  cobra.ExactArgs(2),
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`Burn Token.
+Example:
+$ %s tx %s burn ABC 10000000000000  --from mykey
+This example burn a token of symbol ABC and total 10000000000000 .
+
+[symbol]: The symbol is the abbreviation of the currency name
+[account]: Total amount of additional issuance
+`,
+				version.AppName, types.ModuleName,
+			),
+		),
+
+		RunE: func(cmd *cobra.Command, args []string) error {
+
+			argsSymbol := cast.ToString(args[0])
+			argsTotalSupply := cast.ToString(args[1])
+			newSupply, ok := sdk.NewIntFromString(argsTotalSupply)
+			if !ok {
+				return errors.New("total amount is failed")
+			}
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			msg := types.NewMsgBurnToken(argsSymbol, clientCtx.GetFromAddress().String(), &newSupply)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			log.Println("sadfasdfasdfasdfasfd")
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
 	return cmd
 }

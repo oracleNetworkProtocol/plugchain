@@ -41,7 +41,7 @@ func (k msgServer) CreateToken(goCtx context.Context, msg *types.MsgCreateToken)
 	if err != nil {
 		return &types.MsgCreateTokenResponse{}, err
 	}
-	k.Keeper.SetToken(ctx, tokenMsg)
+	k.Keeper.SetToken(ctx, tokenMsg, true)
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			sdk.EventTypeMessage,
@@ -70,4 +70,55 @@ func (k msgServer) CreateToken(goCtx context.Context, msg *types.MsgCreateToken)
 		"mintable", tokenMsg.Mintable,
 	)
 	return &types.MsgCreateTokenResponse{}, nil
+}
+
+func (k msgServer) BurnToken(goCtx context.Context, msg *types.MsgBurnToken) (*types.MsgBurnTokenResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	_ = ctx
+
+	burnMsg := types.MsgBurnToken{
+		Symbol:  types.GetSymbol(msg.Symbol),
+		Address: msg.Address,
+		Account: msg.Account,
+	}
+	//查询币信息
+	tokenMsg := k.Keeper.GetToken(ctx, types.GetTokenKey(burnMsg.Symbol))
+	if tokenMsg.Owner != burnMsg.Address {
+		return &types.MsgBurnTokenResponse{}, types.ReturnErrAccAddressNotPermission(burnMsg.Address)
+	}
+	if !tokenMsg.Mintable {
+		return &types.MsgBurnTokenResponse{}, types.ErrBurnTokenNotPermission
+	}
+	burnAddr, err := sdk.AccAddressFromBech32(burnMsg.Address)
+	if err != nil {
+		panic(err)
+	}
+
+	//执行造币
+	mintCoin := sdk.NewCoin(burnMsg.Symbol, *burnMsg.Account)
+	mintCoins := sdk.NewCoins(mintCoin)
+	if err := k.bankKeeper.MintCoins(ctx, types.ModuleName, mintCoins); err != nil {
+		return &types.MsgBurnTokenResponse{}, err
+	}
+	if err := k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, burnAddr, mintCoins); err != nil {
+		return &types.MsgBurnTokenResponse{}, err
+	}
+	newTotal := sdk.NewIntFromBigInt(tokenMsg.TotalSupply.BigInt().Add(tokenMsg.TotalSupply.BigInt(), burnMsg.Account.BigInt()))
+	tokenMsg.TotalSupply = &newTotal
+
+	k.SetToken(ctx, tokenMsg, false)
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+		),
+		sdk.NewEvent(
+			types.EventTypeBurnToken,
+			sdk.NewAttribute(types.AttributeValueTokenSymbol, burnMsg.Symbol),
+			sdk.NewAttribute(types.AttributeValueTokenOwner, burnMsg.Address),
+			sdk.NewAttribute(types.AttributeValueTokenBurnAccount, burnMsg.Account.String()),
+		),
+	})
+	return &types.MsgBurnTokenResponse{}, nil
 }

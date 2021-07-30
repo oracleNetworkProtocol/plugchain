@@ -10,8 +10,9 @@ option go_package = "github.com/oracleNetworkProtocol/plugchain/x/plugchain/type
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
   rpc CreateToken(MsgCreateToken) returns (MsgCreateTokenResponse);
+  rpc BurnToken(MsgBurnToken) returns (MsgBurnTokenResponse);
 }
 
+message MsgCreateTokenResponse {}
 
-message MsgCreateTokenResponse {
-}
+message MsgBurnTokenResponse {}

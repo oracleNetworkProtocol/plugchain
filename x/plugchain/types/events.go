@@ -3,6 +3,7 @@ package types
 //Event types for the plugchain module.
 const (
 	EventTypeCreateToken = TypeMsgCreateToken
+	EventTypeBurnToken   = TypeMsgBurnToken
 )
 
 // event value attri for the plugchain module
@@ -15,4 +16,6 @@ const (
 	AttributeValueTokenDescription    = "description"
 	AttributeValueTokenMintable       = "mintable"
 	AttributeValueTokenDecimal        = "decimal"
+
+	AttributeValueTokenBurnAccount = "account"
 )

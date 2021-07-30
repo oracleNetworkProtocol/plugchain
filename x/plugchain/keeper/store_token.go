@@ -27,17 +27,18 @@ func (k Keeper) GetToken(ctx sdk.Context, key []byte) types.MsgCreateToken {
 	return tokenInfo
 }
 
-func (k Keeper) SetToken(ctx sdk.Context, tokenMsg types.MsgCreateToken) {
+func (k Keeper) SetToken(ctx sdk.Context, tokenMsg types.MsgCreateToken, IDinc bool) {
 	store := ctx.KVStore(k.storeKey)
 	bz := k.cdc.MustMarshalBinaryBare(&tokenMsg)
 	store.Set(types.GetTokenKey(tokenMsg.Symbol), bz)
-	keyID := k.GetNextTokenIDWithInit(ctx)
+	if IDinc {
+		k.GetNextTokenIDWithInit(ctx)
+		k.SetAccTokensWithInit(ctx, tokenMsg)
+	}
 	k.Logger(ctx).Info("set-token success",
-		"ID", keyID,
 		"symbol", tokenMsg.Symbol,
 		"total-supply", tokenMsg.TotalSupply,
 	)
-	k.SetAccTokensWithInit(ctx, tokenMsg)
 }
 
 func (k Keeper) GetNextTokenIDWithInit(ctx sdk.Context) uint64 {

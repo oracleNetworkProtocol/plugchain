@@ -23,7 +23,8 @@ const (
 	MemStoreKey = "mem_plugchain"
 
 	//token name abbreviation prefix
-	TokenNamePrefix = "token"
+	TokenNamePrefix    = "token"
+	TokenNamePrefixLen = 5
 
 	//Maximum length of token shorthand
 	SymbolMaxLen int = 4
@@ -64,5 +65,8 @@ func GetTokenAccAddressPrefix(accAddr sdk.AccAddress) []byte {
 
 //返回带前缀的token-symbol ，symbol全大写
 func GetSymbol(symbol string) string {
+	if len(symbol) > SymbolMaxLen && symbol[:TokenNamePrefixLen] == TokenNamePrefix {
+		return strings.ToLower(symbol[:TokenNamePrefixLen]) + strings.ToTitle(symbol[TokenNamePrefixLen:])
+	}
 	return TokenNamePrefix + strings.ToTitle(symbol)
 }

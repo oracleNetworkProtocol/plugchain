@@ -6,25 +6,23 @@ import "gogoproto/gogo.proto";
 
 option go_package = "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types";
 
-
 message MsgCreateToken {
-    option (gogoproto.equal) = true;
-    option (gogoproto.goproto_getters) = false;
-    option (gogoproto.goproto_stringer) = true;
-    string symbol = 1;
-    string original_symbol = 2 [(gogoproto.customname) = "OriginalSymbol"];
-    string description = 3;
-    string whole_name = 4 [(gogoproto.customname) = "WholeName"];
-    string total_supply = 5 [
-      (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
-      (gogoproto.customname) = "TotalSupply"
-      ];
-    string owner = 6;
-    string founder = 7;
-    uint64 decimal = 8;
-    bool mintable = 9;
-  }
-
+  option (gogoproto.equal) = true;
+  option (gogoproto.goproto_getters) = false;
+  option (gogoproto.goproto_stringer) = true;
+  string symbol = 1;
+  string original_symbol = 2 [(gogoproto.customname) = "OriginalSymbol"];
+  string description = 3;
+  string whole_name = 4 [(gogoproto.customname) = "WholeName"];
+  string total_supply = 5 [
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.customname) = "TotalSupply"
+    ];
+  string owner = 6;
+  string founder = 7;
+  uint64 decimal = 8;
+  bool mintable = 9;
+}
 //  get owner tokens by accAddress
 message AccAddressTokens {
     option (gogoproto.equal) = true;
@@ -33,4 +31,12 @@ message AccAddressTokens {
     string address = 1;
     uint64 count = 2;
     repeated bytes key = 3;
+}
+
+message MsgBurnToken {
+  option (gogoproto.goproto_getters) = false;
+  option (gogoproto.goproto_stringer) = true;
+  string symbol  = 1;
+  string address = 2;
+  string account = 3 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int"];
 }
