@@ -24,7 +24,8 @@ This repository hosts `plugchain`, the implementation of the plugchain based on 
 **Note**: Requires [Go 1.16](https://golang.org/dl/)
 
 ## Getting Started
-See the [Getting Started](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial) for instructions how to install and run the blockchain.
+* See the [Getting Started](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial) for instructions how to install and run the blockchain.
+* [Chengdu community contribution Docs](https://shimo.im/docs/pp38QGQVWyhXHkjg/read)
 
 ## Talk to us!
 
