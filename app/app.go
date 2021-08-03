@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -16,7 +15,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	appparams "github.com/cosmos/cosmos-sdk/simapp/params"
-	store "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/version"
@@ -88,6 +86,11 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
 	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
 	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
+
+	//store "github.com/cosmos/cosmos-sdk/store/types"
+	"github.com/tendermint/liquidity/x/liquidity"
+	liquiditykeeper "github.com/tendermint/liquidity/x/liquidity/keeper"
+	liquiditytypes "github.com/tendermint/liquidity/x/liquidity/types"
 )
 
 const Name = "plugchain"
@@ -135,6 +138,8 @@ var (
 		vesting.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 		plugchain.AppModuleBasic{},
+
+		liquidity.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -148,6 +153,7 @@ var (
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		//Allow plugchaintypes module to use authtypes minter and burner
 		plugchaintypes.ModuleName: {authtypes.Minter, authtypes.Burner},
+		liquiditytypes.ModuleName: {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -204,6 +210,8 @@ type App struct {
 
 	PlugchainKeeper plugchainkeeper.Keeper
 
+	LiquidityKeeper liquiditykeeper.Keeper
+
 	// the module manager
 	mm *module.Manager
 }
@@ -233,6 +241,7 @@ func New(
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 		plugchaintypes.StoreKey,
+		liquiditytypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -351,6 +360,11 @@ func New(
 	// we prefer to be more strict in what arguments the modules expect.
 	var skipGenesisInvariants = cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
+	app.LiquidityKeeper = liquiditykeeper.NewKeeper(
+		appCodec, keys[liquiditytypes.StoreKey], app.GetSubspace(liquiditytypes.ModuleName),
+		app.BankKeeper, app.AccountKeeper, app.DistrKeeper,
+	)
+
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
 
@@ -376,6 +390,7 @@ func New(
 		transferModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 		plugchainModule,
+		liquidity.NewAppModule(appCodec, app.LiquidityKeeper, app.AccountKeeper, app.BankKeeper, app.DistrKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -385,9 +400,12 @@ func New(
 	app.mm.SetOrderBeginBlockers(
 		upgradetypes.ModuleName, minttypes.ModuleName, distrtypes.ModuleName, slashingtypes.ModuleName,
 		evidencetypes.ModuleName, stakingtypes.ModuleName, ibchost.ModuleName,
+		liquiditytypes.ModuleName,
 	)
 
-	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName)
+	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName,
+		liquiditytypes.ModuleName,
+	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
 	// properly initialized with tokens from genesis accounts.
@@ -410,6 +428,7 @@ func New(
 		ibctransfertypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 		plugchaintypes.ModuleName,
+		liquiditytypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -432,25 +451,48 @@ func New(
 	)
 	app.SetEndBlocker(app.EndBlocker)
 
-	//upgrade handle token
-	app.UpgradeKeeper.SetUpgradeHandler("token",
-		func(ctx sdk.Context, plan upgradetypes.Plan) {
-			fmt.Println("没有参数设置，", plan.UpgradedClientState.TypeUrl)
-		})
+	//upgrade liquidity
+	// app.UpgradeKeeper.SetUpgradeHandler("Gravity-DEX",
+	// 	func(ctx sdk.Context, plan upgradetypes.Plan) {
+	// 		var genState liquiditytypes.GenesisState
+	// 		genState.Params = liquiditytypes.DefaultParams()
+	// 		genState.Params.PoolCreationFee = sdk.NewCoins(sdk.NewCoin("onp", sdk.NewInt(100000)))
+	// 		app.LiquidityKeeper.InitGenesis(ctx, genState)
+	// 	})
 
-	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
-	if err != nil {
-		panic(err)
-	}
+	// upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	if upgradeInfo.Name == "token" && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-		storeUpgrades := store.StoreUpgrades{
-			Added: []string{plugchaintypes.ModuleName},
-		}
+	// if upgradeInfo.Name == "Gravity-DEX" && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
+	// 	storeUpgrades := store.StoreUpgrades{
+	// 		Added: []string{liquiditytypes.ModuleName},
+	// 	}
 
-		// configure store loader that checks if version == upgradeHeight and applies store upgrades
-		app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
-	}
+	// 	// configure store loader that checks if version == upgradeHeight and applies store upgrades
+	// 	app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
+	// }
+
+	// //upgrade handle token
+	// app.UpgradeKeeper.SetUpgradeHandler("token",
+	// 	func(ctx sdk.Context, plan upgradetypes.Plan) {
+	// 		fmt.Println("没有参数设置，", plan.UpgradedClientState.TypeUrl)
+	// 	})
+
+	// upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// if upgradeInfo.Name == "token" && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
+	// 	storeUpgrades := store.StoreUpgrades{
+	// 		Added: []string{plugchaintypes.ModuleName},
+	// 	}
+
+	// 	// configure store loader that checks if version == upgradeHeight and applies store upgrades
+	// 	app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
+	// }
 
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
@@ -620,6 +662,7 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
 	paramsKeeper.Subspace(plugchaintypes.ModuleName)
+	paramsKeeper.Subspace(liquiditytypes.ModuleName)
 
 	return paramsKeeper
 }
