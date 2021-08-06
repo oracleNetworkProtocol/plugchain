@@ -67,8 +67,6 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 In order to enter the validator set, your weight must exceed the 100th validator.
 :::
 
--After becoming a verifier, you need to modify the configuration[validator config](../../images/node_config.png)
-
 
 ## common problem
 
