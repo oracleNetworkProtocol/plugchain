@@ -8,17 +8,17 @@
 plugchaind init <moniker> --chain-id <chain-id>
 ```
 
-genesis 文件存储在 `~/.plugchain/config/genesis.toml`.
+genesis 文件存储在 `~/.plugchain/config/genesis.json`.
 
 ## 什么是创世文件
 
-genesis 文件是一个 JSON 文件，用于定义区块链的初始状态。 它可以看作是区块链的高度“0”。 高度为“1”的第一个块将引用 genesis 文件作为其父级。
+genesis 文件是一个 JSON 文件，用于定义区块链的初始状态。 它可以看作是区块链的高度"0"。 高度为"1"的第一个块将引用 genesis 文件作为其父级。
 
 genesis 文件中定义的状态包含所有必要的信息，如初始令牌分配、创建时间、默认参数等。 我们来分别描述这些信息。
 
 ## Genesis 时间和链ID
 
-`genesis_time`定义在 genesis 文件的顶部。 它是一个“UTC”时间戳，指示区块链何时启动。 此时，创世记验证人应该上线并开始参与共识过程。 当超过2/3的生成验证人（通过投票权加权）在线时，区块链启动。
+`genesis_time`定义在 genesis 文件的顶部。 它是一个"UTC"时间戳，指示区块链何时启动。 此时，创世记验证人应该上线并开始参与共识过程。 当超过2/3的生成验证人（通过投票权加权）在线时，区块链启动。
 
 ```json
 "genesis_time": "2020-03-13T17:00:00.000000000Z",
@@ -107,9 +107,9 @@ plugchaind add-genesis-account <account-address> <amount><denom>
 
 让我们来分别解读这些参数：
 
-- `sequence_number`: 此编号用于计算此帐户发送的交易数。 每次事务包含在块中时它都会递增，并用于防止重放攻击，初始值为“0”。
+- `sequence_number`: 此编号用于计算此帐户发送的交易数。 每次事务包含在块中时它都会递增，并用于防止重放攻击，初始值为"0"。
 - `account_number`: 帐户的唯一标识符，它在包含此帐户的首次被打包到块的交易中生成。
-- `original_vesting`: 锁仓（Vesting） 由`plugchain`原生支持。 您可以定义帐户需要锁仓 token 数量，这些 token 在一定时间之后才能流通。 锁仓中的 token 可用于委托。 默认值为“null”。
+- `original_vesting`: 锁仓（Vesting） 由`plugchain`原生支持。 您可以定义帐户需要锁仓 token 数量，这些 token 在一定时间之后才能流通。 锁仓中的 token 可用于委托。 默认值为"null"。
 - `delegated_free`: 在 vest 过期后可转让的委托 token 数量。在创世文件中，大部分情况是 `null`。
 - `delegated_vesting`: 锁仓中的 token 数量。在创世文件中，大部分情况是 `null`。
 - `start_time`: vesting 期开始区块高度。创世文件中，大部分情况是`0`。
@@ -117,7 +117,7 @@ plugchaind add-genesis-account <account-address> <amount><denom>
 
 ### 银行（Bank）
 
-`bank`模块负责 token。`default_send_enabled`参数是“转账”是否在创世文件启用。
+`bank`模块负责 token。`default_send_enabled`参数是"转账"是否在创世文件启用。
 
 ```json
 "bank": {
@@ -190,7 +190,7 @@ plugchaind add-genesis-account <account-address> <amount><denom>
 让我们来分别解读这些参数：
 
 - `minter`
-  - `inflation`：总 token 供应量的年化通胀百分比，每周更新。值 “0.070000000000000000” 意味着目标是每年通货膨胀率为“7％”，每周重新计算一次。
+  - `inflation`：总 token 供应量的年化通胀百分比，每周更新。值 "0.070000000000000000" 意味着目标是每年通货膨胀率为"7％"，每周重新计算一次。
   - `annual_provisions`: 每块重新计算。初始值是 `0.000000000000000000`。
 - `params`
   - `mint_denom`: 增发权益代币面值，此处是 `uatom`。

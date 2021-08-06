@@ -1,6 +1,3 @@
-## pluchain 简介
-
-
 ### 加入pluchain
 
 - [节点知识](./node/README.md)

@@ -28,7 +28,7 @@ echo "export GOPATH=$HOME/go" >> ~/.bash_profile
 source ~/.bash_profile
 go version
 ```
-- 在Windows下，你可以通过“系统”控制面板的“高级”选项卡上的“环境变量”按钮设置环境变量(HOME或GO111MODULE)。一些版本的Windows通过“系统”控制面板中的“高级系统设置”选项提供了这个控制面板。
+- 在Windows下，你可以通过"系统"控制面板的"高级"选项卡上的"环境变量"按钮设置环境变量(HOME或GO111MODULE)。一些版本的Windows通过"系统"控制面板中的"高级系统设置"选项提供了这个控制面板。
 
 1.  安装最新版的plugchain,从仓库clone代码
 ```
@@ -71,7 +71,7 @@ plugchaind keys add mywallet
 - 获取主网创世文件
 
 ::: warning
-主网正在准备中，加入[测试网](../../../testnet/README.md)，plugchain团队热烈欢迎志同道合的同志...
+主网正在准备中，加入[测试网](/tutorial/cn/testnet.md)，plugchain团队热烈欢迎志同道合的同志...
 :::
 ```
 wget https://xxx//

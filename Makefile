@@ -88,7 +88,7 @@ go.sum: go.mod
 localnet: 
 	@echo "start make install and ./testnet/scripts/setup.sh"
 	@make install 
-	./testnet/scripts/localnet.sh
+	./testnet/scripts/setup.sh
 
 .PHONY: localnet
 
