@@ -3,8 +3,8 @@
 1. [代码地址](https://github.com/oracleNetworkProtocol/plugchain)
 2. [脚本参考](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/scripts)
 3. [测试网需要的信息](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/latest)
-4. 节点搭建，同步测试网 [搭建文档](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/tutorial/cn/installation.md)
-5. 成为验证者，会在[验证者](http://www.plugchain.network/wallet/pledge)页面出现自己的节点，成为验证者参数设置信息等[资料](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/tutorial/cn/validator.md)
+4. 节点搭建，同步测试网 [搭建文档](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/cn/installation.md)
+5. 成为验证者，会在[验证者](http://www.plugchain.network/wallet/pledge)页面出现自己的节点，成为验证者参数设置信息等[资料](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/cn/validator.md)
 6. 在终端或者[浏览器](http://www.plugchain.network/)委托line币到自己的节点，查看节点信息等操作
 7. 查看终端各个命令的用处和使用方式
 8. 开通自己节点的对外api服务，思考开发自己的浏览器，钱包等功能 需要修改数据目录里的 config/app.toml 的 `enable`,`swagger`

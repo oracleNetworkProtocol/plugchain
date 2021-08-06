@@ -71,7 +71,7 @@ plugchaind keys add mywallet
 - 获取主网创世文件
 
 ::: warning
-主网正在准备中，加入[测试网](/tutorial/cn/testnet.md)，plugchain团队热烈欢迎志同道合的同志...
+主网正在准备中，加入[测试网](/cn/testnet.md)，plugchain团队热烈欢迎志同道合的同志...
 :::
 ```
 wget https://xxx//

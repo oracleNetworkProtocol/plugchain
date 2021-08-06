@@ -47,7 +47,7 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 为了能进入验证人集合,你的权重必须超过第100名的验证人。
 :::
 
-- 成为验证者之后,需要修改配置[validator config](/tutorial/cn/node/README.md)
+- 成为验证者之后,需要修改配置[validator config](/cn/node/README.md)
 
 
 ## 常见问题

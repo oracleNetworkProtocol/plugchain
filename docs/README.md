@@ -28,4 +28,4 @@ plugchain 使用以下模块构建在 Cosmos SDK 上：
 - x/dex: 自动化做市商。托管在 tendermint/liquidity 存储库中。
 
 
-接下来，学习如何安装 [plugchain](/tutorial/cn/installation.md)。
+接下来，学习如何安装 [plugchain](/cn/installation.md)。
