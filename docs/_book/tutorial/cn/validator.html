@@ -1,0 +1,602 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>验证者&验证者操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="delegator-setup.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Plugchain 使用手册</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    PLUGChain
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" >
+            
+                <span>
+            
+                    
+                    介绍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    什么是 Plugchain ?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="testnet.html">
+            
+                <a href="testnet.html">
+            
+                    
+                    在plugchain 测试网上运行完整节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.3" >
+            
+                <span>
+            
+                    
+                    加入社区
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    开始
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                    安装 plugchain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="testnet.html">
+            
+                <a href="testnet.html">
+            
+                    
+                    加入到 plugchain 测试网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    加入到 plugchain 主网-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    安装 问题
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    钱包和地址
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="basic/accounts-faq.html">
+            
+                <a href="basic/accounts-faq.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="basic/accounts.html">
+            
+                <a href="basic/accounts.html">
+            
+                    
+                    使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="basic/tx.html">
+            
+                <a href="basic/tx.html">
+            
+                    
+                    转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="node/">
+            
+                <a href="node/">
+            
+                    
+                    节点知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    验证者和委托质押
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.6.1" data-path="validator.html">
+            
+                <a href="validator.html">
+            
+                    
+                    验证者&验证者操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="delegator-setup.html">
+            
+                <a href="delegator-setup.html">
+            
+                    
+                    委托人质押
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="api/swagger-api.html">
+            
+                <a href="api/swagger-api.html">
+            
+                    
+                    API服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="basic/genesis.html">
+            
+                <a href="basic/genesis.html">
+            
+                    
+                    创世文件genesis.json
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    自动化做市商-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    代币-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >验证者&验证者操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h4 id="&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x53C2;&#x4E0E;&#x4E3B;&#x94FE;&#x751F;&#x6001;&#x7BA1;&#x7406;">&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x53C2;&#x4E0E;&#x4E3B;&#x94FE;&#x751F;&#x6001;&#x7BA1;&#x7406;</h4>
+<ul>
+<li>&#x4EE5;&#x4E0B;&#x6559;&#x7A0B;&#x90FD;&#x4F9D;&#x8D56;&#x8282;&#x70B9;&#x6267;&#x884C;,&#x5982;&#x672A;&#x5B89;&#x88C5;,&#x8BF7;&#x79FB;&#x6B65;&#x5230; <a href="installation.html">&#x5B89;&#x88C5;&#x8282;&#x70B9;</a></li>
+</ul>
+<h4 id="&#x6DFB;&#x52A0;&#x9A8C;&#x8BC1;&#x8005;">&#x6DFB;&#x52A0;&#x9A8C;&#x8BC1;&#x8005;</h4>
+<ul>
+<li>plugchaind tx staking create-validator [flags]<pre><code class="lang-shell">plugchaind tx staking create-validator --from mywallet \
+--amount 1000000plug --pubkey $(plugchaind tendermint show-validator) \
+--moniker=&quot;my validator&quot; --commission-rate=&quot;0.10&quot; --commission-max-rate=&quot;0.20&quot; \
+--commission-max-change-rate=&quot;0.01&quot;  --min-self-delegation=&quot;1000000&quot; --chain-id plugchain
+</code></pre>
+<h4 id="&#x4FEE;&#x6539;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x9A8C;&#x8BC1;&#x8005;&#x914D;&#x7F6E;">&#x4FEE;&#x6539;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x9A8C;&#x8BC1;&#x8005;&#x914D;&#x7F6E;</h4>
+</li>
+<li>plugchaind tx staking edit-validator [flags]<pre><code class="lang-shell">plugchaind tx staking edit-validator --from mywallet \
+--moniker=&quot;my validator&quot; --commission-rate=&quot;0.20&quot; --min-self-delegation=&quot;1000000&quot; --chain-id plugchain
+</code></pre>
+<strong>&#x6CE8;&#x610F;</strong> : </li>
+</ul>
+<p><code>commission-max-rate</code>,<code>commission-max-change-rate</code> &#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x5728;<code>create-validator</code>&#x8BBE;&#x7F6E;&#x5B8C;&#x4E4B;&#x540E;&#x5C31;&#x4E0D;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;,&#x8BF7;&#x60A8;&#x614E;&#x91CD;&#x8BBE;&#x7F6E;</p>
+<p><code>edit-validator</code> &#x4FEE;&#x6539;&#x9A8C;&#x8BC1;&#x8005;&#x4FE1;&#x606F;&#x65F6;,&#x5404;&#x5B57;&#x6BB5;&#x4FEE;&#x6539;&#x95F4;&#x9694;24H,<code>min-self-delegation</code> &#x4E0D;&#x53EF;&#x51CF;&#x5C0F;,&#x53EA;&#x80FD;&#x589E;&#x52A0;,&#x6CA1;&#x6709;&#x66F4;&#x6539;&#x7684;&#x5B57;&#x6BB5;&#x4FEE;&#x6539;&#x65F6;&#x4E0D;&#x53EF;&#x6DFB;&#x52A0;</p>
+<p><code>commission-rate</code>&#x7684;&#x503C;&#x5FC5;&#x987B;&#x7B26;&#x5408;&#x5982;&#x4E0B;&#x7684;&#x4E0D;&#x53D8;&#x91CF;&#x68C0;&#x67E5;&#xFF1A;</p>
+<ul>
+<li>&#x5FC5;&#x987B;&#x5728; 0 &#x548C; &#x9A8C;&#x8BC1;&#x4EBA;&#x7684;<code>commission-max-rate</code> &#x4E4B;&#x95F4;</li>
+<li>&#x4E0D;&#x5F97;&#x8D85;&#x8FC7; &#x9A8C;&#x8BC1;&#x4EBA;&#x7684;<code>commission-max-change-rate</code>, &#x8BE5;&#x53C2;&#x6570;&#x6807;&#x8BC6;<strong>&#x6BCF;&#x65E5;</strong>&#x6700;&#x5927;&#x7684;&#x767E;&#x5206;&#x70B9;&#x53D8;&#x5316;&#x6570;&#x3002;&#x4E5F;&#x5C31;&#x662F;,&#x4E00;&#x4E2A;&#x9A8C;&#x8BC1;&#x4EBA;&#x5728;<code>commission-max-change-rate</code>&#x7684;&#x754C;&#x9650;&#x5185;&#x6BCF;24H&#x4E00;&#x6B21;&#x53EF;&#x8C03;&#x6574;&#x7684;&#x6700;&#x5927;&#x4F63;&#x91D1;&#x53D8;&#x5316;&#x3002;</li>
+</ul>
+<p><code>min-self-delegation</code>&#x7684;&#x503C;&#x5355;&#x4F4D;&#x662F;<code>10e-6</code>,&#x6240;&#x4EE5;&#x6B64;&#x503C;&#x6700;&#x5C0F;&#x4E3A; <code>1000000</code></p>
+<h4 id="&#x67E5;&#x8BE2;&#x9A8C;&#x8BC1;&#x8005;&#x7684;&#x6240;&#x6709;&#x59D4;&#x6258;&#x4EBA;&#x7684;&#x8D28;&#x62BC;&#x603B;&#x91CF;&#x60F3;&#x4E86;&#x89E3;&#x59D4;&#x6258;&#x4EBA;&#x4FE1;&#x606F;&#x8BF7;&#x79FB;&#x6B65;&#x59D4;&#x6258;&#x4EBA;&#x8D28;&#x62BC;">&#x67E5;&#x8BE2;&#x9A8C;&#x8BC1;&#x8005;&#x7684;&#x6240;&#x6709;&#x59D4;&#x6258;&#x4EBA;&#x7684;&#x8D28;&#x62BC;&#x603B;&#x91CF;,&#x60F3;&#x4E86;&#x89E3;&#x59D4;&#x6258;&#x4EBA;&#x4FE1;&#x606F;,&#x8BF7;&#x79FB;&#x6B65;<a href="delegator-setup.html">&#x59D4;&#x6258;&#x4EBA;&#x8D28;&#x62BC;</a></h4>
+<ul>
+<li>plugchaind query staking delegations-to [validator-addr] [flags]<pre><code class="lang-shell">plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx
+</code></pre>
+</li>
+</ul>
+<h4 id="&#x6839;&#x636E;&#x9A8C;&#x8BC1;&#x8005;&#x67E5;&#x8BE2;&#x6240;&#x6709;&#x53D6;&#x6D88;&#x8D28;&#x62BC;&#x7684;&#x8BB0;&#x5F55;">&#x6839;&#x636E;&#x9A8C;&#x8BC1;&#x8005;&#x67E5;&#x8BE2;&#x6240;&#x6709;&#x53D6;&#x6D88;&#x8D28;&#x62BC;&#x7684;&#x8BB0;&#x5F55;</h4>
+<ul>
+<li>plugchaind query staking unbonding-delegations-from [validator-addr] [flags]<pre><code class="lang-shell">plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre>
+</li>
+</ul>
+<p>::: warning &#x6CE8;&#x610F;
+&#x4E3A;&#x4E86;&#x80FD;&#x8FDB;&#x5165;&#x9A8C;&#x8BC1;&#x4EBA;&#x96C6;&#x5408;,&#x4F60;&#x7684;&#x6743;&#x91CD;&#x5FC5;&#x987B;&#x8D85;&#x8FC7;&#x7B2C;100&#x540D;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;
+:::</p>
+<ul>
+<li>&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x4E4B;&#x540E;,&#x9700;&#x8981;&#x4FEE;&#x6539;&#x914D;&#x7F6E;<a href="node/">validator config</a></li>
+</ul>
+<h2 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x5E38;&#x89C1;&#x95EE;&#x9898;</h2>
+<h3 id="&#x95EE;&#x9898;-1--&#x6211;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x7684;votingpower-0">&#x95EE;&#x9898; #1 : &#x6211;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x7684;<code>voting_power: 0</code></h3>
+<p>&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x5DF2;&#x7ECF;&#x662F;jailed&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x9A8C;&#x8BC1;&#x4EBA;&#x5728;&#x6700;&#x8FD1;<code>10000</code>&#x4E2A;&#x533A;&#x5757;&#x4E2D;&#x6709;&#x8D85;&#x8FC7;<code>500</code>&#x4E2A;&#x533A;&#x5757;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x6295;&#x7968;,&#x6216;&#x8005;&#x88AB;&#x53D1;&#x73B0;&#x53CC;&#x7B7E;,&#x5C31;&#x4F1A;&#x88AB;jail&#x6389;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x88AB;&#x56E0;&#x4E3A;&#x6389;&#x7EBF;&#x800C;&#x906D;&#x5230;jail,&#x4F60;&#x53EF;&#x4EE5;&#x91CD;&#x83B7;&#x4F60;&#x7684;&#x6295;&#x7968;&#x80A1;&#x6743;&#x4EE5;&#x91CD;&#x56DE;&#x9A8C;&#x8BC1;&#x4EBA;&#x961F;&#x4F0D;&#x3002;&#x9996;&#x5148;,&#x5982;&#x679C;<code>plugchaind</code>&#x6CA1;&#x6709;&#x8FD0;&#x884C;,&#x8BF7;&#x518D;&#x6B21;&#x542F;&#x52A8;&#xFF1A;</p>
+<pre><code class="lang-bash">plugchaind start
+</code></pre>
+<p>&#x7B49;&#x5F85;&#x4F60;&#x7684;&#x5168;&#x8282;&#x70B9;&#x8FFD;&#x8D76;&#x4E0A;&#x6700;&#x65B0;&#x7684;&#x533A;&#x5757;&#x9AD8;&#x5EA6;&#x3002;&#x7136;&#x540E;,&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x3002;&#x63A5;&#x7740;,&#x4F60;&#x53EF;&#x4EE5;unjail&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;</p>
+<p>&#x6700;&#x540E;,&#x68C0;&#x67E5;&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x770B;&#x770B;&#x6295;&#x7968;&#x80A1;&#x6743;&#x662F;&#x5426;&#x6062;&#x590D;&#xFF1A;</p>
+<pre><code class="lang-bash">plugchaind status
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#x4F60;&#x7684;&#x6295;&#x7968;&#x6743;&#x6BD4;&#x4E4B;&#x524D;&#x8981;&#x5C11;&#x3002;&#x8FD9;&#x662F;&#x7531;&#x4E8E;&#x4F60;&#x7684;&#x4E0B;&#x7EBF;&#x53D7;&#x5230;&#x7684;&#x524A;&#x51CF;&#x5904;&#x7F5A;&#xFF01;</p>
+<h3 id="&#x95EE;&#x9898;-2--&#x6211;&#x7684;plugchaind&#x7531;&#x4E8E;too-many-open-files&#x800C;&#x5D29;&#x6E83;">&#x95EE;&#x9898; #2 : &#x6211;&#x7684;<code>plugchaind</code>&#x7531;&#x4E8E;<code>too many open files</code>&#x800C;&#x5D29;&#x6E83;</h3>
+<p>Linux&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x7684;&#x9ED8;&#x8BA4;&#x6587;&#x4EF6;&#x6570;&#xFF08;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF09;&#x662F;1024&#x3002;&#x5DF2;&#x77E5;<code>plugchaind</code>&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x8D85;&#x8FC7;1024&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x8FDB;&#x7A0B;&#x5D29;&#x6E83;&#x3002;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x8FD0;&#x884C;<code>ulimit -n 4096</code>&#xFF08;&#x589E;&#x52A0;&#x5141;&#x8BB8;&#x7684;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x6570;&#xFF09;&#x6765;&#x5FEB;&#x901F;&#x4FEE;&#x590D;,&#x7136;&#x540E;&#x4F7F;&#x7528;<code>plugchaind start</code>&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x8FDB;&#x7A0B;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;<code>systemd</code>&#x6216;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5668;&#x6765;&#x542F;&#x52A8;<code>plugchaind</code>,&#x5219;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5728;&#x8BE5;&#x7EA7;&#x522B;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;&#x3002;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x793A;&#x4F8B;<code>systemd</code>&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-toml"><span class="hljs-comment"># /etc/systemd/system/plugchaind.service</span>
+<span class="hljs-section">[Unit]</span>
+<span class="hljs-attr">Description</span>=plugchain Node
+<span class="hljs-attr">After</span>=network.target
+<span class="hljs-section">
+[Service]</span>
+<span class="hljs-attr">Type</span>=simple
+<span class="hljs-attr">User</span>=ubuntu
+<span class="hljs-attr">WorkingDirectory</span>=/home/ubuntu
+<span class="hljs-attr">ExecStart</span>=/home/ubuntu/go/bin/plugchaind start
+<span class="hljs-attr">Restart</span>=<span class="hljs-literal">on</span>-failure
+<span class="hljs-attr">RestartSec</span>=<span class="hljs-number">3</span>
+<span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-number">4096</span>
+<span class="hljs-section">
+[Install]</span>
+<span class="hljs-attr">WantedBy</span>=multi-user.target
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="delegator-setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 委托人质押">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"验证者&验证者操作","level":"1.6.1","depth":2,"next":{"title":"委托人质押","level":"1.6.2","depth":2,"path":"tutorial/cn/delegator-setup.md","ref":"tutorial/cn/delegator-setup.md","articles":[]},"previous":{"title":"验证者和委托质押","level":"1.6","depth":1,"ref":"","articles":[{"title":"验证者&验证者操作","level":"1.6.1","depth":2,"path":"tutorial/cn/validator.md","ref":"tutorial/cn/validator.md","articles":[]},{"title":"委托人质押","level":"1.6.2","depth":2,"path":"tutorial/cn/delegator-setup.md","ref":"tutorial/cn/delegator-setup.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/cn/validator.md","mtime":"2021-08-06T07:04:48.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-06T07:15:47.672Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
