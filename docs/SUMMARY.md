@@ -3,11 +3,10 @@
 ## PLUGChain 使用手册
 
 
-* [PLUGChain](README.md)
+* [PLUGChain]()
 
     * [介绍]()
         * [什么是 PLUGChain ?](README.md)
-        * [在PLUGChain 测试网上运行完整节点](./cn/testnet.md)
         * [加入社区]()
     
 * [开始]()    
