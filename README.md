@@ -3,7 +3,7 @@
   <h1>Cosmos Hub PLUGchain </h1>
 </div>
 
- ![banner](docs/images/logo.jpg)
+ ![banner](client/images/logo.jpg)
 <div align="center">
   <a href="https://github.com/oracleNetworkProtocol/plugchain/releases/latest">
     <img alt="Version" src="https://img.shields.io/github/tag/oracleNetworkProtocol/plugchain.svg" />

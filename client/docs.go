@@ -1,4 +1,4 @@
-package docs
+package client
 
 import (
 	"embed"

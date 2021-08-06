@@ -83,7 +83,7 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
-	"github.com/oracleNetworkProtocol/plugchain/docs"
+	docs "github.com/oracleNetworkProtocol/plugchain/client"
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
 	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
 	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
