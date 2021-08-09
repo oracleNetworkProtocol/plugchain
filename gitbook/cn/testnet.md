@@ -16,6 +16,7 @@ title: 加入测试网
 
 1. 根据 `testnet/latest` 目录中提供的 `seeds` 修改 `testnet/scripts/testnet-val-setup.sh` 脚本中的SEEDS参数
 2. 运行`testnet/scripts/testnet-val-setup.sh`脚本
+3. [testnet目录](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet)
 
 ```shell
 cd testnet/scripts && chmod +x testnet-val-setup.sh

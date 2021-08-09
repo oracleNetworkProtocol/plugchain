@@ -109,10 +109,3 @@ gitbook:
 	
 
 .PHONY: gitbook
-
-gitbook-serve: 
-	@echo "gitbook serve ..."
-	@gitbook serve ./docs 
-	
-
-.PHONY: gitbook-serve
