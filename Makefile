@@ -97,3 +97,22 @@ swagger:
 	@./testnet/scripts/protoc-swagger-gen.sh
 
 .PHONY: swagger
+
+
+###############################################################################
+###                                   Docs                                  ###
+###############################################################################
+
+gitbook: 
+	@echo "gitbook build ..."
+	@gitbook build ./gitbook ./docs 
+	
+
+.PHONY: gitbook
+
+gitbook-serve: 
+	@echo "gitbook serve ..."
+	@gitbook serve ./docs 
+	
+
+.PHONY: gitbook-serve
