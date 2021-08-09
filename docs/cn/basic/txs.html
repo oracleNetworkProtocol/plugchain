@@ -504,29 +504,30 @@
                                 <h3 id="&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;">&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;</h3>
 <h4 id="&#x53C2;&#x6570;">&#x53C2;&#x6570;</h4>
 <ul>
-<li>&#x4E24;&#x4E2A;&#x5730;&#x5740;
-```</li>
-<li>name: wallet1
-type: local
-address: gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq
-pubkey: gxpub1addwnpepqf0egzqdu83e4yvd3hsw4mck0d7jjkhq76d5etc2rymmkhxtlv4pxw7r8st
-mnemonic: &quot;&quot;
-threshold: 0
-pubkeys: []</li>
-<li>name: wallet2
-type: local
-address: gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9
-pubkey: gxpub1addwnpepqf0du4l04hqquvz7q3ydq75uma6zu3q8ylk2qhydv5ka56edzu0v2y8gznl
-mnemonic: &quot;&quot;
-threshold: 0
-pubkeys: []
-```</li>
-<li>&#x9700;&#x6C42;&#xFF1A;wallet1 &#x5411; wallet2 &#x8F6C;&#x8D26;&#x4E00;&#x7B14;</li>
-</ul>
-<ol>
+<li>&#x4E24;&#x4E2A;&#x5730;&#x5740;<pre><code class="lang-golang">- name: wallet1
+  <span class="hljs-keyword">type</span>: local
+  address: gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq
+  pubkey: gxpub1addwnpepqf0egzqdu83e4yvd3hsw4mck0d7jjkhq76d5etc2rymmkhxtlv4pxw7r8st
+  mnemonic: <span class="hljs-string">&quot;&quot;</span>
+  threshold: <span class="hljs-number">0</span>
+  pubkeys: []
+- name: wallet2
+  <span class="hljs-keyword">type</span>: local
+  address: gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9
+  pubkey: gxpub1addwnpepqf0du4l04hqquvz7q3ydq75uma6zu3q8ylk2qhydv5ka56edzu0v2y8gznl
+  mnemonic: <span class="hljs-string">&quot;&quot;</span>
+  threshold: <span class="hljs-number">0</span>
+  pubkeys: []
+</code></pre>
+</li>
+<li><p>&#x9700;&#x6C42;&#xFF1A;wallet1 &#x5411; wallet2 &#x8F6C;&#x8D26;&#x4E00;&#x7B14;</p>
+</li>
 <li><p>&#x751F;&#x6210;&#x65E0;&#x7B26;&#x53F7;tx</p>
-<pre><code>plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) $(plugchaind keys show wallet2 -a --home node1) 1000000line --from wallet1  --fees 5000line --home node1 --chain-id plugchain --generate-only &gt; tx.json
-</code></pre><p>tx.json&#x4FE1;&#x606F;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-bash">plugchaind tx bank send $(plugchaind keys show wallet1 <span class="hljs-_">-a</span> --home node1) \
+$(plugchaind keys show wallet2 <span class="hljs-_">-a</span> --home node1) 1000000line \
+--from wallet1 --fees 5000line --chain-id plugchain --generate-only &gt; tx.json
+</code></pre>
+<p>tx.json&#x4FE1;&#x606F;&#x5982;&#x4E0B;:</p>
 <pre><code class="lang-json">{
  <span class="hljs-string">&quot;body&quot;</span>: {
      <span class="hljs-string">&quot;messages&quot;</span>: [
@@ -566,8 +567,9 @@ pubkeys: []
 </code></pre>
 </li>
 <li><p>&#x5BF9;&#x65E0;&#x7B26;&#x53F7;tx&#x7B7E;&#x540D;</p>
-<pre><code>plugchaind tx sign tx.json --from wallet1 --chain-id plugchain -y &gt; tx-sign.json
-</code></pre><p>tx-sign.json&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-bash">plugchaind tx sign tx.json --from wallet1 --chain-id plugchain -y &gt; tx-sign.json
+</code></pre>
+<p>tx-sign.json&#x4FE1;&#x606F;&#xFF1A;</p>
 <pre><code class="lang-json">{
  <span class="hljs-string">&quot;body&quot;</span>: {
      <span class="hljs-string">&quot;messages&quot;</span>: [
@@ -621,11 +623,12 @@ pubkeys: []
 }
 </code></pre>
 </li>
-<li>&#x5BF9;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x4FE1;&#x606F;&#x7F16;&#x7801;<pre><code>plugchaind tx encode tx-sign.json
-</code></pre>&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-text">CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29
+<li>&#x5BF9;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x4FE1;&#x606F;&#x7F16;&#x7801;<pre><code class="lang-bash">plugchaind tx encode tx-sign.json
+</code></pre>
+&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-text">CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29
 </code></pre>
 </li>
-<li>&#x5E7F;&#x64AD;&#x4EA4;&#x6613;<pre><code class="lang-shell">curl --header &quot;Content-Type: application/json&quot; --request POST --data &apos;{&quot;tx_bytes&quot;:&quot;CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29&quot;,&quot;mode&quot;:1}&apos; localhost:1317/cosmos/tx/v1beta1/txs
+<li>&#x5E7F;&#x64AD;&#x4EA4;&#x6613;<pre><code class="lang-bash">curl --header <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> --request POST --data <span class="hljs-string">&apos;{&quot;tx_bytes&quot;:&quot;CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29&quot;,&quot;mode&quot;:1}&apos;</span> localhost:1317/cosmos/tx/v1beta1/txs
 </code></pre>
 &#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-json">{
 <span class="hljs-string">&quot;tx_response&quot;</span>: {
@@ -687,7 +690,7 @@ pubkeys: []
 </code></pre>
 </li>
 <li>&#x8F6C;&#x8D26;&#x5B8C;&#x6210;</li>
-</ol>
+</ul>
 
                                 
                                 </section>
@@ -727,7 +730,7 @@ pubkeys: []
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"交易步骤","level":"1.5.2","depth":2,"next":{"title":"验证者","level":"1.6","depth":1,"ref":"","articles":[{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},{"title":"使用","level":"1.6.2","depth":2,"path":"cn/validators/validator-setup.md","ref":"./cn/validators/validator-setup.md","articles":[]}]},"previous":{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cn/basic/txs.md","mtime":"2021-08-09T03:35:46.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T03:43:56.802Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"交易步骤","level":"1.5.2","depth":2,"next":{"title":"验证者","level":"1.6","depth":1,"ref":"","articles":[{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},{"title":"使用","level":"1.6.2","depth":2,"path":"cn/validators/validator-setup.md","ref":"./cn/validators/validator-setup.md","articles":[]}]},"previous":{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cn/basic/txs.md","mtime":"2021-08-09T03:54:48.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T03:55:07.718Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
