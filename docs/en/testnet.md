@@ -23,7 +23,7 @@ enable = false
 swagger = false
 ```
 
-**warning** 
+**[!warning]** 
   切记，保存好自己创建的地址的助记词，如下信息中的：`pride cricket area future day trust pattern exhaust orange mouse chronic game make tobacco paddle float tuition vocal shove tag gas cargo idea label`一串字母
 
 ```text

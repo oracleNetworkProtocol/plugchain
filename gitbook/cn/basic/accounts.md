@@ -9,7 +9,7 @@
 ```shell
 plugchaind keys add wallet1   
 ```
-**warning**:
+**[!warning]**:
 ```
 Enter keyring passphrase:123123132
 Re-enter keyring passphrase:123123123
@@ -32,7 +32,7 @@ It is the only way to recover your account if you ever forget your password.
 
 nut blame match license torch away uncover pair nose diagram pepper digital chef pattern traffic garden coral impact wall december renew desert little under
 ```
-**warning**:
+**[!danger]**:
 
 `nut blame match license torch away uncover pair nose diagram pepper digital chef pattern traffic garden coral impact wall december renew desert little under` *是地址的助记词， 极为重要，需要手动保存起来*
 

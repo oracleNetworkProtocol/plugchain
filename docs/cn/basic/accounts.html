@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -17,11 +17,23 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
                 
             
                 
@@ -57,6 +69,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="tx.html" />
+    
     
     <link rel="prev" href="accounts-faq.html" />
     
@@ -69,7 +83,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+    <input type="text" placeholder="输入并搜索" />
 </div>
 
             
@@ -153,14 +167,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" >
+        <li class="chapter " data-level="1.2" data-path="../installation.html">
             
-                <span>
+                <a href="../installation.html">
             
                     
                     开始
             
-                </span>
+                </a>
             
 
             
@@ -224,14 +238,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" >
+        <li class="chapter " data-level="1.4" data-path="accounts-faq.html">
             
-                <span>
+                <a href="accounts-faq.html">
             
                     
                     钱包和地址
             
-                </span>
+                </a>
             
 
             
@@ -269,14 +283,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" >
+        <li class="chapter " data-level="1.5" data-path="tx.html">
             
-                <span>
+                <a href="tx.html">
             
                     
                     交易
             
-                </span>
+                </a>
             
 
             
@@ -314,14 +328,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" >
+        <li class="chapter " data-level="1.6" data-path="../validators/validator-faq.html">
             
-                <span>
+                <a href="../validators/validator-faq.html">
             
                     
                     验证者
             
-                </span>
+                </a>
             
 
             
@@ -359,23 +373,23 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" >
+        <li class="chapter " data-level="1.7" data-path="../delegators/delegator-faq.html">
             
-                <span>
+                <a href="../delegators/delegator-faq.html">
             
                     
                     委托人
             
-                </span>
+                </a>
             
 
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../delegators/deleggator-faq.md">
+        <li class="chapter " data-level="1.7.1" data-path="../delegators/delegator-faq.html">
             
-                <span>
+                <a href="../delegators/delegator-faq.html">
             
                     
                     介绍
@@ -435,7 +449,7 @@
                 <span>
             
                     
-                    自动化做市商-开发中
+                    代币-开发中
             
                 </span>
             
@@ -448,7 +462,7 @@
                 <span>
             
                     
-                    代币-开发中
+                    自动化做市商-开发中
             
                 </span>
             
@@ -463,7 +477,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+            本书使用 GitBook 发布
         </a>
     </li>
 </ul>
@@ -496,7 +510,7 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
+<div class="search-plus" id="book-search-results">
     <div class="search-noresults">
     
                                 <section class="normal markdown-section">
@@ -511,26 +525,26 @@
 <h4 id="&#x521B;&#x5EFA;&#x94B1;&#x5305;&#x5730;&#x5740;">&#x521B;&#x5EFA;&#x94B1;&#x5305;&#x5730;&#x5740;</h4>
 <pre><code class="lang-shell">plugchaind keys add wallet1
 </code></pre>
-<p><strong>warning</strong>:</p>
+<p><strong>[!warning]</strong>:</p>
 <pre><code>Enter keyring passphrase:123123132
 Re-enter keyring passphrase:123123123
 </code></pre><p><em>&#x521D;&#x6B21;&#x8F93;&#x5165;&#x7684;&#x5BC6;&#x7801; <code>123123123</code> &#x4E3A;&#x94B1;&#x5305;&#x5BC6;&#x7801;&#xFF0C;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x597D;&#xFF0C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x7801;&#x90FD;&#x662F;&#x6B64;&#x5BC6;&#x7801;&#xFF0C;&#x5982;&#x5FD8;&#x8BB0;&#x6B64;&#x5BC6;&#x7801;&#xFF0C;&#x60F3;&#x64CD;&#x4F5C;&#x5730;&#x5740;&#xFF0C;&#x5FC5;&#x987B;&#x628A;&#x5730;&#x5740;&#x7684;&#x52A9;&#x8BB0;&#x8BCD;&#x5BFC;&#x5165;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6216;&#x8005;&#x6D4F;&#x89C8;&#x5668;&#x4F7F;&#x7528;</em></p>
 <p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</p>
 <pre><code class="lang-golang">- name: wallet1
-  <span class="hljs-keyword">type</span>: local
+  type: local
   address: gx17jhdv3wj0a82h2xt007tag53farz5gvvzw2lnn
   pubkey: gxpub1addwnpepq05dh673npd5pe2sz457qv2ypcmmelc8xpmv8zespmah02aaxtlpy8xlv5c
-  mnemonic: <span class="hljs-string">&quot;&quot;</span>
-  threshold: <span class="hljs-number">0</span>
+  mnemonic: &quot;&quot;
+  threshold: 0
   pubkeys: []
 
 
 **Important** write this mnemonic phrase in a safe place.
-It is the only way to <span class="hljs-built_in">recover</span> your account <span class="hljs-keyword">if</span> you ever forget your password.
+It is the only way to recover your account if you ever forget your password.
 
 nut blame match license torch away uncover pair nose diagram pepper digital chef pattern traffic garden coral impact wall december renew desert little under
 </code></pre>
-<p><strong>warning</strong>:</p>
+<p><strong>[!danger]</strong>:</p>
 <p><code>nut blame match license torch away uncover pair nose diagram pepper digital chef pattern traffic garden coral impact wall december renew desert little under</code> <em>&#x662F;&#x5730;&#x5740;&#x7684;&#x52A9;&#x8BB0;&#x8BCD;&#xFF0C; &#x6781;&#x4E3A;&#x91CD;&#x8981;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x4FDD;&#x5B58;&#x8D77;&#x6765;</em></p>
 <h4 id="&#x67E5;&#x770B;&#x94B1;&#x5305;&#x6240;&#x6709;&#x5730;&#x5740;">&#x67E5;&#x770B;&#x94B1;&#x5305;&#x6240;&#x6709;&#x5730;&#x5740;</h4>
 <pre><code class="lang-shell">plugchaind keys list
@@ -562,11 +576,11 @@ nut blame match license torch away uncover pair nose diagram pepper digital chef
 <li>Error: rpc error: code = NotFound desc = rpc error: code = NotFound desc = account gx17jhdv3wj0a82h2xt007tag53farz5gvvzw2lnn not found: key not found <code>&#x8BF4;&#x660E;&#x5730;&#x5740;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8005;&#x5730;&#x5740;&#x6CA1;&#x6709;&#x5E01;</code></li>
 </ol>
 <p>&#x6B63;&#x5E38;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-golang"><span class="hljs-string">&apos;@type&apos;</span>: /cosmos.auth.v1beta1.BaseAccount
-account_number: <span class="hljs-string">&quot;10&quot;</span>
+<pre><code class="lang-golang">&apos;@type&apos;: /cosmos.auth.v1beta1.BaseAccount
+account_number: &quot;10&quot;
 address: gx17jhdv3wj0a82h2xt007tag53farz5gvvzw2lnn
 pub_key: null
-sequence: <span class="hljs-string">&quot;0&quot;</span>
+sequence: &quot;0&quot;
 </code></pre>
 <h4 id="&#x5BFC;&#x51FA;&#x5730;&#x5740;&#x79C1;&#x94A5;">&#x5BFC;&#x51FA;&#x5730;&#x5740;&#x79C1;&#x94A5;</h4>
 <pre><code class="lang-shell">plugchaind keys export wallet1
@@ -636,10 +650,14 @@ Enter keyring passphrase:
 
             
                 
-                <a href="accounts-faq.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 介绍">
+                <a href="accounts-faq.html" class="navigation navigation-prev " aria-label="Previous page: 介绍">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="tx.html" class="navigation navigation-next " aria-label="Next page: 交易">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -648,7 +666,7 @@ Enter keyring passphrase:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.4.2","depth":2,"next":{"title":"交易","level":"1.5","depth":1,"ref":"","articles":[{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},{"title":"交易步骤","level":"1.5.2","depth":2,"path":"cn/basic/txs.md","ref":"./cn/basic/txs.md","articles":[]}]},"previous":{"title":"介绍","level":"1.4.1","depth":2,"path":"cn/basic/accounts-faq.md","ref":"./cn/basic/accounts-faq.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cn/basic/accounts.md","mtime":"2021-08-06T09:14:10.201Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T04:03:11.363Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.4.2","depth":2,"next":{"title":"交易","level":"1.5","depth":1,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},{"title":"交易步骤","level":"1.5.2","depth":2,"path":"cn/basic/txs.md","ref":"./cn/basic/txs.md","articles":[]}]},"previous":{"title":"介绍","level":"1.4.1","depth":2,"path":"cn/basic/accounts-faq.md","ref":"./cn/basic/accounts-faq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","tital":"Plugchain 文档","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/basic/accounts.md","mtime":"2021-08-09T09:57:35.971Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T10:12:38.459Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -658,23 +676,35 @@ Enter keyring passphrase:
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
         
     
         

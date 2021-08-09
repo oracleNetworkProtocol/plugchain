@@ -29,6 +29,8 @@
 # vendor/
 # third_party/
 docs/_book/
+gitbook/node_modules/
+
 
 vue/*
 secret.yml

@@ -102,10 +102,13 @@ swagger:
 ###############################################################################
 ###                                   Docs                                  ###
 ###############################################################################
+gitbook-install: 
+	@echo "gitbook install ..." 
+	@cd gitbook/ && sudo gitbook install 
 
 gitbook: 
 	@echo "gitbook build ..."
 	@gitbook build ./gitbook ./docs 
 	
 
-.PHONY: gitbook
+.PHONY: gitbook-install gitbook

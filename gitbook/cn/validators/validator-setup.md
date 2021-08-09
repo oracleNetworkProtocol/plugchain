@@ -16,7 +16,7 @@ plugchaind tx staking create-validator --from mywallet \
 plugchaind tx staking edit-validator --from mywallet \
 --moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --chain-id plugchain
 ```
-**注意** : 
+**[!warning]** : 
 
 `commission-max-rate`,`commission-max-change-rate` 两个字段在`create-validator`设置完之后就不可以修改,请您慎重设置
 

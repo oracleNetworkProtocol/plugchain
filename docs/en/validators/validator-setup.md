@@ -18,7 +18,7 @@ plugchaind tx staking edit-validator --from mywallet \
 --moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --fees 5000plug --chain-id plugchain
 
 ```
-**warning** : 
+**[!warning]** : 
 
 - `commission-max-rate` and `commission-max-change-rate` cannot be modified after `create validator` is set. Please set them carefully
 - When `edit-validator` modifies the verifier information, the modification interval of each field is 24h, and the `min self delegation` cannot be reduced, but can only be increased

@@ -1,0 +1,36 @@
+{
+    "tital":"Plugchain 文档",
+    "language":"zh-hans",
+    "root":".",
+    "theme-default": {
+        "showLevel": true
+    },
+    "plugins":[
+        "-sharing",
+        "-livereload",
+        "-lunr",
+        "-search",
+        "-highlight",
+        "search-plus",
+        "splitter",
+        "github",
+        "chapter-fold",
+        "back-to-top-button",
+        "sharing-plus",
+        "code"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/oracleNetworkProtocol/plugchain"
+        },
+        "fontsettings":{
+            "theme":"sepia",
+            "family":"serif",
+            "size":1
+        },
+        "sharing": {
+            "facebook": true,
+            "twitter": true
+        }
+    }
+}
