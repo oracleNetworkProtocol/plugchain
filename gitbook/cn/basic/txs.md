@@ -4,7 +4,8 @@ title: 流程性交易
 ### 本文交易步骤，以转账为例
 #### 参数
 - 两个地址
-```
+```plain
+
 - name: wallet1
   type: local
   address: gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq
@@ -19,13 +20,16 @@ title: 流程性交易
   mnemonic: ""
   threshold: 0
   pubkeys: []
+
 ```
 - 需求：wallet1 向 wallet2 转账一笔
 
 
 1. 生成无符号tx
 ```
-plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) $(plugchaind keys show wallet2 -a --home node1) 1000000line --from wallet1  --fees 5000line --home node1 --chain-id plugchain --generate-only > tx.json
+plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) \
+$(plugchaind keys show wallet2 -a --home node1) 1000000line \
+--from wallet1 --fees 5000line --chain-id plugchain --generate-only > tx.json
 ```
 tx.json信息如下:
 ```json
