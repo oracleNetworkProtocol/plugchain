@@ -31,7 +31,7 @@ echo ""
 
 echo "Setting up your validator"
 $DAEMON init --chain-id $CHAIN_ID $YOUR_NAME
-weget https://github.com/oracleNetworkProtocol/plugchain/testnet/latest/genesis.json && mv -f genesis.json $APPNAME/config/
+ cp -f $GOPATH/src/github.com/oracleNetworkProtocol/plugchain/testnet/latest/genesis.json $APPNAME/config/
 
 echo "----------Setting config for seed node---------"
 sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' $APPNAME/config/config.toml
