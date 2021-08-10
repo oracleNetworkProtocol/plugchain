@@ -97,3 +97,18 @@ swagger:
 	@./testnet/scripts/protoc-swagger-gen.sh
 
 .PHONY: swagger
+
+
+###############################################################################
+###                                   Docs                                  ###
+###############################################################################
+gitbook-install: 
+	@echo "gitbook install ..." 
+	@cd gitbook/ && sudo gitbook install 
+
+gitbook: 
+	@echo "gitbook build ..."
+	@gitbook build ./gitbook ./docs 
+	
+
+.PHONY: gitbook-install gitbook

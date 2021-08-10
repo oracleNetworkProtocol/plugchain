@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>交易 · GitBook</title>
+        <title>交易步骤 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tx.html" />
+    <link rel="next" href="../validators/validator-faq.html" />
     
     
-    <link rel="prev" href="accounts.html" />
+    <link rel="prev" href="tx.html" />
     
 
     </head>
@@ -283,7 +283,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="tx.html">
+        <li class="chapter " data-level="1.5" data-path="tx.html">
             
                 <a href="tx.html">
             
@@ -297,7 +297,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="tx.html">
+        <li class="chapter " data-level="1.5.1" data-path="tx.html">
             
                 <a href="tx.html">
             
@@ -310,7 +310,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="txs.html">
+        <li class="chapter active" data-level="1.5.2" data-path="txs.html">
             
                 <a href="txs.html">
             
@@ -500,7 +500,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >交易</a>
+        <a href="../.." >交易步骤</a>
     </h1>
 </div>
 
@@ -515,170 +515,196 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x8D26;&#x6237;&#x4EA4;&#x6613;">&#x8D26;&#x6237;&#x4EA4;&#x6613;</h1>
-<h3 id="&#x4E00;-&#x67E5;&#x770B;tx&#x53C2;&#x6570;">&#x4E00;. &#x67E5;&#x770B;<strong>tx</strong>&#x53C2;&#x6570;</h3>
-<pre><code class="lang-sh">Transactions subcommands
-
-Usage:
-  plugchaind tx [flags]
-  plugchaind tx [command]
-
-Available Commands:
-  bank                Bank transaction subcommands
-  broadcast           Broadcast transactions generated offline
-  crisis              Crisis transactions subcommands
-  decode              Decode an binary encoded transaction string.
-  distribution        Distribution transactions subcommands
-  encode              Encode transactions generated offline
-  evidence            Evidence transaction subcommands
-  gov                 Governance transactions subcommands
-  ibc                 IBC transaction subcommands
-  ibc-transfer        IBC fungible token transfer transaction subcommands
-  multisign           Generate multisig signatures for transactions generated offline
-  sign                Sign a transaction generated offline
-  sign-batch          Sign transaction batch files
-  slashing            Slashing transaction subcommands
-  staking             Staking transaction subcommands
-  token               token transactions subcommands
-  validate-signatures Validate transactions signatures
-  vesting             Vesting transaction subcommands
-  vesting             Vesting transaction subcommands
-
-Flags:
-      --chain-id string   The network chain ID (default &quot;token&quot;)
-  -h, --help              help for tx
-
-Global Flags:
-      --home string         directory for config and data (default &quot;/root/.token&quot;)
-      --log_format string   The logging format (json|plain) (default &quot;plain&quot;)
-      --log_level string    The logging level (trace|debug|info|warn|error|fatal|panic) (default &quot;info&quot;)
-      --trace               print out full stack trace on errors
-
-Additional help topics:
-  plugchaind tx upgrade      Upgrade transaction subcommands
-
-Use &quot;plugchaind tx [command] --help&quot; for more information about a command.
-</code></pre>
-<h5 id="-&#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x7528;&#x5230;&#x7684;&#x6709;">- &#x5176;&#x4E2D;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x7528;&#x5230;&#x7684;&#x6709;</h5>
-<table>
-<thead>
-<tr>
-<th>&#x6A21;&#x5757;</th>
-<th>&#x6982;&#x8FF0;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bank</td>
-<td>&#x8F6C;&#x8D26;&#x6A21;&#x5757;</td>
-</tr>
-<tr>
-<td>ibc</td>
-<td>&#x8DE8;&#x94FE;&#x901A;&#x4FE1;&#x6A21;&#x5757;</td>
-</tr>
-<tr>
-<td>staking</td>
-<td>&#x8D28;&#x62BC;&#x6A21;&#x5757;</td>
-</tr>
-</tbody>
-</table>
-<h3 id="&#x4E8C;-bank-send-&#x8F6C;&#x8D26;&#x53C2;&#x6570;">&#x4E8C;. bank-send &#x8F6C;&#x8D26;&#x53C2;&#x6570;</h3>
+                                <h3 id="&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;">&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;</h3>
+<h4 id="&#x53C2;&#x6570;">&#x53C2;&#x6570;</h4>
 <ul>
-<li>&#x4F7F;&#x7528; <code>plugchaind tx bank send -h</code> &#x67E5;&#x770B;&#x7528;&#x6CD5;&#x548C;&#x53C2;&#x6570;</li>
-</ul>
-<pre><code class="lang-sh">Usage:
-  tokend tx bank send [from_key_or_address] [to_address] [amount] [flags]
-
-Flags:
-  -a, --account-number uint      The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string    Transaction broadcasting mode (sync|async|block) (default &quot;sync&quot;)
-      --dry-run                  ignore the --gas flag and perform a simulation of a transaction, but don&apos;t broadcast it
-      --fees string              Fees to pay along with transaction; eg: 10uatom
-      --from string              Name or address of private key with which to sign
-      --gas string               gas limit to set per-transaction; set to &quot;auto&quot; to calculate sufficient gas automatically (default 200000)
-      --gas-adjustment float     adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string        Gas prices in decimal format to determine the transaction fee (e.g. 0.1uatom)
-      --generate-only            Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                     help for send
-      --keyring-backend string   Select keyring&apos;s backend (os|file|kwallet|pass|test|memory) (default &quot;test&quot;)
-      --keyring-dir string       The client Keyring directory; if omitted, the default &apos;home&apos; directory will be used
-      --ledger                   Use a connected Ledger device
-      --memo string              Memo to send along with transaction
-      --node string              &lt;host&gt;:&lt;port&gt; to tendermint rpc interface for this chain (default &quot;tcp://localhost:26657&quot;)
-      --offline                  Offline mode (does not allow any online functionality
-  -s, --sequence uint            The sequence number of the signing account (offline mode only)
-      --sign-mode string         Choose sign mode (direct|amino-json), this is an advanced feature
-      --timeout-height uint      Set a block timeout height to prevent the tx from being committed past a certain height
-  -y, --yes                      Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string     The network chain ID (default &quot;token&quot;)
-      --home string         directory for config and data (default &quot;/root/.token&quot;)
-      --log_format string   The logging format (json|plain) (default &quot;plain&quot;)
-      --log_level string    The logging level (trace|debug|info|warn|error|fatal|panic) (default &quot;info&quot;)
-      --trace               print out full stack trace on errors
-</code></pre>
-<h5 id="&#x4EA4;&#x6613;&#x53C2;&#x6570;&#x540D;&#x8BCD;&#x89E3;&#x91CA;">&#x4EA4;&#x6613;&#x53C2;&#x6570;&#x540D;&#x8BCD;&#x89E3;&#x91CA;</h5>
-<ul>
-<li><strong> tokend tx bank send  [from_key_or_address] [to_address] [amount] [flags] </strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>&#x53C2;&#x6570;</th>
-<th>&#x89E3;&#x91CA;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>from_key_or_address</strong></td>
-<td>&#x53D1;&#x9001;&#x65B9;&#x5730;&#x5740;</td>
-</tr>
-<tr>
-<td><strong>to_address</strong></td>
-<td>&#x63A5;&#x6536;&#x65B9;&#x5730;&#x5740;</td>
-</tr>
-<tr>
-<td><strong>amount</strong></td>
-<td>&#x91D1;&#x989D;</td>
-</tr>
-<tr>
-<td><strong>flags</strong></td>
-<td>&#x5176;&#x4ED6;&#x53C2;&#x6570;(--home --chain-id&#x7B49;)</td>
-</tr>
-<tr>
-<td><strong>--fees</strong></td>
-<td>&#x624B;&#x7EED;&#x8D39;</td>
-</tr>
-<tr>
-<td><strong>--gas</strong></td>
-<td>&#x624B;&#x7EED;&#x8D39;limit</td>
-</tr>
-<tr>
-<td><strong>--gas-price</strong></td>
-<td>&#x624B;&#x7EED;&#x8D39;&#x4EF7;&#x683C;</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>&#x5176;&#x4E2D;&#x53D1;&#x8D77;&#x4EA4;&#x6613;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x989D;&#x5916;&#x8BBE;&#x7F6E;&#x624B;&#x7EED;&#x8D39;&#x53C2;&#x6570;</li>
-<li><code>plug</code>&#x7684;&#x5355;&#x4F4D;&#x6709;6&#x4F4D;&#x5C0F;&#x6570; &#x7ED3;&#x679C;&#x8981;<code>/1000000</code>&#x624D;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x5355;&#x4F4D; &#x5373;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x7684;<code>10000plug</code>&#x5B9E;&#x9645;&#x4E3A;<code>0.01plug</code>)</li>
-</ul>
-<h3 id="&#x4E09;-&#x5B9E;&#x73B0;&#x8D26;&#x6237;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x8D26;">&#x4E09;. &#x5B9E;&#x73B0;&#x8D26;&#x6237;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x8D26;</h3>
-<h5 id="1-&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x672C;&#x6B21;&#x4EA4;&#x6613;&#x624B;&#x7EED;&#x8D39;10000plug---fees">1. &#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x672C;&#x6B21;&#x4EA4;&#x6613;&#x624B;&#x7EED;&#x8D39;(10000plug) <code>--fees</code></h5>
-<pre><code class="lang-sh">plugchaind tx bank send $from $to 10plug --fees 10000plug --chain-id testnet --home home1
-</code></pre>
-<h5 id="2-&#x5206;&#x5F00;&#x8BBE;&#x7F6E;&#x90A3;&#x4E48;&#x603B;&#x7528;&#x91CF;&#x5C31;&#x662F;-gasgas-pirce-&#x7ED3;&#x679C;&#x662F;20000plug">2. &#x5206;&#x5F00;&#x8BBE;&#x7F6E;,&#x90A3;&#x4E48;&#x603B;&#x7528;&#x91CF;&#x5C31;&#x662F; gas*gas-pirce &#x7ED3;&#x679C;&#x662F;(20000plug)</h5>
-<ul>
-<li><code>--gas</code> &#x624B;&#x7EED;&#x8D39;&#x7528;&#x91CF; &#x9ED8;&#x8BA4; 200000</li>
-<li><code>--gas-prices</code> gas&#x4EF7;&#x683C; &#x6BD4;&#x5982; 0.1plug<pre><code class="lang-sh">plugchaind tx bank send $from $to 100line --gas 200000 --gas-prices 0.0001line --chain-id plugchain-testnet-1 --home home1
+<li>&#x4E24;&#x4E2A;&#x5730;&#x5740;<pre><code class="lang-golang">- name: wallet1
+  type: local
+  address: gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq
+  pubkey: gxpub1addwnpepqf0egzqdu83e4yvd3hsw4mck0d7jjkhq76d5etc2rymmkhxtlv4pxw7r8st
+  mnemonic: &quot;&quot;
+  threshold: 0
+  pubkeys: []
+- name: wallet2
+  type: local
+  address: gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9
+  pubkey: gxpub1addwnpepqf0du4l04hqquvz7q3ydq75uma6zu3q8ylk2qhydv5ka56edzu0v2y8gznl
+  mnemonic: &quot;&quot;
+  threshold: 0
+  pubkeys: []
 </code></pre>
 </li>
+<li><p>&#x9700;&#x6C42;&#xFF1A;wallet1 &#x5411; wallet2 &#x8F6C;&#x8D26;&#x4E00;&#x7B14;</p>
+</li>
+<li><p>&#x751F;&#x6210;&#x65E0;&#x7B26;&#x53F7;tx</p>
+<pre><code class="lang-bash">plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) \
+$(plugchaind keys show wallet2 -a --home node1) 1000000line \
+--from wallet1 --fees 5000line --chain-id plugchain --generate-only &gt; tx.json
+</code></pre>
+<p>tx.json&#x4FE1;&#x606F;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-json">{
+ &quot;body&quot;: {
+     &quot;messages&quot;: [
+         {
+             &quot;@type&quot;: &quot;/cosmos.bank.v1beta1.MsgSend&quot;,
+             &quot;from_address&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;,
+             &quot;to_address&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;,
+             &quot;amount&quot;: [
+                 {
+                     &quot;denom&quot;: &quot;line&quot;,
+                     &quot;amount&quot;: &quot;1000000&quot;
+                 }
+             ]
+         }
+     ],
+     &quot;memo&quot;: &quot;&quot;,
+     &quot;timeout_height&quot;: &quot;0&quot;,
+     &quot;extension_options&quot;: [],
+     &quot;non_critical_extension_options&quot;: []
+ },
+ &quot;auth_info&quot;: {
+     &quot;signer_infos&quot;: [],
+     &quot;fee&quot;: {
+         &quot;amount&quot;: [
+             {
+                 &quot;denom&quot;: &quot;line&quot;,
+                 &quot;amount&quot;: &quot;5000&quot;
+             }
+         ],
+         &quot;gas_limit&quot;: &quot;200000&quot;,
+         &quot;payer&quot;: &quot;&quot;,
+         &quot;granter&quot;: &quot;&quot;
+     }
+ },
+ &quot;signatures&quot;: []
+}
+</code></pre>
+</li>
+<li><p>&#x5BF9;&#x65E0;&#x7B26;&#x53F7;tx&#x7B7E;&#x540D;</p>
+<pre><code class="lang-bash">plugchaind tx sign tx.json --from wallet1 --chain-id plugchain -y &gt; tx-sign.json
+</code></pre>
+<p>tx-sign.json&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-json">{
+ &quot;body&quot;: {
+     &quot;messages&quot;: [
+         {
+             &quot;@type&quot;: &quot;/cosmos.bank.v1beta1.MsgSend&quot;,
+             &quot;from_address&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;,
+             &quot;to_address&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;,
+             &quot;amount&quot;: [
+                 {
+                     &quot;denom&quot;: &quot;line&quot;,
+                     &quot;amount&quot;: &quot;1000000&quot;
+                 }
+             ]
+         }
+     ],
+     &quot;memo&quot;: &quot;&quot;,
+     &quot;timeout_height&quot;: &quot;0&quot;,
+     &quot;extension_options&quot;: [],
+     &quot;non_critical_extension_options&quot;: []
+ },
+ &quot;auth_info&quot;: {
+     &quot;signer_infos&quot;: [
+         {
+             &quot;public_key&quot;: {
+                 &quot;@type&quot;: &quot;/cosmos.crypto.secp256k1.PubKey&quot;,
+                 &quot;key&quot;: &quot;Al+UCA3h45qRjY3g6u8We30pWuD2m0yvChk3u1zL+yoT&quot;
+             },
+             &quot;mode_info&quot;: {
+                 &quot;single&quot;: {
+                     &quot;mode&quot;: &quot;SIGN_MODE_DIRECT&quot;
+                 }
+             },
+             &quot;sequence&quot;: &quot;0&quot;
+         }
+     ],
+     &quot;fee&quot;: {
+         &quot;amount&quot;: [
+             {
+                 &quot;denom&quot;: &quot;line&quot;,
+                 &quot;amount&quot;: &quot;5000&quot;
+             }
+         ],
+         &quot;gas_limit&quot;: &quot;200000&quot;,
+         &quot;payer&quot;: &quot;&quot;,
+         &quot;granter&quot;: &quot;&quot;
+     }
+ },
+ &quot;signatures&quot;: [
+     &quot;MCJY9Gxg9pMEjj4Dn+WvD5z7GgR93M8pWSsfgnrQVBRj1rSm5CNG8ZOwpICPfvPuBoyyFJzehDzdIQU4rd29vQ==&quot;
+ ]
+}
+</code></pre>
+</li>
+<li>&#x5BF9;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x4FE1;&#x606F;&#x7F16;&#x7801;<pre><code class="lang-bash">plugchaind tx encode tx-sign.json
+</code></pre>
+&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-text">CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29
+</code></pre>
+</li>
+<li>&#x5E7F;&#x64AD;&#x4EA4;&#x6613;<pre><code class="lang-bash">curl --header &quot;Content-Type: application/json&quot; --request POST --data &apos;{&quot;tx_bytes&quot;:&quot;CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29&quot;,&quot;mode&quot;:1}&apos; localhost:1317/cosmos/tx/v1beta1/txs
+</code></pre>
+&#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-json">{
+&quot;tx_response&quot;: {
+ &quot;height&quot;: &quot;292&quot;,
+ &quot;txhash&quot;: &quot;D7CD55CDE644952F2DCAEB32DD6E865657210EBCBBAE2914B256292762702C69&quot;,
+ &quot;codespace&quot;: &quot;&quot;,
+ &quot;code&quot;: 0,
+ &quot;data&quot;: &quot;0A060A0473656E64&quot;,
+ &quot;raw_log&quot;: &quot;[{\&quot;events\&quot;:[{\&quot;type\&quot;:\&quot;message\&quot;,\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;action\&quot;,\&quot;value\&quot;:\&quot;send\&quot;},{\&quot;key\&quot;:\&quot;sender\&quot;,\&quot;value\&quot;:\&quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\&quot;},{\&quot;key\&quot;:\&quot;module\&quot;,\&quot;value\&quot;:\&quot;bank\&quot;}]},{\&quot;type\&quot;:\&quot;transfer\&quot;,\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;recipient\&quot;,\&quot;value\&quot;:\&quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9\&quot;},{\&quot;key\&quot;:\&quot;sender\&quot;,\&quot;value\&quot;:\&quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\&quot;},{\&quot;key\&quot;:\&quot;amount\&quot;,\&quot;value\&quot;:\&quot;1000000line\&quot;}]}]}]&quot;,
+ &quot;logs&quot;: [
+   {
+     &quot;msg_index&quot;: 0,
+     &quot;log&quot;: &quot;&quot;,
+     &quot;events&quot;: [
+       {
+         &quot;type&quot;: &quot;message&quot;,
+         &quot;attributes&quot;: [
+           {
+             &quot;key&quot;: &quot;action&quot;,
+             &quot;value&quot;: &quot;send&quot;
+           },
+           {
+             &quot;key&quot;: &quot;sender&quot;,
+             &quot;value&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;
+           },
+           {
+             &quot;key&quot;: &quot;module&quot;,
+             &quot;value&quot;: &quot;bank&quot;
+           }
+         ]
+       },
+       {
+         &quot;type&quot;: &quot;transfer&quot;,
+         &quot;attributes&quot;: [
+           {
+             &quot;key&quot;: &quot;recipient&quot;,
+             &quot;value&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;
+           },
+           {
+             &quot;key&quot;: &quot;sender&quot;,
+             &quot;value&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;
+           },
+           {
+             &quot;key&quot;: &quot;amount&quot;,
+             &quot;value&quot;: &quot;1000000line&quot;
+           }
+         ]
+       }
+     ]
+   }
+ ],
+ &quot;info&quot;: &quot;&quot;,
+ &quot;gas_wanted&quot;: &quot;200000&quot;,
+ &quot;gas_used&quot;: &quot;74685&quot;,
+ &quot;tx&quot;: null,
+ &quot;timestamp&quot;: &quot;&quot;
+}
+}
+</code></pre>
+</li>
+<li>&#x8F6C;&#x8D26;&#x5B8C;&#x6210;</li>
 </ul>
-<h4 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h4>
-<ol>
-<li>&#x5728;&#x8BBE;&#x7F6E;&#x624B;&#x7EED;&#x8D39;&#x7684;&#x65F6;&#x5019;&#x8981;&#x6CE8;&#x610F;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x7684;&#x6700;&#x5C0F;&#x624B;&#x7EED;&#x8D39;&#x4EF7;&#x683C; &#x4E0D;&#x80FD;&#x5C0F;&#x4E8E;&#x6700;&#x5C0F;&#x4EF7;&#x683C; <code>minimum-gas-prices = &quot;0.1plug&quot;</code></li>
-</ol>
 
                                 
                                 </section>
@@ -706,12 +732,12 @@ Global Flags:
 
             
                 
-                <a href="accounts.html" class="navigation navigation-prev " aria-label="Previous page: 使用">
+                <a href="tx.html" class="navigation navigation-prev " aria-label="Previous page: 转账">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tx.html" class="navigation navigation-next " aria-label="Next page: 转账">
+                <a href="../validators/validator-faq.html" class="navigation navigation-next " aria-label="Next page: 验证者">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -722,7 +748,7 @@ Global Flags:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"交易","level":"1.5","depth":1,"next":{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},"previous":{"title":"使用","level":"1.4.2","depth":2,"path":"cn/basic/accounts.md","ref":"./cn/basic/accounts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","tital":"Plugchain 文档","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/basic/tx.md","mtime":"2021-08-06T09:14:10.201Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T10:25:06.883Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"交易步骤","level":"1.5.2","depth":2,"next":{"title":"验证者","level":"1.6","depth":1,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},{"title":"使用","level":"1.6.2","depth":2,"path":"cn/validators/validator-setup.md","ref":"./cn/validators/validator-setup.md","articles":[]}]},"previous":{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","tital":"Plugchain 文档","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/basic/txs.md","mtime":"2021-08-09T03:54:48.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T10:25:06.883Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

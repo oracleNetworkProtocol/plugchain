@@ -1,6 +1,6 @@
 #### 成为验证者参与主链生态管理
 
-- 以下教程都依赖节点执行,如未安装,请移步到 [安装节点](./installation.md)
+- 以下教程都依赖节点执行,如未安装,请移步到 [安装节点](../installation.md)
 
 #### 添加验证者
 * plugchaind tx staking create-validator [flags]
@@ -16,7 +16,7 @@ plugchaind tx staking create-validator --from mywallet \
 plugchaind tx staking edit-validator --from mywallet \
 --moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --chain-id plugchain
 ```
-**注意** : 
+**[!warning]** : 
 
 `commission-max-rate`,`commission-max-change-rate` 两个字段在`create-validator`设置完之后就不可以修改,请您慎重设置
 
@@ -30,7 +30,7 @@ plugchaind tx staking edit-validator --from mywallet \
 `min-self-delegation`的值单位是`10e-6`,所以此值最小为 `1000000`
 
 
-#### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](delegator-setup.md)
+#### 查询验证者的所有委托人的质押总量,想了解委托人信息,请移步[委托人质押](../delegators/delegator-setup.md)
 * plugchaind query staking delegations-to [validator-addr] [flags]
 ```shell
 plugchaind query staking delegations-to gxvaloperxxxxxxxxxxxxxxxxxx  
@@ -47,7 +47,7 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 为了能进入验证人集合,你的权重必须超过第100名的验证人。
 :::
 
-- 成为验证者之后,需要修改配置[validator config](/cn/node/README.md)
+- 成为验证者之后,需要修改配置[validator config](../node/README.md)
 
 
 ## 常见问题
