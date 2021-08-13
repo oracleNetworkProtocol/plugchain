@@ -38,6 +38,7 @@
     * [使用](./cn/delegators/delegator-setup.md)  
 
 * [API服务](./cn/api/swagger-api.md)
+    * [节点查询功能](./cn/api/swagger-api.md)
 
 * [创世文件genesis.json](./cn/basic/genesis.md)   
 
