@@ -39,6 +39,8 @@
 
 * [API服务](./cn/api/swagger-api.md)
     * [节点查询功能](./cn/api/swagger-api.md)
+    * [客户端操作-Js版本](https://github.com/oracleNetworkProtocol/cosmjs)
+    * [服务端操作](./cn/api/txs.md)
 
 * [创世文件genesis.json](./cn/basic/genesis.md)   
 
