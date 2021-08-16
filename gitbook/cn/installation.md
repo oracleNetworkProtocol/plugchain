@@ -83,6 +83,6 @@ mv -f genesis.json $APPHOME/config/
 - 需要将正常的种子节点添加到$APPHOME/config/config.toml里，不然节点无法正常工作 #TODO
 
 
-- 您的全节点将未确认的事务保存在其内存池中。为了防止垃圾邮件，最好设置一个交易必须满足的最小gas价格，以便在您的节点的内存池中被接受。这个参数 `min-gas-prices` 可以在下面的文件$APPHOME/config/app.toml中设置。
+- 您的全节点将未确认的事务保存在其内存池中。为了防止垃圾邮件，最好设置一个交易必须满足的最小gas价格，以便在您的节点的内存池中被接受。这个参数 `min-gas-prices` 可以在下面的文件$APPHOME/config/app.toml中设置,也可以直接启动时设置。如下：
 
-- 运行 `plugchaind start` 参与项目
+- 运行 `plugchaind start --minimum-gas-prices 0.0001plug` 参与项目

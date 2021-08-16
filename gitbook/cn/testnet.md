@@ -10,7 +10,7 @@ title: 加入测试网
 2. plugchaind init 时 chain-id 设置为 `plugchain-testnet-1`
 3. 下载`https://github.com/oracleNetworkProtocol/plugchain/blob/main/testnet/latest/genesis.json`替换 --home 目录下的`config/genesis.json` //--home 默认目录为`~/.plugchain`
 4. 根据 `testnet/latest` 目录中提供的 `seeds` 修改--home目录下的 `config/config.toml` 中的seeds参数以设置链接的种子节点 
-
+5. 修改完之后，使用 `plugchaind start --minimum-gas-prices 0.0001line` 启动节点
 
 #### 脚本安装并加入测试网：
 

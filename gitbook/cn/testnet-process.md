@@ -33,7 +33,7 @@ pride cricket area future day trust pattern exhaust orange mouse chronic game ma
   * 自己的节点想共享出去，需要把公网ip写入external_address 参数里
 - 手续费
   * 区块链小数位数为1000000，在链上都是乘1000000
-  * app.toml 节点运行需要设置最低手续费防止垃圾邮件 ，minimum-gas-prices = "0.0025line"
+  * app.toml 节点运行需要设置最低手续费防止垃圾邮件 ，minimum-gas-prices = "0.0001line"
   * 手续费= (gas-prices   * gas)或者 fees
   * fees/1000000 为真正扣除手续费
 - 验证者

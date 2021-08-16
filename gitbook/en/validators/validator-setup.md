@@ -76,7 +76,7 @@ Your validator is already jailed. If the validator has not voted in more than 50
 
 If you are jailed due to disconnection, you can regain your voting equity to return to the validator team. First, if `plugchaind` is not running, start it again:
 ```bash
-plugchaind start
+plugchaind start --minimum-gas-prices 0.0001plug
 ```
 
 Wait for your full node to catch up with the latest block height. Then, run the following command. Next, you can unjail your validator.
