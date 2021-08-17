@@ -33,3 +33,4 @@ plugchaind collect-gentxs --home $NODENAME1
 # echo $(jq . $(pwd)/$NODENAME1/config/gentx/*.json)
 # echo $(jq . $(pwd)/$NODENAME2/config/gentx/*.json)
 # echo $(jq . $(pwd)/$NODENAME3/config/gentx/*.json)
+
