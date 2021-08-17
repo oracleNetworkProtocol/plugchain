@@ -13,4 +13,4 @@ $DAEMON add-genesis-account validator "20000000000000 $DEMON" --home $APPNAME
 $DAEMON add-genesis-account validator1 "20000000000000 $DEMON" --home $APPNAME
 $DAEMON gentx validator "20000000000$DEMON" --min-self-delegation "1000000" --home $APPNAME --chain-id $CHAINID
 $DAEMON collect-gentxs --home $APPNAME
-$DAEMON start --home $APPNAME
+$DAEMON start --home $APPNAME --minimum-gas-prices 0.0001line

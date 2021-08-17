@@ -13,6 +13,7 @@
 
     * [安装 PLUGChain](./cn/installation.md)    
     * [加入到 PLUGChain 测试网](./cn/testnet.md)    
+    * [测试网 测试流程 ](./cn/testnet-process.md)    
     * [加入到 PLUGChain 主网-开发中]()
 
 * [节点知识](./cn/node/README.md)  
@@ -38,6 +39,10 @@
     * [使用](./cn/delegators/delegator-setup.md)  
 
 * [API服务](./cn/api/swagger-api.md)
+    * [节点查询功能](./cn/api/swagger-api.md)
+    * [服务端操作](./cn/api/txs.md)
+    * [操作方法及其参数](./cn/api/proto-docs.md)
+    * [客户端操作-Js版本](https://github.com/oracleNetworkProtocol/cosmjs)
 
 * [创世文件genesis.json](./cn/basic/genesis.md)   
 

@@ -1,27 +1,10 @@
   ### 测试网目前需要操作步骤 
-
-1. [代码地址](https://github.com/oracleNetworkProtocol/plugchain)
-2. [脚本参考](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/scripts)
-3. [测试网需要的信息](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/latest)
-4. 节点搭建，同步测试网 [搭建文档](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/cn/installation.md)
-5. 成为验证者，会在[验证者](http://www.plugchain.network/wallet/pledge)页面出现自己的节点，成为验证者参数设置信息等[资料](https://github.com/oracleNetworkProtocol/plugchain/blob/main/docs/cn/validator.md)
-6. 在终端或者[浏览器](http://www.plugchain.network/)委托line币到自己的节点，查看节点信息等操作
-7. 查看终端各个命令的用处和使用方式
-8. 开通自己节点的对外api服务，思考开发自己的浏览器，钱包等功能 需要修改数据目录里的 config/app.toml 的 `enable`,`swagger`
-9. 关于不同节点的配置更改和作用，请移步[节点知识](../cn/node/README.md)，配置修改：验证者的配置需要成为验证者之后修改，种子和哨兵的配置可以直接修改，重启即可成为此身份
-```
-###############################################################################
-###                           API Configuration                             ###
-###############################################################################
-
-[api]
-
-# Enable defines if the API server should be enabled.
-enable = false
-
-# Swagger defines if swagger documentation should automatically be registered.
-swagger = false
-```
+1. 节点搭建，同步测试网 [搭建文档](https://oraclenetworkprotocol.github.io/plugchain/cn/testnet.html)
+2. 成为[验证者](https://oraclenetworkprotocol.github.io/plugchain/cn/validators/validator-setup.html)，会在[验证者](http://www.plugchain.network/wallet/pledge)页面出现自己的节点
+3. 在终端或者[浏览器](http://www.plugchain.network/)委托line币到自己的节点，查看节点信息等操作
+4. 查看终端各个命令的用处和使用方式
+5. 开通自己节点的对外api服务,[文档](https://oraclenetworkprotocol.github.io/plugchain/cn/api/swagger-api.html) 
+6. 关于不同节点的配置，请移步[节点知识](https://oraclenetworkprotocol.github.io/plugchain/cn/node/)，配置修改：验证者的配置需要成为验证者之后修改，种子和哨兵的配置可以直接修改，重启即可成为此身份
 
 **[!warning]** 
   切记，保存好自己创建的地址的助记词，如下信息中的：`pride cricket area future day trust pattern exhaust orange mouse chronic game make tobacco paddle float tuition vocal shove tag gas cargo idea label`一串字母
@@ -50,7 +33,7 @@ pride cricket area future day trust pattern exhaust orange mouse chronic game ma
   * 自己的节点想共享出去，需要把公网ip写入external_address 参数里
 - 手续费
   * 区块链小数位数为1000000，在链上都是乘1000000
-  * app.toml 节点运行需要设置最低手续费防止垃圾邮件 ，minimum-gas-prices
+  * app.toml 节点运行需要设置最低手续费防止垃圾邮件 ，minimum-gas-prices = "0.0001line"
   * 手续费= (gas-prices   * gas)或者 fees
   * fees/1000000 为真正扣除手续费
 - 验证者
@@ -67,4 +50,4 @@ pride cricket area future day trust pattern exhaust orange mouse chronic game ma
     * 收益需要提取才能到可操作账户
     * 进行质押,取消质押,转质押操作时自动提取收益
 
-**测试期间有问题可以总结起来**
+**测试期间有问题可以总结起来,提交给技术部，共同维护plugchain**

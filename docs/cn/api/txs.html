@@ -1,0 +1,890 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>服务端操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="proto-docs.html" />
+    
+    
+    <link rel="prev" href="swagger-api.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">PLUGChain 使用手册</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    PLUGChain
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" >
+            
+                <span>
+            
+                    
+                    介绍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    什么是 PLUGChain ?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" >
+            
+                <span>
+            
+                    
+                    加入社区
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation.html">
+            
+                <a href="../installation.html">
+            
+                    
+                    开始
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation.html">
+            
+                <a href="../installation.html">
+            
+                    
+                    安装 PLUGChain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../testnet.html">
+            
+                <a href="../testnet.html">
+            
+                    
+                    加入到 PLUGChain 测试网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../testnet-process.html">
+            
+                <a href="../testnet-process.html">
+            
+                    
+                    测试网 测试流程 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    加入到 PLUGChain 主网-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../node/">
+            
+                <a href="../node/">
+            
+                    
+                    节点知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../basic/accounts-faq.html">
+            
+                <a href="../basic/accounts-faq.html">
+            
+                    
+                    钱包和地址
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../basic/accounts-faq.html">
+            
+                <a href="../basic/accounts-faq.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../basic/accounts.html">
+            
+                <a href="../basic/accounts.html">
+            
+                    
+                    使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../basic/tx.html">
+            
+                <a href="../basic/tx.html">
+            
+                    
+                    交易
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../basic/tx.html">
+            
+                <a href="../basic/tx.html">
+            
+                    
+                    转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../basic/txs.html">
+            
+                <a href="../basic/txs.html">
+            
+                    
+                    交易步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../validators/validator-faq.html">
+            
+                <a href="../validators/validator-faq.html">
+            
+                    
+                    验证者
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../validators/validator-faq.html">
+            
+                <a href="../validators/validator-faq.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../validators/validator-setup.html">
+            
+                <a href="../validators/validator-setup.html">
+            
+                    
+                    使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../delegators/delegator-faq.html">
+            
+                <a href="../delegators/delegator-faq.html">
+            
+                    
+                    委托人
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../delegators/delegator-faq.html">
+            
+                <a href="../delegators/delegator-faq.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../delegators/delegator-setup.html">
+            
+                <a href="../delegators/delegator-setup.html">
+            
+                    
+                    使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="swagger-api.html">
+            
+                <a href="swagger-api.html">
+            
+                    
+                    API服务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="swagger-api.html">
+            
+                <a href="swagger-api.html">
+            
+                    
+                    节点查询功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.2" data-path="txs.html">
+            
+                <a href="txs.html">
+            
+                    
+                    服务端操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="proto-docs.html">
+            
+                <a href="proto-docs.html">
+            
+                    
+                    操作方法及其参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <a target="_blank" href="https://github.com/oracleNetworkProtocol/cosmjs">
+            
+                    
+                    客户端操作-Js版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../basic/genesis.html">
+            
+                <a href="../basic/genesis.html">
+            
+                    
+                    创世文件genesis.json
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    代币-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    自动化做市商-开发中
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >服务端操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <!--
+order: 4
+-->
+<h1 id="&#x751F;&#x6210;&#x3001;&#x7B7E;&#x7F72;&#x548C;&#x5E7F;&#x64AD;&#x4EA4;&#x6613;">&#x751F;&#x6210;&#x3001;&#x7B7E;&#x7F72;&#x548C;&#x5E7F;&#x64AD;&#x4EA4;&#x6613;</h1>
+<p>&#x672C;&#x6587;&#x6863;&#x63CF;&#x8FF0;&#x4E86;&#x5982;&#x4F55;&#x751F;&#x6210;&#xFF08;&#x672A;&#x7B7E;&#x540D;&#xFF09;&#x4EA4;&#x6613;&#x3001;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#xFF08;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5BC6;&#x94A5;&#xFF09;&#x5E76;&#x5C06;&#x5176;&#x5E7F;&#x64AD;&#x5230;&#x7F51;&#x7EDC;&#x3002;</p>
+<h3 id="&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x8D77;&#x4EA4;&#x6613;&#xFF0C;&#x4EE5;golang&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x8BED;&#x8A00;&#x5F00;&#x53D1;">&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x8D77;&#x4EA4;&#x6613;&#xFF0C;&#x4EE5;golang&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x8BED;&#x8A00;&#x5F00;&#x53D1;:</h3>
+<p>&#x5728;&#x751F;&#x6210;&#x4EA4;&#x6613;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x201C;TxBuilder&#x201D;&#x7684;&#x65B0;&#x5B9E;&#x4F8B;&#x3002; &#x7531;&#x4E8E; SDK &#x652F;&#x6301; Amino &#x548C; Protobuf &#x4E8B;&#x52A1;&#xFF0C;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x7F16;&#x7801;&#x65B9;&#x6848;&#x3002; &#x6240;&#x6709;&#x540E;&#x7EED;&#x6B65;&#x9AA4;&#x90FD;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF0C;&#x65E0;&#x8BBA;&#x60A8;&#x4F7F;&#x7528;&#x7684;&#x662F; Amino &#x8FD8;&#x662F; Protobuf&#xFF0C;&#x56E0;&#x4E3A;&#x201C;TxBuilder&#x201D;&#x62BD;&#x8C61;&#x4E86;&#x7F16;&#x7801;&#x673A;&#x5236;&#x3002; &#x5728;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x6BB5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; Protobuf&#x3002;</p>
+<h3 id="1-&#x521D;&#x59CB;&#x5316;&#x9700;&#x8981;&#x7684;-txbuilder-&#x548C;-codec">1. &#x521D;&#x59CB;&#x5316;&#x9700;&#x8981;&#x7684; <code>txBuilder</code> &#x548C; <code>codec</code></h3>
+<pre><code class="lang-go">import (
+    &quot;github.com/oracleNetworkProtocol/plugchain/app&quot;
+)
+
+func sendTx() error {
+    // &#x9009;&#x62E9;&#x60A8;&#x7684;&#x7F16;&#x89E3;&#x7801;&#x5668;&#xFF1A;Amino &#x6216; Protobuf
+    encCfg := app.MakeTestEncodingConfig()
+
+    // &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; TxBuilder&#x3002;
+    txBuilder := encCfg.TxConfig.NewTxBuilder()
+
+    // --&#x526A;&#x65AD;--
+}
+</code></pre>
+<h3 id="2-&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x64CD;&#x4F5C;&#x7684;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#xFF0C;&#x9700;&#x8981;&#x51C6;&#x5907;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x4E0B;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;&#xFF0C;&#x9700;&#x8981;&#x51C6;&#x5907;&#xFF1A;">2. &#x6839;&#x636E;&#x81EA;&#x5DF1;&#x64CD;&#x4F5C;&#x7684;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#xFF0C;&#x9700;&#x8981;&#x51C6;&#x5907;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x4E0B;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;&#xFF0C;&#x9700;&#x8981;&#x51C6;&#x5907;&#xFF1A;</h3>
+<ul>
+<li>&#x53D1;&#x9001;&#x65B9;&#x5730;&#x5740; <code>gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed</code>  &#x8282;&#x70B9;&#x4E0A;name&#x662F; <code>walletName</code></li>
+<li>&#x53D1;&#x8D77;&#x8005;&#x5730;&#x5740;&#x7684;&#x79C1;&#x94A5;  &#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>plugchaind keys export walletName --unarmored-hex --unsafe</code> &#x5F97;&#x5230;</li>
+<li>&#x53D1;&#x8D77;&#x8005;&#x5730;&#x5740;&#x7684; <code>accountNumber</code> &#x548C; <code>Sequence</code> &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x8BE2; <code>&#x8282;&#x70B9;ip:1317/cosmos/auth/v1beta1/accounts/{address}</code></li>
+<li>&#x63A5;&#x6536;&#x8005;&#x5730;&#x5740;</li>
+</ul>
+<pre><code class="lang-go">import (
+    &quot;encoding/hex&quot;
+    sdk &quot;github.com/cosmos/cosmos-sdk/types&quot;
+    &quot;github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1&quot;    
+)
+    chainID := &quot;plugchain&quot;
+    addr1, _ := sdk.AccAddressFromBech32(&quot;gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed&quot;)
+    addr2, _ := sdk.AccAddressFromBech32(&quot;gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds&quot;)
+    priv := &quot;55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0&quot;
+    privB, _ := hex.DecodeString(priv)
+    priv1 := secp256k1.PrivKey{Key: privB}
+    accountSeq := uint64(1)
+    acountNumber := uint64(0)
+</code></pre>
+<p>// TxBuilder &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x7684;&#x5177;&#x4F53;&#x4E8B;&#x52A1;&#x7684;&#x63A5;&#x53E3;
+// &#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x3002; &#x5373;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x8BBE;&#x7F6E;&#x6D88;&#x606F;&#xFF0C;&#x751F;&#x6210;
+// &#x7B7E;&#x540D;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x89C4;&#x8303;&#x5B57;&#x8282;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x3002; &#x4EA4;&#x6613;&#x5FC5;&#x987B;
+// &#x4E5F;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x7F16;&#x7801;&#x81EA;&#x5DF1;&#x3002;</p>
+<pre><code class="lang-go">TxBuilder interface {
+    GetTx() signing.Tx
+
+    SetMsgs(msgs ...sdk.Msg) error
+    SetSignatures(signatures ...signingtypes.SignatureV2) error
+    SetMemo(memo string)
+    SetFeeAmount(amount sdk.Coins)
+    SetGasLimit(limit uint64)
+    SetTimeoutHeight(height uint64)
+}
+</code></pre>
+<pre><code class="lang-go">import (
+    banktypes &quot;github.com/cosmos/cosmos-sdk/x/bank/types&quot;
+)
+
+func sendTx() error {
+    // --&#x526A;&#x65AD;--
+
+    //&#x53D1;&#x9001;&#x4E00;&#x7B14;&#x8F6C;&#x8D26;:
+    //&#x5730;&#x5740;addr1 &#x5230; addr2
+    //&#x4EA4;&#x6613;&#x9700;&#x8981;addr1 &#x7B7E;&#x540D;
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin(&quot;line&quot;, 5000000)))
+
+    err := txBuilder.SetMsgs(msg1, msg2)
+    if err != nil {
+        return err
+    }
+
+    txBuilder.SetGasLimit(200000)
+    // txBuilder.SetFeeAmount(...)
+    // txBuilder.SetMemo(...)
+    // txBuilder.SetTimeoutHeight(...)
+}
+</code></pre>
+<p>&#x6B64;&#x65F6;&#xFF0C;<code>TxBuilder</code> &#x7684;&#x5E95;&#x5C42;&#x4EA4;&#x6613;&#x5DF2;&#x51C6;&#x5907;&#x597D;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x3002;</p>
+<h3 id="3-&#x7B7E;&#x7F72;&#x4EA4;&#x6613;">3. &#x7B7E;&#x7F72;&#x4EA4;&#x6613;</h3>
+<p>&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x6211;&#x4EEC;&#x7684;&#x7F16;&#x7801;&#x914D;&#x7F6E;&#x6765;&#x4F7F;&#x7528; Protobuf&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5B83;&#x5C06;&#x4F7F;&#x7528;<code>SIGN_MODE_DIRECT</code>&#x3002; &#x6839;&#x636E; <a href="https://github.com/cosmos/cosmos-sdk/blob/v0.40.0-rc6/docs/architecture/adr-020-protobuf-transaction-encoding.md" target="_blank">ADR-020</a>&#xFF0C;&#x6BCF;&#x4E2A;&#x7B7E;&#x540D;&#x8005;&#x9700;&#x8981; &#x7B7E;&#x7F72;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x7B7E;&#x540D;&#x8005;&#x7684;<code>SignerInfo</code>&#x3002; &#x8FD9;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x7B7E;&#x540D;&#x8005;&#xFF0C;&#x5728;<code>TxBuilder</code>&#x4E2D;&#x586B;&#x5145;&#x7B7E;&#x540D;&#x8005;&#x7684;<code>SignerInfo</code>&#xFF0C;</li>
+<li>&#x4E00;&#x65E6;&#x6240;&#x6709;<code>SignerInfo</code>s &#x88AB;&#x586B;&#x5145;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x7B7E;&#x540D;&#x8005;&#xFF0C;&#x7B7E;&#x7F72;<code>SignDoc</code>&#xFF08;&#x8981;&#x7B7E;&#x540D;&#x7684;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x5F53;&#x524D;&#x7684; <code>TxBuilder</code> &#x7684; API &#x4E2D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#x90FD;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x5B8C;&#x6210;&#xFF1A;<code>SetSignatures()</code>&#x3002; &#x5F53;&#x524D;&#x7684; API &#x8981;&#x6C42;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x6267;&#x884C;&#x4E00;&#x8F6E; <code>SetSignatures()</code> <em>&#x5E26;&#x6709;&#x7A7A;&#x7B7E;&#x540D;</em>&#xFF0C;&#x4EC5;&#x586B;&#x5145; <code>SignerInfo</code>s&#xFF0C;&#x4EE5;&#x53CA;&#x7B2C;&#x4E8C;&#x8F6E; <code>SetSignatures()</code> &#x4EE5;&#x5B9E;&#x9645;&#x7B7E;&#x7F72;&#x6B63;&#x786E;&#x7684;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#x3002;</p>
+<pre><code class="lang-go">import (
+    cryptotypes &quot;github.com/cosmos/cosmos-sdk/crypto/types&quot;
+    &quot;github.com/cosmos/cosmos-sdk/types/tx/signing&quot;
+    xauthsigning &quot;github.com/cosmos/cosmos-sdk/x/auth/signing&quot;
+)
+
+func sendTx() error {
+    // --&#x526A;&#x65AD;--
+
+    //&#x7B2C;&#x4E00;&#x8F6E;&#xFF1A;&#x6211;&#x4EEC;&#x6536;&#x96C6;&#x6240;&#x6709;&#x7B7E;&#x540D;&#x8005;&#x4FE1;&#x606F;&#x3002; &#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x201C;&#x8BBE;&#x7F6E;&#x7A7A;&#x7B7E;&#x540D;&#x201D;&#x6280;&#x5DE7;&#x6765;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;
+    sign := signing.SignatureV2{
+        PubKey: priv1.PubKey(),
+        Data: &amp;signing.SingleSignatureData{
+            SignMode:  encCfg.TxConfig.SignModeHandler().DefaultMode(),
+            Signature: nil,
+        },
+
+        Sequence: accountSeq,
+    }
+
+    err = txBuilder.SetSignatures(sign)
+    if err != nil {
+        panic(err)
+    }
+
+
+    //&#x7B2C;&#x4E8C;&#x8F6E;&#xFF1A; &#x8BBE;&#x7F6E;&#x6240;&#x6709;&#x7B7E;&#x540D;&#x8005;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x4E2A;&#x7B7E;&#x540D;&#x8005;&#x90FD;&#x53EF;&#x4EE5;&#x7B7E;&#x540D;&#x3002;
+    sign = signing.SignatureV2{}
+    signerD := xauthsigning.SignerData{
+        ChainID:       chainID,
+        AccountNumber: acountNumber,
+        Sequence:      accountSeq,
+    }
+    sign, err = cliTx.SignWithPrivKey(
+        encCfg.TxConfig.SignModeHandler().DefaultMode(), signerD,
+        txBuilder, cryptotypes.PrivKey(&amp;priv1), encCfg.TxConfig, accountSeq)
+
+    if err != nil {
+        panic(err)
+    }
+    err = txBuilder.SetSignatures(sign)
+    if err != nil {
+        panic(err)
+    }
+}
+</code></pre>
+<p><code>TxBuilder</code>&#x73B0;&#x5728;&#x5DF2;&#x6B63;&#x786E;&#x586B;&#x5145;&#x3002; &#x8981;&#x6253;&#x5370;&#x5B83;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x7F16;&#x7801;&#x914D;&#x7F6E; <code>encCfg</code> &#x4E2D;&#x7684; <code>TxConfig</code> &#x63A5;&#x53E3;&#xFF1A;</p>
+<pre><code class="lang-go">func sendTx() error {
+    // --&#x526A;&#x65AD;--
+
+    // &#x751F;&#x6210;&#x7684; Protobuf &#x7F16;&#x7801;&#x5B57;&#x8282;&#x3002;
+    txBytes, err := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
+    if err != nil {
+        return err
+    }
+}
+</code></pre>
+<h3 id="&#x5E7F;&#x64AD;&#x4EA4;&#x6613;">&#x5E7F;&#x64AD;&#x4EA4;&#x6613;</h3>
+<p>&#x5E7F;&#x64AD;&#x4EA4;&#x6613;&#x7684;&#x9996;&#x9009;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528; gRPC&#xFF0C;&#x4F46;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; REST&#xFF08;&#x901A;&#x8FC7; <code>gRPC-gateway</code>&#xFF09;&#x6216; Tendermint RPC&#x3002;</p>
+<pre><code class="lang-go">import (
+    &quot;context&quot;
+    &quot;fmt&quot;
+
+    &quot;google.golang.org/grpc&quot;
+
+    &quot;github.com/cosmos/cosmos-sdk/types/tx&quot;
+)
+
+func sendTx() error {
+    // --&#x526A;&#x65AD;--
+
+    // &#x521B;&#x5EFA;&#x4E00;&#x4E2A;grpc&#x670D;&#x52A1;
+    grpcConn := grpc.Dial(
+        &quot;127.0.0.1:9090&quot;, // &#x4F60;&#x7684; gRPC &#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#x3002;
+        grpc.WithInsecure(), // SDK &#x4E0D;&#x652F;&#x6301;&#x4EFB;&#x4F55;&#x4F20;&#x8F93;&#x5B89;&#x5168;&#x673A;&#x5236;&#x3002;
+    )
+    defer grpcConn.Close()
+
+    // &#x901A;&#x8FC7; gRPC &#x5E7F;&#x64AD; tx&#x3002; &#x6211;&#x4EEC;&#x4E3A; Protobuf Tx &#x670D;&#x52A1;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x5BA2;&#x6237;&#x7AEF;&#x3002;
+    txClient := tx.NewServiceClient(grpcConn)
+    //&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x4E0A;&#x8C03;&#x7528; BroadcastTx &#x65B9;&#x6CD5;&#x3002;
+    grpcRes, err := txClient.BroadcastTx(
+        context.Background(),
+        &amp;tx.BroadcastTxRequest{
+            Mode:    tx.BroadcastMode_BROADCAST_MODE_SYNC,
+            TxBytes: txBytes,
+        },
+    )
+    if err != nil {
+        return err
+    }
+
+    fmt.Println(grpcRes.TxResponse.Code) // &#x5982;&#x679C; tx &#x6210;&#x529F;&#xFF0C;&#x5219;&#x5E94;&#x4E3A; 0
+
+    return nil
+}
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;rest-api-&#x5E7F;&#x64AD;&#x4EA4;&#x6613;">&#x4F7F;&#x7528;REST API &#x5E7F;&#x64AD;&#x4EA4;&#x6613;</h2>
+<p><em>&#x4E0D;&#x80FD;&#x4F7F;&#x7528; REST API &#x751F;&#x6210;&#x6216;&#x7B7E;&#x7F72;&#x4EA4;&#x6613;&#xFF0C;&#x53EA;&#x80FD;&#x5E7F;&#x64AD;&#x3002;</em></p>
+<p>&#x4F7F;&#x7528; REST &#x7AEF;&#x70B9;&#xFF08;&#x7531; <code>gRPC-gateway</code> &#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF09;&#x5E7F;&#x64AD;&#x4EA4;&#x6613;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x53D1;&#x9001; POST &#x8BF7;&#x6C42;&#x6765;&#x5B8C;&#x6210;&#xFF0C;&#x5176;&#x4E2D; <code>txBytes</code> &#x662F;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x7684; protobuf &#x7F16;&#x7801;&#x5B57;&#x8282;&#xFF1A;</p>
+<p>&#x4E0B;&#x6587;&#x4F7F;&#x7528;&#x7684;<code>NewTxBytes</code> ,&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x83B7;&#x53D6;&#x7684; <code>txBytes</code> &#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;</p>
+<pre><code class="lang-golang">import (
+    &quot;fmt&quot;
+    &quot;encoding/base64&quot;
+)
+
+func sendTx() error {
+    //--&#x526A;&#x65AD;--
+    // base64 encode the encoded tx bytes
+    NewTxBytes := base64.StdEncoding.EncodeToString(txBytes)
+    fmt.Println(NewTxBytes)
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x65B9;&#x5F0F;&#x5E7F;&#x64AD;&#xFF1A;</p>
+<pre><code class="lang-bash">curl -X POST \
+    -H &quot;Content-Type: application/json&quot;
+    -d&apos;{&quot;tx_bytes&quot;:&quot;{{NewTxBytes}}&quot;,&quot;mode&quot;:&quot;BROADCAST_MODE_SYNC&quot;}&apos;
+    localhost:1317/cosmos/tx/v1beta1/txs
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;-cosmjs&#xFF08;javascript-&#x548C;-typescript&#xFF09;&#x64CD;&#x4F5C;">&#x4F7F;&#x7528; CosmJS&#xFF08;JavaScript &#x548C; TypeScript&#xFF09;&#x64CD;&#x4F5C;</h2>
+<p>CosmJS &#x65E8;&#x5728;&#x7528; JavaScript &#x6784;&#x5EFA;&#x53EF;&#x4EE5;&#x5D4C;&#x5165; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5E93;&#x3002; &#x8BF7;&#x53C2;&#x9605; <a href="https://github.com/oracleNetworkProtocol/cosmjs" target="_blank">https://github.com/oracleNetworkProtocol/cosmjs</a> &#x4E86;&#x89E3;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="swagger-api.html" class="navigation navigation-prev " aria-label="Previous page: 节点查询功能">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="proto-docs.html" class="navigation navigation-next " aria-label="Next page: 操作方法及其参数">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"服务端操作","level":"1.8.2","depth":2,"next":{"title":"操作方法及其参数","level":"1.8.3","depth":2,"path":"cn/api/proto-docs.md","ref":"./cn/api/proto-docs.md","articles":[]},"previous":{"title":"节点查询功能","level":"1.8.1","depth":2,"path":"cn/api/swagger-api.md","ref":"./cn/api/swagger-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","tital":"Plugchain 文档","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/api/txs.md","mtime":"2021-08-13T08:42:48.690Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-16T04:00:37.816Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
