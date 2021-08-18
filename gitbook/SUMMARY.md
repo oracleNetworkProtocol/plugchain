@@ -3,9 +3,9 @@
 ## PLUGChain 使用手册
 
 
-* [PLUGChain]()
+* [PLUGChain](README.md)
 
-    * 介绍
+    * [介绍](README.md)
         * [什么是 PLUGChain ?](README.md)
     
 * [开始](./cn/installation.md)    
