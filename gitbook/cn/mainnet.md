@@ -21,6 +21,8 @@ title: 加入主网
 plugchaind init myNode --chain-id plugchain
 ```
 
+*[主网创世文件和种子信息](https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1)*
+
 3. 下载`https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1/genesis.json`替换 --home 目录下的`config/genesis.json` //--home 默认目录为`~/.plugchain`
 
 4. 复制 `https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1/seeds.txt` 文件中提供的 `seeds` 修改--home目录下的 `config/config.toml` 中的`seeds`参数以设置链接的种子节点 

@@ -25,7 +25,7 @@
 | private_peer_ids  | none |
 | unconditional_peer_ids  | optionally sentry node IDs |
 | addr_book_strict  | false |
-| double_sign_check_height  | 10 |
+| double_sign_check_height  | 0 |
 
 
 #### 哨兵节点配置:

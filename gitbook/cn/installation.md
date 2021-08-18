@@ -71,9 +71,11 @@ plugchaind version
 ```
 v0.3.0
 ```
-#### 作为完整节点运行或者验证者节点运行，请先把创世文件复制到自己的数据目录
+####  完成 `plugchaind` 安装，就可以选择加入主网或者测试网了。
+- [加入主网](./mainnet.md)
+- [加入测试网](./testnet.md)
 
-- 初始化节点，默认数据目录
+<!-- - 初始化节点，默认数据目录
 
 ```
 plugchaind init mycustomMoniker --chain-id plugchain
@@ -95,4 +97,4 @@ APPHOME="~/.plugchain"
 
 - 您的全节点将未确认的事务保存在其内存池中。为了防止垃圾邮件，最好设置一个交易必须满足的最小gas价格，以便在您的节点的内存池中被接受。这个参数 `min-gas-prices` 可以在下面的文件$APPHOME/config/app.toml中设置,也可以直接启动时设置。如下：
 
-- 运行 `plugchaind start --minimum-gas-prices 0.0001plug` 加入到主网中。。。
+- 运行 `plugchaind start --minimum-gas-prices 0.0001plug` 加入到主网中。。。 -->

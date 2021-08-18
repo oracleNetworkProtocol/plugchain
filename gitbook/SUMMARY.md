@@ -13,7 +13,8 @@
     * [安装 PLUGChain](./cn/installation.md)    
     * [加入到 PLUGChain 主网](./cn/mainnet.md)
     * [加入到 PLUGChain 测试网](./cn/testnet.md)    
-    * [测试网 测试流程 ](./cn/testnet-process.md)    
+    * [测试网 测试流程 ](./cn/testnet-process.md) 
+    * [PLUGChain常见问题](./cn/problem.md)   
 
 * [节点知识](./cn/node/README.md)  
 
