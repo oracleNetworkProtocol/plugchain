@@ -51,6 +51,8 @@ git clone https://github.com/oracleNetworkProtocol/plugchain.git
 go env -w GO111MODULE=on
 export GOPROXY=https://goproxy.io,direct
 ```
+
+> 下一步 `make install` 如果包下载超时，可以选择更换下代理，`export GOPROXY=https://goproxy.cn,direct`
 #### 编译二进制文件
 ```shell
 cd plugchain && make install
