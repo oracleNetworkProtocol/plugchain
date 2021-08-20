@@ -27,4 +27,4 @@ plugchaind init myNode --chain-id plugchain
 
 4. 复制 `https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1/seeds.txt` 文件中提供的 `seeds` 修改--home目录下的 `config/config.toml` 中的`seeds`参数以设置链接的种子节点 
 
-5. 修改完之后，使用 `plugchaind start --minimum-gas-prices 0.0001line` 启动节点
+5. 修改完之后，使用 `plugchaind start --minimum-gas-prices 0.0001plug` 启动节点

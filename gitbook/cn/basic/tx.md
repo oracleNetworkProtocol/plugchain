@@ -113,7 +113,7 @@ plugchaind tx bank send $from $to 10plug --fees 10000plug --chain-id testnet --h
    - `--gas` 手续费用量 默认 200000
    - `--gas-prices` gas价格 比如 0.1plug
 ```sh
-plugchaind tx bank send $from $to 100line --gas 200000 --gas-prices 0.0001line --chain-id plugchain-testnet-1 --home home1
+plugchaind tx bank send $from $to 100000plug --gas 200000 --gas-prices 0.0001plug --chain-id plugchain-testnet-1 --home home1
 ```
 
 #### 注意事项

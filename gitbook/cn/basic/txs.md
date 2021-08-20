@@ -25,8 +25,8 @@ title: 流程性交易
 1. 生成无符号tx
 ```bash
 plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) \
-$(plugchaind keys show wallet2 -a --home node1) 1000000line \
---from wallet1 --fees 5000line --chain-id plugchain --generate-only > tx.json
+$(plugchaind keys show wallet2 -a --home node1) 1000000plug \
+--from wallet1 --fees 5000plug --chain-id plugchain --generate-only > tx.json
 ```
 tx.json信息如下:
 ```json
@@ -39,7 +39,7 @@ tx.json信息如下:
                 "to_address": "gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9",
                 "amount": [
                     {
-                        "denom": "line",
+                        "denom": "plug",
                         "amount": "1000000"
                     }
                 ]
@@ -55,7 +55,7 @@ tx.json信息如下:
         "fee": {
             "amount": [
                 {
-                    "denom": "line",
+                    "denom": "plug",
                     "amount": "5000"
                 }
             ],
@@ -83,7 +83,7 @@ tx-sign.json信息：
                 "to_address": "gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9",
                 "amount": [
                     {
-                        "denom": "line",
+                        "denom": "plug",
                         "amount": "1000000"
                     }
                 ]
@@ -112,7 +112,7 @@ tx-sign.json信息：
         "fee": {
             "amount": [
                 {
-                    "denom": "line",
+                    "denom": "plug",
                     "amount": "5000"
                 }
             ],
@@ -183,7 +183,7 @@ curl --header "Content-Type: application/json" --request POST --data '{"tx_bytes
               },
               {
                 "key": "amount",
-                "value": "1000000line"
+                "value": "1000000plug"
               }
             ]
           }

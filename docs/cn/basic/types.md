@@ -25,7 +25,7 @@ func sendTx() error {
     addr1, _ := sdk.AccAddressFromBech32("gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed")
 	addr2, _ := sdk.AccAddressFromBech32("gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds")
 
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("line", 5000000)))
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
 
     err := txBuilder.SetMsgs(msg1, msg2)
     if err != nil {

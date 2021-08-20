@@ -4,6 +4,7 @@
         * CPU: 1 cores
         * RAM: 2GB
         * Storage SSD: 200GB
+        * 带宽: 5Mbps
     - 推荐配置:
         * CPU: 4 cores
         * RAM: 8GB
@@ -15,6 +16,7 @@
         * CPU: 4 cores
         * RAM: 8GB
         * Storage SSD: 200GB
+        * 带宽： 5Mbps
     - 推荐配置:
         * CPU: 8 cores
         * RAM: 32GB
@@ -24,4 +26,4 @@
     * CPU: 4 cores
     * RAM: 8GB
     * Storage SSD: 200GB
-* 
+    * 带宽： 4Mbps
