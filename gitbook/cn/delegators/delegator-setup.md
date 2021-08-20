@@ -8,14 +8,14 @@ plugchaind q staking validators --chain-id plugchain
 * plugchaind tx staking delegate [validator-addr] [amount] --from mykey [flags]
 ```shell
 plugchaind tx staking delegate gxvaloperxxxxxxxxxxxxxxxxxxxxx 20000plug \
- --from mywallet --chain-id plugchain
+ --from mywallet --fees 20plug --chain-id plugchain
 ```
 
 #### 更改自己的委托验证者
 * plugchaind tx staking redelegate [src-validator-addr] [dst-validator-addr] [amount] --from mykey [flags]
 ```shell
 plugchaind tx staking redelegate gxvaloperxxxxxxxxxxxxxxxxxxxx gxvaloperxxxxxxxxxxxxxxxxxxx 100000plug \
-  --from mywallet --chain-id plugchain
+  --from mywallet --fees 20plug --chain-id plugchain
 ```
 
 #### 根据验证者查询未提取收益

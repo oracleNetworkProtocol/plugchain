@@ -26,7 +26,7 @@ title: 流程性交易
 ```bash
 plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) \
 $(plugchaind keys show wallet2 -a --home node1) 1000000plug \
---from wallet1 --fees 5000plug --chain-id plugchain --generate-only > tx.json
+--from wallet1 --fees 20plug --chain-id plugchain --generate-only > tx.json
 ```
 tx.json信息如下:
 ```json
@@ -147,7 +147,7 @@ curl --header "Content-Type: application/json" --request POST --data '{"tx_bytes
     "codespace": "",
     "code": 0,
     "data": "0A060A0473656E64",
-    "raw_log": "[{\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"send\"},{\"key\":\"sender\",\"value\":\"gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\"},{\"key\":\"module\",\"value\":\"bank\"}]},{\"type\":\"transfer\",\"attributes\":[{\"key\":\"recipient\",\"value\":\"gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9\"},{\"key\":\"sender\",\"value\":\"gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\"},{\"key\":\"amount\",\"value\":\"1000000line\"}]}]}]",
+    "raw_log": "[{\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"send\"},{\"key\":\"sender\",\"value\":\"gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\"},{\"key\":\"module\",\"value\":\"bank\"}]},{\"type\":\"transfer\",\"attributes\":[{\"key\":\"recipient\",\"value\":\"gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9\"},{\"key\":\"sender\",\"value\":\"gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\"},{\"key\":\"amount\",\"value\":\"1000000plug\"}]}]}]",
     "logs": [
       {
         "msg_index": 0,

@@ -8,13 +8,13 @@
 plugchaind tx staking create-validator --from mywallet \
 --amount 1000000plug --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" --commission-rate="0.10" --commission-max-rate="0.20" \
---commission-max-change-rate="0.01"  --min-self-delegation="1000000" --chain-id plugchain
+--commission-max-change-rate="0.01"  --min-self-delegation="1000000" --fees 20plug --chain-id plugchain
 ```
 #### 修改已经存在的验证者配置
 * plugchaind tx staking edit-validator [flags]
 ```shell
 plugchaind tx staking edit-validator --from mywallet \
---moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --chain-id plugchain
+--moniker="my validator" --commission-rate="0.20" --min-self-delegation="1000000" --fees 20plug --chain-id plugchain
 ```
 **[!warning]** : 
 

@@ -78,7 +78,7 @@ func sendTx() error {
     //发送一笔转账:
     //地址addr1 到 addr2
     //交易需要addr1 签名
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("line", 5000000)))
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
 
     err := txBuilder.SetMsgs(msg1, msg2)
     if err != nil {
