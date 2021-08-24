@@ -45,3 +45,6 @@
 | pex  | true |
 | seed_mode | true |
 
+
+
+#### 配置文件所在目录 `数据目录/config/config.toml`, 数据目录默认是 `~/.plugchain`

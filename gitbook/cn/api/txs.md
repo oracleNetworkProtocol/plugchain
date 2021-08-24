@@ -17,7 +17,7 @@ import (
 
 func sendTx() error {
     // 选择您的编解码器：Amino 或 Protobuf
-    encCfg := app.MakeTestEncodingConfig()
+    encCfg := app.MakeEncodingConfig()
 
     // 创建一个新的 TxBuilder。
     txBuilder := encCfg.TxConfig.NewTxBuilder()
@@ -86,7 +86,7 @@ func sendTx() error {
     }
 
     txBuilder.SetGasLimit(200000)
-    // txBuilder.SetFeeAmount(...)
+    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
     // txBuilder.SetMemo(...)
     // txBuilder.SetTimeoutHeight(...)
 }

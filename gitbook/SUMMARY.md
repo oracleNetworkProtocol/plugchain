@@ -16,7 +16,9 @@
     * [测试网 测试流程 ](./cn/testnet-process.md) 
     * [PLUGChain常见问题](./cn/problem.md)   
 
-* [节点知识](./cn/node/README.md)  
+* [节点知识](./cn/node/README.md)
+    * [节点配置](./cn/node/README.md)
+    * [节点服务器配置](./cn/node/node-claim.md)
 
 * [钱包和地址](./cn/basic/accounts-faq.md)
 

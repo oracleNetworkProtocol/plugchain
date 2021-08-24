@@ -249,6 +249,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../node/">
+            
+                <a href="../node/">
+            
+                    
+                    节点配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../node/node-claim.html">
+            
+                <a href="../node/node-claim.html">
+            
+                    
+                    节点服务器配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.4" data-path="../basic/accounts-faq.html">
@@ -628,38 +660,77 @@
 &#x4E3A;&#x4E86;&#x80FD;&#x8FDB;&#x5165;&#x9A8C;&#x8BC1;&#x4EBA;&#x96C6;&#x5408;,&#x4F60;&#x7684;&#x6743;&#x91CD;&#x5FC5;&#x987B;&#x8D85;&#x8FC7;&#x7B2C;100&#x540D;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;
 :::</p>
 <ul>
-<li>&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x4E4B;&#x540E;,&#x9700;&#x8981;&#x4FEE;&#x6539;&#x914D;&#x7F6E;<a href="../node/">validator config</a></li>
+<li>&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x4E4B;&#x540E;,&#x642D;&#x5EFA;&#x54E8;&#x5175;&#x8282;&#x70B9;&#x4FDD;&#x62A4;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x9A8C;&#x8BC1;&#x8005;&#x914D;&#x7F6E;&#x4FE1;&#x606F;<a href="../node/">validator config</a></li>
+<li>&#x4FEE;&#x6539;&#x9A8C;&#x8BC1;&#x8005;&#x914D;&#x7F6E;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC; <code>double_sign_check_height</code> &#x53C2;&#x6570;&#xFF0C;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x65AD;&#x5F00;&#x671F;&#x95F4;&#xFF0C;&#x94FE;&#x51FA;&#x4E86;&#x591A;&#x5C11;&#x4E2A;&#x5757;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x6B64;&#x53C2;&#x6570;&#x91CC;&#x5199;&#x4E0A;&#x591A;&#x5C11;&#x4E2A;&#x5757;&#xFF0C;&#x8868;&#x793A;&#x5411;&#x4E0A;&#x9A8C;&#x8BC1;&#x591A;&#x5C11;&#x4E2A;&#x533A;&#x5757;&#xFF0C;&#x9632;&#x6B62;&#x8FDB;&#x5165;&#x76D1;&#x7981;&#x72B6;&#x6001;&#x3002;</li>
 </ul>
 <h2 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x5E38;&#x89C1;&#x95EE;&#x9898;</h2>
-<h3 id="&#x95EE;&#x9898;-1--&#x6211;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x7684;votingpower-0">&#x95EE;&#x9898; #1 : &#x6211;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x7684;<code>voting_power: 0</code></h3>
-<p>&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x5DF2;&#x7ECF;&#x662F;jailed&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x9A8C;&#x8BC1;&#x4EBA;&#x5728;&#x6700;&#x8FD1;<code>10000</code>&#x4E2A;&#x533A;&#x5757;&#x4E2D;&#x6709;&#x8D85;&#x8FC7;<code>500</code>&#x4E2A;&#x533A;&#x5757;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x6295;&#x7968;,&#x6216;&#x8005;&#x88AB;&#x53D1;&#x73B0;&#x53CC;&#x7B7E;,&#x5C31;&#x4F1A;&#x88AB;jail&#x6389;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x88AB;&#x56E0;&#x4E3A;&#x6389;&#x7EBF;&#x800C;&#x906D;&#x5230;jail,&#x4F60;&#x53EF;&#x4EE5;&#x91CD;&#x83B7;&#x4F60;&#x7684;&#x6295;&#x7968;&#x80A1;&#x6743;&#x4EE5;&#x91CD;&#x56DE;&#x9A8C;&#x8BC1;&#x4EBA;&#x961F;&#x4F0D;&#x3002;&#x9996;&#x5148;,&#x5982;&#x679C;<code>plugchaind</code>&#x6CA1;&#x6709;&#x8FD0;&#x884C;,&#x8BF7;&#x518D;&#x6B21;&#x542F;&#x52A8;&#xFF1A;</p>
-<pre><code class="lang-bash">plugchaind start
-</code></pre>
-<p>&#x7B49;&#x5F85;&#x4F60;&#x7684;&#x5168;&#x8282;&#x70B9;&#x8FFD;&#x8D76;&#x4E0A;&#x6700;&#x65B0;&#x7684;&#x533A;&#x5757;&#x9AD8;&#x5EA6;&#x3002;&#x7136;&#x540E;,&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x3002;&#x63A5;&#x7740;,&#x4F60;&#x53EF;&#x4EE5;unjail&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;</p>
-<p>&#x6700;&#x540E;,&#x68C0;&#x67E5;&#x4F60;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x770B;&#x770B;&#x6295;&#x7968;&#x80A1;&#x6743;&#x662F;&#x5426;&#x6062;&#x590D;&#xFF1A;</p>
-<pre><code class="lang-bash">plugchaind status
-</code></pre>
-<p>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#x4F60;&#x7684;&#x6295;&#x7968;&#x6743;&#x6BD4;&#x4E4B;&#x524D;&#x8981;&#x5C11;&#x3002;&#x8FD9;&#x662F;&#x7531;&#x4E8E;&#x4F60;&#x7684;&#x4E0B;&#x7EBF;&#x53D7;&#x5230;&#x7684;&#x524A;&#x51CF;&#x5904;&#x7F5A;&#xFF01;</p>
-<h3 id="&#x95EE;&#x9898;-2--&#x6211;&#x7684;plugchaind&#x7531;&#x4E8E;too-many-open-files&#x800C;&#x5D29;&#x6E83;">&#x95EE;&#x9898; #2 : &#x6211;&#x7684;<code>plugchaind</code>&#x7531;&#x4E8E;<code>too many open files</code>&#x800C;&#x5D29;&#x6E83;</h3>
-<p>Linux&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x7684;&#x9ED8;&#x8BA4;&#x6587;&#x4EF6;&#x6570;&#xFF08;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF09;&#x662F;1024&#x3002;&#x5DF2;&#x77E5;<code>plugchaind</code>&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x8D85;&#x8FC7;1024&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x8FDB;&#x7A0B;&#x5D29;&#x6E83;&#x3002;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x8FD0;&#x884C;<code>ulimit -n 4096</code>&#xFF08;&#x589E;&#x52A0;&#x5141;&#x8BB8;&#x7684;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x6570;&#xFF09;&#x6765;&#x5FEB;&#x901F;&#x4FEE;&#x590D;,&#x7136;&#x540E;&#x4F7F;&#x7528;<code>plugchaind start</code>&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x8FDB;&#x7A0B;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;<code>systemd</code>&#x6216;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x5668;&#x6765;&#x542F;&#x52A8;<code>plugchaind</code>,&#x5219;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5728;&#x8BE5;&#x7EA7;&#x522B;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;&#x3002;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x793A;&#x4F8B;<code>systemd</code>&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-toml"># /etc/systemd/system/plugchaind.service
-[Unit]
-Description=plugchain Node
-After=network.target
-
-[Service]
-Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu
-ExecStart=/home/ubuntu/go/bin/plugchaind start
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
+<h3 id="&#x9A8C;&#x8BC1;&#x8005;&#x56DB;&#x79CD;&#x72B6;&#x6001;">&#x9A8C;&#x8BC1;&#x8005;&#x56DB;&#x79CD;&#x72B6;&#x6001;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x72B6;&#x6001;(status)</th>
+<th>&#x72B6;&#x6001;&#x7801;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x72B6;&#x51B5;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOND_STATUS_UNSPECIFIED</td>
+<td>0</td>
+<td>&#x5B9A;&#x4E49;&#x4E86;&#x65E0;&#x6548;&#x7684;&#x9A8C;&#x8BC1;&#x5668;&#x72B6;&#x6001;</td>
+<td>&#x65E0;&#x6548;</td>
+</tr>
+<tr>
+<td>BOND_STATUS_UNBONDED</td>
+<td>1</td>
+<td>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x672A;&#x7ED1;&#x5B9A;&#x7684;&#x9A8C;&#x8BC1;&#x5668;</td>
+<td>&#x79BB;&#x7EBF;</td>
+</tr>
+<tr>
+<td>BOND_STATUS_UNBONDING</td>
+<td>2</td>
+<td>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x89E3;&#x9664;&#x7ED1;&#x5B9A;&#x7684;&#x9A8C;&#x8BC1;&#x5668;</td>
+<td>&#x76D1;&#x7981;</td>
+</tr>
+<tr>
+<td>BOND_STATUS_BONDED</td>
+<td>3</td>
+<td>&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7ED1;&#x5B9A;&#x7684;&#x9A8C;&#x8BC1;&#x5668;</td>
+<td>&#x6B63;&#x5E38;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x9A8C;&#x8BC1;&#x8005;&#x4FE1;&#x606F;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#xFF1A;">&#x9A8C;&#x8BC1;&#x8005;&#x4FE1;&#x606F;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#xFF1A;</h3>
+<pre><code>commission:
+  commission_rates:
+    max_change_rate: &quot;0.010000000000000000&quot;
+    max_rate: &quot;0.200000000000000000&quot;
+    rate: &quot;0.100000000000000000&quot;
+  update_time: &quot;2021-07-27T13:19:37.983601182Z&quot;
+consensus_pubkey:
+  &apos;@type&apos;: /cosmos.crypto.ed25519.PubKey
+  key: 5TTh7vhc3RvibPttF29r2iC6qSNfGbJdY9sVsQHBT8w=
+delegator_shares: &quot;8813835048395.526196202816719238&quot;
+description:
+  details: &quot;&quot;
+  identity: &quot;&quot;
+  moniker: My Validator
+  security_contact: &quot;&quot;
+  website: &quot;&quot;
+jailed: true
+min_self_delegation: &quot;1000000&quot;
+operator_address: gxvaloper19quyxaq87dpsxt9w2q23c4d8x3fck4fzh4u8es
+status: BOND_STATUS_UNBONDING
+tokens: &quot;8466534803455&quot;
+unbonding_height: &quot;831092&quot;
+unbonding_time: &quot;2021-09-02T18:02:44.032627007Z&quot;
+</code></pre><h3 id="&#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E;-jailedtrue-&#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;stautusbondstatusunbonding&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;">&#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E; <code>jailed:true</code> &#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;<code>stautus:BOND_STATUS_UNBONDING</code>&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;</h3>
+<pre><code>plugchaind tx slashing  unjail --from mykey --chain-id plugchain
+</code></pre><ul>
+<li>--from mykey ,<code>mykey</code> &#x662F;&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x65F6;&#xFF0C;&#x64CD;&#x4F5C;&#x7684;&#x5730;&#x5740;&#x540D;&#x79F0;</li>
+<li>&#x89E3;&#x7981;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x5F53;&#x524D;&#x9A8C;&#x8BC1;&#x8005;&#x59D4;&#x6258;&#x91CF;&#x5927;&#x4E8E;&#x8282;&#x70B9;&#x914D;&#x7F6E;&#x53C2;&#x6570;<code>min_self_delegation</code>&#x7684;&#x503C;&#xFF0C;&#x4E0D;&#x591F;&#x7684;&#xFF0C;&#x901A;&#x8FC7;&#x59D4;&#x6258;&#x5E01;&#xFF0C;&#x8D85;&#x8FC7;&#x6B64;&#x53C2;&#x6570;</li>
+</ul>
 
                                 
                                 </section>
@@ -703,7 +774,7 @@ WantedBy=multi-user.target
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.6.2","depth":2,"next":{"title":"委托人","level":"1.7","depth":1,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[{"title":"介绍","level":"1.7.1","depth":2,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[]},{"title":"使用","level":"1.7.2","depth":2,"path":"cn/delegators/delegator-setup.md","ref":"./cn/delegators/delegator-setup.md","articles":[]}]},"previous":{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/validators/validator-setup.md","mtime":"2021-08-20T07:29:57.390Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-20T07:31:30.745Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.6.2","depth":2,"next":{"title":"委托人","level":"1.7","depth":1,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[{"title":"介绍","level":"1.7.1","depth":2,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[]},{"title":"使用","level":"1.7.2","depth":2,"path":"cn/delegators/delegator-setup.md","ref":"./cn/delegators/delegator-setup.md","articles":[]}]},"previous":{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/validators/validator-setup.md","mtime":"2021-08-24T06:54:35.079Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T06:55:01.939Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -47,51 +47,54 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 为了能进入验证人集合,你的权重必须超过第100名的验证人。
 :::
 
-- 成为验证者之后,需要修改配置[validator config](../node/README.md)
+- 成为验证者之后,搭建哨兵节点保护验证者节点时，需要修改验证者配置信息[validator config](../node/README.md)
+- 修改验证者配置，需要注意配置文件里 `double_sign_check_height` 参数，验证者节点断开期间，链出了多少个块，需要在此参数里写上多少个块，表示向上验证多少个区块，防止进入监禁状态。
 
 
 ## 常见问题
 
-### 问题 #1 : 我的验证人的`voting_power: 0`
+### 验证者四种状态
 
-你的验证人已经是jailed状态。如果验证人在最近`10000`个区块中有超过`500`个区块没有进行投票,或者被发现双签,就会被jail掉。
+| 状态(status) | 状态码 | 描述  | 状况  | 
+| ---- | ------ | ----------- | ---- | 
+| BOND_STATUS_UNSPECIFIED | 0 | 定义了无效的验证器状态 | 无效 | 
+| BOND_STATUS_UNBONDED | 1 | 定义了一个未绑定的验证器 | 离线 | 
+| BOND_STATUS_UNBONDING | 2 | 定义了一个解除绑定的验证器 | 监禁 | 
+| BOND_STATUS_BONDED | 3 | 定义了一个绑定的验证器 | 正常 | 
 
-如果被因为掉线而遭到jail,你可以重获你的投票股权以重回验证人队伍。首先,如果`plugchaind`没有运行,请再次启动：
+### 验证者信息类似如下：
 
-```bash
-plugchaind start
+```
+commission:
+  commission_rates:
+    max_change_rate: "0.010000000000000000"
+    max_rate: "0.200000000000000000"
+    rate: "0.100000000000000000"
+  update_time: "2021-07-27T13:19:37.983601182Z"
+consensus_pubkey:
+  '@type': /cosmos.crypto.ed25519.PubKey
+  key: 5TTh7vhc3RvibPttF29r2iC6qSNfGbJdY9sVsQHBT8w=
+delegator_shares: "8813835048395.526196202816719238"
+description:
+  details: ""
+  identity: ""
+  moniker: My Validator
+  security_contact: ""
+  website: ""
+jailed: true
+min_self_delegation: "1000000"
+operator_address: gxvaloper19quyxaq87dpsxt9w2q23c4d8x3fck4fzh4u8es
+status: BOND_STATUS_UNBONDING
+tokens: "8466534803455"
+unbonding_height: "831092"
+unbonding_time: "2021-09-02T18:02:44.032627007Z"
+
 ```
 
-等待你的全节点追赶上最新的区块高度。然后,运行如下命令。接着,你可以unjail你的验证人。
+### 当验证者处于 `jailed:true` 态度时，并且`stautus:BOND_STATUS_UNBONDING`说明验证者节点已经处理惩罚状态，需要解除惩罚状态：
 
-最后,检查你的验证人看看投票股权是否恢复：
-
-```bash
-plugchaind status
 ```
-
-你可能会注意到你的投票权比之前要少。这是由于你的下线受到的削减处罚！
-
-
-### 问题 #2 : 我的`plugchaind`由于`too many open files`而崩溃
-
-Linux可以打开的默认文件数（每个进程）是1024。已知`plugchaind`可以打开超过1024个文件。这会导致进程崩溃。快速修复运行`ulimit -n 4096`（增加允许的打开文件数）来快速修复,然后使用`plugchaind start`重新启动进程。如果你使用`systemd`或其他进程管理器来启动`plugchaind`,则可能需要在该级别进行一些配置。解决此问题的示例`systemd`文件如下：
-
-```toml
-# /etc/systemd/system/plugchaind.service
-[Unit]
-Description=plugchain Node
-After=network.target
-
-[Service]
-Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu
-ExecStart=/home/ubuntu/go/bin/plugchaind start
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=4096
-
-[Install]
-WantedBy=multi-user.target
+plugchaind tx slashing  unjail --from mykey --chain-id plugchain
 ```
+- --from mykey ,`mykey` 是成为验证者时，操作的地址名称
+- 解禁时，必须保证当前验证者委托量大于节点配置参数`min_self_delegation`的值，不够的，通过委托币，超过此参数

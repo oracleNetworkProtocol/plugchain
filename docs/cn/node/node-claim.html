@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>交易步骤 · Plugchain 文档</title>
+        <title>节点服务器配置 · Plugchain 文档</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../validators/validator-faq.html" />
+    <link rel="next" href="../basic/accounts-faq.html" />
     
     
-    <link rel="prev" href="tx.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -238,9 +238,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../node/">
+        <li class="chapter " data-level="1.3" data-path="./">
             
-                <a href="../node/">
+                <a href="./">
             
                     
                     节点知识
@@ -252,9 +252,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../node/">
+        <li class="chapter " data-level="1.3.1" data-path="./">
             
-                <a href="../node/">
+                <a href="./">
             
                     
                     节点配置
@@ -265,9 +265,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../node/node-claim.html">
+        <li class="chapter active" data-level="1.3.2" data-path="node-claim.html">
             
-                <a href="../node/node-claim.html">
+                <a href="node-claim.html">
             
                     
                     节点服务器配置
@@ -283,9 +283,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="accounts-faq.html">
+        <li class="chapter " data-level="1.4" data-path="../basic/accounts-faq.html">
             
-                <a href="accounts-faq.html">
+                <a href="../basic/accounts-faq.html">
             
                     
                     钱包和地址
@@ -297,9 +297,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="accounts-faq.html">
+        <li class="chapter " data-level="1.4.1" data-path="../basic/accounts-faq.html">
             
-                <a href="accounts-faq.html">
+                <a href="../basic/accounts-faq.html">
             
                     
                     介绍
@@ -310,9 +310,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="accounts.html">
+        <li class="chapter " data-level="1.4.2" data-path="../basic/accounts.html">
             
-                <a href="accounts.html">
+                <a href="../basic/accounts.html">
             
                     
                     使用
@@ -328,9 +328,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="tx.html">
+        <li class="chapter " data-level="1.5" data-path="../basic/tx.html">
             
-                <a href="tx.html">
+                <a href="../basic/tx.html">
             
                     
                     交易
@@ -342,9 +342,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="tx.html">
+        <li class="chapter " data-level="1.5.1" data-path="../basic/tx.html">
             
-                <a href="tx.html">
+                <a href="../basic/tx.html">
             
                     
                     转账
@@ -355,9 +355,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.2" data-path="txs.html">
+        <li class="chapter " data-level="1.5.2" data-path="../basic/txs.html">
             
-                <a href="txs.html">
+                <a href="../basic/txs.html">
             
                     
                     交易步骤
@@ -534,9 +534,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="genesis.html">
+        <li class="chapter " data-level="1.9" data-path="../basic/genesis.html">
             
-                <a href="genesis.html">
+                <a href="../basic/genesis.html">
             
                     
                     创世文件genesis.json
@@ -603,7 +603,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >交易步骤</a>
+        <a href="../.." >节点服务器配置</a>
     </h1>
 </div>
 
@@ -618,196 +618,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;">&#x672C;&#x6587;&#x4EA4;&#x6613;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x8F6C;&#x8D26;&#x4E3A;&#x4F8B;</h3>
-<h4 id="&#x53C2;&#x6570;">&#x53C2;&#x6570;</h4>
+                                <ol>
+<li><p>API &#x670D;&#x52A1;&#x8282;&#x70B9;  &#x540C;&#x6B65;&#x5757;&#xFF0C;&#x5E7F;&#x64AD;&#x4E8B;&#x52A1;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x94FE;&#x4E0A;&#x57FA;&#x7840;&#x6570;&#x636E;&#x7684;&#x67E5;&#x8BE2;&#x529F;&#x80FD;</p>
 <ul>
-<li>&#x4E24;&#x4E2A;&#x5730;&#x5740;<pre><code class="lang-golang">- name: wallet1
-  type: local
-  address: gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq
-  pubkey: gxpub1addwnpepqf0egzqdu83e4yvd3hsw4mck0d7jjkhq76d5etc2rymmkhxtlv4pxw7r8st
-  mnemonic: &quot;&quot;
-  threshold: 0
-  pubkeys: []
-- name: wallet2
-  type: local
-  address: gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9
-  pubkey: gxpub1addwnpepqf0du4l04hqquvz7q3ydq75uma6zu3q8ylk2qhydv5ka56edzu0v2y8gznl
-  mnemonic: &quot;&quot;
-  threshold: 0
-  pubkeys: []
-</code></pre>
-</li>
-<li><p>&#x9700;&#x6C42;&#xFF1A;wallet1 &#x5411; wallet2 &#x8F6C;&#x8D26;&#x4E00;&#x7B14;</p>
-</li>
-<li><p>&#x751F;&#x6210;&#x65E0;&#x7B26;&#x53F7;tx</p>
-<pre><code class="lang-bash">plugchaind tx bank send $(plugchaind keys show wallet1 -a --home node1) \
-$(plugchaind keys show wallet2 -a --home node1) 1000000plug \
---from wallet1 --fees 20plug --chain-id plugchain --generate-only &gt; tx.json
-</code></pre>
-<p>tx.json&#x4FE1;&#x606F;&#x5982;&#x4E0B;:</p>
-<pre><code class="lang-json">{
- &quot;body&quot;: {
-     &quot;messages&quot;: [
-         {
-             &quot;@type&quot;: &quot;/cosmos.bank.v1beta1.MsgSend&quot;,
-             &quot;from_address&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;,
-             &quot;to_address&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;,
-             &quot;amount&quot;: [
-                 {
-                     &quot;denom&quot;: &quot;plug&quot;,
-                     &quot;amount&quot;: &quot;1000000&quot;
-                 }
-             ]
-         }
-     ],
-     &quot;memo&quot;: &quot;&quot;,
-     &quot;timeout_height&quot;: &quot;0&quot;,
-     &quot;extension_options&quot;: [],
-     &quot;non_critical_extension_options&quot;: []
- },
- &quot;auth_info&quot;: {
-     &quot;signer_infos&quot;: [],
-     &quot;fee&quot;: {
-         &quot;amount&quot;: [
-             {
-                 &quot;denom&quot;: &quot;plug&quot;,
-                 &quot;amount&quot;: &quot;5000&quot;
-             }
-         ],
-         &quot;gas_limit&quot;: &quot;200000&quot;,
-         &quot;payer&quot;: &quot;&quot;,
-         &quot;granter&quot;: &quot;&quot;
-     }
- },
- &quot;signatures&quot;: []
-}
-</code></pre>
-</li>
-<li><p>&#x5BF9;&#x65E0;&#x7B26;&#x53F7;tx&#x7B7E;&#x540D;</p>
-<pre><code class="lang-bash">plugchaind tx sign tx.json --from wallet1 --chain-id plugchain -y &gt; tx-sign.json
-</code></pre>
-<p>tx-sign.json&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-json">{
- &quot;body&quot;: {
-     &quot;messages&quot;: [
-         {
-             &quot;@type&quot;: &quot;/cosmos.bank.v1beta1.MsgSend&quot;,
-             &quot;from_address&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;,
-             &quot;to_address&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;,
-             &quot;amount&quot;: [
-                 {
-                     &quot;denom&quot;: &quot;plug&quot;,
-                     &quot;amount&quot;: &quot;1000000&quot;
-                 }
-             ]
-         }
-     ],
-     &quot;memo&quot;: &quot;&quot;,
-     &quot;timeout_height&quot;: &quot;0&quot;,
-     &quot;extension_options&quot;: [],
-     &quot;non_critical_extension_options&quot;: []
- },
- &quot;auth_info&quot;: {
-     &quot;signer_infos&quot;: [
-         {
-             &quot;public_key&quot;: {
-                 &quot;@type&quot;: &quot;/cosmos.crypto.secp256k1.PubKey&quot;,
-                 &quot;key&quot;: &quot;Al+UCA3h45qRjY3g6u8We30pWuD2m0yvChk3u1zL+yoT&quot;
-             },
-             &quot;mode_info&quot;: {
-                 &quot;single&quot;: {
-                     &quot;mode&quot;: &quot;SIGN_MODE_DIRECT&quot;
-                 }
-             },
-             &quot;sequence&quot;: &quot;0&quot;
-         }
-     ],
-     &quot;fee&quot;: {
-         &quot;amount&quot;: [
-             {
-                 &quot;denom&quot;: &quot;plug&quot;,
-                 &quot;amount&quot;: &quot;5000&quot;
-             }
-         ],
-         &quot;gas_limit&quot;: &quot;200000&quot;,
-         &quot;payer&quot;: &quot;&quot;,
-         &quot;granter&quot;: &quot;&quot;
-     }
- },
- &quot;signatures&quot;: [
-     &quot;MCJY9Gxg9pMEjj4Dn+WvD5z7GgR93M8pWSsfgnrQVBRj1rSm5CNG8ZOwpICPfvPuBoyyFJzehDzdIQU4rd29vQ==&quot;
- ]
-}
-</code></pre>
-</li>
-<li>&#x5BF9;&#x7B7E;&#x540D;&#x4EA4;&#x6613;&#x4FE1;&#x606F;&#x7F16;&#x7801;<pre><code class="lang-bash">plugchaind tx encode tx-sign.json
-</code></pre>
-&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-text">CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29
-</code></pre>
-</li>
-<li>&#x5E7F;&#x64AD;&#x4EA4;&#x6613;<pre><code class="lang-bash">curl --header &quot;Content-Type: application/json&quot; --request POST --data &apos;{&quot;tx_bytes&quot;:&quot;CooBCocBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmcKKWd4MWNwcTg4dXM0a3ByY2RkNGZ5NHo1aGFsd2tyOGg1ZWVqcmdhY3NxEilneDE3M2F4a3hoOTNsZ3RqM3g5ZGRqdmh0eXkzMnhycTZxNXBrMDRlORoPCgRsaW5lEgcxMDAwMDAwEmQKTgpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJflAgN4eOakY2N4OrvFnt9KVrg9ptMrwoZN7tcy/sqExIECgIIARISCgwKBGxpbmUSBDUwMDAQwJoMGkAwIlj0bGD2kwSOPgOf5a8PnPsaBH3czylZKx+CetBUFGPWtKbkI0bxk7CkgI9+8+4GjLIUnN6EPN0hBTit3b29&quot;,&quot;mode&quot;:1}&apos; localhost:1317/cosmos/tx/v1beta1/txs
-</code></pre>
-&#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-json">{
-&quot;tx_response&quot;: {
- &quot;height&quot;: &quot;292&quot;,
- &quot;txhash&quot;: &quot;D7CD55CDE644952F2DCAEB32DD6E865657210EBCBBAE2914B256292762702C69&quot;,
- &quot;codespace&quot;: &quot;&quot;,
- &quot;code&quot;: 0,
- &quot;data&quot;: &quot;0A060A0473656E64&quot;,
- &quot;raw_log&quot;: &quot;[{\&quot;events\&quot;:[{\&quot;type\&quot;:\&quot;message\&quot;,\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;action\&quot;,\&quot;value\&quot;:\&quot;send\&quot;},{\&quot;key\&quot;:\&quot;sender\&quot;,\&quot;value\&quot;:\&quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\&quot;},{\&quot;key\&quot;:\&quot;module\&quot;,\&quot;value\&quot;:\&quot;bank\&quot;}]},{\&quot;type\&quot;:\&quot;transfer\&quot;,\&quot;attributes\&quot;:[{\&quot;key\&quot;:\&quot;recipient\&quot;,\&quot;value\&quot;:\&quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9\&quot;},{\&quot;key\&quot;:\&quot;sender\&quot;,\&quot;value\&quot;:\&quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq\&quot;},{\&quot;key\&quot;:\&quot;amount\&quot;,\&quot;value\&quot;:\&quot;1000000plug\&quot;}]}]}]&quot;,
- &quot;logs&quot;: [
-   {
-     &quot;msg_index&quot;: 0,
-     &quot;log&quot;: &quot;&quot;,
-     &quot;events&quot;: [
-       {
-         &quot;type&quot;: &quot;message&quot;,
-         &quot;attributes&quot;: [
-           {
-             &quot;key&quot;: &quot;action&quot;,
-             &quot;value&quot;: &quot;send&quot;
-           },
-           {
-             &quot;key&quot;: &quot;sender&quot;,
-             &quot;value&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;
-           },
-           {
-             &quot;key&quot;: &quot;module&quot;,
-             &quot;value&quot;: &quot;bank&quot;
-           }
-         ]
-       },
-       {
-         &quot;type&quot;: &quot;transfer&quot;,
-         &quot;attributes&quot;: [
-           {
-             &quot;key&quot;: &quot;recipient&quot;,
-             &quot;value&quot;: &quot;gx173axkxh93lgtj3x9ddjvhtyy32xrq6q5pk04e9&quot;
-           },
-           {
-             &quot;key&quot;: &quot;sender&quot;,
-             &quot;value&quot;: &quot;gx1cpq88us4kprcdd4fy4z5halwkr8h5eejrgacsq&quot;
-           },
-           {
-             &quot;key&quot;: &quot;amount&quot;,
-             &quot;value&quot;: &quot;1000000plug&quot;
-           }
-         ]
-       }
-     ]
-   }
- ],
- &quot;info&quot;: &quot;&quot;,
- &quot;gas_wanted&quot;: &quot;200000&quot;,
- &quot;gas_used&quot;: &quot;74685&quot;,
- &quot;tx&quot;: null,
- &quot;timestamp&quot;: &quot;&quot;
-}
-}
-</code></pre>
-</li>
-<li>&#x8F6C;&#x8D26;&#x5B8C;&#x6210;</li>
+<li>&#x6700;&#x4F4E;&#x8981;&#x6C42;<ul>
+<li>CPU: 1 cores</li>
+<li>RAM: 2GB</li>
+<li>Storage SSD: 200GB</li>
+<li>&#x5E26;&#x5BBD;: 5Mbps</li>
 </ul>
+</li>
+<li>&#x63A8;&#x8350;&#x914D;&#x7F6E;:<ul>
+<li>CPU: 4 cores</li>
+<li>RAM: 8GB</li>
+<li>Storage SSD: 200GB</li>
+<li>&#x5E26;&#x5BBD;: 5Mbps</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9; &#x51FA;&#x5757;&#xFF0C;&#x751F;&#x4EA7;&#x5FEB;</p>
+<ul>
+<li>&#x6700;&#x4F4E;&#x914D;&#x7F6E;:<ul>
+<li>CPU: 4 cores</li>
+<li>RAM: 8GB</li>
+<li>Storage SSD: 200GB</li>
+<li>&#x5E26;&#x5BBD;&#xFF1A; 5Mbps</li>
+</ul>
+</li>
+<li>&#x63A8;&#x8350;&#x914D;&#x7F6E;:<ul>
+<li>CPU: 8 cores</li>
+<li>RAM: 32GB</li>
+<li>Storage SSD: 500GB</li>
+<li>&#x5E26;&#x5BBD;: 20Mbps(&#x8D8A;&#x5927;&#x8D8A;&#x597D;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x5168;&#x8282;&#x70B9;,&#x79CD;&#x5B50;&#x8282;&#x70B9;<ul>
+<li>CPU: 4 cores</li>
+<li>RAM: 8GB</li>
+<li>Storage SSD: 200GB</li>
+<li>&#x5E26;&#x5BBD;&#xFF1A; 4Mbps</li>
+</ul>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -835,12 +690,12 @@ $(plugchaind keys show wallet2 -a --home node1) 1000000plug \
 
             
                 
-                <a href="tx.html" class="navigation navigation-prev " aria-label="Previous page: 转账">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 节点配置">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../validators/validator-faq.html" class="navigation navigation-next " aria-label="Next page: 验证者">
+                <a href="../basic/accounts-faq.html" class="navigation navigation-next " aria-label="Next page: 钱包和地址">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -851,7 +706,7 @@ $(plugchaind keys show wallet2 -a --home node1) 1000000plug \
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"交易步骤","level":"1.5.2","depth":2,"next":{"title":"验证者","level":"1.6","depth":1,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},{"title":"使用","level":"1.6.2","depth":2,"path":"cn/validators/validator-setup.md","ref":"./cn/validators/validator-setup.md","articles":[]}]},"previous":{"title":"转账","level":"1.5.1","depth":2,"path":"cn/basic/tx.md","ref":"./cn/basic/tx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/basic/txs.md","mtime":"2021-08-20T07:30:31.051Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T06:55:01.939Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"节点服务器配置","level":"1.3.2","depth":2,"next":{"title":"钱包和地址","level":"1.4","depth":1,"path":"cn/basic/accounts-faq.md","ref":"./cn/basic/accounts-faq.md","articles":[{"title":"介绍","level":"1.4.1","depth":2,"path":"cn/basic/accounts-faq.md","ref":"./cn/basic/accounts-faq.md","articles":[]},{"title":"使用","level":"1.4.2","depth":2,"path":"cn/basic/accounts.md","ref":"./cn/basic/accounts.md","articles":[]}]},"previous":{"title":"节点配置","level":"1.3.1","depth":2,"path":"cn/node/README.md","ref":"./cn/node/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/node/node-claim.md","mtime":"2021-08-20T03:38:07.525Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T06:55:01.939Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
