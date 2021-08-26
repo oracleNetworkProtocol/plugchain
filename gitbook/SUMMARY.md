@@ -32,7 +32,8 @@
 
 * [验证者](./cn/validators/validator-faq.md)
 
-    * [介绍](./cn/validators/validator-faq.md)   
+    * [基础概念](./cn/validators/validator-faq.md)   
+    * [常见问题](./cn/validators/validator-problem.md)   
     * [使用](./cn/validators/validator-setup.md)   
 
 * [委托人](./cn/delegators/delegator-faq.md)
@@ -40,7 +41,7 @@
     * [介绍](./cn/delegators/delegator-faq.md)   
     * [使用](./cn/delegators/delegator-setup.md)  
 
-* [API服务](./cn/api/swagger-api.md)
+* [服务端点](./cn/api/swagger-api.md)
     * [节点查询功能](./cn/api/swagger-api.md)
     * [服务端操作](./cn/api/txs.md)
     * [操作方法及其参数](./cn/api/proto-docs.md)

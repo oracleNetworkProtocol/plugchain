@@ -28,3 +28,16 @@ plugchaind init myNode --chain-id plugchain
 4. 复制 `https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1/seeds.txt` 文件中提供的 `seeds` 修改--home目录下的 `config/config.toml` 中的`seeds`参数以设置链接的种子节点 
 
 5. 修改完之后，使用 `plugchaind start --minimum-gas-prices 0.0001plug` 启动节点
+
+
+6. 查询节点是否同步完区块，返回`false`，表示同步成功。使用：
+
+```shell
+plugchaind status 2>&1 | jq -r '.SyncInfo.catching_up'
+```
+
+7. 只有节点已完成同步时，才可以将您的节点升级为验证人[成为验证人](./validators/validator-setup.md)
+
+**[!Danger]**:
+一定要备份好 home（默认为〜/.plugchain/）目录中的 config 目录！如果您的服务器磁盘损坏或您准备迁移服务器，这是恢复验证人的唯一方法。
+

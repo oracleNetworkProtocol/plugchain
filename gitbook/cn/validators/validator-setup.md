@@ -44,7 +44,7 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 
 
 ::: warning 注意
-为了能进入验证人集合,你的权重必须超过第100名的验证人。
+为了能进入验证人集合,你的权重(Voting Power)必须超过第100名的验证人。
 :::
 
 - 成为验证者之后,搭建哨兵节点保护验证者节点时，需要修改验证者配置信息[validator config](../node/README.md)
@@ -52,6 +52,8 @@ plugchaind query staking unbonding-delegations-from gxvaloperxxxxxxxxxxxxxxxxxxx
 
 
 ## 常见问题
+
+
 
 ### 验证者四种状态
 
@@ -91,7 +93,7 @@ unbonding_time: "2021-09-02T18:02:44.032627007Z"
 
 ```
 
-### 当验证者处于 `jailed:true` 态度时，并且`stautus:BOND_STATUS_UNBONDING`说明验证者节点已经处理惩罚状态，需要解除惩罚状态：
+### Jailed 当验证者处于 `jailed:true` 态度时，并且`stautus:BOND_STATUS_UNBONDING`说明验证者节点已经处理惩罚状态，需要解除惩罚状态：
 
 ```
 plugchaind tx slashing  unjail --from mykey --chain-id plugchain

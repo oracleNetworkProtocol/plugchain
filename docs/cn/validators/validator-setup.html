@@ -72,7 +72,7 @@
     <link rel="next" href="../delegators/delegator-faq.html" />
     
     
-    <link rel="prev" href="validator-faq.html" />
+    <link rel="prev" href="validator-problem.html" />
     
 
     </head>
@@ -392,7 +392,7 @@
                 <a href="validator-faq.html">
             
                     
-                    介绍
+                    基础概念
             
                 </a>
             
@@ -400,7 +400,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.2" data-path="validator-setup.html">
+        <li class="chapter " data-level="1.6.2" data-path="validator-problem.html">
+            
+                <a href="validator-problem.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="validator-setup.html">
             
                 <a href="validator-setup.html">
             
@@ -468,7 +481,7 @@
                 <a href="../api/swagger-api.html">
             
                     
-                    API服务
+                    服务端点
             
                 </a>
             
@@ -657,7 +670,7 @@
 </li>
 </ul>
 <p>::: warning &#x6CE8;&#x610F;
-&#x4E3A;&#x4E86;&#x80FD;&#x8FDB;&#x5165;&#x9A8C;&#x8BC1;&#x4EBA;&#x96C6;&#x5408;,&#x4F60;&#x7684;&#x6743;&#x91CD;&#x5FC5;&#x987B;&#x8D85;&#x8FC7;&#x7B2C;100&#x540D;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;
+&#x4E3A;&#x4E86;&#x80FD;&#x8FDB;&#x5165;&#x9A8C;&#x8BC1;&#x4EBA;&#x96C6;&#x5408;,&#x4F60;&#x7684;&#x6743;&#x91CD;(Voting Power)&#x5FC5;&#x987B;&#x8D85;&#x8FC7;&#x7B2C;100&#x540D;&#x7684;&#x9A8C;&#x8BC1;&#x4EBA;&#x3002;
 :::</p>
 <ul>
 <li>&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x4E4B;&#x540E;,&#x642D;&#x5EFA;&#x54E8;&#x5175;&#x8282;&#x70B9;&#x4FDD;&#x62A4;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x9A8C;&#x8BC1;&#x8005;&#x914D;&#x7F6E;&#x4FE1;&#x606F;<a href="../node/">validator config</a></li>
@@ -725,7 +738,7 @@ status: BOND_STATUS_UNBONDING
 tokens: &quot;8466534803455&quot;
 unbonding_height: &quot;831092&quot;
 unbonding_time: &quot;2021-09-02T18:02:44.032627007Z&quot;
-</code></pre><h3 id="&#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E;-jailedtrue-&#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;stautusbondstatusunbonding&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;">&#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E; <code>jailed:true</code> &#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;<code>stautus:BOND_STATUS_UNBONDING</code>&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;</h3>
+</code></pre><h3 id="jailed-&#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E;-jailedtrue-&#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;stautusbondstatusunbonding&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;">Jailed &#x5F53;&#x9A8C;&#x8BC1;&#x8005;&#x5904;&#x4E8E; <code>jailed:true</code> &#x6001;&#x5EA6;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;<code>stautus:BOND_STATUS_UNBONDING</code>&#x8BF4;&#x660E;&#x9A8C;&#x8BC1;&#x8005;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9664;&#x60E9;&#x7F5A;&#x72B6;&#x6001;&#xFF1A;</h3>
 <pre><code>plugchaind tx slashing  unjail --from mykey --chain-id plugchain
 </code></pre><ul>
 <li>--from mykey ,<code>mykey</code> &#x662F;&#x6210;&#x4E3A;&#x9A8C;&#x8BC1;&#x8005;&#x65F6;&#xFF0C;&#x64CD;&#x4F5C;&#x7684;&#x5730;&#x5740;&#x540D;&#x79F0;</li>
@@ -758,7 +771,7 @@ unbonding_time: &quot;2021-09-02T18:02:44.032627007Z&quot;
 
             
                 
-                <a href="validator-faq.html" class="navigation navigation-prev " aria-label="Previous page: 介绍">
+                <a href="validator-problem.html" class="navigation navigation-prev " aria-label="Previous page: 常见问题">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -774,7 +787,7 @@ unbonding_time: &quot;2021-09-02T18:02:44.032627007Z&quot;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.6.2","depth":2,"next":{"title":"委托人","level":"1.7","depth":1,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[{"title":"介绍","level":"1.7.1","depth":2,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[]},{"title":"使用","level":"1.7.2","depth":2,"path":"cn/delegators/delegator-setup.md","ref":"./cn/delegators/delegator-setup.md","articles":[]}]},"previous":{"title":"介绍","level":"1.6.1","depth":2,"path":"cn/validators/validator-faq.md","ref":"./cn/validators/validator-faq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/validators/validator-setup.md","mtime":"2021-08-24T06:54:35.079Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T06:55:01.939Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用","level":"1.6.3","depth":2,"next":{"title":"委托人","level":"1.7","depth":1,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[{"title":"介绍","level":"1.7.1","depth":2,"path":"cn/delegators/delegator-faq.md","ref":"./cn/delegators/delegator-faq.md","articles":[]},{"title":"使用","level":"1.7.2","depth":2,"path":"cn/delegators/delegator-setup.md","ref":"./cn/delegators/delegator-setup.md","articles":[]}]},"previous":{"title":"常见问题","level":"1.6.2","depth":2,"path":"cn/validators/validator-problem.md","ref":"./cn/validators/validator-problem.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","-lunr","-search","-highlight","search-plus","splitter","github","chapter-fold","back-to-top-button","sharing-plus","code"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"github":{"url":"https://github.com/oracleNetworkProtocol/plugchain"},"splitter":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"code":{"copyButtons":true},"fontsettings":{"theme":"sepia","family":"serif","size":1},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Plugchain 文档","language":"zh-hans","gitbook":"*","theme-default":{"showLevel":true}},"file":{"path":"cn/validators/validator-setup.md","mtime":"2021-08-26T03:52:54.665Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-26T03:53:28.446Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
