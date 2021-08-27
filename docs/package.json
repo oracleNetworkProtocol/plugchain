@@ -1,0 +1,26 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "PLUGChain Documents",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "author": "PLUGChain Dev Team",
+  "license": "Apache License 2.0",
+  "devDependencies": {
+    "@vuepress/plugin-search": "^1.0.0-rc.1",
+    "elliptic": ">=6.5.4",
+    "is-svg": ">=4.2.2",
+    "lodash": "^4.17.19",
+    "markdown-it": "^12.0.6",
+    "markdown-it-meta": "0.0.1",
+    "ssri": ">=8.0.1",
+    "vuepress": "^1.8.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vue": "^2.6.14"
+  }
+}

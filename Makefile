@@ -104,13 +104,13 @@ swagger:
 ###############################################################################
 ###                                   Docs                                  ###
 ###############################################################################
-gitbook-install: 
-	@echo "gitbook install ..." 
-	@cd gitbook/ && sudo gitbook install 
+npm-vue: 
+	@echo "install vuepress rely ..."
+	@cd docs/ && sudo npm install vue && sudo npm install -D vuepress
 
-gitbook: 
-	@echo "gitbook build ..."
-	@gitbook build ./gitbook ./docs 
+vuepress: 
+	@echo "vuepress build ..."
+	@cd docs/ && ./deploy.sh 
 	
 
-.PHONY: gitbook-install gitbook
+.PHONY: vuepress

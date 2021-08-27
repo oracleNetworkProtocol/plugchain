@@ -28,9 +28,8 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 # third_party/
-docs/_book/
-gitbook/node_modules/
-
+docs/node_modules/
+docs/.vuepress/dist/
 
 vue/*
 secret.yml
