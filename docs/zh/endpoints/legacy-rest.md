@@ -4,7 +4,7 @@ order: 2
 
 # Legacy Amino JSON REST
 
-PLUGChain Hub v0.2.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 PLUGChain Hub v0.2.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
+PLUGChain Hub v0.5.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 PLUGChain Hub v0.5.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
 
 Legacy REST 端点相关的重要信息：
 
@@ -47,6 +47,7 @@ PLUGChain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标
 
 | Legacy REST 端点                                                                  | 描述                                 | 新的 gRPC-gateway REST 端点                                                                                   |
 | --------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | `GET` `/bank/balances/{address}`                                                  | 查询一个地址的余额                   | `GET` `/cosmos/bank/v1beta1/balances/{address}`                                                               |
 | `POST` `/bank/accounts/{address}/transfers`                                       | 从一个账户向另一个账户转账           | N/A，直接使用 Protobuf                                                                                        |
 | `GET` `/bank/total`                                                               | 获取所有 token 的总量                | `GET` `/cosmos/bank/v1beta1/supply`                                                                           |

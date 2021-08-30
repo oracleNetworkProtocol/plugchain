@@ -19,7 +19,7 @@
 不能或不想运行验证人节点的人仍然可以作为委托人参与到POS网络中。委托人可以将token委托给验证人，委托人将从相应的验证人那里获得一定的token份额。委托token也称为绑定token给验证人。稍后我们将对其进行详细说明。此外，验证节点的所有者也是委托人。验证节点的所有者不仅可以在其自己的验证节点上抵押token，而且也可以在其他验证节点上抵押token。
 
 :::danger
-**验证节点的所有者在解绑自己抵押的代币时，切勿完全解绑。 一旦完全解绑，该验证人节点将被处于jailed状态，该节点将收不到任何奖励或者佣金， 在该节点上委托代币的投资人的利益也会收到相应的损失。 所以，无论如何请保留至少1plug在抵押状态。**
+**验证节点的所有者在解绑自己抵押的代币时，切勿完全解绑。 一旦完全解绑，该验证人节点将被处于jailed状态，该节点将收不到任何奖励或者佣金， 在该节点上委托代币的投资人的利益也会收到相应的损失。 所以，无论如何请保留至少`1*10^6 plug`plug在抵押状态。**
 **如果一旦验证人全部解委托，可以通过重新`delegate`和`unjail`的命令来恢复**
 :::
 
@@ -76,27 +76,30 @@ plugchaind q staking validator gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke
 
  示例输出：
 
-```json
-{
-    "operator_address": "gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke",
-    "consensus_pubkey": "gxvalconspub1zcjduepq9meszzqu54gpxvs4vzvuv85qvv5ef0egz3sde0ps4dvktcv77uds0kkhgf",
-    "status": 3,
-    "tokens": "100000000",
-    "delegator_shares": "100000000.000000000000000000",
-    "description": {
-        "moniker": "node0"
-    },
-    "unbonding_time": "1970-01-01T00:00:00Z",
-    "commission": {
-        "commission_rates": {
-            "rate": "1.000000000000000000",
-            "max_rate": "1.000000000000000000",
-            "max_change_rate": "1.000000000000000000"
-        },
-        "update_time": "2021-08-26T06:43:07.065305Z"
-    },
-    "min_self_delegation": "1"
-}
+```log
+commission:
+  commission_rates:
+    max_change_rate: "0.010000000000000000"
+    max_rate: "0.200000000000000000"
+    rate: "0.130000000000000000"
+  update_time: "2021-07-19T01:11:11.703062549Z"
+consensus_pubkey:
+  '@type': /cosmos.crypto.ed25519.PubKey
+  key: 6LKWi3Ol0uegkVsgiJG6rPSgVf1seQiAPpiROCHCvzc=
+delegator_shares: "5535916331518.000000000000000000"
+description:
+  details: ""
+  identity: ""
+  moniker: node3
+  security_contact: ""
+  website: ""
+jailed: false
+min_self_delegation: "1200000"
+operator_address: gxvaloper13e5nwry8ck62553p6dfur5yep685ghfgs9u8ju
+status: BOND_STATUS_BONDED
+tokens: "5535916331518"
+unbonding_height: "0"
+unbonding_time: "1970-01-01T00:00:00Z"
 ```
 
 - 修改验证人信息
@@ -108,13 +111,13 @@ plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fe
 - 委托
 
 ```bash
-plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000000plug --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 - 解绑
 
 ```bash
-plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000000plug --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 - 转委托

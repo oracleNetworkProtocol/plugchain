@@ -12,7 +12,7 @@ order: 1
 
 ## 连接全节点
 
-`--node`用来指定所连接`plugchaind`节点的rpc地址，交易和查询的消息都发送到监听这个端口的plug进程。默认值为`tcp://localhost:26657`。
+`--node`用来指定所连接`plugchaind`节点的rpc地址，交易和查询的消息都发送到监听这个端口的plugchaind进程。默认值为`tcp://localhost:26657`。
 
 ## 全局标识
 
