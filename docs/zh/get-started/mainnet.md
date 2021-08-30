@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-必须使用 PLUGChain [v0.2.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
+必须使用 PLUGChain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
 :::
 
 1. 初始化节点
@@ -43,9 +43,13 @@ mv ./mainnet/v1/genesis.json ~/.plugchain/
 ```bash
 # 启动节点（也可使用 nohup 或 systemd 等方式后台运行）
 
-# 第三步未修改种子信息，运行start时，添加参数 --p2p.seeds="7488f044132cec94e72c0eb5cdd267fb5607f5d1@47.102.107.120:26656,60fde7a070938367ede8943ee45bee622424753a@47.102.126.234:26656"
+# 第三步未修改种子信息，运行start时，添加参数:
+# --p2p.seeds="7488f044132cec94e72c0eb5cdd267fb5607f5d1@47.102.107.120:26656,60fde7a070938367ede8943ee45bee622424753a@47.102.126.234:26656"
 
-# 如果修改服务端口配置，需要在使用服务的地方加上参数，比如修改默认的tendermint rpc服务: tcp://localhost:26657 => tcp://localhost:5000 ,cli使用时，有`--node`参数的命令 都需要指向此参数为 --node=tcp://localhost:5000, 例如： plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
+# 如果修改服务端口配置，需要在使用服务的地方加上参数:
+# 比如修改默认的tendermint rpc服务: tcp://localhost:26657 => tcp://localhost:5000 
+# cli使用时，有`--node`参数的命令 都需要指向此参数为 --node=tcp://localhost:5000
+# 例如： plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
 
 plugchaind start --minimum-gas-prices 0.0001plug 
 ```

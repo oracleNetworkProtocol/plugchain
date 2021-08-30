@@ -122,31 +122,25 @@ _注意: 在 UI 端，我们可以为一些紧急的提议增加一个 `Not Urge
 模块的参数可以通过一个参数改变提议进行修改。
 
 ```bash
-# 查询能够通过治理改变的模块参数。例如，查询 Service 模块的参数
-plugchaind query service params
+# 查询能够通过治理改变的模块参数。例如，查询 Staking 模块的参数
+plugchaind query staking params
 
 # 查询的参数列表
-arbitration_time_limit: 432000s
-base_denom: stake
-complaint_retrospect: 1296000s
-max_request_timeout: "100"
-min_deposit:
-- amount: "6000"
-  denom: stake
-min_deposit_multiple: "200"
-service_fee_tax: "0.100000000000000000"
-slash_fraction: "0.001000000000000000"
-tx_size_limit: "4000"
+bond_denom: line
+historical_entries: 10000
+max_entries: 7
+max_validators: 100
+unbonding_time: 1814400s
 
 # 提交参数改变提议
 echo '{
-  "title": "Service Param Change",
-  "description": "Update max request timeout",
+  "title": "Staking Param Change",
+  "description": "Update max validators",
   "changes": [
     {
-      "subspace": "service",
-      "key": "MaxRequestTimeout",
-      "value": 150
+      "subspace": "staking",
+      "key": "MaxValidators",
+      "value": 105
     }
   ],
   "deposit": "1000plug"

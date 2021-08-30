@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-You must use PLUGChain [v0.2.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
+You must use PLUGChain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
 :::
 
 1. Initialize the node
@@ -42,7 +42,13 @@ Modify the seeds provided in the ./mainnet/v1/seeds.txt file and modify the `see
 ```bash
 # Start the node (you can also use nohup or systemd to run in the background)
 
-# The third step does not modify the seed information. When running start, add the parameter --p2p.seeds="7488f044132cec94e72c0eb5cdd267fb5607f5d1@47.102.107.120:26656,60fde7a070938367ede8943ee45bee622424753a@47.102.126.234:26656"
+# The third step does not modify the seed information. When running startadd the parameter
+# --p2p.seeds="7488f044132cec94e72c0eb5cdd267fb5607f5d1@47.102.107.120:26656,60fde7a070938367ede8943ee45bee622424753a@47.102.126.234:26656"
+
+# If you modify the service port configuration, you need to add parameters where the service is used:
+# For example, modify the default tendermint rpc service: tcp://localhost:26657 => tcp://localhost:5000
+# When using cli, commands with the `--node` parameter need to point to this parameter as --node=tcp://localhost:5000
+# For example: plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
 
 plugchaind start --minimum-gas-prices 0.0001plug
 ```

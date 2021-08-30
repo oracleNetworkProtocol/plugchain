@@ -166,34 +166,28 @@ The governance process for the software upgrade is described in [`Upgrade`](./up
 The parameters of modules can be changed by demand through a proposal of parameter change.
 
 ```bash
-# Query module parameters which can be changed through gov. e.g. query the service params
-plugchaind query service params
+# Query module parameters which can be changed through gov. e.g. query the staking params
+plugchaind query staking params
 
 # Parameter list
-arbitration_time_limit: 432000s
-base_denom: stake
-complaint_retrospect: 1296000s
-max_request_timeout: "100"
-min_deposit:
-- amount: "6000"
-  denom: stake
-min_deposit_multiple: "200"
-service_fee_tax: "0.100000000000000000"
-slash_fraction: "0.001000000000000000"
-tx_size_limit: "4000"
+bond_denom: line
+historical_entries: 10000
+max_entries: 7
+max_validators: 100
+unbonding_time: 1814400s
 
 # Send proposal for parameters change
 echo '{
-    "title": "Service Param Change",
-    "description": "Update max request timeout",
-    "changes": [
-        {
-        "subspace": "service",
-        "key": "MaxRequestTimeout",
-        "value": 150
-        }
-    ],
-    "deposit": "1000plug"
+  "title": "Staking Param Change",
+  "description": "Update max validators",
+  "changes": [
+    {
+      "subspace": "staking",
+      "key": "MaxValidators",
+      "value": 105
+    }
+  ],
+  "deposit": "1000plug"
 }' > proposal.json
 
 plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
