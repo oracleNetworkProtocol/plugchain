@@ -168,7 +168,7 @@ No multisig key? [Create one](keys.md#create-a-multisig-key)
 :::
 
 ```bash
-plugchaind tx bank send <from> <to> 10plugchaind --fees=0.3plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
+plugchaind tx bank send <from> <to> 10plugchaind --fees=20plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
 ```
 
 ### Sign the multisig tx

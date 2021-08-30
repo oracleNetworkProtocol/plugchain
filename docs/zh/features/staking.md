@@ -102,25 +102,25 @@ plugchaind q staking validator gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke
 - 修改验证人信息
 
 ```bash
-plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=0.3plug --commission-rate=0.15 --moniker=<new-name>
+plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=20plug --commission-rate=0.15 --moniker=<new-name>
 ```
 
 - 委托
 
 ```bash
-plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=0.3plug
+plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 - 解绑
 
 ```bash
-plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=0.3plug
+plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 - 转委托
 
 ```bash
-plugchaind tx staking redelegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke gxvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100plug --from mykey --chain-id=plugchain --from=<key-name> --fees=0.3plug
+plugchaind tx staking redelegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke gxvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100plug --from mykey --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 对于其它Staking相关的命令，请参考[stake-cli](../cli-client/staking.md)

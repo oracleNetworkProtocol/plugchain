@@ -169,7 +169,7 @@ plugchaind tx multisign <file> <key-name> <[signature]...> [flags]
 :::
 
 ```bash
-plugchaind tx bank send <from> <to> 10plugchaind --fees=0.3plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
+plugchaind tx bank send <from> <to> 10plugchaind --fees=20plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
 ```
 
 ### 签名多签交易

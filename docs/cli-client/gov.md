@@ -283,5 +283,5 @@ plugchaind tx gov vote [proposal-id] [option] [flags]
 ### Vote for an active proposal
 
 ```bash
-plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=0.3plug
+plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=20plug
 ```

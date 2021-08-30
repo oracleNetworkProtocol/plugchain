@@ -41,13 +41,13 @@ There are 2 ways to withdraw rewards according to different scenarios
 - `withdraw-all-rewards` : Withdraw all delegations rewards for a delegator
 
 ```bash
-plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 - `withdraw-rewards` : Withdraw rewards from a given validator address
 
 ```bash
-plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 ### Query reward token

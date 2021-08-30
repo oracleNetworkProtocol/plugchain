@@ -152,7 +152,7 @@ echo '{
   "deposit": "1000plug"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 ### 社区池基金消费
@@ -169,7 +169,7 @@ echo '{
   "deposit": "1000plug"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 ### 软件升级

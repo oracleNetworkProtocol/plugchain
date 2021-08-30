@@ -239,7 +239,7 @@ plugchaind tx staking create-validator [flags]
 ### 创建验证人
 
 ```bash
-plugchaind tx staking create-validator --chain-id=plugchain --from=<key-name> --fees=0.3plug --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100plug --moniker=<validator-name>
+plugchaind tx staking create-validator --chain-id=plugchain --from=<key-name> --fees=20plug --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100plug --moniker=<validator-name>
 ```
 
 :::tip
@@ -269,7 +269,7 @@ plugchaind tx staking edit-validator [flags]
 ### 编辑验证人信息
 
 ```bash
-plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=0.3plug --commission-rate=0.10 --moniker=<validator-name>
+plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=20plug --commission-rate=0.10 --moniker=<validator-name>
 ```
 
 ### 上传验证人头像
@@ -285,7 +285,7 @@ plugchaind tx staking delegate [validator-addr] [amount] [flags]
 ```
 
 ```bash
-plugchaind tx staking delegate <gxvaloper...> <amount> --chain-id=plugchain --from=<key-name> --fees=0.3plug
+plugchaind tx staking delegate <gxvaloper...> <amount> --chain-id=plugchain --from=<key-name> --fees=20plug
 ```
 
 ## plugchaind tx staking unbond
@@ -299,7 +299,7 @@ plugchaind tx staking unbond [validator-addr] [amount] [flags]
 ### 从验证人中解委托一定数量的代币
 
 ```bash
-plugchaind tx staking unbond <gxvaloper...> 10plugchaind --from=<key-name> --chain-id=plugchain --fees=0.3plug
+plugchaind tx staking unbond <gxvaloper...> 10plugchaind --from=<key-name> --chain-id=plugchain --fees=20plug
 ```
 
 ## plugchaind tx staking redelegate
@@ -317,5 +317,5 @@ plugchaind tx staking redelegate [src-validator-addr] [dst-validator-addr] [amou
 ### 转委托一定数量代币到其他验证人
 
 ```bash
-plugchaind tx staking redelegate <gxvaloper...> <gxvaloper...> 10plugchaind --chain-id=plugchain --from=<key-name> --fees=0.3plug
+plugchaind tx staking redelegate <gxvaloper...> <gxvaloper...> 10plugchaind --chain-id=plugchain --from=<key-name> --fees=20plug
 ```

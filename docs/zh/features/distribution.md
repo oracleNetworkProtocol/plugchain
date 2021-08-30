@@ -9,7 +9,7 @@
 
 ### 收益的来源
 
-1. 交易所产生的交易费 `fee`（由交易的第一个签名者支付`fee`）
+1. 交易所产生的交易费 `fees`（由交易的第一个签名者支付`fees`）
 2. 通胀的代币 `plug`（目前PLUGChain系统设置的通胀为13%每年，通证总量为`20亿`）
 
 ### 收益的去向
@@ -44,13 +44,13 @@ plugchaind tx distribution set-withdraw-addr [withdraw-addr] [flags]
 1.`withdraw-all-rewards`：提取所有在外的委托收益
 
 ```bash
-plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 2.`withdraw-rewards` ：从指定验证人处提取委托收益
 
 ```bash
-plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=0.3plug --chain-id=plugchain
+plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
 ```
 
 ### 查询收益
