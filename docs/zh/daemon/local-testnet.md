@@ -112,7 +112,7 @@ plugchaind tendermint show-address
 
 请参阅[导出区块状态](export.md)。
 
-## 多节点测试网
+<!-- ## 多节点测试网
 
 **前提**
 
@@ -206,4 +206,4 @@ make testnet-stop
 
 ```bash
 make testnet-clean
-```
+``` -->

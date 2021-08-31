@@ -112,7 +112,7 @@ plugchaind tendermint show-address
 
 Please refer to [Export Blockchain State](export.md)
 
-## Multiple Nodes Testnet
+<!-- ## Multiple Nodes Testnet
 
 **Requirements:**
 
@@ -206,4 +206,4 @@ To stop all the running nodes and delete all the files in the `build/` directory
 
 ```bash
 make testnet-clean
-```
+``` -->

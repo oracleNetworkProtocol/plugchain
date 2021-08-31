@@ -23,5 +23,5 @@ The plugchain is built on the Cosmos SDK using the following modules:
 - x/gov: governance logic.
 - ibc-go/modules: Communication between blockchains. Hosted in the cosmos/ibc-go repository.
 - x/params: Process application-level parameters.
-- x/token: token logic. In development
-- x/dex: automated market maker. Hosted in tendermint/liquidity repository.
+- token: token logic. In development
+- x/liquidity: automated market maker. Hosted in tendermint/liquidity repository.
