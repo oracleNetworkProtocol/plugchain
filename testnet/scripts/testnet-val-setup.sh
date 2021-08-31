@@ -79,7 +79,7 @@ DAEMON_PATH=$(which $DAEMON)
 echo
 echo "Your account address is :"
 $DAEMON keys show $YOUR_KEY_NAME -a
-echo "Your node setup is done. You would need some tokens to start your validator. You can get some tokens from the faucet: http://www.plugchain.network/wallet/receive"
+echo "Your node setup is done. You would need some tokens to start your validator. You can get some tokens from the faucet: http://test.plugchain.network/wallet/receive"
 echo
 echo
 # echo "After receiving tokens, you can create your validator by running"
