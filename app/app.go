@@ -14,7 +14,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
-	appparams "github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/version"
@@ -82,15 +81,11 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
-	"github.com/oracleNetworkProtocol/plugchain/docs"
+	docs "github.com/oracleNetworkProtocol/plugchain/client"
 	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
 	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
 	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
-
 	//store "github.com/cosmos/cosmos-sdk/store/types"
-	"github.com/tendermint/liquidity/x/liquidity"
-	liquiditykeeper "github.com/tendermint/liquidity/x/liquidity/keeper"
-	liquiditytypes "github.com/tendermint/liquidity/x/liquidity/types"
 )
 
 const Name = "plugchain"
@@ -138,8 +133,6 @@ var (
 		vesting.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 		plugchain.AppModuleBasic{},
-
-		liquidity.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -153,7 +146,6 @@ var (
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		//Allow plugchaintypes module to use authtypes minter and burner
 		plugchaintypes.ModuleName: {authtypes.Minter, authtypes.Burner},
-		liquiditytypes.ModuleName: {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -210,8 +202,6 @@ type App struct {
 
 	PlugchainKeeper plugchainkeeper.Keeper
 
-	LiquidityKeeper liquiditykeeper.Keeper
-
 	// the module manager
 	mm *module.Manager
 }
@@ -220,7 +210,7 @@ type App struct {
 // NewSimApp returns a reference to an initialized SimApp.
 func New(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, loadLatest bool, skipUpgradeHeights map[int64]bool,
-	homePath string, invCheckPeriod uint, encodingConfig appparams.EncodingConfig,
+	homePath string, invCheckPeriod uint, encodingConfig EncodingConfig,
 	// this line is used by starport scaffolding # stargate/app/newArgument
 	appOpts servertypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp),
 ) *App {
@@ -241,7 +231,6 @@ func New(
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 		plugchaintypes.StoreKey,
-		liquiditytypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -360,11 +349,6 @@ func New(
 	// we prefer to be more strict in what arguments the modules expect.
 	var skipGenesisInvariants = cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
-	app.LiquidityKeeper = liquiditykeeper.NewKeeper(
-		appCodec, keys[liquiditytypes.StoreKey], app.GetSubspace(liquiditytypes.ModuleName),
-		app.BankKeeper, app.AccountKeeper, app.DistrKeeper,
-	)
-
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
 
@@ -390,7 +374,6 @@ func New(
 		transferModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 		plugchainModule,
-		liquidity.NewAppModule(appCodec, app.LiquidityKeeper, app.AccountKeeper, app.BankKeeper, app.DistrKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -400,12 +383,9 @@ func New(
 	app.mm.SetOrderBeginBlockers(
 		upgradetypes.ModuleName, minttypes.ModuleName, distrtypes.ModuleName, slashingtypes.ModuleName,
 		evidencetypes.ModuleName, stakingtypes.ModuleName, ibchost.ModuleName,
-		liquiditytypes.ModuleName,
 	)
 
-	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName,
-		liquiditytypes.ModuleName,
-	)
+	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName)
 
 	// NOTE: The genutils module must occur after staking so that pools are
 	// properly initialized with tokens from genesis accounts.
@@ -428,7 +408,6 @@ func New(
 		ibctransfertypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 		plugchaintypes.ModuleName,
-		liquiditytypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -662,7 +641,6 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
 	paramsKeeper.Subspace(plugchaintypes.ModuleName)
-	paramsKeeper.Subspace(liquiditytypes.ModuleName)
 
 	return paramsKeeper
 }

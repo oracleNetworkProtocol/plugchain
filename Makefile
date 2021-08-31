@@ -69,6 +69,8 @@ $(BUILD_TARGETS): go.sum $(BUILDDIR)/
 build-linux:
 	GOOS=linux GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
 
+build-window:
+	GOOS=windows GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
 
 ###############################################################################
 ###                          Tools & Dependencies                           ###
@@ -78,7 +80,7 @@ go.sum: go.mod
 	go mod verify
 	go mod tidy
 
-.PHONY: all build-linux install
+.PHONY: all build-linux build-window install
 
 ###############################################################################
 ###                               Localnet                                  ###
@@ -103,3 +105,17 @@ buf:
 	@./testnet/scripts/protocgen.sh
 
 .PHONY: buf
+
+###############################################################################
+###                                   Docs                                  ###
+###############################################################################
+npm-vue: 
+	@echo "install vuepress rely ..."
+	@cd docs/ && sudo npm install vue && sudo npm install -D vuepress
+
+vuepress: 
+	@echo "vuepress build ..."
+	@cd docs/ && ./deploy.sh 
+	
+
+.PHONY: vuepress

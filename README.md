@@ -3,7 +3,7 @@
   <h1>Cosmos Hub PLUGchain </h1>
 </div>
 
- ![banner](docs/images/logo.jpg)
+ ![banner](client/images/logo.jpg)
 <div align="center">
   <a href="https://github.com/oracleNetworkProtocol/plugchain/releases/latest">
     <img alt="Version" src="https://img.shields.io/github/tag/oracleNetworkProtocol/plugchain.svg" />
@@ -21,10 +21,11 @@
 
 This repository hosts `plugchain`, the implementation of the plugchain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
 
-**Note**: Requires [Go 1.16](https://golang.org/dl/)
+**[info]**: Requires [Go 1.16](https://golang.org/dl/)
 
 ## Getting Started
-See the [Getting Started](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/tutorial) for instructions how to install and run the blockchain.
+* See the [Getting Started Docs](https://oraclenetworkprotocol.github.io/plugchain/) for instructions how to install and run the blockchain.
+* [Chengdu community contribution Docs](https://shimo.im/docs/pp38QGQVWyhXHkjg/read)
 
 ## Talk to us!
 
@@ -36,4 +37,4 @@ We have active, helpful communities on Twitter, Discord, and Telegram.
 
 
 ## Testnet Status
-[Test process document](./docs/tutorial/en/testnet.md#1)
+[Test process document](https://oraclenetworkprotocol.github.io/plugchain/cn/testnet.html)
