@@ -33,7 +33,7 @@ plugchaind query params subspace [subspace] [key] [flags]
 | `UnbondingTime`     | 抵押解绑时间           | 3w(weeks) |
 | `MaxValidators`     | 最大验证人数量         | 100       |
 | `MaxEntries`        | 解绑、转委托的最大数量 | 7         |
-| `BondDenom`         | 可抵押的代币           | plugchaind     |
+| `BondDenom`         | 可抵押的代币           | plug     |
 | `HistoricalEntries` | 历史条目数             | 100       |
 
 ## mint
@@ -41,7 +41,7 @@ plugchaind query params subspace [subspace] [key] [flags]
 | key         | description    | default |
 | ----------- | -------------- | ------- |
 | `Inflation` | 代币增发频率   | 0.04    |
-| `MintDenom` | 增发的代币名称 | plugchaind   |
+| `MintDenom` | 增发的代币名称 | plug   |
 
 ## distribution
 

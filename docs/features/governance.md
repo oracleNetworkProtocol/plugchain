@@ -8,7 +8,7 @@ The governance process is divided in a few steps that are outlined below:
   deposit.
 
 - **Vote:** Once deposit reaches a certain value (`MinDeposit`), proposal is
-  confirmed and vote opens. Bonded plugchaind holders can then send `TxGovVote`
+  confirmed and vote opens. Bonded plug holders can then send `TxGovVote`
   transactions to vote on the proposal.
 
 - If the proposal involves a software upgrade:
