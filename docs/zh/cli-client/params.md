@@ -1,13 +1,13 @@
 # Params
 
-Params模块允许查询系统里预设的参数，查询结果中除了Gov模块的参数，其他都可以通过[Gov模块](./gov.md)发起提议来修改。
+Params模块允许查询系统里预设的参数,查询结果中除了Gov模块的参数,其他都可以通过[Gov模块](./gov.md)发起提议来修改。
 
 ```bash
 plugchaind query params subspace [subspace] [key] [flags]
 ```
 
-`subspace`目前支持：`auth`，`bank`，`staking`，`mint`，`distribution`，`slashing`，`gov`，`crisis`。
-其中，可用于每个`subspace`查询的参数如下：
+`subspace`目前支持：`auth`,`bank`,`staking`,`mint`,`distribution`,`slashing`,`gov`,`crisis`,`token`。
+其中,可用于每个`subspace`查询的参数如下：
 
 ## auth
 
@@ -75,3 +75,11 @@ plugchaind query params subspace [subspace] [key] [flags]
 | key           | description | default   |
 | ------------- | ----------- | --------- |
 | `ConstantFee` | 固定费用    | 1000plug |
+
+
+## token
+
+| key           | description | default   |
+| ------------- | ----------- | --------- |
+| `IssueTokenBaseFee` | 固定费用    | 10000plug |
+| `OperateTokenFeeRatio` | 操作费用比例 | 0.1 |

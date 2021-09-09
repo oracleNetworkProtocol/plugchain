@@ -6,7 +6,7 @@ Params module allows you to query the system parameters which can be governed (e
 plugchaind query params subspace [subspace] [key] [flags]
 ```
 
-Subspace currently supports the following:`auth`, `bank`, `staking`, `mint`, `distribution`, `slashing`, `gov`, `crisis`.
+Subspace currently supports the following:`auth`, `bank`, `staking`, `mint`, `distribution`, `slashing`, `gov`, `crisis`,`token`.
 
 Among them, the parameters available for query for each subspace are as follows:
 
@@ -76,3 +76,10 @@ Among them, the parameters available for query for each subspace are as follows:
 | key           | description  | default   |
 | ------------- | ------------ | --------- |
 | `ConstantFee` | Constant Fee | 1000plug |
+
+## token
+
+| key           | description | default   |
+| ------------- | ----------- | --------- |
+| `IssueTokenBaseFee` | Constant Fee    | 10000plug |
+| `OperateTokenFeeRatio` | Operation Fee | 0.1 |

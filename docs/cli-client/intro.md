@@ -69,6 +69,6 @@ All POST commands have the following global flags:
 | [staking](./staking.md)           | Staking subcommands for validators and delegators              |
 | [status](./status.md)             | Query remote node for status                                   |
 | [tendermint](./tendermint.md)     | Tendermint state querying subcommands                          |
-| [token](./token.md)               | Token subcommands                                              |
 | [tx](./tx.md)                     | Tx subcommands                                                 |
 | [upgrade](./upgrade.md)           | Software Upgrade subcommands                                   |
+| [token](./token.md)           | Token subcommands                     |
