@@ -37,4 +37,4 @@ We have active, helpful communities on Twitter, Discord, and Telegram.
 
 
 ## Testnet Status
-[Test process document](https://oraclenetworkprotocol.github.io/plugchain/cn/testnet.html)
+[Test process document](https://oraclenetworkprotocol.github.io/plugchain/get-started/testnet.html)
