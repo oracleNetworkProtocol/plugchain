@@ -8,6 +8,12 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec/types"
+	store "github.com/cosmos/cosmos-sdk/store/types"
+	"github.com/cosmos/cosmos-sdk/x/upgrade"
+	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
+	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
+	sdkupgrade "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/crypto"
@@ -76,10 +82,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/cosmos/cosmos-sdk/x/upgrade"
-	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
-	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
-	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
@@ -455,6 +458,16 @@ func New(
 	)
 	app.SetEndBlocker(app.EndBlocker)
 
+	//add x/token module upgrade plan
+	app.RegisterUpgradePlan(
+		"x/token", &store.StoreUpgrades{Added: []string{tokentypes.ModuleName}},
+		func(ctx sdk.Context, plan sdkupgrade.Plan) {
+			var genState tokentypes.GenesisState
+			genState.Params = tokentypes.DefaultParams()
+			genState.Tokens = []tokentypes.Token{tokentypes.GetLocalToken()}
+			token.InitGenesis(ctx, app.TokenKeeper, genState)
+		},
+	)
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
 			tmos.Exit(err.Error())
@@ -476,6 +489,26 @@ func New(
 	// this line is used by starport scaffolding # stargate/app/beforeInitReturn
 
 	return app
+}
+
+// RegisterUpgradePlan implements the upgrade execution logic of the upgrade module
+func (app *App) RegisterUpgradePlan(
+	planName string,
+	upgrades *store.StoreUpgrades,
+	upgradeHandler sdkupgrade.UpgradeHandler,
+) {
+	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
+	if err != nil {
+		app.Logger().Info("not found upgrade plan", "planName", planName, "err", err.Error())
+		return
+	}
+
+	if upgradeInfo.Name == planName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
+		// this configures a no-op upgrade handler for the planName upgrade
+		app.UpgradeKeeper.SetUpgradeHandler(planName, upgradeHandler)
+		// configure store loader that checks if version+1 == upgradeHeight and applies store upgrades
+		app.SetStoreLoader(sdkupgrade.UpgradeStoreLoader(upgradeInfo.Height, upgrades))
+	}
 }
 
 // Name returns the name of the App
