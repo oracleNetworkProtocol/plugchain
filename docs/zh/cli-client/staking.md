@@ -272,10 +272,6 @@ plugchaind tx staking edit-validator [flags]
 plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=20plug --commission-rate=0.10 --moniker=<validator-name>
 ```
 
-### 上传验证人头像
-
-请参考 [如何将验证人的Logo上传到区块浏览器](../concepts/validator-faq.md#如何将验证人的logo上传到区块浏览器)。
-
 ## plugchaind tx staking delegate
 
 向验证人委托通证。

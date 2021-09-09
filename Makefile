@@ -88,15 +88,15 @@ go.sum: go.mod
 
 # Run a single testnet locally
 localnet: 
-	@echo "start make install and ./testnet/scripts/setup.sh"
+	@echo "start make install and ./scripts/setup.sh"
 	@make install 
-	./testnet/scripts/setup.sh
+	./scripts/setup.sh
 
 .PHONY: localnet
 
 swagger: 
 	@echo "swagger install ......"
-	@./testnet/scripts/protoc-swagger-gen.sh
+	@./scripts/protoc-swagger-gen.sh
 
 .PHONY: swagger
 

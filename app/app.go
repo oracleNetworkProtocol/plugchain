@@ -4,11 +4,13 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
+	"github.com/tendermint/tendermint/crypto"
 	"github.com/tendermint/tendermint/libs/log"
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
@@ -81,11 +83,10 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	// this line is used by starport scaffolding # stargate/app/moduleImport
 	docs "github.com/oracleNetworkProtocol/plugchain/client"
-	"github.com/oracleNetworkProtocol/plugchain/x/plugchain"
-	plugchainkeeper "github.com/oracleNetworkProtocol/plugchain/x/plugchain/keeper"
-	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/x/plugchain/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/token"
+	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
+	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/token/types"
 )
 
 const Name = "plugchain"
@@ -108,8 +109,13 @@ func getGovProposalHandlers() []govclient.ProposalHandler {
 }
 
 var (
+	localToken tokentypes.Token
 	// DefaultNodeHome default home directories for the application daemon
-	DefaultNodeHome = os.ExpandEnv("$HOME/.plugchain")
+	DefaultNodeHome string
+	// Denominations can be 3 ~ 128 characters long and support letters, followed by either
+	// a letter, a number, ('-'), or a separator ('/').
+	// overwite sdk reDnmString
+	reDnmString = `[a-zA-Z][a-zA-Z0-9/-]{2,127}`
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration
@@ -131,8 +137,7 @@ var (
 		evidence.AppModuleBasic{},
 		transfer.AppModuleBasic{},
 		vesting.AppModuleBasic{},
-		// this line is used by starport scaffolding # stargate/app/moduleBasic
-		plugchain.AppModuleBasic{},
+		token.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -144,6 +149,7 @@ var (
 		stakingtypes.NotBondedPoolName: {authtypes.Burner, authtypes.Staking},
 		govtypes.ModuleName:            {authtypes.Burner},
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
+		tokentypes.ModuleName:          {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -153,10 +159,39 @@ var (
 )
 
 func init() {
-	// this changes the power reduction from 10e6 to 10e2, which will give
-	// every validator 10,000 times more voting power than they currently have
+	ConfigureBech32Prefix()
+	sdk.SetCoinDenomRegex(DefaultCoinDenomRegex)
 
-	//sdk.DefaultPowerReduction = sdk.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), big.NewInt(2), nil))
+	userHomeDir, err := os.UserHomeDir()
+	if err != nil {
+		panic(err)
+	}
+	DefaultNodeHome = filepath.Join(userHomeDir, ".plugchain")
+
+	localToken = tokentypes.Token{
+		Symbol:        "plug",
+		Name:          "plughub staking token",
+		Scale:         6,
+		MinUnit:       "plug",
+		InitialSupply: 2000000000,
+		MaxSupply:     10000000000,
+		Mintable:      true,
+		Owner:         sdk.AccAddress(crypto.AddressHash([]byte(tokentypes.ModuleName))).String(),
+	}
+	owner, err := sdk.AccAddressFromBech32(localToken.Owner)
+	if err != nil {
+		panic(err)
+	}
+	tokentypes.SetLocalToken(
+		localToken.Symbol,
+		localToken.Name,
+		localToken.MinUnit,
+		localToken.Scale,
+		localToken.InitialSupply,
+		localToken.MaxSupply,
+		localToken.Mintable,
+		owner,
+	)
 }
 
 // App extends an ABCI application, but with most of its parameters exported.
@@ -196,12 +231,14 @@ type App struct {
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 
-	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
-
-	PlugchainKeeper plugchainkeeper.Keeper
-
+	TokenKeeper tokenkeeper.Keeper
 	// the module manager
 	mm *module.Manager
+}
+
+// DefaultCoinDenomRegex returns the default regex string
+func DefaultCoinDenomRegex() string {
+	return reDnmString
 }
 
 // New returns a reference to an initialized Gaia.
@@ -227,8 +264,7 @@ func New(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
-		// this line is used by starport scaffolding # stargate/app/storeKey
-		plugchaintypes.StoreKey,
+		tokentypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -290,6 +326,10 @@ func New(
 	)
 
 	// ... other modules keepers
+	app.TokenKeeper = *tokenkeeper.NewKeeper(
+		appCodec, keys[tokentypes.StoreKey], app.GetSubspace(tokentypes.ModuleName), app.BankKeeper, app.AccountKeeper, app.ModuleAccountAddrs(),
+	)
+	tokenModule := token.NewAppModule(appCodec, app.TokenKeeper)
 
 	// Create IBC Keeper
 	app.IBCKeeper = ibckeeper.NewKeeper(
@@ -318,15 +358,6 @@ func New(
 	)
 	// If evidence needs to be handled for the app, set routes in router here and seal
 	app.EvidenceKeeper = *evidenceKeeper
-
-	// this line is used by starport scaffolding # stargate/app/keeperDefinition
-
-	app.PlugchainKeeper = *plugchainkeeper.NewKeeper(
-		appCodec,
-		keys[plugchaintypes.StoreKey],
-		keys[plugchaintypes.MemStoreKey],
-	)
-	plugchainModule := plugchain.NewAppModule(appCodec, app.PlugchainKeeper)
 
 	app.GovKeeper = govkeeper.NewKeeper(
 		appCodec, keys[govtypes.StoreKey], app.GetSubspace(govtypes.ModuleName), app.AccountKeeper, app.BankKeeper,
@@ -368,8 +399,7 @@ func New(
 		ibc.NewAppModule(app.IBCKeeper),
 		params.NewAppModule(app.ParamsKeeper),
 		transferModule,
-		// this line is used by starport scaffolding # stargate/app/appModule
-		plugchainModule,
+		tokenModule,
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -402,8 +432,7 @@ func New(
 		genutiltypes.ModuleName,
 		evidencetypes.ModuleName,
 		ibctransfertypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/initGenesis
-		plugchaintypes.ModuleName,
+		tokentypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -590,8 +619,7 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(crisistypes.ModuleName)
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
-	// this line is used by starport scaffolding # stargate/app/paramSubspace
-	paramsKeeper.Subspace(plugchaintypes.ModuleName)
+	paramsKeeper.Subspace(tokentypes.ModuleName)
 
 	return paramsKeeper
 }
