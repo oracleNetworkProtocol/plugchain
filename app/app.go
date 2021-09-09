@@ -491,26 +491,6 @@ func New(
 	return app
 }
 
-// RegisterUpgradePlan implements the upgrade execution logic of the upgrade module
-func (app *App) RegisterUpgradePlan(
-	planName string,
-	upgrades *store.StoreUpgrades,
-	upgradeHandler sdkupgrade.UpgradeHandler,
-) {
-	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
-	if err != nil {
-		app.Logger().Info("not found upgrade plan", "planName", planName, "err", err.Error())
-		return
-	}
-
-	if upgradeInfo.Name == planName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-		// this configures a no-op upgrade handler for the planName upgrade
-		app.UpgradeKeeper.SetUpgradeHandler(planName, upgradeHandler)
-		// configure store loader that checks if version+1 == upgradeHeight and applies store upgrades
-		app.SetStoreLoader(sdkupgrade.UpgradeStoreLoader(upgradeInfo.Height, upgrades))
-	}
-}
-
 // Name returns the name of the App
 func (app *App) Name() string { return app.BaseApp.Name() }
 
@@ -627,6 +607,26 @@ func (app *App) RegisterTxService(clientCtx client.Context) {
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
 func (app *App) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
+}
+
+// RegisterUpgradePlan implements the upgrade execution logic of the upgrade module
+func (app *App) RegisterUpgradePlan(
+	planName string,
+	upgrades *store.StoreUpgrades,
+	upgradeHandler sdkupgrade.UpgradeHandler,
+) {
+	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
+	if err != nil {
+		app.Logger().Info("not found upgrade plan", "planName", planName, "err", err.Error())
+		return
+	}
+
+	if upgradeInfo.Name == planName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
+		// this configures a no-op upgrade handler for the planName upgrade
+		app.UpgradeKeeper.SetUpgradeHandler(planName, upgradeHandler)
+		// configure store loader that checks if version+1 == upgradeHeight and applies store upgrades
+		app.SetStoreLoader(sdkupgrade.UpgradeStoreLoader(upgradeInfo.Height, upgrades))
+	}
 }
 
 // GetMaccPerms returns a copy of the module account permissions
