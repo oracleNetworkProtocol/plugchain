@@ -15,7 +15,6 @@ token模块用于管理你在PLUGCHAN Hub上发行的资产。
 | [tokens](#plugchaind-query-token-tokens)         | 查询指定所有者的通证集合 |
 | [fee](#plugchaind-query-token-fee)               | 查询通证相关费用         |
 | [params](#plugchaind-query-token-params)         | 查询通证相关参数         |
-| [total-burn](#plugchaind-query-token-total-burn) | 查询所有销毁的通证总量   |
 
 ## plugchaind tx token issue
 
@@ -27,13 +26,13 @@ plugchaind tx token issue [flags]
 
 **标识：**
 
-| 名称，速记       | 类型    | 必须 | 默认          | 描述                                                               |
+| 名称,速记       | 类型    | 必须 | 默认          | 描述                                                               |
 | ---------------- | ------- | ---- | ------------- | ------------------------------------------------------------------ |
-| --name           | string  | 是   |               | 通证的名称，限制为32个unicode字符，例如“PLUGCHAIN Network”              |
-| --symbol         | string  | 是   |               | 通证的符号，长度在3到8之间，字母数字字符，以字符开始，不区分大小写 |
-| --initial-supply | uint64  | 是   |               | 此通证的初始供应。 增发前的数量不应超过1000亿。                    |
-| --max-supply     | uint64  |      | 1000000000000 | 通证上限，总供应不能超过最大供应。 增发前的数量不应超过1万亿       |
-| --scale          | uint8   | 是   |               | 通证最多可以有18位小数                                             |
+| --name           | string  | 是   |               | 通证的名称,限制为32个unicode字符,例如“PLUGCHAIN Network”              |
+| --symbol         | string  | 是   |               | 通证的符号,长度在3到6之间,字母数字字符,以字符开始,不区分大小写 |
+| --initial-supply | uint64  | 是   |               | 此通证的初始供应                    |
+| --max-supply     | uint64  |      | 100000000000 | 通证上限,总供应不能超过最大供应。 增发前的数量不应超过1000万亿       |
+| --scale          | uint8   | 是   |               | 通证最多可以有8位小数                                             |
 | --min-unit       | string  |      |               | 最小单位别名                                                       |
 | --mintable       | boolean |      | false         | 首次发行后是否可以增发此通证                                       |
 
@@ -45,8 +44,8 @@ plugchaind tx token issue \
     --symbol="kitty" \
     --min-unit="kitty" \
     --scale=0 \
-    --initial-supply=100000000000 \
-    --max-supply=1000000000000 \
+    --initial-supply=1000000000 \
+    --max-supply=100000000000 \
     --mintable=true \
     --from=<key-name> \
     --chain-id=<chain-id> \
@@ -55,7 +54,7 @@ plugchaind tx token issue \
 
 ### 发送通证
 
-您可以像[发送plugchaind](./bank.md#plugchaind-tx-bank-send)一样发送任何通证。
+您可以像[发送plug](./bank.md#plugchaind-tx-bank-send)一样发送任何通证。
 
 #### 发送通证
 
@@ -73,11 +72,11 @@ plugchaind tx token edit [symbol] [flags]
 
 **标识：**
 
-| 名称，速记   | 类型   | 必须 | 默认  | 描述                          |
+| 名称,速记   | 类型   | 必须 | 默认  | 描述                          |
 | ------------ | ------ | ---- | ----- | ----------------------------- |
-| --name       | string |      |       | 通证名称，例如：PLUGCHAIN Network  |
+| --name       | string |      |       | 通证名称,例如：PLUGCHAIN Network  |
 | --max-supply | uint   |      | 0     | 通证的最大供应量              |
-| --mintable   | bool   |      | false | 通证是否可以增发，默认为false |
+| --mintable   | bool   |      | false | 通证是否可以增发,默认为false |
 
 `max-supply` 不得少于当前的总供应量。
 
@@ -97,7 +96,7 @@ plugchaind tx token transfer [symbol] [flags]
 
 **标识：**
 
-| 名称，速记 | 类型   | 必须 | 默认 | 描述       |
+| 名称,速记 | 类型   | 必须 | 默认 | 描述       |
 | ---------- | ------ | ---- | ---- | ---------- |
 | --to       | string | 是   |      | 接收人地址 |
 
@@ -117,9 +116,9 @@ plugchaind tx token mint [symbol] [flags]
 
 **标识：**
 
-| 名称，速记 | 类型   | 必须 | 默认 | 描述                                       |
+| 名称,速记 | 类型   | 必须 | 默认 | 描述                                       |
 | ---------- | ------ | ---- | ---- | ------------------------------------------ |
-| --to       | string |      |      | 增发的通证的接收地址，默认为发起该交易地址 |
+| --to       | string |      |      | 增发的通证的接收地址,默认为发起该交易地址 |
 | --amount   | uint64 | 是   | 0    | 增发的数量                                 |
 
 ### 增发通证
@@ -138,7 +137,7 @@ plugchaind tx token burn [symbol] [flags]
 
 **标识：**
 
-| 名称，速记 | 类型   | 必须 | 默认 | 描述       |
+| 名称,速记 | 类型   | 必须 | 默认 | 描述       |
 | ---------- | ------ | ---- | ---- | ---------- |
 | --amount   | uint64 | 是   | 0    | 销毁的数量 |
 
@@ -184,7 +183,7 @@ plugchaind query token tokens <owner>
 
 ## plugchaind query token fee
 
-查询与通证相关的费用，包括通证发行和增发。
+查询与通证相关的费用,包括通证发行和增发。
 
 ```bash
 plugchaind query token fee [symbol] [flags]

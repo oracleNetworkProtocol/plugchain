@@ -15,7 +15,6 @@ Token module allows you to manage assets on PLUGCHAIN Hub
 | [tokens](#plugchaind-query-token-tokens)         | Query tokens by owner                      |
 | [fee](#plugchaind-query-token-fee)               | Query the token related fees               |
 | [params](#plugchaind-query-token-params)         | Query the token related params             |
-| [total-burn](#plugchaind-query-token-total-burn) | Query the total amount of all burn tokens. |
 
 ## plugchaind tx token issue
 
@@ -31,10 +30,10 @@ plugchaind tx token issue [flags]
 | ---------------- | ------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | --name           | string  | Yes      |               | Name of the newly issued token, limited to 32 unicode characters, e.g. "PLUGCHAIN Network"                                          |
 | --symbol         | string  | Yes      |               | The symbol of the token, length between 3 and 8, alphanumeric characters beginning with alpha, case insensitive                |
-| --initial-supply | uint64  | Yes      |               | The initial supply of this token. The amount before boosting should not exceed 100 billion.                                    |
-| --max-supply     | uint64  |          | 1000000000000 | The hard cap of this token, total supply can not exceed max supply. The amount before boosting should not exceed 1000 billion. |
+| --initial-supply | uint64  | Yes      |               | The initial supply of this token                                    |
+| --max-supply     | uint64  |          | 100000000000 | The hard cap of this token, total supply can not exceed max supply. The amount before boosting should not exceed 100 billion. |
 | --min-unit       | string  |          |               | The alias of minimum uint                                                                                                      |
-| --scale          | uint8   | Yes      |               | A token can have a maximum of 18 digits of decimal                                                                             |
+| --scale          | uint8   | Yes      |               | A token can have a maximum of 8 digits of decimal                                                                             |
 | --mintable       | boolean |          | false         | Whether this token could be minted(increased) after the initial issuing                                                        |
 
 ### Issue a token
@@ -45,8 +44,8 @@ plugchaind tx token issue \
     --symbol="kitty" \
     --min-unit="kitty" \
     --scale=0 \
-    --initial-supply=100000000000 \
-    --max-supply=1000000000000 \
+    --initial-supply=1000000000 \
+    --max-supply=100000000000 \
     --mintable=true \
     --from=<key-name> \
     --chain-id=<chain-id> \
@@ -55,7 +54,7 @@ plugchaind tx token issue \
 
 ### Send tokens
 
-You can send any tokens you have just like [sending plugchaind](./bank.md#plugchaind-tx-bank-send)
+You can send any tokens you have just like [sending plug](./bank.md#plugchaind-tx-bank-send)
 
 #### Send tokens
 
