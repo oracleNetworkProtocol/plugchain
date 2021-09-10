@@ -40,10 +40,10 @@ plugchaind tx token issue [flags]
 
 ```bash
 plugchaind tx token issue \
-    --name="Kitty Token" \
-    --symbol="kitty" \
-    --min-unit="kitty" \
-    --scale=0 \
+    --name="Test Token" \
+    --symbol="token" \
+    --min-unit="token" \
+    --scale=6 \
     --initial-supply=1000000000 \
     --max-supply=100000000000 \
     --mintable=true \

@@ -12,7 +12,7 @@ token模块用于管理你在PLUGCHAN Hub上发行的资产。
 | [mint](#plugchaind-tx-token-mint)                | 增发通证到指定账户       |
 | [burn](#plugchaind-tx-token-burn)                | 销毁通证                 |
 | [token](#plugchaind-query-token-token)           | 查询通证                 |
-| [tokens](#plugchaind-query-token-tokens)         | 查询指定所有者的通证集合 |
+| [tokens](#plugchaind-query-token-tokens)         | 查询指定所有者的或者平台所有的通证集合 |
 | [fee](#plugchaind-query-token-fee)               | 查询通证相关费用         |
 | [params](#plugchaind-query-token-params)         | 查询通证相关参数         |
 
@@ -40,10 +40,10 @@ plugchaind tx token issue [flags]
 
 ```bash
 plugchaind tx token issue \
-    --name="Kitty Token" \
-    --symbol="kitty" \
-    --min-unit="kitty" \
-    --scale=0 \
+    --name="Test Token" \
+    --symbol="token" \
+    --min-unit="token" \
+    --scale=6 \
     --initial-supply=1000000000 \
     --max-supply=100000000000 \
     --mintable=true \

@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	keywords          = strings.Join([]string{"ibc"}, "|")
+	keywords          = strings.Join([]string{"ibc", "btc", "eth", "ada", "bnb", "usdt", "xrp", "sol", "doge", "dot", "luna"}, "|")
 	regexpKeywordsFmt = fmt.Sprintf("^(%s).*", keywords)
 	regexpKeyword     = regexp.MustCompile(regexpKeywordsFmt).MatchString
 
