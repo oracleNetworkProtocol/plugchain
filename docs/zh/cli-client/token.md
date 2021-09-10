@@ -76,7 +76,6 @@ plugchaind tx token edit [symbol] [flags]
 | ------------ | ------ | ---- | ----- | ----------------------------- |
 | --name       | string |      |       | 通证名称,例如：PLUGCHAIN Network  |
 | --max-supply | uint   |      | 0     | 通证的最大供应量              |
-| --mintable   | bool   |      | false | 通证是否可以增发,默认为false |
 
 `max-supply` 不得少于当前的总供应量。
 
