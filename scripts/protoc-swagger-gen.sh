@@ -64,10 +64,12 @@ sed -i '' 's/cosmoshub/plugchainhub/g' ./client/static/openapi.yml
 buf protoc \
     -I "tmp/proto" \
     -I "tmp/third_party/proto" \
-    --doc_out=./docs \
-    --doc_opt=./docs/protodoc-markdown.tmpl,proto-docs.md \
+    --doc_out=./docs/endpoints \
+    --doc_opt=./docs/endpoints/protodoc-markdown.tmpl,proto-docs.md \
     $(find "$(pwd)/tmp/proto" -maxdepth 5 -name '*.proto')
 go mod tidy
+
+cp ./docs/endpoints/proto-docs.md ./docs/zh/endpoints/proto-docs.md
 
 # clean swagger files
 rm -rf ./tmp-swagger-gen
