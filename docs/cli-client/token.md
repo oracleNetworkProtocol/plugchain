@@ -76,14 +76,13 @@ plugchaind tx token edit [symbol] [flags]
 | ------------ | ------ | -------- | ------- | ------------------------------------------------- |
 | --name       | string |          |         | The token name, e.g. PLUGCHAIN Network                 |
 | --max-supply | uint64 |          | 0       | The max supply of the token                       |
-| --mintable   | bool   |          | false   | Whether the token can be minted, default to false |
 
 `max-supply` should not be less than the current total supply
 
 ### Edit Token
 
 ```bash
-plugchaind tx token edit <symbol> --name="Cat Token" --max-supply=100000000000 --mintable=true --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+plugchaind tx token edit <symbol> --name="Cat Token" --max-supply=100000000000 --from=<key-name> --chain-id=<chain-id> --fees=<fee>
 ```
 
 ## plugchaind tx token transfer
