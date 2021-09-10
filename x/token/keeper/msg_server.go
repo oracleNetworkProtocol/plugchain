@@ -46,14 +46,15 @@ func (m msgServer) IssueToken(c context.Context, in *types.MsgIssueToken) (*type
 	}
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			types.EventTypeIssueToken,
-			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
-			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
-		),
-		sdk.NewEvent(
 			sdk.EventTypeMessage,
 			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
-			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+		sdk.NewEvent(
+			types.EventTypeIssueToken,
+			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
+			sdk.NewAttribute(types.AttributeKeyScale, strconv.FormatUint(uint64(in.Scale), 10)),
+			sdk.NewAttribute(types.AttributeKeyInitialSupply, strconv.FormatUint(in.InitialSupply, 10)),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
 		),
 	})
 
@@ -86,7 +87,17 @@ func (m msgServer) MintToken(c context.Context, in *types.MsgMintToken) (*types.
 	if err != nil {
 		return nil, err
 	}
-
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+		),
+		sdk.NewEvent(
+			types.EventTypeMintToken,
+			sdk.NewAttribute(types.AttributeKeyAmount, strconv.FormatUint(in.Amount, 10)+in.Symbol),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+	})
 	return &types.MsgMintTokenResponse{}, nil
 }
 
@@ -105,17 +116,15 @@ func (m msgServer) EditToken(c context.Context, in *types.MsgEditToken) (*types.
 	if err := m.Keeper.EditToken(ctx, in.Symbol, in.Name, in.MaxSupply, owner); err != nil {
 		return nil, err
 	}
-	//事件标注
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			types.EventTypeEditToken,
-			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
-			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
 		),
 		sdk.NewEvent(
 			types.TypeMsgEditToken,
-			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
-			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
 		),
 	})
 
@@ -140,15 +149,13 @@ func (m msgServer) BurnToken(c context.Context, in *types.MsgBurnToken) (*types.
 
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			types.EventTypeBurnToken,
-			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
-			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
-			sdk.NewAttribute(types.AttributeKeyAmount, strconv.FormatUint(in.Amount, 10)+in.Symbol),
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
 		),
 		sdk.NewEvent(
-			types.TypeMsgBurnToken,
-			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			types.EventTypeBurnToken,
 			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+			sdk.NewAttribute(types.AttributeKeyAmount, strconv.FormatUint(in.Amount, 10)+in.Symbol),
 		),
 	})
 
@@ -177,6 +184,18 @@ func (m msgServer) TransferOwnerToken(c context.Context, in *types.MsgTransferOw
 	if err := m.Keeper.TransferOwnerToken(ctx, in.Symbol, owner, to); err != nil {
 		return nil, err
 	}
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+		),
+		sdk.NewEvent(
+			types.EventTypeTransferOwnerToken,
+			sdk.NewAttribute(types.AttributeKeySymbol, in.Symbol),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+			sdk.NewAttribute(types.AttributeKeyTo, in.To),
+		),
+	})
 
 	return &types.MsgTransferOwnerTokenResponse{}, nil
 }
