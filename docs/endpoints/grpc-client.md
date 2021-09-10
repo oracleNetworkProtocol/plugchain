@@ -17,7 +17,7 @@ Once the gRPC server is started, you can send requests to it using a gRPC client
 
 ## gRPC Endpoints
 
-An overview of all available gRPC endpoints shipped with the PLUGChain Hub is [Protobuf documention](./proto-docs.md).
+An overview of all available gRPC endpoints shipped with the PLUGChain Hub is [Protobuf documention](../proto-docs.md).
 
 ## Generating, Signing and Broadcasting Transactions
 

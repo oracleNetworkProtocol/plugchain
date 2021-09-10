@@ -17,7 +17,7 @@ gRPC 服务启动后，您可以使用 gRPC 客户端向其发送请求。
 
 ## gRPC 端点
 
-PLUGChain Hub 附带的所有可用 gRPC 端点的概述见[Protobuf 文档](./proto-docs.md)。
+PLUGChain Hub 附带的所有可用 gRPC 端点的概述见[Protobuf 文档](../../proto-docs.md)。
 
 ## 构造、签名和广播交易
 

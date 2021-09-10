@@ -96,9 +96,9 @@ message Vote {
   int64         height   = 2;
   int32         round    = 3;
   BlockID       block_id = 4
-      [(gogoproto.nullable) = false, (gogoproto.customname) = "BlockID"];  // zero if vote is nil.
+  [(gogoproto.nullable) = false, (gogoproto.customname) = "BlockID"];  // zero if vote is nil.
   google.protobuf.Timestamp timestamp = 5
-      [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
+  [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
   bytes validator_address = 6;
   int32 validator_index   = 7;
   bytes signature         = 8;
@@ -117,7 +117,7 @@ message CommitSig {
   BlockIDFlag               block_id_flag     = 1;
   bytes                     validator_address = 2;
   google.protobuf.Timestamp timestamp         = 3
-      [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
+  [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
   bytes signature = 4;
 }
 
@@ -128,7 +128,7 @@ message Proposal {
   int32                     pol_round = 4;
   BlockID                   block_id  = 5 [(gogoproto.customname) = "BlockID", (gogoproto.nullable) = false];
   google.protobuf.Timestamp timestamp = 6
-      [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
+  [(gogoproto.nullable) = false, (gogoproto.stdtime) = true];
   bytes signature = 7;
 }
 

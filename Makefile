@@ -94,11 +94,15 @@ localnet:
 
 .PHONY: localnet
 
+buf: 
+	@echo "buf install ......"
+	@./scripts/protocgen.sh
+
 swagger: 
 	@echo "swagger install ......"
 	@./scripts/protoc-swagger-gen.sh
 
-.PHONY: swagger
+.PHONY: buf swagger
 
 
 ###############################################################################

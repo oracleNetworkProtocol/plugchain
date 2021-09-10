@@ -115,7 +115,7 @@ paths:
                     properties:
                       chain_id:
                         type: string
-                        example: plugchainhub-2
+                        example: cosmoshub-2
                       height:
                         type: number
                         example: 1
@@ -203,7 +203,7 @@ paths:
                     properties:
                       chain_id:
                         type: string
-                        example: plugchainhub-2
+                        example: cosmoshub-2
                       height:
                         type: number
                         example: 1
@@ -365,7 +365,7 @@ paths:
                     properties:
                       chain_id:
                         type: string
-                        example: plugchainhub-2
+                        example: cosmoshub-2
                       height:
                         type: number
                         example: 1
@@ -453,7 +453,7 @@ paths:
                     properties:
                       chain_id:
                         type: string
-                        example: plugchainhub-2
+                        example: cosmoshub-2
                       height:
                         type: number
                         example: 1
@@ -31210,7 +31210,7 @@ definitions:
     properties:
       chain_id:
         type: string
-        example: plugchainhub-2
+        example: cosmoshub-2
       height:
         type: number
         example: 1
@@ -31283,7 +31283,7 @@ definitions:
         properties:
           chain_id:
             type: string
-            example: plugchainhub-2
+            example: cosmoshub-2
           height:
             type: number
             example: 1
@@ -31426,7 +31426,7 @@ definitions:
             properties:
               chain_id:
                 type: string
-                example: plugchainhub-2
+                example: cosmoshub-2
               height:
                 type: number
                 example: 1
@@ -31514,7 +31514,7 @@ definitions:
             properties:
               chain_id:
                 type: string
-                example: plugchainhub-2
+                example: cosmoshub-2
               height:
                 type: number
                 example: 1
