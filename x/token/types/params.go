@@ -11,7 +11,6 @@ import (
 var _ paramtypes.ParamSet = (*Params)(nil)
 
 var (
-	KeyTokenTaxRate         = []byte("TokenTaxRate")
 	KeyIssueTokenBaseFee    = []byte("IssueTokenBaseFee")
 	KeyOperateTokenFeeRatio = []byte("OperateTokenFeeRatio")
 )
