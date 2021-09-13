@@ -65,7 +65,7 @@ func NewRootCmd() (*cobra.Command, app.EncodingConfig) {
 	initRootCmd(rootCmd, encodingConfig)
 	overwriteFlagDefaults(rootCmd, map[string]string{
 		flags.FlagChainID:        ChainID,
-		flags.FlagKeyringBackend: "test",
+		flags.FlagKeyringBackend: "os",
 	})
 	return rootCmd, encodingConfig
 }

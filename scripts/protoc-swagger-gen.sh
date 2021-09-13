@@ -3,6 +3,7 @@
 set -eo pipefail
 
 SDK_VERSION=v0.42.7
+#TENDERMINT_VERSION=v0.34.11
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/proto
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/third_party/proto
 
@@ -19,7 +20,7 @@ echo $dir
   # generate swagger files (filter query files)
   query_file=$(find "${dir}" -maxdepth 1 \( -name 'query.proto' -o -name 'msg.proto' -name 'tx.proto' \))
   if [[ $dir =~ "cosmos" ]]; then
-    query_file=$(find "${dir}" -maxdepth 1 \( -name 'query.proto' -o -name 'service.proto' \))
+   query_file=$(find "${dir}" -maxdepth 1 \( -name 'query.proto' -o -name 'service.proto' \))
   fi
   if [[ ! -z "$query_file" ]]; then
     buf protoc  \
@@ -33,8 +34,8 @@ done
 
 
 # copy cosmos swagger_legacy.yaml
-chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml
-cp -r ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml ./client/static/cosmos_swagger_legacy.yml
+# chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml
+# cp -r ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml ./client/static/cosmos_swagger_legacy.yml
 
 # combine swagger files
 # uses nodejs package `swagger-combine`.

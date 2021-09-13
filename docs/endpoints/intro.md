@@ -13,4 +13,5 @@ Each node can be configured with the following endpoints, and each type of endpo
 - [Legacy Amino JSON REST](./legacy-rest.md)
 - [gRPC Gateway JSON REST](./grpc-rest.md)
 - [gRPC Client](./grpc-client.md)
+- [socker subscription](./subscription.md)
 - [Client SDKs](./sdk.md) (In development)
