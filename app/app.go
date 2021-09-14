@@ -172,10 +172,10 @@ func init() {
 	DefaultNodeHome = filepath.Join(userHomeDir, ".plugchain")
 
 	localToken = tokentypes.Token{
-		Symbol:        "plug",
+		Symbol:        "line",
 		Name:          "plughub staking token",
 		Scale:         6,
-		MinUnit:       "plug",
+		MinUnit:       "line",
 		InitialSupply: 15989000000,
 		MaxSupply:     100000000000,
 		Mintable:      true,
