@@ -33,8 +33,8 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	var tokens []types.Token
 	for _, v := range k.GetTokens(ctx, nil) {
-		t := v.(*types.Token)
-		tokens = append(tokens, *t)
+		t := v.(types.Token)
+		tokens = append(tokens, t)
 	}
 	return &types.GenesisState{
 		Params: k.GetParamSet(ctx),

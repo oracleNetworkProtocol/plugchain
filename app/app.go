@@ -176,8 +176,8 @@ func init() {
 		Name:          "plughub staking token",
 		Scale:         6,
 		MinUnit:       "line",
-		InitialSupply: 15989000000,
-		MaxSupply:     100000000000,
+		InitialSupply: 2000000000,
+		MaxSupply:     10000000000,
 		Mintable:      true,
 		Owner:         sdk.AccAddress(crypto.AddressHash([]byte(tokentypes.ModuleName))).String(),
 	}
