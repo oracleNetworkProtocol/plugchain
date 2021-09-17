@@ -37,7 +37,7 @@ order: 7
 > plugchaind start --unsafe-skip-upgrade 762880
 
 :::warning
-没有特别需要在升级高度之前恢复状态快照，除非由核心 Cosmos 团队特别指示。
+没有特别需要在升级高度之前恢复状态快照，除非由核心 PLUGChain 团队特别指示。
 :::
 
 :::danger
