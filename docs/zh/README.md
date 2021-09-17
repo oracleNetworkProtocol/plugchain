@@ -23,5 +23,4 @@ plugchain 使用以下模块构建在 Cosmos SDK 上：
 - x/gov：治理逻辑。
 - ibc-go/modules：区块链间通信。 托管在 cosmos/ibc-go 存储库中。
 - x/params：处理应用级参数。
-- token: 代币逻辑。开发中
-- x/liquidity: 自动化做市商。托管在 tendermint/liquidity 存储库中。
+- token: 代币逻辑。
