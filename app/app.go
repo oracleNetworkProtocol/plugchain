@@ -172,12 +172,12 @@ func init() {
 	DefaultNodeHome = filepath.Join(userHomeDir, ".plugchain")
 
 	localToken = tokentypes.Token{
-		Symbol:        "plug",
+		Symbol:        "line",
 		Name:          "plughub staking token",
 		Scale:         6,
-		MinUnit:       "plug",
-		InitialSupply: 15989000000,
-		MaxSupply:     100000000000,
+		MinUnit:       "line",
+		InitialSupply: 2000000000,
+		MaxSupply:     10000000000,
 		Mintable:      true,
 		Owner:         sdk.AccAddress(crypto.AddressHash([]byte(tokentypes.ModuleName))).String(),
 	}
@@ -460,11 +460,7 @@ func New(
 
 	//add x/token module upgrade plan
 	app.RegisterUpgradePlan(
-		"x/token",
-		&store.StoreUpgrades{
-			Added:   []string{tokentypes.ModuleName},
-			Deleted: []string{"plugchain"},
-		},
+		"x/token", &store.StoreUpgrades{Added: []string{tokentypes.ModuleName}},
 		func(ctx sdk.Context, plan sdkupgrade.Plan) {
 			var genState tokentypes.GenesisState
 			genState.Params = tokentypes.DefaultParams()
