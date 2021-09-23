@@ -90,6 +90,10 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/token"
 	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
 	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/token/types"
+
+	"github.com/oracleNetworkProtocol/plugchain/x/nft"
+	nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
+	nfttypes "github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
 const Name = "plugchain"
@@ -141,6 +145,7 @@ var (
 		transfer.AppModuleBasic{},
 		vesting.AppModuleBasic{},
 		token.AppModuleBasic{},
+		nft.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -235,6 +240,7 @@ type App struct {
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 
 	TokenKeeper tokenkeeper.Keeper
+	NftKeeper   nftkeeper.Keeper
 	// the module manager
 	mm *module.Manager
 }
@@ -267,7 +273,7 @@ func New(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
-		tokentypes.StoreKey,
+		tokentypes.StoreKey, nfttypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -333,6 +339,11 @@ func New(
 		appCodec, keys[tokentypes.StoreKey], app.GetSubspace(tokentypes.ModuleName), app.BankKeeper, app.AccountKeeper, app.ModuleAccountAddrs(),
 	)
 	tokenModule := token.NewAppModule(appCodec, app.TokenKeeper)
+
+	app.NftKeeper = *nftkeeper.NewKeeper(
+		appCodec, keys[nfttypes.StoreKey], app.AccountKeeper, app.BankKeeper,
+	)
+	nftModule := nft.NewAppModule(appCodec, app.NftKeeper)
 
 	// Create IBC Keeper
 	app.IBCKeeper = ibckeeper.NewKeeper(
@@ -403,6 +414,7 @@ func New(
 		params.NewAppModule(app.ParamsKeeper),
 		transferModule,
 		tokenModule,
+		nftModule,
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -436,6 +448,7 @@ func New(
 		evidencetypes.ModuleName,
 		ibctransfertypes.ModuleName,
 		tokentypes.ModuleName,
+		nfttypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -462,7 +475,7 @@ func New(
 	app.RegisterUpgradePlan(
 		"x/token",
 		&store.StoreUpgrades{
-			Added:   []string{tokentypes.ModuleName},
+			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName},
 			Deleted: []string{"plugchain"},
 		},
 		func(ctx sdk.Context, plan sdkupgrade.Plan) {
