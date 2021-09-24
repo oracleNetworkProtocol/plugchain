@@ -12,6 +12,11 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 
+	// registry.RegisterInterface(
+	// 	"plugchain.nft.NFTI",
+	// 	(*NFTI)(nil),
+	// 	&NFT{},
+	// )
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)
 }
 

@@ -5,7 +5,29 @@ import "gogoproto/gogo.proto";
 
 option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
 option (gogoproto.goproto_getters_all) = false;
+option (gogoproto.equal_all) = true;
+
+message NFT {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string name =2 ;
+    string url = 3 [ (gogoproto.customname) = "URL" ];
+    string data = 4;
+    string owner = 5;
+}
 
 
-message Nft {
+message Denom {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string name = 2;
+    string schema = 3;
+    string symbol = 4;
+    string owner = 5;
+    bool mint_restricted = 6;
+    bool edit_restricted = 7;
+}
+
+
+message Collection {
+    Denom denom = 1 [(gogoproto.nullable) = false];
+    repeated NFT nfts = 2 [(gogoproto.nullable) = false];
 }
