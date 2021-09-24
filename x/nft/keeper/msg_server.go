@@ -1,6 +1,9 @@
 package keeper
 
 import (
+	"context"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
@@ -15,3 +18,32 @@ func NewMsgServerImpl(keeper Keeper) types.MsgServer {
 }
 
 var _ types.MsgServer = msgServer{}
+
+func (m msgServer) IssueDenom(c context.Context, in *types.MsgIssueDenom) (*types.MsgIssueDenomResponse, error) {
+
+	owner, err := sdk.AccAddressFromBech32(in.Owner)
+	if err != nil {
+		return nil, err
+	}
+
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if err := m.Keeper.IssueDenom(ctx, in.ID, in.Name, in.Schema, in.Symbol, owner, in.MintRestricted, in.EditRestricted); err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeIssueDenom,
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+	})
+
+	return &types.MsgIssueDenomResponse{}, nil
+}

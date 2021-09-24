@@ -36,3 +36,8 @@ func NewKeeper(
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
+
+func (k Keeper) IssueDenom(ctx sdk.Context, id, name, schema, symbol string, owner sdk.AccAddress, mintRestricted, editRestricted bool) error {
+	denom := types.NewDenom(id, name, schema, symbol, owner, mintRestricted, editRestricted)
+	return k.SetDenom(ctx, denom)
+}

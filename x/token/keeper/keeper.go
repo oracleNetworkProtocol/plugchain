@@ -2,7 +2,6 @@ package keeper
 
 import (
 	"fmt"
-	golog "log"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -35,8 +34,6 @@ func NewKeeper(
 	if !paramSpace.HasKeyTable() {
 		paramSpace = paramSpace.WithKeyTable(types.ParamKeyTable())
 	}
-	golog.Println("token module address:", accountKeeper.GetModuleAddress(types.ModuleName).String())
-	golog.Printf("module address >>>>>>: %+v", moduleAddr)
 
 	return &Keeper{
 		cdc:           cdc,

@@ -1,13 +1,25 @@
 syntax = "proto3";
 package plugchain.nft;
 
-// this line is used by starport scaffolding # proto/tx/import
+import "gogoproto/gogo.proto";
 
 option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+    rpc IssueDenom(MsgIssueDenom) returns (MsgIssueDenomResponse);
 }
 
-// this line is used by starport scaffolding # proto/tx/message
+
+message MsgIssueDenom {
+    option (gogoproto.equal) = true;
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string name = 2;
+    string schema = 3;
+    string owner  = 4;
+    string symbol =5;
+    bool mint_restricted =6;
+    bool edit_restricted = 7;
+}
+
+message MsgIssueDenomResponse{}

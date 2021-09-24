@@ -12,15 +12,15 @@ const (
 
 	// QuerierRoute defines the module's query routing key
 	QuerierRoute = ModuleName
-
-	// MemStoreKey defines the in-memory store key
-	MemStoreKey = "mem_nft"
-
-	// this line is used by starport scaffolding # ibc/keys/name
 )
 
-// this line is used by starport scaffolding # ibc/keys/port
+var (
+	PrefixDenom = []byte{0x01}
 
-func KeyPrefix(p string) []byte {
-	return []byte(p)
+	delimiter = []byte("-")
+)
+
+func GetKeyDenomID(id string) []byte {
+	key := append(PrefixDenom, delimiter...)
+	return append(key, []byte(id)...)
 }
