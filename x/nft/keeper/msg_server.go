@@ -47,3 +47,8 @@ func (m msgServer) IssueDenom(c context.Context, in *types.MsgIssueDenom) (*type
 
 	return &types.MsgIssueDenomResponse{}, nil
 }
+
+func (m msgServer) IssueNFT(c context.Context, in *types.MsgIssueNFT) (*types.MsgIssueNFTResponse, error) {
+
+	return &types.MsgIssueNFTResponse{}, nil
+}

@@ -14,7 +14,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	// "github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
@@ -29,6 +28,7 @@ func GetTxCmd() *cobra.Command {
 	}
 	cmd.AddCommand(
 		GetCmdIssueDenom(),
+		GetCmdIssueNFT(),
 	)
 	return cmd
 }
@@ -36,13 +36,13 @@ func GetTxCmd() *cobra.Command {
 // GetCmdIssueDenom is the CLI command for an IssueDenom transaction
 func GetCmdIssueDenom() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "issue [denom-id] [denom-name] [denom-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json]",
+		Use:   "issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json]",
 		Short: "Issue a new denom.",
 		Args:  cobra.ExactArgs(7),
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue Denom.
 Example:
-$ %s tx %s issue "ID66666" "first-denom" "shui" true true ./schema-ID66666.json --from mykey --chain-id plugchain --fees 500plug
+$ %s tx %s issue-denom "ID66666" "first-denom" "shui" true true ./schema-ID66666.json --from mykey --chain-id plugchain --fees 500plug
 This example creates a denom of id ID666666 and name first-denom .
 [denom-id]: The name of the collection
 [denom-name]: The name of the denom
@@ -75,6 +75,61 @@ This example creates a denom of id ID666666 and name first-denom .
 			}
 
 			msg := types.NewMsgIssueDenom(argsDenomID, argsDenomName, argsSchema, clientCtx.GetFromAddress().String(), argsDenomSymbol, argsMintRestricted, argsEditRestricted)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
+
+	return cmd
+}
+
+// GetCmdIssueNFT is the CLI command for an IssueNFT transaction
+func GetCmdIssueNFT() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "issue-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient]",
+		Short: "Issue a new nft.",
+		Args:  cobra.ExactArgs(6),
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`issue NFT.
+Example:
+$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" "gx1rpyxd0yqfkqcm8pmp0nejpeac55555sk26d2h2"  --from mykey --chain-id plugchain --fees 500plug
+This example creates a nft of id nft-666 and name nftshop .
+[denom-id]: The name of the collection
+[nft-id]: The id of the nft
+[nft-name]: The name of nft	
+[nft-url]: URI of off-chain NFT data
+[nft-data]:The data of the nft data [schema.json]
+[nft-recipient]: Receiver of the nft	
+`,
+				version.AppName, types.ModuleName,
+			),
+		),
+
+		RunE: func(cmd *cobra.Command, args []string) error {
+
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			argsDenomID := cast.ToString(args[0])
+			argsNFTID := cast.ToString(args[1])
+			argsNFTName := cast.ToString(args[2])
+
+			argsURL := cast.ToString(args[3])
+
+			argsSchema := cast.ToString(args[4])
+			optionsContent, err := ioutil.ReadFile(argsSchema)
+			if err == nil {
+				argsSchema = string(optionsContent)
+			}
+			recipient := cast.ToString(args[5])
+
+			msg := types.NewMsgIssueNFT(argsNFTID, argsDenomID, argsNFTName, argsURL, argsSchema, clientCtx.GetFromAddress().String(), recipient)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
