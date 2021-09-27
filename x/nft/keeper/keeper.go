@@ -7,6 +7,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
@@ -42,6 +43,21 @@ func (k Keeper) IssueDenom(ctx sdk.Context, id, name, schema, symbol string, own
 	return k.SetDenom(ctx, denom)
 }
 
-func (k Keeper) IssueNFT(ctx sdk.Context, msg *types.MsgIssueNFT, recipient sdk.AccAddress) {
+func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, owner sdk.AccAddress) error {
+	denom, ok := k.GetDenomByID(ctx, denomID)
+	if !ok {
+		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID (%s) not exists", denomID)
+	}
+	if !denom.MintRestricted || denom.Owner != owner.String() {
+		return sdkerrors.Wrapf(sdkerrors.ErrUnauthorized, "%s is not allowed to issue NFT of denom %s", denom.Owner, denomID)
+	}
+	if k.HasNFTByID(ctx, denomID, ID) {
+		return sdkerrors.Wrapf(types.ErrNFTAreadyExists, "NFT %s already exists in collection %s", ID, denomID)
+	}
+	k.SetNFT(ctx, denomID,
+		types.NewNFT(
+			ID, name, url, data, owner,
+		))
 
+	return nil
 }

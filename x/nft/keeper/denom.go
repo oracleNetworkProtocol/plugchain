@@ -7,6 +7,16 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
+func (k Keeper) GetDenomByID(ctx sdk.Context, id string) (denom types.Denom, ok bool) {
+	store := ctx.KVStore(k.storeKey)
+	bz := store.Get(types.GetKeyDenomID(id))
+	if len(bz) == 0 {
+		return denom, false
+	}
+	k.cdc.MustUnmarshalBinaryBare(bz, &denom)
+	return
+}
+
 func (k Keeper) SetDenom(ctx sdk.Context, denom types.Denom) error {
 	if k.HasDenomByID(ctx, denom.ID) {
 		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s has already exists", denom.ID)

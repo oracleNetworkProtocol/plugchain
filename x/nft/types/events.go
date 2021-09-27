@@ -2,7 +2,9 @@ package types
 
 const (
 	EventTypeIssueDenom = TypeMsgIssueDenom
+	EventTypeIssueNFT   = TypeMsgIssueNFT
 
-	AttributeKeyDenomID = "ID"
+	AttributeKeyDenomID = "denom_id"
+	AttributeKeyNFTID   = "nft_id"
 	AttributeKeyOwner   = "owner"
 )

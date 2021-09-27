@@ -9,7 +9,7 @@ func NewDenom(id, name, schema, symbol string, owner sdk.AccAddress, mintRestric
 		Schema:         schema,
 		Owner:          owner.String(),
 		Symbol:         symbol,
-		MintRestricted: mintRestricted,
-		EditRestricted: editRestricted,
+		MintRestricted: mintRestricted, //Is true mint nft
+		EditRestricted: editRestricted, // Is true edit nft
 	}
 }

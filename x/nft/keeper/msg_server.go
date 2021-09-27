@@ -55,7 +55,23 @@ func (m msgServer) IssueNFT(c context.Context, in *types.MsgIssueNFT) (*types.Ms
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	m.Keeper.IssueNFT(ctx, in, recipient)
+	if err := m.Keeper.IssueNFT(ctx, in.DenomID, in.ID, in.Name, in.URL, in.Data, recipient); err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeIssueNFT,
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.DenomID),
+			sdk.NewAttribute(types.AttributeKeyNFTID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+	})
 
 	return &types.MsgIssueNFTResponse{}, nil
 }

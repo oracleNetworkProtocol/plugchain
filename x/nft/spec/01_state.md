@@ -47,7 +47,7 @@ type Denom struct {
     Schema  string
     Symbol  string
     Owner   string
-    MintLimit bool
-    UpdateLimit bool
+    MintRestricted bool // Is true mint nft
+    EditRestricted bool // Is true edit nft
 }
 ```
