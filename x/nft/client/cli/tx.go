@@ -12,6 +12,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
@@ -96,14 +97,14 @@ func GetCmdIssueNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue NFT.
 Example:
-$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" "gx1rpyxd0yqfkqcm8pmp0nejpeac55555sk26d2h2"  --from mykey --chain-id plugchain --fees 500plug
+$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" --from mykey --chain-id plugchain --fees 500plug
 This example creates a nft of id nft-666 and name nftshop .
 [denom-id]: The name of the collection
 [nft-id]: The id of the nft
 [nft-name]: The name of nft	
 [nft-url]: URI of off-chain NFT data
 [nft-data]:The data of the nft data [schema.json]
-[nft-recipient]: Receiver of the nft	
+[nft-recipient]: Receiver of the nft. Can be empty, when empty, the source of this value --from
 `,
 				version.AppName, types.ModuleName,
 			),
@@ -127,9 +128,16 @@ This example creates a nft of id nft-666 and name nftshop .
 			if err == nil {
 				argsSchema = string(optionsContent)
 			}
-			recipient := cast.ToString(args[5])
-
-			msg := types.NewMsgIssueNFT(argsNFTID, argsDenomID, argsNFTName, argsURL, argsSchema, clientCtx.GetFromAddress().String(), recipient)
+			from := clientCtx.GetFromAddress().String()
+			recipient := strings.TrimSpace(cast.ToString(args[5]))
+			if len(recipient) > 0 {
+				if _, err = sdk.AccAddressFromBech32(recipient); err != nil {
+					return err
+				}
+			} else {
+				recipient = from
+			}
+			msg := types.NewMsgIssueNFT(argsNFTID, argsDenomID, argsNFTName, argsURL, argsSchema, from, recipient)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

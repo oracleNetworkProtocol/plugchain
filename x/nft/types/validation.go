@@ -9,8 +9,9 @@ import (
 )
 
 const (
-	MinDenomLen = 6
-	MaxDenomLen = 64
+	MinDenomLen  = 6
+	MaxDenomLen  = 64
+	MaxNFTURLLen = 256
 )
 
 var (
@@ -20,6 +21,10 @@ var (
 	keyWords         = strings.Join([]string{"ibc", "plug"}, "|")
 	regexpKeywordFmt = fmt.Sprintf("^(%s).*", keyWords)
 	regexpKeyword    = regexp.MustCompile(regexpKeywordFmt).MatchString
+
+	URLMatchWords = strings.Join([]string{"http://", "https://"}, "|")
+	regexURLFmt   = fmt.Sprintf("^(%s).*", URLMatchWords)
+	regexpURL     = regexp.MustCompile(regexURLFmt).MatchString
 )
 
 // ValidateDenomID verifies whether the  parameters are legal
@@ -37,6 +42,27 @@ func ValidateDenomID(denomID string) error {
 func ValidateKeywords(denomId string) error {
 	if regexpKeyword(denomId) {
 		return sdkerrors.Wrapf(ErrInvalidDenom, "invalid denomId: %s, can not begin with keyword: (%s)", denomId, keyWords)
+	}
+	return nil
+}
+
+//ValidateNFTID verify that the nftID is legal
+func ValidateNFTID(nftID string) error {
+	if len(nftID) < MinDenomLen || len(nftID) > MaxDenomLen {
+		return sdkerrors.Wrapf(ErrInvalidNFTID, "the length of nft id(%s) only accepts value [%d, %d]", nftID, MinDenomLen, MaxDenomLen)
+	}
+	if !RegexAlphaNumeric(nftID) || !RegexAlphaTop(nftID) {
+		return sdkerrors.Wrapf(ErrInvalidNFTID, "nft id(%s) only accepts alphanumeric characters, and begin with an english letter", nftID)
+	}
+	return nil
+}
+
+func ValidateNFTURL(url string) error {
+	if len(url) > MaxNFTURLLen {
+		return sdkerrors.Wrapf(ErrInvalidNFTURL, "the length of nft url(%s) only accepts value [0, %d]", url, MaxNFTURLLen)
+	}
+	if !regexpURL(url) {
+		return sdkerrors.Wrapf(ErrInvalidNFTURL, "url begin with: (%s) ", URLMatchWords)
 	}
 	return nil
 }

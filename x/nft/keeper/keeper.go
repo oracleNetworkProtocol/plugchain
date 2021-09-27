@@ -41,3 +41,7 @@ func (k Keeper) IssueDenom(ctx sdk.Context, id, name, schema, symbol string, own
 	denom := types.NewDenom(id, name, schema, symbol, owner, mintRestricted, editRestricted)
 	return k.SetDenom(ctx, denom)
 }
+
+func (k Keeper) IssueNFT(ctx sdk.Context, msg *types.MsgIssueNFT, recipient sdk.AccAddress) {
+
+}

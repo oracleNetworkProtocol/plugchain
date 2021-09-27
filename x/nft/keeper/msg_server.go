@@ -49,6 +49,13 @@ func (m msgServer) IssueDenom(c context.Context, in *types.MsgIssueDenom) (*type
 }
 
 func (m msgServer) IssueNFT(c context.Context, in *types.MsgIssueNFT) (*types.MsgIssueNFTResponse, error) {
+	recipient, err := sdk.AccAddressFromBech32(in.Recipient)
+	if err != nil {
+		return nil, err
+	}
+	ctx := sdk.UnwrapSDKContext(c)
+
+	m.Keeper.IssueNFT(ctx, in, recipient)
 
 	return &types.MsgIssueNFTResponse{}, nil
 }

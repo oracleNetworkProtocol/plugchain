@@ -74,7 +74,19 @@ func (min MsgIssueNFT) ValidateBasic() error {
 	if _, err := sdk.AccAddressFromBech32(min.Owner); err != nil {
 		return err
 	}
-	return nil
+	if _, err := sdk.AccAddressFromBech32(min.Recipient); err != nil {
+		return err
+	}
+
+	if err := ValidateDenomID(min.DenomID); err != nil {
+		return err
+	}
+
+	if err := ValidateNFTID(min.ID); err != nil {
+		return err
+	}
+
+	return ValidateNFTURL(min.URL)
 }
 
 func (min MsgIssueNFT) GetSignBytes() []byte {
