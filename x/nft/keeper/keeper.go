@@ -48,7 +48,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, o
 	if !ok {
 		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID (%s) not exists", denomID)
 	}
-	if !denom.MintRestricted || denom.Owner != owner.String() {
+	if denom.MintRestricted && denom.Owner != owner.String() {
 		return sdkerrors.Wrapf(sdkerrors.ErrUnauthorized, "%s is not allowed to issue NFT of denom %s", denom.Owner, denomID)
 	}
 	if k.HasNFTByID(ctx, denomID, ID) {

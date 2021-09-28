@@ -15,3 +15,7 @@ func (k Keeper) SetNFT(ctx sdk.Context, denomID string, nft types.NFT) {
 	bz := k.cdc.MustMarshalBinaryBare(&nft)
 	store.Set(types.GetKeyNFT(denomID, nft.ID), bz)
 }
+
+func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
+	return nil
+}

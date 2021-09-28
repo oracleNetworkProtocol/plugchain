@@ -75,3 +75,8 @@ func (m msgServer) IssueNFT(c context.Context, in *types.MsgIssueNFT) (*types.Ms
 
 	return &types.MsgIssueNFTResponse{}, nil
 }
+
+func (m msgServer) EditNFT(c context.Context, in *types.MsgEditNFT) (*types.MsgEditNFTResponse, error) {
+	
+	return &types.MsgEditNFTResponse{}, nil
+}
