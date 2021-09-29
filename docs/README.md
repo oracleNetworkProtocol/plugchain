@@ -23,6 +23,9 @@ The plugchain is built on the Cosmos SDK using the following modules:
 - x/gov: governance logic.
 - ibc-go/modules: Communication between blockchains. Hosted in the cosmos/ibc-go repository.
 - x/params: Process application-level parameters.
+
+The following modules are built on the OracleNetworkProtocol repository:
+
 - x/token: token logic.
 - x/liquidity:  Automated Market Maker.
 - x/nft: nft logic Off-chain assets on-chain (In development).
