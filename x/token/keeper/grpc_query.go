@@ -3,7 +3,6 @@ package keeper
 import (
 	"context"
 	"fmt"
-	"log"
 
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/store/prefix"
@@ -60,7 +59,6 @@ func (q Keeper) Tokens(c context.Context, req *types.QueryTokensRequest) (*types
 			return nil, status.Errorf(codes.InvalidArgument, fmt.Sprintf("invalid owner address (%s)", err))
 		}
 	}
-	log.Println("owner", owner)
 	var (
 		tokens  []types.TokenI
 		pageRes *query.PageResponse
