@@ -154,20 +154,20 @@ This example creates a nft of id nft-666 and name nftshop .
 // GetCmdEditNFT is the CLI command for an EditNFT transaction
 func GetCmdEditNFT() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "edit-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient]",
-		Short: "edit a  nft.",
-		Args:  cobra.ExactArgs(6),
+		Use:   "edit-nft [denom-id] [nft-id]",
+		Short: "edit a nft.",
+		Args:  cobra.ExactArgs(5),
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`edit NFT.
 Example:
-$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" --from mykey --chain-id plugchain --fees 500plug
-This example creates a nft of id nft-666 and name nftshop .
+$ %s tx %s edit-nft "ID66666" "nft-666" --nft-name="nftshop" --nft-url="https://google.com/" --nft-data="./nft666-schema.json" --from=mykey --chain-id=plugchain --fees=500plug
+This example edit a nft of id nft-666 .
+
 [denom-id]: The name of the collection
 [nft-id]: The id of the nft
 [nft-name]: The name of nft	
 [nft-url]: URI of off-chain NFT data
 [nft-data]:The data of the nft data [schema.json]
-[nft-recipient]: Receiver of the nft. Can be empty, when empty, the source of this value --from
 `,
 				version.AppName, types.ModuleName,
 			),
@@ -192,22 +192,14 @@ This example creates a nft of id nft-666 and name nftshop .
 				argsSchema = string(optionsContent)
 			}
 			from := clientCtx.GetFromAddress().String()
-			recipient := strings.TrimSpace(cast.ToString(args[5]))
-			if len(recipient) > 0 {
-				if _, err = sdk.AccAddressFromBech32(recipient); err != nil {
-					return err
-				}
-			} else {
-				recipient = from
-			}
-			msg := types.NewMsgIssueNFT(argsNFTID, argsDenomID, argsNFTName, argsURL, argsSchema, from, recipient)
+			msg := types.NewMsgEditNFT(argsNFTID, argsDenomID, argsNFTName, argsURL, argsSchema, from)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
 		},
 	}
-
+	cmd.Flags().AddFlagSet(FsEditNFT)
 	flags.AddTxFlagsToCmd(cmd)
 
 	return cmd

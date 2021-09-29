@@ -28,7 +28,6 @@ The nft module emits the following events:
 | :------- | :------------ | :-------------- |
 | edit_nft | nft_id        | {nftID}         |
 | edit_nft | denom_id      | {nftDenomID}    |
-| edit_nft | nft_url       | {nftURL}        |
 | edit_nft | owner         | {ownerAddress}  |
 | message  | module        | nft             |
 | message  | sender        | {ownerAddress} |

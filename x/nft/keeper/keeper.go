@@ -61,3 +61,22 @@ func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, o
 
 	return nil
 }
+
+func (k Keeper) EditNFT(ctx sdk.Context, denomID, ID, name, url, data string, owner sdk.AccAddress) error {
+	denom, ok := k.GetDenomByID(ctx, denomID)
+	if !ok {
+		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID (%s) not exists", denomID)
+	}
+
+	if denom.EditRestricted {
+		// if true , nobody can edit the NFT under this denom
+		return sdkerrors.Wrapf(sdkerrors.ErrUnauthorized, "nobody can edit the NFT under this denom %s", denom.ID)
+	}
+
+	nft, err := k.Authorize(ctx, denomID, ID, owner)
+	if err != nil {
+		return err
+	}
+	var _ = nft
+	return nil
+}

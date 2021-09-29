@@ -7,11 +7,13 @@ import (
 const (
 	TypeMsgIssueDenom = "issue_denom"
 	TypeMsgIssueNFT   = "issue_nft"
+	TypeMsgEditNFT    = "edit_nft"
 )
 
 var (
 	_ sdk.Msg = &MsgIssueDenom{}
 	_ sdk.Msg = &MsgIssueNFT{}
+	_ sdk.Msg = &MsgEditNFT{}
 )
 
 // NewMsgIssueDenom is a constructor function for MsgSetName
@@ -95,6 +97,48 @@ func (min MsgIssueNFT) GetSignBytes() []byte {
 }
 
 func (min MsgIssueNFT) GetSigners() []sdk.AccAddress {
+	from, err := sdk.AccAddressFromBech32(min.Owner)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{from}
+}
+
+// NewMsgEditNFT is a constructor function for MsgEditNFT
+func NewMsgEditNFT(nftID, denomID, denomName, url, schema, owner string) *MsgEditNFT {
+	return &MsgEditNFT{
+		ID:      nftID,
+		DenomID: denomID,
+		URL:     url,
+		Data:    schema,
+		Name:    denomName,
+		Owner:   owner,
+	}
+}
+
+func (min MsgEditNFT) Route() string { return RouterKey }
+func (min MsgEditNFT) Type() string  { return TypeMsgEditNFT }
+func (min MsgEditNFT) ValidateBasic() error {
+	if _, err := sdk.AccAddressFromBech32(min.Owner); err != nil {
+		return err
+	}
+	if err := ValidateDenomID(min.DenomID); err != nil {
+		return err
+	}
+
+	if err := ValidateNFTID(min.ID); err != nil {
+		return err
+	}
+
+	return ValidateNFTURL(min.URL)
+}
+
+func (min MsgEditNFT) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(&min)
+	return sdk.MustSortJSON(bz)
+}
+
+func (min MsgEditNFT) GetSigners() []sdk.AccAddress {
 	from, err := sdk.AccAddressFromBech32(min.Owner)
 	if err != nil {
 		panic(err)
