@@ -1,7 +1,6 @@
 package keeper
 
 import (
-	"log"
 	"math"
 	"strconv"
 
@@ -43,7 +42,6 @@ func (k Keeper) DeductOperateTokenFee(ctx sdk.Context, owner sdk.AccAddress, sym
 func (k Keeper) GetIssueTokenFee(ctx sdk.Context, symbol string) (sdk.Coin, error) {
 	var p types.Params
 	k.paramSpace.GetParamSet(ctx, &p)
-	log.Printf("%+v", p)
 
 	ratioFee := ratioFeeFactor(symbol)
 
@@ -74,7 +72,6 @@ func (k Keeper) GetIssueTokenFee(ctx sdk.Context, symbol string) (sdk.Coin, erro
 func (k Keeper) GetOperateTokenFee(ctx sdk.Context, symbol string) (sdk.Coin, error) {
 	var p types.Params
 	k.paramSpace.GetParamSet(ctx, &p)
-	log.Printf("%+v", p)
 
 	ratioFee := ratioFeeFactor(symbol)
 

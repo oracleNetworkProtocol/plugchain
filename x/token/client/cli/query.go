@@ -3,7 +3,6 @@ package cli
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"github.com/spf13/cobra"
 
@@ -115,8 +114,6 @@ func GetCmdQueryTokens() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			log.Println("owner>>>>", owner.String())
-			log.Println("pageReq", pageReq)
 			res, err := queryClient.Tokens(context.Background(), &types.QueryTokensRequest{
 				Owner:      owner.String(),
 				Pagination: pageReq,

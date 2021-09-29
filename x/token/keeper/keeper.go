@@ -183,7 +183,7 @@ func (k Keeper) TransferOwnerToken(ctx sdk.Context, symbol string, owner, to sdk
 
 	k.setToken(ctx, token)
 
-	//重置地址查询索引
+	//Reset address query index
 	k.resetStoreKeyForQueryToken(ctx, token.Symbol, owner, to)
 
 	return nil

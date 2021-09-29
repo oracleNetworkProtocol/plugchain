@@ -21,6 +21,10 @@ import (
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
 
+	"github.com/oracleNetworkProtocol/liquidity/x/liquidity"
+	liquiditykeeper "github.com/oracleNetworkProtocol/liquidity/x/liquidity/keeper"
+	liquiditytypes "github.com/oracleNetworkProtocol/liquidity/x/liquidity/types"
+
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
@@ -146,6 +150,7 @@ var (
 		vesting.AppModuleBasic{},
 		token.AppModuleBasic{},
 		nft.AppModuleBasic{},
+		liquidity.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -158,6 +163,7 @@ var (
 		govtypes.ModuleName:            {authtypes.Burner},
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		tokentypes.ModuleName:          {authtypes.Minter, authtypes.Burner},
+		liquiditytypes.ModuleName:      {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -239,8 +245,9 @@ type App struct {
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 
-	TokenKeeper tokenkeeper.Keeper
-	NftKeeper   nftkeeper.Keeper
+	TokenKeeper     tokenkeeper.Keeper
+	NftKeeper       nftkeeper.Keeper
+	LiquidityKeeper liquiditykeeper.Keeper
 	// the module manager
 	mm *module.Manager
 }
@@ -273,7 +280,7 @@ func New(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
-		tokentypes.StoreKey, nfttypes.StoreKey,
+		tokentypes.StoreKey, nfttypes.StoreKey, liquiditytypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -390,6 +397,11 @@ func New(
 	// we prefer to be more strict in what arguments the modules expect.
 	var skipGenesisInvariants = cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
+	app.LiquidityKeeper = liquiditykeeper.NewKeeper(
+		appCodec, keys[liquiditytypes.StoreKey], app.GetSubspace(liquiditytypes.ModuleName),
+		app.BankKeeper, app.AccountKeeper, app.DistrKeeper,
+	)
+
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
 
@@ -415,6 +427,7 @@ func New(
 		transferModule,
 		tokenModule,
 		nftModule,
+		liquidity.NewAppModule(appCodec, app.LiquidityKeeper, app.AccountKeeper, app.BankKeeper, app.DistrKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -423,10 +436,10 @@ func New(
 	// NOTE: staking module is required if HistoricalEntries param > 0
 	app.mm.SetOrderBeginBlockers(
 		upgradetypes.ModuleName, minttypes.ModuleName, distrtypes.ModuleName, slashingtypes.ModuleName,
-		evidencetypes.ModuleName, stakingtypes.ModuleName, ibchost.ModuleName,
+		evidencetypes.ModuleName, stakingtypes.ModuleName, ibchost.ModuleName, liquiditytypes.ModuleName,
 	)
 
-	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName)
+	app.mm.SetOrderEndBlockers(crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName, liquiditytypes.ModuleName)
 
 	// NOTE: The genutils module must occur after staking so that pools are
 	// properly initialized with tokens from genesis accounts.
@@ -449,6 +462,7 @@ func New(
 		ibctransfertypes.ModuleName,
 		tokentypes.ModuleName,
 		nfttypes.ModuleName,
+		liquiditytypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -475,7 +489,7 @@ func New(
 	app.RegisterUpgradePlan(
 		"x/token",
 		&store.StoreUpgrades{
-			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName},
+			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName, liquiditytypes.ModuleName},
 			Deleted: []string{"plugchain"},
 		},
 		func(ctx sdk.Context, plan sdkupgrade.Plan) {
@@ -483,6 +497,10 @@ func New(
 			genState.Params = tokentypes.DefaultParams()
 			genState.Tokens = []tokentypes.Token{tokentypes.GetLocalToken()}
 			token.InitGenesis(ctx, app.TokenKeeper, genState)
+
+			var liquidityGenState liquiditytypes.GenesisState
+			liquidityGenState.Params = liquiditytypes.DefaultParams()
+			app.LiquidityKeeper.InitGenesis(ctx, liquidityGenState)
 		},
 	)
 	if loadLatest {
@@ -670,6 +688,7 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	paramsKeeper.Subspace(tokentypes.ModuleName)
+	paramsKeeper.Subspace(liquiditytypes.ModuleName)
 
 	return paramsKeeper
 }
