@@ -489,7 +489,7 @@ func New(
 	app.RegisterUpgradePlan(
 		"x/token",
 		&store.StoreUpgrades{
-			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName},
+			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName, liquiditytypes.ModuleName},
 			Deleted: []string{"plugchain"},
 		},
 		func(ctx sdk.Context, plan sdkupgrade.Plan) {
@@ -497,6 +497,10 @@ func New(
 			genState.Params = tokentypes.DefaultParams()
 			genState.Tokens = []tokentypes.Token{tokentypes.GetLocalToken()}
 			token.InitGenesis(ctx, app.TokenKeeper, genState)
+
+			var liquidityGenState liquiditytypes.GenesisState
+			liquidityGenState.Params = liquiditytypes.DefaultParams()
+			app.LiquidityKeeper.InitGenesis(ctx, liquidityGenState)
 		},
 	)
 	if loadLatest {
