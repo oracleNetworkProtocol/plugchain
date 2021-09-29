@@ -22,7 +22,7 @@ message Denom {
     string schema = 3;
     string symbol = 4;
     string owner = 5;
-    bool mint_restricted = 6;
+    bool mint_restricted = 6; 
     bool edit_restricted = 7;
 }
 

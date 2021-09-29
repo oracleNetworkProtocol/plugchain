@@ -12,15 +12,28 @@ const (
 
 	// QuerierRoute defines the module's query routing key
 	QuerierRoute = ModuleName
-
-	// MemStoreKey defines the in-memory store key
-	MemStoreKey = "mem_nft"
-
-	// this line is used by starport scaffolding # ibc/keys/name
 )
 
-// this line is used by starport scaffolding # ibc/keys/port
+var (
+	PrefixDenom = []byte{0x01}
+	PrefixNFT   = []byte{0x02}
+	delimiter   = []byte("-")
+)
 
-func KeyPrefix(p string) []byte {
-	return []byte(p)
+func GetKeyDenomID(id string) []byte {
+	key := append(PrefixDenom, delimiter...)
+	return append(key, []byte(id)...)
+}
+
+// KeyNFT gets the key of nft stored by an denom and id
+func GetKeyNFT(denomID, nftID string) []byte {
+	baseKey := append(PrefixNFT, delimiter...)
+	if len(denomID) > 0 {
+		baseKey = append(baseKey, []byte(denomID)...)
+		baseKey = append(baseKey, delimiter...)
+	}
+	if len(denomID) > 0 && len(nftID) > 0 {
+		baseKey = append(baseKey, []byte(nftID)...)
+	}
+	return baseKey
 }
