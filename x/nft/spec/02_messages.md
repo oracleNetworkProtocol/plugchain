@@ -80,3 +80,23 @@ type MsgEditNFT struct {
     Owner  string
 }
 ```
+
+
+### MsgBurnNFT
+
+This message type is used for burning tokens which destroys and deletes them. By default anyone can execute this Message type. **It is highly recommended that a custom handler is made to restrict use of this Message type to prevent unintended use.**
+
+| **Field** | **Type** | **Description**                                    |
+| :-------- | :------- | :------------------------------------------------- |
+| ID        | `string` | The ID of the nft.                                 |
+| DenomID   | `string` | The Denom ID of the Denom.                         |
+| Owner     | `string` | The account address of the user burning the denom. |
+
+```go
+// MsgBurnNFT defines an SDK message for burning a NFT.
+type MsgBurnNFT struct {
+    ID      string
+    DenomID string
+    Owner  string
+}
+```

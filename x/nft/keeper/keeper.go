@@ -54,7 +54,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, o
 	if k.HasNFTByID(ctx, denomID, ID) {
 		return sdkerrors.Wrapf(types.ErrNFTAreadyExists, "NFT %s already exists in collection %s", ID, denomID)
 	}
-	k.SetNFT(ctx, denomID,
+	k.setNFT(ctx, denomID,
 		types.NewNFT(
 			ID, name, url, data, owner,
 		))
@@ -77,6 +77,20 @@ func (k Keeper) EditNFT(ctx sdk.Context, denomID, ID, name, url, data string, ow
 	if err != nil {
 		return err
 	}
-	var _ = nft
+
+	if types.Modified(name) {
+		nft.Name = name
+	}
+
+	if types.Modified(url) {
+		nft.URL = url
+	}
+
+	if types.Modified(data) {
+		nft.Data = data
+	}
+
+	k.setNFT(ctx, denomID, nft)
+
 	return nil
 }

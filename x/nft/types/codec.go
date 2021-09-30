@@ -16,6 +16,7 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterInterface((*NFTI)(nil), nil)
 	cdc.RegisterConcrete(&MsgIssueDenom{}, "x/nft/issue_denom", nil)
 	cdc.RegisterConcrete(&MsgIssueNFT{}, "x/nft/issue_nft", nil)
+	cdc.RegisterConcrete(&MsgEditNFT{}, "x/nft/edit_nft", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
@@ -23,6 +24,7 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgIssueDenom{},
 		&MsgIssueNFT{},
+		&MsgEditNFT{},
 	)
 
 	registry.RegisterInterface(

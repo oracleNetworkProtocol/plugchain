@@ -103,3 +103,7 @@ func (m msgServer) EditNFT(c context.Context, in *types.MsgEditNFT) (*types.MsgE
 	})
 	return &types.MsgEditNFTResponse{}, nil
 }
+
+func (m msgServer) BurnNFT(c context.Context, in *types.MsgBurnNFT) (*types.MsgBurnNFTResponse, error) {
+	return &types.MsgBurnNFTResponse{}, nil
+}

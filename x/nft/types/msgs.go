@@ -8,12 +8,14 @@ const (
 	TypeMsgIssueDenom = "issue_denom"
 	TypeMsgIssueNFT   = "issue_nft"
 	TypeMsgEditNFT    = "edit_nft"
+	TypeMsgBurnNFT    = "burn_nft"
 )
 
 var (
 	_ sdk.Msg = &MsgIssueDenom{}
 	_ sdk.Msg = &MsgIssueNFT{}
 	_ sdk.Msg = &MsgEditNFT{}
+	_ sdk.Msg = &MsgBurnNFT{}
 )
 
 // NewMsgIssueDenom is a constructor function for MsgSetName
@@ -116,30 +118,65 @@ func NewMsgEditNFT(nftID, denomID, denomName, url, schema, owner string) *MsgEdi
 	}
 }
 
-func (min MsgEditNFT) Route() string { return RouterKey }
-func (min MsgEditNFT) Type() string  { return TypeMsgEditNFT }
-func (min MsgEditNFT) ValidateBasic() error {
-	if _, err := sdk.AccAddressFromBech32(min.Owner); err != nil {
+func (med MsgEditNFT) Route() string { return RouterKey }
+func (med MsgEditNFT) Type() string  { return TypeMsgEditNFT }
+func (med MsgEditNFT) ValidateBasic() error {
+	if _, err := sdk.AccAddressFromBech32(med.Owner); err != nil {
 		return err
 	}
-	if err := ValidateDenomID(min.DenomID); err != nil {
-		return err
-	}
-
-	if err := ValidateNFTID(min.ID); err != nil {
+	if err := ValidateDenomID(med.DenomID); err != nil {
 		return err
 	}
 
-	return ValidateNFTURL(min.URL)
+	if err := ValidateNFTID(med.ID); err != nil {
+		return err
+	}
+
+	return ValidateNFTURL(med.URL)
 }
 
-func (min MsgEditNFT) GetSignBytes() []byte {
-	bz := ModuleCdc.MustMarshalJSON(&min)
+func (med MsgEditNFT) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(&med)
 	return sdk.MustSortJSON(bz)
 }
 
-func (min MsgEditNFT) GetSigners() []sdk.AccAddress {
-	from, err := sdk.AccAddressFromBech32(min.Owner)
+func (med MsgEditNFT) GetSigners() []sdk.AccAddress {
+	from, err := sdk.AccAddressFromBech32(med.Owner)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{from}
+}
+
+// NewMsgBurnNFT is a constructor function for MsgBurnNFT
+func NewMsgBurnNFT(nftID, denomID, owner string) *MsgBurnNFT {
+	return &MsgBurnNFT{
+		ID:      nftID,
+		DenomID: denomID,
+		Owner:   owner,
+	}
+}
+
+func (mbn MsgBurnNFT) Route() string { return RouterKey }
+func (mbn MsgBurnNFT) Type() string  { return TypeMsgBurnNFT }
+func (mbn MsgBurnNFT) ValidateBasic() error {
+	if _, err := sdk.AccAddressFromBech32(mbn.Owner); err != nil {
+		return err
+	}
+	if err := ValidateDenomID(mbn.DenomID); err != nil {
+		return err
+	}
+
+	return ValidateNFTID(mbn.ID)
+}
+
+func (mbn MsgBurnNFT) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(&mbn)
+	return sdk.MustSortJSON(bz)
+}
+
+func (mbn MsgBurnNFT) GetSigners() []sdk.AccAddress {
+	from, err := sdk.AccAddressFromBech32(mbn.Owner)
 	if err != nil {
 		panic(err)
 	}

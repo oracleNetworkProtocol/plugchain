@@ -156,7 +156,7 @@ func GetCmdEditNFT() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "edit-nft [denom-id] [nft-id]",
 		Short: "edit a nft.",
-		Args:  cobra.ExactArgs(5),
+		Args:  cobra.ExactArgs(2),
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`edit NFT.
 Example:
@@ -182,11 +182,18 @@ This example edit a nft of id nft-666 .
 
 			argsDenomID := cast.ToString(args[0])
 			argsNFTID := cast.ToString(args[1])
-			argsNFTName := cast.ToString(args[2])
-
-			argsURL := cast.ToString(args[3])
-
-			argsSchema := cast.ToString(args[4])
+			argsNFTName, err := cmd.Flags().GetString(FlagNFTName)
+			if err != nil {
+				return err
+			}
+			argsURL, err := cmd.Flags().GetString(FlagNFTURL)
+			if err != nil {
+				return err
+			}
+			argsSchema, err := cmd.Flags().GetString(FlagNFTData)
+			if err != nil {
+				return err
+			}
 			optionsContent, err := ioutil.ReadFile(argsSchema)
 			if err == nil {
 				argsSchema = string(optionsContent)

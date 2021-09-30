@@ -9,6 +9,8 @@ import (
 )
 
 const (
+	DefaultStringValue = "[do-not-modify]"
+
 	MinDenomLen  = 6
 	MaxDenomLen  = 64
 	MaxNFTURLLen = 256
@@ -65,4 +67,9 @@ func ValidateNFTURL(url string) error {
 		return sdkerrors.Wrapf(ErrInvalidNFTURL, "url begin with: (%s) ", URLMatchWords)
 	}
 	return nil
+}
+
+// Modified returns whether the field is modified
+func Modified(item string) bool {
+	return item != DefaultStringValue
 }

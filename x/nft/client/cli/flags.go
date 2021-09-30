@@ -1,12 +1,11 @@
 package cli
 
 import (
+	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 	"github.com/spf13/pflag"
 )
 
 const (
-	DefaultStringValue = "[do-not-modify]"
-
 	FlagNFTName = "nft-name"
 	FlagNFTURL  = "nft-url"
 	FlagNFTData = "nft-data"
@@ -17,7 +16,7 @@ var (
 )
 
 func init() {
-	FsEditNFT.String(FlagNFTName, DefaultStringValue, "The name of the nft")
-	FsEditNFT.String(FlagNFTURL, DefaultStringValue, "URL for the supplemental off-chain nft data (should return a JSON object)")
-	FsEditNFT.String(FlagNFTData, DefaultStringValue, "The nft data of the nft")
+	FsEditNFT.String(FlagNFTName, types.DefaultStringValue, "The name of the nft")
+	FsEditNFT.String(FlagNFTURL, types.DefaultStringValue, "URL for the supplemental off-chain nft data (should return a JSON object)")
+	FsEditNFT.String(FlagNFTData, types.DefaultStringValue, "The nft data of the nft")
 }
