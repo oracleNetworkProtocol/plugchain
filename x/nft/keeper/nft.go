@@ -46,3 +46,8 @@ func (k Keeper) Authorize(ctx sdk.Context, denomID, ID string, owner sdk.AccAddr
 
 	return nft.(types.NFT), nil
 }
+
+func (k Keeper) deleteNFT(ctx sdk.Context, denomID, ID string) {
+	store := ctx.KVStore(k.storeKey)
+	store.Delete(types.GetKeyNFT(denomID, ID))
+}

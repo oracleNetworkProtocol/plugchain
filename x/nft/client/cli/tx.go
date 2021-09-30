@@ -31,6 +31,7 @@ func GetTxCmd() *cobra.Command {
 		GetCmdIssueDenom(),
 		GetCmdIssueNFT(),
 		GetCmdEditNFT(),
+		GetCmdBurnNFT(),
 	)
 	return cmd
 }
@@ -207,6 +208,48 @@ This example edit a nft of id nft-666 .
 		},
 	}
 	cmd.Flags().AddFlagSet(FsEditNFT)
+	flags.AddTxFlagsToCmd(cmd)
+
+	return cmd
+}
+
+//GetCmdBurnNFT is the CLI command for an BurnNFT transaction
+func GetCmdBurnNFT() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "burn-nft [denom-id] [nft-id]",
+		Short: "burn a nft.",
+		Args:  cobra.ExactArgs(2),
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`burn NFT.
+Example:
+$ %s tx %s burn-nft "ID66666" "nft-666" --from=mykey --chain-id=plugchain --fees=500plug
+This example burning a nft of id nft-666 .
+
+[denom-id]: The name of the collection
+[nft-id]: The id of the nft
+`,
+				version.AppName, types.ModuleName,
+			),
+		),
+
+		RunE: func(cmd *cobra.Command, args []string) error {
+
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			argsDenomID := cast.ToString(args[0])
+			argsNFTID := cast.ToString(args[1])
+
+			from := clientCtx.GetFromAddress().String()
+			msg := types.NewMsgBurnNFT(argsNFTID, argsDenomID, from)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
 	flags.AddTxFlagsToCmd(cmd)
 
 	return cmd

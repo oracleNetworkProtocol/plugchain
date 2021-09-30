@@ -105,5 +105,30 @@ func (m msgServer) EditNFT(c context.Context, in *types.MsgEditNFT) (*types.MsgE
 }
 
 func (m msgServer) BurnNFT(c context.Context, in *types.MsgBurnNFT) (*types.MsgBurnNFTResponse, error) {
+
+	owner, err := sdk.AccAddressFromBech32(in.Owner)
+	if err != nil {
+		return nil, err
+	}
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if err := m.Keeper.BurnNFT(ctx, in.DenomID, in.ID, owner); err != nil {
+		return nil, err
+	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeBurnNFT,
+			sdk.NewAttribute(types.AttributeKeyNFTID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.DenomID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+	})
+
 	return &types.MsgBurnNFTResponse{}, nil
 }

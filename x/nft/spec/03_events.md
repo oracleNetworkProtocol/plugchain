@@ -31,3 +31,13 @@ The nft module emits the following events:
 | edit_nft | owner         | {ownerAddress}  |
 | message  | module        | nft             |
 | message  | sender        | {ownerAddress} |
+
+## MsgBurnNFT
+
+| Type     | Attribute Key | Attribute Value |
+| :------- | :------------ | :-------------- |
+| burn_nft | nft_id        | {nftID}         |
+| burn_nft | denom_id      | {nftDenomID}    |
+| burn_nft | owner         | {ownerAddress}  |
+| message  | module        | nft             |
+| message  | sender        | {ownerAddress} |
