@@ -21,5 +21,11 @@ func (q Keeper) Denom(c context.Context, req *types.QueryDenomRequest) (*types.Q
 }
 
 func (q Keeper) Denoms(c context.Context, req *types.QueryDenomsRequest) (*types.QueryDenomsResponse, error) {
+	//TODO
 	return &types.QueryDenomsResponse{}, nil
+}
+
+func (q Keeper) NFT(c context.Context, req *types.QueryNFTRequest) (*types.QueryNFTResponse, error) {
+	//TODO
+	return &types.QueryNFTResponse{}, nil
 }

@@ -89,3 +89,26 @@ func GetQueryDenomsCmd() *cobra.Command {
 	flags.AddPaginationFlagsToCmd(cmd, "all denoms")
 	return cmd
 }
+
+func GetQueryNFTCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:     "nft [denom-id] [nft-id]",
+		Long:    "Query a single NFT from a collection",
+		Example: fmt.Sprintf("$ %s q nft nft <denom-id> <nft-id>", version.AppName),
+		Args:    cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+			resp, err := queryClient.NFT(context.Background(), &types.QueryNFTRequest{DenomId: args[0], NftId: args[1]})
+			if err != nil {
+				return err
+			}
+			return clientCtx.PrintProto(resp)
+		},
+	}
+	flags.AddQueryFlagsToCmd(cmd)
+	return cmd
+}

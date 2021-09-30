@@ -11,11 +11,14 @@ option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
 // Query defines the gRPC querier service.
 service Query {
     rpc Denom (QueryDenomRequest) returns (QueryDenomResponse) {
-        option (google.api.http).get = "/x/nft/denoms/{denom_id}";
+        option (google.api.http).get = "/nft/denoms/{denom_id}";
     };
 
     rpc Denoms (QueryDenomsRequest) returns (QueryDenomsResponse) {
-        option (google.api.http).get = "/x/nft/denoms";
+        option (google.api.http).get = "/nft/denoms";
+    }
+    rpc NFT (QueryNFTRequest) returns (QueryNFTResponse) {
+        option (google.api.http).get = "/nft/nfts/{denom_id}/{nft_id}";
     }
 }
 
@@ -35,4 +38,13 @@ message QueryDenomsRequest {
 message QueryDenomsResponse{
     repeated Denom denoms = 1 [ (gogoproto.nullable) = false ];
     cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryNFTRequest {
+    string denom_id = 1 [ (gogoproto.moretags) = "yaml:\"denom_id\"" ];
+    string nft_id = 2 [ (gogoproto.moretags) = "yaml:\"nft_id\"" ];
+}
+
+message QueryNFTResponse{
+    NFT nft = 1; 
 }
