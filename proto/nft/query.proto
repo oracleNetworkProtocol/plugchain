@@ -1,15 +1,38 @@
 syntax = "proto3";
 package plugchain.nft;
 
+import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-// this line is used by starport scaffolding # 1
+import "nft/nft.proto";
 
 option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
 
 // Query defines the gRPC querier service.
 service Query {
-    // this line is used by starport scaffolding # 2
+    rpc Denom (QueryDenomRequest) returns (QueryDenomResponse) {
+        option (google.api.http).get = "/x/nft/denoms/{denom_id}";
+    };
+
+    rpc Denoms (QueryDenomsRequest) returns (QueryDenomsResponse) {
+        option (google.api.http).get = "/x/nft/denoms";
+    }
 }
 
-// this line is used by starport scaffolding # 3
+
+message QueryDenomRequest {
+    string denom_id = 1 [ (gogoproto.moretags) = "yaml:\"denom_id\"" ];
+}
+
+message QueryDenomResponse {
+    Denom denom = 1 ;
+}
+
+message QueryDenomsRequest {
+    cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryDenomsResponse{
+    repeated Denom denoms = 1 [ (gogoproto.nullable) = false ];
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
