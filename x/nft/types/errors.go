@@ -14,4 +14,5 @@ var (
 	ErrNFTAreadyExists   = sdkerrors.Register(ModuleName, 4, "nft already exists")
 	ErrUnknownCollection = sdkerrors.Register(ModuleName, 5, "unknown nft collection")
 	ErrUnauthorized      = sdkerrors.Register(ModuleName, 6, "unauthorized address")
+	ErrKnownNFT          = sdkerrors.Register(ModuleName, 7, "unknown nft")
 )
