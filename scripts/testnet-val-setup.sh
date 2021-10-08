@@ -17,7 +17,7 @@ echo "install plugchain"
 git clone https://github.com/oracleNetworkProtocol/plugchain $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 cd $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 git fetch
-git checkout v0.2.0
+git checkout v0.5.0
 make install
 
 echo "Creating keys"
