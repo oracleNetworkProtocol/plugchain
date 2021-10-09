@@ -32,6 +32,7 @@ func GetTxCmd() *cobra.Command {
 		GetCmdIssueNFT(),
 		GetCmdEditNFT(),
 		GetCmdBurnNFT(),
+		GetCmdTransferNFT(),
 	)
 	return cmd
 }
@@ -99,7 +100,7 @@ func GetCmdIssueNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue NFT.
 Example:
-$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" --from mykey --chain-id plugchain --fees 500plug
+$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" "" --from mykey --chain-id plugchain --fees 500plug
 This example creates a nft of id nft-666 and name nftshop .
 [denom-id]: The name of the collection
 [nft-id]: The id of the nft
@@ -252,5 +253,43 @@ This example burning a nft of id nft-666 .
 	}
 	flags.AddTxFlagsToCmd(cmd)
 
+	return cmd
+}
+
+func GetCmdTransferNFT() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "transfer-nft [denom-id] [nft-id] [recipient]",
+		Short: "transfer an NFT to a recipient.",
+		Example: fmt.Sprintf(
+			"$ %s tx nft transfer-nft <denom-id> <nft-id> <recipient-address> "+
+				"--from=myAddress "+
+				"--chain-id=plugchain "+
+				"--fees=200plug ",
+			version.AppName,
+		),
+		Args: cobra.ExactArgs(3),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			if _, err := sdk.AccAddressFromBech32(args[2]); err != nil {
+				return err
+			}
+			msg := types.NewMsgTransferNFT(
+				args[1],
+				args[0],
+				clientCtx.GetFromAddress().String(),
+				args[2],
+			)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
 	return cmd
 }

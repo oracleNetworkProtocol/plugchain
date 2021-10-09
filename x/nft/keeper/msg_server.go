@@ -132,3 +132,21 @@ func (m msgServer) BurnNFT(c context.Context, in *types.MsgBurnNFT) (*types.MsgB
 
 	return &types.MsgBurnNFTResponse{}, nil
 }
+
+func (m msgServer) TransferNFT(c context.Context, in *types.MsgTransferNFT) (*types.MsgTransferNFTResponse, error) {
+	owner, err := sdk.AccAddressFromBech32(in.Owner)
+	if err != nil {
+		return nil, err
+	}
+	recipient, err := sdk.AccAddressFromBech32(in.Recipient)
+	if err != nil {
+		return nil, err
+	}
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if err := m.Keeper.TransferNFT(ctx, owner, recipient, in.ID, in.DenomID); err != nil {
+		return nil, err
+	}
+
+	return &types.MsgTransferNFTResponse{}, nil
+}

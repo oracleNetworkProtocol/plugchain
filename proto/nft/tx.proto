@@ -72,9 +72,10 @@ message MsgBurnNFTResponse{}
 
 message MsgTransferNFT {
     option (gogoproto.equal) = true;
-    string id = 1;
-    string denom_id = 2;
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string denom_id = 2 [ (gogoproto.customname) = "DenomID" ];
     string recipient = 3;
+    string owner = 4;
 
 }
 

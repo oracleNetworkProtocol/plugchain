@@ -2,13 +2,15 @@ package types
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
 const (
-	TypeMsgIssueDenom = "issue_denom"
-	TypeMsgIssueNFT   = "issue_nft"
-	TypeMsgEditNFT    = "edit_nft"
-	TypeMsgBurnNFT    = "burn_nft"
+	TypeMsgIssueDenom  = "issue_denom"
+	TypeMsgIssueNFT    = "issue_nft"
+	TypeMsgEditNFT     = "edit_nft"
+	TypeMsgBurnNFT     = "burn_nft"
+	TypeMsgTransferNFT = "transfer_nft"
 )
 
 var (
@@ -16,6 +18,7 @@ var (
 	_ sdk.Msg = &MsgIssueNFT{}
 	_ sdk.Msg = &MsgEditNFT{}
 	_ sdk.Msg = &MsgBurnNFT{}
+	_ sdk.Msg = &MsgTransferNFT{}
 )
 
 // NewMsgIssueDenom is a constructor function for MsgSetName
@@ -177,6 +180,46 @@ func (mbn MsgBurnNFT) GetSignBytes() []byte {
 
 func (mbn MsgBurnNFT) GetSigners() []sdk.AccAddress {
 	from, err := sdk.AccAddressFromBech32(mbn.Owner)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{from}
+}
+
+// NewMsgTransferNFT is a constructor function for MsgTransferNFT
+func NewMsgTransferNFT(nftID, denomID, owner, recipient string) *MsgTransferNFT {
+	return &MsgTransferNFT{
+		ID:        nftID,
+		DenomID:   denomID,
+		Recipient: recipient,
+		Owner:     owner,
+	}
+}
+
+func (mtn MsgTransferNFT) Route() string { return RouterKey }
+func (mtn MsgTransferNFT) Type() string  { return TypeMsgTransferNFT }
+func (mtn MsgTransferNFT) ValidateBasic() error {
+	if err := ValidateDenomID(mtn.DenomID); err != nil {
+		return err
+	}
+	if _, err := sdk.AccAddressFromBech32(mtn.Recipient); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid recipient address (%s)", err)
+	}
+
+	if _, err := sdk.AccAddressFromBech32(mtn.Owner); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid sender address (%s)", err)
+	}
+
+	return ValidateNFTID(mtn.ID)
+}
+
+func (mtn MsgTransferNFT) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(&mtn)
+	return sdk.MustSortJSON(bz)
+}
+
+func (mtn MsgTransferNFT) GetSigners() []sdk.AccAddress {
+	from, err := sdk.AccAddressFromBech32(mtn.Owner)
 	if err != nil {
 		panic(err)
 	}
