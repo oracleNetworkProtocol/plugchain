@@ -4,6 +4,7 @@ import (
 	"context"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
@@ -142,11 +143,26 @@ func (m msgServer) TransferNFT(c context.Context, in *types.MsgTransferNFT) (*ty
 	if err != nil {
 		return nil, err
 	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if err := m.Keeper.TransferNFT(ctx, owner, recipient, in.ID, in.DenomID); err != nil {
 		return nil, err
 	}
+
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeTransferNFT,
+			sdk.NewAttribute(types.AttributeKeyNFTID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.DenomID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, types.ModuleName),
+		),
+	})
 
 	return &types.MsgTransferNFTResponse{}, nil
 }

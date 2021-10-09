@@ -109,6 +109,11 @@ func (k Keeper) BurnNFT(ctx sdk.Context, denomID, ID string, owner sdk.AccAddres
 }
 
 func (k Keeper) TransferNFT(ctx sdk.Context, owner, recipient sdk.AccAddress, nftID, denomID string) error {
+
+	if owner.Equals(recipient) {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "The recipient (%s) is the same as the original owner", recipient)
+	}
+
 	_, ok := k.GetDenomByID(ctx, denomID)
 	if !ok {
 		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID %s not exists", denomID)
