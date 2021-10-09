@@ -15,6 +15,8 @@ service Msg {
     rpc EditNFT (MsgEditNFT) returns (MsgEditNFTResponse);
     //BurnNFT define a method for burning a nft
     rpc BurnNFT (MsgBurnNFT) returns (MsgBurnNFTResponse);
+
+    rpc TransferNFT (MsgTransferNFT) returns (MsgTransferNFTResponse);
 }
 
 
@@ -67,3 +69,13 @@ message MsgBurnNFT{
 }
 
 message MsgBurnNFTResponse{}
+
+message MsgTransferNFT {
+    option (gogoproto.equal) = true;
+    string id = 1;
+    string denom_id = 2;
+    string recipient = 3;
+
+}
+
+message MsgTransferNFTResponse{}

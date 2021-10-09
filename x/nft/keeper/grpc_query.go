@@ -60,3 +60,15 @@ func (q Keeper) NFT(c context.Context, req *types.QueryNFTRequest) (*types.Query
 		Nft: &nfti,
 	}, nil
 }
+
+func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest) (*types.QueryCollectionResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+	collection, pageRes, err := q.GetPaginateCollection(ctx, req, req.DenomId)
+	if err != nil {
+		return nil, err
+	}
+	return &types.QueryCollectionResponse{
+		Collection: &collection,
+		Pagination: pageRes,
+	}, nil
+}

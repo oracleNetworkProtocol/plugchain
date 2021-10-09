@@ -31,6 +31,9 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 
 	cmd.AddCommand(
 		GetQueryDenomCmd(),
+		GetQueryDenomsCmd(),
+		GetQueryNFTCmd(),
+		GetQueryCollectionCmd(),
 	)
 
 	return cmd
@@ -110,5 +113,40 @@ func GetQueryNFTCmd() *cobra.Command {
 		},
 	}
 	flags.AddQueryFlagsToCmd(cmd)
+	return cmd
+}
+
+func GetQueryCollectionCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:     "collection [denom-id]",
+		Long:    "Get all the NFTs from a given collection.",
+		Example: fmt.Sprintf("$ %s q nft collection <denom-id>", version.AppName),
+		Args:    cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			pageReq, err := client.ReadPageRequest(cmd.Flags())
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+			resp, err := queryClient.Collection(
+				context.Background(),
+				&types.QueryCollectionRequest{
+					DenomId:    args[0],
+					Pagination: pageReq,
+				},
+			)
+			if err != nil {
+				return err
+			}
+
+			return clientCtx.PrintProto(resp)
+		},
+	}
+	flags.AddQueryFlagsToCmd(cmd)
+	flags.AddPaginationFlagsToCmd(cmd, "nfts")
 	return cmd
 }

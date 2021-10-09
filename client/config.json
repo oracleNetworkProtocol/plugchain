@@ -134,6 +134,14 @@
             "Params": "TokenParams"
           }
         }
+      },
+      {
+        "url": "./tmp-swagger-gen/nft/query.swagger.json",
+        "operationIds": {
+          "rename": {
+            "Params": "nftParams"
+          }
+        }
       }
     ]
   }

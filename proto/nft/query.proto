@@ -20,6 +20,9 @@ service Query {
     rpc NFT (QueryNFTRequest) returns (QueryNFTResponse) {
         option (google.api.http).get = "/nft/nfts/{denom_id}/{nft_id}";
     }
+    rpc Collection (QueryCollectionRequest) returns (QueryCollectionResponse) {
+        option (google.api.http).get = "/nft/collections/{denom_id}";
+    }
 }
 
 
@@ -47,4 +50,15 @@ message QueryNFTRequest {
 
 message QueryNFTResponse{
     NFT nft = 1; 
+}
+
+message QueryCollectionRequest {
+    string denom_id = 1;
+    cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+
+message QueryCollectionResponse{
+    Collection collection = 1;
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

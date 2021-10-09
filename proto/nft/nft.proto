@@ -29,5 +29,5 @@ message Denom {
 
 message Collection {
     Denom denom = 1 [(gogoproto.nullable) = false];
-    repeated NFT nfts = 2 [(gogoproto.nullable) = false];
+    repeated NFT nfts = 2 [ (gogoproto.customname) = "NFTs", (gogoproto.nullable) = false];
 }

@@ -9,5 +9,5 @@ func NewCollection(denom Denom, nfts []NFTI) (c Collection) {
 }
 
 func (c *Collection) AddNFT(nft NFT) {
-	c.Nfts = append(c.Nfts, nft)
+	c.NFTs = append(c.NFTs, nft)
 }

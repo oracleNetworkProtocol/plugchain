@@ -41,7 +41,7 @@ func GetCmdIssueDenom() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json]",
 		Short: "Issue a new denom.",
-		Args:  cobra.ExactArgs(7),
+		Args:  cobra.ExactArgs(6),
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue Denom.
 Example:

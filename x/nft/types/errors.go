@@ -8,11 +8,11 @@ import (
 
 // x/nft module sentinel errors
 var (
-	ErrInvalidDenom      = sdkerrors.Register(ModuleName, 1, "invalid denom")
-	ErrInvalidNFTID      = sdkerrors.Register(ModuleName, 2, "invalid nft ID")
-	ErrInvalidNFTURL     = sdkerrors.Register(ModuleName, 3, "invalid nft url")
-	ErrNFTAreadyExists   = sdkerrors.Register(ModuleName, 4, "nft already exists")
-	ErrUnknownCollection = sdkerrors.Register(ModuleName, 5, "unknown nft collection")
-	ErrUnauthorized      = sdkerrors.Register(ModuleName, 6, "unauthorized address")
-	ErrKnownNFT          = sdkerrors.Register(ModuleName, 7, "unknown nft")
+	ErrInvalidDenom      = sdkerrors.Register(ModuleName, 2, "invalid denom")
+	ErrInvalidNFTID      = sdkerrors.Register(ModuleName, 3, "invalid nft ID")
+	ErrInvalidNFTURL     = sdkerrors.Register(ModuleName, 4, "invalid nft url")
+	ErrNFTAreadyExists   = sdkerrors.Register(ModuleName, 5, "nft already exists")
+	ErrUnknownCollection = sdkerrors.Register(ModuleName, 6, "unknown nft collection")
+	ErrUnauthorized      = sdkerrors.Register(ModuleName, 7, "unauthorized address")
+	ErrKnownNFT          = sdkerrors.Register(ModuleName, 8, "unknown nft")
 )
