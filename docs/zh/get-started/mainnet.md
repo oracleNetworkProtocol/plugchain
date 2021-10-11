@@ -61,6 +61,17 @@ plugchaind start --minimum-gas-prices 0.0001plug
 
 :::
 
+待区块达到升级高度（762880），节点会panic死掉，信息如下：
+
+```
+ERR UPGRADE "x/token" NEEDED at height: 762880:
+2:04AM ERR CONSENSUS FAILURE!!! err="UPGRADE \"x/token\" NEEDED at height: 762880: "
+```
+
+这个是社区提案升级高度，需要使用新的二进制文件运行链：[升级信息](./upgrade-process.md)
+
+
+
 ## 升级为验证人节点
 
 ### 创建钱包
