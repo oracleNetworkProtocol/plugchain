@@ -3,9 +3,7 @@ package keeper
 import (
 	"testing"
 
-	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/stretchr/testify/suite"
 	// "github.com/cosmos/cosmos-sdk/codec"
 	// codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	// "github.com/cosmos/cosmos-sdk/store"
@@ -15,14 +13,6 @@ import (
 	// tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	// tmdb "github.com/tendermint/tm-db"
 )
-
-type KeeperSuite struct {
-	suite.Suite
-
-	ctx    sdk.Context
-	keeper Keeper
-	app    *simapp.SimApp
-}
 
 func setupKeeper(t testing.TB) (*Keeper, sdk.Context) {
 	// storeKey := sdk.NewKVStoreKey(types.StoreKey)

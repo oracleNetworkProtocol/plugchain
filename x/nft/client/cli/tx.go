@@ -107,7 +107,7 @@ This example creates a nft of id nft-666 and name nftshop .
 [nft-name]: The name of nft	
 [nft-url]: URI of off-chain NFT data
 [nft-data]:The data of the nft data [schema.json]
-[nft-recipient]: NFT owner. when empty, the source of this value --from
+[nft-recipient]: Receiver of the nft. Can be empty, when empty, the source of this value --from
 `,
 				version.AppName, types.ModuleName,
 			),
