@@ -8,7 +8,8 @@ const (
 	EventTypeTransferNFT   = TypeMsgTransferNFT
 	EventTypeTransferDenom = TypeMsgTransferDenom
 
-	AttributeKeyDenomID = "denom_id"
-	AttributeKeyNFTID   = "nft_id"
-	AttributeKeyOwner   = "owner"
+	AttributeKeyDenomID   = "denom_id"
+	AttributeKeyNFTID     = "nft_id"
+	AttributeKeyOwner     = "owner"
+	AttributeKeyRecipient = "recipient"
 )

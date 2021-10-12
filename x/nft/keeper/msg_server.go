@@ -153,6 +153,7 @@ func (m msgServer) TransferNFT(c context.Context, in *types.MsgTransferNFT) (*ty
 			sdk.NewAttribute(types.AttributeKeyNFTID, in.ID),
 			sdk.NewAttribute(types.AttributeKeyDenomID, in.DenomID),
 			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+			sdk.NewAttribute(types.AttributeKeyRecipient, in.Recipient),
 		),
 		sdk.NewEvent(
 			sdk.EventTypeMessage,
@@ -184,6 +185,7 @@ func (m msgServer) TransferDenom(c context.Context, in *types.MsgTransferDenom) 
 			types.EventTypeTransferDenom,
 			sdk.NewAttribute(types.AttributeKeyDenomID, in.ID),
 			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+			sdk.NewAttribute(types.AttributeKeyRecipient, in.Recipient),
 		),
 		sdk.NewEvent(
 			sdk.EventTypeMessage,
