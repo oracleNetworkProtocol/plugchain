@@ -6,11 +6,12 @@ import (
 )
 
 const (
-	TypeMsgIssueDenom  = "issue_denom"
-	TypeMsgIssueNFT    = "issue_nft"
-	TypeMsgEditNFT     = "edit_nft"
-	TypeMsgBurnNFT     = "burn_nft"
-	TypeMsgTransferNFT = "transfer_nft"
+	TypeMsgIssueDenom    = "issue_denom"
+	TypeMsgIssueNFT      = "issue_nft"
+	TypeMsgEditNFT       = "edit_nft"
+	TypeMsgBurnNFT       = "burn_nft"
+	TypeMsgTransferNFT   = "transfer_nft"
+	TypeMsgTransferDenom = "transfer_denom"
 )
 
 var (
@@ -19,6 +20,7 @@ var (
 	_ sdk.Msg = &MsgEditNFT{}
 	_ sdk.Msg = &MsgBurnNFT{}
 	_ sdk.Msg = &MsgTransferNFT{}
+	_ sdk.Msg = &MsgTransferDenom{}
 )
 
 // NewMsgIssueDenom is a constructor function for MsgSetName
@@ -220,6 +222,43 @@ func (mtn MsgTransferNFT) GetSignBytes() []byte {
 
 func (mtn MsgTransferNFT) GetSigners() []sdk.AccAddress {
 	from, err := sdk.AccAddressFromBech32(mtn.Owner)
+	if err != nil {
+		panic(err)
+	}
+	return []sdk.AccAddress{from}
+}
+
+// NewMsgTransferDenom is a constructor function for MsgTransferDenom
+func NewMsgTransferDenom(ID, owner, recipient string) *MsgTransferDenom {
+	return &MsgTransferDenom{
+		ID:        ID,
+		Recipient: recipient,
+		Owner:     owner,
+	}
+}
+
+func (mtd MsgTransferDenom) Route() string { return RouterKey }
+func (mtd MsgTransferDenom) Type() string  { return TypeMsgTransferDenom }
+func (mtd MsgTransferDenom) ValidateBasic() error {
+
+	if _, err := sdk.AccAddressFromBech32(mtd.Recipient); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid recipient address (%s)", err)
+	}
+
+	if _, err := sdk.AccAddressFromBech32(mtd.Owner); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid sender address (%s)", err)
+	}
+
+	return ValidateDenomID(mtd.ID)
+}
+
+func (mtd MsgTransferDenom) GetSignBytes() []byte {
+	bz := ModuleCdc.MustMarshalJSON(&mtd)
+	return sdk.MustSortJSON(bz)
+}
+
+func (mtd MsgTransferDenom) GetSigners() []sdk.AccAddress {
+	from, err := sdk.AccAddressFromBech32(mtd.Owner)
 	if err != nil {
 		panic(err)
 	}

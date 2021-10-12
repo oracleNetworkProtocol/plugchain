@@ -144,9 +144,53 @@ func (m msgServer) TransferNFT(c context.Context, in *types.MsgTransferNFT) (*ty
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	if err := m.Keeper.TransferNFT(ctx, owner, recipient, in.ID, in.DenomID); err != nil {
+	if err := m.Keeper.TransferNFTToOwner(ctx, owner, recipient, in.ID, in.DenomID); err != nil {
+		return nil, err
+	}
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeTransferNFT,
+			sdk.NewAttribute(types.AttributeKeyNFTID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.DenomID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+	})
+
+	return &types.MsgTransferNFTResponse{}, nil
+}
+
+func (m msgServer) TransferDenom(c context.Context, in *types.MsgTransferDenom) (*types.MsgTransferDenomResponse, error) {
+	owner, err := sdk.AccAddressFromBech32(in.Owner)
+	if err != nil {
+		return nil, err
+	}
+	recipient, err := sdk.AccAddressFromBech32(in.Recipient)
+	if err != nil {
+		return nil, err
+	}
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if err := m.Keeper.TransferDenomToOwner(ctx, owner, recipient, in.ID); err != nil {
 		return nil, err
 	}
 
-	return &types.MsgTransferNFTResponse{}, nil
+	ctx.EventManager().EmitEvents(sdk.Events{
+		sdk.NewEvent(
+			types.EventTypeTransferDenom,
+			sdk.NewAttribute(types.AttributeKeyDenomID, in.ID),
+			sdk.NewAttribute(types.AttributeKeyOwner, in.Owner),
+		),
+		sdk.NewEvent(
+			sdk.EventTypeMessage,
+			sdk.NewAttribute(sdk.AttributeKeyModule, types.ModuleName),
+			sdk.NewAttribute(sdk.AttributeKeySender, in.Owner),
+		),
+	})
+
+	return &types.MsgTransferDenomResponse{}, nil
 }

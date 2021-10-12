@@ -15,8 +15,10 @@ service Msg {
     rpc EditNFT (MsgEditNFT) returns (MsgEditNFTResponse);
     //BurnNFT define a method for burning a nft
     rpc BurnNFT (MsgBurnNFT) returns (MsgBurnNFTResponse);
-
+    //TransferNFT define a method for transferring a nft
     rpc TransferNFT (MsgTransferNFT) returns (MsgTransferNFTResponse);
+    //TransferDenom define a method for transferring a denom
+    rpc TransferDenom (MsgTransferDenom) returns (MsgTransferDenomResponse);
 }
 
 
@@ -80,3 +82,12 @@ message MsgTransferNFT {
 }
 
 message MsgTransferNFTResponse{}
+
+message MsgTransferDenom {
+    option (gogoproto.equal) = true;
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string owner = 2;
+    string recipient = 3;
+}
+
+message MsgTransferDenomResponse{}

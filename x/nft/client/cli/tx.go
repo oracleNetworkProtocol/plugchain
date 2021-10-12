@@ -33,6 +33,7 @@ func GetTxCmd() *cobra.Command {
 		GetCmdEditNFT(),
 		GetCmdBurnNFT(),
 		GetCmdTransferNFT(),
+		GetCmdTransferDenom(),
 	)
 	return cmd
 }
@@ -278,6 +279,43 @@ func GetCmdTransferNFT() *cobra.Command {
 			}
 			msg := types.NewMsgTransferNFT(
 				args[1],
+				args[0],
+				clientCtx.GetFromAddress().String(),
+				args[2],
+			)
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}
+
+func GetCmdTransferDenom() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "transfer-denom [denom-id] [recipient]",
+		Short: "transfer an Denom to a recipient.",
+		Example: fmt.Sprintf(
+			"$ %s tx nft transfer-denom <denom-id> <recipient-address> "+
+				"--from=myAddress "+
+				"--chain-id=plugchain "+
+				"--fees=200plug ",
+			version.AppName,
+		),
+		Args: cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			if _, err := sdk.AccAddressFromBech32(args[2]); err != nil {
+				return err
+			}
+			msg := types.NewMsgTransferDenom(
 				args[0],
 				clientCtx.GetFromAddress().String(),
 				args[2],

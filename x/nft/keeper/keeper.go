@@ -108,7 +108,7 @@ func (k Keeper) BurnNFT(ctx sdk.Context, denomID, ID string, owner sdk.AccAddres
 	return nil
 }
 
-func (k Keeper) TransferNFT(ctx sdk.Context, owner, recipient sdk.AccAddress, nftID, denomID string) error {
+func (k Keeper) TransferNFTToOwner(ctx sdk.Context, owner, recipient sdk.AccAddress, nftID, denomID string) error {
 	_, ok := k.GetDenomByID(ctx, denomID)
 	if !ok {
 		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID %s not exists", denomID)
@@ -123,5 +123,20 @@ func (k Keeper) TransferNFT(ctx sdk.Context, owner, recipient sdk.AccAddress, nf
 
 	k.setNFT(ctx, denomID, nft)
 
+	return nil
+}
+func (k Keeper) TransferDenomToOwner(ctx sdk.Context, owner, recipient sdk.AccAddress, denomID string) error {
+	denom, ok := k.GetDenomByID(ctx, denomID)
+	if !ok {
+		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID %s not exists", denomID)
+	}
+	if owner.String() != denom.Owner {
+		return sdkerrors.Wrapf(sdkerrors.ErrUnauthorized, "%s is not allowed to transfer denom %s", owner.String(), denomID)
+	}
+	denom.Owner = recipient.String()
+	err := k.UpdateDenom(ctx, denom)
+	if err != nil {
+		return err
+	}
 	return nil
 }

@@ -100,3 +100,46 @@ type MsgBurnNFT struct {
     Owner  string
 }
 ```
+
+## MsgTransferNFT
+
+This is the most commonly expected MsgType to be supported across chains. While each application specific blockchain will have very different adoption of the `MsgMintNFT`, `MsgBurnNFT` and `MsgEditNFT` it should be expected that most chains support the ability to transfer ownership of the NFT asset. The exception to this would be non-transferable NFTs that might be attached to reputation or some asset which should not be transferable. It still makes sense for this to be represented as an NFT because there are common queriers which will remain relevant to the NFT type even if non-transferable. This Message will fail if the NFT does not exist. By default it will not fail if the transfer is executed by someone beside the owner. **It is highly recommended that a custom handler is made to restrict use of this Message type to prevent unintended use.**
+
+| **Field** | **Type** | **Description**                                                                                                                  |
+| :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| ID        | `string` | The unique ID of the NFT being transferred.                                                                                      |
+| DenomID   | `string` | The unique ID of the denomination, necessary as multiple denominations are able to be represented on each chain.                 |
+| Owner    | `string` | The account address of the user sending the NFT. By default it is __not__ required that the sender is also the owner of the NFT. |
+| Recipient | `string` | The account address who will receive the NFT as a result of the transfer transaction.                                            |
+
+```go
+// MsgTransferNFT defines an SDK message for transferring an NFT to recipient.
+type MsgTransferNFT struct {
+    ID        string
+    DenomID   string
+    Owner    string
+    Recipient string
+}
+```
+
+
+
+
+
+## MsgTransferDenom
+This message is used by the owner of the NFT classification to transfer the ownership of the NFT classification to others
+
+| **Field** | **Type** | **Description**                                                                                                                  |
+| :-------- | :------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| ID        | `string` | The unique ID of the Denom being transferred.                                                                                      | 
+| Owner     | `string` | The account address of the user sending the Denom. |
+| Recipient | `string` | The account address who will receive the Denom as a result of the transfer transaction.                                            |
+
+```go
+// MsgTransferDeom defines an SDK message for transferring an Deom to recipient.
+type MsgTransferDeom struct {
+    ID        string
+    Owner     string
+    Recipient string
+}
+```
