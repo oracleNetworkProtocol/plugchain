@@ -39,16 +39,6 @@ func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectio
 	return types.NewCollection(denom, nfts), pageRes, nil
 }
 
-func (k Keeper) GetTotalSupplyByOwner(ctx sdk.Context, owner sdk.AccAddress, denomID string) (supply uint64) {
-	store := ctx.KVStore(k.storeKey)
-	iterator := sdk.KVStorePrefixIterator(store, types.KeyOwner(owner, denomID, ""))
-	defer iterator.Close()
-	for ; iterator.Valid(); iterator.Next() {
-		supply++
-	}
-	return supply
-}
-
 // get denom count
 func (k Keeper) GetTotalSupply(ctx sdk.Context, denomID string) uint64 {
 	store := ctx.KVStore(k.storeKey)
