@@ -15,9 +15,10 @@ const (
 )
 
 var (
-	PrefixDenom = []byte{0x01}
-	PrefixNFT   = []byte{0x02}
-	delimiter   = []byte("-")
+	PrefixDenom      = []byte{0x01}
+	PrefixNFT        = []byte{0x02}
+	delimiter        = []byte("-")
+	PrefixCollection = []byte{0x03}
 )
 
 func GetKeyDenomID(id string) []byte {
@@ -36,4 +37,9 @@ func GetKeyNFT(denomID, nftID string) []byte {
 		baseKey = append(baseKey, []byte(nftID)...)
 	}
 	return baseKey
+}
+
+func KeyCollectionByDenomID(denomID string) []byte {
+	key := append(PrefixCollection, delimiter...)
+	return append(key, []byte(denomID)...)
 }

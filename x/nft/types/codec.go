@@ -4,8 +4,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
 	"github.com/cosmos/cosmos-sdk/types/msgservice"
+	gogotypes "github.com/gogo/protobuf/types"
 )
 
 var (
@@ -39,4 +39,17 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 		&NFT{},
 	)
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)
+}
+
+// return supply protobuf code
+func MustMarshalSupply(cdc codec.Marshaler, supply uint64) []byte {
+	supplyByte := gogotypes.UInt64Value{Value: supply}
+	return cdc.MustMarshalBinaryBare(&supplyByte)
+}
+
+// return th supply
+func MustUnMarshalSupply(cdc codec.Marshaler, value []byte) uint64 {
+	var supplyWrap gogotypes.UInt64Value
+	cdc.MustUnmarshalBinaryBare(value, &supplyWrap)
+	return supplyWrap.Value
 }

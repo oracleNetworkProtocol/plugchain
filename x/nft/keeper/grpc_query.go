@@ -72,3 +72,9 @@ func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest)
 		Pagination: pageRes,
 	}, nil
 }
+
+func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types.QuerySupplyResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+	var supply = q.GetTotalSupply(ctx, req.DenomId)
+	return &types.QuerySupplyResponse{Amount: supply}, nil
+}

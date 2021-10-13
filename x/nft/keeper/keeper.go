@@ -58,7 +58,8 @@ func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, o
 		types.NewNFT(
 			ID, name, url, data, owner,
 		))
-
+	// count++
+	k.increaseSupply(ctx, denomID)
 	return nil
 }
 
@@ -105,6 +106,7 @@ func (k Keeper) BurnNFT(ctx sdk.Context, denomID, ID string, owner sdk.AccAddres
 	}
 
 	k.deleteNFT(ctx, denomID, ID)
+	k.decreaseSupply(ctx, denomID)
 	return nil
 }
 

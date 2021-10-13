@@ -4,16 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	// "strings"
-
-	"github.com/spf13/cobra"
-
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/version"
-
-	// "github.com/cosmos/cosmos-sdk/client/flags"
-	// sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/spf13/cobra"
 
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
@@ -34,6 +28,7 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 		GetQueryDenomsCmd(),
 		GetQueryNFTCmd(),
 		GetQueryCollectionCmd(),
+		GetQuerySupplyCmd(),
 	)
 
 	return cmd
@@ -148,5 +143,32 @@ func GetQueryCollectionCmd() *cobra.Command {
 	}
 	flags.AddQueryFlagsToCmd(cmd)
 	flags.AddPaginationFlagsToCmd(cmd, "nfts")
+	return cmd
+}
+
+func GetQuerySupplyCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:     "supply [denomID]",
+		Long:    "total supply of a collection or owner of NFTs",
+		Example: fmt.Sprintf("$ %s q nft supply <denom-id>", version.AppName),
+		Args:    cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+			resp, err := queryClient.Supply(context.Background(), &types.QuerySupplyRequest{
+				DenomId: args[0],
+			})
+			if err != nil {
+				return err
+			}
+			return clientCtx.PrintProto(resp)
+		},
+	}
+	cmd.Flags().AddFlagSet(FsQuerySupply)
+	flags.AddQueryFlagsToCmd(cmd)
+
 	return cmd
 }
