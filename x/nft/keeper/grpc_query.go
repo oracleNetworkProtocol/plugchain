@@ -75,6 +75,12 @@ func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest)
 
 func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types.QuerySupplyResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
+	_, found := q.GetDenomByID(ctx, req.DenomId)
+	if !found {
+		return nil, sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s not existed", req.DenomId)
+	}
+
 	var supply = q.GetTotalSupply(ctx, req.DenomId)
 	return &types.QuerySupplyResponse{Amount: supply}, nil
 }
