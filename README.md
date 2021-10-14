@@ -27,6 +27,14 @@ This repository hosts `plugchain`, the implementation of the plugchain based on 
 * See the [Getting Started Docs](https://oraclenetworkprotocol.github.io/plugchain/) for instructions how to install and run the blockchain.
 * [Chengdu community contribution Docs](https://shimo.im/docs/pp38QGQVWyhXHkjg/read)
 
+
+## Change
+
+Change log records and contents corresponding to different versions [changelog](CHANGELOG.md)
+
+
+
+
 ## Talk to us!
 
 We have active, helpful communities on Twitter, Discord, and Telegram.
