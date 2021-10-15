@@ -27,6 +27,9 @@ service Query {
     rpc Supply(QuerySupplyRequest) returns (QuerySupplyResponse) {
         option (google.api.http).get = "/nft/collections/{denom_id}/supply";
     }
+    rpc Owner (QueryOwnerRequest) returns (QueryOwnerResponse) {
+        option (google.api.http).get = "/nft/nfts/{address}/{denom_id}";
+    }
 }
 
 
@@ -74,4 +77,15 @@ message QuerySupplyRequest {
 
 message QuerySupplyResponse {
     uint64 amount = 1;
+}
+
+message QueryOwnerRequest  {
+    string denom_id = 1 [ (gogoproto.moretags) = "yaml:\"denom_id\"" ];
+    string address = 2; 
+    cosmos.base.query.v1beta1.PageRequest pagination = 3;
+}
+
+message QueryOwnerResponse {
+    Owner address = 1;
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

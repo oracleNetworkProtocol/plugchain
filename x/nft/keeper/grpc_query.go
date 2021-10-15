@@ -84,3 +84,7 @@ func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types
 	var supply = q.GetTotalSupply(ctx, req.DenomId)
 	return &types.QuerySupplyResponse{Amount: supply}, nil
 }
+
+func (q Keeper) Owner(c context.Context, req *types.QueryOwnerRequest) (*types.QueryOwnerResponse, error) {
+	return &types.QueryOwnerResponse{}, nil
+}

@@ -31,3 +31,19 @@ message Collection {
     Denom denom = 1 [(gogoproto.nullable) = false];
     repeated NFT nfts = 2 [ (gogoproto.customname) = "NFTs", (gogoproto.nullable) = false];
 }
+
+
+message CollectionIDs {
+    string denom_id = 1 [ (gogoproto.customname) = "DenomID" ];
+    repeated string nft_ids = 2 [ (gogoproto.customname) = "NFTIDs" ]; 
+}
+
+
+message Owner {
+    string address = 1;
+    repeated CollectionIDs collection_ids = 2 [
+        (gogoproto.moretags) = "yaml:\"cids\"",
+        (gogoproto.customname) = "CollectionIDs",
+        (gogoproto.nullable) = false
+    ] ;
+}
