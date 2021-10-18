@@ -16,6 +16,9 @@
 
 ## Released 
 
+## v0.7.1 - 2021-10-18
+
+* x/nft add query owner and nft finish
 ## v0.7.0 - 2021-10-12
 * cosmos-sdk v0.42.9
 * tendermint v0.34.12
