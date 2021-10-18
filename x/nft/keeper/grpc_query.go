@@ -78,7 +78,7 @@ func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types
 
 	_, found := q.GetDenomByID(ctx, req.DenomId)
 	if !found {
-		return nil, sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s not existed", req.DenomId)
+		return nil, status.Errorf(codes.InvalidArgument, "denomID %s not existed", req.DenomId)
 	}
 
 	var supply = q.GetTotalSupply(ctx, req.DenomId)
@@ -86,5 +86,44 @@ func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types
 }
 
 func (q Keeper) Owner(c context.Context, req *types.QueryOwnerRequest) (*types.QueryOwnerResponse, error) {
-	return &types.QueryOwnerResponse{}, nil
+	ctx := sdk.UnwrapSDKContext(c)
+	ownerAdr, err := sdk.AccAddressFromBech32(req.Address)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid owner address %s", req.Address)
+	}
+	owner := types.Owner{
+		Address:       ownerAdr.String(),
+		CollectionIDs: []types.CollectionID{},
+	}
+	idsMap := make(map[string][]string)
+
+	store := ctx.KVStore(q.storeKey)
+	nftStore := prefix.NewStore(store, types.GetKeyOwner(ownerAdr, req.DenomId, ""))
+
+	pageRes, err := query.Paginate(nftStore, req.Pagination, func(key, value []byte) error {
+		denomID := req.DenomId
+		nftID := string(key)
+		if len(denomID) == 0 {
+			denomID, nftID, _ = types.SplitKeyDenom(key)
+		}
+
+		//Injection denomID to nftIDs
+		if ids, ok := idsMap[denomID]; ok {
+			idsMap[denomID] = append(ids, nftID)
+		} else {
+			idsMap[denomID] = []string{nftID}
+			owner.CollectionIDs = append(owner.CollectionIDs, types.CollectionID{DenomID: denomID})
+		}
+
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	//assignment value
+	idsCount := len(owner.CollectionIDs)
+	for i := 0; i < idsCount; i++ {
+		owner.CollectionIDs[i].NFTIDs = idsMap[owner.CollectionIDs[i].DenomID]
+	}
+	return &types.QueryOwnerResponse{Owner: &owner, Pagination: pageRes}, nil
 }

@@ -53,3 +53,14 @@ func MustUnMarshalSupply(cdc codec.Marshaler, value []byte) uint64 {
 	cdc.MustUnmarshalBinaryBare(value, &supplyWrap)
 	return supplyWrap.Value
 }
+
+func MustMarshalNFTID(cdc codec.Marshaler, nftID string) []byte {
+	nftIDWrap := gogotypes.StringValue{Value: nftID}
+	return cdc.MustMarshalBinaryBare(&nftIDWrap)
+}
+
+func MustUnMarshalNFTID(cdc codec.Marshaler, value []byte) string {
+	var nftIDWrap gogotypes.StringValue
+	cdc.MustUnmarshalBinaryBare(value, &nftIDWrap)
+	return nftIDWrap.Value
+}

@@ -1,5 +1,12 @@
 package types
 
+import (
+	"bytes"
+	"errors"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+)
+
 const (
 	// ModuleName defines the module name
 	ModuleName = "nft"
@@ -19,6 +26,7 @@ var (
 	PrefixNFT        = []byte{0x02}
 	delimiter        = []byte("-")
 	PrefixCollection = []byte{0x03}
+	PrefixOwners     = []byte{0x04}
 )
 
 func GetKeyDenomID(id string) []byte {
@@ -42,4 +50,32 @@ func GetKeyNFT(denomID, nftID string) []byte {
 func KeyCollectionByDenomID(denomID string) []byte {
 	key := append(PrefixCollection, delimiter...)
 	return append(key, []byte(denomID)...)
+}
+
+func GetKeyOwner(adr sdk.AccAddress, denomID, nftID string) []byte {
+	key := append(PrefixOwners, delimiter...)
+	if adr != nil {
+		key = append(key, []byte(adr.String())...)
+		key = append(key, delimiter...)
+	}
+
+	if adr != nil && len(denomID) > 0 {
+		key = append(key, []byte(denomID)...)
+		key = append(key, delimiter...)
+	}
+
+	if adr != nil && len(denomID) > 0 && len(nftID) > 0 {
+		key = append(key, []byte(nftID)...)
+	}
+	return key
+}
+
+func SplitKeyDenom(key []byte) (denomID, nftID string, err error) {
+	keys := bytes.Split(key, delimiter)
+	if len(keys) != 2 {
+		return denomID, nftID, errors.New("wrong keyOwner")
+	}
+	denomID = string(keys[0])
+	nftID = string(keys[1])
+	return
 }

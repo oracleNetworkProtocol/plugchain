@@ -6,6 +6,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
@@ -29,6 +30,7 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 		GetQueryNFTCmd(),
 		GetQueryCollectionCmd(),
 		GetQuerySupplyCmd(),
+		GetQueryOwnerCmd(),
 	)
 
 	return cmd
@@ -170,5 +172,40 @@ func GetQuerySupplyCmd() *cobra.Command {
 	cmd.Flags().AddFlagSet(FsQuerySupply)
 	flags.AddQueryFlagsToCmd(cmd)
 
+	return cmd
+}
+
+func GetQueryOwnerCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:     "owner [address] [denom-id]",
+		Long:    "Get the NFTs owned by an account addr.",
+		Example: fmt.Sprintf("$ %s q nft owner <address> <denomID>", version.AppName),
+		Args:    cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			if _, err := sdk.AccAddressFromBech32(args[0]); err != nil {
+				return err
+			}
+			pageReq, err := client.ReadPageRequest(cmd.Flags())
+			if err != nil {
+				return err
+			}
+			queryClient := types.NewQueryClient(clientCtx)
+			resp, err := queryClient.Owner(context.Background(), &types.QueryOwnerRequest{
+				DenomId:    args[1],
+				Address:    args[0],
+				Pagination: pageReq,
+			})
+			if err != nil {
+				return err
+			}
+			return clientCtx.PrintProto(resp)
+		},
+	}
+	flags.AddQueryFlagsToCmd(cmd)
+	flags.AddPaginationFlagsToCmd(cmd, "nfts")
 	return cmd
 }

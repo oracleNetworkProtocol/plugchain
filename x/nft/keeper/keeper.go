@@ -60,6 +60,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, denomID, ID, name, url, data string, o
 		))
 	// count++
 	k.increaseSupply(ctx, denomID)
+	k.setOwner(ctx, denomID, ID, owner)
 	return nil
 }
 
@@ -107,6 +108,8 @@ func (k Keeper) BurnNFT(ctx sdk.Context, denomID, ID string, owner sdk.AccAddres
 
 	k.deleteNFT(ctx, denomID, ID)
 	k.decreaseSupply(ctx, denomID)
+	k.delOwner(ctx, denomID, ID, owner)
+
 	return nil
 }
 
@@ -124,7 +127,7 @@ func (k Keeper) TransferNFTToOwner(ctx sdk.Context, owner, recipient sdk.AccAddr
 	nft.Owner = recipient.String()
 
 	k.setNFT(ctx, denomID, nft)
-
+	k.swapOwner(ctx, denomID, nftID, owner, recipient)
 	return nil
 }
 func (k Keeper) TransferDenomToOwner(ctx sdk.Context, owner, recipient sdk.AccAddress, denomID string) error {

@@ -33,7 +33,7 @@ message Collection {
 }
 
 
-message CollectionIDs {
+message CollectionID {
     string denom_id = 1 [ (gogoproto.customname) = "DenomID" ];
     repeated string nft_ids = 2 [ (gogoproto.customname) = "NFTIDs" ]; 
 }
@@ -41,7 +41,7 @@ message CollectionIDs {
 
 message Owner {
     string address = 1;
-    repeated CollectionIDs collection_ids = 2 [
+    repeated CollectionID collection_ids = 2 [
         (gogoproto.moretags) = "yaml:\"cids\"",
         (gogoproto.customname) = "CollectionIDs",
         (gogoproto.nullable) = false
