@@ -10,13 +10,21 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func (k Keeper) GetCollection(ctx sdk.Context, denomID string) (types.Collection, error) {
-	denom, ok := k.GetDenomByID(ctx, denomID)
-	if !ok {
-		return types.Collection{}, sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID (%s) not existed", denomID)
+func (k Keeper) SetCollection(ctx sdk.Context, collection types.Collection) error {
+	for _, v := range collection.NFTs {
+		if err := k.IssueNFT(ctx, collection.Denom.ID, v.ID, v.Name, v.URL, v.Data, v.GetOwner()); err != nil {
+			return err
+		}
 	}
-	nfts := k.GetNFTs(ctx, denomID)
-	return types.NewCollection(denom, nfts), nil
+	return nil
+}
+
+func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
+	for _, v := range k.GetDenoms(ctx) {
+		nfts := k.GetNFTs(ctx, v.ID)
+		list = append(list, types.NewCollection(v, nfts))
+	}
+	return
 }
 
 func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectionRequest, denomID string) (types.Collection, *query.PageResponse, error) {
@@ -36,6 +44,7 @@ func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectio
 	if err != nil {
 		return types.Collection{}, nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
 	}
+
 	return types.NewCollection(denom, nfts), pageRes, nil
 }
 

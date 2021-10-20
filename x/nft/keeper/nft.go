@@ -19,7 +19,17 @@ func (k Keeper) setNFT(ctx sdk.Context, denomID string, nft types.NFT) {
 }
 
 func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
-	return nil
+
+	store := ctx.KVStore(k.storeKey)
+	iterator := sdk.KVStorePrefixIterator(store, types.GetKeyNFT(denomID, ""))
+	iterator.Close()
+
+	for ; iterator.Valid(); iterator.Next() {
+		var nft types.NFT
+		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &nft)
+		nfts = append(nfts, nft)
+	}
+	return nfts
 }
 
 func (k Keeper) GetNFT(ctx sdk.Context, denomID, ID string) (types.NFTI, error) {

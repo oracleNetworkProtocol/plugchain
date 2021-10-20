@@ -1,27 +1,35 @@
 package types
 
 import (
-// this line is used by starport scaffolding # genesis/types/import
-// this line is used by starport scaffolding # ibc/genesistype/import
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
-
-// DefaultIndex is the default capability global index
-const DefaultIndex uint64 = 1
-
-// DefaultGenesis returns the default Capability genesis state
-func DefaultGenesis() *GenesisState {
-	return &GenesisState{
-		// this line is used by starport scaffolding # ibc/genesistype/default
-		// this line is used by starport scaffolding # genesis/types/default
-	}
-}
 
 // Validate performs basic genesis state validation returning an error upon any
 // failure.
 func (gs GenesisState) Validate() error {
-	// this line is used by starport scaffolding # ibc/genesistype/validate
+	for _, item := range gs.Collections {
+		if err := ValidateDenomID(item.Denom.ID); err != nil {
+			return err
+		}
+		for _, nft := range item.NFTs {
+			if err := ValidateNFTID(nft.ID); err != nil {
+				return err
+			}
+			if err := ValidateNFTURL(nft.URL); err != nil {
+				return err
+			}
+			if nft.GetOwner().Empty() {
+				return sdkerrors.Wrap(sdkerrors.ErrInvalidAddress, "missing owner")
+			}
+		}
 
-	// this line is used by starport scaffolding # genesis/types/validate
-
+	}
 	return nil
+}
+
+// NewGenesisState creates a new genesis state.
+func NewGenesisState(collections []Collection) *GenesisState {
+	return &GenesisState{
+		Collections: collections,
+	}
 }

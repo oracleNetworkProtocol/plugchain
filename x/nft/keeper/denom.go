@@ -17,6 +17,18 @@ func (k Keeper) GetDenomByID(ctx sdk.Context, id string) (denom types.Denom, ok 
 	return denom, true
 }
 
+func (k Keeper) GetDenoms(ctx sdk.Context) (denoms []types.Denom) {
+	store := ctx.KVStore(k.storeKey)
+	iterator := sdk.KVStorePrefixIterator(store, types.GetKeyDenomID(""))
+	defer iterator.Close()
+	for ; iterator.Valid(); iterator.Next() {
+		var denom types.Denom
+		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &denom)
+		denoms = append(denoms, denom)
+	}
+	return
+}
+
 func (k Keeper) SetDenom(ctx sdk.Context, denom types.Denom) error {
 
 	if k.HasDenomByID(ctx, denom.ID) {

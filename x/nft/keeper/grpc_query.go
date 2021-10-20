@@ -67,6 +67,7 @@ func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest)
 	if err != nil {
 		return nil, err
 	}
+
 	return &types.QueryCollectionResponse{
 		Collection: &collection,
 		Pagination: pageRes,
