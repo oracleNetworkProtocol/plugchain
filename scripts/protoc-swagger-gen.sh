@@ -2,8 +2,10 @@
 
 set -eo pipefail
 
-SDK_VERSION=v0.42.7
+SDK_VERSION=v0.42.9
 #TENDERMINT_VERSION=v0.34.11
+LIQUIDITY_VERSION=v0.1.2
+
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/proto
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/third_party/proto
 
@@ -36,6 +38,12 @@ done
 # copy cosmos swagger_legacy.yaml
 # chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml
 # cp -r ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml ./client/static/cosmos_swagger_legacy.yml
+
+
+#copy liquidity swagger.yml
+chmod -R 755 ${GOPATH}/pkg/mod/github.com/oracle!network!protocol/liquidity@${LIQUIDITY_VERSION}/tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json
+cp -r ${GOPATH}/pkg/mod/github.com/oracle!network!protocol/liquidity@${LIQUIDITY_VERSION}/tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json ./tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json
+
 
 # combine swagger files
 # uses nodejs package `swagger-combine`.
