@@ -22,7 +22,7 @@ func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
 
 	store := ctx.KVStore(k.storeKey)
 	iterator := sdk.KVStorePrefixIterator(store, types.GetKeyNFT(denomID, ""))
-	iterator.Close()
+	defer iterator.Close()
 
 	for ; iterator.Valid(); iterator.Next() {
 		var nft types.NFT
@@ -60,15 +60,4 @@ func (k Keeper) Authorize(ctx sdk.Context, denomID, ID string, owner sdk.AccAddr
 func (k Keeper) deleteNFT(ctx sdk.Context, denomID, ID string) {
 	store := ctx.KVStore(k.storeKey)
 	store.Delete(types.GetKeyNFT(denomID, ID))
-}
-
-func (k Keeper) UpdateDenom(ctx sdk.Context, denom types.Denom) error {
-	if !k.HasDenomByID(ctx, denom.ID) {
-		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s not exists", denom.ID)
-	}
-	store := ctx.KVStore(k.storeKey)
-	bz := k.cdc.MustMarshalBinaryBare(&denom)
-	store.Set(types.GetKeyDenomID(denom.ID), bz)
-
-	return nil
 }

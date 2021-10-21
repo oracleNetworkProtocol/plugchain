@@ -20,7 +20,11 @@ func (k Keeper) SetCollection(ctx sdk.Context, collection types.Collection) erro
 }
 
 func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
-	for _, v := range k.GetDenoms(ctx) {
+	denoms := k.GetDenoms(ctx)
+	if len(denoms) == 0 {
+		return
+	}
+	for _, v := range denoms {
 		nfts := k.GetNFTs(ctx, v.ID)
 		list = append(list, types.NewCollection(v, nfts))
 	}

@@ -46,3 +46,13 @@ func (k Keeper) HasDenomByID(ctx sdk.Context, id string) bool {
 	store := ctx.KVStore(k.storeKey)
 	return store.Has(types.GetKeyDenomID(id))
 }
+func (k Keeper) UpdateDenom(ctx sdk.Context, denom types.Denom) error {
+	if !k.HasDenomByID(ctx, denom.ID) {
+		return sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s not exists", denom.ID)
+	}
+	store := ctx.KVStore(k.storeKey)
+	bz := k.cdc.MustMarshalBinaryBare(&denom)
+	store.Set(types.GetKeyDenomID(denom.ID), bz)
+
+	return nil
+}

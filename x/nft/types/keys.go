@@ -24,9 +24,10 @@ const (
 var (
 	PrefixDenom      = []byte{0x01}
 	PrefixNFT        = []byte{0x02}
-	delimiter        = []byte("-")
 	PrefixCollection = []byte{0x03}
 	PrefixOwners     = []byte{0x04}
+
+	delimiter = []byte("-")
 )
 
 func GetKeyDenomID(id string) []byte {
@@ -53,6 +54,7 @@ func KeyCollectionByDenomID(denomID string) []byte {
 }
 
 func GetKeyOwner(adr sdk.AccAddress, denomID, nftID string) []byte {
+
 	key := append(PrefixOwners, delimiter...)
 	if adr != nil {
 		key = append(key, []byte(adr.String())...)
