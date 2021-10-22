@@ -4,7 +4,7 @@ set -eo pipefail
 
 SDK_VERSION=v0.42.9
 #TENDERMINT_VERSION=v0.34.11
-LIQUIDITY_VERSION=v0.1.2
+LIQUIDITY_VERSION=v0.1.3
 
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/proto
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/third_party/proto
@@ -34,14 +34,9 @@ echo $dir
   fi
 done
 
-
-# copy cosmos swagger_legacy.yaml
-# chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml
-# cp -r ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/client/docs/swagger_legacy.yaml ./client/static/cosmos_swagger_legacy.yml
-
-
 #copy liquidity swagger.yml
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/oracle!network!protocol/liquidity@${LIQUIDITY_VERSION}/tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json
+mkdir -p  ./tmp-swagger-gen/tendermint/liquidity/v1beta1
 cp -r ${GOPATH}/pkg/mod/github.com/oracle!network!protocol/liquidity@${LIQUIDITY_VERSION}/tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json ./tmp-swagger-gen/tendermint/liquidity/v1beta1/query.swagger.json
 
 
@@ -66,7 +61,9 @@ sed -r -i '' 's/cosmosvalconspub1[a-z,0-9]+/gxvalconspub1zcjduepqwhwqn4h5v6mqa7k
 sed -i '' 's/Gaia/PLUGChainHub/g' ./client/static/openapi.yml
 sed -i '' 's/gaia/plugchaind/g' ./client/static/openapi.yml
 sed -i '' 's/cosmoshub/plugchainhub/g' ./client/static/openapi.yml
-
+tendermintURL=https://github.com/tendermint/liquidity/blob/develop/doc/client.md
+onpURL=https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md
+sed -i '' "s#${tendermintURL}#${onpURL}#g" ./client/static/openapi.yml
 
 # generate proto doc  Use tools for protoc-gen-doc
 

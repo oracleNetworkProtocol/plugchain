@@ -690,6 +690,48 @@ order: 6
     - [Header](#ibc.lightclients.tendermint.v1.Header)
     - [Misbehaviour](#ibc.lightclients.tendermint.v1.Misbehaviour)
   
+- [nft/nft.proto](#nft/nft.proto)
+    - [Collection](#plugchain.nft.Collection)
+    - [CollectionID](#plugchain.nft.CollectionID)
+    - [Denom](#plugchain.nft.Denom)
+    - [NFT](#plugchain.nft.NFT)
+    - [Owner](#plugchain.nft.Owner)
+  
+- [nft/genesis.proto](#nft/genesis.proto)
+    - [GenesisState](#plugchain.nft.GenesisState)
+  
+- [nft/query.proto](#nft/query.proto)
+    - [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest)
+    - [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse)
+    - [QueryDenomRequest](#plugchain.nft.QueryDenomRequest)
+    - [QueryDenomResponse](#plugchain.nft.QueryDenomResponse)
+    - [QueryDenomsRequest](#plugchain.nft.QueryDenomsRequest)
+    - [QueryDenomsResponse](#plugchain.nft.QueryDenomsResponse)
+    - [QueryNFTRequest](#plugchain.nft.QueryNFTRequest)
+    - [QueryNFTResponse](#plugchain.nft.QueryNFTResponse)
+    - [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest)
+    - [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse)
+    - [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest)
+    - [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse)
+  
+    - [Query](#plugchain.nft.Query)
+  
+- [nft/tx.proto](#nft/tx.proto)
+    - [MsgBurnNFT](#plugchain.nft.MsgBurnNFT)
+    - [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse)
+    - [MsgEditNFT](#plugchain.nft.MsgEditNFT)
+    - [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse)
+    - [MsgIssueDenom](#plugchain.nft.MsgIssueDenom)
+    - [MsgIssueDenomResponse](#plugchain.nft.MsgIssueDenomResponse)
+    - [MsgIssueNFT](#plugchain.nft.MsgIssueNFT)
+    - [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse)
+    - [MsgTransferDenom](#plugchain.nft.MsgTransferDenom)
+    - [MsgTransferDenomResponse](#plugchain.nft.MsgTransferDenomResponse)
+    - [MsgTransferNFT](#plugchain.nft.MsgTransferNFT)
+    - [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse)
+  
+    - [Msg](#plugchain.nft.Msg)
+  
 - [token/token.proto](#token/token.proto)
     - [Params](#plugchain.token.Params)
     - [Token](#plugchain.token.Token)
@@ -10011,6 +10053,564 @@ that implements Misbehaviour interface expected by ICS-02
  <!-- end enums -->
 
  <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="nft/nft.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nft/nft.proto
+
+
+
+<a name="plugchain.nft.Collection"></a>
+
+### Collection
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [Denom](#plugchain.nft.Denom) |  |  |
+| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
+
+
+
+
+
+
+<a name="plugchain.nft.CollectionID"></a>
+
+### CollectionID
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+| `nft_ids` | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="plugchain.nft.Denom"></a>
+
+### Denom
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `name` | [string](#string) |  |  |
+| `schema` | [string](#string) |  |  |
+| `symbol` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `mint_restricted` | [bool](#bool) |  |  |
+| `edit_restricted` | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.NFT"></a>
+
+### NFT
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `name` | [string](#string) |  |  |
+| `url` | [string](#string) |  |  |
+| `data` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.Owner"></a>
+
+### Owner
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `address` | [string](#string) |  |  |
+| `collection_ids` | [CollectionID](#plugchain.nft.CollectionID) | repeated |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="nft/genesis.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nft/genesis.proto
+
+
+
+<a name="plugchain.nft.GenesisState"></a>
+
+### GenesisState
+GenesisState defines the nft module's genesis state.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `collections` | [Collection](#plugchain.nft.Collection) | repeated |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="nft/query.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nft/query.proto
+
+
+
+<a name="plugchain.nft.QueryCollectionRequest"></a>
+
+### QueryCollectionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryCollectionResponse"></a>
+
+### QueryCollectionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `collection` | [Collection](#plugchain.nft.Collection) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryDenomRequest"></a>
+
+### QueryDenomRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryDenomResponse"></a>
+
+### QueryDenomResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [Denom](#plugchain.nft.Denom) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryDenomsRequest"></a>
+
+### QueryDenomsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryDenomsResponse"></a>
+
+### QueryDenomsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denoms` | [Denom](#plugchain.nft.Denom) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTRequest"></a>
+
+### QueryNFTRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+| `nft_id` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTResponse"></a>
+
+### QueryNFTResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `nft` | [NFT](#plugchain.nft.NFT) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryOwnerRequest"></a>
+
+### QueryOwnerRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+| `address` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryOwnerResponse"></a>
+
+### QueryOwnerResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `owner` | [Owner](#plugchain.nft.Owner) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QuerySupplyRequest"></a>
+
+### QuerySupplyRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom_id` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QuerySupplyResponse"></a>
+
+### QuerySupplyResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `amount` | [uint64](#uint64) |  |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+<a name="plugchain.nft.Query"></a>
+
+### Query
+Query defines the gRPC querier service.
+
+| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
+| ----------- | ------------ | ------------- | ------------| ------- | -------- |
+| `Denom` | [QueryDenomRequest](#plugchain.nft.QueryDenomRequest) | [QueryDenomResponse](#plugchain.nft.QueryDenomResponse) |  | GET|/nft/denoms/{denom_id}|
+| `Denoms` | [QueryDenomsRequest](#plugchain.nft.QueryDenomsRequest) | [QueryDenomsResponse](#plugchain.nft.QueryDenomsResponse) |  | GET|/nft/denoms|
+| `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{denom_id}/{nft_id}|
+| `Collection` | [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest) | [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse) |  | GET|/nft/collections/{denom_id}|
+| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/collections/{denom_id}/supply|
+| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/nfts/{address}/{denom_id}|
+
+ <!-- end services -->
+
+
+
+<a name="nft/tx.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nft/tx.proto
+
+
+
+<a name="plugchain.nft.MsgBurnNFT"></a>
+
+### MsgBurnNFT
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `denom_id` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgBurnNFTResponse"></a>
+
+### MsgBurnNFTResponse
+
+
+
+
+
+
+
+<a name="plugchain.nft.MsgEditNFT"></a>
+
+### MsgEditNFT
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `denom_id` | [string](#string) |  |  |
+| `name` | [string](#string) |  |  |
+| `URL` | [string](#string) |  |  |
+| `data` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgEditNFTResponse"></a>
+
+### MsgEditNFTResponse
+
+
+
+
+
+
+
+<a name="plugchain.nft.MsgIssueDenom"></a>
+
+### MsgIssueDenom
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `name` | [string](#string) |  |  |
+| `schema` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `symbol` | [string](#string) |  |  |
+| `mint_restricted` | [bool](#bool) |  |  |
+| `edit_restricted` | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgIssueDenomResponse"></a>
+
+### MsgIssueDenomResponse
+
+
+
+
+
+
+
+<a name="plugchain.nft.MsgIssueNFT"></a>
+
+### MsgIssueNFT
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `denom_id` | [string](#string) |  |  |
+| `name` | [string](#string) |  |  |
+| `url` | [string](#string) |  |  |
+| `data` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `recipient` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgIssueNFTResponse"></a>
+
+### MsgIssueNFTResponse
+
+
+
+
+
+
+
+<a name="plugchain.nft.MsgTransferDenom"></a>
+
+### MsgTransferDenom
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `recipient` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgTransferDenomResponse"></a>
+
+### MsgTransferDenomResponse
+
+
+
+
+
+
+
+<a name="plugchain.nft.MsgTransferNFT"></a>
+
+### MsgTransferNFT
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `id` | [string](#string) |  |  |
+| `denom_id` | [string](#string) |  |  |
+| `recipient` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.MsgTransferNFTResponse"></a>
+
+### MsgTransferNFTResponse
+
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+<a name="plugchain.nft.Msg"></a>
+
+### Msg
+Msg defines the Msg service.
+
+| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
+| ----------- | ------------ | ------------- | ------------| ------- | -------- |
+| `IssueDenom` | [MsgIssueDenom](#plugchain.nft.MsgIssueDenom) | [MsgIssueDenomResponse](#plugchain.nft.MsgIssueDenomResponse) | IssueDenom defines a method for issue a denom | |
+| `IssueNFT` | [MsgIssueNFT](#plugchain.nft.MsgIssueNFT) | [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse) | IssueNFT defines a method for Issue a new nft | |
+| `EditNFT` | [MsgEditNFT](#plugchain.nft.MsgEditNFT) | [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse) | EditNFT defines a method for edit a nft | |
+| `BurnNFT` | [MsgBurnNFT](#plugchain.nft.MsgBurnNFT) | [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse) | BurnNFT define a method for burning a nft | |
+| `TransferNFT` | [MsgTransferNFT](#plugchain.nft.MsgTransferNFT) | [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse) | TransferNFT define a method for transferring a nft | |
+| `TransferDenom` | [MsgTransferDenom](#plugchain.nft.MsgTransferDenom) | [MsgTransferDenomResponse](#plugchain.nft.MsgTransferDenomResponse) | TransferDenom define a method for transferring a denom | |
 
  <!-- end services -->
 
