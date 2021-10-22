@@ -722,7 +722,7 @@ paths:
                             type: string
                             description: >-
                               denom represents the string name of the given
-                              denom unit (e.g uatom).
+                              denom unit (e.g plug).
                           exponent:
                             type: integer
                             format: int64
@@ -735,10 +735,10 @@ paths:
 
                               1 denom = 1^exponent base_denom
 
-                              (e.g. with a base_denom of uatom, one can create a
-                              DenomUnit of 'atom' with
+                              (e.g. with a base_denom of plug, one can create a
+                              DenomUnit of 'plug' with
 
-                              exponent = 6, thus: 1 atom = 10^6 uatom).
+                              exponent = 6, thus: 1 plug = 10^6 plug).
                           aliases:
                             type: array
                             items:
@@ -886,7 +886,7 @@ paths:
                           type: string
                           description: >-
                             denom represents the string name of the given denom
-                            unit (e.g uatom).
+                            unit (e.g plug).
                         exponent:
                           type: integer
                           format: int64
@@ -899,10 +899,10 @@ paths:
 
                             1 denom = 1^exponent base_denom
 
-                            (e.g. with a base_denom of uatom, one can create a
-                            DenomUnit of 'atom' with
+                            (e.g. with a base_denom of plug, one can create a
+                            DenomUnit of 'plug' with
 
-                            exponent = 6, thus: 1 atom = 10^6 uatom).
+                            exponent = 6, thus: 1 plug = 10^6 plug).
                         aliases:
                           type: array
                           items:
@@ -8293,7 +8293,7 @@ paths:
                     title: minimum inflation rate
                   goal_bonded:
                     type: string
-                    title: goal of percent bonded atoms
+                    title: goal of percent bonded plugs
                   blocks_per_year:
                     type: string
                     format: uint64
@@ -25548,7 +25548,7 @@ paths:
                     type: array
                     format: sdk.Coins
                     example:
-                      - denom: uatom
+                      - denom: plug
                         amount: '100000000'
                     items:
                       type: object
@@ -25629,7 +25629,7 @@ paths:
       externalDocs:
         description: Find out more about the params
         url: >-
-          https://github.com/tendermint/liquidity/blob/develop/x/liquidity/spec/08_params.md
+          https://github.com/oracleNetworkProtocol/liquidity/tree/main/x/liquidity/spec/08_params.md
   /cosmos/liquidity/v1beta1/pools:
     get:
       summary: Get existing liquidity pools.
@@ -28078,7 +28078,7 @@ definitions:
     properties:
       denom:
         type: string
-        description: denom represents the string name of the given denom unit (e.g uatom).
+        description: denom represents the string name of the given denom unit (e.g plug).
       exponent:
         type: integer
         format: int64
@@ -28089,10 +28089,10 @@ definitions:
 
           1 denom = 1^exponent base_denom
 
-          (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom'
+          (e.g. with a base_denom of plug, one can create a DenomUnit of 'plug'
           with
 
-          exponent = 6, thus: 1 atom = 10^6 uatom).
+          exponent = 6, thus: 1 plug = 10^6 plug).
       aliases:
         type: array
         items:
@@ -28115,7 +28115,7 @@ definitions:
               type: string
               description: >-
                 denom represents the string name of the given denom unit (e.g
-                uatom).
+                plug).
             exponent:
               type: integer
               format: int64
@@ -28127,10 +28127,10 @@ definitions:
 
                 1 denom = 1^exponent base_denom
 
-                (e.g. with a base_denom of uatom, one can create a DenomUnit of
-                'atom' with
+                (e.g. with a base_denom of plug, one can create a DenomUnit of
+                'plug' with
 
-                exponent = 6, thus: 1 atom = 10^6 uatom).
+                exponent = 6, thus: 1 plug = 10^6 plug).
             aliases:
               type: array
               items:
@@ -28249,7 +28249,7 @@ definitions:
                   type: string
                   description: >-
                     denom represents the string name of the given denom unit
-                    (e.g uatom).
+                    (e.g plug).
                 exponent:
                   type: integer
                   format: int64
@@ -28261,10 +28261,10 @@ definitions:
 
                     1 denom = 1^exponent base_denom
 
-                    (e.g. with a base_denom of uatom, one can create a DenomUnit
-                    of 'atom' with
+                    (e.g. with a base_denom of plug, one can create a DenomUnit
+                    of 'plug' with
 
-                    exponent = 6, thus: 1 atom = 10^6 uatom).
+                    exponent = 6, thus: 1 plug = 10^6 plug).
                 aliases:
                   type: array
                   items:
@@ -28311,7 +28311,7 @@ definitions:
                     type: string
                     description: >-
                       denom represents the string name of the given denom unit
-                      (e.g uatom).
+                      (e.g plug).
                   exponent:
                     type: integer
                     format: int64
@@ -28323,10 +28323,10 @@ definitions:
 
                       1 denom = 1^exponent base_denom
 
-                      (e.g. with a base_denom of uatom, one can create a
-                      DenomUnit of 'atom' with
+                      (e.g. with a base_denom of plug, one can create a
+                      DenomUnit of 'plug' with
 
-                      exponent = 6, thus: 1 atom = 10^6 uatom).
+                      exponent = 6, thus: 1 plug = 10^6 plug).
                   aliases:
                     type: array
                     items:
@@ -34602,7 +34602,7 @@ definitions:
         title: minimum inflation rate
       goal_bonded:
         type: string
-        title: goal of percent bonded atoms
+        title: goal of percent bonded plugs
       blocks_per_year:
         type: string
         format: uint64
@@ -34649,7 +34649,7 @@ definitions:
             title: minimum inflation rate
           goal_bonded:
             type: string
-            title: goal of percent bonded atoms
+            title: goal of percent bonded plugs
           blocks_per_year:
             type: string
             format: uint64
@@ -43603,7 +43603,7 @@ definitions:
         type: array
         format: sdk.Coins
         example:
-          - denom: uatom
+          - denom: plug
             amount: '100000000'
         items:
           type: object
@@ -43976,7 +43976,7 @@ definitions:
             type: array
             format: sdk.Coins
             example:
-              - denom: uatom
+              - denom: plug
                 amount: '100000000'
             items:
               type: object
