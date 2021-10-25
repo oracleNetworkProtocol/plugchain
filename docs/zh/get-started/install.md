@@ -3,6 +3,18 @@ order: 2
 ---
 
 # 安装
+
+以centos为例：
+
+依赖工具
+- git
+- make
+- gcc
+- wget
+
+```shell
+yum install make gcc git wget
+```
 ## 安装`go`
 
 :::tip

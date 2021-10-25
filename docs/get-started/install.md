@@ -3,6 +3,19 @@ order: 2
 ---
 
 # Install
+
+Take Centos as an example:
+
+Dependent tools
+- git
+- make
+- gcc
+- wget
+
+```shell
+yum install make gcc git wget
+```
+
 ## Install `go`
 
 ::: tip
