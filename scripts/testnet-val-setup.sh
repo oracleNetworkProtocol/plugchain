@@ -9,7 +9,7 @@ YOUR_KEY_NAME=$1
 YOUR_NAME=$2
 DAEMON=plugchaind
 DENOM=line
-CHAIN_ID=plugchain-testnet-1
+CHAIN_ID=plugchain-test
 SEEDS=""
 APPNAME="~/.plugchain"
 

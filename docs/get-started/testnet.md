@@ -26,7 +26,7 @@ You must use PLUGChain[v0.5.0](https://github.com/oracleNetworkProtocol/plugchai
 1. Initialize the node
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain-testnet-1
+plugchaind init <moniker> --chain-id=plugchain-test
 ```
 
 2. Download genesis.json and seed information disclosed on the testnet or enter the cloned plugchain directory:
