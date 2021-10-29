@@ -54,6 +54,6 @@ not_bonded_tokens: "0"
 
 `/staking/pool`
 
-Please refer to LCD swagger document.
+Please refer to  swagger document.
 
-As for how to run a LCD node please refer to [LCD document](../light-client/intro.md).
+As for how to run a node please refer to [wagger document](../endpoints/grpc-client.md).
