@@ -14,7 +14,7 @@ func (k Keeper) HasNFTByID(ctx sdk.Context, denomID, nftID string) bool {
 
 func (k Keeper) setNFT(ctx sdk.Context, denomID string, nft types.NFT) {
 	store := ctx.KVStore(k.storeKey)
-	bz := k.cdc.MustMarshalBinaryBare(&nft)
+	bz := k.cdc.MustMarshal(&nft)
 	store.Set(types.GetKeyNFT(denomID, nft.ID), bz)
 }
 
@@ -26,7 +26,7 @@ func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
 
 	for ; iterator.Valid(); iterator.Next() {
 		var nft types.NFT
-		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &nft)
+		k.cdc.MustUnmarshal(iterator.Value(), &nft)
 		nfts = append(nfts, nft)
 	}
 	return nfts
@@ -39,7 +39,7 @@ func (k Keeper) GetNFT(ctx sdk.Context, denomID, ID string) (types.NFTI, error) 
 		return nil, sdkerrors.Wrapf(types.ErrUnknownCollection, "not found NFT: %s", ID)
 	}
 	var nft types.NFT
-	k.cdc.MustUnmarshalBinaryBare(bz, &nft)
+	k.cdc.MustUnmarshal(bz, &nft)
 	return nft, nil
 }
 

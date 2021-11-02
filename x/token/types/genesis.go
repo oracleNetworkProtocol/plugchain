@@ -5,23 +5,31 @@ import (
 	"github.com/tendermint/tendermint/crypto"
 )
 
-var localToken = Token{
-	Symbol:        sdk.DefaultBondDenom,
-	Name:          "PLUGChain Hub",
-	Scale:         0,
-	MinUnit:       sdk.DefaultBondDenom,
-	InitialSupply: MaximumInitSupply,
-	MaxSupply:     MaximumMaxSupply,
-	Mintable:      true,
-	Owner:         sdk.AccAddress(crypto.AddressHash([]byte(ModuleName))).String(),
-}
+var (
+	localToken  Token
+	Initialized bool
+)
 
 func GetLocalToken() Token {
+	if !Initialized {
+		localToken = Token{
+			Symbol:        sdk.DefaultBondDenom,
+			Name:          "PLUGChain Hub",
+			Scale:         0,
+			MinUnit:       sdk.DefaultBondDenom,
+			InitialSupply: MaximumInitSupply,
+			MaxSupply:     MaximumMaxSupply,
+			Mintable:      true,
+			Owner:         sdk.AccAddress(crypto.AddressHash([]byte(ModuleName))).String(),
+		}
+		Initialized = true
+	}
 	return localToken
 }
 
 func SetLocalToken(symbol, name, minUnit string, scale uint32, initialSupply, maxSupply uint64, mintable bool, owner sdk.AccAddress) {
 	localToken = NewToken(symbol, name, minUnit, scale, initialSupply, maxSupply, mintable, owner)
+	Initialized = true
 }
 
 // Validate performs basic genesis state validation returning an error upon any
