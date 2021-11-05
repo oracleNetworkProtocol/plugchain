@@ -72,3 +72,4 @@ All POST commands have the following global flags:
 | [tx](./tx.md)                     | Tx subcommands                                                 |
 | [upgrade](./upgrade.md)           | Software Upgrade subcommands                                   |
 | [token](./token.md)           | Token subcommands                     |
+| [liquidity](./liquidity.md)           | Liquidity subcommands |
