@@ -14,23 +14,23 @@ var (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterInterface((*NFTI)(nil), nil)
-	cdc.RegisterConcrete(&MsgIssueDenom{}, "x/nft/issue_denom", nil)
+	cdc.RegisterConcrete(&MsgIssueClass{}, "x/nft/issue_denom", nil)
 	cdc.RegisterConcrete(&MsgIssueNFT{}, "x/nft/issue_nft", nil)
 	cdc.RegisterConcrete(&MsgEditNFT{}, "x/nft/edit_nft", nil)
 	cdc.RegisterConcrete(&MsgBurnNFT{}, "x/nft/burn_nft", nil)
 	cdc.RegisterConcrete(&MsgTransferNFT{}, "x/nft/transfer_nft", nil)
-	cdc.RegisterConcrete(&MsgTransferDenom{}, "x/nft/transfer_denom", nil)
+	cdc.RegisterConcrete(&MsgTransferClass{}, "x/nft/transfer_denom", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgIssueDenom{},
+		&MsgIssueClass{},
 		&MsgIssueNFT{},
 		&MsgEditNFT{},
 		&MsgBurnNFT{},
 		&MsgTransferNFT{},
-		&MsgTransferDenom{},
+		&MsgTransferClass{},
 	)
 
 	registry.RegisterInterface(

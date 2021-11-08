@@ -1,14 +1,14 @@
 package types
 
 const (
-	EventTypeIssueDenom    = TypeMsgIssueDenom
+	EventTypeIssueClass    = TypeMsgIssueClass
 	EventTypeIssueNFT      = TypeMsgIssueNFT
 	EventTypeEditNFT       = TypeMsgEditNFT
 	EventTypeBurnNFT       = TypeMsgBurnNFT
 	EventTypeTransferNFT   = TypeMsgTransferNFT
-	EventTypeTransferDenom = TypeMsgTransferDenom
+	EventTypeTransferClass = TypeMsgTransferClass
 
-	AttributeKeyDenomID   = "denom_id"
+	AttributeKeyClassID   = "class_id"
 	AttributeKeyNFTID     = "nft_id"
 	AttributeKeyOwner     = "owner"
 	AttributeKeyRecipient = "recipient"

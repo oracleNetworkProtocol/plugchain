@@ -7,8 +7,8 @@ option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
 
 // Msg defines the Msg service.
 service Msg {
-    //IssueDenom defines a method for issue a denom
-    rpc IssueDenom (MsgIssueDenom) returns (MsgIssueDenomResponse);
+    //IssueClass defines a method for issue a class
+    rpc IssueClass (MsgIssueClass) returns (MsgIssueClassResponse);
     //IssueNFT defines a method for Issue a new nft
     rpc IssueNFT (MsgIssueNFT) returns (MsgIssueNFTResponse);
     //EditNFT defines a method for edit a nft
@@ -17,12 +17,12 @@ service Msg {
     rpc BurnNFT (MsgBurnNFT) returns (MsgBurnNFTResponse);
     //TransferNFT define a method for transferring a nft
     rpc TransferNFT (MsgTransferNFT) returns (MsgTransferNFTResponse);
-    //TransferDenom define a method for transferring a denom
-    rpc TransferDenom (MsgTransferDenom) returns (MsgTransferDenomResponse);
+    //TransferClass define a method for transferring a class
+    rpc TransferClass (MsgTransferClass) returns (MsgTransferClassResponse);
 }
 
 
-message MsgIssueDenom {
+message MsgIssueClass {
     option (gogoproto.equal) = true;
     string id = 1 [ (gogoproto.customname) = "ID" ];
     string name = 2;
@@ -33,13 +33,13 @@ message MsgIssueDenom {
     bool edit_restricted = 7;
 }
 
-message MsgIssueDenomResponse{}
+message MsgIssueClassResponse{}
 
 message MsgIssueNFT {
     option (gogoproto.equal) = true;
 
     string id = 1 [ (gogoproto.customname) = "ID" ];
-    string denom_id = 2 [ (gogoproto.customname) = "DenomID" ];
+    string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string name = 3;
     string url = 4 [ (gogoproto.customname) = "URL" ];;
     string data = 5;
@@ -54,7 +54,7 @@ message MsgEditNFT {
     option (gogoproto.equal) = true;
 
     string id =1 [ (gogoproto.customname) = "ID" ];
-    string denom_id = 2 [ (gogoproto.customname) = "DenomID" ];
+    string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string name = 3;
     string URL = 4 [ (gogoproto.customname) = "URL" ];
     string data = 5;
@@ -66,7 +66,7 @@ message MsgBurnNFT{
     option (gogoproto.equal) = true;
 
     string id  = 1 [ (gogoproto.customname) = "ID" ];
-    string denom_id = 2 [ (gogoproto.customname) = "DenomID" ];
+    string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string owner = 3;
 }
 
@@ -75,7 +75,7 @@ message MsgBurnNFTResponse{}
 message MsgTransferNFT {
     option (gogoproto.equal) = true;
     string id = 1 [ (gogoproto.customname) = "ID" ];
-    string denom_id = 2 [ (gogoproto.customname) = "DenomID" ];
+    string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string recipient = 3;
     string owner = 4;
 
@@ -83,11 +83,11 @@ message MsgTransferNFT {
 
 message MsgTransferNFTResponse{}
 
-message MsgTransferDenom {
+message MsgTransferClass {
     option (gogoproto.equal) = true;
     string id = 1 [ (gogoproto.customname) = "ID" ];
     string owner = 2;
     string recipient = 3;
 }
 
-message MsgTransferDenomResponse{}
+message MsgTransferClassResponse{}

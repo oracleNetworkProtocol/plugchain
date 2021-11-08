@@ -6,28 +6,28 @@ import (
 )
 
 const (
-	TypeMsgIssueDenom    = "issue_denom"
+	TypeMsgIssueClass    = "issue_class"
 	TypeMsgIssueNFT      = "issue_nft"
 	TypeMsgEditNFT       = "edit_nft"
 	TypeMsgBurnNFT       = "burn_nft"
 	TypeMsgTransferNFT   = "transfer_nft"
-	TypeMsgTransferDenom = "transfer_denom"
+	TypeMsgTransferClass = "transfer_class"
 )
 
 var (
-	_ sdk.Msg = &MsgIssueDenom{}
+	_ sdk.Msg = &MsgIssueClass{}
 	_ sdk.Msg = &MsgIssueNFT{}
 	_ sdk.Msg = &MsgEditNFT{}
 	_ sdk.Msg = &MsgBurnNFT{}
 	_ sdk.Msg = &MsgTransferNFT{}
-	_ sdk.Msg = &MsgTransferDenom{}
+	_ sdk.Msg = &MsgTransferClass{}
 )
 
-// NewMsgIssueDenom is a constructor function for MsgSetName
-func NewMsgIssueDenom(denomID, denomName, schema, sender, symbol string, mintRestricted, editRestricted bool) *MsgIssueDenom {
-	return &MsgIssueDenom{
-		ID:             denomID,
-		Name:           denomName,
+// NewMsgIssueClass is a constructor function for MsgSetName
+func NewMsgIssueClass(classID, className, schema, sender, symbol string, mintRestricted, editRestricted bool) *MsgIssueClass {
+	return &MsgIssueClass{
+		ID:             classID,
+		Name:           className,
 		Schema:         schema,
 		Symbol:         symbol,
 		Owner:          sender,
@@ -36,27 +36,27 @@ func NewMsgIssueDenom(denomID, denomName, schema, sender, symbol string, mintRes
 	}
 }
 
-func (mid MsgIssueDenom) Route() string { return RouterKey }
-func (mid MsgIssueDenom) Type() string  { return TypeMsgIssueDenom }
-func (mid MsgIssueDenom) ValidateBasic() error {
+func (mid MsgIssueClass) Route() string { return RouterKey }
+func (mid MsgIssueClass) Type() string  { return TypeMsgIssueClass }
+func (mid MsgIssueClass) ValidateBasic() error {
 
 	if _, err := sdk.AccAddressFromBech32(mid.Owner); err != nil {
 		return err
 	}
 
-	if err := ValidateDenomID(mid.ID); err != nil {
+	if err := ValidateClassID(mid.ID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (mid MsgIssueDenom) GetSignBytes() []byte {
+func (mid MsgIssueClass) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(&mid)
 	return sdk.MustSortJSON(bz)
 }
 
-func (mid MsgIssueDenom) GetSigners() []sdk.AccAddress {
+func (mid MsgIssueClass) GetSigners() []sdk.AccAddress {
 	from, err := sdk.AccAddressFromBech32(mid.Owner)
 	if err != nil {
 		panic(err)
@@ -65,13 +65,13 @@ func (mid MsgIssueDenom) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgIssueNFT is a constructor function for MsgIssueNFT
-func NewMsgIssueNFT(nftID, denomID, denomName, url, schema, owner, recipient string) *MsgIssueNFT {
+func NewMsgIssueNFT(nftID, classID, className, url, schema, owner, recipient string) *MsgIssueNFT {
 	return &MsgIssueNFT{
 		ID:        nftID,
-		DenomID:   denomID,
+		ClassID:   classID,
 		URL:       url,
 		Data:      schema,
-		Name:      denomName,
+		Name:      className,
 		Owner:     owner,
 		Recipient: recipient,
 	}
@@ -87,7 +87,7 @@ func (min MsgIssueNFT) ValidateBasic() error {
 		return err
 	}
 
-	if err := ValidateDenomID(min.DenomID); err != nil {
+	if err := ValidateClassID(min.ClassID); err != nil {
 		return err
 	}
 
@@ -112,13 +112,13 @@ func (min MsgIssueNFT) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgEditNFT is a constructor function for MsgEditNFT
-func NewMsgEditNFT(nftID, denomID, denomName, url, schema, owner string) *MsgEditNFT {
+func NewMsgEditNFT(nftID, classID, className, url, schema, owner string) *MsgEditNFT {
 	return &MsgEditNFT{
 		ID:      nftID,
-		DenomID: denomID,
+		ClassID: classID,
 		URL:     url,
 		Data:    schema,
-		Name:    denomName,
+		Name:    className,
 		Owner:   owner,
 	}
 }
@@ -129,7 +129,7 @@ func (med MsgEditNFT) ValidateBasic() error {
 	if _, err := sdk.AccAddressFromBech32(med.Owner); err != nil {
 		return err
 	}
-	if err := ValidateDenomID(med.DenomID); err != nil {
+	if err := ValidateClassID(med.ClassID); err != nil {
 		return err
 	}
 
@@ -154,10 +154,10 @@ func (med MsgEditNFT) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgBurnNFT is a constructor function for MsgBurnNFT
-func NewMsgBurnNFT(nftID, denomID, owner string) *MsgBurnNFT {
+func NewMsgBurnNFT(nftID, classID, owner string) *MsgBurnNFT {
 	return &MsgBurnNFT{
 		ID:      nftID,
-		DenomID: denomID,
+		ClassID: classID,
 		Owner:   owner,
 	}
 }
@@ -168,7 +168,7 @@ func (mbn MsgBurnNFT) ValidateBasic() error {
 	if _, err := sdk.AccAddressFromBech32(mbn.Owner); err != nil {
 		return err
 	}
-	if err := ValidateDenomID(mbn.DenomID); err != nil {
+	if err := ValidateClassID(mbn.ClassID); err != nil {
 		return err
 	}
 
@@ -189,10 +189,10 @@ func (mbn MsgBurnNFT) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgTransferNFT is a constructor function for MsgTransferNFT
-func NewMsgTransferNFT(nftID, denomID, owner, recipient string) *MsgTransferNFT {
+func NewMsgTransferNFT(nftID, classID, owner, recipient string) *MsgTransferNFT {
 	return &MsgTransferNFT{
 		ID:        nftID,
-		DenomID:   denomID,
+		ClassID:   classID,
 		Recipient: recipient,
 		Owner:     owner,
 	}
@@ -201,7 +201,7 @@ func NewMsgTransferNFT(nftID, denomID, owner, recipient string) *MsgTransferNFT 
 func (mtn MsgTransferNFT) Route() string { return RouterKey }
 func (mtn MsgTransferNFT) Type() string  { return TypeMsgTransferNFT }
 func (mtn MsgTransferNFT) ValidateBasic() error {
-	if err := ValidateDenomID(mtn.DenomID); err != nil {
+	if err := ValidateClassID(mtn.ClassID); err != nil {
 		return err
 	}
 	if _, err := sdk.AccAddressFromBech32(mtn.Recipient); err != nil {
@@ -228,18 +228,18 @@ func (mtn MsgTransferNFT) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{from}
 }
 
-// NewMsgTransferDenom is a constructor function for MsgTransferDenom
-func NewMsgTransferDenom(ID, owner, recipient string) *MsgTransferDenom {
-	return &MsgTransferDenom{
+// NewMsgTransferClass is a constructor function for MsgTransferClass
+func NewMsgTransferClass(ID, owner, recipient string) *MsgTransferClass {
+	return &MsgTransferClass{
 		ID:        ID,
 		Recipient: recipient,
 		Owner:     owner,
 	}
 }
 
-func (mtd MsgTransferDenom) Route() string { return RouterKey }
-func (mtd MsgTransferDenom) Type() string  { return TypeMsgTransferDenom }
-func (mtd MsgTransferDenom) ValidateBasic() error {
+func (mtd MsgTransferClass) Route() string { return RouterKey }
+func (mtd MsgTransferClass) Type() string  { return TypeMsgTransferClass }
+func (mtd MsgTransferClass) ValidateBasic() error {
 
 	if _, err := sdk.AccAddressFromBech32(mtd.Recipient); err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid recipient address (%s)", err)
@@ -249,15 +249,15 @@ func (mtd MsgTransferDenom) ValidateBasic() error {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid sender address (%s)", err)
 	}
 
-	return ValidateDenomID(mtd.ID)
+	return ValidateClassID(mtd.ID)
 }
 
-func (mtd MsgTransferDenom) GetSignBytes() []byte {
+func (mtd MsgTransferClass) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(&mtd)
 	return sdk.MustSortJSON(bz)
 }
 
-func (mtd MsgTransferDenom) GetSigners() []sdk.AccAddress {
+func (mtd MsgTransferClass) GetSigners() []sdk.AccAddress {
 	from, err := sdk.AccAddressFromBech32(mtd.Owner)
 	if err != nil {
 		panic(err)

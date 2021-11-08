@@ -8,7 +8,7 @@ import (
 
 // x/nft module sentinel errors
 var (
-	ErrInvalidDenom      = sdkerrors.Register(ModuleName, 2, "invalid denom")
+	ErrInvalidClass      = sdkerrors.Register(ModuleName, 2, "invalid denom")
 	ErrInvalidNFTID      = sdkerrors.Register(ModuleName, 3, "invalid nft ID")
 	ErrInvalidNFTURL     = sdkerrors.Register(ModuleName, 4, "invalid nft url")
 	ErrNFTAreadyExists   = sdkerrors.Register(ModuleName, 5, "nft already exists")

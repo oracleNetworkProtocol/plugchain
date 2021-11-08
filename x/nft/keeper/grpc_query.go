@@ -14,23 +14,23 @@ import (
 
 var _ types.QueryServer = Keeper{}
 
-func (q Keeper) Denom(c context.Context, req *types.QueryDenomRequest) (*types.QueryDenomResponse, error) {
+func (q Keeper) Class(c context.Context, req *types.QueryClassRequest) (*types.QueryClassResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	data, ok := q.GetDenomByID(ctx, req.DenomId)
+	data, ok := q.GetClassByID(ctx, req.ClassId)
 	if !ok {
-		return nil, sdkerrors.Wrapf(types.ErrInvalidDenom, "denom ID %s not exists", req.DenomId)
+		return nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denom ID %s not exists", req.ClassId)
 	}
 
-	return &types.QueryDenomResponse{Denom: &data}, nil
+	return &types.QueryClassResponse{Class: &data}, nil
 }
 
-func (q Keeper) Denoms(c context.Context, req *types.QueryDenomsRequest) (*types.QueryDenomsResponse, error) {
+func (q Keeper) Classes(c context.Context, req *types.QueryClassesRequest) (*types.QueryClassesResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	var denoms []types.Denom
+	var denoms []types.Class
 	store := ctx.KVStore(q.storeKey)
-	denomStore := prefix.NewStore(store, types.GetKeyDenomID(""))
+	denomStore := prefix.NewStore(store, types.GetKeyClassID(""))
 	pageRes, err := query.Paginate(denomStore, req.Pagination, func(key, value []byte) error {
-		var denom types.Denom
+		var denom types.Class
 		q.cdc.MustUnmarshalBinaryBare(value, &denom)
 		denoms = append(denoms, denom)
 		return nil
@@ -38,8 +38,8 @@ func (q Keeper) Denoms(c context.Context, req *types.QueryDenomsRequest) (*types
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
 	}
-	return &types.QueryDenomsResponse{
-		Denoms:     denoms,
+	return &types.QueryClassesResponse{
+		Classes:    denoms,
 		Pagination: pageRes,
 	}, nil
 }
@@ -48,13 +48,13 @@ func (q Keeper) NFT(c context.Context, req *types.QueryNFTRequest) (*types.Query
 
 	ctx := sdk.UnwrapSDKContext(c)
 
-	nft, err := q.GetNFT(ctx, req.DenomId, req.NftId)
+	nft, err := q.GetNFT(ctx, req.ClassId, req.NftId)
 	if err != nil {
-		return nil, sdkerrors.Wrapf(types.ErrKnownNFT, "invalid NFT %s from collection %s", req.NftId, req.DenomId)
+		return nil, sdkerrors.Wrapf(types.ErrKnownNFT, "invalid NFT %s from collection %s", req.NftId, req.ClassId)
 	}
 	nfti, ok := nft.(types.NFT)
 	if !ok {
-		return nil, sdkerrors.Wrapf(types.ErrKnownNFT, "invalid type NFT %s from collection %s", req.NftId, req.DenomId)
+		return nil, sdkerrors.Wrapf(types.ErrKnownNFT, "invalid type NFT %s from collection %s", req.NftId, req.ClassId)
 	}
 	return &types.QueryNFTResponse{
 		Nft: &nfti,
@@ -63,7 +63,7 @@ func (q Keeper) NFT(c context.Context, req *types.QueryNFTRequest) (*types.Query
 
 func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest) (*types.QueryCollectionResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	collection, pageRes, err := q.GetPaginateCollection(ctx, req, req.DenomId)
+	collection, pageRes, err := q.GetPaginateCollection(ctx, req, req.ClassId)
 	if err != nil {
 		return nil, err
 	}
@@ -77,12 +77,12 @@ func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest)
 func (q Keeper) Supply(c context.Context, req *types.QuerySupplyRequest) (*types.QuerySupplyResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
-	_, found := q.GetDenomByID(ctx, req.DenomId)
+	_, found := q.GetClassByID(ctx, req.ClassId)
 	if !found {
-		return nil, status.Errorf(codes.InvalidArgument, "denomID %s not existed", req.DenomId)
+		return nil, status.Errorf(codes.InvalidArgument, "ClassID %s not existed", req.ClassId)
 	}
 
-	var supply = q.GetTotalSupply(ctx, req.DenomId)
+	var supply = q.GetTotalSupply(ctx, req.ClassId)
 	return &types.QuerySupplyResponse{Amount: supply}, nil
 }
 
@@ -99,21 +99,21 @@ func (q Keeper) Owner(c context.Context, req *types.QueryOwnerRequest) (*types.Q
 	idsMap := make(map[string][]string)
 
 	store := ctx.KVStore(q.storeKey)
-	nftStore := prefix.NewStore(store, types.GetKeyOwner(ownerAdr, req.DenomId, ""))
+	nftStore := prefix.NewStore(store, types.GetKeyOwner(ownerAdr, req.ClassId, ""))
 
 	pageRes, err := query.Paginate(nftStore, req.Pagination, func(key, value []byte) error {
-		denomID := req.DenomId
+		classID := req.ClassId
 		nftID := string(key)
-		if len(denomID) == 0 {
-			denomID, nftID, _ = types.SplitKeyDenom(key)
+		if len(classID) == 0 {
+			classID, nftID, _ = types.SplitKeyDenom(key)
 		}
 
-		//Injection denomID to nftIDs
-		if ids, ok := idsMap[denomID]; ok {
-			idsMap[denomID] = append(ids, nftID)
+		//Injection classID to nftIDs
+		if ids, ok := idsMap[classID]; ok {
+			idsMap[classID] = append(ids, nftID)
 		} else {
-			idsMap[denomID] = []string{nftID}
-			owner.CollectionIDs = append(owner.CollectionIDs, types.CollectionID{DenomID: denomID})
+			idsMap[classID] = []string{nftID}
+			owner.CollectionIDs = append(owner.CollectionIDs, types.CollectionID{ClassID: classID})
 		}
 
 		return nil
@@ -124,7 +124,7 @@ func (q Keeper) Owner(c context.Context, req *types.QueryOwnerRequest) (*types.Q
 	//assignment value
 	idsCount := len(owner.CollectionIDs)
 	for i := 0; i < idsCount; i++ {
-		owner.CollectionIDs[i].NFTIDs = idsMap[owner.CollectionIDs[i].DenomID]
+		owner.CollectionIDs[i].NFTIDs = idsMap[owner.CollectionIDs[i].ClassID]
 	}
 	return &types.QueryOwnerResponse{Owner: &owner, Pagination: pageRes}, nil
 }

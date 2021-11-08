@@ -33,15 +33,15 @@ As all NFTs belong to a specific `Collection`
 
 //collection of nft
 type Collection struct {
-    Denom Denom `json:"denom"` // denom of the collection; not exported
+    Class class `json:"class"` // class of the collection; not exported
     NFTs  []NFT `json:"nfts"` // nfts that belongs to a collection
 }
 ```
 
-## Denom
-Denom defines a type of NFT
+## Class
+Class defines a type of NFT
 ```go
-type Denom struct {
+type Class struct {
     ID      string
     Name    string
     Schema  string

@@ -1,7 +1,7 @@
 package types
 
-func NewCollection(denom Denom, nfts []NFTI) (c Collection) {
-	c.Denom = denom
+func NewCollection(denom Class, nfts []NFTI) (c Collection) {
+	c.Class = denom
 	for _, nft := range nfts {
 		c.AddNFT(nft.(NFT))
 	}

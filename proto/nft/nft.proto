@@ -16,7 +16,7 @@ message NFT {
 }
 
 
-message Denom {
+message Class {
     string id = 1 [ (gogoproto.customname) = "ID" ];
     string name = 2;
     string schema = 3;
@@ -28,13 +28,13 @@ message Denom {
 
 
 message Collection {
-    Denom denom = 1 [(gogoproto.nullable) = false];
+    Class class = 1 [(gogoproto.nullable) = false];
     repeated NFT nfts = 2 [ (gogoproto.customname) = "NFTs", (gogoproto.nullable) = false];
 }
 
 
 message CollectionID {
-    string denom_id = 1 [ (gogoproto.customname) = "DenomID" ];
+    string Class_id = 1 [ (gogoproto.customname) = "ClassID" ];
     repeated string nft_ids = 2 [ (gogoproto.customname) = "NFTIDs" ]; 
 }
 

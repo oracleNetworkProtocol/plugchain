@@ -2,8 +2,8 @@ package types
 
 import sdk "github.com/cosmos/cosmos-sdk/types"
 
-func NewDenom(id, name, schema, symbol string, owner sdk.AccAddress, mintRestricted, editRestricted bool) Denom {
-	return Denom{
+func NewClass(id, name, schema, symbol string, owner sdk.AccAddress, mintRestricted, editRestricted bool) Class {
+	return Class{
 		ID:             id,
 		Name:           name,
 		Schema:         schema,

@@ -8,7 +8,7 @@ import (
 // failure.
 func (gs GenesisState) Validate() error {
 	for _, item := range gs.Collections {
-		if err := ValidateDenomID(item.Denom.ID); err != nil {
+		if err := ValidateClassID(item.Class.ID); err != nil {
 			return err
 		}
 		for _, nft := range item.NFTs {
