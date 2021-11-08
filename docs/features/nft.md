@@ -10,15 +10,15 @@ Asset metadata (`metadata`) can be stored directly on the chain, or it can be st
 
 Assets need to be issued before they are created to declare their abstract properties:
 
--_Denom_: the globally unique asset class name
+-_Class_: the globally unique asset class name
   
--_Denom ID_: Denom’s globally unique identifier
+-_Class ID_: Class’s globally unique identifier
 
 -_Metadata Specification_: The JSON Schema that asset metadata should follow
 
 Each specific asset is described by the following elements:
 
--_Denom_: the category of the asset
+-_Class_: the category of the asset
 
 -_ID_: the identifier of the asset, unique in this asset class
 
