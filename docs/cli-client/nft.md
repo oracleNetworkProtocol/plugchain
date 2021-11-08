@@ -6,10 +6,10 @@
 
 | Name                                     | Description |
 | ---------------------------------------- | ----------- |
-| [issue-class](#issue-class)              | Issue assets |
+| [issue-class](#issue-class)              | Create asset classification |
 | [issue-nft](#issue-nft)                  | Issue additional assets |
 | [edit-nft](#edit-nft)                    | Edit Assets |
-| [transfer-class](#transfer-class)        | Transfer assets |
+| [transfer-class](#transfer-class)        | Transfer asset classification |
 | [transfer-nft](#transfer-nft)            | Transfer specified nft assets |
 | [burn-nft](#burn-nft)                    | Destroy Assets |
 | [supply](#supply)                        | Query supply |
