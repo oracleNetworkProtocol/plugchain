@@ -6,17 +6,17 @@
 
 | Name                                     | Description |
 | ---------------------------------------- | ----------- |
-| [issue-denom](#issue-denom)              | Issue assets |
+| [issue-class](#issue-class)              | Issue assets |
 | [issue-nft](#issue-nft)                  | Issue additional assets |
 | [edit-nft](#edit-nft)                    | Edit Assets |
-| [transfer-denom](#transfer-denom)        | Transfer assets |
+| [transfer-class](#transfer-class)        | Transfer assets |
 | [transfer-nft](#transfer-nft)            | Transfer specified nft assets |
 | [burn-nft](#burn-nft)                    | Destroy Assets |
 | [supply](#supply)                        | Query supply |
 | [owner](#owner)                          | Query by owner |
 | [collection](#collection)                | Query collection |
-| [denom](#denom)                          | Query denom |
-| [denoms](#denoms)                        | Query denoms |
+| [class](#class)                          | Query class |
+| [classes](#classes)                       | Query classes |
 | [nft](#nft)                              | Query specified nft |
 
 :::tip
@@ -24,7 +24,7 @@ The above commands can use the `-h` parameter to view the description of the fun
 :::
 
 :::warning
-The above `issue-denom`,`issue-nft`,`edit-nft`,`transfer-denom`,`transfer-nft`,`burn-nft` commands all require parameters `--from`,`--chain -id`,`--fees`
+The above `issue-class`,`issue-nft`,`edit-nft`,`transfer-class`,`transfer-nft`,`burn-nft` commands all require parameters `--from`,`--chain -id`,`--fees`
 :::
 
 **Logo:**
@@ -37,12 +37,12 @@ The above `issue-denom`,`issue-nft`,`edit-nft`,`transfer-denom`,`transfer-nft`,`
 | --home | ~/.plugchain | The directory where the chain data is located | Optional |
 
 
-## issue-denom
+## issue-class
 
 Issue assets
 
 ```bash
-plugchaind tx nft issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json] [flags]
+plugchaind tx nft issue-class [class-id] [class-name] [class-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json] [flags]
 ```
 
 ## issue-nft
@@ -50,7 +50,7 @@ plugchaind tx nft issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restr
 Additional issuance (creation) of assets
 
 ```bash
-plugchaind tx nft issue-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
+plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
 ```
 
 
@@ -59,7 +59,7 @@ plugchaind tx nft issue-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] 
 Edit assets
 
 ```bash
-plugchaind tx nft edit-nft [denom-id] [nft-id] [flags]
+plugchaind tx nft edit-nft [class-id] [nft-id] [flags]
 ```
 
 **Logo:**
@@ -70,12 +70,12 @@ plugchaind tx nft edit-nft [denom-id] [nft-id] [flags]
 | --nft-url | | Where nft assets are located | |
 | --nft-data | |nft asset metadata | |
 
-## transfer-denom
+## transfer-class
 
 Transfer assets
 
 ```bash
-plugchaind tx nft transfer-denom <denom-id> <recipient-address> [flags]
+plugchaind tx nft transfer-class <class-id> <recipient-address> [flags]
 ```
 
 ## transfer-nft
@@ -83,7 +83,7 @@ plugchaind tx nft transfer-denom <denom-id> <recipient-address> [flags]
 Transfer of designated nft assets
 
 ```bash
-plugchaind tx nft transfer-nft <denom-id> <nft-id> <recipient-address> [flags]
+plugchaind tx nft transfer-nft <class-id> <nft-id> <recipient-address> [flags]
 ```
 
 ## burn-nft
@@ -91,7 +91,7 @@ plugchaind tx nft transfer-nft <denom-id> <nft-id> <recipient-address> [flags]
 Destroy assets
 
 ```bash
-plugchaind tx nft burn-nft [denom-id] [nft-id] [flags]
+plugchaind tx nft burn-nft [class-id] [nft-id] [flags]
 ```
 
 
@@ -101,8 +101,8 @@ Query the total amount of assets based on Denom ID; accept the optional --owner 
 
 
 ```bash
-plugchaind q nft supply [denom-id] [flags]
-plugchaind q nft supply [denom-id] --owner=<myAddress> [flags]
+plugchaind q nft supply [class-id] [flags]
+plugchaind q nft supply [class-id] --owner=<myAddress> [flags]
 ```
 
 ## owner
@@ -111,7 +111,7 @@ Query all assets owned by an account; you can specify the Denom ID parameter.
 
 
 ```bash
-plugchaind query nft owner [address] [denom-id] [flags]
+plugchaind query nft owner [address] [class-id] [flags]
 ```
 
 ## collection
@@ -120,24 +120,24 @@ Query all assets based on Denom ID.
 
 
 ```bash
-plugchaind q nft collection [denom-id] [flags]
+plugchaind q nft collection [class-id] [flags]
 ```
 
-## denom
+## class
 
 Query asset category information based on Denom ID.
 
 
 ```bash
-plugchaind q nft denom [denom-id] [flags]
+plugchaind q nft class [class-id] [flags]
 ```
 
-## denoms
+## classes
 
 Query all asset class information that has been issued.
 
 ```bash
-plugchaind q nft denoms [flags]
+plugchaind q nft classes [flags]
 ```
 
 ## nft
@@ -145,5 +145,5 @@ plugchaind q nft denoms [flags]
 Query specific assets based on Denom ID and ID.
 
 ```bash
-plugchaind q nft nft [denom-id] [nft-id] [flags]
+plugchaind q nft nft [class-id] [nft-id] [flags]
 ```

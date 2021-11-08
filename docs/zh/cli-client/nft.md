@@ -4,27 +4,27 @@
 
 ## 可用命令
 
-| 名称                                     | 描述           |
-| ---------------------------------------- | -------------- |
-| [issue-denom](#issue-denom)              | 发行资产       |
-| [issue-nft](#issue-nft)                | 增发资产       |
-| [edit-nft](#edit-nft)                | 编辑资产       |
-| [transfer-denom](#transfer-denom)        | 转让资产       |
-| [transfer-nft](#transfer-nft)        | 转让指定nft资产       |
-| [burn-nft](#burn-nft)                | 销毁资产       |
-| [supply](#supply)         | 查询supply     |
-| [owner](#owner)           | 通过owner查询  |
-| [collection](#collection) | 查询collection |
-| [denom](#denom)           | 查询denom      |
-| [denoms](#denoms)         | 查询denoms     |
-| [nft](#nft)           | 查询指定nft      |
+| 名称                                   | 描述           |
+| ------------------------------------  | -------------  |
+| [issue-class](#issue-class)           | 发行资产       |
+| [issue-nft](#issue-nft)               | 增发资产       |
+| [edit-nft](#edit-nft)                 | 编辑资产       |
+| [transfer-class](#transfer-class)     | 转让资产       |
+| [transfer-nft](#transfer-nft)         | 转让指定nft资产 |
+| [burn-nft](#burn-nft)                 | 销毁资产        |
+| [supply](#supply)                     | 查询supply     |
+| [owner](#owner)                       | 通过owner查询   |
+| [collection](#collection)             | 查询collection |
+| [class](#class)                       | 查询denom      |
+| [classes](#classes)                   | 查询denoms     |
+| [nft](#nft)                           | 查询指定nft     |
 
 :::tip
 以上命令都可以使用 `-h` 参数，来查看功能的描述和参数的含义
 :::
 
 :::warning 
-以上`issue-denom`,`issue-nft`,`edit-nft`,`transfer-denom`,`transfer-nft`,`burn-nft` 命令都需要参数 `--from`,`--chain-id`,`--fees`
+以上`issue-class`,`issue-nft`,`edit-nft`,`transfer-class`,`transfer-nft`,`burn-nft` 命令都需要参数 `--from`,`--chain-id`,`--fees`
 :::
 
 **标志：**
@@ -37,12 +37,12 @@
 | --home      |   ~/.plugchain   | 链数据所在目录            |    可选  |
 
 
-## issue-denom
+## issue-class
 
 发行资产
 
 ```bash
-plugchaind tx nft issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json]  [flags]
+plugchaind tx nft issue-class [class-id] [class-name] [class-symbol] [mint-restricted] [edit-restricted] [schema-content or path to schema.json]  [flags]
 ```
 
 ## issue-nft
@@ -50,7 +50,7 @@ plugchaind tx nft issue-denom [denom-id] [denom-name] [denom-symbol] [mint-restr
 增发(创建)资产
 
 ```bash
-plugchaind tx nft issue-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
+plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
 ```
 
 
@@ -59,7 +59,7 @@ plugchaind tx nft issue-nft [denom-id] [nft-id] [nft-name] [nft-url] [nft-data] 
 编辑资产
 
 ```bash
-plugchaind tx nft edit-nft [denom-id] [nft-id] [flags]
+plugchaind tx nft edit-nft [class-id] [nft-id] [flags]
 ```
 
 **标志：**
@@ -70,12 +70,12 @@ plugchaind tx nft edit-nft [denom-id] [nft-id] [flags]
 | --nft-url     |      | nft资产所在的地方           |      |
 | --nft-data     |      |nft资产的元数据       |      |
 
-## transfer-denom
+## transfer-class
 
 转让资产
 
 ```bash
-plugchaind tx nft transfer-denom <denom-id> <recipient-address> [flags]
+plugchaind tx nft transfer-class <class-id> <recipient-address> [flags]
 ```
 
 ## transfer-nft
@@ -83,7 +83,7 @@ plugchaind tx nft transfer-denom <denom-id> <recipient-address> [flags]
 转让指定nft资产
 
 ```bash
-plugchaind tx nft transfer-nft <denom-id> <nft-id> <recipient-address> [flags]
+plugchaind tx nft transfer-nft <class-id> <nft-id> <recipient-address> [flags]
 ```
 
 ## burn-nft
@@ -91,7 +91,7 @@ plugchaind tx nft transfer-nft <denom-id> <nft-id> <recipient-address> [flags]
 销毁资产
 
 ```bash
-plugchaind tx nft burn-nft [denom-id] [nft-id] [flags]
+plugchaind tx nft burn-nft [class-id] [nft-id] [flags]
 ```
 
 
@@ -101,8 +101,8 @@ plugchaind tx nft burn-nft [denom-id] [nft-id] [flags]
 
 
 ```bash
-plugchaind q nft supply [denom-id] [flags]
-plugchaind q nft supply [denom-id] --owner=<myAddress> [flags]
+plugchaind q nft supply [class-id] [flags]
+plugchaind q nft supply [class-id] --owner=<myAddress> [flags]
 ```
 
 ## owner
@@ -111,7 +111,7 @@ plugchaind q nft supply [denom-id] --owner=<myAddress> [flags]
 
 
 ```bash
-plugchaind query nft owner [address] [denom-id] [flags]
+plugchaind query nft owner [address] [class-id] [flags]
 ```
 
 ## collection
@@ -120,24 +120,24 @@ plugchaind query nft owner [address] [denom-id] [flags]
 
 
 ```bash
-plugchaind q nft collection [denom-id] [flags]
+plugchaind q nft collection [class-id] [flags]
 ```
 
-## denom
+## class
 
 根据 Denom ID查询资产类别信息。
 
 
 ```bash
-plugchaind q nft denom [denom-id] [flags]
+plugchaind q nft class [class-id] [flags]
 ```
 
-## denoms
+## classes
 
 查询已发行的所有资产类别信息。
 
 ```bash
-plugchaind q nft denoms [flags]
+plugchaind q nft classes [flags]
 ```
 
 ## nft
@@ -145,5 +145,5 @@ plugchaind q nft denoms [flags]
 根据 Denom ID以及 ID 查询具体资产。
 
 ```bash
-plugchaind q nft nft [denom-id] [nft-id] [flags]
+plugchaind q nft nft [class-id] [nft-id] [flags]
 ```
