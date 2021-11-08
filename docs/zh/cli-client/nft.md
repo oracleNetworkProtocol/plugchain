@@ -6,10 +6,10 @@
 
 | 名称                                   | 描述           |
 | ------------------------------------  | -------------  |
-| [issue-class](#issue-class)           | 发行资产       |
-| [issue-nft](#issue-nft)               | 增发资产       |
+| [issue-class](#issue-class)           | 创建资产分类       |
+| [issue-nft](#issue-nft)               | 发行资产       |
 | [edit-nft](#edit-nft)                 | 编辑资产       |
-| [transfer-class](#transfer-class)     | 转让资产       |
+| [transfer-class](#transfer-class)     | 转让资产分类       |
 | [transfer-nft](#transfer-nft)         | 转让指定nft资产 |
 | [burn-nft](#burn-nft)                 | 销毁资产        |
 | [supply](#supply)                     | 查询supply     |
