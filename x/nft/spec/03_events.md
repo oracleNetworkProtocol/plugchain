@@ -2,12 +2,12 @@
 
 The nft module emits the following events:
 
-## MsgIssueDenom
+## MsgIssueClass
 
 | Type        | Attribute Key | Attribute Value  |
 | :---------- | :------------ | :--------------- |
-| issue_denom | denom_id      | {nftDenomID}     |
-| issue_denom | owner         | {ownerAddress}   |
+| issue_class | class_id      | {nftClassID}     |
+| issue_class | owner         | {ownerAddress}   |
 | message     | module        | nft              |
 | message     | sender        | {senderAddress}  |
 
@@ -17,7 +17,7 @@ The nft module emits the following events:
 | Type      | Attribute Key | Attribute Value    |
 | :-------  | :------------ | :----------------- |
 | issue_nft | nft_id        | {nftID}            |
-| issue_nft | denom_id      | {nftDenomID}       |
+| issue_nft | class_id      | {nftClassID}       |
 | issue_nft | recipient     | {recipientAddress} |
 | message   | module        | nft                |
 | message   | sender        | {senderAddress}    |
@@ -27,7 +27,7 @@ The nft module emits the following events:
 | Type     | Attribute Key | Attribute Value |
 | :------- | :------------ | :-------------- |
 | edit_nft | nft_id        | {nftID}         |
-| edit_nft | denom_id      | {nftDenomID}    |
+| edit_nft | class_id      | {nftClassID}    |
 | edit_nft | owner         | {ownerAddress}  |
 | message  | module        | nft             |
 | message  | sender        | {ownerAddress} |
@@ -37,7 +37,7 @@ The nft module emits the following events:
 | Type     | Attribute Key | Attribute Value |
 | :------- | :------------ | :-------------- |
 | burn_nft | nft_id        | {nftID}         |
-| burn_nft | denom_id      | {nftDenomID}    |
+| burn_nft | class_id      | {nftClassID}    |
 | burn_nft | owner         | {ownerAddress}  |
 | message  | module        | nft             |
 | message  | sender        | {ownerAddress} |
@@ -47,19 +47,19 @@ The nft module emits the following events:
 | Type                  | Attribute Key | Attribute Value   |
 | :---------------      | :------------ | :--------------   |
 | transfer_nft          | nft_id        | {nftID}           |
-| transfer_nft          | denom_id      | {DenomID}         |
+| transfer_nft          | class_id      | {ClassID}         |
 | transfer_nft          | owner         | {ownerAddress}    |
 | transfer_nft          | recipient     | {recipientAddress}|
 | message               | module        | nft               |
 | message               | sender        | {ownerAddress}    |
 
 
-## MsgTransferDenom
+## MsgTransferClass
 
 | Type                  | Attribute Key | Attribute Value   |
 | :---------------      | :------------ | :--------------   |
-| transfer_denom        | id            | {ID}              |
-| transfer_denom        | owner         | {ownerAddress}    |
+| transfer_class        | id            | {ID}              |
+| transfer_class        | owner         | {ownerAddress}    |
 | transfer_nft          | recipient     | {recipientAddress}|
 | message               | module        | nft               |
 | message               | sender        | {ownerAddress}    |

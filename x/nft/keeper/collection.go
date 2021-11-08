@@ -12,7 +12,7 @@ import (
 
 func (k Keeper) SetCollection(ctx sdk.Context, collection types.Collection) error {
 	for _, v := range collection.NFTs {
-		if err := k.IssueNFT(ctx, collection.Denom.ID, v.ID, v.Name, v.URL, v.Data, v.GetOwner()); err != nil {
+		if err := k.IssueNFT(ctx, collection.Class.ID, v.ID, v.Name, v.URL, v.Data, v.GetOwner()); err != nil {
 			return err
 		}
 	}
@@ -20,7 +20,7 @@ func (k Keeper) SetCollection(ctx sdk.Context, collection types.Collection) erro
 }
 
 func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
-	denoms := k.GetDenoms(ctx)
+	denoms := k.GetClasses(ctx)
 	if len(denoms) == 0 {
 		return
 	}
@@ -32,9 +32,9 @@ func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
 }
 
 func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectionRequest, denomID string) (types.Collection, *query.PageResponse, error) {
-	denom, found := k.GetDenomByID(ctx, denomID)
+	denom, found := k.GetClassByID(ctx, denomID)
 	if !found {
-		return types.Collection{}, nil, sdkerrors.Wrapf(types.ErrInvalidDenom, "denomID %s not existed", denomID)
+		return types.Collection{}, nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not existed", denomID)
 	}
 	var nfts []types.NFTI
 	store := ctx.KVStore(k.storeKey)

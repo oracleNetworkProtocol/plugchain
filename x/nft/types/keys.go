@@ -30,7 +30,7 @@ var (
 	delimiter = []byte("-")
 )
 
-func GetKeyDenomID(id string) []byte {
+func GetKeyClassID(id string) []byte {
 	key := append(PrefixDenom, delimiter...)
 	return append(key, []byte(id)...)
 }

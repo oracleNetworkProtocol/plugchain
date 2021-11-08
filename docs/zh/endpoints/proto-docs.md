@@ -721,12 +721,12 @@ order: 6
     - [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse)
     - [MsgEditNFT](#plugchain.nft.MsgEditNFT)
     - [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse)
-    - [MsgIssueDenom](#plugchain.nft.MsgIssueDenom)
-    - [MsgIssueDenomResponse](#plugchain.nft.MsgIssueDenomResponse)
+    - [MsgIssueClass](#plugchain.nft.MsgIssueClass)
+    - [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse)
     - [MsgIssueNFT](#plugchain.nft.MsgIssueNFT)
     - [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse)
-    - [MsgTransferDenom](#plugchain.nft.MsgTransferDenom)
-    - [MsgTransferDenomResponse](#plugchain.nft.MsgTransferDenomResponse)
+    - [MsgTransferClass](#plugchain.nft.MsgTransferClass)
+    - [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse)
     - [MsgTransferNFT](#plugchain.nft.MsgTransferNFT)
     - [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse)
   
@@ -10475,9 +10475,9 @@ Query defines the gRPC querier service.
 
 
 
-<a name="plugchain.nft.MsgIssueDenom"></a>
+<a name="plugchain.nft.MsgIssueClass"></a>
 
-### MsgIssueDenom
+### MsgIssueClass
 
 
 
@@ -10496,9 +10496,9 @@ Query defines the gRPC querier service.
 
 
 
-<a name="plugchain.nft.MsgIssueDenomResponse"></a>
+<a name="plugchain.nft.MsgIssueClassResponse"></a>
 
-### MsgIssueDenomResponse
+### MsgIssueClassResponse
 
 
 
@@ -10537,9 +10537,9 @@ Query defines the gRPC querier service.
 
 
 
-<a name="plugchain.nft.MsgTransferDenom"></a>
+<a name="plugchain.nft.MsgTransferClass"></a>
 
-### MsgTransferDenom
+### MsgTransferClass
 
 
 
@@ -10554,9 +10554,9 @@ Query defines the gRPC querier service.
 
 
 
-<a name="plugchain.nft.MsgTransferDenomResponse"></a>
+<a name="plugchain.nft.MsgTransferClassResponse"></a>
 
-### MsgTransferDenomResponse
+### MsgTransferClassResponse
 
 
 
@@ -10605,12 +10605,12 @@ Msg defines the Msg service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `IssueDenom` | [MsgIssueDenom](#plugchain.nft.MsgIssueDenom) | [MsgIssueDenomResponse](#plugchain.nft.MsgIssueDenomResponse) | IssueDenom defines a method for issue a denom | |
+| `IssueDenom` | [MsgIssueClass](#plugchain.nft.MsgIssueClass) | [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse) | IssueDenom defines a method for issue a denom | |
 | `IssueNFT` | [MsgIssueNFT](#plugchain.nft.MsgIssueNFT) | [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse) | IssueNFT defines a method for Issue a new nft | |
 | `EditNFT` | [MsgEditNFT](#plugchain.nft.MsgEditNFT) | [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse) | EditNFT defines a method for edit a nft | |
 | `BurnNFT` | [MsgBurnNFT](#plugchain.nft.MsgBurnNFT) | [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse) | BurnNFT define a method for burning a nft | |
 | `TransferNFT` | [MsgTransferNFT](#plugchain.nft.MsgTransferNFT) | [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse) | TransferNFT define a method for transferring a nft | |
-| `TransferDenom` | [MsgTransferDenom](#plugchain.nft.MsgTransferDenom) | [MsgTransferDenomResponse](#plugchain.nft.MsgTransferDenomResponse) | TransferDenom define a method for transferring a denom | |
+| `TransferDenom` | [MsgTransferClass](#plugchain.nft.MsgTransferClass) | [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse) | TransferDenom define a method for transferring a denom | |
 
  <!-- end services -->
 

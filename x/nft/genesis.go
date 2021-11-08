@@ -13,7 +13,7 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 		panic(err.Error())
 	}
 	for _, v := range genState.Collections {
-		if err := k.SetDenom(ctx, v.Denom); err != nil {
+		if err := k.SetClass(ctx, v.Class); err != nil {
 			panic(err)
 		}
 		if err := k.SetCollection(ctx, v); err != nil {

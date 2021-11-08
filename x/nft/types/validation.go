@@ -11,8 +11,8 @@ import (
 const (
 	DefaultStringValue = "[do-not-modify]"
 
-	MinDenomLen  = 6
-	MaxDenomLen  = 64
+	MinClassLen  = 6
+	MaxClassLen  = 64
 	MaxNFTURLLen = 256
 )
 
@@ -29,29 +29,29 @@ var (
 	regexpURL     = regexp.MustCompile(regexURLFmt).MatchString
 )
 
-// ValidateDenomID verifies whether the  parameters are legal
-func ValidateDenomID(denomID string) error {
-	if len(denomID) < MinDenomLen || len(denomID) > MaxDenomLen {
-		return sdkerrors.Wrapf(ErrInvalidDenom, "the length of denom(%s) only accepts value [%d, %d]", denomID, MinDenomLen, MaxDenomLen)
+// ValidateClassID verifies whether the  parameters are legal
+func ValidateClassID(classID string) error {
+	if len(classID) < MinClassLen || len(classID) > MaxClassLen {
+		return sdkerrors.Wrapf(ErrInvalidClass, "the length of Class(%s) only accepts value [%d, %d]", classID, MinClassLen, MaxClassLen)
 	}
-	if !RegexAlphaNumeric(denomID) || !RegexAlphaTop(denomID) {
-		return sdkerrors.Wrapf(ErrInvalidDenom, "the denom(%s) only accepts alphanumeric characters, and begin with an english letter", denomID)
+	if !RegexAlphaNumeric(classID) || !RegexAlphaTop(classID) {
+		return sdkerrors.Wrapf(ErrInvalidClass, "the Class(%s) only accepts alphanumeric characters, and begin with an english letter", classID)
 	}
-	return ValidateKeywords(denomID)
+	return ValidateKeywords(classID)
 }
 
-// ValidateKeywords checks if the given denomId begins with `DenomKeywords`
-func ValidateKeywords(denomId string) error {
-	if regexpKeyword(denomId) {
-		return sdkerrors.Wrapf(ErrInvalidDenom, "invalid denomId: %s, can not begin with keyword: (%s)", denomId, keyWords)
+// ValidateKeywords checks if the given classID begins with `DenomKeywords`
+func ValidateKeywords(classID string) error {
+	if regexpKeyword(classID) {
+		return sdkerrors.Wrapf(ErrInvalidClass, "invalid classID: %s, can not begin with keyword: (%s)", classID, keyWords)
 	}
 	return nil
 }
 
 //ValidateNFTID verify that the nftID is legal
 func ValidateNFTID(nftID string) error {
-	if len(nftID) < MinDenomLen || len(nftID) > MaxDenomLen {
-		return sdkerrors.Wrapf(ErrInvalidNFTID, "the length of nft id(%s) only accepts value [%d, %d]", nftID, MinDenomLen, MaxDenomLen)
+	if len(nftID) < MinClassLen || len(nftID) > MaxClassLen {
+		return sdkerrors.Wrapf(ErrInvalidNFTID, "the length of nft id(%s) only accepts value [%d, %d]", nftID, MinClassLen, MaxClassLen)
 	}
 	if !RegexAlphaNumeric(nftID) || !RegexAlphaTop(nftID) {
 		return sdkerrors.Wrapf(ErrInvalidNFTID, "nft id(%s) only accepts alphanumeric characters, and begin with an english letter", nftID)
