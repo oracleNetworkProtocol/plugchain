@@ -55,7 +55,7 @@ func (m msgServer) IssueNFT(c context.Context, in *types.MsgIssueNFT) (*types.Ms
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	if err := m.Keeper.IssueNFT(ctx, in.ClassID, in.ID, in.Name, in.URL, in.Data, recipient); err != nil {
+	if err := m.Keeper.IssueNFT(ctx, in.ClassID, in.ID, in.Name, in.URI, in.Data, recipient); err != nil {
 		return nil, err
 	}
 
@@ -84,7 +84,7 @@ func (m msgServer) EditNFT(c context.Context, in *types.MsgEditNFT) (*types.MsgE
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	if err := m.Keeper.EditNFT(ctx, in.ClassID, in.ID, in.Name, in.URL, in.Data, owner); err != nil {
+	if err := m.Keeper.EditNFT(ctx, in.ClassID, in.ID, in.Name, in.URI, in.Data, owner); err != nil {
 		return nil, err
 	}
 

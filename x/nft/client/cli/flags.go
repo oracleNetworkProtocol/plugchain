@@ -7,7 +7,7 @@ import (
 
 const (
 	FlagNFTName = "nft-name"
-	FlagNFTURL  = "nft-url"
+	FlagNFTURI  = "nft-uri"
 	FlagNFTData = "nft-data"
 	FlagOwner   = "owner"
 )
@@ -19,7 +19,7 @@ var (
 
 func init() {
 	FsEditNFT.String(FlagNFTName, types.DefaultStringValue, "The name of the nft")
-	FsEditNFT.String(FlagNFTURL, types.DefaultStringValue, "URL for the supplemental off-chain nft data (should return a JSON object)")
+	FsEditNFT.String(FlagNFTURI, types.DefaultStringValue, "URI for the supplemental off-chain nft data (should return a JSON object)")
 	FsEditNFT.String(FlagNFTData, types.DefaultStringValue, "The nft data of the nft")
 
 	FsQuerySupply.String(FlagOwner, "", "The owner of the denom")

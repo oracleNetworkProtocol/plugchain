@@ -43,7 +43,7 @@ func (k Keeper) IssueClass(ctx sdk.Context, id, name, schema, symbol string, own
 	return k.SetClass(ctx, denom)
 }
 
-func (k Keeper) IssueNFT(ctx sdk.Context, classID, ID, name, url, data string, owner sdk.AccAddress) error {
+func (k Keeper) IssueNFT(ctx sdk.Context, classID, ID, name, uri, data string, owner sdk.AccAddress) error {
 	denom, ok := k.GetClassByID(ctx, classID)
 	if !ok {
 		return sdkerrors.Wrapf(types.ErrInvalidClass, "class ID (%s) not exists", classID)
@@ -56,7 +56,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, classID, ID, name, url, data string, o
 	}
 	k.setNFT(ctx, classID,
 		types.NewNFT(
-			ID, name, url, data, owner,
+			ID, name, uri, data, owner,
 		))
 	// count++
 	k.increaseSupply(ctx, classID)
@@ -64,7 +64,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, classID, ID, name, url, data string, o
 	return nil
 }
 
-func (k Keeper) EditNFT(ctx sdk.Context, classID, ID, name, url, data string, owner sdk.AccAddress) error {
+func (k Keeper) EditNFT(ctx sdk.Context, classID, ID, name, uri, data string, owner sdk.AccAddress) error {
 	denom, ok := k.GetClassByID(ctx, classID)
 	if !ok {
 		return sdkerrors.Wrapf(types.ErrInvalidClass, "denom ID (%s) not exists", classID)
@@ -84,8 +84,8 @@ func (k Keeper) EditNFT(ctx sdk.Context, classID, ID, name, url, data string, ow
 		nft.Name = name
 	}
 
-	if types.Modified(url) {
-		nft.URL = url
+	if types.Modified(uri) {
+		nft.URI = uri
 	}
 
 	if types.Modified(data) {

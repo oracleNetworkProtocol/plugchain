@@ -18,7 +18,7 @@ type NFTI interface {
 type NFT struct {
     ID      string
     Name    string
-    URL     string
+    URI     string
     Data    string
     Owner   string
 }

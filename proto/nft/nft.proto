@@ -10,11 +10,10 @@ option (gogoproto.equal_all) = true;
 message NFT {
     string id = 1 [ (gogoproto.customname) = "ID" ];
     string name =2 ;
-    string url = 3 [ (gogoproto.customname) = "URL" ];
+    string uri = 3 [ (gogoproto.customname) = "URI" ];
     string data = 4;
     string owner = 5;
 }
-
 
 message Class {
     string id = 1 [ (gogoproto.customname) = "ID" ];

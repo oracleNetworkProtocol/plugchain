@@ -9,11 +9,11 @@ type NFTI interface {
 
 var _ NFTI = NFT{}
 
-func NewNFT(id, name, url, data string, owner sdk.AccAddress) NFT {
+func NewNFT(id, name, uri, data string, owner sdk.AccAddress) NFT {
 	return NFT{
 		ID:    id,
 		Name:  name,
-		URL:   url,
+		URI:   uri,
 		Data:  data,
 		Owner: owner.String(),
 	}

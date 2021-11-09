@@ -13,7 +13,7 @@ order: 2
 | Owner    | `string` | The account address of the user sending the NFT. By default it is __not__ required that the sender is also the owner of the NFT. |
 | Schema    | `string` | NFT specifications defined under this category                                                                                   |
 | Symbol    | `string` | The abbreviated name of a specific NFT type                                                                                 |
-| MintRestricted    | `bool` | MintRestricted is true means that only Denom owners can issue NFTs under this category, false means anyone can         |                                                                        |
+| MintRestricted    | `bool` | MintRestricted is true means that only Class owners can issue NFTs under this category, false means anyone can         |                                                                        |
 | EditRestricted    | `bool` | EditRestricted is true means that no one in this category can Edit the NFT, false means that only the owner of this NFT can Edit   |                                                                             |
 
 ```go
@@ -37,7 +37,7 @@ This message type is used for issuing new nft. If a new `NFT` is minted under a 
 | ID        | `string` | The unique ID of the NFT being minted                                                      |
 | ClassID   | `string` | The unique ID of the denomination.                                                         |
 | Name      | `string` | The name of the NFT being minted.                                                          |
-| URL       | `string` | The URL pointing to a JSON object that contains subsequent nftData information off-chain |
+| URI       | `string` | The URI pointing to a JSON object that contains subsequent nftData information off-chain |
 | Data      | `string` | The data of the NFT.                                                                       |
 | owner    | `string` | The owner of the Message                                                                  |
 | Recipient | `string` | The recipiet of the new NFT                                                                |
@@ -48,7 +48,7 @@ type MsgIssueNFT struct {
     ID        string
     ClassID   string
     Name      string
-    URL       string
+    URI       string
     Data      string
     Owner    string
     Recipient string
@@ -58,14 +58,14 @@ type MsgIssueNFT struct {
 
 ## MsgEditNFT
 
-This message type allows the `NFTURL` to be updated. By default anyone can execute this Message type. **It is highly recommended that a custom handler is made to restrict use of this Message type to prevent unintended use.**
+This message type allows the `NFTURI` to be updated. By default anyone can execute this Message type. **It is highly recommended that a custom handler is made to restrict use of this Message type to prevent unintended use.**
 
 | **Field** | **Type** | **Description**                                                                                                  |
 | :-------- | :------- | :--------------------------------------------------------------------------------------------------------------- |
 | ID        | `string` | The unique ID of the NFT being edited.                                                                           |
 | ClassID   | `string` | The unique ID of the denomination, necessary as multiple denominations are able to be represented on each chain. |
 | Name      | `string` | The name of the NFT being edited.                                                                                |
-| URL       | `string` | The URL pointing to a JSON object that contains subsequent nftData information off-chain                       |
+| URI       | `string` | The URI pointing to a JSON object that contains subsequent nftData information off-chain                       |
 | Data      | `string` | The data of the NFT                                                                                              |
 | Owner    | `string` | The creator of the message                                                                                       |
 
@@ -75,7 +75,7 @@ type MsgEditNFT struct {
     ID      string
     ClassID string
     Name    string
-    URL     string
+    URI     string
     Data    string
     Owner  string
 }

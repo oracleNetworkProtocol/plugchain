@@ -53,7 +53,7 @@ This example creates a class of id ID666666 and name first-class .
 [class-name]: The name of the class
 [mint-restricted]: MintRestricted is true means that only class owners can issue NFTs under this category, false means anyone can
 [edit-restricted]: EditRestricted is true means that no one in this category can edit the NFT, false means that only the owner of this NFT can edit   
-[schema-content or path to schema.json]: Class data structure definition. nft metadata (metadata) can be stored directly on the chain, or the URL of its storage source outside the chain can be stored on the chain. nft metadata is organized according to a specific [JSON Schema](https://json-schema.org/)
+[schema-content or path to schema.json]: Class data structure definition. nft metadata (metadata) can be stored directly on the chain, or the URI of its storage source outside the chain can be stored on the chain. nft metadata is organized according to a specific [JSON Schema](https://json-schema.org/)
 `,
 				version.AppName, types.ModuleName,
 			),
@@ -95,7 +95,7 @@ This example creates a class of id ID666666 and name first-class .
 // GetCmdIssueNFT is the CLI command for an IssueNFT transaction
 func GetCmdIssueNFT() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "issue-nft [class-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient]",
+		Use:   "issue-nft [class-id] [nft-id] [nft-name] [nft-uri] [nft-data] [nft-recipient]",
 		Short: "Issue a new nft.",
 		Args:  cobra.ExactArgs(6),
 		Long: strings.TrimSpace(
@@ -106,7 +106,7 @@ This example creates a nft of id nft-666 and name nftshop .
 [class-id]: The name of the collection
 [nft-id]: The id of the nft
 [nft-name]: The name of nft	
-[nft-url]: URI of off-chain NFT data
+[nft-uri]: URI of off-chain NFT data
 [nft-data]:The data of the nft data [schema.json]
 [nft-recipient]: Receiver of the nft. Can be empty, when empty, the source of this value --from
 `,
@@ -125,7 +125,7 @@ This example creates a nft of id nft-666 and name nftshop .
 			argsNFTID := cast.ToString(args[1])
 			argsNFTName := cast.ToString(args[2])
 
-			argsURL := cast.ToString(args[3])
+			argsURI := cast.ToString(args[3])
 
 			argsSchema := cast.ToString(args[4])
 			optionsContent, err := ioutil.ReadFile(argsSchema)
@@ -141,7 +141,7 @@ This example creates a nft of id nft-666 and name nftshop .
 			} else {
 				recipient = from
 			}
-			msg := types.NewMsgIssueNFT(argsNFTID, argsClassID, argsNFTName, argsURL, argsSchema, from, recipient)
+			msg := types.NewMsgIssueNFT(argsNFTID, argsClassID, argsNFTName, argsURI, argsSchema, from, recipient)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -163,13 +163,13 @@ func GetCmdEditNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`edit NFT.
 Example:
-$ %s tx %s edit-nft "ID66666" "nft-666" --nft-name="nftshop" --nft-url="https://google.com/" --nft-data="./nft666-schema.json" --from=mykey --chain-id=plugchain --fees=500plug
+$ %s tx %s edit-nft "ID66666" "nft-666" --nft-name="nftshop" --nft-uri="https://google.com/" --nft-data="./nft666-schema.json" --from=mykey --chain-id=plugchain --fees=500plug
 This example edit a nft of id nft-666 .
 
 [class-id]: The name of the collection
 [nft-id]: The id of the nft
 [nft-name]: The name of nft	
-[nft-url]: URI of off-chain NFT data
+[nft-uri]: URI of off-chain NFT data
 [nft-data]:The data of the nft data [schema.json]
 `,
 				version.AppName, types.ModuleName,
@@ -189,7 +189,7 @@ This example edit a nft of id nft-666 .
 			if err != nil {
 				return err
 			}
-			argsURL, err := cmd.Flags().GetString(FlagNFTURL)
+			argsURI, err := cmd.Flags().GetString(FlagNFTURI)
 			if err != nil {
 				return err
 			}
@@ -202,7 +202,7 @@ This example edit a nft of id nft-666 .
 				argsSchema = string(optionsContent)
 			}
 			from := clientCtx.GetFromAddress().String()
-			msg := types.NewMsgEditNFT(argsNFTID, argsClassID, argsNFTName, argsURL, argsSchema, from)
+			msg := types.NewMsgEditNFT(argsNFTID, argsClassID, argsNFTName, argsURI, argsSchema, from)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

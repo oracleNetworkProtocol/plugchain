@@ -11,9 +11,9 @@ import (
 const (
 	DefaultStringValue = "[do-not-modify]"
 
-	MinClassLen  = 6
+	MinClassLen  = 3
 	MaxClassLen  = 64
-	MaxNFTURLLen = 256
+	MaxNFTURILen = 256
 )
 
 var (
@@ -24,9 +24,9 @@ var (
 	regexpKeywordFmt = fmt.Sprintf("^(%s).*", keyWords)
 	regexpKeyword    = regexp.MustCompile(regexpKeywordFmt).MatchString
 
-	URLMatchWords = strings.Join([]string{"http://", "https://"}, "|")
-	regexURLFmt   = fmt.Sprintf("^(%s).*", URLMatchWords)
-	regexpURL     = regexp.MustCompile(regexURLFmt).MatchString
+	URIMatchWords = strings.Join([]string{"http://", "https://"}, "|")
+	regexURIFmt   = fmt.Sprintf("^(%s).*", URIMatchWords)
+	regexpURI     = regexp.MustCompile(regexURIFmt).MatchString
 )
 
 // ValidateClassID verifies whether the  parameters are legal
@@ -59,12 +59,12 @@ func ValidateNFTID(nftID string) error {
 	return nil
 }
 
-func ValidateNFTURL(url string) error {
-	if len(url) > MaxNFTURLLen {
-		return sdkerrors.Wrapf(ErrInvalidNFTURL, "the length of nft url(%s) only accepts value [0, %d]", url, MaxNFTURLLen)
+func ValidateNFTURI(uri string) error {
+	if len(uri) > MaxNFTURILen {
+		return sdkerrors.Wrapf(ErrInvalidNFTURI, "the length of nft uri(%s) only accepts value [0, %d]", uri, MaxNFTURILen)
 	}
-	if !regexpURL(url) {
-		return sdkerrors.Wrapf(ErrInvalidNFTURL, "url begin with: (%s) ", URLMatchWords)
+	if !regexpURI(uri) {
+		return sdkerrors.Wrapf(ErrInvalidNFTURI, "uri begin with: (%s) ", URIMatchWords)
 	}
 	return nil
 }

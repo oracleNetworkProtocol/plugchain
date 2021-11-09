@@ -1,10 +1,10 @@
 swagger: 2.0.0
 info:
   title: PLUGChain Hub - gRPC Gateway docs
-  description: 'A REST interface for state queries, legacy transactions'
+  description: A REST interface for state queries, legacy transactions
   version: main
 paths:
-  '/cosmos/auth/v1beta1/accounts/{address}':
+  /cosmos/auth/v1beta1/accounts/{address}:
     get:
       summary: Account returns account details based on address.
       operationId: Account
@@ -504,7 +504,7 @@ paths:
                         }
       tags:
         - Query
-  '/cosmos/bank/v1beta1/balances/{address}':
+  /cosmos/bank/v1beta1/balances/{address}:
     get:
       summary: AllBalances queries the balance of all coins for a single account.
       operationId: AllBalances
@@ -631,7 +631,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/bank/v1beta1/balances/{address}/{denom}':
+  /cosmos/bank/v1beta1/balances/{address}/{denom}:
     get:
       summary: Balance queries the balance of a single coin for a single account.
       operationId: Balance
@@ -862,7 +862,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/bank/v1beta1/denoms_metadata/{denom}':
+  /cosmos/bank/v1beta1/denoms_metadata/{denom}:
     get:
       summary: DenomsMetadata queries the client metadata of a given coin denomination.
       operationId: DenomMetadata
@@ -1078,7 +1078,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/cosmos/bank/v1beta1/supply/{denom}':
+  /cosmos/bank/v1beta1/supply/{denom}:
     get:
       summary: SupplyOf queries the supply of a single coin.
       operationId: SupplyOf
@@ -1894,7 +1894,7 @@ paths:
                         }
       tags:
         - Service
-  '/cosmos/base/tendermint/v1beta1/blocks/{height}':
+  /cosmos/base/tendermint/v1beta1/blocks/{height}:
     get:
       summary: GetBlockByHeight queries block for given height.
       operationId: GetBlockByHeight
@@ -3599,7 +3599,7 @@ paths:
           type: boolean
       tags:
         - Service
-  '/cosmos/base/tendermint/v1beta1/validatorsets/{height}':
+  /cosmos/base/tendermint/v1beta1/validatorsets/{height}:
     get:
       summary: GetValidatorSetByHeight queries validator-set at a given height.
       operationId: GetValidatorSetByHeight
@@ -4125,7 +4125,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards':
+  /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards:
     get:
       summary: |-
         DelegationTotalRewards queries the total rewards accrued by a each
@@ -4218,7 +4218,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards/{validator_address}':
+  /cosmos/distribution/v1beta1/delegators/{delegator_address}/rewards/{validator_address}:
     get:
       summary: DelegationRewards queries the total rewards accrued by a delegation.
       operationId: DelegationRewards
@@ -4285,7 +4285,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/delegators/{delegator_address}/validators':
+  /cosmos/distribution/v1beta1/delegators/{delegator_address}/validators:
     get:
       summary: DelegatorValidators queries the validators of a delegator.
       operationId: DelegatorValidators
@@ -4335,7 +4335,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/delegators/{delegator_address}/withdraw_address':
+  /cosmos/distribution/v1beta1/delegators/{delegator_address}/withdraw_address:
     get:
       summary: DelegatorWithdrawAddress queries withdraw address of a delegator.
       operationId: DelegatorWithdrawAddress
@@ -4430,7 +4430,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/validators/{validator_address}/commission':
+  /cosmos/distribution/v1beta1/validators/{validator_address}/commission:
     get:
       summary: ValidatorCommission queries accumulated commission for a validator.
       operationId: ValidatorCommission
@@ -4495,7 +4495,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/validators/{validator_address}/outstanding_rewards':
+  /cosmos/distribution/v1beta1/validators/{validator_address}/outstanding_rewards:
     get:
       summary: ValidatorOutstandingRewards queries rewards of a validator address.
       operationId: ValidatorOutstandingRewards
@@ -4567,7 +4567,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/distribution/v1beta1/validators/{validator_address}/slashes':
+  /cosmos/distribution/v1beta1/validators/{validator_address}/slashes:
     get:
       summary: ValidatorSlashes queries slash events of a validator.
       operationId: ValidatorSlashes
@@ -5160,7 +5160,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/evidence/v1beta1/evidence/{evidence_hash}':
+  /cosmos/evidence/v1beta1/evidence/{evidence_hash}:
     get:
       summary: Evidence queries evidence based on evidence hash.
       operationId: Evidence
@@ -5542,7 +5542,7 @@ paths:
           format: byte
       tags:
         - Query
-  '/cosmos/gov/v1beta1/params/{params_type}':
+  /cosmos/gov/v1beta1/params/{params_type}:
     get:
       summary: Params queries all parameters of the gov module.
       operationId: GovParams
@@ -6379,7 +6379,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}:
     get:
       summary: Proposal queries proposal details based on ProposalID.
       operationId: Proposal
@@ -6842,7 +6842,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}/deposits':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits:
     get:
       summary: Deposits queries all deposits of a single proposal.
       operationId: Deposits
@@ -7150,7 +7150,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}/deposits/{depositor}':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}/deposits/{depositor}:
     get:
       summary: >-
         Deposit queries single deposit information based proposalID,
@@ -7398,7 +7398,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}/tally':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}/tally:
     get:
       summary: TallyResult queries the tally of a proposal vote.
       operationId: TallyResult
@@ -7623,7 +7623,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}/votes':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}/votes:
     get:
       summary: Votes queries votes of a given proposal.
       operationId: Votes
@@ -7932,9 +7932,9 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/gov/v1beta1/proposals/{proposal_id}/votes/{voter}':
+  /cosmos/gov/v1beta1/proposals/{proposal_id}/votes/{voter}:
     get:
-      summary: 'Vote queries voted information based on proposalID, voterAddr.'
+      summary: Vote queries voted information based on proposalID, voterAddr.
       operationId: Vote
       responses:
         '200':
@@ -8595,7 +8595,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/slashing/v1beta1/signing_infos/{cons_address}':
+  /cosmos/slashing/v1beta1/signing_infos/{cons_address}:
     get:
       summary: SigningInfo queries the signing info of given cons address
       operationId: SigningInfo
@@ -8680,7 +8680,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/staking/v1beta1/delegations/{delegator_addr}':
+  /cosmos/staking/v1beta1/delegations/{delegator_addr}:
     get:
       summary: >-
         DelegatorDelegations queries all delegations of a given delegator
@@ -9009,7 +9009,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/delegators/{delegator_addr}/redelegations':
+  /cosmos/staking/v1beta1/delegators/{delegator_addr}/redelegations:
     get:
       summary: Redelegations queries redelegations of given address.
       operationId: Redelegations
@@ -9408,7 +9408,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/delegators/{delegator_addr}/unbonding_delegations':
+  /cosmos/staking/v1beta1/delegators/{delegator_addr}/unbonding_delegations:
     get:
       summary: >-
         DelegatorUnbondingDelegations queries all unbonding delegations of a
@@ -9739,7 +9739,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/delegators/{delegator_addr}/validators':
+  /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators:
     get:
       summary: |-
         DelegatorValidators queries all validators info for given delegator
@@ -10328,7 +10328,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/delegators/{delegator_addr}/validators/{validator_addr}':
+  /cosmos/staking/v1beta1/delegators/{delegator_addr}/validators/{validator_addr}:
     get:
       summary: |-
         DelegatorValidator queries validator info for given delegator validator
@@ -10852,7 +10852,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/staking/v1beta1/historical_info/{height}':
+  /cosmos/staking/v1beta1/historical_info/{height}:
     get:
       summary: HistoricalInfo queries the historical info for given height.
       operationId: HistoricalInfo
@@ -12487,7 +12487,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/validators/{validator_addr}':
+  /cosmos/staking/v1beta1/validators/{validator_addr}:
     get:
       summary: Validator queries validator info for given validator address.
       operationId: Validator
@@ -13004,7 +13004,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/staking/v1beta1/validators/{validator_addr}/delegations':
+  /cosmos/staking/v1beta1/validators/{validator_addr}/delegations:
     get:
       summary: ValidatorDelegations queries delegate info for given validator.
       operationId: ValidatorDelegations
@@ -13328,7 +13328,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}':
+  /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}:
     get:
       summary: Delegation queries delegate info for given validator delegator pair.
       operationId: Delegation
@@ -13591,7 +13591,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation':
+  /cosmos/staking/v1beta1/validators/{validator_addr}/delegations/{delegator_addr}/unbonding_delegation:
     get:
       summary: |-
         UnbondingDelegation queries unbonding info for given validator delegator
@@ -13857,7 +13857,7 @@ paths:
           type: string
       tags:
         - Query
-  '/cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations':
+  /cosmos/staking/v1beta1/validators/{validator_addr}/unbonding_delegations:
     get:
       summary: >-
         ValidatorUnbondingDelegations queries unbonding delegations of a
@@ -14186,7 +14186,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cosmos/upgrade/v1beta1/applied_plan/{name}':
+  /cosmos/upgrade/v1beta1/applied_plan/{name}:
     get:
       summary: AppliedPlan queries a previously applied upgrade plan by its name.
       operationId: AppliedPlan
@@ -14845,7 +14845,7 @@ paths:
                         }
       tags:
         - Query
-  '/cosmos/upgrade/v1beta1/upgraded_consensus_state/{last_height}':
+  /cosmos/upgrade/v1beta1/upgraded_consensus_state/{last_height}:
     get:
       summary: |-
         UpgradedConsensusState queries the consensus state that will serve
@@ -15621,7 +15621,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}:
     get:
       summary: Channel queries an IBC Channel.
       operationId: Channel
@@ -15946,7 +15946,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/client_state':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/client_state:
     get:
       summary: >-
         ChannelClientState queries for the client state for the channel
@@ -16384,7 +16384,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/consensus_state/revision/{revision_number}/height/{revision_height}':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/consensus_state/revision/{revision_number}/height/{revision_height}:
     get:
       summary: |-
         ChannelConsensusState queries for the consensus state for the channel
@@ -16819,7 +16819,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/next_sequence':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/next_sequence:
     get:
       summary: >-
         NextSequenceReceive returns the next receive sequence for a given
@@ -17071,7 +17071,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_acknowledgements':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_acknowledgements:
     get:
       summary: >-
         PacketAcknowledgements returns all the packet acknowledgements
@@ -17420,7 +17420,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_acks/{sequence}':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_acks/{sequence}:
     get:
       summary: PacketAcknowledgement queries a stored packet acknowledgement hash.
       operationId: PacketAcknowledgement
@@ -17680,7 +17680,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments:
     get:
       summary: |-
         PacketCommitments returns all the packet commitments hashes associated
@@ -18027,7 +18027,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_ack_sequences}/unreceived_acks':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_ack_sequences}/unreceived_acks:
     get:
       summary: >-
         UnreceivedAcks returns all the unreceived IBC acknowledgements
@@ -18289,7 +18289,7 @@ paths:
           minItems: 1
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_commitment_sequences}/unreceived_packets':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{packet_commitment_sequences}/unreceived_packets:
     get:
       summary: >-
         UnreceivedPackets returns all the unreceived IBC packets associated with
@@ -18551,7 +18551,7 @@ paths:
           minItems: 1
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{sequence}':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_commitments/{sequence}:
     get:
       summary: PacketCommitment queries a stored packet commitment hash.
       operationId: PacketCommitment
@@ -18812,7 +18812,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_receipts/{sequence}':
+  /ibc/core/channel/v1beta1/channels/{channel_id}/ports/{port_id}/packet_receipts/{sequence}:
     get:
       summary: >-
         PacketReceipt queries if a given packet sequence has been received on
@@ -19074,7 +19074,7 @@ paths:
           format: uint64
       tags:
         - Query
-  '/ibc/core/channel/v1beta1/connections/{connection}/channels':
+  /ibc/core/channel/v1beta1/connections/{connection}/channels:
     get:
       summary: |-
         ConnectionChannels queries all the channels associated with a connection
@@ -20155,7 +20155,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/client/v1beta1/client_states/{client_id}':
+  /ibc/core/client/v1beta1/client_states/{client_id}:
     get:
       summary: ClientState queries an IBC light client.
       operationId: ClientState
@@ -20573,7 +20573,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/client/v1beta1/consensus_states/{client_id}':
+  /ibc/core/client/v1beta1/consensus_states/{client_id}:
     get:
       summary: |-
         ConsensusStates queries all the consensus state associated with a given
@@ -21073,7 +21073,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/client/v1beta1/consensus_states/{client_id}/revision/{revision_number}/height/{revision_height}':
+  /ibc/core/client/v1beta1/consensus_states/{client_id}/revision/{revision_number}/height/{revision_height}:
     get:
       summary: >-
         ConsensusState queries a consensus state associated with a client state
@@ -21515,7 +21515,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/connection/v1beta1/client_connections/{client_id}':
+  /ibc/core/connection/v1beta1/client_connections/{client_id}:
     get:
       summary: |-
         ClientConnections queries the connection paths associated with a client
@@ -22158,7 +22158,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/core/connection/v1beta1/connections/{connection_id}':
+  /ibc/core/connection/v1beta1/connections/{connection_id}:
     get:
       summary: Connection queries an IBC connection end.
       operationId: Connection
@@ -22495,7 +22495,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/connection/v1beta1/connections/{connection_id}/client_state':
+  /ibc/core/connection/v1beta1/connections/{connection_id}/client_state:
     get:
       summary: |-
         ConnectionClientState queries the client state associated with the
@@ -22926,7 +22926,7 @@ paths:
           type: string
       tags:
         - Query
-  '/ibc/core/connection/v1beta1/connections/{connection_id}/consensus_state/revision/{revision_number}/height/{revision_height}':
+  /ibc/core/connection/v1beta1/connections/{connection_id}/consensus_state/revision/{revision_number}/height/{revision_height}:
     get:
       summary: |-
         ConnectionConsensusState queries the consensus state associated with the
@@ -23479,7 +23479,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/ibc/applications/transfer/v1beta1/denom_traces/{hash}':
+  /ibc/applications/transfer/v1beta1/denom_traces/{hash}:
     get:
       summary: DenomTrace queries a denomination trace information.
       operationId: DenomTrace
@@ -23597,7 +23597,7 @@ paths:
                       format: byte
       tags:
         - Query
-  '/token/fee/{symbol}':
+  /token/fee/{symbol}:
     get:
       operationId: Fees
       responses:
@@ -24536,7 +24536,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/token/tokens/{denom}':
+  /token/tokens/{denom}:
     get:
       operationId: Token
       responses:
@@ -24912,203 +24912,16 @@ paths:
           type: string
       tags:
         - Query
-  '/nft/collections/{denom_id}':
+  /nft/classes:
     get:
-      operationId: Collection
+      operationId: Classes
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              collection:
-                type: object
-                properties:
-                  denom:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      schema:
-                        type: string
-                      symbol:
-                        type: string
-                      owner:
-                        type: string
-                      mint_restricted:
-                        type: boolean
-                      edit_restricted:
-                        type: boolean
-                  nfts:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        url:
-                          type: string
-                        data:
-                          type: string
-                        owner:
-                          type: string
-              pagination:
-                type: object
-                properties:
-                  next_key:
-                    type: string
-                    format: byte
-                    title: |-
-                      next_key is the key to be passed to PageRequest.key to
-                      query the next page most efficiently
-                  total:
-                    type: string
-                    format: uint64
-                    title: >-
-                      total is total number of results available if
-                      PageRequest.count_total
-
-                      was set, its value is undefined otherwise
-                description: >-
-                  PageResponse is to be embedded in gRPC response messages where
-                  the
-
-                  corresponding request message has used PageRequest.
-
-                   message SomeResponse {
-                           repeated Bar results = 1;
-                           PageResponse page = 2;
-                   }
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type_url:
-                      type: string
-                    value:
-                      type: string
-                      format: byte
-      parameters:
-        - name: denom_id
-          in: path
-          required: true
-          type: string
-        - name: pagination.key
-          description: |-
-            key is a value returned in PageResponse.next_key to begin
-            querying the next page most efficiently. Only one of offset or key
-            should be set.
-          in: query
-          required: false
-          type: string
-          format: byte
-        - name: pagination.offset
-          description: >-
-            offset is a numeric offset that can be used when key is unavailable.
-
-            It is less efficient than using key. Only one of offset or key
-            should
-
-            be set.
-          in: query
-          required: false
-          type: string
-          format: uint64
-        - name: pagination.limit
-          description: >-
-            limit is the total number of results to be returned in the result
-            page.
-
-            If left empty it will default to a value to be set by each app.
-          in: query
-          required: false
-          type: string
-          format: uint64
-        - name: pagination.count_total
-          description: >-
-            count_total is set to true  to indicate that the result set should
-            include
-
-            a count of the total number of items available for pagination in
-            UIs.
-
-            count_total is only respected when offset is used. It is ignored
-            when key
-
-            is set.
-          in: query
-          required: false
-          type: boolean
-      tags:
-        - Query
-  '/nft/collections/{denom_id}/supply':
-    get:
-      operationId: Supply
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              amount:
-                type: string
-                format: uint64
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type_url:
-                      type: string
-                    value:
-                      type: string
-                      format: byte
-      parameters:
-        - name: denom_id
-          in: path
-          required: true
-          type: string
-      tags:
-        - Query
-  /nft/denoms:
-    get:
-      operationId: Denoms
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              denoms:
+              classes:
                 type: array
                 items:
                   type: object
@@ -25225,16 +25038,16 @@ paths:
           type: boolean
       tags:
         - Query
-  '/nft/denoms/{denom_id}':
+  /nft/classes/{class_id}:
     get:
-      operationId: Denom
+      operationId: Class
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              denom:
+              class:
                 type: object
                 properties:
                   id:
@@ -25274,13 +25087,200 @@ paths:
                       type: string
                       format: byte
       parameters:
-        - name: denom_id
+        - name: class_id
           in: path
           required: true
           type: string
       tags:
         - Query
-  '/nft/nfts/{address}/{denom_id}':
+  /nft/collections/{class_id}:
+    get:
+      operationId: Collection
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              collection:
+                type: object
+                properties:
+                  class:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      schema:
+                        type: string
+                      symbol:
+                        type: string
+                      owner:
+                        type: string
+                      mint_restricted:
+                        type: boolean
+                      edit_restricted:
+                        type: boolean
+                  nfts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        uri:
+                          type: string
+                        data:
+                          type: string
+                        owner:
+                          type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type_url:
+                      type: string
+                    value:
+                      type: string
+                      format: byte
+      parameters:
+        - name: class_id
+          in: path
+          required: true
+          type: string
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /nft/collections/{class_id}/supply:
+    get:
+      operationId: Supply
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              amount:
+                type: string
+                format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type_url:
+                      type: string
+                    value:
+                      type: string
+                      format: byte
+      parameters:
+        - name: class_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /nft/nfts/{address}/{class_id}:
     get:
       operationId: Owner
       responses:
@@ -25299,7 +25299,7 @@ paths:
                     items:
                       type: object
                       properties:
-                        denom_id:
+                        Class_id:
                           type: string
                         nft_ids:
                           type: array
@@ -25359,7 +25359,7 @@ paths:
           in: path
           required: true
           type: string
-        - name: denom_id
+        - name: class_id
           in: path
           required: true
           type: string
@@ -25411,7 +25411,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/nft/nfts/{denom_id}/{nft_id}':
+  /nft/nfts/{class_id}/{nft_id}:
     get:
       operationId: NFT
       responses:
@@ -25427,7 +25427,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  url:
+                  uri:
                     type: string
                   data:
                     type: string
@@ -25456,7 +25456,7 @@ paths:
                       type: string
                       format: byte
       parameters:
-        - name: denom_id
+        - name: class_id
           in: path
           required: true
           type: string
@@ -25629,7 +25629,7 @@ paths:
       externalDocs:
         description: Find out more about the params
         url: >-
-          https://github.com/oracleNetworkProtocol/liquidity/tree/main/x/liquidity/spec/08_params.md
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/x/liquidity/spec/08_params.md
   /cosmos/liquidity/v1beta1/pools:
     get:
       summary: Get existing liquidity pools.
@@ -25784,8 +25784,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/pool_coin_denom/{pool_coin_denom}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/pool_coin_denom/{pool_coin_denom}:
     get:
       summary: Get specific liquidity pool corresponding to the pool_coin_denom.
       description: It returns the liquidity pool corresponding to the pool_coin_denom.
@@ -25886,8 +25887,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/reserve_acc/{reserve_acc}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/reserve_acc/{reserve_acc}:
     get:
       summary: Get specific liquidity pool corresponding to the reserve account.
       description: It returns the liquidity pool corresponding to the reserve account.
@@ -25988,8 +25990,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}:
     get:
       summary: Get specific liquidity pool.
       description: Returns the liquidity pool that corresponds to the pool_id.
@@ -26090,8 +26093,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch:
     get:
       summary: Get the pool's current batch.
       description: Returns the current batch of the pool that corresponds to the pool_id.
@@ -26138,7 +26142,7 @@ paths:
                   executed:
                     type: boolean
                     example: true
-                    title: 'true if executed, false if not executed'
+                    title: true if executed, false if not executed
                 description: >-
                   PoolBatch defines the batch or batches of a given liquidity
                   pool that contains indexes of deposit, withdraw, and swap
@@ -26202,8 +26206,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/deposits':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/deposits:
     get:
       summary: Get all deposit messages in the pool's current batch.
       description: >-
@@ -26234,7 +26239,7 @@ paths:
                     executed:
                       type: boolean
                       example: true
-                      title: 'true if executed on this batch, false if not executed'
+                      title: true if executed on this batch, false if not executed
                     succeeded:
                       type: boolean
                       example: true
@@ -26433,8 +26438,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/deposits/{msg_index}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/deposits/{msg_index}:
     get:
       summary: Get a specific deposit message in the pool's current batch.
       description: >-
@@ -26463,7 +26469,7 @@ paths:
                   executed:
                     type: boolean
                     example: true
-                    title: 'true if executed on this batch, false if not executed'
+                    title: true if executed on this batch, false if not executed
                   succeeded:
                     type: boolean
                     example: true
@@ -26602,8 +26608,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/swaps':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/swaps:
     get:
       summary: Get all swap messages in the pool's current batch.
       description: >-
@@ -26634,7 +26641,7 @@ paths:
                     executed:
                       type: boolean
                       example: true
-                      title: 'true if executed on this batch, false if not executed'
+                      title: true if executed on this batch, false if not executed
                     succeeded:
                       type: boolean
                       example: true
@@ -26807,8 +26814,8 @@ paths:
                         offering
 
                         and `offer_coin_fee` must be half of offer coin amount *
-                        current `params.swap_fee_rate` for reservation to pay
-                        fees.
+                        current `params.swap_fee_rate` and ceil for reservation
+                        to pay fees.
 
                         This request is stacked in the batch of the liquidity
                         pool, is not processed 
@@ -26952,8 +26959,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/swaps/{msg_index}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/swaps/{msg_index}:
     get:
       summary: Get a specific swap message in the pool's current batch.
       description: >-
@@ -26982,7 +26990,7 @@ paths:
                   executed:
                     type: boolean
                     example: true
-                    title: 'true if executed on this batch, false if not executed'
+                    title: true if executed on this batch, false if not executed
                   succeeded:
                     type: boolean
                     example: true
@@ -27155,8 +27163,8 @@ paths:
                       offering
 
                       and `offer_coin_fee` must be half of offer coin amount *
-                      current `params.swap_fee_rate` for reservation to pay
-                      fees.
+                      current `params.swap_fee_rate` and ceil for reservation to
+                      pay fees.
 
                       This request is stacked in the batch of the liquidity
                       pool, is not processed 
@@ -27240,8 +27248,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/withdraws':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/withdraws:
     get:
       summary: Get all withdraw messages in the pool's current batch.
       description: >-
@@ -27272,7 +27281,7 @@ paths:
                     executed:
                       type: boolean
                       example: true
-                      title: 'true if executed on this batch, false if not executed'
+                      title: true if executed on this batch, false if not executed
                     succeeded:
                       type: boolean
                       example: true
@@ -27467,8 +27476,9 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
-  '/cosmos/liquidity/v1beta1/pools/{pool_id}/batch/withdraws/{msg_index}':
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
+  /cosmos/liquidity/v1beta1/pools/{pool_id}/batch/withdraws/{msg_index}:
     get:
       summary: Get a specific withdraw message in the pool's current batch.
       description: >-
@@ -27497,7 +27507,7 @@ paths:
                   executed:
                     type: boolean
                     example: true
-                    title: 'true if executed on this batch, false if not executed'
+                    title: true if executed on this batch, false if not executed
                   succeeded:
                     type: boolean
                     example: true
@@ -27632,7 +27642,8 @@ paths:
         - Query
       externalDocs:
         description: Find out more about the query and error codes
-        url: 'https://github.com/oracleNetworkProtocol/liquidity/tree/main/doc/client.md'
+        url: >-
+          https://github.com/oracleNetworkProtocol/liquidity/blob/develop/doc/client.md
 definitions:
   cosmos.auth.v1beta1.Params:
     type: object
@@ -34891,7 +34902,7 @@ definitions:
         properties:
           rate:
             type: string
-            description: 'rate is the commission rate charged to delegators, as a fraction.'
+            description: rate is the commission rate charged to delegators, as a fraction.
           max_rate:
             type: string
             description: >-
@@ -34912,7 +34923,7 @@ definitions:
     properties:
       rate:
         type: string
-        description: 'rate is the commission rate charged to delegators, as a fraction.'
+        description: rate is the commission rate charged to delegators, as a fraction.
       max_rate:
         type: string
         description: >-
@@ -38825,7 +38836,7 @@ definitions:
           this channel will travel
       version:
         type: string
-        title: 'opaque channel version, which is agreed upon during the handshake'
+        title: opaque channel version, which is agreed upon during the handshake
     description: |-
       Channel defines pipeline for exactly-once packet delivery between specific
       modules on separate blockchains, which has at least one end capable of
@@ -38900,7 +38911,7 @@ definitions:
           this channel will travel
       version:
         type: string
-        title: 'opaque channel version, which is agreed upon during the handshake'
+        title: opaque channel version, which is agreed upon during the handshake
       port_id:
         type: string
         title: port identifier
@@ -39418,7 +39429,7 @@ definitions:
               this channel will travel
           version:
             type: string
-            title: 'opaque channel version, which is agreed upon during the handshake'
+            title: opaque channel version, which is agreed upon during the handshake
         description: >-
           Channel defines pipeline for exactly-once packet delivery between
           specific
@@ -42964,10 +42975,27 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  plugchain.nft.Class:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      schema:
+        type: string
+      symbol:
+        type: string
+      owner:
+        type: string
+      mint_restricted:
+        type: boolean
+      edit_restricted:
+        type: boolean
   plugchain.nft.Collection:
     type: object
     properties:
-      denom:
+      class:
         type: object
         properties:
           id:
@@ -42993,7 +43021,7 @@ definitions:
               type: string
             name:
               type: string
-            url:
+            uri:
               type: string
             data:
               type: string
@@ -43002,29 +43030,12 @@ definitions:
   plugchain.nft.CollectionID:
     type: object
     properties:
-      denom_id:
+      Class_id:
         type: string
       nft_ids:
         type: array
         items:
           type: string
-  plugchain.nft.Denom:
-    type: object
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      schema:
-        type: string
-      symbol:
-        type: string
-      owner:
-        type: string
-      mint_restricted:
-        type: boolean
-      edit_restricted:
-        type: boolean
   plugchain.nft.NFT:
     type: object
     properties:
@@ -43032,7 +43043,7 @@ definitions:
         type: string
       name:
         type: string
-      url:
+      uri:
         type: string
       data:
         type: string
@@ -43048,79 +43059,16 @@ definitions:
         items:
           type: object
           properties:
-            denom_id:
+            Class_id:
               type: string
             nft_ids:
               type: array
               items:
                 type: string
-  plugchain.nft.QueryCollectionResponse:
+  plugchain.nft.QueryClassResponse:
     type: object
     properties:
-      collection:
-        type: object
-        properties:
-          denom:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              schema:
-                type: string
-              symbol:
-                type: string
-              owner:
-                type: string
-              mint_restricted:
-                type: boolean
-              edit_restricted:
-                type: boolean
-          nfts:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: string
-                name:
-                  type: string
-                url:
-                  type: string
-                data:
-                  type: string
-                owner:
-                  type: string
-      pagination:
-        type: object
-        properties:
-          next_key:
-            type: string
-            format: byte
-            title: |-
-              next_key is the key to be passed to PageRequest.key to
-              query the next page most efficiently
-          total:
-            type: string
-            format: uint64
-            title: >-
-              total is total number of results available if
-              PageRequest.count_total
-
-              was set, its value is undefined otherwise
-        description: |-
-          PageResponse is to be embedded in gRPC response messages where the
-          corresponding request message has used PageRequest.
-
-           message SomeResponse {
-                   repeated Bar results = 1;
-                   PageResponse page = 2;
-           }
-  plugchain.nft.QueryDenomResponse:
-    type: object
-    properties:
-      denom:
+      class:
         type: object
         properties:
           id:
@@ -43137,10 +43085,10 @@ definitions:
             type: boolean
           edit_restricted:
             type: boolean
-  plugchain.nft.QueryDenomsResponse:
+  plugchain.nft.QueryClassesResponse:
     type: object
     properties:
-      denoms:
+      classes:
         type: array
         items:
           type: object
@@ -43184,6 +43132,69 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  plugchain.nft.QueryCollectionResponse:
+    type: object
+    properties:
+      collection:
+        type: object
+        properties:
+          class:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              schema:
+                type: string
+              symbol:
+                type: string
+              owner:
+                type: string
+              mint_restricted:
+                type: boolean
+              edit_restricted:
+                type: boolean
+          nfts:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                uri:
+                  type: string
+                data:
+                  type: string
+                owner:
+                  type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
   plugchain.nft.QueryNFTResponse:
     type: object
     properties:
@@ -43194,7 +43205,7 @@ definitions:
             type: string
           name:
             type: string
-          url:
+          uri:
             type: string
           data:
             type: string
@@ -43213,7 +43224,7 @@ definitions:
             items:
               type: object
               properties:
-                denom_id:
+                Class_id:
                   type: string
                 nft_ids:
                   type: array
@@ -43266,11 +43277,11 @@ definitions:
       executed:
         type: boolean
         example: true
-        title: 'true if executed on this batch, false if not executed'
+        title: true if executed on this batch, false if not executed
       succeeded:
         type: boolean
         example: true
-        title: 'true if executed successfully on this batch, false if failed'
+        title: true if executed successfully on this batch, false if failed
       to_be_deleted:
         type: boolean
         example: true
@@ -43472,7 +43483,7 @@ definitions:
       `demand_coin_denom` with the coin and the price you're offering
 
       and `offer_coin_fee` must be half of offer coin amount * current
-      `params.swap_fee_rate` for reservation to pay fees.
+      `params.swap_fee_rate` and ceil for reservation to pay fees.
 
       This request is stacked in the batch of the liquidity pool, is not
       processed 
@@ -43713,7 +43724,7 @@ definitions:
       executed:
         type: boolean
         example: true
-        title: 'true if executed, false if not executed'
+        title: true if executed, false if not executed
     description: >-
       PoolBatch defines the batch or batches of a given liquidity pool that
       contains indexes of deposit, withdraw, and swap messages. 
@@ -43796,7 +43807,7 @@ definitions:
           executed:
             type: boolean
             example: true
-            title: 'true if executed, false if not executed'
+            title: true if executed, false if not executed
         description: >-
           PoolBatch defines the batch or batches of a given liquidity pool that
           contains indexes of deposit, withdraw, and swap messages. 
@@ -44047,11 +44058,11 @@ definitions:
           executed:
             type: boolean
             example: true
-            title: 'true if executed on this batch, false if not executed'
+            title: true if executed on this batch, false if not executed
           succeeded:
             type: boolean
             example: true
-            title: 'true if executed successfully on this batch, false if failed'
+            title: true if executed successfully on this batch, false if failed
           to_be_deleted:
             type: boolean
             example: true
@@ -44143,11 +44154,11 @@ definitions:
             executed:
               type: boolean
               example: true
-              title: 'true if executed on this batch, false if not executed'
+              title: true if executed on this batch, false if not executed
             succeeded:
               type: boolean
               example: true
-              title: 'true if executed successfully on this batch, false if failed'
+              title: true if executed successfully on this batch, false if failed
             to_be_deleted:
               type: boolean
               example: true
@@ -44258,11 +44269,11 @@ definitions:
           executed:
             type: boolean
             example: true
-            title: 'true if executed on this batch, false if not executed'
+            title: true if executed on this batch, false if not executed
           succeeded:
             type: boolean
             example: true
-            title: 'true if executed successfully on this batch, false if failed'
+            title: true if executed successfully on this batch, false if failed
           to_be_deleted:
             type: boolean
             example: true
@@ -44425,7 +44436,7 @@ definitions:
               `demand_coin_denom` with the coin and the price you're offering
 
               and `offer_coin_fee` must be half of offer coin amount * current
-              `params.swap_fee_rate` for reservation to pay fees.
+              `params.swap_fee_rate` and ceil for reservation to pay fees.
 
               This request is stacked in the batch of the liquidity pool, is not
               processed 
@@ -44469,11 +44480,11 @@ definitions:
             executed:
               type: boolean
               example: true
-              title: 'true if executed on this batch, false if not executed'
+              title: true if executed on this batch, false if not executed
             succeeded:
               type: boolean
               example: true
-              title: 'true if executed successfully on this batch, false if failed'
+              title: true if executed successfully on this batch, false if failed
             to_be_deleted:
               type: boolean
               example: true
@@ -44636,7 +44647,7 @@ definitions:
                 `demand_coin_denom` with the coin and the price you're offering
 
                 and `offer_coin_fee` must be half of offer coin amount * current
-                `params.swap_fee_rate` for reservation to pay fees.
+                `params.swap_fee_rate` and ceil for reservation to pay fees.
 
                 This request is stacked in the batch of the liquidity pool, is
                 not processed 
@@ -44700,11 +44711,11 @@ definitions:
           executed:
             type: boolean
             example: true
-            title: 'true if executed on this batch, false if not executed'
+            title: true if executed on this batch, false if not executed
           succeeded:
             type: boolean
             example: true
-            title: 'true if executed successfully on this batch, false if failed'
+            title: true if executed successfully on this batch, false if failed
           to_be_deleted:
             type: boolean
             example: true
@@ -44793,11 +44804,11 @@ definitions:
             executed:
               type: boolean
               example: true
-              title: 'true if executed on this batch, false if not executed'
+              title: true if executed on this batch, false if not executed
             succeeded:
               type: boolean
               example: true
-              title: 'true if executed successfully on this batch, false if failed'
+              title: true if executed successfully on this batch, false if failed
             to_be_deleted:
               type: boolean
               example: true
@@ -44902,11 +44913,11 @@ definitions:
       executed:
         type: boolean
         example: true
-        title: 'true if executed on this batch, false if not executed'
+        title: true if executed on this batch, false if not executed
       succeeded:
         type: boolean
         example: true
-        title: 'true if executed successfully on this batch, false if failed'
+        title: true if executed successfully on this batch, false if failed
       to_be_deleted:
         type: boolean
         example: true
@@ -45058,7 +45069,7 @@ definitions:
           `demand_coin_denom` with the coin and the price you're offering
 
           and `offer_coin_fee` must be half of offer coin amount * current
-          `params.swap_fee_rate` for reservation to pay fees.
+          `params.swap_fee_rate` and ceil for reservation to pay fees.
 
           This request is stacked in the batch of the liquidity pool, is not
           processed 
@@ -45094,11 +45105,11 @@ definitions:
       executed:
         type: boolean
         example: true
-        title: 'true if executed on this batch, false if not executed'
+        title: true if executed on this batch, false if not executed
       succeeded:
         type: boolean
         example: true
-        title: 'true if executed successfully on this batch, false if failed'
+        title: true if executed successfully on this batch, false if failed
       to_be_deleted:
         type: boolean
         example: true
