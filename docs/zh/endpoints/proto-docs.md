@@ -691,9 +691,9 @@ order: 6
     - [Misbehaviour](#ibc.lightclients.tendermint.v1.Misbehaviour)
   
 - [nft/nft.proto](#nft/nft.proto)
+    - [Class](#plugchain.nft.Class)
     - [Collection](#plugchain.nft.Collection)
     - [CollectionID](#plugchain.nft.CollectionID)
-    - [Denom](#plugchain.nft.Denom)
     - [NFT](#plugchain.nft.NFT)
     - [Owner](#plugchain.nft.Owner)
   
@@ -701,12 +701,12 @@ order: 6
     - [GenesisState](#plugchain.nft.GenesisState)
   
 - [nft/query.proto](#nft/query.proto)
+    - [QueryClassRequest](#plugchain.nft.QueryClassRequest)
+    - [QueryClassResponse](#plugchain.nft.QueryClassResponse)
+    - [QueryClassesRequest](#plugchain.nft.QueryClassesRequest)
+    - [QueryClassesResponse](#plugchain.nft.QueryClassesResponse)
     - [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest)
     - [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse)
-    - [QueryDenomRequest](#plugchain.nft.QueryDenomRequest)
-    - [QueryDenomResponse](#plugchain.nft.QueryDenomResponse)
-    - [QueryDenomsRequest](#plugchain.nft.QueryDenomsRequest)
-    - [QueryDenomsResponse](#plugchain.nft.QueryDenomsResponse)
     - [QueryNFTRequest](#plugchain.nft.QueryNFTRequest)
     - [QueryNFTResponse](#plugchain.nft.QueryNFTResponse)
     - [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest)
@@ -10065,41 +10065,9 @@ that implements Misbehaviour interface expected by ICS-02
 
 
 
-<a name="plugchain.nft.Collection"></a>
+<a name="plugchain.nft.Class"></a>
 
-### Collection
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [Denom](#plugchain.nft.Denom) |  |  |
-| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
-
-
-
-
-
-
-<a name="plugchain.nft.CollectionID"></a>
-
-### CollectionID
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
-| `nft_ids` | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="plugchain.nft.Denom"></a>
-
-### Denom
+### Class
 
 
 
@@ -10118,6 +10086,38 @@ that implements Misbehaviour interface expected by ICS-02
 
 
 
+<a name="plugchain.nft.Collection"></a>
+
+### Collection
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `class` | [Class](#plugchain.nft.Class) |  |  |
+| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
+
+
+
+
+
+
+<a name="plugchain.nft.CollectionID"></a>
+
+### CollectionID
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `Class_id` | [string](#string) |  |  |
+| `nft_ids` | [string](#string) | repeated |  |
+
+
+
+
+
+
 <a name="plugchain.nft.NFT"></a>
 
 ### NFT
@@ -10128,7 +10128,7 @@ that implements Misbehaviour interface expected by ICS-02
 | ----- | ---- | ----- | ----------- |
 | `id` | [string](#string) |  |  |
 | `name` | [string](#string) |  |  |
-| `url` | [string](#string) |  |  |
+| `uri` | [string](#string) |  |  |
 | `data` | [string](#string) |  |  |
 | `owner` | [string](#string) |  |  |
 
@@ -10200,6 +10200,67 @@ GenesisState defines the nft module's genesis state.
 
 
 
+<a name="plugchain.nft.QueryClassRequest"></a>
+
+### QueryClassRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `class_id` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryClassResponse"></a>
+
+### QueryClassResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `class` | [Class](#plugchain.nft.Class) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryClassesRequest"></a>
+
+### QueryClassesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryClassesResponse"></a>
+
+### QueryClassesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `classes` | [Class](#plugchain.nft.Class) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
 <a name="plugchain.nft.QueryCollectionRequest"></a>
 
 ### QueryCollectionRequest
@@ -10208,7 +10269,7 @@ GenesisState defines the nft module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
 
 
@@ -10232,67 +10293,6 @@ GenesisState defines the nft module's genesis state.
 
 
 
-<a name="plugchain.nft.QueryDenomRequest"></a>
-
-### QueryDenomRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryDenomResponse"></a>
-
-### QueryDenomResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [Denom](#plugchain.nft.Denom) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryDenomsRequest"></a>
-
-### QueryDenomsRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryDenomsResponse"></a>
-
-### QueryDenomsResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denoms` | [Denom](#plugchain.nft.Denom) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
 <a name="plugchain.nft.QueryNFTRequest"></a>
 
 ### QueryNFTRequest
@@ -10301,7 +10301,7 @@ GenesisState defines the nft module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `nft_id` | [string](#string) |  |  |
 
 
@@ -10332,7 +10332,7 @@ GenesisState defines the nft module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `address` | [string](#string) |  |  |
 | `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
 
@@ -10365,7 +10365,7 @@ GenesisState defines the nft module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 
 
 
@@ -10400,12 +10400,12 @@ Query defines the gRPC querier service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Denom` | [QueryDenomRequest](#plugchain.nft.QueryDenomRequest) | [QueryDenomResponse](#plugchain.nft.QueryDenomResponse) |  | GET|/nft/denoms/{denom_id}|
-| `Denoms` | [QueryDenomsRequest](#plugchain.nft.QueryDenomsRequest) | [QueryDenomsResponse](#plugchain.nft.QueryDenomsResponse) |  | GET|/nft/denoms|
-| `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{denom_id}/{nft_id}|
-| `Collection` | [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest) | [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse) |  | GET|/nft/collections/{denom_id}|
-| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/collections/{denom_id}/supply|
-| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/nfts/{address}/{denom_id}|
+| `Class` | [QueryClassRequest](#plugchain.nft.QueryClassRequest) | [QueryClassResponse](#plugchain.nft.QueryClassResponse) |  | GET|/nft/classes/{class_id}|
+| `Classes` | [QueryClassesRequest](#plugchain.nft.QueryClassesRequest) | [QueryClassesResponse](#plugchain.nft.QueryClassesResponse) |  | GET|/nft/classes|
+| `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{class_id}/{nft_id}|
+| `Collection` | [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest) | [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse) |  | GET|/nft/collections/{class_id}|
+| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/collections/{class_id}/supply|
+| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/nfts/{address}/{class_id}|
 
  <!-- end services -->
 
@@ -10427,7 +10427,7 @@ Query defines the gRPC querier service.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `id` | [string](#string) |  |  |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `owner` | [string](#string) |  |  |
 
 
@@ -10454,9 +10454,9 @@ Query defines the gRPC querier service.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `id` | [string](#string) |  |  |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `name` | [string](#string) |  |  |
-| `URL` | [string](#string) |  |  |
+| `uri` | [string](#string) |  |  |
 | `data` | [string](#string) |  |  |
 | `owner` | [string](#string) |  |  |
 
@@ -10515,9 +10515,9 @@ Query defines the gRPC querier service.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `id` | [string](#string) |  |  |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `name` | [string](#string) |  |  |
-| `url` | [string](#string) |  |  |
+| `uri` | [string](#string) |  |  |
 | `data` | [string](#string) |  |  |
 | `owner` | [string](#string) |  |  |
 | `recipient` | [string](#string) |  |  |
@@ -10573,7 +10573,7 @@ Query defines the gRPC querier service.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `id` | [string](#string) |  |  |
-| `denom_id` | [string](#string) |  |  |
+| `class_id` | [string](#string) |  |  |
 | `recipient` | [string](#string) |  |  |
 | `owner` | [string](#string) |  |  |
 
@@ -10605,12 +10605,12 @@ Msg defines the Msg service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `IssueDenom` | [MsgIssueClass](#plugchain.nft.MsgIssueClass) | [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse) | IssueDenom defines a method for issue a denom | |
+| `IssueClass` | [MsgIssueClass](#plugchain.nft.MsgIssueClass) | [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse) | IssueClass defines a method for issue a class | |
 | `IssueNFT` | [MsgIssueNFT](#plugchain.nft.MsgIssueNFT) | [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse) | IssueNFT defines a method for Issue a new nft | |
 | `EditNFT` | [MsgEditNFT](#plugchain.nft.MsgEditNFT) | [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse) | EditNFT defines a method for edit a nft | |
 | `BurnNFT` | [MsgBurnNFT](#plugchain.nft.MsgBurnNFT) | [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse) | BurnNFT define a method for burning a nft | |
 | `TransferNFT` | [MsgTransferNFT](#plugchain.nft.MsgTransferNFT) | [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse) | TransferNFT define a method for transferring a nft | |
-| `TransferDenom` | [MsgTransferClass](#plugchain.nft.MsgTransferClass) | [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse) | TransferDenom define a method for transferring a denom | |
+| `TransferClass` | [MsgTransferClass](#plugchain.nft.MsgTransferClass) | [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse) | TransferClass define a method for transferring a class | |
 
  <!-- end services -->
 

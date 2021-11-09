@@ -6,18 +6,18 @@
 
 | 名称                                   | 描述           |
 | ------------------------------------  | -------------  |
-| [issue-class](#issue-class)           | 创建资产分类       |
-| [issue-nft](#issue-nft)               | 发行资产       |
-| [edit-nft](#edit-nft)                 | 编辑资产       |
-| [transfer-class](#transfer-class)     | 转让资产分类       |
-| [transfer-nft](#transfer-nft)         | 转让指定nft资产 |
+| [issue-class](#issue-class)           | 创建资产分类     |
+| [issue-nft](#issue-nft)               | 发行资产        |
+| [edit-nft](#edit-nft)                 | 编辑资产        |
+| [transfer-class](#transfer-class)     | 转让资产分类     |
+| [transfer-nft](#transfer-nft)         | 转让指定nft资产  |
 | [burn-nft](#burn-nft)                 | 销毁资产        |
 | [supply](#supply)                     | 查询supply     |
 | [owner](#owner)                       | 通过owner查询   |
-| [collection](#collection)             | 查询collection |
-| [class](#class)                       | 查询denom      |
-| [classes](#classes)                   | 查询denoms     |
-| [nft](#nft)                           | 查询指定nft     |
+| [collection](#collection)             | 查询collection  |
+| [class](#class)                       | 查询class       |
+| [classes](#classes)                   | 查询classes     |
+| [nft](#nft)                           | 查询指定nft      |
 
 :::tip
 以上命令都可以使用 `-h` 参数，来查看功能的描述和参数的含义
@@ -37,6 +37,25 @@
 | --home      |   ~/.plugchain   | 链数据所在目录            |    可选  |
 
 
+:::warning
+
+参数规则：
+| 名称               | 类型           | 描述   | 规则 |
+| ----------------- | -----------   | ----  |  ---- |
+| class-id          | string        |  资产类别序号  | 只接受字母数字字符，并以英文字母开头的，长度 3~64 的字符串 |
+| class-name        | string        |  资产类别名称  | 无 |
+| class-symbol      |  string       |  资产类别缩写  | 无 |
+| mint-restricted   | bool          |  true 表示只有类别拥有者才可以在此类别下创建资产，false 表示任何人都可以| 无 |
+| edit-restricted   | bool          |  为 true 表示此类别中没有人可以编辑 NFT，false 表示只有此 NFT 的所有者可以编辑  | 无 |
+| nft-id            | string        |  资产序号  | 只接受字母数字字符，并以英文字母开头的，长度 3~64 的字符串 |
+| nft-name          | string        |  资产名称 | 无 |
+| nft-uri           | string        |  资产链外信息的 JSON 对象的 URI | 最大长度256字节，以`http://`,`https://`开头 |
+| nft-data          | string        |  资产元数据  | 无 |
+| nft-recipient     | string        |  资产创建者 | 无 |
+
+:::
+
+
 ## issue-class
 
 发行资产
@@ -50,7 +69,7 @@ plugchaind tx nft issue-class [class-id] [class-name] [class-symbol] [mint-restr
 增发(创建)资产
 
 ```bash
-plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
+plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-uri] [nft-data] [nft-recipient] [flags]
 ```
 
 
@@ -64,11 +83,11 @@ plugchaind tx nft edit-nft [class-id] [nft-id] [flags]
 
 **标志：**
 
-| 名称，速记 | 默认 | 描述               | 必须 |
-| ---------- | ---- | ------------------ | ---- |
-| --nft-name      |      | nft资产的名字 |      |
-| --nft-url     |      | nft资产所在的地方           |      |
-| --nft-data     |      |nft资产的元数据       |      |
+| 名称，速记  | 默认  | 描述                   |  必须 |
+| ---------- | ---- | ------------------   |  ---- |
+| --nft-name |      | nft资产的名字         | 可选  | 
+| --nft-uri  |      | nft资产链外元数据地址  | 可选  |
+| --nft-data |      |nft资产的元数据        |  可选  |
 
 ## transfer-class
 

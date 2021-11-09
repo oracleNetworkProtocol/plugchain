@@ -6,7 +6,7 @@
 
 Assets on the chain are identified by `ID`. With the help of the secure and non-tamperable features of the blockchain, the ownership of the assets will be clarified. The transaction process of assets among members will also be publicly recorded to facilitate traceability and dispute settlement.
 
-Asset metadata (`metadata`) can be stored directly on the chain, or it can be stored on the chain with the `URL` of its storage source outside the chain. Asset metadata is organized according to a specific [JSON Schema](https://JSON-Schema.org/). [Here](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/zh/features/nft-metadata.json) is an example of metadata JSON Schema.
+Asset metadata (`metadata`) can be stored directly on the chain, or it can be stored on the chain with the `URI` of its storage source outside the chain. Asset metadata is organized according to a specific [JSON Schema](https://JSON-Schema.org/). [Here](https://github.com/oracleNetworkProtocol/plugchain/tree/main/docs/zh/features/nft-metadata.json) is an example of metadata JSON Schema.
 
 Assets need to be issued before they are created to declare their abstract properties:
 
@@ -24,6 +24,6 @@ Each specific asset is described by the following elements:
 
 -_Metadata_: The structure that contains asset-specific data
 
--_Metadata URL_: When metadata is stored off-chain, this URL indicates its storage location
+-_Metadata URI_: When metadata is stored off-chain, this URI indicates its storage location
 
 ## [Open functions and usage](../cli-client/nft.md)

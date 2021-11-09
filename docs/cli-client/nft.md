@@ -37,6 +37,26 @@ The above `issue-class`,`issue-nft`,`edit-nft`,`transfer-class`,`transfer-nft`,`
 | --home | ~/.plugchain | The directory where the chain data is located | Optional |
 
 
+:::warning
+
+参数规则：
+| 名称               | 类型           | 描述   | 规则 |
+| ----------------- | -----------   | ----  |  ---- |
+| class-id          | string        |  assets class ID  |  only accepts alphanumeric characters, and begin with an english letter. length [3,64] |
+| class-name        | string        |  assets class name  | none |
+| class-symbol      |  string       |  assets class symbol | none |
+| mint-restricted   | bool          |  MintRestricted is true means that only Class owners can issue NFTs under this category, false means anyone can | none |
+| edit-restricted   | bool          |  EditRestricted is true means that no one in this category can Edit the NFT, false means that only the owner of this NFT can Edit   | none |
+| nft-id            | string        |  nft ID  |  only accepts alphanumeric characters, and begin with an english letter. length [3,64] |
+| nft-name          | string        |  nft name | none |
+| nft-uri           | string        |  The URI pointing to a JSON object that contains subsequent nftData information off-chain | The maximum length is 256 bytes, starting with `http://`,`https://` |
+| nft-data          | string        |  NFT specifications defined under this category   | none |
+| nft-recipient     | string        |  owner address | none |
+
+:::
+
+
+
 ## issue-class
 
 Issue assets
@@ -50,7 +70,7 @@ plugchaind tx nft issue-class [class-id] [class-name] [class-symbol] [mint-restr
 Additional issuance (creation) of assets
 
 ```bash
-plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-url] [nft-data] [nft-recipient] [flags]
+plugchaind tx nft issue-nft [class-id] [nft-id] [nft-name] [nft-uri] [nft-data] [nft-recipient] [flags]
 ```
 
 
@@ -66,9 +86,9 @@ plugchaind tx nft edit-nft [class-id] [nft-id] [flags]
 
 | Name, shorthand | Default | Description | Required |
 | ---------- | ---- | ------------------ | ---- |
-| --nft-name | | The name of the nft asset | |
-| --nft-url | | Where nft assets are located | |
-| --nft-data | |nft asset metadata | |
+| --nft-name | | The name of the nft asset | Optional |
+| --nft-uri | | Where nft assets are located | Optional |
+| --nft-data | |nft asset metadata | Optional |
 
 ## transfer-class
 
