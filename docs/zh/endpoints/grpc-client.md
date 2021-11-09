@@ -131,6 +131,7 @@ import (
     cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	xauthsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
+    cliTx "github.com/cosmos/cosmos-sdk/client/tx"
 )
 
 func sendTx() error {
