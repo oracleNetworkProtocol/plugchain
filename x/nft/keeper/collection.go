@@ -12,7 +12,7 @@ import (
 
 func (k Keeper) SetCollection(ctx sdk.Context, collection types.Collection) error {
 	for _, v := range collection.NFTs {
-		if err := k.IssueNFT(ctx, collection.Class.ID, v.ID, v.Name, v.URL, v.Data, v.GetOwner()); err != nil {
+		if err := k.IssueNFT(ctx, collection.Class.ID, v.ID, v.Name, v.URI, v.Data, v.GetOwner()); err != nil {
 			return err
 		}
 	}

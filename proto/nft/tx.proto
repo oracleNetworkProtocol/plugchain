@@ -41,7 +41,7 @@ message MsgIssueNFT {
     string id = 1 [ (gogoproto.customname) = "ID" ];
     string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string name = 3;
-    string url = 4 [ (gogoproto.customname) = "URL" ];;
+    string uri = 4 [ (gogoproto.customname) = "URI" ];;
     string data = 5;
     string owner = 6;
     string recipient = 7;
@@ -56,7 +56,7 @@ message MsgEditNFT {
     string id =1 [ (gogoproto.customname) = "ID" ];
     string class_id = 2 [ (gogoproto.customname) = "ClassID" ];
     string name = 3;
-    string URL = 4 [ (gogoproto.customname) = "URL" ];
+    string uri = 4 [ (gogoproto.customname) = "URI" ];
     string data = 5;
     string owner = 6;
 }

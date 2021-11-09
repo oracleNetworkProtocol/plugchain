@@ -4,7 +4,7 @@ set -eo pipefail
 
 SDK_VERSION=v0.42.9
 #TENDERMINT_VERSION=v0.34.11
-LIQUIDITY_VERSION=v0.1.3
+LIQUIDITY_VERSION=v0.2.0
 
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/proto
 chmod -R 755 ${GOPATH}/pkg/mod/github.com/cosmos/cosmos-sdk@${SDK_VERSION}/third_party/proto

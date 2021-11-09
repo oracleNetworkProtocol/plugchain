@@ -65,11 +65,11 @@ func (mid MsgIssueClass) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgIssueNFT is a constructor function for MsgIssueNFT
-func NewMsgIssueNFT(nftID, classID, className, url, schema, owner, recipient string) *MsgIssueNFT {
+func NewMsgIssueNFT(nftID, classID, className, uri, schema, owner, recipient string) *MsgIssueNFT {
 	return &MsgIssueNFT{
 		ID:        nftID,
 		ClassID:   classID,
-		URL:       url,
+		URI:       uri,
 		Data:      schema,
 		Name:      className,
 		Owner:     owner,
@@ -95,7 +95,7 @@ func (min MsgIssueNFT) ValidateBasic() error {
 		return err
 	}
 
-	return ValidateNFTURL(min.URL)
+	return ValidateNFTURI(min.URI)
 }
 
 func (min MsgIssueNFT) GetSignBytes() []byte {
@@ -112,11 +112,11 @@ func (min MsgIssueNFT) GetSigners() []sdk.AccAddress {
 }
 
 // NewMsgEditNFT is a constructor function for MsgEditNFT
-func NewMsgEditNFT(nftID, classID, className, url, schema, owner string) *MsgEditNFT {
+func NewMsgEditNFT(nftID, classID, className, uri, schema, owner string) *MsgEditNFT {
 	return &MsgEditNFT{
 		ID:      nftID,
 		ClassID: classID,
-		URL:     url,
+		URI:     uri,
 		Data:    schema,
 		Name:    className,
 		Owner:   owner,
@@ -137,7 +137,7 @@ func (med MsgEditNFT) ValidateBasic() error {
 		return err
 	}
 
-	return ValidateNFTURL(med.URL)
+	return ValidateNFTURI(med.URI)
 }
 
 func (med MsgEditNFT) GetSignBytes() []byte {

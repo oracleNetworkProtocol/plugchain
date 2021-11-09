@@ -15,14 +15,13 @@ func (gs GenesisState) Validate() error {
 			if err := ValidateNFTID(nft.ID); err != nil {
 				return err
 			}
-			if err := ValidateNFTURL(nft.URL); err != nil {
+			if err := ValidateNFTURI(nft.URI); err != nil {
 				return err
 			}
 			if nft.GetOwner().Empty() {
 				return sdkerrors.Wrap(sdkerrors.ErrInvalidAddress, "missing owner")
 			}
 		}
-
 	}
 	return nil
 }
