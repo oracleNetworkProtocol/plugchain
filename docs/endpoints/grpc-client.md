@@ -95,12 +95,12 @@ import (
 )
 
 func sendTx() error {
-    // --剪断--
+    // --snip--
 
-    //发送一笔转账:
-    //地址addr1 到 addr2
-    //地址addr1 到 addr3
-    //交易需要 addr1 签名
+    // send
+    //addr1 to addr2
+    //addr1 to addr3
+    //The transaction is signed by addr1
     msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
     msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("plug", 4000000)))
     err := txBuilder.SetMsgs(msg1, msg2)
@@ -110,7 +110,7 @@ func sendTx() error {
 
     txBuilder.SetGasLimit(200000)
     txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
-    txBuilder.SetMemo("give your my friend to LiLei")
+    txBuilder.SetMemo("give your my friend to Tom")
     // txBuilder.SetTimeoutHeight(...)
 }
 ```
@@ -131,12 +131,13 @@ import (
     cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	xauthsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
+    cliTx "github.com/cosmos/cosmos-sdk/client/tx"
 )
 
 func sendTx() error {
-    // --剪断--
+    // --snip--
     
-    //第一轮：我们收集所有签名者信息。 我们使用“设置空签名”技巧来做到这一点
+    //The first round: We collect all signer information. We use the "set empty signature" technique to do this
     sign := signing.SignatureV2{
 		PubKey: priv1.PubKey(),
 		Data: &signing.SingleSignatureData{
@@ -153,7 +154,7 @@ func sendTx() error {
 	}
 
 
-    //第二轮： 设置所有签名者信息，因此每个签名者都可以签名。
+    //Second round: Set all signer information, so every signer can sign.
     sign = signing.SignatureV2{}
 	signerD := xauthsigning.SignerData{
 		ChainID:       chainID,
