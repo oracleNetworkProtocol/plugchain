@@ -36,7 +36,7 @@ plugchaind tx gov submit-proposal software-upgrade <plan-name> [flags]
 ```json
 {
     "binaries": {
-        "linux/amd64":"https://example.com/PLUGChain Hub.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
+        "linux/amd64":"https://example.com/Plug Chain Hub.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
     }
 }
 ```

@@ -22,7 +22,7 @@ order: 4
 #### 从genesis开始运行节点
 
 :::提示
-使用 PLUGChain[dev分支](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点::
+使用 Plug Chain[dev分支](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点::
 :::
 
 1. 初始化节点

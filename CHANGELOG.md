@@ -19,10 +19,11 @@
 ## v0.7.1 - 2021-10-18
 
 * x/nft add query owner and nft finish
+ 
 ## v0.7.0 - 2021-10-12
 * cosmos-sdk v0.42.9
 * tendermint v0.34.12
-* x/nft add functions: issuedenom, issuenft, editnft, burnnft, transfernft, transferdenom. Add query denom, denoms, NFT, collection, supply.
+* x/nft add functions: issueclass, issuenft, editnft, burnnft, transfernft, transferclass. Add query class, classes, NFT, collection, supply.
 
 ## v0.6.0 - 2021-09-29
 * Mainnet upgrade 

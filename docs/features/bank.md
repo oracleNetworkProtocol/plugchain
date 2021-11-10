@@ -2,7 +2,7 @@
 
 ## Summary
 
-This module is mainly used to transfer coins between accounts, query account balances, and provide common offline transaction signing and broadcasting methods. In addition, the available units of tokens in the PLUGChain Hub system are defined using [coin-type](../concepts/coin-type.md).
+This module is mainly used to transfer coins between accounts, query account balances, and provide common offline transaction signing and broadcasting methods. In addition, the available units of tokens in the Plug Chain Hub system are defined using [coin-type](../concepts/coin-type.md).
 
 ## Usage Scenario
 
@@ -22,11 +22,11 @@ This module is mainly used to transfer coins between accounts, query account bal
     plugchaind tx bank send [A] [B] [10plug] --fees=20plug --chain-id=plugchain
     ```
 
-    PLUGChain Hub supports multiple tokens in circulation, and in the future PLUGChain Hub will be able to include multiple tokens in one transaction.
+    Plug Chain Hub supports multiple tokens in circulation, and in the future Plug Chain Hub will be able to include multiple tokens in one transaction.
 
 3. Sign transactions generated offline
 
-    To improve account security, PLUGChain Hub supports offline signing of transactions to protect the account's private key. In any transaction, you can build an unsigned transaction using the flag --generate-only. Take transfer transaction as an example:
+    To improve account security, Plug Chain Hub supports offline signing of transactions to protect the account's private key. In any transaction, you can build an unsigned transaction using the flag --generate-only. Take transfer transaction as an example:
 
     ```bash
     plugchaind tx bank send [from_key_or_address] [to_address] [amount]  --fees=20plug --generate-only
@@ -87,4 +87,4 @@ This module is mainly used to transfer coins between accounts, query account bal
     plugchaind tx broadcast <file>
     ```
 
-    The transaction will be broadcast and executed in PLUGChain Hub.
+    The transaction will be broadcast and executed in Plug Chain Hub.

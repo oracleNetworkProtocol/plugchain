@@ -10,10 +10,10 @@ Bech32是由Pieter Wuille和Greg Maxwel提出的新比特币地址格式。除�
 
 | HRP | Definition                              |
 | --- | :-------------------------------------- |
-| gx | PLUGChain Hub 账户地址前缀                 |
-| gxpub | PLUGChain Hub 账户地址公钥前缀              |
-| gxvaloper | PLUGChain Hub 验证者操作员地址前缀    |
-| gxvaloperpub | PLUGChain Hub 验证者操作员地址公钥前缀 |
+| gx | Plug Chain Hub 账户地址前缀                 |
+| gxpub | Plug Chain Hub 账户地址公钥前缀              |
+| gxvaloper | Plug Chain Hub 验证者操作员地址前缀    |
+| gxvaloperpub | Plug Chain Hub 验证者操作员地址公钥前缀 |
 | gxvalcons | Tendermint 共识地址前缀            |
 | gxvalconspub | Tendermint 共识地址公钥前缀          |
 

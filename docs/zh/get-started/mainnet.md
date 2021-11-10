@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-必须使用 PLUGChain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
+必须使用 Plug Chain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
 :::
 
 1. 初始化节点
@@ -22,7 +22,7 @@ order: 3
 plugchaind init <moniker> --chain-id=plugchain
 ```
 
-2. 下载主网公开的 genesis.json和种子信息 或者 进入clone下来的 plugchain 目录里面：
+2. 下载主网公开的 genesis.json和种子信息 或者 进入clone下来的 Plug Chain 目录里面：
 *[主网创世文件和种子信息](https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1)* ,如下通过移动clone的仓库里面的genesis.json 来实现覆盖。
 
 ```bash 

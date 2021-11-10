@@ -20,7 +20,7 @@ testnet is activity
 
 ### Start node from genesis
 :::tip 
-You must use PLUGChain[v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node
+You must use Plug Chain[v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node
 :::
 
 1. Initialize the node
@@ -29,7 +29,7 @@ You must use PLUGChain[v0.5.0](https://github.com/oracleNetworkProtocol/plugchai
 plugchaind init <moniker> --chain-id=plugchain-test
 ```
 
-2. Download genesis.json and seed information disclosed on the testnet or enter the cloned plugchain directory:
+2. Download genesis.json and seed information disclosed on the testnet or enter the cloned Plug Chain directory:
 *[ Testnet genesis file and seed information](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/latest)*, the following is achieved by moving the genesis.json in the clone warehouse.
 
 ```bash

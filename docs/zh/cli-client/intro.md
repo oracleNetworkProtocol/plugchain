@@ -4,11 +4,11 @@ order: 1
 
 # 简介
 
-`plugchaind` 是PLUGChain Hub网络的命令行客户端。PLUGChain Hub用户可以使用`plugchaind`发送交易和查询区块链数据。
+`plugchaind` 是PLUGChain Hub网络的命令行客户端。Plug Chain Hub用户可以使用`plugchaind`发送交易和查询区块链数据。
 
 ## 工作目录
 
-`plugchaind` 默认工作目录是 `$HOME/.plugchain`，主要用于保存配置文件和数据。PLUGChain Hub “密钥”数据保存在`plugchaind`的工作目录中。您还可以通过`--home`指定`plugchaind`的工作目录。
+`plugchaind` 默认工作目录是 `$HOME/.plugchain`，主要用于保存配置文件和数据。Plug Chain Hub “密钥”数据保存在`plugchaind`的工作目录中。您还可以通过`--home`指定`plugchaind`的工作目录。
 
 ## 连接全节点
 

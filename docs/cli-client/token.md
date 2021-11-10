@@ -1,6 +1,6 @@
 # Token
 
-Token module allows you to manage assets on PLUGCHAIN Hub
+Token module allows you to manage assets on Plug Chain Hub
 
 ## Available Commands
 
@@ -28,7 +28,7 @@ plugchaind tx token issue [flags]
 
 | Name, shorthand  | Type    | Required | Default       | Description                                                                                                                    |
 | ---------------- | ------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| --name           | string  | Yes      |               | Name of the newly issued token, limited to 32 unicode characters, e.g. "PLUGCHAIN Network"                                          |
+| --name           | string  | Yes      |               | Name of the newly issued token, limited to 32 unicode characters, e.g. "Plug Chain Network"                                          |
 | --symbol         | string  | Yes      |               | The symbol of the token, length between 3 and 8, alphanumeric characters beginning with alpha, case insensitive                |
 | --initial-supply | uint64  | Yes      |               | The initial supply of this token                                    |
 | --max-supply     | uint64  |          | 100000000000 | The hard cap of this token, total supply can not exceed max supply. The amount before boosting should not exceed 100 billion. |
@@ -74,7 +74,7 @@ plugchaind tx token edit [symbol] [flags]
 
 | Name         | Type   | Required | Default | Description                                       |
 | ------------ | ------ | -------- | ------- | ------------------------------------------------- |
-| --name       | string |          |         | The token name, e.g. PLUGCHAIN Network                 |
+| --name       | string |          |         | The token name, e.g. Plug Chain Network                 |
 | --max-supply | uint64 |          | 0       | The max supply of the token                       |
 
 `max-supply` should not be less than the current total supply

@@ -40,13 +40,13 @@ module.exports = {
     locales: {
         "/": {
             lang: "en-US",
-            title: "PLUGChain Documents",
-            description: "PLUGChain Documents",
+            title: "Plug Chain Documents",
+            description: "Plug Chain Documents",
         },
         "/zh/": {
             lang: "简体中文",
-            title: "PLUGChain 文档",
-            description: "PLUGChain 文档",
+            title: "Plug Chain 文档",
+            description: "Plug Chain 文档",
         }
     },
     themeConfig: {
@@ -56,7 +56,7 @@ module.exports = {
                 label: 'English',
                 nav: [
                     {
-                        text: 'Back to PLUGChain',
+                        text: 'Back to Plug Chain',
                         link: 'https://en.plugchain.info/'
                     },
                     {
@@ -90,7 +90,7 @@ module.exports = {
                 label: '简体中文',
                 nav: [
                     {
-                        text: 'PLUGChain 官网',
+                        text: 'Plug Chain 官网',
                         link: 'https://zh.plugchain.info/'
                     },
                     {

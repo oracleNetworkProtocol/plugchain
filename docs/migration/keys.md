@@ -1,6 +1,6 @@
 # Keys Migrate
 
-The keyfile (private key) of PLUGChain Hub v0.2.x uses db storage. The new version will offer a new way to store user private keys. In order to support the migration of the old keyfile to the new version, there are two solutions provided.
+The keyfile (private key) of Plug Chain Hub v0.2.x uses db storage. The new version will offer a new way to store user private keys. In order to support the migration of the old keyfile to the new version, there are two solutions provided.
 
 ## Mnemonic
 
@@ -12,9 +12,9 @@ plugchaind keys add n2 --recover
 
 ## Keystore
 
-This way is suitable for users who have lost the mnemonic but saved the db file of the keys, or the keystore file of the keys. The format of the keystore file of PLUGChain Hub v0.2.x is similar to that of Ethereum,  is also fully compatible with a new format. Therefore, the user can export the old private key using the keystore, and then use the new version of PLUGChain Hub to import the keystore to complete the key migration.The operation process is as follows:
+This way is suitable for users who have lost the mnemonic but saved the db file of the keys, or the keystore file of the keys. The format of the keystore file of Plug Chain Hub v0.2.x is similar to that of Ethereum,  is also fully compatible with a new format. Therefore, the user can export the old private key using the keystore, and then use the new version of Plug Chain Hub to import the keystore to complete the key migration.The operation process is as follows:
 
-**1. Use PLUGChain Hub v0.2.x to export keystore file**
+**1. Use Plug Chain Hub v0.2.x to export keystore file**
 
 ```bash
 plugcli keys export test1 --output-file=key.json --home ./plugcli_test 
@@ -45,7 +45,7 @@ output:
 }
     ```
 
-**2. Use PLUGChain Hub import keystore file**
+**2. Use Plug Chain Hub import keystore file**
 
 ```bash
 plugchaind keys import n2 key.json --keyring-backend file 

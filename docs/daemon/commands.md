@@ -27,7 +27,7 @@ plugchaind <command>
 | [start](local-testnet.md#plugchaind-start)                             | Run the full node                                                                                               |
 | [unsafe-reset-all](local-testnet.md#plugchaind-unsafe-reset-all)       | Resets the blockchain database, removes address book files, and resets priv_validator.json to the genesis state |
 | [tendermint](local-testnet.md#plugchaind-tendermint)                   | Tendermint subcommands                                                                                          |
-| [testnet](local-testnet.md#build-and-init)                       | Initialize files for a PLUGChain Hub testnet                                                                          |
+| [testnet](local-testnet.md#build-and-init)                       | Initialize files for a Plug Chain Hub testnet                                                                          |
 | [reset](local-testnet.md#plugchaind-reset)                             | Reset app state to the specified height                                                                         |
 | [export](export.md)                                              | Export state to JSON                                                                                            |
 | version                                                          | Show executable binary version                                                                                  |

@@ -9,7 +9,7 @@ This project elaborates on the upgrade plan and method for newly added community
 ## Scheme 1 Upgrade to the latest height one by one
 
 :::warning
-Current plugchain version upgrade status v0.5.0 (762880)-> v0.6.0 -> +++
+Current Plug Chain version upgrade status v0.5.0 (762880)-> v0.6.0 -> +++
 :::
 1. Online node scheme
 ```shell

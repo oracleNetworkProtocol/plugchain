@@ -1,9 +1,9 @@
 ---
 title: Joining Testnets
 ---
-## PlugChain Testnet
+## Plug Chain Testnet
 
-This repo collects the genesis and configuration files for the various plugchain testnets. It exists so the plugchain repo does not get bogged down with large genesis files and status updates.
+This repo collects the genesis and configuration files for the various Plug Chain testnets. It exists so the Plug Chain repo does not get bogged down with large genesis files and status updates.
 
 
 ## Joining

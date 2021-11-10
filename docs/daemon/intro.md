@@ -4,11 +4,11 @@ order: 1
 
 # Introduction
 
-The `plugchaind` executable program is the entry point for running an PLUGChain Hub node. All the validator nodes and full nodes need to install the `plugchaind` and launching the daemon to join the PLUGChain Hub network. You can also use `plugchaind` to start your own test network locally.
+The `plugchaind` executable program is the entry point for running an Plug Chain Hub node. All the validator nodes and full nodes need to install the `plugchaind` and launching the daemon to join the Plug Chain Hub network. You can also use `plugchaind` to start your own test network locally.
 
 ## Hardware Requeirment
 
-It's recommended that you run PLUGChain Hub nodes on Linux Server.
+It's recommended that you run Plug Chain Hub nodes on Linux Server.
 
 ### Minimum Requeirment
 
@@ -27,7 +27,7 @@ In the `plugchaind` command, you can specify the home directory of the node by u
 
 The `plugchaind init` command is responsible for initializing the specified `--home` directory and creating the default configuration files. Except the `plugchaind init` command, the home directory used by any other `plugchaind` sub commands must be initialized, otherwise an error will be reported.
 
-The data of the PLUGChain Hub node is stored in the `data` directory of the home, including blockchain data, application layer data, and index data.
+The data of the Plug Chain Hub node is stored in the `data` directory of the home, including blockchain data, application layer data, and index data.
 
 All configuration files are stored in the `<home-dir>/config` directory:
 
@@ -49,4 +49,4 @@ config.toml is the non-consensus configuration of the node. Different nodes can 
 
 ### app.toml
 
-app.toml provides base configuration, telemetry configuration, API configuration, gRPC configuration and state sync configuration for PLUGChain Hub.
+app.toml provides base configuration, telemetry configuration, API configuration, gRPC configuration and state sync configuration for Plug Chain Hub.

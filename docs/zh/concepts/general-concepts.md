@@ -4,7 +4,7 @@ order: 1
 
 # 基础概念
 
-## PLUGChain Hub 节点类型
+## Plug Chain Hub 节点类型
 
 ### 全节点
 
@@ -12,13 +12,13 @@ order: 1
 
 ### 验证人节点
 
-[PLUGChain Hub](../get-started/intro.md#plugchaind-Hub) 基于 [Cosmos SDK](https://cosmos.network/docs/intro/) 和 [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html) 实现，它依靠一组验证人节点来维护网络的安全。验证人节点的作用是运行一个全节点并通过广播投票（包含由其私钥签名的密文）来参与共识。验证人节点在区块链中提交新区块并获得收入以激励他们的工作。他们还必须对提案进行投票来参与链上治理。验证人节点的投票权重取决于他们的plug总质押数量。
+[Plug Chain Hub](../get-started/intro.md#plugchaind-Hub) 基于 [Cosmos SDK](https://cosmos.network/docs/intro/) 和 [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html) 实现，它依靠一组验证人节点来维护网络的安全。验证人节点的作用是运行一个全节点并通过广播投票（包含由其私钥签名的密文）来参与共识。验证人节点在区块链中提交新区块并获得收入以激励他们的工作。他们还必须对提案进行投票来参与链上治理。验证人节点的投票权重取决于他们的plug总质押数量。
 
 ### 候选验证人节点
 
 只有plug质押数量的前100名全节点可以成为验证人节点，其余的将成为候选验证人节点。排名情况将随着质押金额的变化而更新。
 
-## PLUGChain Hub 用户类型
+## Plug Chain Hub 用户类型
 
 ### 验证人节点操作员
 
@@ -30,7 +30,7 @@ order: 1
 
 ## plugchaind 通证
 
-PLUGChain Hub有自己的原生通证，称为 plug，在网络中有三个作用：
+Plug Chain Hub有自己的原生通证，称为 plug，在网络中有三个作用：
 
 - **抵押：** 与Cosmos Hub中的ATOM通证类似，plug通证将用作抵押通证以保护PoS区块链的安全运行。
 - **交易手续费：** plug通证也将用于支付plug网络中所有交易的费用。
@@ -44,7 +44,7 @@ plug网络最终将支持来自Cosmos网络的所有列入白名单的费用通�
 
 - **通胀**
 
-  PLUGChain Hub是基于Tendermint的PoS网络，验证人在网络共识中的投票权取决于验证人（包括受委托）抵押通证（plug）的数量。网络中抵押的通证数量越多，攻击网络所需的成本也越大，网络也越安全。
+  Plug Chain Hub是基于Tendermint的PoS网络，验证人在网络共识中的投票权取决于验证人（包括受委托）抵押通证（plug）的数量。网络中抵押的通证数量越多，攻击网络所需的成本也越大，网络也越安全。
 
   为了维护验证人及其委托人抵押通证的价值，PLUGChain设定通胀增发机制，用于激励验证人及所有plug通证持有人将通证抵押，以获取通胀奖励，通胀奖励将会在[每个区块发放](../features/mint.md)。 PLUGChain的通胀率一直在变，区间7%~20%
 
@@ -54,7 +54,7 @@ plug网络最终将支持来自Cosmos网络的所有列入白名单的费用通�
 
 - **手续费**
 
-  在plug网络中的各种交易都需要支付一定的手续费。PLUGChain Hub 在系统中设定了Gas的最低单位价格（即 min-gas-price）。
+  在plug网络中的各种交易都需要支付一定的手续费。Plug Chain Hub 在系统中设定了Gas的最低单位价格（即 min-gas-price）。
   
   手续费目前只能使用plug进行支付，以后可能会通过链上治理的方式维护一个手续费白名单，任何白名单内的通证都可以用于支付手续费。
 
@@ -62,7 +62,7 @@ plug网络最终将支持来自Cosmos网络的所有列入白名单的费用通�
 
 ### Staking 收益计算公式
 
-下面的计算公式基于 [PLUGChain Hub 主网治理参数](gov-params.md).
+下面的计算公式基于 [Plug Chain Hub 主网治理参数](gov-params.md).
 
 #### 年收益（忽略手续费收益和出块奖励）
 
