@@ -7,7 +7,7 @@ import (
 
 var localToken = Token{
 	Symbol:        sdk.DefaultBondDenom,
-	Name:          "PLUGChain Hub",
+	Name:          "Plug Chain Hub",
 	Scale:         0,
 	MinUnit:       sdk.DefaultBondDenom,
 	InitialSupply: MaximumInitSupply,

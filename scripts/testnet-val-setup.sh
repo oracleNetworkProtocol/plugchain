@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./check-go.sh
 
-echo "-- Clear old plugchain testnet data and install plugchain and setup the node --"
+echo "-- Clear old Plug Chain testnet data and install plugchain and setup the node --"
 
 rm -rf ~/.plugchain
 

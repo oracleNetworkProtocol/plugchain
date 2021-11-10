@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPNAME=node1
+APPNAME=node/node1
 CHAINID=chaintest-1
 DEMON=plug
 DAEMON=plugchaind
