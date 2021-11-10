@@ -4,7 +4,7 @@ order: 1
 
 # General Concepts
 
-## PLUGChain Hub Node Types
+## Plug Chain Hub Node Types
 
 ### Full Node
 
@@ -12,13 +12,13 @@ A full-node is a program that fully validates transactions and blocks of a block
 
 ### Validator Node
 
-The [PLUGChain Hub](../get-started/intro.md#plugchaind-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
+The [Plug Chain Hub](../get-started/intro.md#plugchaind-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
 
 ### Validator Candidate Node
 
 Only top 100 bonded full nodes can become validator nodes, the rest will become candidates. The situation will change as delegation amount changes.
 
-## PLUGChain Hub User Types
+## Plug Chain Hub User Types
 
 ### Validator Operator
 
@@ -38,7 +38,7 @@ Trustee is a special type of user who will receive funds from CommunityTaxUsage 
 
 ## plugchaind Token
 
-The PLUGChain Hub has its own native token known as *plug*.  It is designed to serve three purposes in the network.
+The Plug Chain Hub has its own native token known as *plug*.  It is designed to serve three purposes in the network.
 
 - **Staking.** Similar to the ATOM token in the Cosmos Hub, the plugchaind token will be used as a staking token to secure the PoS blockchain.
 - **Transaction Fee.** The plugchaind token will also be used to pay fees for all transactions in the plugchaind network.
@@ -54,15 +54,15 @@ The validator and its delegators can share the following rewards by proportion:
 
   Block Inflation exists to incentivize plugchaind holders to stake. The more staked plugchaind tokens are, more secure the network become(Read more about [Staking](../features/staking.md)).
 
-  Block Inflation will be [distributed every block](../features/mint.md). The inflation rate of PLUGChain has been changing, ranging from 7% to 20%
+  Block Inflation will be [distributed every block](../features/mint.md). The inflation rate of Plug Chain has been changing, ranging from 7% to 20%
 
 - **Block Proposer Reward**
 
-  In PLUGChain Hub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
+  In Plug Chain Hub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
 
 - **Fee**
 
-    Various transactions in the plug network need to pay a certain fee. PLUGChain Hub sets the minimum unit price of Gas (ie min-gas-price) in the system.
+    Various transactions in the plug network need to pay a certain fee. Plug Chain Hub sets the minimum unit price of Gas (ie min-gas-price) in the system.
   
    Handling fees can only be paid using plug at present. In the future, a whitelist of handling fees may be maintained through on-chain governance. Any token in the whitelist can be used to pay for handling fees.
 
@@ -70,7 +70,7 @@ The validator and its delegators can share the following rewards by proportion:
 
 ### Staking Rewards Calculation Formula
 
-The following formulas are based on the current [PLUGChain Hub Mainnet Params](gov-params.md).
+The following formulas are based on the current [Plug Chain Hub Mainnet Params](gov-params.md).
 
 #### Annual Rewards (ignore proposer rewards and fees)
 

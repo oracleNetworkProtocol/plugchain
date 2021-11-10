@@ -4,7 +4,7 @@ order: 4
 
 # Ledger Nano Support
 
-It is recommended to have a basic understanding of the [PLUGChain Hub Key](../concepts/key.md) before using the ledger.
+It is recommended to have a basic understanding of the [Plug Chain Hub Key](../concepts/key.md) before using the ledger.
 
 ## Ledger Support for account keys
 
@@ -14,9 +14,9 @@ At the core of a Ledger device, there is a mnemonic that is used to generate pri
 **Do not lose or share your 24 words with anyone. To prevent theft or loss of funds, it is best to ensure that you keep multiple copies of your mnemonic, and store it in a safe, secure place and that only you know how to access. If someone is able to gain access to your mnemonic, they will be able to gain access to your private keys and control the accounts associated with them.**
 :::
 
-This mnemonic is compatible with PLUGChain accounts. The tool used to generate addresses and transactions on the PLUGChain network is called `plugchaind`, which supports derivation of account keys from a Ledger seed. Note that the Ledger device acts as an enclave of the seed and private keys, and the process of signing transaction takes place within it. No private information ever leaves the Ledger device.
+This mnemonic is compatible with Plug Chain accounts. The tool used to generate addresses and transactions on the Plug Chain network is called `plugchaind`, which supports derivation of account keys from a Ledger seed. Note that the Ledger device acts as an enclave of the seed and private keys, and the process of signing transaction takes place within it. No private information ever leaves the Ledger device.
 
-To use `plugchaind` with a Ledger device you will need the following(Since PLUGChain Hub is based on cosmos-sdk, the COSMOS app is available for PLUGChain Hub):
+To use `plugchaind` with a Ledger device you will need the following(Since Plug Chain Hub is based on cosmos-sdk, the COSMOS app is available for Plug Chain Hub):
 
 - [A Ledger Nano with the `COSMOS` app installed and an account.](#using-a-ledger-device)
 - [A running `plugchaind` instance connected to the network you wish to use.](../get-started/mainnet.md)
@@ -24,7 +24,7 @@ To use `plugchaind` with a Ledger device you will need the following(Since PLUGC
 
 Now, you are all set to start sending transactions on the network.
 
-At the core of a ledger device, there is a mnemonic used to generate accounts on multiple blockchains (including the PLUGChain Hub). Usually, you will create a new mnemonic when you initialize your ledger device.
+At the core of a ledger device, there is a mnemonic used to generate accounts on multiple blockchains (including the Plug Chain Hub). Usually, you will create a new mnemonic when you initialize your ledger device.
 
 Next, learn how to generate an account.
 
@@ -38,7 +38,7 @@ To create an account, you just need to have `plugchaind` installed. Before creat
 Only use Ledger devices that you bought factory new or trust fully
 :::
 
-When you initialize your Ledger, a 24-word mnemonic is generated and stored in the device. This mnemonic is compatible with PLUGChain Hub and PLUGChain Hub accounts can be derived from it. Therefore, all you have to do is make your ledger compatible with `plugchaind`. To do so, you need to go through the following steps:
+When you initialize your Ledger, a 24-word mnemonic is generated and stored in the device. This mnemonic is compatible with Plug Chain Hub and Plug Chain Hub accounts can be derived from it. Therefore, all you have to do is make your ledger compatible with `plugchaind`. To do so, you need to go through the following steps:
 
 1. Install [Ledger Live](https://www.ledger.com/pages/ledger-live) on your machine.
 2. Using Ledger Live, [update your Ledger Nano S with the latest firmware](https://support.ledger.com/hc/en-us/articles/360002731113-Update-device-firmware).
@@ -55,7 +55,7 @@ Then, to create an account, use the following command:
 plugchaind keys add <keyName> --ledger
 ```
 
-PLUGChain Hub uses [HD Wallets](../concepts/key.md). This means you can setup many accounts using the same Ledger seed. To create another account from your Ledger device, run (change the integer i to some value >= 0 to choose the account for HD derivation):
+Plug Chain Hub uses [HD Wallets](../concepts/key.md). This means you can setup many accounts using the same Ledger seed. To create another account from your Ledger device, run (change the integer i to some value >= 0 to choose the account for HD derivation):
 
 ```bash
 plugchaind keys add <secondKeyName> --ledger --account <i>

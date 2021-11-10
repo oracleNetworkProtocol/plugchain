@@ -141,7 +141,7 @@ The `signed.json` should look like:
 
 Note the `signature` in the `signed.json` should no longer be empty after signing.
 
-Now it's ready to [broadcast the signed tx](#plugchaind-tx-broadcast) to the PLUGChain Hub.
+Now it's ready to [broadcast the signed tx](#plugchaind-tx-broadcast) to the Plug Chain Hub.
 
 ## plugchaind tx broadcast
 

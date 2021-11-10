@@ -29,7 +29,7 @@ cargo install tmkms --features=yubihsm --version=0.10.0-beta2
 为PLUGChain Hub初始化配置文件
 
 ```bash
-tmkms init -n PLUGChain Hub /path/to/kms/home
+tmkms init -n Plug Chain Hub /path/to/kms/home
 ```
 
 ## 配置
@@ -42,7 +42,7 @@ tmkms init -n PLUGChain Hub /path/to/kms/home
 priv_validator_laddr = "localhost:26658"
 ```
 
-然后，你需要下载[priv_validator_state.json示例](https://github.com/PLUGChain/PLUGChain Hub/blob/master/docs/tools/priv_validator_state.json)并按照`<plugchaind-home>/data/priv_validator_state.json`修改所有字段值。
+然后，你需要下载[priv_validator_state.json示例](https://github.com/Plug Chain/Plug Chain Hub/blob/master/docs/tools/priv_validator_state.json)并按照`<plugchaind-home>/data/priv_validator_state.json`修改所有字段值。
 
 接下来，你只要只需要按如下方式编辑配置文件`/path/to/kms/home/tmkms.toml`：
 

@@ -19,7 +19,7 @@ yum install make gcc git wget
 ## Install `go`
 
 ::: tip
-**Go 1.16+** is required for building and installing the PLUGChain Hub software.
+**Go 1.16+** is required for building and installing the Plug Chain Hub software.
 :::
 
 Install `go` (>=1.16) by following the [official docs](https://golang.org/doc/install). 

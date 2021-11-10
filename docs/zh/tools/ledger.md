@@ -4,7 +4,7 @@ order: 4
 
 # Ledger Nano支持
 
-建议在使用ledger之前对[PLUGChain Hub Key](../concepts/key.md)进行一个基本的了解。
+建议在使用ledger之前对[Plug Chain Hub Key](../concepts/key.md)进行一个基本的了解。
 
 ## Ledger支持账户密钥
 

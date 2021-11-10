@@ -15,7 +15,7 @@ order: 3
 
 ### gRPC-gateway REST 路由
 
-如果由于各种原因而不能使用 gRPC（例如，您正在构建 Web 应用，且浏览器不支持 gRPC 依赖的 HTTP2），则 PLUGChain Hub 会通过 gRPC-gateway 提供 REST 路由。
+如果由于各种原因而不能使用 gRPC（例如，您正在构建 Web 应用，且浏览器不支持 gRPC 依赖的 HTTP2），则 Plug Chain Hub 会通过 gRPC-gateway 提供 REST 路由。
 
 [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) 是将 gRPC 端点公开为 REST 端点的工具。对于 Protobuf 服务中定义的每个 RPC 端点，SDK提供了 REST 等效项。
 
@@ -27,11 +27,11 @@ order: 3
 
 可以通过 `~/.plugchain/config/app.toml` 中的 `api.swagger` 字段配置启用 `/swagger` 端点，默认为 `false`。
 
-对于应用程序开发人员，您可能希望基于自定义模块生成自己的 Swagger 定义。可以从 PLUGChain Hub 的 [Swagger 生成脚本](https://github.com/oracleNetworkProtocol/plugchain/blob/main/testnet/scripts/protoc-swagger-gen.sh)开始。
+对于应用程序开发人员，您可能希望基于自定义模块生成自己的 Swagger 定义。可以从 Plug Chain Hub 的 [Swagger 生成脚本](https://github.com/oracleNetworkProtocol/plugchain/blob/main/testnet/scripts/protoc-swagger-gen.sh)开始。
 
 ## API 端点
 
-**PLUGChain Hub API 端点**
+**Plug Chain Hub API 端点**
 
 | API Endpoints                                                                                                                               | Description                                              | Legacy REST Endpoint                                                              |
 | :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :-------------------------------------------------------------------------------- |

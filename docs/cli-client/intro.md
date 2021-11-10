@@ -4,11 +4,11 @@ order: 1
 
 # Introduction
 
-`plugchaind` is a command line client for the PLUGChain Hub network. PLUGChain Hub users can use `plugchaind` to send transactions and query the blockchain data.
+`plugchaind` is a command line client for the Plug Chain Hub network. Plug Chain Hub users can use `plugchaind` to send transactions and query the blockchain data.
 
 ## Working Directory
 
-The default working directory for the `plugchaind` is `$HOME/.plugchain`, which is mainly used to save configuration files and data. The PLUGChain Hub `key` data is saved in the working directory of `plugchaind`. You can also specify the `plugchaind`  working directory by `--home`.
+The default working directory for the `plugchaind` is `$HOME/.plugchain`, which is mainly used to save configuration files and data. The Plug Chain Hub `key` data is saved in the working directory of `plugchaind`. You can also specify the `plugchaind`  working directory by `--home`.
 
 ## Connecting to a Full Node
 

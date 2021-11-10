@@ -4,7 +4,7 @@ order: 2
 
 # Legacy Amino JSON REST
 
-The PLUGChain Hub versions v0.5.0 (depends on Cosmos-SDK v0.42) and earlier provided REST endpoints to query the state and broadcast transactions. These endpoints are kept in PLUGChain Hub v0.5, but they are marked as deprecated, and will be removed after a few versions therefore call these endpoints legacy REST endpoints.
+The Plug Chain Hub versions v0.5.0 (depends on Cosmos-SDK v0.42) and earlier provided REST endpoints to query the state and broadcast transactions. These endpoints are kept in Plug Chain Hub v0.5, but they are marked as deprecated, and will be removed after a few versions therefore call these endpoints legacy REST endpoints.
 
 Some important information concerning all legacy REST endpoints:
 
@@ -21,7 +21,7 @@ All routes are configured under the following fields in `~/.plugchain/config/app
 
 ### Legacy REST API Routes
 
-The REST routes present in PLUGChain Hub v0.5 and earlier are marked as deprecated gx a [HTTP deprecation header](https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html). They are still maintained to keep backwards compatibility, but will be removed after a few versions.
+The REST routes present in Plug Chain Hub v0.5 and earlier are marked as deprecated gx a [HTTP deprecation header](https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html). They are still maintained to keep backwards compatibility, but will be removed after a few versions.
 
 For application developers, Legacy REST API routes needs to be wired up to the REST server, this is done by calling the `RegisterRESTRoutes` function on the ModuleManager.
 
@@ -39,11 +39,11 @@ For application developers, Legacy REST API routes needs to be wired up to the R
 | `GET` `/gov/proposals/{id}/votes`, `GET` `/gov/proposals/{id}/votes/{voter}` | Gov endpoints for querying votes            | All gov endpoints which return votes return int32 in the `option` field instead of string: `1=VOTE_OPTION_YES, 2=VOTE_OPTION_ABSTAIN, 3=VOTE_OPTION_NO, 4=VOTE_OPTION_NO_WITH_VETO`.                                                                                                                                                                                                                                                                                                   |
 | `GET` `/staking/validators`                                                  | Get all validators                          | BondStatus is now a protobuf enum instead of an int32, and JSON serialized using its protobuf name, so expect query parameters like `?status=BOND_STATUS_{BONDED,UNBONDED,UNBONDING}` as opposed to `?status={bonded,unbonded,unbonding}`.                                                                                                                                                                                                                                             |
 
-<sup>1</sup>: Transactions that don't support Amino serialization are the ones that contain one or more `Msg`s that are not registered with the Amino codec. Currently in the PLUGChain Hub, only IBC `Msg`s fall into this case.
+<sup>1</sup>: Transactions that don't support Amino serialization are the ones that contain one or more `Msg`s that are not registered with the Amino codec. Currently in the Plug Chain Hub, only IBC `Msg`s fall into this case.
 
 ### Migrating to New REST Endpoints (from Cosmos-SDK v0.39)
 
-**PLUGChain Hub API Endpoints**
+**Plug Chain Hub API Endpoints**
 
 | Legacy REST Endpoint                                                              | Description                                                         | New gRPC-gateway REST Endpoint                                                                                |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -308,7 +308,7 @@ For application developers, Legacy REST API routes needs to be wired up to the R
 
 ## Generating and Signing Transactions (Fully Backward Compatible)
 
-The same code as integrating with PLUGChain Hub-v0.16.3 mainnet. The transaction structure is as follows:
+The same code as integrating with Plug Chain Hub-v0.16.3 mainnet. The transaction structure is as follows:
 
 ```json
 {
@@ -339,12 +339,12 @@ The same code as integrating with PLUGChain Hub-v0.16.3 mainnet. The transaction
             "gas": "200000"
         },
         "signatures": null,
-        "memo": "Sent gx PLUGChain Hub client"
+        "memo": "Sent gx Plug Chain Hub client"
     }
 }
 ```
 
-Where the PLUGChain Hub address prefix uses `gx` instead, which affects the fields:
+Where the Plug Chain Hub address prefix uses `gx` instead, which affects the fields:
 
 - value.msg.value.from_adress
 - value.msg.value.to_address
@@ -356,10 +356,10 @@ Denom uses `plug` which affects fields:
 
 ## Broadcasting a transaction (Fully Backward Compatible)
 
-The same code as integrating with PLUGChain Hub mainnet, call `POST` `/txs` to send a transaction, as the example below:
+The same code as integrating with Plug Chain Hub mainnet, call `POST` `/txs` to send a transaction, as the example below:
 
 ```bash
-curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"gx1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"plug\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"plug\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent gx PLUGChain Hub client\"}, \"mode\": \"block\"}"
+curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"gx1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"plug\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"plug\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent gx Plug Chain Hub client\"}, \"mode\": \"block\"}"
 ```
 
 ## Breaking Changes in Querying Transactions

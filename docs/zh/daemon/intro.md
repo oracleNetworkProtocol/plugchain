@@ -27,7 +27,7 @@ plugchaind可执行程序是运行PLUGChain Hub节点的入口，包括验证人
 
 `plugchaind init`命令负责初始化指定的`--home`目录并创建默认配置文件。除`plugchaind init`命令外，任何其他`plugchaind`子命令使用的主目录必须初始化，否则将报错。
 
-PLUGChain Hub节点的数据存储在主目录的“data”目录中，包括区块链数据，应用程序层数据和索引数据。
+Plug Chain Hub节点的数据存储在主目录的“data”目录中，包括区块链数据，应用程序层数据和索引数据。
 
 所有配置文件都存储在`<home-dir>/config`目录中：
 

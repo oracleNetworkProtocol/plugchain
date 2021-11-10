@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-You must use PLUGChain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
+You must use Plug Chain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
 :::
 
 1. Initialize the node

@@ -4,7 +4,7 @@ order: 4
 
 # gRPC Client
 
-PLUGChain Hub v0.5.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
+Plug Chain Hub v0.5.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
 
 ## gRPC Server Port, Activation and Configuration
 
@@ -17,7 +17,7 @@ Once the gRPC server is started, you can send requests to it using a gRPC client
 
 ## gRPC Endpoints
 
-An overview of all available gRPC endpoints shipped with the PLUGChain Hub is [Protobuf documention](./proto-docs.md).
+An overview of all available gRPC endpoints shipped with the Plug Chain Hub is [Protobuf documention](./proto-docs.md).
 
 ## Generating, Signing and Broadcasting Transactions
 
@@ -34,7 +34,7 @@ import (
 
 func sendTx() error {
     // Choose your codec: Amino or Protobuf. Here, we use Protobuf, given by the following function.
-    encCfg := simapp.MakeEncodingConfig()
+    encCfg := app.MakeEncodingConfig()
 
     // Create a new TxBuilder.
     txBuilder := encCfg.TxConfig.NewTxBuilder()

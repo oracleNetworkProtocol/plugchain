@@ -1,13 +1,13 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "PLUGChain Documents",
+  "description": "Plug Chain Documents",
   "main": "index.js",
   "scripts": {
     "serve": "vuepress dev",
     "build": "vuepress build"
   },
-  "author": "PLUGChain Dev Team",
+  "author": "Plug Chain Dev Team",
   "license": "Apache License 2.0",
   "devDependencies": {
     "@vuepress/plugin-search": "^1.0.0-rc.1",

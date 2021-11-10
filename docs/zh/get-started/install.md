@@ -18,7 +18,7 @@ yum install make gcc git wget
 ## 安装`go`
 
 :::tip
-编译安装 PLUGChain Hub 软件依赖 **Go 1.16+**。
+编译安装 Plug Chain Hub 软件依赖 **Go 1.16+**。
 :::
 
 按照[官方文档](https://golang.org/doc/install) 安装`go`(>=1.16)。

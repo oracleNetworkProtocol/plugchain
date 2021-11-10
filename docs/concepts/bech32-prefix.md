@@ -2,7 +2,7 @@
 order: 5
 ---
 
-# Bech32 on PLUGChain Hub
+# Bech32 on Plug Chain Hub
 
 Bech32 is a new Bitcoin address format proposed by Pieter Wuille and Greg Maxwell. Besides Bitcoin addresses, Bech32 can encode any short binary data. In the plugchaind network, keys and addresses may refer to a number of different roles in the network like accounts, validators etc. The plugchaind network is designed to use the Bech32 address format to provide robust integrity checks on data. The human readable part(HRP) makes it more efficient to read and the users could see error messages. More details in [bip-0173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 
@@ -10,16 +10,16 @@ Bech32 is a new Bitcoin address format proposed by Pieter Wuille and Greg Maxwel
 
 | HRP | Definition                              |
 | --- | --------------------------------------- |
-| gx | PLUGChain Hub Account Address                 |
-| gxpub | PLUGChain Hub Account Public Key              |
-| gxvaloper | PLUGChain Hub Validator's Operator Address    |
-| gxvaloperpub | PLUGChain Hub Validator's Operator Public Key |
+| gx | Plug Chain Hub Account Address                 |
+| gxpub | Plug Chain Hub Account Public Key              |
+| gxvaloper | Plug Chain Hub Validator's Operator Address    |
+| gxvaloperpub | Plug Chain Hub Validator's Operator Public Key |
 | gxvalcons | Tendermint Consensus Address            |
 | gxvalconspub | Tendermint Consensus Public Key         |
 
 ## Encoding
 
-Not all interfaces to PLUGChain Hub users should be exposed as bech32 interfaces. Many addresses are still in hex or base64 encoded form.
+Not all interfaces to Plug Chain Hub users should be exposed as bech32 interfaces. Many addresses are still in hex or base64 encoded form.
 
 To covert between other binary representation of addresses and keys, it is important to first apply the Amino encoding process before bech32 encoding.
 

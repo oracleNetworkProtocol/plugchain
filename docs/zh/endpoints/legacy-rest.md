@@ -4,7 +4,7 @@ order: 2
 
 # Legacy Amino JSON REST
 
-PLUGChain Hub v0.5.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 PLUGChain Hub v0.5.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
+Plug Chain Hub v0.5.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 Plug Chain Hub v0.5.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
 
 Legacy REST 端点相关的重要信息：
 
@@ -21,7 +21,7 @@ Legacy REST 端点相关的重要信息：
 
 ### Legacy REST API 路由
 
-PLUGChain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标头](https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html)标记为已弃用，它们仍然被维护以保持向后兼容，但是将在几个版本后删除。
+Plug Chain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标头](https://tools.ietf.org/id/draft-dalal-deprecation-header-01.html)标记为已弃用，它们仍然被维护以保持向后兼容，但是将在几个版本后删除。
 
 对于应用程序开发人员而言，传统的 REST API 路由需要连接到 REST 服务器，这是通过在 ModuleManager 上调用 `RegisterRESTRoutes` 方法来完成的。
 
@@ -39,11 +39,11 @@ PLUGChain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标
 | `GET` `/staking/*`                                                           | Staking 模块查询端点                         | Staking 模块中所有返回验证人的端点都有两处不兼容更新。第一，验证人 `consensus_pubkey` 字段返回 Amino 编码的 `Any` 结构，而不是 bech32 编码的公钥字符串。`Any` 的 `value` 字段是公钥原始密钥的 base64 编码的字节数组。第二，验证人的 `status` 字段目前为 int32 类型而不是 string：`1=BOND_STATUS_UNBONDED`,`2=BOND_STATUS_UNBONDING`,`3=BOND_STATUS_BONDED`。 |
 | `GET` `/staking/validators`                                                  | 获取所有的验证人                             | BondStatus 现在是一个 protobuf 枚举值而不是 int32，并且 JSON 序列化时使用它的 protobuf 字段名，所以期望查询参数像 `?status=BOND_STATUS_{BONDED,UNBONDED,UNBONDING}` 而不是 `?status={bonded,unbonded,unbonding}`。                                                                                                                                           |
 
-<sup>1</sup>： 不支持 Amino 序列化的交易是那些包含一个或多个未在 Amino 编解码器中注册的 `Msg` 的交易。 当前在 PLUGChain Hub 中，只有 IBC `Msg`s 属于这种情况。
+<sup>1</sup>： 不支持 Amino 序列化的交易是那些包含一个或多个未在 Amino 编解码器中注册的 `Msg` 的交易。 当前在 Plug Chain Hub 中，只有 IBC `Msg`s 属于这种情况。
 
 ### 迁移到新的 REST 端点 （从 Cosmos-SDK v0.39）
 
-**PLUGChain Hub API 端点**
+**Plug Chain Hub API 端点**
 
 | Legacy REST 端点                                                                  | 描述                                 | 新的 gRPC-gateway REST 端点                                                                                   |
 | --------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -309,7 +309,7 @@ PLUGChain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标
 
 ## 构造和签名交易（完全向后兼容）
 
-与 PLUGChain Hub 主网集成的代码相同，交易结构如下：
+与 Plug Chain Hub 主网集成的代码相同，交易结构如下：
 
 ```json
 {
@@ -340,12 +340,12 @@ PLUGChain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用标
             "gas": "200000"
         },
         "signatures": null,
-        "memo": "Sent gx PLUGChain Hub client"
+        "memo": "Sent gx Plug Chain Hub client"
     }
 }
 ```
 
-PLUGChain Hub 地址前缀使用 `gx` 代替，这会影响以下字段：
+Plug Chain Hub 地址前缀使用 `gx` 代替，这会影响以下字段：
 
 - value.msg.value.from_adress
 - value.msg.value.to_address
@@ -357,10 +357,10 @@ Denom 替换为 `plug` ，这会影响到以下字段：
 
 ## 广播交易（完全向后兼容）
 
-与 PLUGChain Hub 主网集成的代码相同，调用`POST` `/txs` 发送交易，示例如下：
+与 Plug Chain Hub 主网集成的代码相同，调用`POST` `/txs` 发送交易，示例如下：
 
 ```bash
-curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"gx1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"plug\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"plug\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent gx PLUGChain Hub client\"}, \"mode\": \"block\"}"
+curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"tx\": {\"msg\":[{\"type\":\"cosmos-sdk/MsgSend\",\"value\":{\"from_address\":\"gx1rkgdpj6fyyyu7pnhmc3v7gw9uls4mnajvzdwkt\",\"to_address\":\"gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8\",\"amount\":[{\"denom\":\"plug\",\"amount\":\"1000000\"}]}}],\"fee\":{\"amount\":[{\"denom\":\"plug\",\"amount\":\"30000\"}],\"gas\":\"200000\"},\"signatures\":[{\"pub_key\":{\"type\":\"tendermint/PubKeySecp256k1\",\"value\":\"AxGagdsRTKni/h1+vCFzTpNltwoiU7SwIR2dg6Jl5a//\"},\"signature\":\"Pu8yiRVO8oB2YDDHyB047dXNArbVImasmKBrm8Kr+6B08y8QQ7YG1eVgHi5OIYYclccCf3Ju/BQ78qsMWMniNQ==\"}],\"memo\":\"Sent gx Plug Chain Hub client\"}, \"mode\": \"block\"}"
 ```
 
 ## 查询交易的不兼容更新

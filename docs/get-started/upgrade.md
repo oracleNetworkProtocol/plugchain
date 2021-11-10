@@ -2,7 +2,7 @@
 order: 7
 ---
 
-# PLUGChain Hub Upgrade, Instructions
+# Plug Chain Hub Upgrade, Instructions
 
 This document describes the steps for validator and full node operators for the successful execution of the *upgrade plan*. 
 
@@ -29,23 +29,23 @@ For those validator and full node operators that are interested in ensuring prep
 
 ## Upgrade duration
 
-The upgrade may take several hours to complete because PLUGChain Hub participants operate globally with differing operating hours and it may take some time for operators to upgrade their binaries and connect to the network.
+The upgrade may take several hours to complete because Plug Chain Hub participants operate globally with differing operating hours and it may take some time for operators to upgrade their binaries and connect to the network.
 
 ## Rollback plan
 
-During the network upgrade, core PLUGChain teams will be keeping an ever vigilant eye and communicating with operators on the status of their upgrades. During this time, the core teams will listen to operator needs to determine if the upgrade is experiencing unintended challenges. In the event of unexpected challenges, the core teams, after conferring with operators and attaining social consensus, may choose to declare that the upgrade will be skipped. 
+During the network upgrade, core Plug Chain teams will be keeping an ever vigilant eye and communicating with operators on the status of their upgrades. During this time, the core teams will listen to operator needs to determine if the upgrade is experiencing unintended challenges. In the event of unexpected challenges, the core teams, after conferring with operators and attaining social consensus, may choose to declare that the upgrade will be skipped. 
 
-Steps to skip this upgrade proposal are simply to resume the PLUGChain Hub network with the (downgraded) v0.5.0 binary using the following command:
+Steps to skip this upgrade proposal are simply to resume the Plug Chain Hub network with the (downgraded) v0.5.0 binary using the following command:
 
 > plugchaind start --unsafe-skip-upgrade 762880
 
-Note: There is no particular need to restore a state snapshot prior to the upgrade height, unless specifically directed by core PLUGChain teams.
+Note: There is no particular need to restore a state snapshot prior to the upgrade height, unless specifically directed by core Plug Chain teams.
 
 Important: A social consensus decision to skip the upgrade will be based solely on technical merits, thereby respecting and maintaining the decentralized governance process of the upgrade proposal's successful YES vote.
 
 ## Communications
 
-Operators are encouraged to join the `#validators-verified` channel of the PLUGChain Community Discord. This channel is the primary communication tool for operators to ask questions, report upgrade status, report technical issues, and to build social consensus should the need arise. This channel is restricted to known operators and requires verification beforehand - requests to join the `#validators-verified` channel can be sent to the `#validators-public` channel.  
+Operators are encouraged to join the `#validators-verified` channel of the Plug Chain Community Discord. This channel is the primary communication tool for operators to ask questions, report upgrade status, report technical issues, and to build social consensus should the need arise. This channel is restricted to known operators and requires verification beforehand - requests to join the `#validators-verified` channel can be sent to the `#validators-public` channel.  
 
 ## Risks
 
