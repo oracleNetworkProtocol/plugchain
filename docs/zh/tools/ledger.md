@@ -14,9 +14,9 @@ order: 4
 **不要丢失或与任何人分享你的24个单词。为防止盗窃或资金损失，最好确保保留多个助记词副本，并将其存放在安全可靠的地方，并且只有你知道如何访问。如果有人能够访问你的助记词，他们将能够访问你的私钥并控制与其关联的帐户。**
 :::
 
-该助记词与PLUGChain兼容，用于在PLUGChain网络上生成地址和交易的工具是`plugchaind`，它支持从Ledger种子派生帐户密钥。请注意，Ledger设备充当种子和私钥的保护，并且签名交易发生在其中。没有任何私人信息会在Ledger设备之外被获取。
+该助记词与Plug Chain兼容，用于在Plug Chain网络上生成地址和交易的工具是`plugchaind`，它支持从Ledger种子派生帐户密钥。请注意，Ledger设备充当种子和私钥的保护，并且签名交易发生在其中。没有任何私人信息会在Ledger设备之外被获取。
 
-要通过Ledger设备使用`plugchaind`，你需要采取下面步骤（因为PLUGChain基于cosmos-sdk，COSMOS应用程序可用于PLUGChain）：
+要通过Ledger设备使用`plugchaind`，你需要采取下面步骤（因为Plug Chain基于cosmos-sdk，COSMOS应用程序可用于Plug Chain）：
 
 - [在Ledger Nano中安装`COSMOS`应用程序并且创建一个账户。](#using-a-ledger-device)
 - [一个连接在区块链网络上的`plugchaind`全节点](../get-started/mainnet.md)
@@ -24,7 +24,7 @@ order: 4
 
 至此可以在网络上发送交易。
 
-在ledger设备的核心，有一个助记词用于在多个区块链（包括PLUGChain）上生成帐户。通常，在初始化ledger设备时，将创建新的助记词。
+在ledger设备的核心，有一个助记词用于在多个区块链（包括Plug Chain）上生成帐户。通常，在初始化ledger设备时，将创建新的助记词。
 
 接下来，了解如何生成帐户。
 
@@ -38,7 +38,7 @@ order: 4
 仅使用购买的新设备或完全信任的Ledger设备
 :::
 
-初始化ledger时，会生成一个24个单词的助记词并存储在设备中。此助记词与PLUGChain兼容，可以从中派生出PLUGChain账号。因此，你所要做的就是让你的ledger与`plugchaind`兼容。为此，你需要执行以下步骤：
+初始化ledger时，会生成一个24个单词的助记词并存储在设备中。此助记词与Plug Chain兼容，可以从中派生出Plug Chain账号。因此，你所要做的就是让你的ledger与`plugchaind`兼容。为此，你需要执行以下步骤：
 
 1. 在你的机器上安装[Ledger Live](https://www.ledger.com/pages/ledger-live)。
 2. 使用Ledger Live，[更新至最新的firmware](https://support.ledger.com/hc/en-us/articles/360002731113-Update-device-firmware)。
@@ -55,7 +55,7 @@ order: 4
 plugchaind keys add <keyName> --ledger
 ```
 
-PLUGChain使用[HD Wallets](../concepts/key.md)。这意味着你可以使用相同的Ledger种子派生出多个帐户。通过Ledger设备创建另一个帐户，请运行（将整数i更改为某个 >=0 的值以用于HD推导账户）：
+Plug Chain使用[HD Wallets](../concepts/key.md)。这意味着你可以使用相同的Ledger种子派生出多个帐户。通过Ledger设备创建另一个帐户，请运行（将整数i更改为某个 >=0 的值以用于HD推导账户）：
 
 ```bash
 plugchaind keys add <secondKeyName> --ledger --account <i>

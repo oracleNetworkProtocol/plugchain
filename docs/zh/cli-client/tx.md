@@ -142,7 +142,7 @@ plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
 
 签名之后，`signed.json`中的`signature`字段将不再为空。
 
-现在准备[广播这个已签名交易](#plugchaind-tx-broadcast)到PLUGChain Hub。
+现在准备[广播这个已签名交易](#plugchaind-tx-broadcast)到Plug Chain Hub。
 
 ## plugchaind tx broadcast
 

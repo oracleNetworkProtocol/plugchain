@@ -4,7 +4,7 @@ order: 1
 
 # 简介
 
-`plugchaind` 是PLUGChain Hub网络的命令行客户端。Plug Chain Hub用户可以使用`plugchaind`发送交易和查询区块链数据。
+`plugchaind` 是Plug Chain Hub网络的命令行客户端。Plug Chain Hub用户可以使用`plugchaind`发送交易和查询区块链数据。
 
 ## 工作目录
 

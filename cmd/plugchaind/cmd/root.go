@@ -52,7 +52,7 @@ func NewRootCmd() (*cobra.Command, app.EncodingConfig) {
 
 	rootCmd := &cobra.Command{
 		Use:   app.Name + "d",
-		Short: "CosmosHub PlugChain App",
+		Short: "CosmosHub Plug Chain  App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			if err := client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err

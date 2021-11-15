@@ -1,6 +1,6 @@
 
 <div align="center">
-  <h1>Cosmos Hub PLUGchain </h1>
+  <h1>Cosmos Hub Plug Chain </h1>
 </div>
 
  ![banner](client/images/logo.jpg)

@@ -4,7 +4,7 @@ order: 5
 
 # Bech32 前缀
 
-Bech32是由Pieter Wuille和Greg Maxwel提出的新比特币地址格式。除了比特币之外，bech32可以编码任何短二进制数据。在PLUGChain里，私钥和地址可能指的是一些在网络中不同的角色，例如普通账户和验证人账户等。PLUGChain设计使用Bech32地址格式来提供对数据鲁棒的完整性检查。用户可读部分（human readable part）可帮助用户有效理解地址和阅读错误信息。Bech32更多细节见 [bip-0173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)。
+Bech32是由Pieter Wuille和Greg Maxwel提出的新比特币地址格式。除了比特币之外，bech32可以编码任何短二进制数据。在Plug Chain里，私钥和地址可能指的是一些在网络中不同的角色，例如普通账户和验证人账户等。Plug Chain设计使用Bech32地址格式来提供对数据鲁棒的完整性检查。用户可读部分（human readable part）可帮助用户有效理解地址和阅读错误信息。Bech32更多细节见 [bip-0173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)。
 
 ## 用户可读部分表
 
@@ -19,7 +19,7 @@ Bech32是由Pieter Wuille和Greg Maxwel提出的新比特币地址格式。除�
 
 ## 编码
 
-不是所有PLUGChain的用户地址都会以bech32的格式暴露出来。许多地址仍然是hex编码或者base64编码。 在bech32编码之前，首先要使用amino对其他地址私钥二进制表示进行编码。
+不是所有Plug Chain的用户地址都会以bech32的格式暴露出来。许多地址仍然是hex编码或者base64编码。 在bech32编码之前，首先要使用amino对其他地址私钥二进制表示进行编码。
 
 ## 账户密钥示例
 

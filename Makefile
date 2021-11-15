@@ -117,4 +117,4 @@ vuepress:
 	@cd docs/ && ./deploy.sh 
 	
 
-.PHONY: vuepress
+.PHONY: npm-vue vuepress
