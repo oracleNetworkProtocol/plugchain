@@ -26,7 +26,7 @@ cargo install tmkms --features=yubihsm --version=0.10.0-beta2
 
 ## 初始化
 
-为PLUGChain Hub初始化配置文件
+为Plug Chain Hub初始化配置文件
 
 ```bash
 tmkms init -n Plug Chain Hub /path/to/kms/home
@@ -64,7 +64,7 @@ tmkms start -c /path/to/kms/home/tmkms.toml
 
 有关如何使用YubiHSM2设置KMS的更多信息，请参阅[这里](https://github.com/iqlusioninc/tmkms/blob/master/README.yubihsm.md)。
 
-如果要导入已存在的PLUGChain Hub private_key，可以：
+如果要导入已存在的Plug Chain Hub private_key，可以：
 
 ```bash
 tmkms yubihsm keys import <plug_home>/config/priv_validator.json -i <id> -t json -c /path/to/kms/home/tmkms.toml

@@ -58,7 +58,7 @@ swagger-combine  ./client/config.json  -o ./client/static/openapi.yml -f yml --c
 sed -r -i '' 's/cosmos1[a-z,0-9]+/gx1sltcyjm5k0edlg59t47lsyw8gtgc3nudklntcq/g' ./client/static/openapi.yml
 sed -r -i '' 's/cosmosvaloper1[a-z,0-9]+/gxvalioper1sltcyjm5k0edlg59t47lsyw8gtgc3nudrwey98/g' ./client/static/openapi.yml
 sed -r -i '' 's/cosmosvalconspub1[a-z,0-9]+/gxvalconspub1zcjduepqwhwqn4h5v6mqa7k3kmy7cjzchsx5ptsrqaulwrgfmghy3k9jtdzs6rdddm/g' ./client/static/openapi.yml
-sed -i '' 's/Gaia/PLUGChainHub/g' ./client/static/openapi.yml
+sed -i '' 's/Gaia/Plug Chain Hub/g' ./client/static/openapi.yml
 sed -i '' 's/gaia/plugchaind/g' ./client/static/openapi.yml
 sed -i '' 's/cosmoshub/plugchainhub/g' ./client/static/openapi.yml
 sed -i '' 's/uatom/plug/g' ./client/static/openapi.yml

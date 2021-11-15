@@ -68,7 +68,7 @@ Plug Chain Hub metrics也包含tendermint metrics，有关更多信息，请访�
 
 ## 启动监控工具
 
-这是使用docker来启动PLUGChain Hub Monitor的示例。
+这是使用docker来启动Plug Chain Hub Monitor的示例。
 
 ### 编辑Prometheus配置文件
 
