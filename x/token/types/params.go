@@ -65,7 +65,7 @@ func (p Params) String() string {
 func DefaultParams() Params {
 	localToken = GetLocalToken()
 	return Params{
-		IssueTokenBaseFee:    sdk.NewCoin(localToken.Symbol, sdk.NewInt(50000)),
+		IssueTokenBaseFee:    sdk.NewCoin(localToken.Symbol, sdk.NewInt(500000000)),
 		OperateTokenFeeRatio: sdk.NewDecWithPrec(1, 1), // 0.1 (10%)
 	}
 }
