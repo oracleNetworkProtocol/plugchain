@@ -96,3 +96,9 @@ plugchaind tx distribution withdraw-all-rewards [flags]
 ```bash
 plugchaind tx distribution withdraw-rewards [validator-addr] [flags]
 ```
+
+## 找到已处理订单的块然后通过end_block_events进行检查
+
+http://localhost:26657/block_search?query=%22swap_transacted.msg_index=%271%27%20AND%20swap_transacted.pool_id=%271%27%22
+
+http://localhost:26657/block_results?height=...

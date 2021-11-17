@@ -245,3 +245,9 @@ plugchaind query liquidity withdraws [pool-id] [flags]
 ```bash
 plugchaind query liquidity withdraws 1
 ```
+
+## Blocks of processed orders and then inspect end_block_events by querying
+
+http://localhost:26657/block_search?query=%22swap_transacted.msg_index=%271%27%20AND%20swap_transacted.pool_id=%271%27%22
+
+http://localhost:26657/block_results?height=...
