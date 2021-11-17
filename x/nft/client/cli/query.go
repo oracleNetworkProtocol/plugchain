@@ -86,7 +86,7 @@ func GetQueryClassesCmd() *cobra.Command {
 		},
 	}
 	flags.AddQueryFlagsToCmd(cmd)
-	flags.AddPaginationFlagsToCmd(cmd, "all denoms")
+	flags.AddPaginationFlagsToCmd(cmd, "all classes")
 	return cmd
 }
 
@@ -179,7 +179,7 @@ func GetQueryOwnerCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "owner [address] [class-id]",
 		Long:    "Get the NFTs owned by an account addr.",
-		Example: fmt.Sprintf("$ %s q nft owner <address> <denomID>", version.AppName),
+		Example: fmt.Sprintf("$ %s q nft owner <address> <class-id>", version.AppName),
 		Args:    cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
