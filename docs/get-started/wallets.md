@@ -8,6 +8,6 @@ These wallets support transfer and pledge, please fully study their security bef
 
 - [Android Cosmo Wallet](https://cosmo-wallet.oss-accelerate.aliyuncs.com/app-release.apk)
 
-- [MacOs Cosmo Wallet Desktop](http://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.dmg)
+- [MacOs Cosmo Wallet Desktop](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.dmg)
 
-- [Windows Cosmo Wallet Desktop](http://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.exe)
+- [Windows Cosmo Wallet Desktop](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.exe)
