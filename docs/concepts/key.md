@@ -111,7 +111,7 @@ func addWallet(name string, password string) {
 		fmt.Println("NewAccount error:", err)
 		return
 	}
-	// bech32Addr, err := bech32.ConvertAndEncode("gx", info.GetAddress())
+	// bech32Addr, err := bech32.ConvertAndEncode(app.Bech32PrefixAccAddr, info.GetAddress())
 	// if err != nil {
 	// 	fmt.Println("ConvertAndEncode error:", err)
 	// }
