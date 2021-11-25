@@ -67,3 +67,75 @@ m / purpose' / coin_type' / account' / change / address_index
 Plug Chain的coin_type与在[SLIP44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md)登记的cosmos stake token `ATOM` 118相同。
 
 所以Plug Chain密钥BIP44 path的前缀为`44'/118'/`，它的默认值是`44'/118'/0'/0/0`。
+
+## Golang 生成地址代码实现
+```golang
+package main
+
+import (
+	"fmt"
+
+	"github.com/cosmos/cosmos-sdk/crypto/hd"
+	"github.com/cosmos/cosmos-sdk/crypto/keyring"
+	"github.com/oracleNetworkProtocol/plugchain/app"
+)
+
+func main() {
+	addWallet("test2", "")
+}
+
+func addWallet(name string, password string) {
+	//创建新实例
+	kr, err := keyring.New(app.Name, "test", "test", nil)
+	if err != nil {
+		fmt.Println("New error", err)
+		return
+	}
+	//创建助记词
+	var (
+		english keyring.Language = 1
+		uid                      = "temporary"
+	)
+	_, seed, err := kr.NewMnemonic(uid, english, "", hd.Secp256k1)
+	if err != nil {
+		fmt.Println("NewMnemonic error:", err)
+		return
+	}
+
+	kr.Delete(uid)
+
+	path := hd.CreateHDPath(118, 0, 0).String()
+
+	info, err := kr.NewAccount(name, seed, password, path, hd.Secp256k1)
+
+	if err != nil {
+		fmt.Println("NewAccount error:", err)
+		return
+	}
+	// bech32Addr, err := bech32.ConvertAndEncode("gx", info.GetAddress())
+	// if err != nil {
+	// 	fmt.Println("ConvertAndEncode error:", err)
+	// }
+
+	// bechPubKey, err := sdk.Bech32ifyPubKey(sdk.Bech32PubKeyTypeAccPub, info.GetPubKey())
+
+	out, err := keyring.Bech32KeyOutput(info)
+	if err != nil {
+		fmt.Println("Bech32KeyOutput error:", err)
+		return
+	}
+	cdc := app.MakeEncodingConfig()
+
+	out.Mnemonic = seed
+	jsonString, err := cdc.Amino.MarshalJSON(out)
+	if err != nil {
+		fmt.Println("MarshalJSON error:", err)
+		return
+	}
+
+	fmt.Println(string(jsonString))
+
+}
+
+
+```

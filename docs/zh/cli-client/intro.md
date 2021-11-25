@@ -72,3 +72,4 @@ order: 1
 | [tx](./tx.md)                     | Tx 子命令                          |
 | [upgrade](./upgrade.md)           | 软件升级子命令                     |
 | [token](./token.md)           | Token子命令                     |
+| [liquidity](./liquidity.md)           | Liquidity子命令   |
