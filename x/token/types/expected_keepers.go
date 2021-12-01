@@ -21,7 +21,7 @@ type BankKeeper interface {
 	SpendableCoins(ctx sdk.Context, addr sdk.AccAddress) sdk.Coins
 
 	SetDenomMetaData(ctx sdk.Context, denomMetaData banktypes.Metadata)
-	GetDenomMetaData(ctx sdk.Context, denom string) banktypes.Metadata
+	GetDenomMetaData(ctx sdk.Context, denom string) (banktypes.Metadata, bool)
 }
 
 // AccountKeeper defines the expected account keeper

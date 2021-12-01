@@ -137,7 +137,7 @@ func (k Keeper) EditToken(ctx sdk.Context, symbol, name string, maxSupply uint64
 	}
 	if name != types.DoNotModify {
 		token.Name = name
-		metadata := k.bankKeeper.GetDenomMetaData(ctx, token.MinUnit)
+		metadata, _ := k.bankKeeper.GetDenomMetaData(ctx, token.MinUnit)
 		metadata.Description = name
 		k.bankKeeper.SetDenomMetaData(ctx, metadata)
 	}
