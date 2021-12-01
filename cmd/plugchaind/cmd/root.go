@@ -10,6 +10,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/client/debug"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
@@ -18,7 +19,6 @@ import (
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 	"github.com/cosmos/cosmos-sdk/store"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	authclient "github.com/cosmos/cosmos-sdk/x/auth/client"
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -41,7 +41,7 @@ var ChainID string
 func NewRootCmd() (*cobra.Command, app.EncodingConfig) {
 	encodingConfig := app.MakeEncodingConfig()
 	initClientCtx := client.Context{}.
-		WithJSONMarshaler(encodingConfig.Marshaler).
+		WithCodec(encodingConfig.Marshaler).
 		WithInterfaceRegistry(encodingConfig.InterfaceRegistry).
 		WithTxConfig(encodingConfig.TxConfig).
 		WithLegacyAmino(encodingConfig.Amino).
@@ -54,11 +54,17 @@ func NewRootCmd() (*cobra.Command, app.EncodingConfig) {
 		Use:   app.Name + "d",
 		Short: "CosmosHub Plug Chain  App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
-			if err := client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
+			initClientCtx = client.ReadHomeFlag(initClientCtx, cmd)
+			initClientCtx, err := config.ReadFromClientConfig(initClientCtx)
+
+			if err != nil {
+				return err
+			}
+			if err = client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err
 			}
 
-			return server.InterceptConfigsPreRunHandler(cmd)
+			return server.InterceptConfigsPreRunHandler(cmd, "", nil)
 		},
 	}
 
@@ -71,7 +77,6 @@ func NewRootCmd() (*cobra.Command, app.EncodingConfig) {
 }
 
 func initRootCmd(rootCmd *cobra.Command, encodingConfig app.EncodingConfig) {
-	authclient.Codec = encodingConfig.Marshaler
 
 	rootCmd.AddCommand(
 		genutilcli.InitCmd(app.ModuleBasics, app.DefaultNodeHome),
@@ -83,6 +88,7 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig app.EncodingConfig) {
 		tmcli.NewCompletionCmd(rootCmd, true),
 		debug.Cmd(),
 		// this line is used by starport scaffolding # stargate/root/commands
+		config.Cmd(),
 	)
 
 	a := appCreator{encodingConfig}
