@@ -215,7 +215,7 @@ type App struct {
 	*baseapp.BaseApp
 
 	cdc               *codec.LegacyAmino
-	appCodec          codec.Marshaler
+	appCodec          codec.Codec
 	interfaceRegistry types.InterfaceRegistry
 
 	invCheckPeriod uint
@@ -575,7 +575,7 @@ func (app *App) LegacyAmino() *codec.LegacyAmino {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *App) AppCodec() codec.Marshaler {
+func (app *App) AppCodec() codec.Codec {
 	return app.appCodec
 }
 

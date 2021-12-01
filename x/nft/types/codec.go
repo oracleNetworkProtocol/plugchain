@@ -42,24 +42,24 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 }
 
 // return supply protobuf code
-func MustMarshalSupply(cdc codec.Marshaler, supply uint64) []byte {
+func MustMarshalSupply(cdc codec.Codec, supply uint64) []byte {
 	supplyByte := gogotypes.UInt64Value{Value: supply}
 	return cdc.MustMarshalBinaryBare(&supplyByte)
 }
 
 // return th supply
-func MustUnMarshalSupply(cdc codec.Marshaler, value []byte) uint64 {
+func MustUnMarshalSupply(cdc codec.Codec, value []byte) uint64 {
 	var supplyWrap gogotypes.UInt64Value
 	cdc.MustUnmarshalBinaryBare(value, &supplyWrap)
 	return supplyWrap.Value
 }
 
-func MustMarshalNFTID(cdc codec.Marshaler, nftID string) []byte {
+func MustMarshalNFTID(cdc codec.Codec, nftID string) []byte {
 	nftIDWrap := gogotypes.StringValue{Value: nftID}
 	return cdc.MustMarshalBinaryBare(&nftIDWrap)
 }
 
-func MustUnMarshalNFTID(cdc codec.Marshaler, value []byte) string {
+func MustUnMarshalNFTID(cdc codec.Codec, value []byte) string {
 	var nftIDWrap gogotypes.StringValue
 	cdc.MustUnmarshalBinaryBare(value, &nftIDWrap)
 	return nftIDWrap.Value
