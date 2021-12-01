@@ -31,7 +31,7 @@ func (q Keeper) Classes(c context.Context, req *types.QueryClassesRequest) (*typ
 	denomStore := prefix.NewStore(store, types.GetKeyClassID(""))
 	pageRes, err := query.Paginate(denomStore, req.Pagination, func(key, value []byte) error {
 		var denom types.Class
-		q.cdc.MustUnmarshalBinaryBare(value, &denom)
+		q.cdc.MustUnmarshal(value, &denom)
 		denoms = append(denoms, denom)
 		return nil
 	})
