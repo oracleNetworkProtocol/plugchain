@@ -32,7 +32,7 @@ plugchaind tx token issue [flags]
 | --symbol         | string  | Yes      |               | The symbol of the token, length between 3 and 8, alphanumeric characters beginning with alpha, case insensitive                |
 | --initial-supply | uint64  | Yes      |               | The initial supply of this token                                    |
 | --max-supply     | uint64  |          | 100000000000 | The hard cap of this token, total supply can not exceed max supply. The amount before boosting should not exceed 100 billion. |
-| --min-unit       | string  |          |               | The alias of minimum uint                                                                                                      |
+| --min-unit       | string  |          |               | The alias of minimum (Can be the same as `--symbol`) ,length between 3 and 8, alphanumeric characters beginning with alpha, case insensitive uint                                                                                                      |
 | --scale          | uint8   | Yes      |               | A token can have a maximum of 8 digits of decimal                                                                             |
 | --mintable       | boolean |          | false         | Whether this token could be minted(increased) after the initial issuing                                                        |
 
