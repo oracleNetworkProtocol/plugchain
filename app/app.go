@@ -514,25 +514,6 @@ func New(
 	app.SetAnteHandler(anteHander)
 	app.SetEndBlocker(app.EndBlocker)
 
-	//add x/token module upgrade plan
-	app.RegisterUpgradePlan(
-		"x/token",
-		&store.StoreUpgrades{
-			Added:   []string{tokentypes.ModuleName, nfttypes.ModuleName, liquiditytypes.ModuleName},
-			Deleted: []string{"plugchain"},
-		},
-		func(ctx sdk.Context, plan sdkupgrade.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
-			var genState tokentypes.GenesisState
-			genState.Params = tokentypes.DefaultParams()
-			genState.Tokens = []tokentypes.Token{tokentypes.GetLocalToken()}
-			token.InitGenesis(ctx, app.TokenKeeper, genState)
-
-			var liquidityGenState liquiditytypes.GenesisState
-			liquidityGenState.Params = liquiditytypes.DefaultParams()
-			app.LiquidityKeeper.InitGenesis(ctx, liquidityGenState)
-			return fromVM, nil
-		},
-	)
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
 			tmos.Exit(err.Error())
