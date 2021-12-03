@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"fmt"
+	"strings"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
@@ -94,7 +95,9 @@ func (k Keeper) AddToken(ctx sdk.Context, token types.Token) error {
 	k.setWithMinUnit(ctx, token.MinUnit, token.Symbol)
 
 	data := banktypes.Metadata{
-		Description: token.Name,
+		Name:        token.Name,
+		Symbol:      strings.ToUpper(token.Symbol),
+		Description: types.DefaultTokenDescription,
 		Base:        token.MinUnit,
 		Display:     token.Symbol,
 		DenomUnits: []*banktypes.DenomUnit{
