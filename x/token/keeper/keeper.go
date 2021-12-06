@@ -2,7 +2,6 @@ package keeper
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -140,13 +139,6 @@ func (k Keeper) EditToken(ctx sdk.Context, symbol, name string, maxSupply uint64
 		token.Name = name
 		metadata, _ := k.bankKeeper.GetDenomMetaData(ctx, token.MinUnit)
 		metadata.Name = name
-		//Supplement that the last version of the token does not have bank module data
-		if metadata.GetDescription() == "" {
-			metadata.Description = types.DefaultTokenDescription
-		}
-		if metadata.GetSymbol() == "" {
-			metadata.Symbol = strings.ToUpper(token.Symbol)
-		}
 	}
 	k.setToken(ctx, token)
 

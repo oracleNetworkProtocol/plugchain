@@ -105,6 +105,9 @@ func (k Keeper) AddToken(ctx sdk.Context, token types.Token) error {
 			{Denom: token.Symbol, Exponent: token.Scale},
 		},
 	}
+	if data.Display == types.NativeStakingToken {
+		data.Description = types.NativeStakingTokenDesc
+	}
 	k.bankKeeper.SetDenomMetaData(ctx, data)
 
 	return nil

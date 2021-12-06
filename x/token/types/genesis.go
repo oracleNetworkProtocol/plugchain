@@ -6,14 +6,17 @@ import (
 )
 
 var (
-	localToken  Token
-	Initialized bool
+	localToken              Token
+	Initialized             bool
+	DefaultTokenDescription = "x/token module of Plug Chain Hub token."
+	NativeStakingToken      = "plugcn"
+	NativeStakingTokenDesc  = "The native staking token of the Plug Chain Hub."
 )
 
 func GetLocalToken() Token {
 	if !Initialized {
 		localToken = Token{
-			Symbol:        "plugcn",
+			Symbol:        NativeStakingToken,
 			Name:          "Plug Chain Hub token",
 			Scale:         6,
 			MinUnit:       "uplugcn",

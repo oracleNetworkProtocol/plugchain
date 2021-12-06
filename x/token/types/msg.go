@@ -13,8 +13,7 @@ const (
 	TypeMsgBurnToken          = "burn_token"
 	TypeMsgTransferOwnerToken = "change_owner_token"
 	// DoNotModify used to indicate that some field should not be updated
-	DoNotModify             = "[do-not-modify]"
-	DefaultTokenDescription = "x/token module of Plug Chain Hub token."
+	DoNotModify = "[do-not-modify]"
 )
 
 var (
