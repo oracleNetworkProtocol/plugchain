@@ -91,7 +91,7 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig app.EncodingConfig) {
 		debug.Cmd(),
 		config.Cmd(),
 		// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
-		server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler),
+		// server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler),
 	)
 
 	a := appCreator{

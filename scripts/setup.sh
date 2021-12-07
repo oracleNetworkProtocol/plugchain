@@ -15,7 +15,7 @@ fi
 rm -rf $APPNAME
 $DAEMON init node1 --home $APPNAME --chain-id $CHAINID
 sed -i $SedP 's#stake#plug#g' $APPNAME/config/genesis.json
-sed -i $SedP 's#enable = false#enable = true#g' $APPNAME/config/app.toml
+# sed -i $SedP 's#enable = false#enable = true#g' $APPNAME/config/app.toml
 sed -i $SedP 's#swagger = false#swagger = true#g' $APPNAME/config/app.toml
 sed -i $SedP 's/172800s/600s/g' $APPNAME/config/genesis.json
 $DAEMON keys add val --home $APPNAME --keyring-backend=test
