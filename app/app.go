@@ -115,8 +115,6 @@ import (
 )
 
 func init() {
-	ConfigureBech32Prefix()
-
 	userHomeDir, err := os.UserHomeDir()
 	if err != nil {
 		panic(err)

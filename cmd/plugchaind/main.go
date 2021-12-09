@@ -11,8 +11,12 @@ import (
 )
 
 func main() {
+	setupConfig()
+
+	app.RegisterDenoms()
 
 	rootCmd, _ := cmd.NewRootCmd()
+
 	if err := svrcmd.Execute(rootCmd, app.DefaultNodeHome); err != nil {
 		switch e := err.(type) {
 		case server.ErrorCode:
@@ -23,12 +27,10 @@ func main() {
 	}
 }
 
-func init() {
+func setupConfig() {
 	//set the address prefixes
 	config := sdk.GetConfig()
 	app.SetBech32Prefixes(config)
 	app.SetBip44CoinType(config)
 	config.Seal()
-
-	app.RegisterDenoms()
 }

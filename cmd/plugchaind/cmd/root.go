@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/snapshots"
+	"github.com/tharsis/ethermint/crypto/hd"
 	"github.com/tharsis/ethermint/encoding"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
@@ -61,12 +62,16 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithAccountRetriever(types.AccountRetriever{}).
 		WithBroadcastMode(flags.BroadcastBlock).
 		WithHomeDir(app.DefaultNodeHome).
+		WithKeyringOptions(hd.EthSecp256k1Option()).
 		WithViper(EnvPrefix)
 
 	rootCmd := &cobra.Command{
 		Use:   app.Name + "d",
 		Short: "CosmosHub PlugChain App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
+			// set the default command outputs
+			// cmd.SetOut(cmd.OutOrStdout())
+			// cmd.SetErr(cmd.ErrOrStderr())
 
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -89,6 +94,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 	//TODO: double-check
 	//authclient.Codec = encodingConfig.Marshaler
+	// cfg := sdk.GetConfig()
+	// cfg.Seal()
 
 	rootCmd.AddCommand(
 		ethermintclient.ValidateChainID(
@@ -120,7 +127,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
 	rootCmd = srvflags.AddTxFlags(rootCmd)
-
 	// overwriteFlagDefaults(rootCmd, map[string]string{
 	// 	flags.FlagChainID:        ChainID,
 	// 	flags.FlagKeyringBackend: "os",

@@ -2,6 +2,7 @@ package app
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/oracleNetworkProtocol/plugchain/types"
 	ethermint "github.com/tharsis/ethermint/types"
 )
 
@@ -25,14 +26,6 @@ const (
 	DisplayDenom = "plugcn"
 )
 
-func ConfigureBech32Prefix() {
-	config := sdk.GetConfig()
-	config.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
-	config.SetBech32PrefixForValidator(Bech32PrefixValAddr, Bech32PrefixValPub)
-	config.SetBech32PrefixForConsensusNode(Bech32PrefixConsAddr, Bech32PrefixConsPub)
-	config.Seal()
-}
-
 // SetBech32Prefixes sets the global prefixes to be used when serializing addresses and public keys to Bech32 strings.
 func SetBech32Prefixes(config *sdk.Config) {
 	config.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
@@ -54,7 +47,7 @@ func RegisterDenoms() {
 		panic(err)
 	}
 
-	if err := sdk.RegisterDenom("uplugcn", sdk.NewDecWithPrec(1, 8)); err != nil {
+	if err := sdk.RegisterDenom(types.EvmDenom, sdk.NewDecWithPrec(1, types.BaseDenomUnit)); err != nil {
 		panic(err)
 	}
 }
