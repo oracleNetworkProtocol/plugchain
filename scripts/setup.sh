@@ -21,7 +21,7 @@ plugchaind config keyring-backend $KEYRING --home $NODEDIR
 plugchaind config chain-id $CHAINID --home $NODEDIR
 
 # if $KEY exists it should be deleted
-plugchaind keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO
+plugchaind keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO --home $NODEDIR
 
 # Set moniker and chain-id for Evmos (Moniker can be anything, chain-id must be an integer)
 plugchaind init $MONIKER --chain-id $CHAINID --home $NODEDIR
@@ -32,6 +32,7 @@ cat $NODEDIR/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["den
 cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+cat $NODEDIR/config/genesis.json | jq '.app_state["liquidity"]["params"]["pool_creation_fee"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
 # increase block time (?)
 cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="30000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
@@ -87,4 +88,4 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-plugchaind start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001uplugcn --json-rpc.api eth,txpool,personal,net,debug,web3
+plugchaind start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001uplugcn --json-rpc.api eth,txpool,personal,net,debug,web3 --home $NODEDIR
