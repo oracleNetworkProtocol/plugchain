@@ -42,7 +42,7 @@ func RegisterDenoms() {
 		panic(err)
 	}
 
-	if err := sdk.RegisterDenom(types.DisplayNativeDenom, sdk.NewDecWithPrec(1, types.BaseDenomUnit)); err != nil {
+	if err := sdk.RegisterDenom(types.BaseNativeDenom, sdk.NewDecWithPrec(1, types.BaseDenomUnit)); err != nil {
 		panic(err)
 	}
 }

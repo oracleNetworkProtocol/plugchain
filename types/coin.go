@@ -14,7 +14,9 @@ const (
 	// - Governance parameters: denomination used for spam prevention in proposal deposits
 	// - Crisis parameters: constant fee denomination used for spam prevention to check broken invariant
 	// - EVM parameters: denomination used for running EVM state transitions in Ethermint.
-	BaseNativeDenom    string = "uplugcn"
+	BaseNativeDenom string = "uplugcn"
+
+	//DisplayNativeDenom defines the denomination displayed to users in client applications.
 	DisplayNativeDenom string = "plugcn"
 
 	// BaseDenomUnit defines the base denomination unit for plugcns.
