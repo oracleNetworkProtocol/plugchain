@@ -86,7 +86,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 				return err
 			}
 			// TODO: define our own token
-			customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.EvmDenom)
+			customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.BaseNativeDenom)
 
 			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig)
 		},

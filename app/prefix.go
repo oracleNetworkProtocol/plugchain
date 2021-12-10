@@ -21,11 +21,6 @@ const (
 	Bech32PrefixConsPub = "gxvalconspub"
 )
 
-const (
-	// DisplayDenom defines the denomination displayed to users in client applications.
-	DisplayDenom = "plugcn"
-)
-
 // SetBech32Prefixes sets the global prefixes to be used when serializing addresses and public keys to Bech32 strings.
 func SetBech32Prefixes(config *sdk.Config) {
 	config.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
@@ -43,11 +38,11 @@ func SetBip44CoinType(config *sdk.Config) {
 // RegisterDenoms registers the base and display denominations to the SDK.
 func RegisterDenoms() {
 	// TODO: rename
-	if err := sdk.RegisterDenom(DisplayDenom, sdk.OneDec()); err != nil {
+	if err := sdk.RegisterDenom(types.DisplayNativeDenom, sdk.OneDec()); err != nil {
 		panic(err)
 	}
 
-	if err := sdk.RegisterDenom(types.EvmDenom, sdk.NewDecWithPrec(1, types.BaseDenomUnit)); err != nil {
+	if err := sdk.RegisterDenom(types.DisplayNativeDenom, sdk.NewDecWithPrec(1, types.BaseDenomUnit)); err != nil {
 		panic(err)
 	}
 }

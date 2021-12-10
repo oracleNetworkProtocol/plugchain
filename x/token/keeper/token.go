@@ -8,6 +8,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	gogotypes "github.com/gogo/protobuf/types"
+	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
 )
 
@@ -105,7 +106,7 @@ func (k Keeper) AddToken(ctx sdk.Context, token types.Token) error {
 			{Denom: token.Symbol, Exponent: token.Scale},
 		},
 	}
-	if data.Display == types.NativeStakingToken {
+	if data.Display == plugchaintypes.DisplayNativeDenom {
 		data.Description = types.NativeStakingTokenDesc
 	}
 	k.bankKeeper.SetDenomMetaData(ctx, data)
