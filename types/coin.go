@@ -21,7 +21,7 @@ const (
 
 	// BaseDenomUnit defines the base denomination unit for plugcns.
 	// 1 plugcn = 1x10^{BaseDenomUnit} uplugcn
-	BaseDenomUnit = 8
+	BaseDenomUnit = 6
 
 	// DefaultGasPrice is default gas price for evm transactions
 	DefaultGasPrice = 20
