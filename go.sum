@@ -820,8 +820,8 @@ github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5/go.mod h1:/wsWhb9smxS
 github.com/openzipkin/zipkin-go v0.1.6/go.mod h1:QgAqvLzwWbR/WpD4A3cGpPtJrZXNIiJc5AZX7/PBEpw=
 github.com/openzipkin/zipkin-go v0.2.1/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
-github.com/oracleNetworkProtocol/liquidity v0.2.0 h1:6mMuKLxq/GsQ7EKrQLNOVnlVvLaukU05E+0LuPT88hY=
-github.com/oracleNetworkProtocol/liquidity v0.2.0/go.mod h1:u5dn3PrPOz2Y55dXYcPAxyGW/yQz7fgwq2M/e4B3WSE=
+github.com/oracleNetworkProtocol/liquidity v0.2.1 h1:jDFYdDmBLKpI5WDn1OZaNqWzsLwCmCDRabmmfLUbxII=
+github.com/oracleNetworkProtocol/liquidity v0.2.1/go.mod h1:dqNLhq4Jw1vGdAnXSaH6Hx67cmBA762U+0xSquctu+c=
 github.com/ory/dockertest v3.3.5+incompatible h1:iLLK6SQwIhcbrG783Dghaaa3WPzGc+4Emza6EbVUUGA=
 github.com/ory/dockertest v3.3.5+incompatible/go.mod h1:1vX4m9wsvi00u5bseYwXaSnhNrne+V0E6LAcBILJdPs=
 github.com/otiai10/copy v1.6.0 h1:IinKAryFFuPONZ7cm6T6E2QX/vcJwSnlaA5lfoaXIiQ=
