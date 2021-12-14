@@ -39,7 +39,6 @@ import (
 	ethermintclient "github.com/tharsis/ethermint/client"
 	ethermintserver "github.com/tharsis/ethermint/server"
 	servercfg "github.com/tharsis/ethermint/server/config"
-	srvflags "github.com/tharsis/ethermint/server/flags"
 )
 
 const (
@@ -94,8 +93,9 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 	//TODO: double-check
 	//authclient.Codec = encodingConfig.Marshaler
-	// cfg := sdk.GetConfig()
-	// cfg.Seal()
+
+	cfg := sdk.GetConfig()
+	cfg.Seal()
 
 	rootCmd.AddCommand(
 		ethermintclient.ValidateChainID(
@@ -126,17 +126,21 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		txCommand(),
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
-	rootCmd = srvflags.AddTxFlags(rootCmd)
+	// rootCmd = srvflags.AddTxFlags(rootCmd)
+
+	//register owner global flags
+	rootCmd = AddTxFlags(rootCmd)
+
 	// overwriteFlagDefaults(rootCmd, map[string]string{
 	// 	flags.FlagChainID:        ChainID,
 	// 	flags.FlagKeyringBackend: "os",
 	// })
+
 	return rootCmd, encodingConfig
 }
 
 func addModuleInitFlags(startCmd *cobra.Command) {
 	crisis.AddModuleInitFlags(startCmd)
-	// this line is used by starport scaffolding # stargate/root/initFlags
 }
 
 func queryCommand() *cobra.Command {
