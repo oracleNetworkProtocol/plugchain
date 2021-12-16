@@ -47,6 +47,8 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Version=$(AppVersion) \
  		  	  -X github.com/cosmos/cosmos-sdk/version.Name=plugchain \
 		  	  -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind \
 		  	  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
+			  -X github.com/tharsis/ethermint/version.AppVersion=plugchaind \
+			  -X github.com/tharsis/ethermint/version.GitCommit=$(AppVersion) \
 		 	    -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 ldflags += $(LDFLAGS)
 ldflags := $(strip $(ldflags))
