@@ -5,17 +5,11 @@
 
 
 ## Future
-
-
-## v1.0.0 
-* x/nft finish
-* cosmos-sdk v1.0.0+
-* Bump ibc-go
-* Restart testnet version to v1.0.0
-
-
 ## Released 
 
+## v0.7.2 - 2021-12-1
+* update token symbol len validate
+* del keywords for plug
 ## v0.7.1 - 2021-10-18
 
 * x/nft add query owner and nft finish
