@@ -84,6 +84,63 @@ go.sum: go.mod
 
 .PHONY: all build-linux build-window install
 
+contract-tools:
+ifeq (, $(shell which stringer))
+	@echo "Installing stringer..."
+	@go get golang.org/x/tools/cmd/stringer
+else
+	@echo "stringer already installed; skipping..."
+endif
+
+ifeq (, $(shell which go-bindata))
+	@echo "Installing go-bindata..."
+	@go get github.com/kevinburke/go-bindata/go-bindata
+else
+	@echo "go-bindata already installed; skipping..."
+endif
+
+ifeq (, $(shell which gencodec))
+	@echo "Installing gencodec..."
+	@go get github.com/fjl/gencodec
+else
+	@echo "gencodec already installed; skipping..."
+endif
+
+ifeq (, $(shell which protoc-gen-go))
+	@echo "Installing protoc-gen-go..."
+	@go get github.com/fjl/gencodec github.com/golang/protobuf/protoc-gen-go
+else
+	@echo "protoc-gen-go already installed; skipping..."
+endif
+
+ifeq (, $(shell which protoc))
+	@echo "Please istalling protobuf according to your OS"
+	@echo "macOS: brew install protobuf"
+	@echo "linux: apt-get install -f -y protobuf-compiler"
+else
+	@echo "protoc already installed; skipping..."
+endif
+
+ifeq (, $(shell which solcjs))
+	@echo "Installing solcjs..."
+	@npm install -g solc@0.5.11
+else
+	@echo "solcjs already installed; skipping..."
+endif
+
+
+tools: tools-stamp
+tools-stamp: contract-tools proto-tools
+	# Create dummy file to satisfy dependency and avoid
+	# rebuilding when this Makefile target is hit twice
+	# in a row.
+	touch $@
+
+tools-clean:
+	rm -f tools-stamp
+
+.PHONY: tools contract-tools proto-tools tools-stamp tools-clean
+
 ###############################################################################
 ###                               Localnet                                  ###
 ###############################################################################
@@ -95,16 +152,6 @@ localnet:
 	./scripts/setup.sh
 
 .PHONY: localnet
-
-buf: 
-	@echo "buf install ......"
-	@./scripts/protocgen.sh
-
-swagger: 
-	@echo "swagger install ......"
-	@./scripts/protoc-swagger-gen.sh
-
-.PHONY: buf swagger
 
 
 ###############################################################################
@@ -120,3 +167,77 @@ vuepress:
 	
 
 .PHONY: npm-vue vuepress
+
+
+###############################################################################
+###                                Protobuf                                 ###
+###############################################################################
+PREFIX ?= /usr/local
+BIN ?= $(PREFIX)/bin
+UNAME_S ?= $(shell uname -s)
+UNAME_M ?= $(shell uname -m)
+
+PROTOC_VERSION ?= 3.13.0
+PROTOC_GRPC_GATEWAY_VERSION = 1.14.7
+ifeq ($(UNAME_S),Linux)
+  PROTOC_ZIP ?= protoc-3.13.0-linux-x86_64.zip
+  PROTOC_GRPC_GATEWAY_BIN ?= protoc-gen-grpc-gateway-v1.14.7-linux-x86_64
+endif
+ifeq ($(UNAME_S),Darwin)
+  PROTOC_ZIP ?= protoc-3.13.0-osx-x86_64.zip
+  PROTOC_GRPC_GATEWAY_BIN ?= protoc-gen-grpc-gateway-v1.14.7-darwin-x86_64
+endif
+
+proto-tools: buf
+ifeq (, $(shell which protoc))
+	@echo "Installing protoc compiler..."
+	@(cd /tmp; \
+	curl -OL "https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/${PROTOC_ZIP}"; \
+	unzip -o ${PROTOC_ZIP} -d $(PREFIX) bin/protoc; \
+	unzip -o ${PROTOC_ZIP} -d $(PREFIX) 'include/*'; \
+	rm -f ${PROTOC_ZIP})
+else
+	@echo "protoc already installed; skipping..."
+endif
+
+ifeq (, $(shell which protoc-gen-gocosmos))
+	@echo "Installing protoc-gen-gocosmos..."
+	@go install github.com/regen-network/cosmos-proto/protoc-gen-gocosmos
+else
+	@echo "protoc-gen-gocosmos already installed; skipping..."
+endif
+
+ifeq (, $(shell which protoc-gen-grpc-gateway))
+	@echo "Installing protoc-gen-grpc-gateway..."
+	@curl -o "${BIN}/protoc-gen-grpc-gateway" -L "https://github.com/grpc-ecosystem/grpc-gateway/releases/download/v${PROTOC_GRPC_GATEWAY_VERSION}/${PROTOC_GRPC_GATEWAY_BIN}"
+	@chmod +x "${BIN}/protoc-gen-grpc-gateway"
+else
+	@echo "protoc-gen-grpc-gateway already installed; skipping..."
+endif
+
+ifeq (, $(shell which protoc-gen-swagger))
+	@echo "Installing protoc-gen-swagger..."
+	@go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+	@npm install -g swagger-combine
+else
+	@echo "protoc-gen-grpc-gateway already installed; skipping..."
+endif
+
+buf: buf-stamp
+
+buf-stamp:
+	@echo "Installing buf..."
+	@curl -sSL \
+    "https://github.com/bufbuild/buf/releases/download/v${BUF_VERSION}/buf-${UNAME_S}-${UNAME_M}" \
+    -o "${BIN}/buf" && \
+	chmod +x "${BIN}/buf"
+
+	touch $@
+
+proto-gen: 
+	@./scripts/protocgen.sh
+
+proto-swagger-gen: 
+	@./scripts/protoc-swagger-gen.sh
+
+.PHONY: buf buf-stamp proto-gen proto-swagger-gen 
