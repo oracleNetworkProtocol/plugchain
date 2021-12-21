@@ -96,6 +96,7 @@ import (
 	nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
 	nfttypes "github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 
+	"github.com/cosmos/cosmos-sdk/simapp"
 	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/cosmos/cosmos-sdk/x/feegrant"
 	feegrantkeeper "github.com/cosmos/cosmos-sdk/x/feegrant/keeper"
@@ -604,7 +605,7 @@ func (app *App) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.Respo
 
 // InitChainer application update at chain initialization
 func (app *App) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
-	var genesisState GenesisState
+	var genesisState simapp.GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
 	}
