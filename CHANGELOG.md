@@ -7,6 +7,10 @@
 ## Future
 ## Released 
 
+
+## v0.7.3 - 2021-12-22
+Stable version of existing functions in the warehouse
+
 ## v0.7.2 - 2021-12-1
 * update token symbol len validate
 * del keywords for plug
