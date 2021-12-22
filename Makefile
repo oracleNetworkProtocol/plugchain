@@ -157,11 +157,11 @@ localnet:
 ###############################################################################
 ###                                   Docs                                  ###
 ###############################################################################
-npm-vue: 
+docs-rely: 
 	@echo "install vuepress rely ..."
-	@cd docs/ && sudo npm install vue && sudo npm install -D vuepress
+	@cd docs/ && sudo cnpm i
 
-vuepress: 
+docs-build: 
 	@echo "vuepress build ..."
 	@cd docs/ && ./deploy.sh 
 	
@@ -177,6 +177,8 @@ BIN ?= $(PREFIX)/bin
 UNAME_S ?= $(shell uname -s)
 UNAME_M ?= $(shell uname -m)
 
+BUF_VERSION="1.0.0-rc10"
+BINARY_NAME="buf"
 PROTOC_VERSION ?= 3.13.0
 PROTOC_GRPC_GATEWAY_VERSION = 1.14.7
 ifeq ($(UNAME_S),Linux)
@@ -228,11 +230,9 @@ buf: buf-stamp
 buf-stamp:
 	@echo "Installing buf..."
 	@curl -sSL \
-    "https://github.com/bufbuild/buf/releases/download/v${BUF_VERSION}/buf-${UNAME_S}-${UNAME_M}" \
-    -o "${BIN}/buf" && \
-	chmod +x "${BIN}/buf"
-
-	touch $@
+    "https://github.com/bufbuild/buf/releases/download/v${BUF_VERSION}/${BINARY_NAME}-${UNAME_S}-${UNAME_M}" \
+    -o "${BIN}/${BINARY_NAME}" && \
+	chmod +x "${BIN}/${BINARY_NAME}"
 
 proto-gen: 
 	@./scripts/protocgen.sh
