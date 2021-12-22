@@ -59,7 +59,6 @@ func GetCmdQueryToken() *cobra.Command {
 			if err != nil {
 				return err
 			}
-
 			return clientCtx.PrintProto(res.Token)
 		},
 	}
@@ -102,6 +101,7 @@ func GetCmdQueryTokens() *cobra.Command {
 			if err != nil {
 				return err
 			}
+
 			var owner sdk.AccAddress
 			if len(args) > 0 {
 				owner, err = sdk.AccAddressFromBech32(args[0])
@@ -122,13 +122,14 @@ func GetCmdQueryTokens() *cobra.Command {
 				return err
 			}
 
-			tokens := make([]types.TokenI, 0, len(res.Tokens))
+			tokens := make([]types.Token, 0, len(res.Tokens))
 			for _, v := range res.Tokens {
 				var token types.TokenI
 				if err = clientCtx.InterfaceRegistry.UnpackAny(v, &token); err != nil {
 					return err
 				}
-				tokens = append(tokens, token)
+				t := token.(*types.Token)
+				tokens = append(tokens, *t)
 			}
 			return clientCtx.PrintObjectLegacy(tokens)
 		},
