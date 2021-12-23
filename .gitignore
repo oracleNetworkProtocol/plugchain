@@ -30,6 +30,7 @@
 # third_party/
 docs/node_modules/
 docs/.vuepress/dist/
+build/
 
 vue/*
 secret.yml

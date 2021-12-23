@@ -1,10 +1,21 @@
 AppVersion=$(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
+TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 LEDGER_ENABLED ?= true
-BUILDDIR ?= $(CURDIR)
+BUILDDIR ?= $(CURDIR)/build
+BINDIR ?= $(GOPATH)/bin
+PLUGCHAIN_BINARY= plugchaind
+PLUGCHAIN_DIR = plugchain
+HTTPS_GIT = https://github.com/oracleNetworkProtocol/plugchain.git
+DOCKER := $(shell which docker)
+DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf
 
 export GO111MODULE = on
 
+# Default target executed when no arguments are given to make.
+default_target: all
+
+.PHONY: default_target
 
 build_tags = netgo
 ifeq ($(LEDGER_ENABLED),true)
@@ -33,6 +44,8 @@ endif
 ifeq (cleveldb,$(findstring cleveldb,$(COSMOS_BUILD_OPTIONS)))
   build_tags += gcc
 endif
+build_tags += $(BUILD_TAGS)
+build_tags := $(strip $(build_tags))
 
 whitespace :=
 whitespace += $(whitespace)
@@ -44,45 +57,70 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 ldflags = -X github.com/cosmos/cosmos-sdk/version.Version=$(AppVersion) \
- 		  	  -X github.com/cosmos/cosmos-sdk/version.Name=plugchain \
-		  	  -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind \
+ 		  	  -X github.com/cosmos/cosmos-sdk/version.Name=onp \
+		  	  -X github.com/cosmos/cosmos-sdk/version.AppName=$(PLUGCHAIN_BINARY) \
 		  	  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-			  -X github.com/tharsis/ethermint/version.AppVersion=plugchaind \
+			  -X github.com/tharsis/ethermint/version.AppVersion=$(PLUGCHAIN_BINARY) \
 			  -X github.com/tharsis/ethermint/version.GitCommit=$(AppVersion) \
+			  -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TMVERSION) \
 		 	    -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
+# DB backend selection
+ifeq (cleveldb,$(findstring cleveldb,$(COSMOS_BUILD_OPTIONS)))
+  ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=cleveldb
+endif
+ifeq (badgerdb,$(findstring badgerdb,$(COSMOS_BUILD_OPTIONS)))
+  ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=badgerdb
+endif
+# handle rocksdb
+ifeq (rocksdb,$(findstring rocksdb,$(COSMOS_BUILD_OPTIONS)))
+  CGO_ENABLED=1
+  BUILD_TAGS += rocksdb
+  ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=rocksdb
+endif
+# handle boltdb
+ifeq (boltdb,$(findstring boltdb,$(COSMOS_BUILD_OPTIONS)))
+  BUILD_TAGS += boltdb
+  ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=boltdb
+endif
+
+ifeq (,$(findstring nostrip,$(COSMOS_BUILD_OPTIONS)))
+  ldflags += -w -s
+endif
 ldflags += $(LDFLAGS)
 ldflags := $(strip $(ldflags))
 
-build_tags += $(BUILD_TAGS)
-build_tags := $(strip $(build_tags))
-
 BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
+# check for nostrip option
+ifeq (,$(findstring nostrip,$(COSMOS_BUILD_OPTIONS)))
+  BUILD_FLAGS += -trimpath
+endif
 
-all: install build build-linux
 
 ###############################################################################
-###                                Documentation                            ###
+###                                    Build                               ###
 ###############################################################################
 BUILD_TARGETS := build install
 
-$(BUILD_TARGETS): go.sum $(BUILDDIR)/
-	go $@ -mod=readonly $(BUILD_FLAGS) ./cmd/plugchaind
-
+build: BUILD_ARGS=-o $(BUILDDIR)/
 build-linux:
 	GOOS=linux GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
 
-build-window:
-	GOOS=windows GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
+$(BUILD_TARGETS): go.sum $(BUILDDIR)/
+	go $@ $(BUILD_FLAGS) $(BUILD_ARGS) ./...
 
+$(BUILDDIR)/:
+	mkdir -p $(BUILDDIR)/
+
+all: build
+
+.PHONY: all build  
 ###############################################################################
 ###                          Tools & Dependencies                           ###
 ###############################################################################
 go.sum: go.mod
-	echo "Ensure dependencies have not been modified ..."
+	@echo "Ensure dependencies have not been modified ..."
 	go mod verify
 	go mod tidy
-
-.PHONY: all build-linux build-window install
 
 contract-tools:
 ifeq (, $(shell which stringer))
@@ -155,7 +193,7 @@ localnet:
 
 
 ###############################################################################
-###                                   Docs                                  ###
+###                            Documentation                                ###
 ###############################################################################
 docs-rely: 
 	@echo "install vuepress rely ..."
