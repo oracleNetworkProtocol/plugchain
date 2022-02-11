@@ -2,51 +2,83 @@
 order: 7
 ---
 
-# Plug Chain Hub 升级, 指示
+# Plug Chain Hub 最新版本升级
 
-本文档描述了验证器和全节点操作员成功执行*升级计划*的步骤。
-
-目录：
-- [准备升级](#升级准备)
-   - [备份](#备份)
-   - [测试](#测试)
-- [升级流程](./upgrade-process.md)
-- [回滚计划](#回滚升级计划)
-- [风险](#risks)
-- [常见问题](#faq)
+本文档描述了验证器和全节点操作员成功执行*升级计划*的步骤。由于升级导致的资产丢失，官方概不负责，请升级时备份好自己的财产。
+Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`v1.0`升级。
 
 
-## 升级准备
+升级内容如下：
+1. 升级主网，修改chain-id 为 `plugchain_520-1`
+2. 修改链上币名 `plug` 为:（链上相关币数据是精度0的数据，精度6的币名用于钱包，浏览器，外部APP应用展示）
+   - 精度0:  `uplugcn`
+   - 精度6:  `plugcn`
+3. 修改社区提案模块（gov） `募资` 和 `投票期的时间`，整体修改为14天
+4. 调整最大验证者个数为`50`个
+5. 接入EVM模块
+6. 开通销毁`plugcn`功能
+7. 整体调整`x/liquidity`，`x/token`等模块手续费参数
+8. 钱包支持两种密钥签名算法 `secp256k1`，`eth_secp256k1`
 
-### 备份
-
-在升级之前，鼓励验证者拍摄完整的数据快照。 快照在很大程度上依赖于基础设施，但通常这可以通过备份 `.plugchain` 目录来完成。
-
-验证器操作员在停止 plugchaind 进程后备份 `.plugchain/data/priv_validator_state.json` 文件至关重要。 当您的验证者参与共识轮次时，此文件会在每个区块更新。 它是防止双重签名所需的关键文件，以防升级失败并需要重新启动之前的链。
-### 测试
-
-对于那些有兴趣确保为即将到来的升级做好准备的验证者和全节点运营商，请使用 plugchain-tesetnet-1 网络来测试升级。
-
-## 回滚升级计划
-
-在网络升级过程中，Plug Chain 核心团队将时刻保持警惕，并与运营商沟通升级状态。 在此期间，核心团队将听取运营商的需求，以确定升级是否遇到意外挑战。 遇到突发挑战，核心团队在与运营商协商并达成社会共识后，可以选择宣布跳过升级。
-
-
-跳过此升级建议的步骤只是使用以下命令使用（降级的）v0.5.0 二进制文件恢复 `plugchain` 网络：
-
-> plugchaind start --unsafe-skip-upgrade 762880
-
-:::warning
-没有特别需要在升级高度之前恢复状态快照，除非由核心 Plug Chain 团队特别指示。
-:::
-
-:::danger
-跳过升级的社会共识决定将完全基于技术优点，从而尊重和维护升级提案成功投票的去中心化治理过程。
-:::
+注意事项：
+1. 不保留交易记录
+2. 保留当前块高高度，不保留原先块高数据
+3. 保留提案信息
+4. 保留liquidity项目数据，保留token数据 
 
 
-## Risks
 
-作为在您的共识节点上执行升级程序的验证者，双重签名和被削减的风险更高。 此过程中最重要的部分是在启动验证器和签名之前验证您的软件版本和创世文件哈希。
 
-验证者可以做的最危险的事情是发现他们犯了错误并在网络启动期间再次重复升级过程。 如果您在此过程中发现错误，最好的做法是等待网络启动后再进行更正。
+# 备份
+
+*首先需要停止节点运行*
+
+1. 验证者节点
+ - 备份整个数据目录，默认 `.plugchain/`
+ - 备份 `.plugchain/data/priv_validator_state.json` 文件，`.plugchain/data/`里面的数据就可以删除。
+ 
+2. 其余功能节点
+ - 备份钱包目录
+
+
+# 操作步骤 
+
+1. 获取 `v1.0.0` 版本的二进制文件plugchaind
+
+```bash
+# 拉取v1.0.0版本代码 （本地可使用 `git tag` 查看下tag版本，如果有 `v1.0.0`,跳过此步骤）
+git fetch origin v1.0.0
+
+# 执行编译二进制文件
+make install
+
+```
+
+2. 创建新的数据目录,可使用 --home 指定数据目录
+
+```bash
+plugchaind init myNode --chain-id plugchain_520-1
+```
+
+3. 下载主网公开的 `genesis.json`,`app.toml`,`config.toml`:
+
+
+```bash 
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+```
+
+*第四步只需要验证者节点操作，其余节点跳过*
+
+4. 验证者节点需要把 原来节点config目录的 `node_key.json`,`priv_validator_key.json` 文件覆盖到新数据目录的config里面作为识别验证者，其余节点不需要。
+
+5. *根据原来节点的配置修改当下配置满足自己的需求，需要操作钱包的，需要把备份的钱包目录导入到新数据目录才可以操作。*
+
+
+6. 启动节点
+
+```bash
+plugchaind start
+```
+

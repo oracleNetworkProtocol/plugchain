@@ -51,7 +51,7 @@ Make sure that your server can access to google.com because our project depends 
 ```bash
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 cd plugchain
-git checkout v0.5.0
+git checkout v1.0.0
 make install
 ```
 
