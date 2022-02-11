@@ -101,15 +101,15 @@ func sendTx() error {
     //addr1 to addr2
     //addr1 to addr3
     //The transaction is signed by addr1
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
-    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("plug", 4000000)))
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 5000000)))
+    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("uplugcn", 4000000)))
     err := txBuilder.SetMsgs(msg1, msg2)
     if err != nil {
         return err
     }
 
     txBuilder.SetGasLimit(200000)
-    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
+    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
     txBuilder.SetMemo("give your my friend to Tom")
     // txBuilder.SetTimeoutHeight(...)
 }

@@ -21,7 +21,7 @@ We use the default [home directory](intro.md#home-directory) for all the followi
 Initialize the genesis.json file that will help you to bootstrap the network
 
 ```bash
-plugchaind init testing --chain-id=testing
+plugchaind init testing --chain-id=plugchain_521-1
 ```
 
 ### create a key
@@ -41,7 +41,7 @@ this command lets you set the number of coins. Make sure this account has some p
 :::
 
 ```bash
-plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150000000plug
+plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150000000uplugcn
 ```
 
 ### plugchaind gentx
@@ -49,7 +49,7 @@ plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150
 Generate the transaction that creates your validator. The gentxs are stored in `~/.plugchain/config/gentx/`
 
 ```bash
-plugchaind gentx MyValidator 100000000plugchaind --chain-id=testing 
+plugchaind gentx MyValidator 100000000plugchaind --chain-id=plugchain_521-1 
 ```
 
 ### plugchaind collect-gentxs

@@ -19,7 +19,7 @@ You must use Plug Chain [v1.0.0](https://github.com/oracleNetworkProtocol/plugch
 1. Initialize the node
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain
+plugchaind init <moniker> --chain-id=plugchain_520-1
 ```
 
 2. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
@@ -37,7 +37,7 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 # Start the node (you can also use nohup or systemd to run in the background)
 
 
-plugchaind start --minimum-gas-prices 0.0001plug
+plugchaind start --minimum-gas-prices 0.0001uplugcn
 ```
 
 ## Upgrade to Validator Node
@@ -74,14 +74,14 @@ Only if your node has caught-up, you can run the following command to upgrade yo
 ```bash
 plugchaind tx staking create-validator \
 --from mywallet \
---amount 1000000plug \
+--amount 1000000uplugcn \
 --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" \
 --commission-rate="0.10" \
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation="1000000" \
---fees 20plug --chain-id plugchain
+--fees 20uplugcn --chain-id plugchain_520-1
 ```
 
 :::warning

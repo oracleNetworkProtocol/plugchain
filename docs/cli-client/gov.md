@@ -186,8 +186,8 @@ Where proposal.json contains:
     "title": "Community Pool Spend",
     "description": "Pay me some Atoms!",
     "recipient": "gx1mjk4p68mmulwla3x5uzlgjwsc3zrms448rel3q",
-    "amount": "1000plug",
-    "deposit": "1000plug"
+    "amount": "1000uplugcn",
+    "deposit": "1000uplugcn"
 }
 ```
 
@@ -217,7 +217,7 @@ Where proposal.json contains:
         "value": 105
         }
     ],
-    "deposit": "1000plug"
+    "deposit": "1000uplugcn"
 }
 ```
 
@@ -283,5 +283,5 @@ plugchaind tx gov vote [proposal-id] [option] [flags]
 ### Vote for an active proposal
 
 ```bash
-plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=20plug
+plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=20uplugcn
 ```

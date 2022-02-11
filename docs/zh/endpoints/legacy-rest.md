@@ -323,7 +323,7 @@ Plug Chain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用�
                     "to_address": "gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "1000000"
                         }
                     ]
@@ -333,7 +333,7 @@ Plug Chain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用�
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "30000"
                 }
             ],
@@ -435,7 +435,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
                           "to_address": "gx1w976a5jrhsj06dqmrh2x9qxzel74qtcmapklxc",
                           "amount": [
                               {
-                                  "denom": "plug",
+                                  "denom": "uplugcn",
                                   "amount": "1000000"
                               }
                           ]
@@ -445,7 +445,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
               "fee": {
                   "amount": [
                       {
-                          "denom": "plug",
+                          "denom": "uplugcn",
                           "amount": "30000"
                       }
                   ],

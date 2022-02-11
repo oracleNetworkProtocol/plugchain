@@ -19,21 +19,17 @@ testnet is activity
 ## Run a Full Node
 
 ### Start node from genesis
-:::tip 
-You must use Plug Chain[v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node
-:::
 
 1. Initialize the node
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain-test
+plugchaind init <moniker> --chain-id=plugchain_521-1
 ```
 
 2. Download genesis.json and seed information disclosed on the testnet or enter the cloned Plug Chain directory:
-*[ Testnet genesis file and seed information](https://github.com/oracleNetworkProtocol/plugchain/tree/main/testnet/latest)*, the following is achieved by moving the genesis.json in the clone warehouse.
 
 ```bash
-mv ./testnet/latest/genesis.json ~/.plugchain/
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/testnet/latest/genesis.json
 ```
 
 :::warning
@@ -58,7 +54,7 @@ Modify the seeds provided in the ./testnet/latest/seeds.txt file and modify the 
 # For example: plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
 
 
-plugchaind start --minimum-gas-prices 0.025line
+plugchaind start
 ```
 
 

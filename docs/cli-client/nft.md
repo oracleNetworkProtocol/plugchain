@@ -32,8 +32,8 @@ The above `issue-class`,`issue-nft`,`edit-nft`,`transfer-class`,`transfer-nft`,`
 | Name, shorthand | Optional value | Description | Required |
 | ----------- | ---- | ------------------ | ---- |
 | --from | | The address used to sign the transaction sent by the execution function | true |
-| --chain-id | plugchain | ID of the chain | true |
-| --fees | 200plug | Pay transaction fees | true |
+| --chain-id | plugchain_520-1 | ID of the chain | true |
+| --fees | 200uplugcn | Pay transaction fees | true |
 | --home | ~/.plugchain | The directory where the chain data is located | Optional |
 
 

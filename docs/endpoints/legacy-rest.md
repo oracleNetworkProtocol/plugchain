@@ -322,7 +322,7 @@ The same code as integrating with Plug Chain Hub-v0.16.3 mainnet. The transactio
                     "to_address": "gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "1000000"
                         }
                     ]
@@ -332,7 +332,7 @@ The same code as integrating with Plug Chain Hub-v0.16.3 mainnet. The transactio
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "30000"
                 }
             ],
@@ -434,7 +434,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
                           "to_address": "gx1w976a5jrhsj06dqmrh2x9qxzel74qtcmapklxc",
                           "amount": [
                               {
-                                  "denom": "plug",
+                                  "denom": "uplugcn",
                                   "amount": "1000000"
                               }
                           ]
@@ -444,7 +444,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
               "fee": {
                   "amount": [
                       {
-                          "denom": "plug",
+                          "denom": "uplugcn",
                           "amount": "30000"
                       }
                   ],

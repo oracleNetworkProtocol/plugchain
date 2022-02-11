@@ -37,7 +37,7 @@
 
 | 字段                | 描述                   | 有效范围                                                 | 当前值                                                                                                         |
 | ------------------- | ---------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `gov/depositparams` | 提议抵押阶段的相关参数 | max_deposit_period:(0, 9223372036854775807]              | {"min_deposit": [{"denom": "plug", "amount": "10000000"}], "max_deposit_period": "604800s" },                |
+| `gov/depositparams` | 提议抵押阶段的相关参数 | max_deposit_period:(0, 9223372036854775807]              | {"min_deposit": [{"denom": "uplugcn", "amount": "10000000"}], "max_deposit_period": "604800s" },                |
 | `gov/votingparams`  | 提议投票阶段的相关参数 | voting_period:(0, 9223372036854775807]                   | {"voting_period": "1209600s"}                                                                                   |
 | `gov/tallyparams`   | 投票统计阶段的相关参数 | quorum:[0,1]<br>threshold:(0,1]<br/>veto_threshold:(0,1] | {"quorum":"0.334000000000000000","threshold": "0.500000000000000000","veto_threshold": "0.334000000000000000"} |
 
@@ -56,8 +56,8 @@
 | 字段             | 描述           | 有效范围 | 当前值 |
 | ---------------- | -------------- | -------- | ------ |
 | `mint/Inflation` | 代币增发频率   | [0, 0.2] | 0.13   |
-| `mint/MintDenom` | 增发的代币名称 |          | plug  |
-| `mint/params` | 增发参数 |    []      | {"mint_denom": "plug","inflation_rate_change": "0.130000000000000000","inflation_max": "0.200000000000000000","inflation_min": "0.070000000000000000","goal_bonded": "0.670000000000000000","blocks_per_year": "6311520"} |
+| `mint/MintDenom` | 增发的代币名称 |          | uplugcn  |
+| `mint/params` | 增发参数 |    []      | {"mint_denom": "uplugcn","inflation_rate_change": "0.130000000000000000","inflation_max": "0.200000000000000000","inflation_min": "0.070000000000000000","goal_bonded": "0.670000000000000000","blocks_per_year": "6311520"} |
 
 详见 [Mint](../features/mint.md)
 
@@ -80,7 +80,7 @@
 | `staking/UnbondingTime`     | 抵押解绑时间           | (0, 9223372036854775807] | 1814400s |
 | `staking/MaxValidators`     | 最大验证人数量         | (0, 4294967295]          | 100      |
 | `staking/MaxEntries`        | 解绑、转委托的最大数量 | (0, 4294967295]          | 7        |
-| `staking/BondDenom`         | 可抵押的代币           |                          | plug    |
+| `staking/BondDenom`         | 可抵押的代币           |                          | uplugcn    |
 | `staking/HistoricalEntries` | 历史条目               | [0, 4294967295]          | 10000    |
 
 详见 [Staking](../features/staking.md)

@@ -19,7 +19,7 @@ order: 3
 1. 初始化节点
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain
+plugchaind init <moniker> --chain-id=plugchain_520-1
 ```
 
 2. 下载主网公开的 `genesis.json`,`app.toml`,`config.toml`:
@@ -86,14 +86,14 @@ plugchaind status 2>&1 | jq -r '.SyncInfo.catching_up'
 
 ```bash
 plugchaind tx staking create-validator --from mywallet \
---amount 1000000plug \
+--amount 1000000uplugcn \
 --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" \
 --commission-rate="0.10" \
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation="1000000" \
---fees 20plug --chain-id plugchain
+--fees 20uplugcn --chain-id plugchain_520-1
 ```
 
 
