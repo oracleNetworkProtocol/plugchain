@@ -18,7 +18,7 @@ func GetLocalToken() Token {
 		localToken = Token{
 			Symbol:        plugchaintypes.DisplayNativeDenom,
 			Name:          "Plug Chain Hub token",
-			Scale:         plugchaintypes.BaseDenomUnit,
+			Scale:         6,
 			MinUnit:       plugchaintypes.BaseNativeDenom,
 			InitialSupply: 15989000000,
 			MaxSupply:     100000000000,

@@ -13,7 +13,7 @@ import (
 func main() {
 	setupConfig()
 
-	// app.RegisterDenoms()
+	app.RegisterDenoms()
 
 	rootCmd, _ := cmd.NewRootCmd()
 

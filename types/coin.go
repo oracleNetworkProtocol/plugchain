@@ -1,8 +1,6 @@
 package types
 
 import (
-	"math/big"
-
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
@@ -28,7 +26,7 @@ const (
 )
 
 // PowerReduction defines the default power reduction value for staking
-var PowerReduction = sdk.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), big.NewInt(BaseDenomUnit), nil))
+// var PowerReduction = sdk.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), big.NewInt(BaseDenomUnit), nil))
 
 // NewSocketCoin is a utility function that returns an "uplugcn" coin with the given sdk.Int amount.
 // The function will panic if the provided amount is negative.
