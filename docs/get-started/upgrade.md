@@ -11,8 +11,8 @@ Plug Chain will stop running the main chain at block height `3000000` and upgrad
 The upgrade contents are as follows:
 1. Upgrade the mainnet and change the chain-id to `plugchain_520-1`
 2. Modify the coin name `plug` on the chain to: (the data of the relevant coins on the chain are data with a precision of 0, and the coin name with a precision of 6 is used for wallet, browser, and external APP application display)
-   - precision 0: `uuplugcn`
-   - Precision 6: `uplugcn`
+   - precision 0: `uplugcn`
+   - Precision 6: `plugcn`
 3. Modify the community proposal module (gov) `fundraising` and `voting period`, the overall revision is 14 days
 4. Adjust the maximum number of validators to `50`
 5. Access the EVM module
