@@ -48,9 +48,8 @@ Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`
 
 ```bash
 # 拉取v1.0.0版本代码 （本地可使用 `git tag` 查看下tag版本，如果有 `v1.0.0`,跳过此步骤）
-git fetch origin v1.0.0
-
-# 执行编译二进制文件
+cd plugchain
+git fetch --all && git checkout v1.0.0
 make install
 
 ```

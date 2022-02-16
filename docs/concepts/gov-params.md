@@ -1,3 +1,6 @@
+---
+order: 6
+---
 # Gov Parameters
 
 In Plug Chain Hub, there are some special parameters that can be modified through on-chain governance.
