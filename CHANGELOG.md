@@ -8,6 +8,10 @@
 
 ## v1.0.0 
 - x/nft finish
+- add EVM module
+- add feemarket module
+- add feegrant module
+- update x/token maxsymbollen to 8
 
 ## v0.7.1 - 2021-10-18
 
