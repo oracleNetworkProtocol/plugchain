@@ -6,6 +6,8 @@
 *.swm
 *.swn
 .vscode
+.goreleaser.yml
+.release-env
 
 # IDE
 .idea/

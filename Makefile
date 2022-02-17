@@ -201,7 +201,7 @@ docs-rely:
 	@echo "install vuepress rely ..."
 	@cd docs/ && sudo cnpm i
 
-docs-build: 
+build-docs: 
 	@echo "vuepress build ..."
 	@cd docs/ && ./deploy.sh 
 	
@@ -299,7 +299,7 @@ release-dry-run:
 		-v ${GOPATH}/pkg:/go/pkg \
 		-w /go/src/$(PACKAGE_NAME) \
 		ghcr.io/troian/golang-cross:${GOLANG_CROSS_VERSION} \
-		--rm-dist --skip-validate  --snapshot
+		--skip-validate  --snapshot
 
 release:
 	@if [ ! -f ".release-env" ]; then \
