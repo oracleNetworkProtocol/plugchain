@@ -197,16 +197,26 @@ localnet:
 ###############################################################################
 ###                            Documentation                                ###
 ###############################################################################
-docs-rely: 
-	@echo "install vuepress rely ..."
-	@cd docs/ && sudo cnpm i
-
-build-docs: 
-	@echo "vuepress build ..."
-	@cd docs/ && ./deploy.sh 
+build-docs:
+	@$(MAKE) docs-tools-stamp && \
+	cd docs && \
+	./deploy.sh 
 	
+docs-tools:
+ifeq (, $(shell which vuepress))
+	@echo "Installing vuepress..."
+	@npm install -g vuepress
+else
+	@echo "vuepress already installed; skipping..."
+endif
 
-.PHONY: npm-vue vuepress
+docs-tools-stamp: docs-tools
+	# Create dummy file to satisfy dependency and avoid
+	# rebuilding when this Makefile target is hit twice
+	# in a row.
+	touch $@
+
+.PHONY: build-docs docs-tools docs-tools-stamp
 
 
 ###############################################################################
