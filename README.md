@@ -17,6 +17,7 @@
     <a href="https://github.com/oracleNetworkProtocol/plugchain/issues">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/oracleNetworkProtocol/plugchain">
     </a>
+    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/Plugchainclub?style=plastic">
 </div>
 
 This repository hosts `plugchain`, the implementation of the Plug Chain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
