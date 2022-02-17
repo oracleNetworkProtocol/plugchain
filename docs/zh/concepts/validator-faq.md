@@ -99,7 +99,7 @@ Plug Chain Hub 基础概念请参考 [基础概念](general-concepts.md)
 
 ### 想要成为活跃的验证人最少要抵押多少plug
 
-最低抵押 `1plug`,链上为 `1*10^6 plug` 即可创建验证人，但能否成为活跃的验证人取决于您的抵押（包括受委托）数量是否超过第100名验证人。
+最低抵押 `1plugcn`,链上为 `1*10^6 uplugcn` 即可创建验证人，但能否成为活跃的验证人取决于您的抵押（包括受委托）数量是否超过第100名验证人。
 
 ### 验证人可以卷走委托人的资金吗
 
@@ -205,7 +205,7 @@ unbonding_time: "2021-09-02T18:02:44.032627007Z"
 - 如果`plugchaind`没有运行，请重新启动：
 
   ```bash
-  plugchaind start --minimum-gas-prices 0.0001plug
+  plugchaind start --minimum-gas-prices 0.0001uplugcn
   ```
 
 - 等待节点赶上最新的区块，检查验证人会被监禁到什么时间（了解[监禁时长](gov-params.md#slashing-模块可治理参数)）：
@@ -223,7 +223,7 @@ unbonding_time: "2021-09-02T18:02:44.032627007Z"
 - 如果当前时间已经超过了 `Jailed Until`，即可执行[解禁](../cli-client/slashing.md#plugchaind-tx-slashing-unjail)操作：
   
   ```bash
-  plugchaind tx slashing unjail --from mykey --fees 20plug --chain-id plugchain
+  plugchaind tx slashing unjail --from mykey --fees 20uplugcn --chain-id plugchain_520-1
   ```
 
 - 再次检查您的验证人，看看您的投票权是否恢复。

@@ -2,53 +2,82 @@
 order: 7
 ---
 
-# Plug Chain Hub Upgrade, Instructions
+# Plug Chain Hub latest version upgrade
 
-This document describes the steps for validator and full node operators for the successful execution of the *upgrade plan*. 
-
-TOC:
-- [Preparing for the upgrade](#preparing-for-the-upgrade)
-  - [Backups](#backups)
-  - [Testing](#testing)
-- [Upgrade process](./upgrade-process.md)
-- [Rollback plan](#rollback-plan)
-- [Risks](#risks)
+This document describes the steps for validators and full node operators to successfully execute the *upgrade plan*. The official is not responsible for the loss of assets due to the upgrade. Please back up your assets when upgrading.
+Plug Chain will stop running the main chain at block height `3000000` and upgrade to the official version `v1.0`.
 
 
-## Preparing for the upgrade
+The upgrade contents are as follows:
+1. Upgrade the mainnet and change the chain-id to `plugchain_520-1`
+2. Modify the coin name `plug` on the chain to: (the data of the relevant coins on the chain are data with a precision of 0, and the coin name with a precision of 6 is used for wallet, browser, and external APP application display)
+   - precision 0: `uplugcn`
+   - Precision 6: `plugcn`
+3. Modify the community proposal module (gov) `fundraising` and `voting period`, the overall revision is 14 days
+4. Adjust the maximum number of validators to `50`
+5. Access the EVM module
+6. Enable the function of destroying `uplugcn`
+7. Overall adjustment of `x/liquidity`, `x/token` and other module fee parameters
+8. The wallet supports two key signature algorithms `secp256k1`, `eth_secp256k1`
 
-### Backups
+Precautions:
+1. No transaction records are kept
+2. The current block height is retained, and the original block height data is not retained
+3. Retain proposal information
+4. Keep the liquidity project data and keep the token data
 
-Prior to the upgrade, validators are encouraged to take a full data snapshot. Snapshotting depends heavily on infrastructure, but generally this can be done by backing up the `.plugchain` directory.
 
-It is critically important for validator operators to back-up the `.plugchain/data/priv_validator_state.json` file after stopping the plugchaind process. This file is updated every block as your validator participates in consensus rounds. It is a critical file needed to prevent double-signing, in case the upgrade fails and the previous chain needs to be restarted.
 
-### Testing
 
-For those validator and full node operators that are interested in ensuring preparedness for the impending upgrade , use plugchain-tesetnet-1 network to test upgrade.
+# backup
 
-## Upgrade duration
+*First you need to stop the node running*
 
-The upgrade may take several hours to complete because Plug Chain Hub participants operate globally with differing operating hours and it may take some time for operators to upgrade their binaries and connect to the network.
+1. Validator Node
+ - Backup entire data directory, default `.plugchain/`
+ - Backup `.plugchain/data/priv_validator_state.json` file, the data in `.plugchain/data/` can be deleted.
+ 
+2. Other functional nodes
+ - Backup wallet directory
 
-## Rollback plan
 
-During the network upgrade, core Plug Chain teams will be keeping an ever vigilant eye and communicating with operators on the status of their upgrades. During this time, the core teams will listen to operator needs to determine if the upgrade is experiencing unintended challenges. In the event of unexpected challenges, the core teams, after conferring with operators and attaining social consensus, may choose to declare that the upgrade will be skipped. 
+# Steps 
 
-Steps to skip this upgrade proposal are simply to resume the Plug Chain Hub network with the (downgraded) v0.5.0 binary using the following command:
+1. Get the `v1.0.0` binary file plugchaind
 
-> plugchaind start --unsafe-skip-upgrade 762880
+```bash
+# Pull the v1.0.0 version code (you can use `git tag` to view the next tag version locally, if there is `v1.0.0`, skip this step)
+git fetch origin v1.0.0
 
-Note: There is no particular need to restore a state snapshot prior to the upgrade height, unless specifically directed by core Plug Chain teams.
+# Execute the compiled binary
+make install
 
-Important: A social consensus decision to skip the upgrade will be based solely on technical merits, thereby respecting and maintaining the decentralized governance process of the upgrade proposal's successful YES vote.
+````
 
-## Communications
+2. Create a new data directory, you can use --home to specify the data directory
 
-Operators are encouraged to join the `#validators-verified` channel of the Plug Chain Community Discord. This channel is the primary communication tool for operators to ask questions, report upgrade status, report technical issues, and to build social consensus should the need arise. This channel is restricted to known operators and requires verification beforehand - requests to join the `#validators-verified` channel can be sent to the `#validators-public` channel.  
+```bash
+plugchaind init myNode --chain-id plugchain_520-1
+````
 
-## Risks
+3. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
 
-As a validator performing the upgrade procedure on your consensus nodes carries a heightened risk of double-signing and being slashed. The most important piece of this procedure is verifying your software version and genesis file hash before starting your validator and signing.
 
-The riskiest thing a validator can do is discover that they made a mistake and repeat the upgrade procedure again during the network startup. If you discover a mistake in the process, the best thing to do is wait for the network to start before correcting it. 
+```bash
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+````
+
+*The fourth step only requires the operation of the validator node, and the rest of the nodes are skipped*
+
+4. The validator node needs to overwrite the `node_key.json` and `priv_validator_key.json` files in the config directory of the original node into the config of the new data directory to identify the validator, and other nodes do not need it.
+
+5. * Modify the current configuration according to the original node configuration to meet your own needs. If you need to operate the wallet, you need to import the backup wallet directory into the new data directory before you can operate. *
+
+
+6. Start the node
+
+```bash
+plugchaind start
+````

@@ -44,13 +44,13 @@ plugchaind tx distribution set-withdraw-addr [withdraw-addr] [flags]
 1.`withdraw-all-rewards`：提取所有在外的委托收益
 
 ```bash
-plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 2.`withdraw-rewards` ：从指定验证人处提取委托收益
 
 ```bash
-plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### 查询收益

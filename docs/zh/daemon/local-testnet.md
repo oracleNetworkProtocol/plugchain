@@ -21,7 +21,7 @@ order: 3
 初始化 genesis.json 文件，它将帮助你启动网络
 
 ```bash
-plugchaind init testing --chain-id=testing
+plugchaind init testing --chain-id=plugchain_521-1
 ```
 
 ### 创建一个钱包
@@ -41,7 +41,7 @@ plugchaind keys add MyValidator
 :::
 
 ```bash
-plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150000000plug
+plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150000000uplugcn
 ```
 
 ### plugchaind gentx
@@ -49,7 +49,7 @@ plugchaind add-genesis-account $(plugchaind keys show MyValidator --address) 150
 生成创建验证人的交易。gentx 存储在 `~/.plugchain/config/` 中
 
 ```bash
-plugchaind gentx MyValidator 100000000plug --chain-id=testing 
+plugchaind gentx MyValidator 100000000uplugcn --chain-id=plugchain_521-1 
 ```
 
 ### plugchaind collect-gentxs

@@ -32,8 +32,8 @@
 | 名称，速记  | 可选值 | 描述               | 必须 | 
 | ----------- | ---- | ------------------ | ---- |
 | --from       |      | 执行功能发交易用于签名的地址 |   true   |
-| --chain-id |   plugchain   | 链的ID          |    true  |
-| --fees      |   200plug   | 支付交易的费用            |    true  |
+| --chain-id |   plugchain_520-1   | 链的ID          |    true  |
+| --fees      |   200uplugcn   | 支付交易的费用            |    true  |
 | --home      |   ~/.plugchain   | 链数据所在目录            |    可选  |
 
 

@@ -8,7 +8,7 @@ The governance process is divided in a few steps that are outlined below:
   deposit.
 
 - **Vote:** Once deposit reaches a certain value (`MinDeposit`), proposal is
-  confirmed and vote opens. Bonded plug holders can then send `TxGovVote`
+  confirmed and vote opens. Bonded uplugcn holders can then send `TxGovVote`
   transactions to vote on the proposal.
 
 - If the proposal involves a software upgrade:
@@ -23,7 +23,7 @@ The governance process is divided in a few steps that are outlined below:
 
 #### Right to submit a proposal
 
-Any plug holder, whether bonded or unbonded, can submit proposals by sending a
+Any uplugcn holder, whether bonded or unbonded, can submit proposals by sending a
 `TxGovProposal` transaction. Once a proposal is submitted, it is identified by
 its unique `proposalID`.
 
@@ -70,21 +70,21 @@ When a proposal finalized, the coins from the deposit are either refunded or bur
 #### Participants
 
 _Participants_ are users that have the right to vote on proposals. On the
-Plug Chain Hub, participants are bonded plug holders. Unbonded plug holders and
+Plug Chain Hub, participants are bonded uplugcn holders. Unbonded uplugcn holders and
 other users do not get the right to participate in governance. However, they
 can submit and deposit on proposals.
 
 Note that some _participants_ can be forbidden to vote on a proposal under a
 certain validator if:
 
-- _participant_ bonded or unbonded plug to said validator after proposal
+- _participant_ bonded or unbonded uplugcn to said validator after proposal
   entered voting period.
 
 - _participant_ became validator after proposal entered voting period.
 
-This does not prevent _participant_ to vote with plug bonded to other
-validators. For example, if a _participant_ bonded some plug to validator A
-before a proposal entered voting period and other plug to validator B after
+This does not prevent _participant_ to vote with uplugcn bonded to other
+validators. For example, if a _participant_ bonded some uplugcn to validator A
+before a proposal entered voting period and other uplugcn to validator B after
 proposal entered voting period, only the vote under validator B will be
 forbidden.
 
@@ -132,7 +132,7 @@ that proposals are accepted if the proportion of `Yes` votes (excluding
 proportion of `NoWithVeto` votes is inferior to 1/3 (excluding `Abstain`
 votes).
 
-Proposals can be accepted before the end of the voting period if they meet a special condition. Namely, if the ratio of `Yes` votes to `InitTotalVotingPower`exceeds 2:3, the proposal will be immediately accepted, even if the `Voting period` is not finished. `InitTotalVotingPower` is the total voting power of all bonded plug holders at the moment when the vote opens.
+Proposals can be accepted before the end of the voting period if they meet a special condition. Namely, if the ratio of `Yes` votes to `InitTotalVotingPower`exceeds 2:3, the proposal will be immediately accepted, even if the `Voting period` is not finished. `InitTotalVotingPower` is the total voting power of all bonded uplugcn holders at the moment when the vote opens.
 This condition exists so that the network can react quickly in case of urgency.
 
 #### Inheritance
@@ -187,10 +187,10 @@ echo '{
       "value": 105
     }
   ],
-  "deposit": "1000plug"
+  "deposit": "1000uplugcn"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### Community pool spending
@@ -204,10 +204,10 @@ echo '{
     "description": "Developer rewards",
     "recipient": "gx1s5afhd6gxevu37mkqcvvsj8qeylhn0rz46zdlq",
     "amount": "10000plug",
-    "deposit": "1000plug"
+    "deposit": "1000uplugcn"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### Software upgrade

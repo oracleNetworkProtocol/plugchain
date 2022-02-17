@@ -14,7 +14,7 @@ plugchaind可执行程序是运行Plug Chain Hub节点的入口，包括验证�
 
 - 2 CPU
 - 内存：4GB
-- 磁盘：256GB SSD
+- 磁盘：500GB SSD
 - 系统：Ubuntu 16.04 LTS +
 - 带宽：5Mbps
 - 允许TCP端口26656和26657的所有传入连接

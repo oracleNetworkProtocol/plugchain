@@ -34,7 +34,7 @@ Among them, the parameters available for query for each subspace are as follows:
 | `UnbondingTime`     | Mortgage redemption time                                        | 3w(weeks) |
 | `MaxValidators`     | Maximum number of validators                                    | 100       |
 | `MaxEntries`        | The maximum number of unbinding/redelegation orders in progress | 7         |
-| `BondDenom`         | Bond denom                                                      | plug     |
+| `BondDenom`         | Bond denom                                                      | uplugcn     |
 | `HistoricalEntries` | The number of historical entries                                | 100       |
 
 ## mint
@@ -42,7 +42,7 @@ Among them, the parameters available for query for each subspace are as follows:
 | key         | description                 | default |
 | ----------- | --------------------------- | ------- |
 | `Inflation` | Token issuance frequency    | 0.04    |
-| `MintDenom` | Denom of the token mintable | plug   |
+| `MintDenom` | Denom of the token mintable | uplugcn   |
 
 ## distribution
 
@@ -75,11 +75,11 @@ Among them, the parameters available for query for each subspace are as follows:
 
 | key           | description  | default   |
 | ------------- | ------------ | --------- |
-| `ConstantFee` | Constant Fee | 1000plug |
+| `ConstantFee` | Constant Fee | 1000uplugcn |
 
 ## token
 
 | key           | description | default   |
 | ------------- | ----------- | --------- |
-| `IssueTokenBaseFee` | Constant Fee    | 10000plug |
+| `IssueTokenBaseFee` | Constant Fee    | 10000uplugcn |
 | `OperateTokenFeeRatio` | Operation Fee | 0.1 |

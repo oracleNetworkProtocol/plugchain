@@ -119,7 +119,7 @@ plugchaind tx gov submit-proposal software-upgrade <plan-name> \
   --description <description> \
   --from=<from> \
   --chain-id=<chain-id> \
-  --fees=20plug \
+  --fees=20uplugcn \
   -b block
 ```
 
@@ -128,13 +128,13 @@ plugchaind tx gov submit-proposal software-upgrade <plan-name> \
 软件升级提案和其他普通提案的执行流程基本一致，都需要验证人、委托人为该提案发表意见，具体信息请参考[治理模块](./governance.md)。为提案抵押的命令行示例如下：
 
 ```bash
-plugchaind tx gov deposit <proposal-id> <deposit> --from=<from> --chain-id=<chain-id> --fees=20plug -b block -y
+plugchaind tx gov deposit <proposal-id> <deposit> --from=<from> --chain-id=<chain-id> --fees=20uplugcn -b block -y
 ```
 
 一旦抵押金额达到最小抵押金额，提案将进入投票期，验证人或者委托人需要对该提案发起投票，发起投票的命令行示例如下：
 
 ```bash
-plugchaind tx gov vote <proposal-id> <option> --from=<from> --chain-id=<chain-id> --fees=20plugchaind -b block -y
+plugchaind tx gov vote <proposal-id> <option> --from=<from> --chain-id=<chain-id> --fees=20uplugcnchaind -b block -y
 ```
 
 当软件升级提案被通过后，升级模块会创建一项升级计划，在指定高度或者时间使所有节点停止网络共识，等待新的软件重启网络。

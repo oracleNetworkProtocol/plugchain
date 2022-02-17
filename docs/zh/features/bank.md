@@ -19,7 +19,7 @@
     该命令包括了交易“构造，签名，广播”的所有操作。 如从账户A转账10plug给账户B：
 
     ```bash
-    plugchaind tx bank send [A] [B] [10plug] --fees=20plug --chain-id=plugchain
+    plugchaind tx bank send [A] [B] [10plug] --fees=20uplugcn --chain-id=plugchain_520-1
     ```
 
     Plug Chain支持多种代币流通，将来Plug Chain可以在一个交易中包含多种代币交换。
@@ -29,7 +29,7 @@
     为了提高账户安全性，Plug Chain支持交易离线签名保护账户的私钥。在任意交易中，使用参数--generate-only可以构建一个未签名的交易。使用转账交易作为示例：
 
     ```bash
-    plugchaind tx bank send [from_key_or_address] [to_address] [amount] --fees=20plug --generate-only
+    plugchaind tx bank send [from_key_or_address] [to_address] [amount] --fees=20uplugcn --generate-only
     ```
 
     以上命令将构建一未签名交易：
@@ -51,7 +51,7 @@
     对上述的离线交易进行签名：
 
     ```bash
-    plugchaind tx sign <file> --chain-id=plugchain --from=<key-name>
+    plugchaind tx sign <file> --chain-id=plugchain_520-1 --from=<key-name>
     ```
 
     将返回已签名的交易：

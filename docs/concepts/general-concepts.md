@@ -62,9 +62,9 @@ The validator and its delegators can share the following rewards by proportion:
 
 - **Fee**
 
-    Various transactions in the plug network need to pay a certain fee. Plug Chain Hub sets the minimum unit price of Gas (ie min-gas-price) in the system.
+    Various transactions in the uplugcn network need to pay a certain fee. Plug Chain Hub sets the minimum unit price of Gas (ie min-gas-price) in the system.
   
-   Handling fees can only be paid using plug at present. In the future, a whitelist of handling fees may be maintained through on-chain governance. Any token in the whitelist can be used to pay for handling fees.
+   Handling fees can only be paid using uplugcn at present. In the future, a whitelist of handling fees may be maintained through on-chain governance. Any token in the whitelist can be used to pay for handling fees.
 
    The fee income will be distributed according to the weight of the validator.
 
