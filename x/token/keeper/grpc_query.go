@@ -69,7 +69,7 @@ func (q Keeper) Tokens(c context.Context, req *types.QueryTokensRequest) (*types
 		tokenStore := prefix.NewStore(store, types.PrefixTokenForSymbol)
 		pageRes, err = query.Paginate(tokenStore, req.Pagination, func(key, value []byte) error {
 			var token types.Token
-			q.cdc.MustUnmarshalBinaryBare(value, &token)
+			q.cdc.MustUnmarshal(value, &token)
 			tokens = append(tokens, &token)
 			return nil
 		})
@@ -80,7 +80,7 @@ func (q Keeper) Tokens(c context.Context, req *types.QueryTokensRequest) (*types
 		tokenStore := prefix.NewStore(store, types.KeyTokens(owner, ""))
 		pageRes, err = query.Paginate(tokenStore, req.Pagination, func(key, value []byte) error {
 			var symbol gogotypes.StringValue
-			q.cdc.MustUnmarshalBinaryBare(value, &symbol)
+			q.cdc.MustUnmarshal(value, &symbol)
 			token, err := q.GetToken(ctx, symbol.Value)
 			if err == nil {
 				tokens = append(tokens, token)
