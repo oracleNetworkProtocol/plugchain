@@ -54,9 +54,9 @@ The process of derivating accounts from the seed is deterministic. This means th
 
 The funds stored in an account are controlled by the private key. This private key is generated using a one-way function from the mnemonic. If you lose the private key, you can retrieve it using the mnemonic. However, if you lose the mnemonic, you will lose access to all the derived private keys. Likewise, if someone gains access to your mnemonic, they gain access to all the associated accounts.
 
-## PLUGChain Hub Key
+## Plug Chain Hub Key
 
-The PLUGChain Hub Wallet is a HD Wallet base on [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki). BIP44 defines a logical hierarchy for deterministic wallets based on an algorithm described in [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), which allows the handling of multiple coins, multiple accounts, external and internal chains per account and millions of addresses per chain, such as BTC and ETH.
+The Plug Chain Hub Wallet is a HD Wallet base on [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki). BIP44 defines a logical hierarchy for deterministic wallets based on an algorithm described in [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), which allows the handling of multiple coins, multiple accounts, external and internal chains per account and millions of addresses per chain, such as BTC and ETH.
 
 BIP44 defines the following 5 levels in BIP32 path:
 
@@ -64,6 +64,77 @@ BIP44 defines the following 5 levels in BIP32 path:
 m / purpose' / coin_type' / account' / change / address_index
 ```
 
-The PLUGChain Hub coin_type is same as cosmos stake token `ATOM` 118 registered in [SLIP44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
+The Plug Chain Hub coin_type is same as cosmos stake token `ATOM` 118 registered in [SLIP44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md).
 
-So the prefix of PLUGChain Hub key BIP44 path is `44'/118'/`, and its default path is `44'/118'/0'/0/0`.
+So the prefix of Plug Chain Hub key BIP44 path is `44'/118'/`, and its default path is `44'/118'/0'/0/0`.
+
+##Golang generate address code implementation
+
+```golang
+package main
+
+import (
+	"fmt"
+
+	"github.com/cosmos/cosmos-sdk/crypto/hd"
+	"github.com/cosmos/cosmos-sdk/crypto/keyring"
+	"github.com/oracleNetworkProtocol/plugchain/app"
+)
+
+func main() {
+	addWallet("test2", "")
+}
+
+func addWallet(name string, password string) {
+	kr, err := keyring.New(app.Name, "test", "test", nil)
+	if err != nil {
+		fmt.Println("New error", err)
+		return
+	}
+	var (
+		english keyring.Language = 1
+		uid                      = "temporary"
+	)
+	_, seed, err := kr.NewMnemonic(uid, english, "", hd.Secp256k1)
+	if err != nil {
+		fmt.Println("NewMnemonic error:", err)
+		return
+	}
+
+	kr.Delete(uid)
+
+	path := hd.CreateHDPath(118, 0, 0).String()
+
+	info, err := kr.NewAccount(name, seed, password, path, hd.Secp256k1)
+
+	if err != nil {
+		fmt.Println("NewAccount error:", err)
+		return
+	}
+	// bech32Addr, err := bech32.ConvertAndEncode(app.Bech32PrefixAccAddr, info.GetAddress())
+	// if err != nil {
+	// 	fmt.Println("ConvertAndEncode error:", err)
+	// }
+
+	// bechPubKey, err := sdk.Bech32ifyPubKey(sdk.Bech32PubKeyTypeAccPub, info.GetPubKey())
+
+	out, err := keyring.Bech32KeyOutput(info)
+	if err != nil {
+		fmt.Println("Bech32KeyOutput error:", err)
+		return
+	}
+	cdc := app.MakeEncodingConfig()
+
+	out.Mnemonic = seed
+	jsonString, err := cdc.Amino.MarshalJSON(out)
+	if err != nil {
+		fmt.Println("MarshalJSON error:", err)
+		return
+	}
+
+	fmt.Println(string(jsonString))
+
+}
+
+
+```

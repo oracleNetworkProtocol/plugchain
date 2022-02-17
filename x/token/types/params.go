@@ -5,6 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
+	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"gopkg.in/yaml.v2"
 )
 
@@ -65,7 +66,7 @@ func (p Params) String() string {
 func DefaultParams() Params {
 	localToken = GetLocalToken()
 	return Params{
-		IssueTokenBaseFee:    sdk.NewCoin(localToken.Symbol, sdk.NewInt(50000)),
+		IssueTokenBaseFee:    plugchaintypes.NewSocketCoin(sdk.NewInt(500000000)),
 		OperateTokenFeeRatio: sdk.NewDecWithPrec(1, 1), // 0.1 (10%)
 	}
 }

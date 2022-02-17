@@ -13,16 +13,6 @@ var (
 	ModuleCdc = codec.NewProtoCodec(cdctypes.NewInterfaceRegistry())
 )
 
-func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterInterface((*TokenI)(nil), nil)
-	cdc.RegisterConcrete(&Token{}, "x/token/token", nil)
-	cdc.RegisterConcrete(&MsgIssueToken{}, "x/token/MsgIssueToken", nil)
-	cdc.RegisterConcrete(&MsgMintToken{}, "x/token/MsgMintToken", nil)
-	cdc.RegisterConcrete(&MsgEditToken{}, "x/token/MsgEditToken", nil)
-	cdc.RegisterConcrete(&MsgBurnToken{}, "x/token/MsgBurnToken", nil)
-	cdc.RegisterConcrete(&MsgTransferOwnerToken{}, "x/token/MsgTransferOwnerToken", nil)
-}
-
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 
 	registry.RegisterImplementations((*sdk.Msg)(nil),

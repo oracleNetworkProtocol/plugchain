@@ -1,0 +1,91 @@
+syntax = "proto3";
+package plugchain.nft;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "nft/nft.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    rpc Class (QueryClassRequest) returns (QueryClassResponse) {
+        option (google.api.http).get = "/nft/classes/{class_id}";
+    };
+
+    rpc Classes (QueryClassesRequest) returns (QueryClassesResponse) {
+        option (google.api.http).get = "/nft/classes";
+    }
+    rpc NFT (QueryNFTRequest) returns (QueryNFTResponse) {
+        option (google.api.http).get = "/nft/nfts/{class_id}/{nft_id}";
+    }
+    rpc Collection (QueryCollectionRequest) returns (QueryCollectionResponse) {
+        option (google.api.http).get = "/nft/collections/{class_id}";
+    }
+
+    rpc Supply(QuerySupplyRequest) returns (QuerySupplyResponse) {
+        option (google.api.http).get = "/nft/collections/{class_id}/supply";
+    }
+    rpc Owner (QueryOwnerRequest) returns (QueryOwnerResponse) {
+        option (google.api.http).get = "/nft/nfts/{address}/{class_id}";
+    }
+}
+
+
+message QueryClassRequest {
+    string class_id = 1 [ (gogoproto.moretags) = "yaml:\"class_id\"" ];
+}
+
+message QueryClassResponse {
+    Class class = 1 ;
+}
+
+message QueryClassesRequest {
+    cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryClassesResponse{
+    repeated Class classes = 1 [ (gogoproto.nullable) = false ];
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryNFTRequest {
+    string class_id = 1 [ (gogoproto.moretags) = "yaml:\"class_id\"" ];
+    string nft_id = 2 [ (gogoproto.moretags) = "yaml:\"nft_id\"" ];
+}
+
+message QueryNFTResponse{
+    NFT nft = 1; 
+}
+
+message QueryCollectionRequest {
+    string class_id = 1;
+    cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+
+message QueryCollectionResponse{
+    Collection collection = 1;
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+
+message QuerySupplyRequest {
+    string class_id = 1 [ (gogoproto.moretags) = "yaml:\"class_id\"" ];
+}
+
+message QuerySupplyResponse {
+    uint64 amount = 1;
+}
+
+message QueryOwnerRequest  {
+    string class_id = 1 [ (gogoproto.moretags) = "yaml:\"class_id\"" ];
+    string address = 2; 
+    cosmos.base.query.v1beta1.PageRequest pagination = 3;
+}
+
+message QueryOwnerResponse {
+    Owner owner = 1;
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

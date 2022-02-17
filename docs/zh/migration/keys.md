@@ -1,6 +1,6 @@
 # Keys Migrate
 
-PLUGChain Hub v0.2.x 的密钥文件（私钥）使用数据库存储。 新版本 将提供一种存储用户私钥的新方法。为了支持将旧密钥文件迁移到新版本，提供了两种解决方案。
+Plug Chain Hub v0.2.x 的密钥文件（私钥）使用数据库存储。 新版本 将提供一种存储用户私钥的新方法。为了支持将旧密钥文件迁移到新版本，提供了两种解决方案。
 
 ## 助记词
 
@@ -12,9 +12,9 @@ plugchaind keys add n2 --recover
 
 ## Keystore
 
-这种方法适用于丢失了助记词但保存了密钥的 db 文件或密钥文件的用户。PLUGChain Hub v0.2.x 的密钥文件的格式与以太坊的格式相似，并且也完全兼容。因此，用户可以使用密钥库导出旧的私钥，新版本导入密钥库以完成密钥迁移，操作流程如下：
+这种方法适用于丢失了助记词但保存了密钥的 db 文件或密钥文件的用户。Plug Chain Hub v0.2.x 的密钥文件的格式与以太坊的格式相似，并且也完全兼容。因此，用户可以使用密钥库导出旧的私钥，新版本导入密钥库以完成密钥迁移，操作流程如下：
 
-**1. 通过 PLUGChain Hub v0.2.x 导出 keystore 文件**
+**1. 通过 Plug Chain Hub v0.2.x 导出 keystore 文件**
 
 ```bash
 plugcli keys export test1 --output-file=key.json --home ./plugcli_test 
@@ -45,7 +45,7 @@ plugcli keys export test1 --output-file=key.json --home ./plugcli_test
 }
 ```
 
-**2. 通过 PLUGChain Hub  导入 keystore 文件**
+**2. 通过 Plug Chain Hub  导入 keystore 文件**
 
 ```bash
 plugchaind keys import n2 key.json --keyring-backend file 

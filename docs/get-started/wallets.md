@@ -2,7 +2,12 @@
 order: 5
 ---
 
-# PLUGChain  Wallets
+# Plug Chain  Wallets
 
-To be developed, if you have good suggestions or suggestions for the wallet, please contact the community administrator. Thank you very much for your support and encouragement
+These wallets support transfer and pledge, please fully study their security before using. The listing of this information is only for the convenience of downloading, and does not mean that you are responsible for the security of the wallet.
 
+- [Android Cosmo Wallet](https://cosmo-wallet.oss-accelerate.aliyuncs.com/app-release.apk)
+
+- [MacOs Cosmo Wallet Desktop](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.dmg)
+
+- [Windows Cosmo Wallet Desktop](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.exe)

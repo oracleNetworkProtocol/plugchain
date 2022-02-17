@@ -1,7 +1,7 @@
 #!/bin/bash
 . ./check-go.sh
 
-echo "-- Clear old plugchain testnet data and install plugchain and setup the node --"
+echo "-- Clear old Plug Chain testnet data and install plugchain and setup the node --"
 
 rm -rf ~/.plugchain
 
@@ -9,7 +9,7 @@ YOUR_KEY_NAME=$1
 YOUR_NAME=$2
 DAEMON=plugchaind
 DENOM=line
-CHAIN_ID=plugchain-testnet-1
+CHAIN_ID=plugchain-test
 SEEDS=""
 APPNAME="~/.plugchain"
 
@@ -17,7 +17,7 @@ echo "install plugchain"
 git clone https://github.com/oracleNetworkProtocol/plugchain $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 cd $GOPATH/src/github.com/oracleNetworkProtocol/plugchain
 git fetch
-git checkout v0.2.0
+git checkout v0.5.0
 make install
 
 echo "Creating keys"
@@ -79,7 +79,7 @@ DAEMON_PATH=$(which $DAEMON)
 echo
 echo "Your account address is :"
 $DAEMON keys show $YOUR_KEY_NAME -a
-echo "Your node setup is done. You would need some tokens to start your validator. You can get some tokens from the faucet: http://www.plugchain.network/wallet/receive"
+echo "Your node setup is done. You would need some tokens to start your validator. You can get some tokens from the faucet: http://test.plugchain.network/wallet/receive"
 echo
 echo
 # echo "After receiving tokens, you can create your validator by running"

@@ -8,11 +8,11 @@ This specification briefly introduces the functionality of stake module and what
 
 ### Voting power
 
-Voting power is a consensus concept. PLUGChain Hub is a Byzantine-fault-tolerant POS blockchain network. During the consensus process, a set of validators will vote the proposal block. If a validator thinks the proposal block is valid, it will vote `yes`, otherwise, it will vote nil. The votes from different validator don't have the same weight. The weight of a vote is called the voting power of the corresponding validator.
+Voting power is a consensus concept. Plug Chain Hub is a Byzantine-fault-tolerant POS blockchain network. During the consensus process, a set of validators will vote the proposal block. If a validator thinks the proposal block is valid, it will vote `yes`, otherwise, it will vote nil. The votes from different validator don't have the same weight. The weight of a vote is called the voting power of the corresponding validator.
 
 ### Validator
 
-Validator is a full PLUGChain Hub node. If its voting power is zero, it is just a normal full node or a validator candidate. Once its voting power is positive, then it is a real validator.
+Validator is a full Plug Chain Hub node. If its voting power is zero, it is just a normal full node or a validator candidate. Once its voting power is positive, then it is a real validator.
 
 ### Delegator && Delegation
 

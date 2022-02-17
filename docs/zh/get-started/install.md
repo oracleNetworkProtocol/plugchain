@@ -3,10 +3,22 @@ order: 2
 ---
 
 # 安装
+
+以centos为例：
+
+依赖工具
+- git
+- make
+- gcc
+- wget
+
+```shell
+yum install make gcc git wget
+```
 ## 安装`go`
 
 :::tip
-编译安装 PLUGChain Hub 软件依赖 **Go 1.16+**。
+编译安装 Plug Chain Hub 软件依赖 **Go 1.16+**。
 :::
 
 按照[官方文档](https://golang.org/doc/install) 安装`go`(>=1.16)。
@@ -38,7 +50,7 @@ go version
 ```bash
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 cd plugchain
-git checkout v0.2.0
+git checkout v0.5.0
 make install
 ```
 > 如果克隆仓库比较慢或者没反应的情况，可以把克隆地址 `github.com` 换成国内镜像，已知的国内镜像有`github.com.cnpmjs.org`和`git.sdut.me/`

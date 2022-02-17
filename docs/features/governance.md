@@ -70,7 +70,7 @@ When a proposal finalized, the coins from the deposit are either refunded or bur
 #### Participants
 
 _Participants_ are users that have the right to vote on proposals. On the
-PLUGChain Hub, participants are bonded plug holders. Unbonded plug holders and
+Plug Chain Hub, participants are bonded plug holders. Unbonded plug holders and
 other users do not get the right to participate in governance. However, they
 can submit and deposit on proposals.
 

@@ -1,0 +1,48 @@
+syntax = "proto3";
+package plugchain.nft;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/nft/types";
+option (gogoproto.goproto_getters_all) = false;
+option (gogoproto.equal_all) = true;
+
+message NFT {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string name =2 ;
+    string uri = 3 [ (gogoproto.customname) = "URI" ];
+    string data = 4;
+    string owner = 5;
+}
+
+message Class {
+    string id = 1 [ (gogoproto.customname) = "ID" ];
+    string name = 2;
+    string schema = 3;
+    string symbol = 4;
+    string owner = 5;
+    bool mint_restricted = 6; 
+    bool edit_restricted = 7;
+}
+
+
+message Collection {
+    Class class = 1 [(gogoproto.nullable) = false];
+    repeated NFT nfts = 2 [ (gogoproto.customname) = "NFTs", (gogoproto.nullable) = false];
+}
+
+
+message CollectionID {
+    string Class_id = 1 [ (gogoproto.customname) = "ClassID" ];
+    repeated string nft_ids = 2 [ (gogoproto.customname) = "NFTIDs" ]; 
+}
+
+
+message Owner {
+    string address = 1;
+    repeated CollectionID collection_ids = 2 [
+        (gogoproto.moretags) = "yaml:\"cids\"",
+        (gogoproto.customname) = "CollectionIDs",
+        (gogoproto.nullable) = false
+    ] ;
+}

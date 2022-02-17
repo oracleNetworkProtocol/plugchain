@@ -10,7 +10,7 @@ For general concepts, please refer to [General Concepts](general-concepts.md)
 
 ## General Questions
 
-### How to Become an PLUGChain Hub Validator
+### How to Become an Plug Chain Hub Validator
 
 Refer to [Join The Mainnet](../get-started/mainnet.md)
 
@@ -123,7 +123,7 @@ Validators also play a major role in governance. If a delegator does not vote, t
 
 ### What are validators commission
 
-Revenue received by a validator's pool is split between the validator and their delegators. The validator can apply a commission on the part of the revenue that goes to their delegators. This commission is set as a percentage. Each validator is free to set their initial commission, maximum daily commission change rate and maximum commission. The PLUGChain Hub enforces the parameter that each validator sets. Only the commission rate can change after the validator is created.
+Revenue received by a validator's pool is split between the validator and their delegators. The validator can apply a commission on the part of the revenue that goes to their delegators. This commission is set as a percentage. Each validator is free to set their initial commission, maximum daily commission change rate and maximum commission. The Plug Chain Hub enforces the parameter that each validator sets. Only the commission rate can change after the validator is created.
 
 ### What is the formula to calculate the rewards
 
@@ -226,7 +226,7 @@ The default number of files Linux can open (per-process) is `1024`. `plugchaind`
     ```toml
     # /etc/systemd/system/plugchaind.service
     [Unit]
-    Description=PLUGChain Hub Node
+    Description=Plug Chain Hub Node
     After=network.target
 
     [Service]

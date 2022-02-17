@@ -4,11 +4,11 @@ order: 1
 
 # 简介
 
-plugchaind可执行程序是运行PLUGChain Hub节点的入口，包括验证人节点和其他全节点都需要通过安装`plugchaind`，并启动守护进程来加入到PLUGChain网络。你也可以使用`plugchaind`在本地启动自己的测试网络。
+plugchaind可执行程序是运行Plug Chain Hub节点的入口，包括验证人节点和其他全节点都需要通过安装`plugchaind`，并启动守护进程来加入到Plug Chain网络。你也可以使用`plugchaind`在本地启动自己的测试网络。
 
 ## 硬件要求
 
-建议在Linux服务器上运行PLUGChain Hub节点。
+建议在Linux服务器上运行Plug Chain Hub节点。
 
 ### 最低硬件要求
 
@@ -27,7 +27,7 @@ plugchaind可执行程序是运行PLUGChain Hub节点的入口，包括验证人
 
 `plugchaind init`命令负责初始化指定的`--home`目录并创建默认配置文件。除`plugchaind init`命令外，任何其他`plugchaind`子命令使用的主目录必须初始化，否则将报错。
 
-PLUGChain Hub节点的数据存储在主目录的“data”目录中，包括区块链数据，应用程序层数据和索引数据。
+Plug Chain Hub节点的数据存储在主目录的“data”目录中，包括区块链数据，应用程序层数据和索引数据。
 
 所有配置文件都存储在`<home-dir>/config`目录中：
 
@@ -49,4 +49,4 @@ config.toml是节点的非共识配置。不同的节点可以根据自己的情
 
 ### app.toml
 
-app.toml为PLUGChain Hub提供了基础配置、监控配置、API配置、同步状态配置和gRPC配置。
+app.toml为Plug Chain Hub提供了基础配置、监控配置、API配置、同步状态配置和gRPC配置。

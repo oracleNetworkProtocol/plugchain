@@ -4,7 +4,7 @@ order: 4
 
 # gRPC 客户端
 
-PLUGChain Hub v0.5.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
+Plug Chain Hub v0.5.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
 
 ## gRPC 服务端口、激活方式和配置
 
@@ -17,7 +17,7 @@ gRPC 服务启动后，您可以使用 gRPC 客户端向其发送请求。
 
 ## gRPC 端点
 
-PLUGChain Hub 附带的所有可用 gRPC 端点的概述见[Protobuf 文档](./proto-docs.md)。
+Plug Chain Hub 附带的所有可用 gRPC 端点的概述见[Protobuf 文档](./proto-docs.md)。
 
 ## 构造、签名和广播交易
 
@@ -131,6 +131,7 @@ import (
     cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	xauthsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
+    cliTx "github.com/cosmos/cosmos-sdk/client/tx"
 )
 
 func sendTx() error {

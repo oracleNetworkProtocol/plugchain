@@ -37,7 +37,7 @@ plugchaind keys add MyValidator
 Add that key into the genesis.app_state.accounts array in the genesis file
 
 :::tip
-this command lets you set the number of coins. Make sure this account has some plugchaind which is the only staking coin on PLUGChain Hub
+this command lets you set the number of coins. Make sure this account has some plugchaind which is the only staking coin on Plug Chain Hub
 :::
 
 ```bash
@@ -124,8 +124,8 @@ Please refer to [Export Blockchain State](export.md)
 ### Build and Init
 
 ```bash
-# Work from the PLUGChain Hub repo
-cd [your-PLUGChain Hub-repo]
+# Work from the Plug Chain Hub repo
+cd [your-Plug Chain Hub-repo]
 
 # Build the linux binary in ./build
 make build-linux

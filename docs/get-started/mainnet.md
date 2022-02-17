@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-You must use PLUGChain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
+You must use Plug Chain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
 :::
 
 1. Initialize the node
@@ -52,6 +52,13 @@ Modify the seeds provided in the ./mainnet/v1/seeds.txt file and modify the `see
 
 plugchaind start --minimum-gas-prices 0.0001plug
 ```
+
+When the block reaches the upgrade height (762880)
+```
+ERR UPGRADE "x/token" NEEDED at height: 762880:
+2:04AM ERR CONSENSUS FAILURE!!! err="UPGRADE \"x/token\" NEEDED at height: 762880: "
+```
+You can [Upgrade Info](./upgrade-process.md)
 
 ## Upgrade to Validator Node
 

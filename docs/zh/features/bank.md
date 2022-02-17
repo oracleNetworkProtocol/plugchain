@@ -22,11 +22,11 @@
     plugchaind tx bank send [A] [B] [10plug] --fees=20plug --chain-id=plugchain
     ```
 
-    PLUGChain支持多种代币流通，将来PLUGChain可以在一个交易中包含多种代币交换。
+    Plug Chain支持多种代币流通，将来Plug Chain可以在一个交易中包含多种代币交换。
 
 3. 交易签名
 
-    为了提高账户安全性，PLUGChain支持交易离线签名保护账户的私钥。在任意交易中，使用参数--generate-only可以构建一个未签名的交易。使用转账交易作为示例：
+    为了提高账户安全性，Plug Chain支持交易离线签名保护账户的私钥。在任意交易中，使用参数--generate-only可以构建一个未签名的交易。使用转账交易作为示例：
 
     ```bash
     plugchaind tx bank send [from_key_or_address] [to_address] [amount] --fees=20plug --generate-only
@@ -87,4 +87,4 @@
     plugchaind tx broadcast <file>
     ```
 
-    该交易将在PLUGChain Hub中广播并执行。
+    该交易将在Plug Chain Hub中广播并执行。

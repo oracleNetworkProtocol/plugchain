@@ -4,7 +4,7 @@ order: 4
 
 # gRPC Client
 
-PLUGChain Hub v0.5.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
+Plug Chain Hub v0.5.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
 
 ## gRPC Server Port, Activation and Configuration
 
@@ -17,7 +17,7 @@ Once the gRPC server is started, you can send requests to it using a gRPC client
 
 ## gRPC Endpoints
 
-An overview of all available gRPC endpoints shipped with the PLUGChain Hub is [Protobuf documention](./proto-docs.md).
+An overview of all available gRPC endpoints shipped with the Plug Chain Hub is [Protobuf documention](./proto-docs.md).
 
 ## Generating, Signing and Broadcasting Transactions
 
@@ -34,7 +34,7 @@ import (
 
 func sendTx() error {
     // Choose your codec: Amino or Protobuf. Here, we use Protobuf, given by the following function.
-    encCfg := simapp.MakeEncodingConfig()
+    encCfg := app.MakeEncodingConfig()
 
     // Create a new TxBuilder.
     txBuilder := encCfg.TxConfig.NewTxBuilder()
@@ -95,12 +95,12 @@ import (
 )
 
 func sendTx() error {
-    // --剪断--
+    // --snip--
 
-    //发送一笔转账:
-    //地址addr1 到 addr2
-    //地址addr1 到 addr3
-    //交易需要 addr1 签名
+    // send
+    //addr1 to addr2
+    //addr1 to addr3
+    //The transaction is signed by addr1
     msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
     msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("plug", 4000000)))
     err := txBuilder.SetMsgs(msg1, msg2)
@@ -110,7 +110,7 @@ func sendTx() error {
 
     txBuilder.SetGasLimit(200000)
     txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
-    txBuilder.SetMemo("give your my friend to LiLei")
+    txBuilder.SetMemo("give your my friend to Tom")
     // txBuilder.SetTimeoutHeight(...)
 }
 ```
@@ -131,12 +131,13 @@ import (
     cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	xauthsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
+    cliTx "github.com/cosmos/cosmos-sdk/client/tx"
 )
 
 func sendTx() error {
-    // --剪断--
+    // --snip--
     
-    //第一轮：我们收集所有签名者信息。 我们使用“设置空签名”技巧来做到这一点
+    //The first round: We collect all signer information. We use the "set empty signature" technique to do this
     sign := signing.SignatureV2{
 		PubKey: priv1.PubKey(),
 		Data: &signing.SingleSignatureData{
@@ -153,7 +154,7 @@ func sendTx() error {
 	}
 
 
-    //第二轮： 设置所有签名者信息，因此每个签名者都可以签名。
+    //Second round: Set all signer information, so every signer can sign.
     sign = signing.SignatureV2{}
 	signerD := xauthsigning.SignerData{
 		ChainID:       chainID,

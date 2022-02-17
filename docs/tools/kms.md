@@ -26,10 +26,10 @@ cargo install tmkms --features=yubihsm --version=0.10.0-beta2
 
 ## Initialization
 
-Initialize configuration files for PLUGChain Hub
+Initialize configuration files for Plug Chain Hub
 
 ```bash
-tmkms init -n PLUGChain Hub /path/to/kms/home
+tmkms init -n Plug Chain Hub /path/to/kms/home
 ```
 
 ## Configuration
@@ -42,7 +42,7 @@ To enable KMS, you need to edit the `priv_validator_laddr` in your `<plugchaind-
 priv_validator_laddr = "localhost:26658"
 ```
 
-Then, downLoad [priv_validator_state.json example](https://github.com/PLUGChain/PLUGChain Hub/blob/master/docs/tools/priv_validator_state.json) and modify all field values to match your `<plugchaind-home>/data/priv_validator_state.json` values.
+Then, downLoad [priv_validator_state.json example](https://github.com/Plug Chain/Plug Chain Hub/blob/master/docs/tools/priv_validator_state.json) and modify all field values to match your `<plugchaind-home>/data/priv_validator_state.json` values.
 
 Next, you just need to edit the configuration file `/path/to/kms/home/tmkms.toml` as follows:
 
@@ -64,7 +64,7 @@ tmkms start -c /path/to/kms/home/tmkms.toml
 
 Detailed information on how to setup a KMS with YubiHSM2 can be found [here](https://github.com/iqlusioninc/tmkms/blob/master/README.yubihsm.md).
 
-If you want to import an existing PLUGChain Hub private_key:
+If you want to import an existing Plug Chain Hub private_key:
 
 ```bash
 tmkms yubihsm keys import <plug_home>/config/priv_validator.json -i <id> -t json -c /path/to/kms/home/tmkms.toml

@@ -27,7 +27,7 @@ plugchaind <command>
 | [start](local-testnet.md#plugchaind-start)                             | 启动全节点                                                                |
 | [unsafe-reset-all](local-testnet.md#plugchaind-unsafe-reset-all)       | 重置区块链数据库，删除address book，并将priv_validator.json重置为创始状态 |
 | [tendermint](local-testnet.md#plugchaind-tendermint)                   | Tendermint子命令                                                          |
-| [testnet](local-testnet.md#build-and-init)                       | 初始化PLUGChain Hub测试网                                                       |
+| [testnet](local-testnet.md#build-and-init)                       | 初始化Plug Chain Hub测试网                                                       |
 | [reset](local-testnet.md#plugchaind-reset)                             | 将app状态重置到指定的高度                                                 |
 | [export](export.md)                                              | 将状态导出为JSON                                                          |
 | version                                                          | 显示版本信息                                                              |

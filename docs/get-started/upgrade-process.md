@@ -9,14 +9,14 @@ This project elaborates on the upgrade plan and method for newly added community
 ## Scheme 1 Upgrade to the latest height one by one
 
 :::warning
-Current plugchain version upgrade status v0.5.0 (762880)-> v0.6.0 -> +++
+Current Plug Chain version upgrade status v0.5.0 (762880)-> v0.6.0 -> +++
 :::
 1. Online node scheme
 ```shell
 # After the upgrade community proposal takes effect, after the upgrade height is reached (762880), the node stops coming out, and the binary files need to be upgraded manually
 
 # Pull v0.6.0 version code
-git fetch v0.6.0
+git fetch origin v0.6.0
 
 # Execute the compiled binary file
 make install
@@ -37,9 +37,19 @@ git checkout v0.5.0 && make install
 plugchaind version
 
 # Then generate your own data directory and synchronize the blocks
+```
 
-#When the block reaches the upgrade height (762880), the node will die in panic, and you need to use the upgraded version to upgrade one by one. Currently it is v0.6.0
-git fetch v0.6.0 && make install
+
+When the block reaches the upgrade height (762880)
+```
+ERR UPGRADE "x/token" NEEDED at height: 762880:
+2:04AM ERR CONSENSUS FAILURE!!! err="UPGRADE \"x/token\" NEEDED at height: 762880: "
+```
+
+You need to upgrade with the upgraded version one by one. At present, it is v0.6.0. If the local code does not have tag v0.6.0, you need to execute `git fetch origin v0.6.0` to pull the remote warehouse code, and then execute
+
+```
+git fetch origin v0.6.0 && make install
 
 # Use the v0.6.0 binary file to start the node for synchronization
 ```

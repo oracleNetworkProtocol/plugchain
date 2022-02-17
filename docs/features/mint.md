@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the PLUGChain Hub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
+The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the Plug Chain Hub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
 
 In each block producing period, all POW miners compete to calculate their work proof and the fastest one will be the winner. Actually, all loser miners don't offer any positive help or collaboration to the winner miner, and they are just the competitors. So it is reasonable to grant all reward to the winner miner. However, in POS blockchain network, we can't do that. Because each block producing process is the collaboration of all validators and delegators, which means the benefit should be share by all these contributors. As for how to distribute reward token to contributors, we will document and implement it in [distribution](distribution.md) module.
 
@@ -54,6 +54,6 @@ not_bonded_tokens: "0"
 
 `/staking/pool`
 
-Please refer to LCD swagger document.
+Please refer to  swagger document.
 
-As for how to run a LCD node please refer to [LCD document](../light-client/intro.md).
+As for how to run a node please refer to [wagger document](../endpoints/grpc-client.md).

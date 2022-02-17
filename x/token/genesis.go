@@ -24,7 +24,8 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 
 	}
 	// assert the symbol exists
-	if !k.HasSymbol(ctx, genState.Params.IssueTokenBaseFee.Denom) {
+	if !k.HasToken(ctx, genState.Params.IssueTokenBaseFee.Denom) {
+
 		panic(fmt.Sprintf("Token %s does not exist", genState.Params.IssueTokenBaseFee.Denom))
 	}
 }

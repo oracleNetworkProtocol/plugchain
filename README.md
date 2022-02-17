@@ -1,6 +1,6 @@
 
 <div align="center">
-  <h1>Cosmos Hub PLUGchain </h1>
+  <h1>Cosmos Hub Plug Chain </h1>
 </div>
 
  ![banner](client/images/logo.jpg)
@@ -19,13 +19,21 @@
     </a>
 </div>
 
-This repository hosts `plugchain`, the implementation of the plugchain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
+This repository hosts `plugchain`, the implementation of the Plug Chain based on the [Cosmos SDK 0.42.4](https://github.com/cosmos/cosmos-sdk).
 
 **[info]**: Requires [Go 1.16](https://golang.org/dl/)
 
 ## Getting Started
 * See the [Getting Started Docs](https://oraclenetworkprotocol.github.io/plugchain/) for instructions how to install and run the blockchain.
 * [Chengdu community contribution Docs](https://shimo.im/docs/pp38QGQVWyhXHkjg/read)
+
+
+## Change
+
+Change log records and contents corresponding to different versions [changelog](CHANGELOG.md)
+
+
+
 
 ## Talk to us!
 

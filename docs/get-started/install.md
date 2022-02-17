@@ -3,10 +3,23 @@ order: 2
 ---
 
 # Install
+
+Take Centos as an example:
+
+Dependent tools
+- git
+- make
+- gcc
+- wget
+
+```shell
+yum install make gcc git wget
+```
+
 ## Install `go`
 
 ::: tip
-**Go 1.16+** is required for building and installing the PLUGChain Hub software.
+**Go 1.16+** is required for building and installing the Plug Chain Hub software.
 :::
 
 Install `go` (>=1.16) by following the [official docs](https://golang.org/doc/install). 
@@ -38,7 +51,7 @@ Make sure that your server can access to google.com because our project depends 
 ```bash
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 cd plugchain
-git checkout v0.2.0
+git checkout v0.5.0
 make install
 ```
 

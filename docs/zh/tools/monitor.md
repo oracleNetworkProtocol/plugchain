@@ -6,7 +6,7 @@ order: 1
 
 ## 简介
 
-PLUGChain Hub 软件可以提供Prometheus监控指标，Prometheus可以收集这些指标。
+Plug Chain Hub 软件可以提供Prometheus监控指标，Prometheus可以收集这些指标。
 
 默认情况下此功能是被禁用的，要启用Prometheus监控指标，请在配置文件（config.toml）中设置`prometheus = true`。默认情况下，Metrics将在26660端口下的/metrics提供，可以在配置文件中修改服务地址`prometheus_listen_addr = ":26660"`。
 
@@ -64,18 +64,18 @@ PLUGChain Hub 软件可以提供Prometheus监控指标，Prometheus可以收集�
 | state_recheck_time                   | Histogram |                  | Recheck消耗的时间                                |
 | state_app_hash_conflict              | Counter   | proposer, height | AppHash冲突的错误                                |
 
-PLUGChain Hub metrics也包含tendermint metrics，有关更多信息，请访问[tendermint metrics](https://github.com/tendermint/tendermint/blob/master/docs/nodes/metrics.md)。
+Plug Chain Hub metrics也包含tendermint metrics，有关更多信息，请访问[tendermint metrics](https://github.com/tendermint/tendermint/blob/master/docs/nodes/metrics.md)。
 
 ## 启动监控工具
 
-这是使用docker来启动PLUGChain Hub Monitor的示例。
+这是使用docker来启动Plug Chain Hub Monitor的示例。
 
 ### 编辑Prometheus配置文件
 
 你可以将示例[prometheus.yml](https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus.yml)下载到`~/volumes/prometheus/`并在配置文件`prometheus.yml`中添加以下`jobs`：
 
 ```yaml
-      - job_name: PLUGChain Hub
+      - job_name: Plug Chain Hub
           static_configs:
           - targets: ['localhost:26660']
             labels:

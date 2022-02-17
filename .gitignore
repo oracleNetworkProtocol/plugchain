@@ -30,14 +30,23 @@
 # third_party/
 docs/node_modules/
 docs/.vuepress/dist/
+build/
 
 vue/*
 secret.yml
 chaintest
 nor
 #docs
+nft-edit.json
+nft.json
 secret.yml
 node*
 node/*
 home/*
 home*/
+tet/
+
+
+
+# goreleaser
+dist/
