@@ -45,3 +45,8 @@ node/*
 home/*
 home*/
 tet/
+
+
+
+# goreleaser
+dist/

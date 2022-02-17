@@ -1,9 +1,11 @@
-AppVersion=$(shell echo $(shell git describe --tags) | sed 's/^v//')
+#!/usr/bin/make -f
+
+AppVersion ?= $(shell echo $(shell git describe --tags `git rev-list --tags="v*" --max-count=1`) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
 TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 LEDGER_ENABLED ?= true
-BUILDDIR ?= $(CURDIR)/build
 BINDIR ?= $(GOPATH)/bin
+BUILDDIR ?= $(CURDIR)/build
 PLUGCHAIN_BINARY= plugchaind
 PLUGCHAIN_DIR = plugchain
 HTTPS_GIT = https://github.com/oracleNetworkProtocol/plugchain.git
@@ -279,3 +281,40 @@ proto-swagger-gen:
 	@./scripts/protoc-swagger-gen.sh
 
 .PHONY: buf buf-stamp proto-gen proto-swagger-gen 
+
+
+###############################################################################
+###                                Releasing                                ###
+###############################################################################
+PACKAGE_NAME:=github.com/oracleNetworkProtocol/plugchain
+GOLANG_CROSS_VERSION  = v1.17.6
+GOPATH ?= '$(HOME)/go'
+release-dry-run:
+	docker run \
+		--rm \
+		--privileged \
+		-e CGO_ENABLED=1 \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v `pwd`:/go/src/$(PACKAGE_NAME) \
+		-v ${GOPATH}/pkg:/go/pkg \
+		-w /go/src/$(PACKAGE_NAME) \
+		ghcr.io/troian/golang-cross:${GOLANG_CROSS_VERSION} \
+		--skip-validate  --snapshot
+
+release:
+	@if [ ! -f ".release-env" ]; then \
+		echo "\033[91m.release-env is required for release\033[0m";\
+		exit 1;\
+	fi
+	docker run \
+		--rm \
+		--privileged \
+		-e CGO_ENABLED=1 \
+		--env-file .release-env \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v `pwd`:/go/src/$(PACKAGE_NAME) \
+		-w /go/src/$(PACKAGE_NAME) \
+		ghcr.io/troian/golang-cross:${GOLANG_CROSS_VERSION} \
+		release --rm-dist --skip-validate
+
+.PHONY: release-dry-run release
