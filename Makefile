@@ -203,11 +203,11 @@ build-docs:
 	./deploy.sh 
 	
 docs-tools:
-ifeq (, $(shell which vuepress))
-	@echo "Installing vuepress..."
-	@npm install -g vuepress
+ifeq (, $(shell which yarn))
+	@echo "Installing yarn..."
+	@npm install -g yarn
 else
-	@echo "vuepress already installed; skipping..."
+	@echo "yarn already installed; skipping..."
 endif
 
 docs-tools-stamp: docs-tools
