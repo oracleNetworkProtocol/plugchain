@@ -206,7 +206,6 @@ docs-tools:
 ifeq (, $(shell which vuepress))
 	@echo "Installing vuepress..."
 	@npm install -g vuepress
-	@npm i
 else
 	@echo "vuepress already installed; skipping..."
 endif
