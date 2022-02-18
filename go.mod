@@ -14,7 +14,7 @@ require (
 	github.com/spf13/cast v1.4.1
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
-	github.com/tendermint/tendermint v0.34.14
+	github.com/tendermint/tendermint v0.34.15
 	github.com/tendermint/tm-db v0.6.4
 	github.com/tharsis/ethermint v0.9.0
 	google.golang.org/genproto v0.0.0-20211116182654-e63d96a377c4
