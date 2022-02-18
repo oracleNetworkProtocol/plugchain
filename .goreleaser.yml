@@ -3,7 +3,7 @@ before:
   - go mod download
 
 builds:
-  - id: "plugchaind"
+  - id: "darwin"
     main: ./cmd/plugchaind
     binary: bin/plugchaind
     env:
@@ -18,7 +18,7 @@ builds:
         - -tags=cgo
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=onp -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
-  - id: "plugchaind"
+  - id: "darwin-arm64"
     main: ./cmd/plugchaind
     binary: bin/plugchaind
     env:
@@ -33,7 +33,7 @@ builds:
       - -tags=cgo
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=onp -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
-  - id: "plugchaind"
+  - id: "linux"
     main: ./cmd/plugchaind
     binary: bin/plugchaind
     env:
@@ -48,7 +48,7 @@ builds:
       - -tags=cgo
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=onp -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
-  - id: "plugchaind"
+  - id: "linux-arm64"
     main: ./cmd/plugchaind
     binary: bin/plugchaind
     env:
@@ -63,7 +63,7 @@ builds:
       - -tags=cgo
     ldflags:
       - -s -w -X github.com/cosmos/cosmos-sdk/version.Name=onp -X github.com/cosmos/cosmos-sdk/version.AppName=plugchaind -X github.com/cosmos/cosmos-sdk/version.Version={{.Version}} -X github.com/cosmos/cosmos-sdk/version.Commit={{.Commit}}
-  - id: "plugchaind"
+  - id: "windows"
     main: ./cmd/plugchaind
     binary: bin/plugchaind
     env:
@@ -91,11 +91,11 @@ archives:
     - goos: windows
       format: zip
   builds:
-  - plugchaind-darwin
-  - plugchaind-darwin-arm64
-  - plugchaind-windows
-  - plugchaind-linux
-  - plugchaind-linux-arm64
+  - darwin
+  - darwin-arm64
+  - windows
+  - linux
+  - linux-arm64
   
 checksum:
   name_template: 'checksums.txt'

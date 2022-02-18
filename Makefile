@@ -309,7 +309,7 @@ release-dry-run:
 		-v ${GOPATH}/pkg:/go/pkg \
 		-w /go/src/$(PACKAGE_NAME) \
 		ghcr.io/troian/golang-cross:${GOLANG_CROSS_VERSION} \
-		--skip-validate  --snapshot
+		--rm-dist --skip-validate  --snapshot
 
 release:
 	@if [ ! -f ".release-env" ]; then \
