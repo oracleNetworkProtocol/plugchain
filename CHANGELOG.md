@@ -7,11 +7,25 @@
 ## Released 
 
 ## v1.0.0 
-- x/nft finish
-- add EVM module
-- add feemarket module
-- add feegrant module
-- update x/token maxsymbollen to 8
+The mainnet hard fork will be carried out on block height 300,000. The estimated date is March 5, 2022. The hard fork process is expected to take 24 hours
+
+The Hardfork includes the following details:
+- Change the from "chain-ID" to "plugchain_520-1"
+- Change the Token name "PLUG" (the relevant coin data on the chain is the data with precision 0, and the coin name with precision 6 is used for wallet, browser, and external APP application display)
+- Precision 0: UPLUGCN
+- Precision 6: PLUGCN
+- Modify the community proposal module (GOV) and shorten the "voting period" from 504 hours (21 days) to 288 hours (14 days) 
+- Adjust the maximum number of verifiers to 50
+- Online smart contract module functions for PVM (Plug Virtual Machine); token generation contract "PRC20" will be generated for usage
+- Enable "UPLUGCN" to be burned.
+- Overall adjustment of "X/Liquidity", "X/Token" and other module fee parameters for liquid providers.
+- The wallet supports two key signature algorithms "Secp256k1" and "ETH_Secp256k1" from EVM (Ethereum Virtual Machine)
+
+Attention for old on-chain records:
+- Transaction records of "PLUG" will not be kep. Historical data will be uploaded to GitHub and open to the public.
+- Current block height will be retained, but not for historical block heights.
+- Retained historical DAO proposal information
+- Retained the existing Liquidity data and existing Token data
 
 ## v0.7.3 - 2021-12-22
 Stable version of existing functions in the warehouse
