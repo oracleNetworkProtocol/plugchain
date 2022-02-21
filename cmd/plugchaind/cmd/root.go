@@ -110,8 +110,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 		debug.Cmd(),
 		config.Cmd(),
-		// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
-		// server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler),
 	)
 
 	a := appCreator{
@@ -126,15 +124,14 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		txCommand(),
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
-	// rootCmd = srvflags.AddTxFlags(rootCmd)
-
 	//register owner global flags
-	rootCmd = AddTxFlags(rootCmd)
+	rootCmd, err := AddTxFlags(rootCmd)
+	if err != nil {
+		panic(err)
+	}
 
-	// overwriteFlagDefaults(rootCmd, map[string]string{
-	// 	flags.FlagChainID:        ChainID,
-	// 	flags.FlagKeyringBackend: "os",
-	// })
+	// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
+	// rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
 
 	return rootCmd, encodingConfig
 }
