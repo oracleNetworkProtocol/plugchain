@@ -125,7 +125,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
 	//register owner global flags
-	rootCmd, err := AddTxFlags(rootCmd)
+	var err error
+	rootCmd, err = AddTxFlags(rootCmd)
 	if err != nil {
 		panic(err)
 	}
