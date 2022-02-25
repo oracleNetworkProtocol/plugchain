@@ -312,13 +312,13 @@ func GetCmdTransferClass() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			if _, err := sdk.AccAddressFromBech32(args[2]); err != nil {
+			if _, err := sdk.AccAddressFromBech32(args[1]); err != nil {
 				return err
 			}
 			msg := types.NewMsgTransferClass(
 				args[0],
 				clientCtx.GetFromAddress().String(),
-				args[2],
+				args[1],
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
