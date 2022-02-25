@@ -43,8 +43,10 @@ cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10
 # disable produce empty block
 if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
+    sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
   else
     sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
+    sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
 fi
 
 if [[ $1 == "pending" ]]; then
