@@ -1014,6 +1014,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -3003,6 +3006,7 @@ paths:
   /cosmos/auth/v1beta1/accounts:
     get:
       summary: Accounts returns all the existing accounts
+      description: 'Since: cosmos-sdk 0.43'
       operationId: Accounts
       responses:
         '200':
@@ -3209,6 +3213,9 @@ paths:
             description: >-
               QueryAccountsResponse is the response type for the Query/Accounts
               RPC method.
+
+
+              Since: cosmos-sdk 0.43
         default:
           description: An unexpected error response.
           schema:
@@ -3449,6 +3456,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -4187,12 +4197,15 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
       tags:
         - Query
-  /cosmos/bank/v1beta1/balances/{address}/{denom}:
+  /cosmos/bank/v1beta1/balances/{address}/by_denom:
     get:
       summary: Balance queries the balance of a single coin for a single account.
       operationId: BankBalance
@@ -4250,8 +4263,8 @@ paths:
           type: string
         - name: denom
           description: denom is the coin denom to query balances for.
-          in: path
-          required: true
+          in: query
+          required: false
           type: string
       tags:
         - Query
@@ -4325,6 +4338,7 @@ paths:
                         displayed in clients.
                     name:
                       type: string
+                      description: 'Since: cosmos-sdk 0.43'
                       title: 'name defines the name of the token (eg: Cosmos Atom)'
                     symbol:
                       type: string
@@ -4333,6 +4347,9 @@ paths:
                         (eg: ATOM). This can
 
                         be the same as the display.
+
+
+                        Since: cosmos-sdk 0.43
                   description: |-
                     Metadata represents a struct that describes
                     a basic token.
@@ -4435,6 +4452,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -4506,6 +4526,7 @@ paths:
                       displayed in clients.
                   name:
                     type: string
+                    description: 'Since: cosmos-sdk 0.43'
                     title: 'name defines the name of the token (eg: Cosmos Atom)'
                   symbol:
                     type: string
@@ -4514,6 +4535,9 @@ paths:
                       ATOM). This can
 
                       be the same as the display.
+
+
+                      Since: cosmos-sdk 0.43
                 description: |-
                   Metadata represents a struct that describes
                   a basic token.
@@ -4638,7 +4662,10 @@ paths:
                     signatures required by gogoproto.
                 title: supply is the supply of the coins
               pagination:
-                description: pagination defines the pagination in the response.
+                description: |-
+                  pagination defines the pagination in the response.
+
+                  Since: cosmos-sdk 0.43
                 type: object
                 properties:
                   next_key:
@@ -4733,6 +4760,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -5442,6 +5472,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -6286,6 +6319,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -7064,6 +7100,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -7608,6 +7647,10 @@ paths:
                         description: >-
                           WeightedVoteOption defines a unit of vote for vote
                           split.
+
+
+                          Since: cosmos-sdk 0.43
+                      title: 'Since: cosmos-sdk 0.43'
                   description: >-
                     Vote defines a vote on a governance proposal.
 
@@ -7881,6 +7924,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -7950,6 +7996,10 @@ paths:
                       description: >-
                         WeightedVoteOption defines a unit of vote for vote
                         split.
+
+
+                        Since: cosmos-sdk 0.43
+                    title: 'Since: cosmos-sdk 0.43'
                 description: >-
                   Vote defines a vote on a governance proposal.
 
@@ -8638,6 +8688,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -9044,6 +9097,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -9382,6 +9438,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -9978,6 +10037,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -12144,6 +12206,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -12992,6 +13057,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -13857,6 +13925,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -14803,6 +14874,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -15312,6 +15386,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -15520,6 +15597,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -15699,6 +15779,9 @@ paths:
           description: >-
             reverse is set to true if results are to be returned in the
             descending order.
+
+
+            Since: cosmos-sdk 0.43
           in: query
           required: false
           type: boolean
@@ -17980,6 +18063,9 @@ definitions:
         description: >-
           reverse is set to true if results are to be returned in the descending
           order.
+
+
+          Since: cosmos-sdk 0.43
     description: |-
       message SomeRequest {
                Foo some_parameter = 1;
@@ -19401,6 +19487,9 @@ definitions:
     description: >-
       QueryAccountsResponse is the response type for the Query/Accounts RPC
       method.
+
+
+      Since: cosmos-sdk 0.43
   cosmos.auth.v1beta1.QueryParamsResponse:
     type: object
     properties:
@@ -19503,6 +19592,7 @@ definitions:
           displayed in clients.
       name:
         type: string
+        description: 'Since: cosmos-sdk 0.43'
         title: 'name defines the name of the token (eg: Cosmos Atom)'
       symbol:
         type: string
@@ -19511,6 +19601,9 @@ definitions:
           can
 
           be the same as the display.
+
+
+          Since: cosmos-sdk 0.43
     description: |-
       Metadata represents a struct that describes
       a basic token.
@@ -19647,6 +19740,7 @@ definitions:
               displayed in clients.
           name:
             type: string
+            description: 'Since: cosmos-sdk 0.43'
             title: 'name defines the name of the token (eg: Cosmos Atom)'
           symbol:
             type: string
@@ -19655,6 +19749,9 @@ definitions:
               This can
 
               be the same as the display.
+
+
+              Since: cosmos-sdk 0.43
         description: |-
           Metadata represents a struct that describes
           a basic token.
@@ -19719,6 +19816,7 @@ definitions:
                 displayed in clients.
             name:
               type: string
+              description: 'Since: cosmos-sdk 0.43'
               title: 'name defines the name of the token (eg: Cosmos Atom)'
             symbol:
               type: string
@@ -19727,6 +19825,9 @@ definitions:
                 ATOM). This can
 
                 be the same as the display.
+
+
+                Since: cosmos-sdk 0.43
           description: |-
             Metadata represents a struct that describes
             a basic token.
@@ -19819,7 +19920,10 @@ definitions:
             signatures required by gogoproto.
         title: supply is the supply of the coins
       pagination:
-        description: pagination defines the pagination in the response.
+        description: |-
+          pagination defines the pagination in the response.
+
+          Since: cosmos-sdk 0.43
         type: object
         properties:
           next_key:
@@ -21228,7 +21332,11 @@ definitions:
                      - VOTE_OPTION_NO_WITH_VETO: VOTE_OPTION_NO_WITH_VETO defines a no with veto vote option.
                 weight:
                   type: string
-              description: WeightedVoteOption defines a unit of vote for vote split.
+              description: |-
+                WeightedVoteOption defines a unit of vote for vote split.
+
+                Since: cosmos-sdk 0.43
+            title: 'Since: cosmos-sdk 0.43'
         description: |-
           Vote defines a vote on a governance proposal.
           A Vote consists of a proposal ID, the voter, and the vote option.
@@ -21288,7 +21396,11 @@ definitions:
                        - VOTE_OPTION_NO_WITH_VETO: VOTE_OPTION_NO_WITH_VETO defines a no with veto vote option.
                   weight:
                     type: string
-                description: WeightedVoteOption defines a unit of vote for vote split.
+                description: |-
+                  WeightedVoteOption defines a unit of vote for vote split.
+
+                  Since: cosmos-sdk 0.43
+              title: 'Since: cosmos-sdk 0.43'
           description: |-
             Vote defines a vote on a governance proposal.
             A Vote consists of a proposal ID, the voter, and the vote option.
@@ -21396,7 +21508,11 @@ definitions:
                  - VOTE_OPTION_NO_WITH_VETO: VOTE_OPTION_NO_WITH_VETO defines a no with veto vote option.
             weight:
               type: string
-          description: WeightedVoteOption defines a unit of vote for vote split.
+          description: |-
+            WeightedVoteOption defines a unit of vote for vote split.
+
+            Since: cosmos-sdk 0.43
+        title: 'Since: cosmos-sdk 0.43'
     description: |-
       Vote defines a vote on a governance proposal.
       A Vote consists of a proposal ID, the voter, and the vote option.
@@ -21448,7 +21564,10 @@ definitions:
            - VOTE_OPTION_NO_WITH_VETO: VOTE_OPTION_NO_WITH_VETO defines a no with veto vote option.
       weight:
         type: string
-    description: WeightedVoteOption defines a unit of vote for vote split.
+    description: |-
+      WeightedVoteOption defines a unit of vote for vote split.
+
+      Since: cosmos-sdk 0.43
   cosmos.mint.v1beta1.Params:
     type: object
     properties:
