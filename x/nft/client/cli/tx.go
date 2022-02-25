@@ -47,8 +47,8 @@ func GetCmdIssueClass() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue class.
 Example:
-$ %s tx %s issue-class "ID66666" "first-class" "shui" true true ./schema-ID66666.json --from mykey --chain-id plugchain --fees 500plug
-This example creates a class of id ID666666 and name first-class .
+$ %s tx %s issue-class "id66666" "first-class" "shui" true true ./schema-id66666.json --from mykey --chain-id plugchain --fees 500uplugcn
+This example creates a class of id id666666 and name first-class .
 [class-id]: The name of the collection
 [class-name]: The name of the class
 [mint-restricted]: MintRestricted is true means that only class owners can issue NFTs under this category, false means anyone can
@@ -101,7 +101,7 @@ func GetCmdIssueNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`issue NFT.
 Example:
-$ %s tx %s issue-nft "ID66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" "" --from mykey --chain-id plugchain --fees 500plug
+$ %s tx %s issue-nft "id66666" "nft-666" "nftshop" "https://google.com" "./nft666-schema.json" "" --from mykey --chain-id plugchain --fees 500uplugcn
 This example creates a nft of id nft-666 and name nftshop .
 [class-id]: The name of the collection
 [nft-id]: The id of the nft
@@ -163,7 +163,7 @@ func GetCmdEditNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`edit NFT.
 Example:
-$ %s tx %s edit-nft "ID66666" "nft-666" --nft-name="nftshop" --nft-uri="https://google.com/" --nft-data="./nft666-schema.json" --from=mykey --chain-id=plugchain --fees=500plug
+$ %s tx %s edit-nft "id66666" "nft-666" --nft-name="nftshop" --nft-uri="https://google.com/" --nft-data="./nft666-schema.json" --from=mykey --chain-id=plugchain_520-1 --fees=500uplugcn
 This example edit a nft of id nft-666 .
 
 [class-id]: The name of the collection
@@ -224,7 +224,7 @@ func GetCmdBurnNFT() *cobra.Command {
 		Long: strings.TrimSpace(
 			fmt.Sprintf(`burn NFT.
 Example:
-$ %s tx %s burn-nft "ID66666" "nft-666" --from=mykey --chain-id=plugchain --fees=500plug
+$ %s tx %s burn-nft "id66666" "nft-666" --from=mykey --chain-id=plugchain_520-1 --fees=500uplugcn
 This example burning a nft of id nft-666 .
 
 [class-id]: The name of the collection
@@ -264,8 +264,8 @@ func GetCmdTransferNFT() *cobra.Command {
 		Example: fmt.Sprintf(
 			"$ %s tx nft transfer-nft <class-id> <nft-id> <recipient-address> "+
 				"--from=myAddress "+
-				"--chain-id=plugchain "+
-				"--fees=200plug ",
+				"--chain-id=plugchain_520-1 "+
+				"--fees=500uplugcn ",
 			version.AppName,
 		),
 		Args: cobra.ExactArgs(3),
@@ -302,8 +302,8 @@ func GetCmdTransferClass() *cobra.Command {
 		Example: fmt.Sprintf(
 			"$ %s tx nft transfer-class <class-id> <recipient-address> "+
 				"--from=myAddress "+
-				"--chain-id=plugchain "+
-				"--fees=200plug ",
+				"--chain-id=plugchain_520-1 "+
+				"--fees=500uplugcn ",
 			version.AppName,
 		),
 		Args: cobra.ExactArgs(2),
