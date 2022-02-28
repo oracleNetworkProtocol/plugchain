@@ -15389,50 +15389,30 @@ paths:
           type: string
       tags:
         - Query
-  /nft/collections/{class_id}:
+  /nft/nfts:
     get:
-      operationId: Collection
+      operationId: NFTs
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              collection:
-                type: object
-                properties:
-                  class:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      schema:
-                        type: string
-                      symbol:
-                        type: string
-                      owner:
-                        type: string
-                      mint_restricted:
-                        type: boolean
-                      edit_restricted:
-                        type: boolean
-                  nfts:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        uri:
-                          type: string
-                        data:
-                          type: string
-                        owner:
-                          type: string
+              nfts:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    uri:
+                      type: string
+                    data:
+                      type: string
+                    owner:
+                      type: string
               pagination:
                 type: object
                 properties:
@@ -15484,8 +15464,12 @@ paths:
                       format: byte
       parameters:
         - name: class_id
-          in: path
-          required: true
+          in: query
+          required: false
+          type: string
+        - name: owner
+          in: query
+          required: false
           type: string
         - name: pagination.key
           description: |-
@@ -15545,7 +15529,62 @@ paths:
           type: boolean
       tags:
         - Query
-  /nft/collections/{class_id}/supply:
+  /nft/nfts/{class_id}/{nft_id}:
+    get:
+      operationId: NFT
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              nft:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  uri:
+                    type: string
+                  data:
+                    type: string
+                  owner:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type_url:
+                      type: string
+                    value:
+                      type: string
+                      format: byte
+      parameters:
+        - name: class_id
+          in: path
+          required: true
+          type: string
+        - name: nft_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /nft/supply/{class_id}:
     get:
       operationId: Supply
       responses:
@@ -15586,7 +15625,7 @@ paths:
           type: string
       tags:
         - Query
-  /nft/nfts/{address}/{class_id}:
+  /nft/{address}/{class_id}:
     get:
       operationId: Owner
       responses:
@@ -15725,61 +15764,6 @@ paths:
           in: query
           required: false
           type: boolean
-      tags:
-        - Query
-  /nft/nfts/{class_id}/{nft_id}:
-    get:
-      operationId: NFT
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              nft:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  uri:
-                    type: string
-                  data:
-                    type: string
-                  owner:
-                    type: string
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type_url:
-                      type: string
-                    value:
-                      type: string
-                      format: byte
-      parameters:
-        - name: class_id
-          in: path
-          required: true
-          type: string
-        - name: nft_id
-          in: path
-          required: true
-          type: string
       tags:
         - Query
   /cosmos/liquidity/v1beta1/params:
@@ -25494,41 +25478,6 @@ definitions:
         type: boolean
       edit_restricted:
         type: boolean
-  plugchain.nft.Collection:
-    type: object
-    properties:
-      class:
-        type: object
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-          schema:
-            type: string
-          symbol:
-            type: string
-          owner:
-            type: string
-          mint_restricted:
-            type: boolean
-          edit_restricted:
-            type: boolean
-      nfts:
-        type: array
-        items:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            uri:
-              type: string
-            data:
-              type: string
-            owner:
-              type: string
   plugchain.nft.CollectionID:
     type: object
     properties:
@@ -25634,44 +25583,40 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  plugchain.nft.QueryCollectionResponse:
+  plugchain.nft.QueryNFTResponse:
     type: object
     properties:
-      collection:
+      nft:
         type: object
         properties:
-          class:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              schema:
-                type: string
-              symbol:
-                type: string
-              owner:
-                type: string
-              mint_restricted:
-                type: boolean
-              edit_restricted:
-                type: boolean
-          nfts:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: string
-                name:
-                  type: string
-                uri:
-                  type: string
-                data:
-                  type: string
-                owner:
-                  type: string
+          id:
+            type: string
+          name:
+            type: string
+          uri:
+            type: string
+          data:
+            type: string
+          owner:
+            type: string
+  plugchain.nft.QueryNFTsResponse:
+    type: object
+    properties:
+      nfts:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            uri:
+              type: string
+            data:
+              type: string
+            owner:
+              type: string
       pagination:
         type: object
         properties:
@@ -25697,22 +25642,6 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  plugchain.nft.QueryNFTResponse:
-    type: object
-    properties:
-      nft:
-        type: object
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-          uri:
-            type: string
-          data:
-            type: string
-          owner:
-            type: string
   plugchain.nft.QueryOwnerResponse:
     type: object
     properties:

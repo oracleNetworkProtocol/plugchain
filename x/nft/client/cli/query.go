@@ -3,10 +3,12 @@ package cli
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
@@ -115,10 +117,16 @@ func GetQueryNFTCmd() *cobra.Command {
 
 func GetQueryCollectionCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:     "collection [class-id]",
-		Long:    "Get all the NFTs from a given collection.",
-		Example: fmt.Sprintf("$ %s q nft collection <class-id>", version.AppName),
-		Args:    cobra.ExactArgs(1),
+		Use:   "nfts",
+		Short: "query all the NFTs of a given class or owner address.",
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`Query all NFTs of a given class or owner address. If owner
+is set, all nfts that belong to the owner are filtered out.
+Examples:
+$ %s query %s nfts <class-id> --owner=<owner>
+`,
+				version.AppName, types.ModuleName),
+		),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -129,12 +137,33 @@ func GetQueryCollectionCmd() *cobra.Command {
 				return err
 			}
 			queryClient := types.NewQueryClient(clientCtx)
-			resp, err := queryClient.Collection(
+
+			owner, err := cmd.Flags().GetString(FlagOwner)
+			if err != nil {
+				return err
+			}
+
+			if len(owner) > 0 {
+				if _, err := sdk.AccAddressFromBech32(owner); err != nil {
+					return err
+				}
+			}
+
+			classID, err := cmd.Flags().GetString(FlagClassID)
+			if err != nil {
+				return err
+			}
+			if len(owner) == 0 && len(classID) == 0 {
+				return errors.ErrInvalidRequest.Wrap("must provide at least one of classID or owner")
+			}
+			request := &types.QueryNFTsRequest{
+				ClassId:    classID,
+				Owner:      owner,
+				Pagination: pageReq,
+			}
+			resp, err := queryClient.NFTs(
 				context.Background(),
-				&types.QueryCollectionRequest{
-					ClassId:    args[0],
-					Pagination: pageReq,
-				},
+				request,
 			)
 			if err != nil {
 				return err
@@ -145,6 +174,9 @@ func GetQueryCollectionCmd() *cobra.Command {
 	}
 	flags.AddQueryFlagsToCmd(cmd)
 	flags.AddPaginationFlagsToCmd(cmd, "nfts")
+	cmd.Flags().String(FlagOwner, "", "The owner of the nft")
+	cmd.Flags().String(FlagClassID, "", "The class-id of the nft")
+
 	return cmd
 }
 

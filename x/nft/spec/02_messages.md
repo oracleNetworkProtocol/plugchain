@@ -89,7 +89,7 @@ This message type is used for burning tokens which destroys and deletes them. By
 | **Field** | **Type** | **Description**                                    |
 | :-------- | :------- | :------------------------------------------------- |
 | ID        | `string` | The ID of the nft.                                 |
-| ClassID   | `string` | The Denom ID of the Denom.                         |
+| ClassID   | `string` | The Class ID of the Denom.                         |
 | Owner     | `string` | The account address of the user burning the denom. |
 
 ```go

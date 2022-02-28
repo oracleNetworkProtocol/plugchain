@@ -116,7 +116,7 @@ plugchaind tx nft burn-nft [class-id] [nft-id] [flags]
 
 ## supply
 
-根据 Denom ID查询资产总量；接受可选的 --owner 参数。
+根据 Class ID查询资产总量；接受可选的 --owner 参数。
 
 
 ```bash
@@ -126,7 +126,7 @@ plugchaind q nft supply [class-id] --owner=<myAddress> [flags]
 
 ## owner
 
-查询某一账户所拥有的全部资产；可以指定 Denom ID参数。
+查询某一账户所拥有的全部资产；可以指定 Class ID参数。
 
 
 ```bash
@@ -135,7 +135,7 @@ plugchaind query nft owner [address] [class-id] [flags]
 
 ## collection
 
-根据 Denom ID查询所有资产。
+根据 Class ID查询所有资产。
 
 
 ```bash
@@ -144,7 +144,7 @@ plugchaind q nft collection [class-id] [flags]
 
 ## class
 
-根据 Denom ID查询资产类别信息。
+根据 Class ID查询资产类别信息。
 
 
 ```bash
@@ -161,7 +161,7 @@ plugchaind q nft classes [flags]
 
 ## nft
 
-根据 Denom ID以及 ID 查询具体资产。
+根据 Class ID以及 ID 查询具体资产。
 
 ```bash
 plugchaind q nft nft [class-id] [nft-id] [flags]

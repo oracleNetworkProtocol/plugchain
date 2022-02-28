@@ -117,7 +117,7 @@ plugchaind tx nft burn-nft [class-id] [nft-id] [flags]
 
 ## supply
 
-Query the total amount of assets based on Denom ID; accept the optional --owner parameter.
+Query the total amount of assets based on Class ID; accept the optional --owner parameter.
 
 
 ```bash
@@ -127,7 +127,7 @@ plugchaind q nft supply [class-id] --owner=<myAddress> [flags]
 
 ## owner
 
-Query all assets owned by an account; you can specify the Denom ID parameter.
+Query all assets owned by an account; you can specify the Class ID parameter.
 
 
 ```bash
@@ -136,7 +136,7 @@ plugchaind query nft owner [address] [class-id] [flags]
 
 ## collection
 
-Query all assets based on Denom ID.
+Query all assets based on Class ID.
 
 
 ```bash
@@ -145,7 +145,7 @@ plugchaind q nft collection [class-id] [flags]
 
 ## class
 
-Query asset category information based on Denom ID.
+Query asset category information based on Class ID.
 
 
 ```bash
@@ -162,7 +162,7 @@ plugchaind q nft classes [flags]
 
 ## nft
 
-Query specific assets based on Denom ID and ID.
+Query specific assets based on Class ID and ID.
 
 ```bash
 plugchaind q nft nft [class-id] [nft-id] [flags]
