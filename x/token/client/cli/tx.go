@@ -107,11 +107,11 @@ func GetCmdIssueToken() *cobra.Command {
 		},
 	}
 	cmd.Flags().AddFlagSet(FsIssueToken)
-	cmd.MarkFlagRequired(FlagSymbol)
-	cmd.MarkFlagRequired(FlagName)
-	cmd.MarkFlagRequired(FlagInitialSupply)
-	cmd.MarkFlagRequired(FlagScale)
-	cmd.MarkFlagRequired(FlagMinUnit)
+	_ = cmd.MarkFlagRequired(FlagSymbol)
+	_ = cmd.MarkFlagRequired(FlagName)
+	_ = cmd.MarkFlagRequired(FlagInitialSupply)
+	_ = cmd.MarkFlagRequired(FlagScale)
+	_ = cmd.MarkFlagRequired(FlagMinUnit)
 	flags.AddTxFlagsToCmd(cmd)
 
 	return cmd
@@ -167,7 +167,7 @@ func GetCmdMintToken() *cobra.Command {
 
 	cmd.Flags().AddFlagSet(FsMintToken)
 
-	cmd.MarkFlagRequired(FlagAmount)
+	_ = cmd.MarkFlagRequired(FlagAmount)
 
 	flags.AddTxFlagsToCmd(cmd)
 
@@ -269,7 +269,7 @@ func GetCmdBurnToken() *cobra.Command {
 		},
 	}
 	cmd.Flags().AddFlagSet(FsMintToken)
-	cmd.MarkFlagRequired(FlagAmount)
+	_ = cmd.MarkFlagRequired(FlagAmount)
 
 	flags.AddTxFlagsToCmd(cmd)
 
@@ -319,7 +319,7 @@ func GetCmdTransferOwnerToken() *cobra.Command {
 	}
 
 	cmd.Flags().AddFlagSet(FsTransferOwnerToken)
-	cmd.MarkFlagRequired(FlagTo)
+	_ = cmd.MarkFlagRequired(FlagTo)
 
 	flags.AddTxFlagsToCmd(cmd)
 	return cmd
