@@ -41,7 +41,7 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 func GetQueryClassCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "class [class-id]",
-		Long:    "Query the class by the specified class id.",
+		Short:   "Query the class by the specified class id.",
 		Example: fmt.Sprintf("$ %s q nft class <class-id>", version.AppName),
 		Args:    cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -67,7 +67,7 @@ func GetQueryClassCmd() *cobra.Command {
 func GetQueryClassesCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "classes",
-		Long:    "Query all denominations of all collections of NFTs.",
+		Short:   "Query all denominations of all collections of NFTs.",
 		Example: fmt.Sprintf("$ %s q nft classes", version.AppName),
 		Args:    cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -95,7 +95,7 @@ func GetQueryClassesCmd() *cobra.Command {
 func GetQueryNFTCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "nft [class-id] [nft-id]",
-		Long:    "Query a single NFT from a collection",
+		Short:   "Query a single NFT from a collection",
 		Example: fmt.Sprintf("$ %s q nft nft <class-id> <nft-id>", version.AppName),
 		Args:    cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -182,10 +182,16 @@ $ %s query %s nfts <class-id> --owner=<owner>
 
 func GetQuerySupplyCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:     "supply [classID]",
-		Long:    "total supply of a collection or owner of NFTs",
-		Example: fmt.Sprintf("$ %s q nft supply <class-id>", version.AppName),
-		Args:    cobra.ExactArgs(1),
+		Use:   "supply [class-id]",
+		Short: "total supply of a collection or owner of NFTs",
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`Total supply of a collection or owner of NFTs. If owner
+			is set, all nfts that belong to the owner are filtered out.
+			Examples:
+			$ %s query %s supply <class-id> --owner=<owner>
+			`, version.AppName, types.ModuleName),
+		),
+		Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -210,7 +216,7 @@ func GetQuerySupplyCmd() *cobra.Command {
 func GetQueryOwnerCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "owner [address] [class-id]",
-		Long:    "Get the NFTs owned by an account addr.",
+		Short:   "Get the NFTs owned by an account addr.",
 		Example: fmt.Sprintf("$ %s q nft owner <address> <class-id>", version.AppName),
 		Args:    cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
