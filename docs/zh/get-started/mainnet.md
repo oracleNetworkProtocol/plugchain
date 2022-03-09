@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-必须使用 Plug Chain [v1.0.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
+必须使用 Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
 :::
 
 1. 初始化节点
@@ -44,7 +44,7 @@ plugchaind start
 
 | 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.0.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.0.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
 
 
 
