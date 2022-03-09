@@ -4,7 +4,7 @@ order: 4
 
 # gRPC 客户端
 
-Plug Chain Hub v0.5.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
+Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
 
 ## gRPC 服务端口、激活方式和配置
 

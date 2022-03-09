@@ -20,15 +20,15 @@ service Query {
     rpc NFT (QueryNFTRequest) returns (QueryNFTResponse) {
         option (google.api.http).get = "/nft/nfts/{class_id}/{nft_id}";
     }
-    rpc Collection (QueryCollectionRequest) returns (QueryCollectionResponse) {
-        option (google.api.http).get = "/nft/collections/{class_id}";
+    rpc NFTs (QueryNFTsRequest) returns (QueryNFTsResponse) {
+        option (google.api.http).get = "/nft/nfts";
     }
 
     rpc Supply(QuerySupplyRequest) returns (QuerySupplyResponse) {
-        option (google.api.http).get = "/nft/collections/{class_id}/supply";
+        option (google.api.http).get = "/nft/supply/{class_id}";
     }
     rpc Owner (QueryOwnerRequest) returns (QueryOwnerResponse) {
-        option (google.api.http).get = "/nft/nfts/{address}/{class_id}";
+        option (google.api.http).get = "/nft/{address}/{class_id}";
     }
 }
 
@@ -59,14 +59,15 @@ message QueryNFTResponse{
     NFT nft = 1; 
 }
 
-message QueryCollectionRequest {
+message QueryNFTsRequest {
     string class_id = 1;
-    cosmos.base.query.v1beta1.PageRequest pagination = 2;
+    string owner = 2;
+    cosmos.base.query.v1beta1.PageRequest pagination = 3;
 }
 
 
-message QueryCollectionResponse{
-    Collection collection = 1;
+message QueryNFTsResponse{
+    repeated NFT nfts = 1;
     cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

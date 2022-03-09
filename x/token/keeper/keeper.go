@@ -160,7 +160,7 @@ func (k Keeper) BurnToken(ctx sdk.Context, symbol string, amount uint64, owner s
 	addrTotal := k.bankKeeper.GetBalance(ctx, owner, symbol)
 
 	if !addrTotal.Amount.GT(burnCoin.Amount) {
-		return sdkerrors.Wrapf(types.ErrInvalidAmount, "the amount exceeds the account token amount; expected (0, %d], got %d", addrTotal.Amount.String(), burnCoin.Amount.String())
+		return sdkerrors.Wrapf(types.ErrInvalidAmount, "Insufficient account balance")
 	}
 
 	if err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, owner, types.ModuleName, burnCoins); err != nil {

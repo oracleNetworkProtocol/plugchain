@@ -18,7 +18,7 @@ func (q Keeper) Class(c context.Context, req *types.QueryClassRequest) (*types.Q
 	ctx := sdk.UnwrapSDKContext(c)
 	data, ok := q.GetClassByID(ctx, req.ClassId)
 	if !ok {
-		return nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denom ID %s not exists", req.ClassId)
+		return nil, sdkerrors.Wrapf(types.ErrInvalidClass, "class ID %s not exists", req.ClassId)
 	}
 
 	return &types.QueryClassResponse{Class: &data}, nil
@@ -61,15 +61,81 @@ func (q Keeper) NFT(c context.Context, req *types.QueryNFTRequest) (*types.Query
 	}, nil
 }
 
-func (q Keeper) Collection(c context.Context, req *types.QueryCollectionRequest) (*types.QueryCollectionResponse, error) {
+func (q Keeper) NFTs(c context.Context, req *types.QueryNFTsRequest) (*types.QueryNFTsResponse, error) {
+	if req == nil {
+		return nil, sdkerrors.ErrInvalidRequest.Wrap("empty request")
+	}
+	var err error
+	if len(req.ClassId) > 0 {
+		if err := types.ValidateClassID(req.ClassId); err != nil {
+			return nil, err
+		}
+	}
+	var owner sdk.AccAddress
+	if len(req.Owner) > 0 {
+		owner, err = sdk.AccAddressFromBech32(req.Owner)
+		if err != nil {
+			return nil, err
+		}
+	}
+	var (
+		nfts    []*types.NFT
+		pageRes *query.PageResponse
+	)
 	ctx := sdk.UnwrapSDKContext(c)
-	collection, pageRes, err := q.GetPaginateCollection(ctx, req, req.ClassId)
-	if err != nil {
-		return nil, err
+
+	switch {
+	case len(req.ClassId) > 0 && len(req.Owner) > 0:
+		if pageRes, err = query.Paginate(q.getStoreByOwnerClass(ctx, owner, req.ClassId), req.Pagination, func(key []byte, _ []byte) error {
+			nft, err := q.GetNFT(ctx, req.ClassId, string(key))
+			if err != nil {
+				return err
+			}
+			nfti, ok := nft.(types.NFT)
+			if ok {
+				nfts = append(nfts, &nfti)
+
+			}
+			return nil
+
+		}); err != nil {
+			return nil, err
+		}
+	case len(req.ClassId) > 0 && len(req.Owner) == 0:
+		nftStore := q.getStoreByClass(ctx, req.ClassId)
+		if pageRes, err = query.Paginate(nftStore, req.Pagination, func(key, value []byte) error {
+			var nft types.NFT
+			if err := q.cdc.Unmarshal(value, &nft); err != nil {
+				return err
+			}
+			nfts = append(nfts, &nft)
+			return nil
+		}); err != nil {
+			return nil, err
+		}
+	case len(req.ClassId) == 0 && len(req.Owner) > 0:
+		ownerStore := q.getStoreByOwner(ctx, owner)
+		if pageRes, err = query.Paginate(ownerStore, req.Pagination, func(key, value []byte) error {
+			classID, nftID, _ := types.SplitKeyDenom(key)
+			nft, err := q.GetNFT(ctx, classID, nftID)
+			if err != nil {
+				return err
+			}
+			nfti, ok := nft.(types.NFT)
+			if ok {
+				nfts = append(nfts, &nfti)
+
+			}
+			return nil
+		}); err != nil {
+			return nil, err
+		}
+	default:
+		return nil, sdkerrors.ErrInvalidRequest.Wrap("must provide at least one of classID or owner")
 	}
 
-	return &types.QueryCollectionResponse{
-		Collection: &collection,
+	return &types.QueryNFTsResponse{
+		Nfts:       nfts,
 		Pagination: pageRes,
 	}, nil
 }

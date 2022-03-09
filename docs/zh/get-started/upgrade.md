@@ -5,7 +5,7 @@ order: 7
 # Plug Chain Hub 最新版本升级
 
 本文档描述了验证器和全节点操作员成功执行*升级计划*的步骤。由于升级导致的资产丢失，官方概不负责，请升级时备份好自己的财产。
-Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`v1.0`升级。
+Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`v1.1.0`升级。
 
 
 升级内容如下：
@@ -44,12 +44,12 @@ Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`
 
 # 操作步骤 
 
-1. 获取 `v1.0.0` 版本的二进制文件plugchaind
+1. 获取 `v1.1.0` 版本的二进制文件plugchaind
 
 ```bash
-# 拉取v1.0.0版本代码 （本地可使用 `git tag` 查看下tag版本，如果有 `v1.0.0`,跳过此步骤）
+# 拉取v1.1.0版本代码 （本地可使用 `git tag` 查看下tag版本，如果有 `v1.1.0`,跳过此步骤）
 cd plugchain
-git fetch --all && git checkout v1.0.0
+git fetch --all && git checkout v1.1.0
 make install
 
 ```

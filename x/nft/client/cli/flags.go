@@ -10,6 +10,7 @@ const (
 	FlagNFTURI  = "nft-uri"
 	FlagNFTData = "nft-data"
 	FlagOwner   = "owner"
+	FlagClassID = "class-id"
 )
 
 var (

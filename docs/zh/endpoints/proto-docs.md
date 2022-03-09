@@ -22,10 +22,10 @@ order: 6
     - [QueryClassResponse](#plugchain.nft.QueryClassResponse)
     - [QueryClassesRequest](#plugchain.nft.QueryClassesRequest)
     - [QueryClassesResponse](#plugchain.nft.QueryClassesResponse)
-    - [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest)
-    - [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse)
     - [QueryNFTRequest](#plugchain.nft.QueryNFTRequest)
     - [QueryNFTResponse](#plugchain.nft.QueryNFTResponse)
+    - [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest)
+    - [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse)
     - [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest)
     - [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse)
     - [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest)
@@ -289,38 +289,6 @@ GenesisState defines the nft module's genesis state.
 
 
 
-<a name="plugchain.nft.QueryCollectionRequest"></a>
-
-### QueryCollectionRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryCollectionResponse"></a>
-
-### QueryCollectionResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `collection` | [Collection](#plugchain.nft.Collection) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
 <a name="plugchain.nft.QueryNFTRequest"></a>
 
 ### QueryNFTRequest
@@ -346,6 +314,39 @@ GenesisState defines the nft module's genesis state.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `nft` | [NFT](#plugchain.nft.NFT) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTsRequest"></a>
+
+### QueryNFTsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `class_id` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTsResponse"></a>
+
+### QueryNFTsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
 
 
 
@@ -431,9 +432,9 @@ Query defines the gRPC querier service.
 | `Class` | [QueryClassRequest](#plugchain.nft.QueryClassRequest) | [QueryClassResponse](#plugchain.nft.QueryClassResponse) |  | GET|/nft/classes/{class_id}|
 | `Classes` | [QueryClassesRequest](#plugchain.nft.QueryClassesRequest) | [QueryClassesResponse](#plugchain.nft.QueryClassesResponse) |  | GET|/nft/classes|
 | `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{class_id}/{nft_id}|
-| `Collection` | [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest) | [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse) |  | GET|/nft/collections/{class_id}|
-| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/collections/{class_id}/supply|
-| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/nfts/{address}/{class_id}|
+| `NFTs` | [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest) | [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse) |  | GET|/nft/nfts|
+| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/supply/{class_id}|
+| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/{address}/{class_id}|
 
  <!-- end services -->
 

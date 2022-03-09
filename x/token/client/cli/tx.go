@@ -36,8 +36,8 @@ func GetTxCmd() *cobra.Command {
 // GetCmdIssueToken implements the issue token command
 func GetCmdIssueToken() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "issue",
-		Long: "Issue a new token.",
+		Use:   "issue",
+		Short: "Issue a new token.",
 		Example: fmt.Sprintf(
 			"$ %s tx token issue "+
 				"--name=\"Kitty Token\" "+
@@ -107,19 +107,19 @@ func GetCmdIssueToken() *cobra.Command {
 		},
 	}
 	cmd.Flags().AddFlagSet(FsIssueToken)
-	cmd.MarkFlagRequired(FlagSymbol)
-	cmd.MarkFlagRequired(FlagName)
-	cmd.MarkFlagRequired(FlagInitialSupply)
-	cmd.MarkFlagRequired(FlagScale)
-	cmd.MarkFlagRequired(FlagMinUnit)
+	_ = cmd.MarkFlagRequired(FlagSymbol)
+	_ = cmd.MarkFlagRequired(FlagName)
+	_ = cmd.MarkFlagRequired(FlagInitialSupply)
+	_ = cmd.MarkFlagRequired(FlagScale)
+	_ = cmd.MarkFlagRequired(FlagMinUnit)
 	flags.AddTxFlagsToCmd(cmd)
 
 	return cmd
 }
 func GetCmdMintToken() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "mint [symbol]",
-		Long: "Mint tokens to a specified address.",
+		Use:   "mint [symbol]",
+		Short: "Mint tokens to a specified address.",
 		Example: fmt.Sprintf(
 			"$ %s tx token mint <symbol> "+
 				"--amount=<amount> "+
@@ -167,7 +167,7 @@ func GetCmdMintToken() *cobra.Command {
 
 	cmd.Flags().AddFlagSet(FsMintToken)
 
-	cmd.MarkFlagRequired(FlagAmount)
+	_ = cmd.MarkFlagRequired(FlagAmount)
 
 	flags.AddTxFlagsToCmd(cmd)
 
@@ -177,8 +177,8 @@ func GetCmdMintToken() *cobra.Command {
 // GetCmdEditToken implements the edit token command
 func GetCmdEditToken() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "edit [symbol]",
-		Long: "Edit an existing token.",
+		Use:   "edit [symbol]",
+		Short: "Edit an existing token.",
 		Example: fmt.Sprintf(
 			"$ %s tx token edit <symbol> "+
 				"--name=\"Cat Token\" "+
@@ -223,8 +223,8 @@ func GetCmdEditToken() *cobra.Command {
 
 func GetCmdBurnToken() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "burn [symbol]",
-		Long: "Burn tokens.",
+		Use:   "burn [symbol]",
+		Short: "Burn tokens.",
 		Example: fmt.Sprintf(
 			"$ %s tx token burn <symbol> "+
 				"--amount=<amount> "+
@@ -269,7 +269,7 @@ func GetCmdBurnToken() *cobra.Command {
 		},
 	}
 	cmd.Flags().AddFlagSet(FsMintToken)
-	cmd.MarkFlagRequired(FlagAmount)
+	_ = cmd.MarkFlagRequired(FlagAmount)
 
 	flags.AddTxFlagsToCmd(cmd)
 
@@ -278,8 +278,8 @@ func GetCmdBurnToken() *cobra.Command {
 
 func GetCmdTransferOwnerToken() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "transfer",
-		Long: "transfer owner for token.",
+		Use:   "transfer",
+		Short: "transfer owner for token.",
 		Example: fmt.Sprintf(
 			"$ %s tx token transfer <symbol>"+
 				"--to=<new-owner-address>"+
@@ -319,7 +319,7 @@ func GetCmdTransferOwnerToken() *cobra.Command {
 	}
 
 	cmd.Flags().AddFlagSet(FsTransferOwnerToken)
-	cmd.MarkFlagRequired(FlagTo)
+	_ = cmd.MarkFlagRequired(FlagTo)
 
 	flags.AddTxFlagsToCmd(cmd)
 	return cmd

@@ -1,6 +1,7 @@
 package keeper
 
 import (
+	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
@@ -60,4 +61,20 @@ func (k Keeper) Authorize(ctx sdk.Context, denomID, ID string, owner sdk.AccAddr
 func (k Keeper) deleteNFT(ctx sdk.Context, denomID, ID string) {
 	store := ctx.KVStore(k.storeKey)
 	store.Delete(types.GetKeyNFT(denomID, ID))
+}
+
+func (k Keeper) getStoreByOwnerClass(ctx sdk.Context, owner sdk.AccAddress, classID string) prefix.Store {
+	store := ctx.KVStore(k.storeKey)
+	key := types.GetKeyOwner(owner, classID, "")
+	return prefix.NewStore(store, key)
+}
+
+func (k Keeper) getStoreByClass(ctx sdk.Context, classID string) prefix.Store {
+	store := ctx.KVStore(k.storeKey)
+	return prefix.NewStore(store, types.GetKeyClassID(classID))
+}
+
+func (k Keeper) getStoreByOwner(ctx sdk.Context, owner sdk.AccAddress) prefix.Store {
+	store := ctx.KVStore(k.storeKey)
+	return prefix.NewStore(store, types.GetKeyOwner(owner, "", ""))
 }
