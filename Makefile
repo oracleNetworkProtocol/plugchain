@@ -297,7 +297,7 @@ proto-swagger-gen:
 ###                                Releasing                                ###
 ###############################################################################
 PACKAGE_NAME:=github.com/oracleNetworkProtocol/plugchain
-GOLANG_CROSS_VERSION  = v1.17.6
+GOLANG_CROSS_VERSION  = v1.17.1
 GOPATH ?= '$(HOME)/go'
 release-dry-run:
 	docker run \

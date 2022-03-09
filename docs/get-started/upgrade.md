@@ -5,7 +5,7 @@ order: 7
 # Plug Chain Hub latest version upgrade
 
 This document describes the steps for validators and full node operators to successfully execute the *upgrade plan*. The official is not responsible for the loss of assets due to the upgrade. Please back up your assets when upgrading.
-Plug Chain will stop running the main chain at block height `3000000` and upgrade to the official version `v1.0`.
+Plug Chain will stop running the main chain at block height `3000000` and upgrade to the official version `v1.1.0`.
 
 
 The upgrade contents are as follows:
@@ -43,11 +43,11 @@ Precautions:
 
 # Steps 
 
-1. Get the `v1.0.0` binary file plugchaind
+1. Get the `v1.1.0` binary file plugchaind
 
 ```bash
-# Pull the v1.0.0 version code (you can use `git tag` to view the next tag version locally, if there is `v1.0.0`, skip this step)
-git fetch origin v1.0.0
+# Pull the v1.1.0 version code (you can use `git tag` to view the next tag version locally, if there is `v1.1.0`, skip this step)
+git fetch origin v1.1.0
 
 # Execute the compiled binary
 make install
