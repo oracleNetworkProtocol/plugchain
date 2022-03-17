@@ -1,6 +1,6 @@
-<!--
-order: 3
--->
+---
+order: 2
+---
 
 # Truffle: Deploying a Smart Contract
 
@@ -8,8 +8,8 @@ Learn how to deploy a simple Solidity-based smart contract to Plug Chain using t
 
 ## Pre-requisite Readings
 
-- [Installation](./../get-started/install.md) {prereq}
-- [Run a node](./../get-started/mainnet.md) {prereq}
+- [Installation](./../get-started/install.md) 
+- [Run a node](./../get-started/mainnet.md) 
 
 [Truffle](https://www.trufflesuite.com/truffle) is a development framework for deploying and managing [Solidity](https://github.com/ethereum/solidity) smart contracts.
 
@@ -21,9 +21,9 @@ First, install the latest Truffle version on your machine globally.
 yarn install truffle -g
 ```
 
-::: tip
+> tip
 If you haven't already, you will also need to install Plug Chain if you plan on deploying your smart contracts locally. Check this [document](./../get-started/install.md) for the full instructions.
-:::
+
 
 ## Create Truffle Project
 
@@ -114,9 +114,9 @@ Start your local node using the following command on the Terminal
 $ init.sh
 ```
 
-::: tip
+> tip
 For further information on how to run a node, please refer to the [quickstart guide](./../get-started/mainnet.md).
-:::
+
 
 ## Deploy contract
 

@@ -1,15 +1,15 @@
-<!--
-order: 3
--->
+---
+order: 2
+---
 
 # Truffle: 部署智能合约
 
- 学习如何使用Truffle环境部署一个简单的基于solid的智能合约到Plug Chain {synopsis}
+ 学习如何使用Truffle环境部署一个简单的基于solid的智能合约到Plug Chain 
 
 ## Pre-requisite Readings
 
-- [安装](./../get-started/install.md) {prereq}
-- [加入主网](./../get-started/mainnet.md) {prereq}
+- [安装](./../get-started/install.md)
+- [加入主网](./../get-started/mainnet.md) 
 
 [Truffle](https://www.trufflesuite.com/truffle) 是用于部署和管理的开发框架
 [Solidity](https://github.com/ethereum/solidity) 智能合约.
@@ -22,9 +22,8 @@ order: 3
 yarn install truffle -g
 ```
 
-::: tip
+> tip
 如果您还没有安装，那么如果您计划在本地部署智能合约，您还需要安装Plug Chain。检查这个 [文档](./../get-started/install.md) 详细说明请参阅.
-:::
 
 ## 创建 Truffle 项目
 
@@ -108,9 +107,9 @@ contract('Counter', accounts => {
 
 ## 启动节点
 
-::: tip
+> tip
 有关如何运行节点的详细信息，请参阅 [quickstart guide](./../get-started/mainnet.md).
-:::
+
 
 ## 部署合约
 

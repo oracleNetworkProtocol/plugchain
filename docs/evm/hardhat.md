@@ -1,6 +1,6 @@
-<!--
-order: 2
--->
+---
+order: 1
+---
 
 # Hardhat: Deploying a Smart Contract
 
@@ -10,15 +10,15 @@ Learn how to deploy a simple Solidity-based smart contract to Plug Chain using t
 
 ## Pre-requisite Readings
 
-- [Installation](./../get-started/install.md) {prereq}
-- [Run a node](./../get-started/mainnet.md) {prereq}
+- [Installation](./../get-started/install.md) 
+- [Run a node](./../get-started/mainnet.md) 
 
 ## Install Dependencies
 
 Before proceeding, you need to install Node.js (we'll use v16.x) and the npm package manager. You can download directly from [Node.js](https://nodejs.org/en/download/) or in your terminal:
 
-:::: tabs
-::: tab Ubuntu
+
+Ubuntu
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -26,8 +26,7 @@ curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-:::
-::: tab MacOS
+MacOS
 
 ```bash
 # You can use homebrew (https://docs.brew.sh/Installation)
@@ -37,8 +36,6 @@ $ brew install node
 $ nvm install node
 ```
 
-:::
-::::
 
 You can verify that everything is installed correctly by querying the version for each package:
 
@@ -50,9 +47,9 @@ $ npm -v
 ...
 ```
 
-::: tip
+> tip
 If you haven't already, you will also need to install Plug Chain if you plan on deploying your smart contracts locally. Check this [document](./../get-started/install.md) for the full instructions.
-:::
+
 
 ## Create Hardhat Project
 
@@ -79,8 +76,7 @@ Welcome to Hardhat v2.0.8
 
 Following the prompts should create a new project structure in your directory. Consult the [Hardhat config page](https://hardhat.org/config/) for a list of configuration options to specify in `hardhat.config.js`. Most importantly, you should set the `defaultNetwork` entry to point to your desired JSON-RPC network:
 
-:::: tabs
-::: tab Local Node
+Local Node
 
 ```javascript
 module.exports = {
@@ -97,8 +93,7 @@ module.exports = {
 }
 ```
 
-:::
-::: tab Testnet
+Testnet
 
 ```javascript
 module.exports = {
@@ -115,8 +110,6 @@ module.exports = {
 }
 ```
 
-:::
-::::
 
 To ensure you are targeting the correct network, you can query for a list of accounts available to you from your default network provider:
 
@@ -165,22 +158,17 @@ npx hardhat run scripts/sample-script.js
 
 Hardhat also lets you manually specify a target network via the `--network <your-network>` flag:
 
-:::: tabs
-::: tab Local Node
+Local Node
 
 ```bash
 npx hardhat run --network {{ $themeConfig.project.rpc_url_local }} scripts/sample-script.js
 ```
-
-:::
-::: tab Testnet
+Testnet
 
 ```bash
 npx hardhat run --network {{ $themeConfig.project.rpc_url_testnet }} scripts/sample-script.js
 ```
 
-:::
-::::
 
 Finally, try running a Hardhat test:
 

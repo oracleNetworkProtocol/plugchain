@@ -1,6 +1,6 @@
-<!--
-order: 2
--->
+---
+order: 1
+---
 
 # Hardhat：部署智能合约
 
@@ -10,15 +10,15 @@ order: 2
 
 ## 准备工作
 
-- [安装](./../get-started/install.md) {prereq}
-- [加入主网](./../get-started/mainnet.md) {prereq}
+- [安装](./../get-started/install.md) 
+- [加入主网](./../get-started/mainnet.md) 
 
 ## 流程
 
 在继续之前，您需要安装Node。js（我们将使用v16.x）和npm包管理器。你可以直接从 [Node.js](https://nodejs.org/en/download/) 或者在你的终端:
 
-:::: tabs
-::: tab Ubuntu
+
+ Ubuntu
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
@@ -26,8 +26,7 @@ curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-:::
-::: tab MacOS
+ MacOS
 
 ```bash
 # 你可以用 homebrew (https://docs.brew.sh/Installation)
@@ -37,8 +36,6 @@ $ brew install node
 $ nvm install node
 ```
 
-:::
-::::
 
 您可以通过查询每个软件包的版本来验证是否正确安装了所有软件包:
 
@@ -50,9 +47,8 @@ $ npm -v
 ...
 ```
 
-::: tip
+> tip
 如果您还没有安装，那么如果您计划在本地部署智能合约，您还需要安装Plug Chain。检查这个 [文档]](./../get-started/install.md) 详细说明请参阅.
-:::
 
 ## 创建 Hardhat 项目
 
@@ -79,8 +75,7 @@ Welcome to Hardhat v2.0.8
 
 根据提示，应该在目录中创建一个新的项目结构。查阅 [Hardhat config page](https://hardhat.org/config/) 中指定的配置选项列表 `hardhat.config.js`. 最重要的是，您应该设置 `defaultNetwork` 入口指向您想要的JSON-RPC网络:
 
-:::: tabs
-::: tab Local Node
+Local Node
 
 ```javascript
 module.exports = {
@@ -97,8 +92,7 @@ module.exports = {
 }
 ```
 
-:::
-::: tab Testnet
+Testnet
 
 ```javascript
 module.exports = {
@@ -115,8 +109,6 @@ module.exports = {
 }
 ```
 
-:::
-::::
 
 为了确保您的目标是正确的网络，您可以从默认的网络提供商查询可用的帐户列表:
 
@@ -165,22 +157,18 @@ npx hardhat run scripts/sample-script.js
 
 Hardhat还允许您通过 `--network <your-network>` 标签:
 
-:::: tabs
-::: tab Local Node
+Local Node
 
 ```bash
 npx hardhat run --network {{ $themeConfig.project.rpc_url_local }} scripts/sample-script.js
 ```
 
-:::
-::: tab Testnet
+Testnet
 
 ```bash
 npx hardhat run --network {{ $themeConfig.project.rpc_url_testnet }} scripts/sample-script.js
 ```
 
-:::
-::::
 
 最后，尝试运行Hardhat测试:
 
