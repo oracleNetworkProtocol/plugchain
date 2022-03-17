@@ -4,7 +4,7 @@ order: 1
 
 # Hardhat：部署智能合约
 
-了解如何使用Hardhat环境部署一个简单的基于坚固性的智能合约到Plug Chain {synopsis}
+了解如何使用Hardhat环境部署一个简单的基于坚固性的智能合约到Plug Chain
 
 [Hardhat](https://hardhat.org/) 是一个灵活的开发环境，用于构建基于以太坊的智能合约。它的设计考虑了集成性和可扩展性
 
