@@ -4,7 +4,7 @@ order: 1
 
 # Hardhat: Deploying a Smart Contract
 
-Learn how to deploy a simple Solidity-based smart contract to Plug Chain using the Hardhat environment {synopsis}
+Learn how to deploy a simple Solidity-based smart contract to Plug Chain using the Hardhat environment
 
 [Hardhat](https://hardhat.org/) is a flexible development environment for building Ethereum-based smart contracts. It is designed with integrations and extensibility in mind
 

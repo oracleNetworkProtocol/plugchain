@@ -4,7 +4,7 @@ order: 2
 
 # Truffle: Deploying a Smart Contract
 
-Learn how to deploy a simple Solidity-based smart contract to Plug Chain using the Truffle environment {synopsis}
+Learn how to deploy a simple Solidity-based smart contract to Plug Chain using the Truffle environment
 
 ## Pre-requisite Readings
 

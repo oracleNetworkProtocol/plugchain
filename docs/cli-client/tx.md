@@ -39,103 +39,109 @@ You can generate any type of txs offline by appending the flag `--generate-only`
 We use a transfer tx in the following examples:
 
 ```bash
-plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2xzhcn32szps56wvev40tt908h62 10uplugcn --chain-id=plugchain_520-1 --generate-only
+plugchaind tx bank send gx1l7422f2ljgmrnzwxgd9rxr8cw3yz63wx89tnqs gx1rkecwy9pjsfd058w0pwa2perquc8xe639n92ms 900000uplugcn --fees 20uplugcn --generate-only > unsigned.json
 ```
 
 The `unsigned.json` should look like:
 
 ```json
 {
-    "type": "cosmos-sdk/StdTx",
-    "value": {
-        "msg": [
+    "body": {
+        "messages": [
             {
-                "type": "cosmos-sdk/MsgSend",
-                "value": {
-                    "from_address": "gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx",
-                    "to_address": "gx15uys54epmd2xzhcn32szps56wvev40tt908h62",
-                    "amount": [
-                        {
-                            "denom": "uplugcn",
-                            "amount": "10"
-                        }
-                    ]
-                }
+                "@type": "/cosmos.bank.v1beta1.MsgSend",
+                "from_address": "gx1l7422f2ljgmrnzwxgd9rxr8cw3yz63wx89tnqs",
+                "to_address": "gx1rkecwy9pjsfd058w0pwa2perquc8xe639n92ms",
+                "amount": [
+                    {
+                        "denom": "uplugcn",
+                        "amount": "900000"
+                    }
+                ]
             }
         ],
+        "memo": "",
+        "timeout_height": "0",
+        "extension_options": [],
+        "non_critical_extension_options": []
+    },
+    "auth_info": {
+        "signer_infos": [],
         "fee": {
-            "amount": [],
-            "gas": "200000"
-        },
-        "signatures": null,
-        "memo": ""
-    }
+            "amount": [
+                {
+                    "denom": "uplugcn",
+                    "amount": "20"
+                }
+            ],
+            "gas_limit": "200000",
+            "payer": "",
+            "granter": ""
+        }
+    },
+    "signatures": []
 }
 ```
 
 ### Sign tx offline
 
 ```bash
-plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
+plugchaind tx sign unsigned.json  --from gx1l7422f2ljgmrnzwxgd9rxr8cw3yz63wx89tnqs --chain-id plugchain_520-1 > signed.json
 ```
 
 The `signed.json` should look like:
 
 ```json
 {
-    "type": "auth/StdTx",
-    "value": {
-        "msg": [
+    "body": {
+        "messages": [
             {
-                "type": "cosmos-sdk/Send",
-                "value": {
-                    "inputs": [
-                        {
-                            "address": "gx106nhdckyf996q69v3qdxwe6y7408pvyvyxzhxh",
-                            "coins": [
-                                {
-                                    "denom": "uplugcn",
-                                    "amount": "1000000"
-                                }
-                            ]
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "address": "gx1893x4l2rdshytfzvfpduecpswz7qtpstevr742",
-                            "coins": [
-                                {
-                                    "denom": "uplugcn",
-                                    "amount": "1000000"
-                                }
-                            ]
-                        }
-                    ]
-                }
+                "@type": "/cosmos.bank.v1beta1.MsgSend",
+                "from_address": "gx1l7422f2ljgmrnzwxgd9rxr8cw3yz63wx89tnqs",
+                "to_address": "gx1rkecwy9pjsfd058w0pwa2perquc8xe639n92ms",
+                "amount": [
+                    {
+                        "denom": "uplugcn",
+                        "amount": "900000"
+                    }
+                ]
+            }
+        ],
+        "memo": "",
+        "timeout_height": "0",
+        "extension_options": [],
+        "non_critical_extension_options": []
+    },
+    "auth_info": {
+        "signer_infos": [
+            {
+                "public_key": {
+                    "@type": "/cosmos.crypto.secp256k1.PubKey",
+                    "key": "Auouudrg0P86v2kq2lykdr97AJYGHyD6BJXAQtjR1gzd"
+                },
+                "mode_info": {
+                    "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                    }
+                },
+                "sequence": "1"
             }
         ],
         "fee": {
             "amount": [
                 {
                     "denom": "uplugcn",
-                    "amount": "4000000"
+                    "amount": "20"
                 }
             ],
-            "gas": "200000"
-        },
-        "signatures": [
-            {
-                "pub_key": {
-                    "type": "tendermint/PubKeySecp256k1",
-                    "value": "Auouudrg0P86v2kq2lykdr97AJYGHyD6BJXAQtjR1gzd"
-                },
-                "signature": "sJewd6lKjma49rAiGVfdT+V0YYerKNx6ZksdumVCvuItqGm24bEN9msh7IJ12Sil1lYjqQjdAcjVCX/77FKlIQ==",
-                "account_number": "0",
-                "sequence": "3"
-            }
-        ],
-        "memo": "test"
-    }
+            "gas_limit": "200000",
+            "payer": "",
+            "granter": ""
+        }
+    },
+    "signatures": [
+        "sJewd6lKjma49rAiGVfdT+V0YYerKNx6ZksdumVCvuItqGm24bEN9msh7IJ12Sil1lYjqQjdAcjVCX/77FKlIQ=="
+    ]
 }
 ```
 
