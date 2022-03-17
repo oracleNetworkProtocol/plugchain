@@ -45,6 +45,20 @@ type BaseAccount struct {
 }
 ```
 
+```bash
+# plugchaind q account gx1rpyxd0yqfkqcm8pmp0nejpeacd5t7usk26d2h2
+# http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx1rpyxd0yqfkqcm8pmp0nejpeacd5t7usk26d2h2
+
+'@type': /cosmos.auth.v1beta1.BaseAccount
+account_number: "1"
+address: gx1rpyxd0yqfkqcm8pmp0nejpeacd5t7usk26d2h2
+pub_key:
+  '@type': /cosmos.crypto.secp256k1.PubKey
+  key: AlcccAL+NKRmkvu1Hvmt5uSDzXQEMmOhu7YPy1RwnaXU
+sequence: "0"
+```
+
+
 - 基于[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)的分层确定性钱包。
 - BIP44基于[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)中描述的算法定义确定性钱包的逻辑层次结构，该算法允许处理多种代币，多个帐户，每个帐户的外部和内部链以及每个链的数百万个地址，例如比特币和以太坊。
 - pubkey类型 `secp256k1` 。
@@ -67,6 +81,21 @@ type EthAccount struct {
 	*types.BaseAccount `protobuf:"bytes,1,opt,name=base_account,json=baseAccount,proto3,embedded=base_account" json:"base_account,omitempty" yaml:"base_account"`
 	CodeHash           string `protobuf:"bytes,2,opt,name=code_hash,json=codeHash,proto3" json:"code_hash,omitempty" yaml:"code_hash"`
 }
+```
+
+```bash
+# plugchaind q account gx1tr5gxpl3c78qp4xkkmhw5p9tmwruvte773ync5
+# http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx1tr5gxpl3c78qp4xkkmhw5p9tmwruvte773ync5
+
+'@type': /ethermint.types.v1.EthAccount
+base_account:
+  account_number: "0"
+  address: gx1tr5gxpl3c78qp4xkkmhw5p9tmwruvte773ync5
+  pub_key:
+    '@type': /ethermint.crypto.v1.ethsecp256k1.PubKey
+    key: AmIFRfAboGW0P1GSG+8b9m8aMM1ikl4da4vEakglaLep
+  sequence: "1"
+code_hash:0xc5d2440186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470
 ```
 
 - 使用ETH的ECDSA secp256k1曲线作为密钥，这完全满足 [EIP84](https://github.com/ethereum/EIPs/issues/84) [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) 路径。
@@ -94,8 +123,6 @@ Cosmos的 `sdk.AccAddress`。
 可使用 `plugchaind debug addr <address>` 用于在 hex 和 bech32 格式之间转换地址。例如：
 
 
-:::: tabs
-::: tab Bech32
 
 ```bash
 plugchaind debug addr gx1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
@@ -104,8 +131,6 @@ plugchaind debug addr gx1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
   Bech32 Acc: gx1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw
   Bech32 Val: gxvaloper1z3t55m0l9h0eupuz3dp5t5cypyv674jjn4d6nn
 ```
-:::
-::: tab Hex
 
 ```bash
 plugchaind debug addr 14574A6DFF2DDF9E07828B4345D3040919AF5652
