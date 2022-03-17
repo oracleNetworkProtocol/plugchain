@@ -6,6 +6,8 @@
 *.swm
 *.swn
 .vscode
+.goreleaser.yml
+.release-env
 
 # IDE
 .idea/
@@ -30,6 +32,7 @@
 # third_party/
 docs/node_modules/
 docs/.vuepress/dist/
+build/
 
 vue/*
 secret.yml
@@ -44,3 +47,9 @@ node/*
 home/*
 home*/
 tet/
+
+
+docs-tools-stamp
+
+# goreleaser
+dist/

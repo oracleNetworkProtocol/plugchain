@@ -4,7 +4,7 @@ order: 2
 
 # Legacy Amino JSON REST
 
-Plug Chain Hub v0.5.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 Plug Chain Hub v0.5.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
+Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）和更早版本提供了 REST 端点来查询状态和广播交易。 这些端点在 Plug Chain Hub v1.0.0 中仍然保留，但已标记为已弃用，并计划在几个版本后删除。因此，我们将这些端点称为 Legacy REST 端点。
 
 Legacy REST 端点相关的重要信息：
 
@@ -323,7 +323,7 @@ Plug Chain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用�
                     "to_address": "gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "1000000"
                         }
                     ]
@@ -333,7 +333,7 @@ Plug Chain Hub v0.5 和更早版本中存在的 REST 路由通过 [HTTP 弃用�
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "30000"
                 }
             ],
@@ -435,7 +435,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
                           "to_address": "gx1w976a5jrhsj06dqmrh2x9qxzel74qtcmapklxc",
                           "amount": [
                               {
-                                  "denom": "plug",
+                                  "denom": "uplugcn",
                                   "amount": "1000000"
                               }
                           ]
@@ -445,7 +445,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
               "fee": {
                   "amount": [
                       {
-                          "denom": "plug",
+                          "denom": "uplugcn",
                           "amount": "30000"
                       }
                   ],

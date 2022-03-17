@@ -9,7 +9,7 @@ This module is in charge of distributing collected transaction fee and inflated 
 ### Source
 
 1. The first signer of transactions (Collected to feeCollector in DeliverTx)
-2. plug tokens (Each hour Inflate stake token and add it to LooseTokens)
+2. uplugcn tokens (Each hour Inflate stake token and add it to LooseTokens)
 
 ### Destination
 
@@ -41,13 +41,13 @@ There are 2 ways to withdraw rewards according to different scenarios
 - `withdraw-all-rewards` : Withdraw all delegations rewards for a delegator
 
 ```bash
-plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 - `withdraw-rewards` : Withdraw rewards from a given validator address
 
 ```bash
-plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### Query reward token

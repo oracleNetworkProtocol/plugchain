@@ -40,7 +40,7 @@ func GetQueryCmd(queryRoute string) *cobra.Command {
 func GetCmdQueryToken() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "info [denom]",
-		Long:    "Query a token detail by symbol or min unit.",
+		Short:   "Query a token detail by symbol or min unit.",
 		Example: fmt.Sprintf("$ %s query token info <denom>", version.AppName),
 		Args:    cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -59,7 +59,6 @@ func GetCmdQueryToken() *cobra.Command {
 			if err != nil {
 				return err
 			}
-
 			return clientCtx.PrintProto(res.Token)
 		},
 	}
@@ -71,7 +70,7 @@ func GetCmdQueryToken() *cobra.Command {
 func GetCmdQueryParams() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "params",
-		Long:    "Query values set as token parameters",
+		Short:   "Query values set as token parameters",
 		Example: fmt.Sprintf("$ %s q token params", version.AppName),
 		Args:    cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -95,13 +94,14 @@ func GetCmdQueryParams() *cobra.Command {
 func GetCmdQueryTokens() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "tokens [owner]",
-		Long:    "Query tokens by the owner",
+		Short:   "Query tokens by the owner",
 		Example: fmt.Sprintf("$ %s q token tokens <owner>", version.AppName),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
 			if err != nil {
 				return err
 			}
+
 			var owner sdk.AccAddress
 			if len(args) > 0 {
 				owner, err = sdk.AccAddressFromBech32(args[0])
@@ -122,13 +122,14 @@ func GetCmdQueryTokens() *cobra.Command {
 				return err
 			}
 
-			tokens := make([]types.TokenI, 0, len(res.Tokens))
+			tokens := make([]types.Token, 0, len(res.Tokens))
 			for _, v := range res.Tokens {
 				var token types.TokenI
 				if err = clientCtx.InterfaceRegistry.UnpackAny(v, &token); err != nil {
 					return err
 				}
-				tokens = append(tokens, token)
+				t := token.(*types.Token)
+				tokens = append(tokens, *t)
 			}
 			return clientCtx.PrintObjectLegacy(tokens)
 		},
@@ -142,7 +143,7 @@ func GetCmdQueryTokens() *cobra.Command {
 func GetCmdQueryTokenFee() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "fee [symbol]",
-		Long:    "Query the token related fees",
+		Short:   "Query the token related fees",
 		Args:    cobra.ExactArgs(1),
 		Example: fmt.Sprintf("$ %s q token fee <symbol>", version.AppName),
 		RunE: func(cmd *cobra.Command, args []string) error {

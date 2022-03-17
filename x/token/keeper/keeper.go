@@ -13,7 +13,7 @@ import (
 
 type (
 	Keeper struct {
-		cdc           codec.Marshaler
+		cdc           codec.Codec
 		storeKey      sdk.StoreKey
 		bankKeeper    types.BankKeeper
 		accountKeeper types.AccountKeeper
@@ -23,7 +23,7 @@ type (
 )
 
 func NewKeeper(
-	cdc codec.Marshaler,
+	cdc codec.Codec,
 	storeKey sdk.StoreKey,
 	paramSpace paramstypes.Subspace,
 	bankKeeper types.BankKeeper,
@@ -91,7 +91,7 @@ func (k Keeper) MintToken(ctx sdk.Context, symbol string, amount uint64, to, own
 	if owner.String() != token.Owner {
 		return sdkerrors.Wrapf(types.ErrInvalidOwner, "the address %s is not the owner of the token %s", token.Owner, symbol)
 	}
-	supply := k.bankKeeper.GetSupply(ctx).GetTotal().AmountOf(token.MinUnit)
+	supply := k.bankKeeper.GetSupply(ctx, token.MinUnit).Amount
 	precision := sdk.NewIntWithDecimal(1, int(token.Scale))
 	mintableAmt := sdk.NewIntFromUint64(token.MaxSupply).Mul(precision).Sub(supply)
 	mintableMainAmt := mintableAmt.Quo(precision).Uint64()
@@ -126,7 +126,7 @@ func (k Keeper) EditToken(ctx sdk.Context, symbol, name string, maxSupply uint64
 		return sdkerrors.Wrapf(types.ErrInvalidOwner, "the address %s is not the owner of the token %s", token.Owner, symbol)
 	}
 	if maxSupply > 0 {
-		issueSupply := k.bankKeeper.GetSupply(ctx).GetTotal().AmountOf(token.MinUnit)
+		issueSupply := k.bankKeeper.GetSupply(ctx, token.MinUnit).Amount
 		issueBaseSupply := uint64(issueSupply.Quo(sdk.NewIntWithDecimal(1, int(token.Scale))).Int64())
 
 		if maxSupply < issueBaseSupply {
@@ -137,9 +137,8 @@ func (k Keeper) EditToken(ctx sdk.Context, symbol, name string, maxSupply uint64
 	}
 	if name != types.DoNotModify {
 		token.Name = name
-		metadata := k.bankKeeper.GetDenomMetaData(ctx, token.MinUnit)
-		metadata.Description = name
-		k.bankKeeper.SetDenomMetaData(ctx, metadata)
+		metadata, _ := k.bankKeeper.GetDenomMetaData(ctx, token.MinUnit)
+		metadata.Name = name
 	}
 	k.setToken(ctx, token)
 
@@ -161,7 +160,7 @@ func (k Keeper) BurnToken(ctx sdk.Context, symbol string, amount uint64, owner s
 	addrTotal := k.bankKeeper.GetBalance(ctx, owner, symbol)
 
 	if !addrTotal.Amount.GT(burnCoin.Amount) {
-		return sdkerrors.Wrapf(types.ErrInvalidAmount, "the amount exceeds the account token amount; expected (0, %d], got %d", addrTotal.Amount.String(), burnCoin.Amount.String())
+		return sdkerrors.Wrapf(types.ErrInvalidAmount, "Insufficient account balance")
 	}
 
 	if err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, owner, types.ModuleName, burnCoins); err != nil {

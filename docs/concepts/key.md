@@ -1,3 +1,6 @@
+---
+order: 7
+---
 # Key
 
 ## A note on HD wallet

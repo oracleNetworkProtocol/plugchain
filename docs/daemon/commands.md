@@ -30,6 +30,7 @@ plugchaind <command>
 | [testnet](local-testnet.md#build-and-init)                       | Initialize files for a Plug Chain Hub testnet                                                                          |
 | [reset](local-testnet.md#plugchaind-reset)                             | Reset app state to the specified height                                                                         |
 | [export](export.md)                                              | Export state to JSON                                                                                            |
+| [config](config.md)                                              | Query and modify the client configuration of the specified data directory                                                                                            |
 | version                                                          | Show executable binary version                                                                                  |
 
 ## Global Flags

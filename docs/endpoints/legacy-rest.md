@@ -4,7 +4,7 @@ order: 2
 
 # Legacy Amino JSON REST
 
-The Plug Chain Hub versions v0.5.0 (depends on Cosmos-SDK v0.42) and earlier provided REST endpoints to query the state and broadcast transactions. These endpoints are kept in Plug Chain Hub v0.5, but they are marked as deprecated, and will be removed after a few versions therefore call these endpoints legacy REST endpoints.
+The Plug Chain Hub versions v1.0.0 (depends on Cosmos-SDK v0.42) and earlier provided REST endpoints to query the state and broadcast transactions. These endpoints are kept in Plug Chain Hub v0.5, but they are marked as deprecated, and will be removed after a few versions therefore call these endpoints legacy REST endpoints.
 
 Some important information concerning all legacy REST endpoints:
 
@@ -322,7 +322,7 @@ The same code as integrating with Plug Chain Hub-v0.16.3 mainnet. The transactio
                     "to_address": "gx1q6t5439f0rkvkzl38m0f43e0kpv3mx7x2shlq8",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "1000000"
                         }
                     ]
@@ -332,7 +332,7 @@ The same code as integrating with Plug Chain Hub-v0.16.3 mainnet. The transactio
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "30000"
                 }
             ],
@@ -434,7 +434,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
                           "to_address": "gx1w976a5jrhsj06dqmrh2x9qxzel74qtcmapklxc",
                           "amount": [
                               {
-                                  "denom": "plug",
+                                  "denom": "uplugcn",
                                   "amount": "1000000"
                               }
                           ]
@@ -444,7 +444,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
               "fee": {
                   "amount": [
                       {
-                          "denom": "plug",
+                          "denom": "uplugcn",
                           "amount": "30000"
                       }
                   ],

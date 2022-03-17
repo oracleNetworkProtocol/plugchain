@@ -239,7 +239,7 @@ plugchaind tx staking create-validator [flags]
 ### Create a validator
 
 ```bash
-plugchaind tx staking create-validator --chain-id=plugchain --from=<key-name> --fees=20plug --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100plug --moniker=<validator-name>
+plugchaind tx staking create-validator --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100uplugcn --moniker=<validator-name>
 ```
 
 :::tip
@@ -269,7 +269,7 @@ plugchaind tx staking edit-validator [flags]
 ### Edit validator information
 
 ```bash
-plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=20plug --commission-rate=0.10 --moniker=<validator-name>
+plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain_520-1 --fees=20uplugcn --commission-rate=0.10 --moniker=<validator-name>
 ```
 
 ### Upload validator avatar
@@ -285,7 +285,7 @@ plugchaind tx staking delegate [validator-addr] [amount] [flags]
 ```
 
 ```bash
-plugchaind tx staking delegate <gxvaloper...> <amount> --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking delegate <gxvaloper...> <amount> --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn
 ```
 
 ## plugchaind tx staking unbond
@@ -299,7 +299,7 @@ plugchaind tx staking unbond [validator-addr] [amount] [flags]
 ### Unbond some tokens from a validator
 
 ```bash
-plugchaind tx staking unbond <gxvaloper...> 10plugchaind --from=<key-name> --chain-id=plugchain --fees=20plug
+plugchaind tx staking unbond <gxvaloper...> 10uplugcn --from=<key-name> --chain-id=plugchain_520-1 --fees=20uplugcn
 ```
 
 ## plugchaind tx staking redelegate
@@ -317,5 +317,5 @@ plugchaind tx staking redelegate [src-validator-addr] [dst-validator-addr] [amou
 ### Redelegate some tokens to another validator
 
 ```bash
-plugchaind tx staking redelegate <gxvaloper...> <gxvaloper...> 10plugchaind --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking redelegate <gxvaloper...> <gxvaloper...> 10uplugcn --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn
 ```

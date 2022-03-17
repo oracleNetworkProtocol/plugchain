@@ -39,7 +39,7 @@ You can generate any type of txs offline by appending the flag `--generate-only`
 We use a transfer tx in the following examples:
 
 ```bash
-plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2xzhcn32szps56wvev40tt908h62 10plugchaind --chain-id=plugchain --generate-only
+plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2xzhcn32szps56wvev40tt908h62 10uplugcn --chain-id=plugchain_520-1 --generate-only
 ```
 
 The `unsigned.json` should look like:
@@ -56,7 +56,7 @@ The `unsigned.json` should look like:
                     "to_address": "gx15uys54epmd2xzhcn32szps56wvev40tt908h62",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "10"
                         }
                     ]
@@ -94,7 +94,7 @@ The `signed.json` should look like:
                             "address": "gx106nhdckyf996q69v3qdxwe6y7408pvyvyxzhxh",
                             "coins": [
                                 {
-                                    "denom": "plug",
+                                    "denom": "uplugcn",
                                     "amount": "1000000"
                                 }
                             ]
@@ -105,7 +105,7 @@ The `signed.json` should look like:
                             "address": "gx1893x4l2rdshytfzvfpduecpswz7qtpstevr742",
                             "coins": [
                                 {
-                                    "denom": "plug",
+                                    "denom": "uplugcn",
                                     "amount": "1000000"
                                 }
                             ]
@@ -117,7 +117,7 @@ The `signed.json` should look like:
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "4000000"
                 }
             ],
@@ -150,7 +150,7 @@ This command is used to broadcast an offline signed transaction to the network.
 ### Broadcast offline signed transaction
 
 ```bash
-plugchaind tx broadcast signed.json --chain-id=plugchain
+plugchaind tx broadcast signed.json --chain-id=plugchain_520-1
 ```
 
 ## plugchaind tx multisign
@@ -168,7 +168,7 @@ No multisig key? [Create one](keys.md#create-a-multisig-key)
 :::
 
 ```bash
-plugchaind tx bank send <from> <to> 10plugchaind --fees=20plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
+plugchaind tx bank send <from> <to> 10uplugcn --fees=20uplugcn --chain-id=plugchain_520-1 --from=<multisig-keyname> --generate-only > unsigned.json
 ```
 
 ### Sign the multisig tx
@@ -186,13 +186,13 @@ Assume the multisig-threshold is 2, here we sign the `unsigned.json` by 2 of the
 Sign the tx by signer-1:
 
 ```bash
-plugchaind tx sign unsigned.json --from=<signer-keyname-1> --chain-id=plugchain --multisig=<multisig-address> --signature-only > signed-1.json
+plugchaind tx sign unsigned.json --from=<signer-keyname-1> --chain-id=plugchain_520-1 --multisig=<multisig-address> --signature-only > signed-1.json
 ```
 
 Sign the tx by signer-2:
 
 ```bash
-plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain --multisig=<multisig-address> --signature-only > signed-2.json
+plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain_520-1 --multisig=<multisig-address> --signature-only > signed-2.json
 ```
 
 #### Merge the signatures
@@ -200,7 +200,7 @@ plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain 
 Merge all the signatures into `signed.json`
 
 ```bash
-plugchaind tx multisign --chain-id=plugchain unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
+plugchaind tx multisign --chain-id=plugchain_520-1 unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
 ```
 
 Now you can [broadcast the signed tx](#plugchaind-tx-broadcast).

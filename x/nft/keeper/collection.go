@@ -31,25 +31,25 @@ func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
 	return
 }
 
-func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectionRequest, denomID string) (types.Collection, *query.PageResponse, error) {
-	denom, found := k.GetClassByID(ctx, denomID)
+func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryNFTsRequest, denomID string) ([]types.NFTI, *query.PageResponse, error) {
+	_, found := k.GetClassByID(ctx, denomID)
 	if !found {
-		return types.Collection{}, nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not existed", denomID)
+		return nil, nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not existed", denomID)
 	}
 	var nfts []types.NFTI
 	store := ctx.KVStore(k.storeKey)
 	nftStore := prefix.NewStore(store, types.GetKeyNFT(denomID, ""))
 	pageRes, err := query.Paginate(nftStore, req.Pagination, func(key, value []byte) error {
 		var nft types.NFT
-		k.cdc.MustUnmarshalBinaryBare(value, &nft)
+		k.cdc.MustUnmarshal(value, &nft)
 		nfts = append(nfts, nft)
 		return nil
 	})
 	if err != nil {
-		return types.Collection{}, nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
+		return nil, nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
 	}
 
-	return types.NewCollection(denom, nfts), pageRes, nil
+	return nfts, pageRes, nil
 }
 
 // get denom count

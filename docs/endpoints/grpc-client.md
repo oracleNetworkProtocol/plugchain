@@ -4,7 +4,7 @@ order: 4
 
 # gRPC Client
 
-Plug Chain Hub v0.5.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
+Plug Chain Hub v1.0.0 (depends on Cosmos-SDK v0.42) introduced Protobuf as the main [encoding](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md) library, and this brings a wide range of Protobuf-based tools that can be plugged into the SDK. One such tool is [gRPC](https://grpc.io), a modern open source high performance RPC framework that has decent client support in several languages.
 
 ## gRPC Server Port, Activation and Configuration
 
@@ -101,15 +101,15 @@ func sendTx() error {
     //addr1 to addr2
     //addr1 to addr3
     //The transaction is signed by addr1
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
-    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("plug", 4000000)))
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 5000000)))
+    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("uplugcn", 4000000)))
     err := txBuilder.SetMsgs(msg1, msg2)
     if err != nil {
         return err
     }
 
     txBuilder.SetGasLimit(200000)
-    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
+    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
     txBuilder.SetMemo("give your my friend to Tom")
     // txBuilder.SetTimeoutHeight(...)
 }

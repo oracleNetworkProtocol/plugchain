@@ -30,6 +30,7 @@ plugchaind <command>
 | [testnet](local-testnet.md#build-and-init)                       | 初始化Plug Chain Hub测试网                                                       |
 | [reset](local-testnet.md#plugchaind-reset)                             | 将app状态重置到指定的高度                                                 |
 | [export](export.md)                                              | 将状态导出为JSON                                                          |
+| [config](config.md)                                              | 查询修改指定数据目录的client配置                                             |
 | version                                                          | 显示版本信息                                                              |
 
 ## 全局标识

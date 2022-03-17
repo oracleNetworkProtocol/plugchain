@@ -50,7 +50,7 @@ go version
 ```bash
 git clone https://github.com/oracleNetworkProtocol/plugchain.git
 cd plugchain
-git checkout v0.5.0
+git checkout v1.0.0
 make install
 ```
 > 如果克隆仓库比较慢或者没反应的情况，可以把克隆地址 `github.com` 换成国内镜像，已知的国内镜像有`github.com.cnpmjs.org`和`git.sdut.me/`

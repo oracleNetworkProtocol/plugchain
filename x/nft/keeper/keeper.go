@@ -13,7 +13,7 @@ import (
 
 type (
 	Keeper struct {
-		cdc           codec.Marshaler
+		cdc           codec.Codec
 		storeKey      sdk.StoreKey
 		accountKeeper types.AccountKeeper
 		bankKeeper    types.BankKeeper
@@ -21,7 +21,7 @@ type (
 )
 
 func NewKeeper(
-	cdc codec.Marshaler,
+	cdc codec.Codec,
 	storeKey sdk.StoreKey,
 	ak types.AccountKeeper,
 	bk types.BankKeeper,
@@ -67,7 +67,7 @@ func (k Keeper) IssueNFT(ctx sdk.Context, classID, ID, name, uri, data string, o
 func (k Keeper) EditNFT(ctx sdk.Context, classID, ID, name, uri, data string, owner sdk.AccAddress) error {
 	denom, ok := k.GetClassByID(ctx, classID)
 	if !ok {
-		return sdkerrors.Wrapf(types.ErrInvalidClass, "denom ID (%s) not exists", classID)
+		return sdkerrors.Wrapf(types.ErrInvalidClass, "class ID (%s) not exists", classID)
 	}
 
 	if denom.EditRestricted {

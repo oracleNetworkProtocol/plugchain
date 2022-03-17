@@ -99,26 +99,26 @@ Example Output:
 - Edit validator
 
 ```bash
-plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain --fees=20plug --commission-rate=0.15 --moniker=<new-name>
+plugchaind tx staking edit-validator --from=<key-name> --chain-id=plugchain_520-1 --fees=20uplugcn --commission-rate=0.15 --moniker=<new-name>
 ```
 
 - Delegate tokens to other validators
 If you just want to be a delegator, you can skip the above steps.
 
 ```bash
-plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking delegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000uplugcn --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn
 ```
 
 - Unbond tokens from a validator
 
 ```bash
-plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000plug --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking unbond gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000uplugcn --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn
 ```
   
 - Redelegate tokens to another validator
 
 ```bash
-plugchaind tx staking redelegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke gxvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100plug --from mykey --chain-id=plugchain --from=<key-name> --fees=20plug
+plugchaind tx staking redelegate gxvaloper14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke gxvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100uplugcn --from mykey --chain-id=plugchain_520-1 --from=<key-name> --fees=20uplugcn
 ```
 
 For other staking commands, please refer to [stake cli client](../cli-client/staking.md)

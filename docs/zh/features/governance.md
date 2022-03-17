@@ -10,7 +10,7 @@
 
 - **投票:**
 
-  一旦抵押数量达到某个特定值（`最小抵押`），提议将被确认，对该提议的投票也将开启。之后，质押的 plug 持有者可以发送 `TxGovVote` 交易对此提议进行投票。
+  一旦抵押数量达到某个特定值（`最小抵押`），提议将被确认，对该提议的投票也将开启。之后，质押的 uplugcn 持有者可以发送 `TxGovVote` 交易对此提议进行投票。
 
 - 当提议涉及软件升级时，流程请参考 [`Upgrade`](./upgrade.md)
 
@@ -18,7 +18,7 @@
 
 #### 提交提议的权利
 
-无论质押与否，任何 plug 持有者均可通过发送 `TxGovProposal` 交易来提交提议。一旦被提交，将生成一个唯一的 `proposalID` 来标识提议。
+无论质押与否，任何 uplugcn 持有者均可通过发送 `TxGovProposal` 交易来提交提议。一旦被提交，将生成一个唯一的 `proposalID` 来标识提议。
 
 #### 提议类型
 
@@ -54,15 +54,15 @@
 
 #### 参与者
 
-_参与者_ 是对提议有投票权利的用户。在 Plug Chain Hub 上，参与者是质押的 plug 持有者。未质押的 plug 持有者和其他用户无权参与治理。但是他们能提交提议及抵押。
+_参与者_ 是对提议有投票权利的用户。在 Plug Chain Hub 上，参与者是质押的 uplugcn 持有者。未质押的 uplugcn 持有者和其他用户无权参与治理。但是他们能提交提议及抵押。
 
 注意，对于一个特定的验证人，如果一些参与者满足以下条件，则这些参与者可以被禁止为一个提议投票：
 
-- 在提议进入投票期后，参与者对该验证人质押或解质押 plug
+- 在提议进入投票期后，参与者对该验证人质押或解质押 uplugcn
   
 - 在提议进入投票期后，参与者成为验证人
 
-但是这不阻止参与者用质押到其他验证人的 plug 进行投票。例如，在一个提议进入投票期之前，参与者质押一些 plug 到验证人 A；在该提议进入投票期之后，质押另一些 plug 到验证人 B；则仅仅在验证人 B 下的投票将被禁止。
+但是这不阻止参与者用质押到其他验证人的 uplugcn 进行投票。例如，在一个提议进入投票期之前，参与者质押一些 uplugcn 到验证人 A；在该提议进入投票期之后，质押另一些 uplugcn 到验证人 B；则仅仅在验证人 B 下的投票将被禁止。
 
 #### 投票期
 
@@ -93,7 +93,7 @@ _注意: 在 UI 端，我们可以为一些紧急的提议增加一个 `Not Urge
 
 阈值初始被设置为 50%，如果超过 1/3 的投票（排除 `弃权` 投票）是 `否决` 票，有一定的否决概率。这意味着在投票期结束时，如果 `赞成` 投票（排除 `弃权` 投票）的比例大于 50%，并且 `否决` 投票（排除 `弃权` 投票）的比例小于 1/3，则提议将被接受。
 
-在投票期结束之前，如果满足一个特殊条件，提议可以被接受。即，如果 `赞成` 投票与 `InitTotalVotingPower`（`初始总投票权`）的比例超过 2:3，提议将立即被接受，即使 `投票期` 还没结束。`初始总投票权` 是投票开启时所有质押的 plug 持有人的总投票权。这个条件存在以至于在紧急情况下网络可以快速做出反应。
+在投票期结束之前，如果满足一个特殊条件，提议可以被接受。即，如果 `赞成` 投票与 `InitTotalVotingPower`（`初始总投票权`）的比例超过 2:3，提议将立即被接受，即使 `投票期` 还没结束。`初始总投票权` 是投票开启时所有质押的 uplugcn 持有人的总投票权。这个条件存在以至于在紧急情况下网络可以快速做出反应。
 
 #### 继承
 
@@ -126,7 +126,7 @@ _注意: 在 UI 端，我们可以为一些紧急的提议增加一个 `Not Urge
 plugchaind query staking params
 
 # 查询的参数列表
-bond_denom: line
+bond_denom: uplugcn
 historical_entries: 10000
 max_entries: 7
 max_validators: 100
@@ -140,13 +140,13 @@ echo '{
     {
       "subspace": "staking",
       "key": "MaxValidators",
-      "value": 105
+      "value": 50
     }
   ],
-  "deposit": "1000plug"
+  "deposit": "1000uplugcn"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### 社区池基金消费
@@ -159,11 +159,11 @@ echo '{
   "title": "Community Pool Spend",
   "description": "Developer rewards",
   "recipient": "gx1s5afhd6gxevu37mkqcvvsj8qeylhn0rz46zdlq",
-  "amount": "10000plug",
-  "deposit": "1000plug"
+  "amount": "10000uplugcn",
+  "deposit": "1000uplugcn"
 }' > proposal.json
 
-plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=20plug --chain-id=plugchain
+plugchaind tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=20uplugcn --chain-id=plugchain_520-1
 ```
 
 ### 软件升级

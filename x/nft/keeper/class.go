@@ -13,7 +13,7 @@ func (k Keeper) GetClassByID(ctx sdk.Context, id string) (denom types.Class, ok 
 	if len(bz) == 0 {
 		return denom, false
 	}
-	k.cdc.MustUnmarshalBinaryBare(bz, &denom)
+	k.cdc.MustUnmarshal(bz, &denom)
 	return denom, true
 }
 
@@ -23,7 +23,7 @@ func (k Keeper) GetClasses(ctx sdk.Context) (denoms []types.Class) {
 	defer iterator.Close()
 	for ; iterator.Valid(); iterator.Next() {
 		var denom types.Class
-		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &denom)
+		k.cdc.MustUnmarshal(iterator.Value(), &denom)
 		denoms = append(denoms, denom)
 	}
 	return
@@ -36,7 +36,7 @@ func (k Keeper) SetClass(ctx sdk.Context, denom types.Class) error {
 	}
 
 	store := ctx.KVStore(k.storeKey)
-	bz := k.cdc.MustMarshalBinaryBare(&denom)
+	bz := k.cdc.MustMarshal(&denom)
 	store.Set(types.GetKeyClassID(denom.ID), bz)
 
 	return nil
@@ -51,7 +51,7 @@ func (k Keeper) UpdateDenom(ctx sdk.Context, denom types.Class) error {
 		return sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not exists", denom.ID)
 	}
 	store := ctx.KVStore(k.storeKey)
-	bz := k.cdc.MustMarshalBinaryBare(&denom)
+	bz := k.cdc.MustMarshal(&denom)
 	store.Set(types.GetKeyClassID(denom.ID), bz)
 
 	return nil

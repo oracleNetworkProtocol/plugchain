@@ -13,46 +13,39 @@ order: 3
 ### Start node from genesis
 
 :::tip
-必须使用 Plug Chain [v0.5.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
+必须使用 Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
 :::
 
 1. 初始化节点
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain
+plugchaind init <moniker> --chain-id=plugchain_520-1
 ```
 
-2. 下载主网公开的 genesis.json和种子信息 或者 进入clone下来的 Plug Chain 目录里面：
-*[主网创世文件和种子信息](https://github.com/oracleNetworkProtocol/plugchain/blob/main/mainnet/v1)* ,如下通过移动clone的仓库里面的genesis.json 来实现覆盖。
+2. 下载主网公开的 `genesis.json`,`app.toml`,`config.toml`:
 
 ```bash 
-mv ./mainnet/v1/genesis.json ~/.plugchain/
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ```
-
-:::warning 
-如下第三步可跳过，如跳过需要在第四步加上参数 `--p2p.seeds` 参数）
-:::
-
-3. 覆盖数据目录的genesis.json之后,修改 ~/.plugchain/config/config.toml 里面 seeds 参数，添加种子信息
-
-把 ./mainnet/v1/seeds.txt 文件中提供的 seeds , 修改 ~/.plugchain/config/config.toml 中的`seeds`参数以设置链接的种子节点,种子信息以英文逗号分隔
-
+3. 启动之前如果想修改服务端口,种子信息，对等点，哨兵模式等，可自行修改文件，然后再启动节点。
 
 4. 启动节点服务
 
 ```bash
 # 启动节点（也可使用 nohup 或 systemd 等方式后台运行）
 
-# 第三步未修改种子信息，运行start时，添加参数:
-# --p2p.seeds="7488f044132cec94e72c0eb5cdd267fb5607f5d1@47.102.107.120:26656,60fde7a070938367ede8943ee45bee622424753a@47.102.126.234:26656"
-
-# 如果修改服务端口配置，需要在使用服务的地方加上参数:
-# 比如修改默认的tendermint rpc服务: tcp://localhost:26657 => tcp://localhost:5000 
-# cli使用时，有`--node`参数的命令 都需要指向此参数为 --node=tcp://localhost:5000
-# 例如： plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
-
-plugchaind start --minimum-gas-prices 0.0001plug 
+plugchaind start
 ```
+
+
+接下来，你的节点将执行所有链升级过程。在每次升级之间，你必须使用特定的版本同步区块。不用担心在升级高度使用旧版本，节点会自动停止。
+
+| 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
+| -------- | ------------ | -------------- | ----- |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
+
 
 
 :::tip
@@ -60,16 +53,6 @@ plugchaind start --minimum-gas-prices 0.0001plug
 
 
 :::
-
-待区块达到升级高度（762880），节点会panic死掉，信息如下：
-
-```
-ERR UPGRADE "x/token" NEEDED at height: 762880:
-2:04AM ERR CONSENSUS FAILURE!!! err="UPGRADE \"x/token\" NEEDED at height: 762880: "
-```
-
-这个是社区提案升级高度，需要使用新的二进制文件运行链：[升级信息](./upgrade-process.md)
-
 
 
 ## 升级为验证人节点
@@ -103,14 +86,14 @@ plugchaind status 2>&1 | jq -r '.SyncInfo.catching_up'
 
 ```bash
 plugchaind tx staking create-validator --from mywallet \
---amount 1000000plug \
+--amount 1000000uplugcn \
 --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" \
 --commission-rate="0.10" \
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation="1000000" \
---fees 20plug --chain-id plugchain
+--fees 20uplugcn --chain-id plugchain_520-1
 ```
 
 

@@ -28,14 +28,13 @@ order: 4
 1. 初始化节点
 
 ```bash
-plugchaind init <moniker> --chain-id=plugchain
+plugchaind init <moniker> --chain-id=plugchain_521-1
 ```
 
 2. 下载测试网公开的 genesis.json和种子信息 或者 进入clone下来的 plugchain 目录里面：
-*[测试网创世文件和种子信息](https://github.com/oracleNetworkProtocol/plugchain/blob/main/testnet/latest/)* ,如下通过移动clone的仓库里面的genesis.json 来实现覆盖。
 
 ```bash 
-mv ./testnet/latest/genesis.json ~/.plugchain/
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/testnet/latest/genesis.json
 ```
 
 :::warning 
@@ -59,7 +58,7 @@ mv ./testnet/latest/genesis.json ~/.plugchain/
 # 例如： plugchaind q account gx1tulwx2hwz4dv8te6cflhda64dn0984harlzegw --node tcp://localhost:5000
 
 
-plugchaind start --minimum-gas-prices 0.025line
+plugchaind start
 ```
 
 

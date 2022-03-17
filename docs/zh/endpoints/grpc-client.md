@@ -4,7 +4,7 @@ order: 4
 
 # gRPC 客户端
 
-Plug Chain Hub v0.5.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
+Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
 
 ## gRPC 服务端口、激活方式和配置
 
@@ -101,15 +101,15 @@ func sendTx() error {
     //地址addr1 到 addr2
     //地址addr1 到 addr3
     //交易需要 addr1 签名
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("plug", 5000000)))
-    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("plug", 4000000)))
+    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 5000000)))
+    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("uplugcn", 4000000)))
     err := txBuilder.SetMsgs(msg1, msg2)
     if err != nil {
         return err
     }
 
     txBuilder.SetGasLimit(200000)
-    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("plug", 20)))
+    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
     txBuilder.SetMemo("give your my friend to LiLei")
     // txBuilder.SetTimeoutHeight(...)
 }

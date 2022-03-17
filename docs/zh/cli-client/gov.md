@@ -185,8 +185,8 @@ plugchaind tx gov submit-proposal community-pool-spend <path/to/proposal.json> -
     "title": "Community Pool Spend",
     "description": "Pay me some Atoms!",
     "recipient": "gx1mjk4p68mmulwla3x5uzlgjwsc3zrms448rel3q",
-    "amount": "1000plug",
-    "deposit": "1000plug"
+    "amount": "1000uplugcn",
+    "deposit": "1000uplugcn"
 }
 ```
 
@@ -215,7 +215,7 @@ plugchaind tx gov submit-proposal param-change <path/to/proposal.json> --from=<k
             "value": 105
         }
     ],
-    "deposit": "1000plug"
+    "deposit": "1000uplugcn"
 }
 ```
 
@@ -279,5 +279,5 @@ plugchaind tx gov vote [proposal-id] [option] [flags]
 ### 为活跃的提案投票
 
 ```bash
-plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=20plug
+plugchaind tx gov vote <proposal-id> <option> --from=<key-name> --fees=20uplugcn
 ```

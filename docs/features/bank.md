@@ -16,10 +16,10 @@ This module is mainly used to transfer coins between accounts, query account bal
 
 2. Transfer between accounts
 
-    For example, transfer 10plugchaind from account A to account B:
+    For example, transfer 10uplugcn from account A to account B:
 
     ```bash
-    plugchaind tx bank send [A] [B] [10plug] --fees=20plug --chain-id=plugchain
+    plugchaind tx bank send [A] [B] [10plug] --fees=20uplugcn --chain-id=plugchain_520-1
     ```
 
     Plug Chain Hub supports multiple tokens in circulation, and in the future Plug Chain Hub will be able to include multiple tokens in one transaction.
@@ -29,7 +29,7 @@ This module is mainly used to transfer coins between accounts, query account bal
     To improve account security, Plug Chain Hub supports offline signing of transactions to protect the account's private key. In any transaction, you can build an unsigned transaction using the flag --generate-only. Take transfer transaction as an example:
 
     ```bash
-    plugchaind tx bank send [from_key_or_address] [to_address] [amount]  --fees=20plug --generate-only
+    plugchaind tx bank send [from_key_or_address] [to_address] [amount]  --fees=20uplugcn --generate-only
     ```
 
     Return the built transaction with empty signatures:
@@ -51,7 +51,7 @@ This module is mainly used to transfer coins between accounts, query account bal
     Sign the transaction:
 
     ```bash
-    plugchaind tx sign <file> --chain-id=plugchain --from=<key-name>
+    plugchaind tx sign <file> --chain-id=plugchain_520-1 --from=<key-name>
     ```
 
     Return signed transactions:

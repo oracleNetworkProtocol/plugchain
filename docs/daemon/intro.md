@@ -14,7 +14,7 @@ It's recommended that you run Plug Chain Hub nodes on Linux Server.
 
 - 2 CPU
 - Memory: 4GB
-- Disk: 256GB SSD
+- Disk: 500GB SSD
 - OS: Ubuntu 16.04 LTS +
 - Bandwidth: 5Mbps
 - Allow all incoming connections on TCP port 26656 and 26657

@@ -40,7 +40,7 @@ plugchaind tx sign <file> [flags]
 下面示例中使用Transfer交易：
 
 ```bash
-plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2xzhcn32szps56wvev40tt908h62 10plugchaind --chain-id=plugchain --generate-only
+plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2xzhcn32szps56wvev40tt908h62 10uplugcn --chain-id=plugchain_520-1 --generate-only
 ```
 
 `unsigned.json` 看起来是这样的：
@@ -57,7 +57,7 @@ plugchaind tx bank send gx1w9lvhwlvkwqvg08q84n2k4nn896u9pqx93velx gx15uys54epmd2
                     "to_address": "gx15uys54epmd2xzhcn32szps56wvev40tt908h62",
                     "amount": [
                         {
-                            "denom": "plug",
+                            "denom": "uplugcn",
                             "amount": "10"
                         }
                     ]
@@ -95,7 +95,7 @@ plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
                             "address": "gx106nhdckyf996q69v3qdxwe6y7408pvyvyxzhxh",
                             "coins": [
                                 {
-                                    "denom": "plug",
+                                    "denom": "uplugcn",
                                     "amount": "10000000"
                                 }
                             ]
@@ -106,7 +106,7 @@ plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
                             "address": "gx1893x4l2rdshytfzvfpduecpswz7qtpstevr742",
                             "coins": [
                                 {
-                                    "denom": "plug",
+                                    "denom": "uplugcn",
                                     "amount": "10000000"
                                 }
                             ]
@@ -118,7 +118,7 @@ plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
         "fee": {
             "amount": [
                 {
-                    "denom": "plug",
+                    "denom": "uplugcn",
                     "amount": "40000000"
                 }
             ],
@@ -151,7 +151,7 @@ plugchaind tx sign unsigned.json --name=<key-name> > signed.tx
 ### 广播离线签名的交易
 
 ```bash
-plugchaind tx broadcast signed.json --chain-id=plugchain
+plugchaind tx broadcast signed.json --chain-id=plugchain_520-1
 ```
 
 ## plugchaind tx multisign
@@ -169,7 +169,7 @@ plugchaind tx multisign <file> <key-name> <[signature]...> [flags]
 :::
 
 ```bash
-plugchaind tx bank send <from> <to> 10plugchaind --fees=20plug --chain-id=plugchain --from=<multisig-keyname> --generate-only > unsigned.json
+plugchaind tx bank send <from> <to> 10uplugcn --fees=20uplugcn --chain-id=plugchain_520-1 --from=<multisig-keyname> --generate-only > unsigned.json
 ```
 
 ### 签名多签交易
@@ -187,13 +187,13 @@ plugchaind keys show <multisig-keyname>
 用signer-1签名：
 
 ```bash
-plugchaind tx sign unsigned.json --from=<signer-keyname-1> --chain-id=plugchain --multisig=<multisig-address> --signature-only > signed-1.json
+plugchaind tx sign unsigned.json --from=<signer-keyname-1> --chain-id=plugchain_520-1 --multisig=<multisig-address> --signature-only > signed-1.json
 ```
 
 用signer-2签名：
 
 ```bash
-plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain --multisig=<multisig-address> --signature-only > signed-2.json
+plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain_520-1 --multisig=<multisig-address> --signature-only > signed-2.json
 ```
 
 #### 合并签名
@@ -201,7 +201,7 @@ plugchaind tx sign unsigned.json --from=<signer-keyname-2> --chain-id=plugchain 
 合并所有签名到 `signed.json`
 
 ```bash
-plugchaind tx multisign --chain-id=plugchain unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
+plugchaind tx multisign --chain-id=plugchain_520-1 unsigned.json <multisig-keyname> signed-1.json signed-2.json > signed.json
 ```
 
 现在可以[广播](#plugchaind-tx-broadcast)这个已签名交易了。
