@@ -157,7 +157,7 @@ func (k Keeper) BurnToken(ctx sdk.Context, symbol string, amount uint64, owner s
 	burnCoin := sdk.NewCoin(token.MinUnit, sdk.NewIntFromUint64(amount).Mul(precision))
 	burnCoins := sdk.NewCoins(burnCoin)
 
-	addrTotal := k.bankKeeper.GetBalance(ctx, owner, symbol)
+	addrTotal := k.bankKeeper.GetBalance(ctx, owner, token.MinUnit)
 
 	if !addrTotal.Amount.GT(burnCoin.Amount) {
 		return sdkerrors.Wrapf(types.ErrInvalidAmount, "Insufficient account balance")
