@@ -8,21 +8,21 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
-func (k Keeper) HasNFTByID(ctx sdk.Context, denomID, nftID string) bool {
+func (k Keeper) HasNFTByID(ctx sdk.Context, classID, nftID string) bool {
 	store := ctx.KVStore(k.storeKey)
-	return store.Has(types.GetKeyNFT(denomID, nftID))
+	return store.Has(types.GetKeyNFT(classID, nftID))
 }
 
-func (k Keeper) setNFT(ctx sdk.Context, denomID string, nft types.NFT) {
+func (k Keeper) setNFT(ctx sdk.Context, classID string, nft types.NFT) {
 	store := ctx.KVStore(k.storeKey)
 	bz := k.cdc.MustMarshal(&nft)
-	store.Set(types.GetKeyNFT(denomID, nft.ID), bz)
+	store.Set(types.GetKeyNFT(classID, nft.ID), bz)
 }
 
-func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
+func (k Keeper) GetNFTs(ctx sdk.Context, classID string) (nfts []types.NFTI) {
 
 	store := ctx.KVStore(k.storeKey)
-	iterator := sdk.KVStorePrefixIterator(store, types.GetKeyNFT(denomID, ""))
+	iterator := sdk.KVStorePrefixIterator(store, types.GetKeyNFT(classID, ""))
 	defer iterator.Close()
 
 	for ; iterator.Valid(); iterator.Next() {
@@ -33,9 +33,9 @@ func (k Keeper) GetNFTs(ctx sdk.Context, denomID string) (nfts []types.NFTI) {
 	return nfts
 }
 
-func (k Keeper) GetNFT(ctx sdk.Context, denomID, ID string) (types.NFTI, error) {
+func (k Keeper) GetNFT(ctx sdk.Context, classID, ID string) (types.NFTI, error) {
 	store := ctx.KVStore(k.storeKey)
-	bz := store.Get(types.GetKeyNFT(denomID, ID))
+	bz := store.Get(types.GetKeyNFT(classID, ID))
 	if bz == nil {
 		return nil, sdkerrors.Wrapf(types.ErrUnknownCollection, "not found NFT: %s", ID)
 	}
@@ -45,8 +45,8 @@ func (k Keeper) GetNFT(ctx sdk.Context, denomID, ID string) (types.NFTI, error) 
 }
 
 //Authorize checks if the sender is the owner of the given NFT
-func (k Keeper) Authorize(ctx sdk.Context, denomID, ID string, owner sdk.AccAddress) (types.NFT, error) {
-	nft, err := k.GetNFT(ctx, denomID, ID)
+func (k Keeper) Authorize(ctx sdk.Context, classID, ID string, owner sdk.AccAddress) (types.NFT, error) {
+	nft, err := k.GetNFT(ctx, classID, ID)
 	if err != nil {
 		return types.NFT{}, err
 	}
@@ -58,9 +58,9 @@ func (k Keeper) Authorize(ctx sdk.Context, denomID, ID string, owner sdk.AccAddr
 	return nft.(types.NFT), nil
 }
 
-func (k Keeper) deleteNFT(ctx sdk.Context, denomID, ID string) {
+func (k Keeper) deleteNFT(ctx sdk.Context, classID, ID string) {
 	store := ctx.KVStore(k.storeKey)
-	store.Delete(types.GetKeyNFT(denomID, ID))
+	store.Delete(types.GetKeyNFT(classID, ID))
 }
 
 func (k Keeper) getStoreByOwnerClass(ctx sdk.Context, owner sdk.AccAddress, classID string) prefix.Store {
