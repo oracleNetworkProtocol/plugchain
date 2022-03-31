@@ -1,10 +1,10 @@
 syntax = "proto3";
-package plugchain.token;
+package plugchain.prc10;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/oracleNetworkProtocol/plugchain/x/token/types";
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
 option (gogoproto.goproto_getters_all) = false;
 
 message Token {

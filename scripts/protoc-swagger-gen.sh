@@ -49,8 +49,8 @@ sed -r -i '' 's/cosmosvalconspub1[a-z,0-9]+/gxvalconspub1zcjduepqwhwqn4h5v6mqa7k
 sed -i '' 's/Gaia/Plug Chain Hub/g' ./client/static/openapi.yml
 sed -i '' 's/gaia/plugchaind/g' ./client/static/openapi.yml
 sed -i '' 's/cosmoshub/plugchainhub/g' ./client/static/openapi.yml
-sed -i '' 's/uatom/plug/g' ./client/static/openapi.yml
-sed -i '' 's/atom/plug/g' ./client/static/openapi.yml
+sed -i '' 's/uatom/uplugcn/g' ./client/static/openapi.yml
+sed -i '' 's/atom/plugcn/g' ./client/static/openapi.yml
 
 tendermintURL=https://github.com/tendermint/liquidity/blob/develop
 onpURL=https://github.com/oracleNetworkProtocol/liquidity/tree/main

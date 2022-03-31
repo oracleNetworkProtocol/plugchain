@@ -15,7 +15,7 @@ Plug Chain is a Cosmos SDK based chain with full EVM support. Due to this archit
 The `plugcn` token belongs to the native token of the bank module, which can be used for pledge, IBC transfer, community governance, handling fee, etc.
 
 ## PRC-10
-PRC-10 is a token built into the Plug Chain public chain. PRC-10 is a technical token standard supported by the Plug Chain blockchain itself, without the use of EVM virtual machine, in the Plug Chain network, each account can issue PRC-10 tokens through the `x/token` module. Users can lock their tokens individually. To issue tokens, the issuer needs to specify the token name, total size, precision, description, etc.
+PRC-10 is a token built into the Plug Chain public chain. PRC-10 is a technical token standard supported by the Plug Chain blockchain itself, without the use of EVM virtual machine, in the Plug Chain network, each account can issue PRC-10 tokens through the `x/prc10` module. Users can lock their tokens individually. To issue tokens, the issuer needs to specify the token name, total size, precision, description, etc.
 
 Tokens `plugcn`, `dhw1`, `kingdm`, `joey`, etc. are all PRC-10 protocol tokens
 

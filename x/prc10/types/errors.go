@@ -6,7 +6,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-// x/token module sentinel errors
+// x/prc10 module sentinel errors
 var (
 	ErrInvalidName         = sdkerrors.Register(ModuleName, 2, "invalid token name")
 	ErrInvalidMinUnit      = sdkerrors.Register(ModuleName, 3, "invalid token min unit")

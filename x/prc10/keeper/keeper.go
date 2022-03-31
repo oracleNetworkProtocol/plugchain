@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 	"github.com/tendermint/tendermint/libs/log"
 )
 
@@ -156,12 +156,6 @@ func (k Keeper) BurnToken(ctx sdk.Context, symbol string, amount uint64, owner s
 	precision := sdk.NewIntWithDecimal(1, int(token.Scale))
 	burnCoin := sdk.NewCoin(token.MinUnit, sdk.NewIntFromUint64(amount).Mul(precision))
 	burnCoins := sdk.NewCoins(burnCoin)
-
-	addrTotal := k.bankKeeper.GetBalance(ctx, owner, symbol)
-
-	if !addrTotal.Amount.GT(burnCoin.Amount) {
-		return sdkerrors.Wrapf(types.ErrInvalidAmount, "Insufficient account balance")
-	}
 
 	if err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, owner, types.ModuleName, burnCoins); err != nil {
 		return err

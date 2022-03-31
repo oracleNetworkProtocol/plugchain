@@ -1,5 +1,5 @@
 syntax = "proto3";
-package plugchain.token;
+package plugchain.prc10;
 
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
@@ -7,9 +7,9 @@ import "cosmos_proto/cosmos.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "google/protobuf/any.proto";
 import "gogoproto/gogo.proto";
-import "token/token.proto";
+import "prc10/prc10.proto";
 
-option go_package = "github.com/oracleNetworkProtocol/plugchain/x/token/types";
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
 
 // Query defines the gRPC querier service.
 service Query {
@@ -38,7 +38,7 @@ message QueryParamsRequest {
 }
 
 message QueryParamsResponse {
-    token.Params params = 1 [(gogoproto.nullable) = false];
+    prc10.Params params = 1 [(gogoproto.nullable) = false];
     cosmos.base.query.v1beta1.PageResponse res =2 ;
 }
 

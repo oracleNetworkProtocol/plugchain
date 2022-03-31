@@ -1,10 +1,10 @@
 syntax = "proto3";
-package plugchain.token;
+package plugchain.prc10;
 
 // this line is used by starport scaffolding # proto/tx/import
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/oracleNetworkProtocol/plugchain/x/token/types";
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
 option (gogoproto.goproto_getters_all) = false;
 // Msg defines the Msg service.
 service Msg {

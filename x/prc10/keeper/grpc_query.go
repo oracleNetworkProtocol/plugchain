@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/query"
 	"github.com/gogo/protobuf/proto"
 	gogotypes "github.com/gogo/protobuf/types"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

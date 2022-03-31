@@ -9,7 +9,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	gogotypes "github.com/gogo/protobuf/types"
 	plugchaintypes "github.com/oracleNetworkProtocol/plugchain/types"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 )
 
 //GetTokens returns all existing tokens

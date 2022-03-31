@@ -36,24 +36,24 @@ func GetKeyClassID(id string) []byte {
 }
 
 // KeyNFT gets the key of nft stored by an denom and id
-func GetKeyNFT(denomID, nftID string) []byte {
+func GetKeyNFT(classID, nftID string) []byte {
 	baseKey := append(PrefixNFT, delimiter...)
-	if len(denomID) > 0 {
-		baseKey = append(baseKey, []byte(denomID)...)
+	if len(classID) > 0 {
+		baseKey = append(baseKey, []byte(classID)...)
 		baseKey = append(baseKey, delimiter...)
 	}
-	if len(denomID) > 0 && len(nftID) > 0 {
+	if len(classID) > 0 && len(nftID) > 0 {
 		baseKey = append(baseKey, []byte(nftID)...)
 	}
 	return baseKey
 }
 
-func KeyCollectionByDenomID(denomID string) []byte {
+func KeyCollectionByClassID(classID string) []byte {
 	key := append(PrefixCollection, delimiter...)
-	return append(key, []byte(denomID)...)
+	return append(key, []byte(classID)...)
 }
 
-func GetKeyOwner(adr sdk.AccAddress, denomID, nftID string) []byte {
+func GetKeyOwner(adr sdk.AccAddress, classID, nftID string) []byte {
 
 	key := append(PrefixOwners, delimiter...)
 	if adr != nil {
@@ -61,23 +61,23 @@ func GetKeyOwner(adr sdk.AccAddress, denomID, nftID string) []byte {
 		key = append(key, delimiter...)
 	}
 
-	if adr != nil && len(denomID) > 0 {
-		key = append(key, []byte(denomID)...)
+	if adr != nil && len(classID) > 0 {
+		key = append(key, []byte(classID)...)
 		key = append(key, delimiter...)
 	}
 
-	if adr != nil && len(denomID) > 0 && len(nftID) > 0 {
+	if adr != nil && len(classID) > 0 && len(nftID) > 0 {
 		key = append(key, []byte(nftID)...)
 	}
 	return key
 }
 
-func SplitKeyDenom(key []byte) (denomID, nftID string, err error) {
+func SplitKeyDenom(key []byte) (classID, nftID string, err error) {
 	keys := bytes.Split(key, delimiter)
 	if len(keys) != 2 {
-		return denomID, nftID, errors.New("wrong keyOwner")
+		return classID, nftID, errors.New("wrong keyOwner")
 	}
-	denomID = string(keys[0])
+	classID = string(keys[0])
 	nftID = string(keys[1])
 	return
 }

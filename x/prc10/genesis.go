@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/keeper"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 )
 
 // InitGenesis initializes the capability module's state from a provided genesis

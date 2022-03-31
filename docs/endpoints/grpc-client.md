@@ -30,11 +30,17 @@ Before generating a transaction, a new instance of a `TxBuilder` needs to be cre
 ```go
 import (
     "github.com/oracleNetworkProtocol/plugchain/app"
+    sdk "github.com/cosmos/cosmos-sdk/types"
+    plugchainapp "github.com/oracleNetworkProtocol/plugchain/app"
 )
 
 func sendTx() error {
     // Choose your codec: Amino or Protobuf. Here, we use Protobuf, given by the following function.
-    encCfg := app.MakeEncodingConfig()
+    encCfg := ethencoding.MakeConfig(plugchainapp.ModuleBasics)
+
+	config := sdk.GetConfig()
+	plugchainapp.SetBech32Prefixes(config)
+
 
     // Create a new TxBuilder.
     txBuilder := encCfg.TxConfig.NewTxBuilder()
@@ -74,18 +80,23 @@ According to the different functions you operate, you need to prepare different 
 import (
     "encoding/hex"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-    "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"    
+    _ "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1" 
+    "github.com/tharsis/ethermint/crypto/ethsecp256k1"   
 )
-    chainID := "plugchain"
+    chainID := "plugchain_520-1"
     addr1, _ := sdk.AccAddressFromBech32("gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed")
 	addr2, _ := sdk.AccAddressFromBech32("gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds")
 	addr3, _ := sdk.AccAddressFromBech32("gx1pq9yjvqwpmd5r6gpjs8cathhcljmymvp66sjjp")
     //Initiator private key
 	priv := "55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0"
 	privB, _ := hex.DecodeString(priv)
-	priv1 := secp256k1.PrivKey{Key: privB}
-	accountSeq := uint64(1)
-	acountNumber := uint64(0)
+	// To query the address information as follows, use account_number, sequence, you need to lock the private key type according to the `@type` type, the EthAcount type is `eth_secp256k1`, and the BaseAccount is `secp256k1`
+	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
+	accountSeq := uint64(0)
+	acountNumber := uint64(8)
+	//EthAccount type, using package "github.com/tharsis/ethermint/crypto/ethsecp256k1"
+	//BaseAccount type using package  "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	priv1 := ethsecp256k1.PrivKey{Key: priva}
 ```
 
 
@@ -214,10 +225,13 @@ func sendTx(ctx context.Context) error {
     // --snip--
 
     // Create a connection to the gRPC server.
-    grpcConn := grpc.Dial(
+    grpcConn,ger := grpc.Dial(
         "127.0.0.1:9090", // Or your gRPC server address.
         grpc.WithInsecure(), // The SDK doesn't support any transport security mechanism.
     )
+    if ger != nil {
+		panic(ger)
+	}
     defer grpcConn.Close()
 
     // Broadcast the tx via gRPC. We create a new client for the Protobuf Tx
@@ -227,7 +241,7 @@ func sendTx(ctx context.Context) error {
     grpcRes, err := txClient.BroadcastTx(
         ctx,
         &tx.BroadcastTxRequest{
-            Mode:    tx.BroadcastMode_BROADCAST_MODE_SYNC,
+            Mode:    tx.BroadcastMode_BROADCAST_MODE_ASYNC,
             TxBytes: txBytes, // Proto-binary of the signed transaction, see previous step.
         },
     )
@@ -235,7 +249,7 @@ func sendTx(ctx context.Context) error {
         return err
     }
 
-    fmt.Println(grpcRes.TxResponse.Code) // Should be `0` if the tx is successful
+    fmt.Println(grpcRes.GetTxResponse())
 
     return nil
 }

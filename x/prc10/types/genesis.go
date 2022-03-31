@@ -9,7 +9,7 @@ import (
 var (
 	localToken              Token
 	Initialized             bool
-	DefaultTokenDescription = "x/token module of Plug Chain Hub token."
+	DefaultTokenDescription = "x/prc10 module of Plug Chain Hub token."
 	NativeStakingTokenDesc  = "The native staking token of the Plug Chain Hub."
 )
 
