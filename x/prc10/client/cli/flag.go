@@ -5,7 +5,7 @@ import (
 
 	flag "github.com/spf13/pflag"
 
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 )
 
 const (

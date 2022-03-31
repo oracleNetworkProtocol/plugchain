@@ -16,9 +16,9 @@ import (
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/client/cli"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/client/cli"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/keeper"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 	// this line is used by starport scaffolding # ibc/module/import
 )
 
