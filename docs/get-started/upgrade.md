@@ -17,7 +17,7 @@ The upgrade contents are as follows:
 4. Adjust the maximum number of validators to `50`
 5. Access the EVM module
 6. Enable the function of destroying `uplugcn`
-7. Overall adjustment of `x/liquidity`, `x/token` and other module fee parameters
+7. Overall adjustment of `x/liquidity`, `x/prc10` and other module fee parameters
 8. The wallet supports two key signature algorithms `secp256k1`, `eth_secp256k1`
 
 Precautions:

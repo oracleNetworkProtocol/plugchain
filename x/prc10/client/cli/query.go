@@ -12,7 +12,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	"github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module

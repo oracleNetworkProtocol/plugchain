@@ -18,7 +18,7 @@ The Hardfork includes the following details:
 - Adjust the maximum number of verifiers to 50
 - Online smart contract module functions for PVM (Plug Virtual Machine); token generation contract "PRC20" will be generated for usage
 - Enable "UPLUGCN" to be burned.
-- Overall adjustment of "X/Liquidity", "X/Token" and other module fee parameters for liquid providers.
+- Overall adjustment of "X/Liquidity", "x/prc10" and other module fee parameters for liquid providers.
 - The wallet supports two key signature algorithms "Secp256k1" and "ETH_Secp256k1" from EVM (Ethereum Virtual Machine)
 
 Attention for old on-chain records:
@@ -44,7 +44,7 @@ Stable version of existing functions in the warehouse
 
 ## v0.6.0 - 2021-09-29
 - Mainnet upgrade 
-- Bump x/token and x/nft
+- Bump x/prc10 and x/nft
 - Add [Liquidity](https://github.com/oracleNetworkProtocol/liquidity) module [v0.1.2](https://github.com/oracleNetworkProtocol/liquidity/tree/v0.1.2) 
 
 ## v0.5.0 - 2021-08-19
