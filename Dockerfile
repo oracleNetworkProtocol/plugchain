@@ -10,6 +10,7 @@ FROM golang:alpine AS build-env
 ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev jq
 RUN sed -i 's/https/http/' /etc/apk/repositories \
 && apk add --no-cache $PACKAGES 
+RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
 #设置工作目录
 WORKDIR /plugchain
