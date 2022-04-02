@@ -577,6 +577,10 @@ func New(
 
 	app.SetEndBlocker(app.EndBlocker)
 
+	app.RegisterUpgradePlan("v1.2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+		return app.mm.GetVersionMap(), nil
+	})
+
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
 			tmos.Exit(err.Error())

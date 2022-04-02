@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-AppVersion ?= $(shell echo $(shell git describe --tags `git rev-list --tags="v*" --max-count=1`) | sed 's/^v//')
+AppVersion ?= $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
 TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 LEDGER_ENABLED ?= true

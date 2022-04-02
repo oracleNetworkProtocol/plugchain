@@ -1,12 +1,15 @@
 #!/bin/bash
 
 KEY="val"
-CHAINID="plugchain_1024-1"
-MONIKER="localtestnet"
+CHAINID=$([ "$CHAINID" != "" ] && echo "$CHAINID" || echo "plugchain_522-1")
+ID=$([ "$ID" != "" ] && echo "$ID" || echo "00" )
+GENESIS=$([ "$GENESIS" == "false" ] && echo "$GENESIS" || echo "true" )
+CONNECTIP=$([ "$CONNECTIP" != "" ] && echo "$CONNECTIP" || echo "" )
+MONIKER="localtestnet$ID"
 KEYRING="test"
-KEYALGO="eth_secp256k1"
 LOGLEVEL="info"
-NODEDIR=node/node1
+NODECOMMON="node"
+NODEDIR="$NODECOMMON/node$ID"
 # to trace evm
 #TRACE="--trace"
 TRACE=""
@@ -21,73 +24,69 @@ plugchaind config keyring-backend $KEYRING --home $NODEDIR
 plugchaind config chain-id $CHAINID --home $NODEDIR
 
 # if $KEY exists it should be deleted
-plugchaind keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO --home $NODEDIR
+plugchaind keys add $KEY --keyring-backend $KEYRING --home $NODEDIR
 
 # Set moniker and chain-id for Evmos (Moniker can be anything, chain-id must be an integer)
 plugchaind init $MONIKER --chain-id $CHAINID --home $NODEDIR
+if [ $GENESIS == "true" ];then
+  rm -rf "$NODECOMMON/genesis.json"
+  # Change parameter token denominations to uplugcn
+  cat $NODEDIR/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["max_deposit_period"]="180s"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["voting_params"]["voting_period"]="300s"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  cat $NODEDIR/config/genesis.json | jq '.app_state["liquidity"]["params"]["pool_creation_fee"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
-# Change parameter token denominations to uplugcn
-cat $NODEDIR/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["liquidity"]["params"]["pool_creation_fee"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  # increase block time (?)
+  cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="30000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
-# increase block time (?)
-cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="30000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+  # Set gas limit in genesis
+  cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10000000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
-# Set gas limit in genesis
-cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10000000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
-# disable produce empty block
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
-    sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
-  else
-    sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
-    sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
-fi
+  # Allocate genesis accounts (cosmos formatted addresses)
+  plugchaind add-genesis-account $KEY 10000000000000000000000uplugcn --keyring-backend $KEYRING --home $NODEDIR
 
-if [[ $1 == "pending" ]]; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' 's/create_empty_blocks_interval = "0s"/create_empty_blocks_interval = "30s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_propose = "3s"/timeout_propose = "30s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_commit = "5s"/timeout_commit = "150s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' $NODEDIR/config/config.toml
-  else
-      sed -i 's/create_empty_blocks_interval = "0s"/create_empty_blocks_interval = "30s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_propose = "3s"/timeout_propose = "30s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_commit = "5s"/timeout_commit = "150s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' $NODEDIR/config/config.toml
+  # Sign genesis transaction
+  plugchaind gentx $KEY 100000000000000000uplugcn --keyring-backend $KEYRING --chain-id $CHAINID --home $NODEDIR
+
+  # Collect genesis tx
+  plugchaind collect-gentxs --home $NODEDIR
+
+  # Run this to ensure everything worked and that the genesis file is setup correctly
+  plugchaind validate-genesis --home $NODEDIR
+
+  if [[ $1 == "pending" ]]; then
+    echo "pending mode is on, please wait for the first block committed."
   fi
+  cp -f "$NODEDIR/config/genesis.json" "$NODECOMMON/"
+else
+  sleep 5s
+  while :
+  do
+    if [ ! -f "$NODECOMMON/genesis.json" ];then
+      echo "validate genesis.json does not exist! sleep 2s";
+      sleep 2s
+      continue
+    fi
+    break
+  done
+  cp -f "$NODECOMMON/genesis.json" "$NODEDIR/config/"
+  PERSISTENTPEERS="$(plugchaind tendermint show-node-id --home node/node0/)@${CONNECTIP}"
+  sed -i "s/persistent_peers = \"\"/persistent_peers = \"${PERSISTENTPEERS}\"/g" $NODEDIR/config/config.toml
 fi
 
-# Allocate genesis accounts (cosmos formatted addresses)
-plugchaind add-genesis-account $KEY 100000000000000000000000000uplugcn --keyring-backend $KEYRING --home $NODEDIR
+sed -i "s/enable = true/enable = false/g" $NODEDIR/config/app.toml
 
-# Sign genesis transaction
-plugchaind gentx $KEY 1000000000000000000000uplugcn --keyring-backend $KEYRING --chain-id $CHAINID --home $NODEDIR
-
-# Collect genesis tx
-plugchaind collect-gentxs --home $NODEDIR
-
-# Run this to ensure everything worked and that the genesis file is setup correctly
-plugchaind validate-genesis --home $NODEDIR
-
-if [[ $1 == "pending" ]]; then
-  echo "pending mode is on, please wait for the first block committed."
-fi
+export DAEMON_NAME=plugchaind
+export DAEMON_HOME=$(pwd)/$NODEDIR
+export DAEMON_RESTART_AFTER_UPGRADE=true
+export DAEMON_ALLOW_DOWNLOAD_BINARIES=true
+mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
+cp -f $GOPATH/bin/plugchaind $DAEMON_HOME/cosmovisor/genesis/bin
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-plugchaind start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001uplugcn --json-rpc.api eth,txpool,personal,net,debug,web3 --home $NODEDIR
+cosmovisor start --pruning=nothing $TRACE --log_level $LOGLEVEL --minimum-gas-prices=0.0001uplugcn --home $NODEDIR
