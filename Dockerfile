@@ -1,20 +1,31 @@
 # docker build -t plugchain .
-# Server:
 
 #从 golang:alpine 映像开始构建镜像。
 FROM golang:alpine AS build-env
 
+#指定维护者信息
+# MAINTAINER
+
 # 安装最低限度的必要依赖项
-ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev
+ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev jq
 RUN sed -i 's/https/http/' /etc/apk/repositories \
 && apk add --no-cache $PACKAGES 
 
 #设置工作目录
-WORKDIR /code
+WORKDIR /plugchain
 
 #将 . 项目中的当前目录复制到 . 镜像中的工作目录。
 COPY . .
 
-RUN GOPROXY=https://goproxy.io make install
+#设置代理
+ENV GOPROXY=https://proxy.golang.com.cn,direct
+
+#编译程序
+RUN make install
+
+RUN cd cosmovisor && make install && cd -
+
+#暴露端口
+# EXPOSE 26656
 
 # CMD ["plugchaind"]
