@@ -39,7 +39,8 @@ services:
     networks:
       localnet:
         ipv4_address: 192.17.10.3
-    command: './scripts/setup.sh'
+    # command: './scripts/setup.sh'
+    tty: true
 
   plugchain_node2:
     depends_on:

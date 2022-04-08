@@ -13,48 +13,21 @@ Cosmovisor is designed to be used as a wrapper for a `Cosmos SDK` app:
 
 *Note: If new versions of the application are not set up to run in-place store migrations, migrations will need to be run manually before restarting `cosmovisor` with the new binary. For this reason, we recommend applications adopt in-place store migrations.*
 
-*Note: If validators would like to enable the auto-download option (which [we don't recommend](#auto-download)), and they are currently running an application using Cosmos SDK `v0.42`, they will need to use Cosmovisor [`v0.1`](https://github.com/cosmos/cosmos-sdk/releases/tag/cosmovisor%2Fv0.1.0). Later versions of Cosmovisor do not support Cosmos SDK `v0.44.3` or earlier if the auto-download option is enabled.*
+*Note: If validators would like to enable the auto-download option (which [we don't recommend](#auto-download))*
 
-## Contributing
-
-Cosmovisor is part of the Cosmos SDK monorepo, but it's a separate module with it's own release schedule.
-
-Release branches have the following format `release/cosmovisor/vA.B.x`, where A and B are a number (e.g. `release/cosmovisor/v0.1.x`). Releases are tagged using the following format: `cosmovisor/vA.B.C`.
 
 ## Setup
 
 ### Installation
 
-To install the latest version of `cosmovisor`, run the following command:
+To install the of `cosmovisor`, run the following command:
 
 ```sh
-go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@latest
-```
-
-To install a previous version, you can specify the version. IMPORTANT: Chains that use Cosmos-SDK v0.44.3 or earlier (eg v0.44.2) and want to use auto-download feature MUST use Cosmovisor v0.1.0
-
-```sh
-go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v0.1.0
+cd cosmovisor && make install
 ```
 
 You can run `cosmovisor --version` to check the Cosmovisor version (works only with Cosmovisor >=1.0.0).
 
-You can also install from source by pulling the cosmos-sdk repository and switching to the correct version and building as follows:
-
-```sh
-git clone git@github.com:cosmos/cosmos-sdk
-cd cosmos-sdk
-git checkout cosmovisor/vx.x.x
-make cosmovisor
-```
-
-This will build cosmovisor in `/cosmovisor` directory. Afterwards you may want to put it into your machine's PATH like as follows:
-
-```sh
-cp cosmovisor/cosmovisor ~/go/bin/cosmovisor
-```
-
-*Note: If you are using go `v1.15` or earlier, you will need to use `go get`, and you may want to run the command outside a project directory.*
 
 ### Command Line Arguments And Environment Variables
 
@@ -70,8 +43,8 @@ All arguments passed to `cosmovisor run` will be passed to the application binar
 
 `cosmovisor` reads its configuration from environment variables:
 
-* `DAEMON_HOME` is the location where the `cosmovisor/` directory is kept that contains the genesis binary, the upgrade binaries, and any additional auxiliary files associated with each binary (e.g. `$HOME/.gaiad`, `$HOME/.regend`, `$HOME/.simd`, etc.).
-* `DAEMON_NAME` is the name of the binary itself (e.g. `gaiad`, `regend`, `simd`, etc.).
+* `DAEMON_HOME` is the location where the `cosmovisor/` directory is kept that contains the genesis binary, the upgrade binaries, and any additional auxiliary files associated with each binary (e.g. `$HOME/.plugchaind`, `$HOME/.regend`, `$HOME/.simd`, etc.).
+* `DAEMON_NAME` is the name of the binary itself (e.g.  `plugchaind`, `regend`, `simd`, etc.).
 * `DAEMON_ALLOW_DOWNLOAD_BINARIES` (*optional*), if set to `true`, will enable auto-downloading of new binaries (for security reasons, this is intended for full nodes rather than validators). By default, `cosmovisor` will not auto-download new binaries.
 * `DAEMON_RESTART_AFTER_UPGRADE` (*optional*, default = `true`), if `true`, restarts the subprocess with the same command-line arguments and flags (but with the new binary) after a successful upgrade. Otherwise (`false`), `cosmovisor` stops running after an upgrade and requires the system administrator to manually restart it. Note restart is only after the upgrade and does not auto-restart the subprocess after an error occurs.
 * `DAEMON_POLL_INTERVAL` is the interval length for polling the upgrade plan file. The value can either be a number (in milliseconds) or a duration (e.g. `1s`). Default: 1000 milliseconds.
@@ -98,10 +71,10 @@ All arguments passed to `cosmovisor run` will be passed to the application binar
 
 The `cosmovisor/` directory incudes a subdirectory for each version of the application (i.e. `genesis` or `upgrades/<name>`). Within each subdirectory is the application binary (i.e. `bin/$DAEMON_NAME`) and any additional auxiliary files associated with each binary. `current` is a symbolic link to the currently active directory (i.e. `genesis` or `upgrades/<name>`). The `name` variable in `upgrades/<name>` is the URI-encoded name of the upgrade as specified in the upgrade module plan.
 
-Please note that `$DAEMON_HOME/cosmovisor` only stores the *application binaries*. The `cosmovisor` binary itself can be stored in any typical location (e.g. `/usr/local/bin`). The application will continue to store its data in the default data directory (e.g. `$HOME/.gaiad`) or the data directory specified with the `--home` flag. `$DAEMON_HOME` is independent of the data directory and can be set to any location. If you set `$DAEMON_HOME` to the same directory as the data directory, you will end up with a configuation like the following:
+Please note that `$DAEMON_HOME/cosmovisor` only stores the *application binaries*. The `cosmovisor` binary itself can be stored in any typical location (e.g. `/usr/local/bin`). The application will continue to store its data in the default data directory (e.g. `$HOME/.plugchaind`) or the data directory specified with the `--home` flag. `$DAEMON_HOME` is independent of the data directory and can be set to any location. If you set `$DAEMON_HOME` to the same directory as the data directory, you will end up with a configuation like the following:
 
 ```text
-.gaiad
+.plugchaind
 ├── config
 ├── data
 └── cosmovisor
@@ -151,7 +124,7 @@ If `DAEMON_ALLOW_DOWNLOAD_BINARIES` is set to `true`, and no local binary can be
     ```json
     {
       "binaries": {
-        "linux/amd64":"https://example.com/gaia.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
+        "linux/amd64":"https://example.com/plugchain.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
       }
     }
     ```
@@ -161,21 +134,21 @@ If `DAEMON_ALLOW_DOWNLOAD_BINARIES` is set to `true`, and no local binary can be
     ```json
     {
       "binaries": {
-        "linux/amd64":"https://example.com/gaia.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f",
-        "linux/arm64":"https://example.com/gaia.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f",
-        "darwin/amd64":"https://example.com/gaia.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
+        "linux/amd64":"https://example.com/plugchain.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f",
+        "linux/arm64":"https://example.com/plugchain.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f",
+        "darwin/amd64":"https://example.com/plugchain.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
         }
     }
     ```
 
-    When submitting this as a proposal ensure there are no spaces. An example command using `gaiad` could look like:
+    When submitting this as a proposal ensure there are no spaces. An example command using `plugchaind` could look like:
 
     ```sh
-    > gaiad tx gov submit-proposal software-upgrade Vega \
+    > plugchaind tx gov submit-proposal software-upgrade Vega \
     --title Vega \
     --deposit 100uatom \
     --upgrade-height 7368420 \
-    --upgrade-info '{"binaries":{"linux/amd64":"https://github.com/cosmos/gaia/releases/download/v6.0.0-rc1/gaiad-v6.0.0-rc1-linux-amd64","linux/arm64":"https://github.com/cosmos/gaia/releases/download/v6.0.0-rc1/gaiad-v6.0.0-rc1-linux-arm64","darwin/amd64":"https://github.com/cosmos/gaia/releases/download/v6.0.0-rc1/gaiad-v6.0.0-rc1-darwin-amd64"}}' \
+    --upgrade-info '{"binaries":{"linux/amd64":"https://github.com/cosmos/plugchain/releases/download/v6.0.0-rc1/plugchaind-v6.0.0-rc1-linux-amd64","linux/arm64":"https://github.com/cosmos/plugchain/releases/download/v6.0.0-rc1/plugchaind-v6.0.0-rc1-linux-arm64","darwin/amd64":"https://github.com/cosmos/plugchain/releases/download/v6.0.0-rc1/plugchaind-v6.0.0-rc1-darwin-amd64"}}' \
     --description "upgrade to Vega" \
     --gas 400000 \
     --from user \
