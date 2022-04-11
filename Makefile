@@ -187,9 +187,9 @@ tools-clean:
 
 # Run a single testnet locally
 localnet: 
-	@echo "start make install and ./scripts/setup.sh"
+	@echo "start make install and ./scripts/setup-localnet.sh"
 	@make install 
-	./scripts/setup.sh
+	./scripts/setup-localnet.sh
 
 .PHONY: localnet
 
