@@ -19,7 +19,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: './scripts/setup.sh'
+    # command: './scripts/setup.sh'
+    tty: true
 
   plugchain_node1:
     depends_on:
@@ -60,7 +61,8 @@ services:
     networks:
       localnet:
         ipv4_address: 192.17.10.4
-    command: './scripts/setup.sh'
+    # command: './scripts/setup.sh'
+    tty: true
 
   plugchain_node3:
     depends_on:
@@ -80,8 +82,9 @@ services:
     networks:
       localnet:
         ipv4_address: 192.17.10.5
-    command: './scripts/setup.sh'
-
+    # command: './scripts/setup.sh'
+    tty: true
+    
 networks:
   localnet:
     driver: bridge

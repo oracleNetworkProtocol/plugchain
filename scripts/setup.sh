@@ -48,10 +48,10 @@ if [ $GENESIS == "true" ];then
 
 
   # Allocate genesis accounts (cosmos formatted addresses)
-  plugchaind add-genesis-account $KEY 10000000000000000000000uplugcn --keyring-backend $KEYRING --home $NODEDIR
+  plugchaind add-genesis-account $KEY 100000000000000000uplugcn --keyring-backend $KEYRING --home $NODEDIR
 
   # Sign genesis transaction
-  plugchaind gentx $KEY 100000000000000000uplugcn --keyring-backend $KEYRING --chain-id $CHAINID --home $NODEDIR
+  plugchaind gentx $KEY 10000000000000uplugcn --keyring-backend $KEYRING --chain-id $CHAINID --home $NODEDIR
 
   # Collect genesis tx
   plugchaind collect-gentxs --home $NODEDIR
