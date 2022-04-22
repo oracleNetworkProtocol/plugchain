@@ -22,10 +22,10 @@ order: 6
     - [QueryClassResponse](#plugchain.nft.QueryClassResponse)
     - [QueryClassesRequest](#plugchain.nft.QueryClassesRequest)
     - [QueryClassesResponse](#plugchain.nft.QueryClassesResponse)
-    - [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest)
-    - [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse)
     - [QueryNFTRequest](#plugchain.nft.QueryNFTRequest)
     - [QueryNFTResponse](#plugchain.nft.QueryNFTResponse)
+    - [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest)
+    - [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse)
     - [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest)
     - [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse)
     - [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest)
@@ -49,38 +49,38 @@ order: 6
   
     - [Msg](#plugchain.nft.Msg)
   
-- [token/token.proto](#token/token.proto)
-    - [Params](#plugchain.token.Params)
-    - [Token](#plugchain.token.Token)
+- [prc10/prc10.proto](#prc10/prc10.proto)
+    - [Params](#plugchain.prc10.Params)
+    - [Token](#plugchain.prc10.Token)
   
-- [token/genesis.proto](#token/genesis.proto)
-    - [GenesisState](#plugchain.token.GenesisState)
+- [prc10/genesis.proto](#prc10/genesis.proto)
+    - [GenesisState](#plugchain.prc10.GenesisState)
   
-- [token/query.proto](#token/query.proto)
-    - [QueryFeesRequest](#plugchain.token.QueryFeesRequest)
-    - [QueryFeesResponse](#plugchain.token.QueryFeesResponse)
-    - [QueryParamsRequest](#plugchain.token.QueryParamsRequest)
-    - [QueryParamsResponse](#plugchain.token.QueryParamsResponse)
-    - [QueryTokenRequest](#plugchain.token.QueryTokenRequest)
-    - [QueryTokenResponse](#plugchain.token.QueryTokenResponse)
-    - [QueryTokensRequest](#plugchain.token.QueryTokensRequest)
-    - [QueryTokensResponse](#plugchain.token.QueryTokensResponse)
+- [prc10/query.proto](#prc10/query.proto)
+    - [QueryFeesRequest](#plugchain.prc10.QueryFeesRequest)
+    - [QueryFeesResponse](#plugchain.prc10.QueryFeesResponse)
+    - [QueryParamsRequest](#plugchain.prc10.QueryParamsRequest)
+    - [QueryParamsResponse](#plugchain.prc10.QueryParamsResponse)
+    - [QueryTokenRequest](#plugchain.prc10.QueryTokenRequest)
+    - [QueryTokenResponse](#plugchain.prc10.QueryTokenResponse)
+    - [QueryTokensRequest](#plugchain.prc10.QueryTokensRequest)
+    - [QueryTokensResponse](#plugchain.prc10.QueryTokensResponse)
   
-    - [Query](#plugchain.token.Query)
+    - [Query](#plugchain.prc10.Query)
   
-- [token/tx.proto](#token/tx.proto)
-    - [MsgBurnToken](#plugchain.token.MsgBurnToken)
-    - [MsgBurnTokenResponse](#plugchain.token.MsgBurnTokenResponse)
-    - [MsgEditToken](#plugchain.token.MsgEditToken)
-    - [MsgEditTokenResponse](#plugchain.token.MsgEditTokenResponse)
-    - [MsgIssueToken](#plugchain.token.MsgIssueToken)
-    - [MsgIssueTokenResponse](#plugchain.token.MsgIssueTokenResponse)
-    - [MsgMintToken](#plugchain.token.MsgMintToken)
-    - [MsgMintTokenResponse](#plugchain.token.MsgMintTokenResponse)
-    - [MsgTransferOwnerToken](#plugchain.token.MsgTransferOwnerToken)
-    - [MsgTransferOwnerTokenResponse](#plugchain.token.MsgTransferOwnerTokenResponse)
+- [prc10/tx.proto](#prc10/tx.proto)
+    - [MsgBurnToken](#plugchain.prc10.MsgBurnToken)
+    - [MsgBurnTokenResponse](#plugchain.prc10.MsgBurnTokenResponse)
+    - [MsgEditToken](#plugchain.prc10.MsgEditToken)
+    - [MsgEditTokenResponse](#plugchain.prc10.MsgEditTokenResponse)
+    - [MsgIssueToken](#plugchain.prc10.MsgIssueToken)
+    - [MsgIssueTokenResponse](#plugchain.prc10.MsgIssueTokenResponse)
+    - [MsgMintToken](#plugchain.prc10.MsgMintToken)
+    - [MsgMintTokenResponse](#plugchain.prc10.MsgMintTokenResponse)
+    - [MsgTransferOwnerToken](#plugchain.prc10.MsgTransferOwnerToken)
+    - [MsgTransferOwnerTokenResponse](#plugchain.prc10.MsgTransferOwnerTokenResponse)
   
-    - [Msg](#plugchain.token.Msg)
+    - [Msg](#plugchain.prc10.Msg)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -289,38 +289,6 @@ GenesisState defines the nft module's genesis state.
 
 
 
-<a name="plugchain.nft.QueryCollectionRequest"></a>
-
-### QueryCollectionRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryCollectionResponse"></a>
-
-### QueryCollectionResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `collection` | [Collection](#plugchain.nft.Collection) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
 <a name="plugchain.nft.QueryNFTRequest"></a>
 
 ### QueryNFTRequest
@@ -346,6 +314,39 @@ GenesisState defines the nft module's genesis state.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `nft` | [NFT](#plugchain.nft.NFT) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTsRequest"></a>
+
+### QueryNFTsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `class_id` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="plugchain.nft.QueryNFTsResponse"></a>
+
+### QueryNFTsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
 
 
 
@@ -431,9 +432,9 @@ Query defines the gRPC querier service.
 | `Class` | [QueryClassRequest](#plugchain.nft.QueryClassRequest) | [QueryClassResponse](#plugchain.nft.QueryClassResponse) |  | GET|/nft/classes/{class_id}|
 | `Classes` | [QueryClassesRequest](#plugchain.nft.QueryClassesRequest) | [QueryClassesResponse](#plugchain.nft.QueryClassesResponse) |  | GET|/nft/classes|
 | `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{class_id}/{nft_id}|
-| `Collection` | [QueryCollectionRequest](#plugchain.nft.QueryCollectionRequest) | [QueryCollectionResponse](#plugchain.nft.QueryCollectionResponse) |  | GET|/nft/collections/{class_id}|
-| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/collections/{class_id}/supply|
-| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/nfts/{address}/{class_id}|
+| `NFTs` | [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest) | [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse) |  | GET|/nft/nfts|
+| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/supply/{class_id}|
+| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/{address}/{class_id}|
 
  <!-- end services -->
 
@@ -644,14 +645,14 @@ Msg defines the Msg service.
 
 
 
-<a name="token/token.proto"></a>
+<a name="prc10/prc10.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## token/token.proto
+## prc10/prc10.proto
 
 
 
-<a name="plugchain.token.Params"></a>
+<a name="plugchain.prc10.Params"></a>
 
 ### Params
 
@@ -667,7 +668,7 @@ Msg defines the Msg service.
 
 
 
-<a name="plugchain.token.Token"></a>
+<a name="plugchain.prc10.Token"></a>
 
 ### Token
 
@@ -698,14 +699,14 @@ Msg defines the Msg service.
 
 
 
-<a name="token/genesis.proto"></a>
+<a name="prc10/genesis.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## token/genesis.proto
+## prc10/genesis.proto
 
 
 
-<a name="plugchain.token.GenesisState"></a>
+<a name="plugchain.prc10.GenesisState"></a>
 
 ### GenesisState
 GenesisState defines the token module's genesis state.
@@ -713,8 +714,8 @@ GenesisState defines the token module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `params` | [Params](#plugchain.token.Params) |  |  |
-| `tokens` | [Token](#plugchain.token.Token) | repeated |  |
+| `params` | [Params](#plugchain.prc10.Params) |  |  |
+| `tokens` | [Token](#plugchain.prc10.Token) | repeated |  |
 
 
 
@@ -730,14 +731,14 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="token/query.proto"></a>
+<a name="prc10/query.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## token/query.proto
+## prc10/query.proto
 
 
 
-<a name="plugchain.token.QueryFeesRequest"></a>
+<a name="plugchain.prc10.QueryFeesRequest"></a>
 
 ### QueryFeesRequest
 
@@ -752,7 +753,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryFeesResponse"></a>
+<a name="plugchain.prc10.QueryFeesResponse"></a>
 
 ### QueryFeesResponse
 
@@ -769,7 +770,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryParamsRequest"></a>
+<a name="plugchain.prc10.QueryParamsRequest"></a>
 
 ### QueryParamsRequest
 
@@ -779,7 +780,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryParamsResponse"></a>
+<a name="plugchain.prc10.QueryParamsResponse"></a>
 
 ### QueryParamsResponse
 
@@ -787,7 +788,7 @@ GenesisState defines the token module's genesis state.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `params` | [Params](#plugchain.token.Params) |  |  |
+| `params` | [Params](#plugchain.prc10.Params) |  |  |
 | `res` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
 
 
@@ -795,7 +796,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryTokenRequest"></a>
+<a name="plugchain.prc10.QueryTokenRequest"></a>
 
 ### QueryTokenRequest
 
@@ -810,7 +811,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryTokenResponse"></a>
+<a name="plugchain.prc10.QueryTokenResponse"></a>
 
 ### QueryTokenResponse
 
@@ -825,7 +826,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryTokensRequest"></a>
+<a name="plugchain.prc10.QueryTokensRequest"></a>
 
 ### QueryTokensRequest
 
@@ -841,7 +842,7 @@ GenesisState defines the token module's genesis state.
 
 
 
-<a name="plugchain.token.QueryTokensResponse"></a>
+<a name="plugchain.prc10.QueryTokensResponse"></a>
 
 ### QueryTokensResponse
 
@@ -863,30 +864,30 @@ GenesisState defines the token module's genesis state.
  <!-- end HasExtensions -->
 
 
-<a name="plugchain.token.Query"></a>
+<a name="plugchain.prc10.Query"></a>
 
 ### Query
 Query defines the gRPC querier service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Token` | [QueryTokenRequest](#plugchain.token.QueryTokenRequest) | [QueryTokenResponse](#plugchain.token.QueryTokenResponse) |  | GET|/token/tokens/{denom}|
-| `Fees` | [QueryFeesRequest](#plugchain.token.QueryFeesRequest) | [QueryFeesResponse](#plugchain.token.QueryFeesResponse) |  | GET|/token/fee/{symbol}|
-| `Params` | [QueryParamsRequest](#plugchain.token.QueryParamsRequest) | [QueryParamsResponse](#plugchain.token.QueryParamsResponse) |  | GET|/token/params|
-| `Tokens` | [QueryTokensRequest](#plugchain.token.QueryTokensRequest) | [QueryTokensResponse](#plugchain.token.QueryTokensResponse) |  | GET|/token/tokens|
+| `Token` | [QueryTokenRequest](#plugchain.prc10.QueryTokenRequest) | [QueryTokenResponse](#plugchain.prc10.QueryTokenResponse) |  | GET|/token/tokens/{denom}|
+| `Fees` | [QueryFeesRequest](#plugchain.prc10.QueryFeesRequest) | [QueryFeesResponse](#plugchain.prc10.QueryFeesResponse) |  | GET|/token/fee/{symbol}|
+| `Params` | [QueryParamsRequest](#plugchain.prc10.QueryParamsRequest) | [QueryParamsResponse](#plugchain.prc10.QueryParamsResponse) |  | GET|/token/params|
+| `Tokens` | [QueryTokensRequest](#plugchain.prc10.QueryTokensRequest) | [QueryTokensResponse](#plugchain.prc10.QueryTokensResponse) |  | GET|/token/tokens|
 
  <!-- end services -->
 
 
 
-<a name="token/tx.proto"></a>
+<a name="prc10/tx.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## token/tx.proto
+## prc10/tx.proto
 
 
 
-<a name="plugchain.token.MsgBurnToken"></a>
+<a name="plugchain.prc10.MsgBurnToken"></a>
 
 ### MsgBurnToken
 MsgBurnToken defines an SDK message for burning some tokens
@@ -903,7 +904,7 @@ MsgBurnToken defines an SDK message for burning some tokens
 
 
 
-<a name="plugchain.token.MsgBurnTokenResponse"></a>
+<a name="plugchain.prc10.MsgBurnTokenResponse"></a>
 
 ### MsgBurnTokenResponse
 
@@ -913,7 +914,7 @@ MsgBurnToken defines an SDK message for burning some tokens
 
 
 
-<a name="plugchain.token.MsgEditToken"></a>
+<a name="plugchain.prc10.MsgEditToken"></a>
 
 ### MsgEditToken
 MsgEditToken defines an SDK message for editing a new token
@@ -931,7 +932,7 @@ MsgEditToken defines an SDK message for editing a new token
 
 
 
-<a name="plugchain.token.MsgEditTokenResponse"></a>
+<a name="plugchain.prc10.MsgEditTokenResponse"></a>
 
 ### MsgEditTokenResponse
 
@@ -941,7 +942,7 @@ MsgEditToken defines an SDK message for editing a new token
 
 
 
-<a name="plugchain.token.MsgIssueToken"></a>
+<a name="plugchain.prc10.MsgIssueToken"></a>
 
 ### MsgIssueToken
 MsgIssueToken defines an SDK message for issuing a new token
@@ -963,7 +964,7 @@ MsgIssueToken defines an SDK message for issuing a new token
 
 
 
-<a name="plugchain.token.MsgIssueTokenResponse"></a>
+<a name="plugchain.prc10.MsgIssueTokenResponse"></a>
 
 ### MsgIssueTokenResponse
 
@@ -973,7 +974,7 @@ MsgIssueToken defines an SDK message for issuing a new token
 
 
 
-<a name="plugchain.token.MsgMintToken"></a>
+<a name="plugchain.prc10.MsgMintToken"></a>
 
 ### MsgMintToken
 MsgMintTokenResponse defines the Msg/MintToken response type
@@ -991,7 +992,7 @@ MsgMintTokenResponse defines the Msg/MintToken response type
 
 
 
-<a name="plugchain.token.MsgMintTokenResponse"></a>
+<a name="plugchain.prc10.MsgMintTokenResponse"></a>
 
 ### MsgMintTokenResponse
 
@@ -1001,7 +1002,7 @@ MsgMintTokenResponse defines the Msg/MintToken response type
 
 
 
-<a name="plugchain.token.MsgTransferOwnerToken"></a>
+<a name="plugchain.prc10.MsgTransferOwnerToken"></a>
 
 ### MsgTransferOwnerToken
 MsgTransferOwnerToken defines an SDK message for transferring the token owner
@@ -1018,7 +1019,7 @@ MsgTransferOwnerToken defines an SDK message for transferring the token owner
 
 
 
-<a name="plugchain.token.MsgTransferOwnerTokenResponse"></a>
+<a name="plugchain.prc10.MsgTransferOwnerTokenResponse"></a>
 
 ### MsgTransferOwnerTokenResponse
 
@@ -1034,18 +1035,18 @@ MsgTransferOwnerToken defines an SDK message for transferring the token owner
  <!-- end HasExtensions -->
 
 
-<a name="plugchain.token.Msg"></a>
+<a name="plugchain.prc10.Msg"></a>
 
 ### Msg
 Msg defines the Msg service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `IssueToken` | [MsgIssueToken](#plugchain.token.MsgIssueToken) | [MsgIssueTokenResponse](#plugchain.token.MsgIssueTokenResponse) |  | |
-| `MintToken` | [MsgMintToken](#plugchain.token.MsgMintToken) | [MsgMintTokenResponse](#plugchain.token.MsgMintTokenResponse) |  | |
-| `EditToken` | [MsgEditToken](#plugchain.token.MsgEditToken) | [MsgEditTokenResponse](#plugchain.token.MsgEditTokenResponse) |  | |
-| `BurnToken` | [MsgBurnToken](#plugchain.token.MsgBurnToken) | [MsgBurnTokenResponse](#plugchain.token.MsgBurnTokenResponse) |  | |
-| `TransferOwnerToken` | [MsgTransferOwnerToken](#plugchain.token.MsgTransferOwnerToken) | [MsgTransferOwnerTokenResponse](#plugchain.token.MsgTransferOwnerTokenResponse) |  | |
+| `IssueToken` | [MsgIssueToken](#plugchain.prc10.MsgIssueToken) | [MsgIssueTokenResponse](#plugchain.prc10.MsgIssueTokenResponse) |  | |
+| `MintToken` | [MsgMintToken](#plugchain.prc10.MsgMintToken) | [MsgMintTokenResponse](#plugchain.prc10.MsgMintTokenResponse) |  | |
+| `EditToken` | [MsgEditToken](#plugchain.prc10.MsgEditToken) | [MsgEditTokenResponse](#plugchain.prc10.MsgEditTokenResponse) |  | |
+| `BurnToken` | [MsgBurnToken](#plugchain.prc10.MsgBurnToken) | [MsgBurnTokenResponse](#plugchain.prc10.MsgBurnTokenResponse) |  | |
+| `TransferOwnerToken` | [MsgTransferOwnerToken](#plugchain.prc10.MsgTransferOwnerToken) | [MsgTransferOwnerTokenResponse](#plugchain.prc10.MsgTransferOwnerTokenResponse) |  | |
 
  <!-- end services -->
 

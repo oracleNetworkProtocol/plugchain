@@ -27,5 +27,5 @@ Plug Chain 使用以下模块构建在 Cosmos SDK 上：
 
 以下模块构建在 OracleNetworkProtocol 仓库上：
 
-- x/token: 代币逻辑。
+- x/prc10: 代币逻辑。
 - x/nft: 链下资产上链。

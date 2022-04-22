@@ -2,7 +2,7 @@
 order: 3
 ---
 
-# gRPC Gateway JSON REST
+# Restful API
 
 
 ## Query API Port, Activation and Configuration

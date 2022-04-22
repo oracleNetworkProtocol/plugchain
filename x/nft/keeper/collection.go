@@ -31,14 +31,14 @@ func (k Keeper) GetCollections(ctx sdk.Context) (list []types.Collection) {
 	return
 }
 
-func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectionRequest, denomID string) (types.Collection, *query.PageResponse, error) {
-	denom, found := k.GetClassByID(ctx, denomID)
+func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryNFTsRequest, classID string) ([]types.NFTI, *query.PageResponse, error) {
+	_, found := k.GetClassByID(ctx, classID)
 	if !found {
-		return types.Collection{}, nil, sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not existed", denomID)
+		return nil, nil, sdkerrors.Wrapf(types.ErrInvalidClass, "classID %s not existed", classID)
 	}
 	var nfts []types.NFTI
 	store := ctx.KVStore(k.storeKey)
-	nftStore := prefix.NewStore(store, types.GetKeyNFT(denomID, ""))
+	nftStore := prefix.NewStore(store, types.GetKeyNFT(classID, ""))
 	pageRes, err := query.Paginate(nftStore, req.Pagination, func(key, value []byte) error {
 		var nft types.NFT
 		k.cdc.MustUnmarshal(value, &nft)
@@ -46,16 +46,16 @@ func (k Keeper) GetPaginateCollection(ctx sdk.Context, req *types.QueryCollectio
 		return nil
 	})
 	if err != nil {
-		return types.Collection{}, nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
+		return nil, nil, status.Errorf(codes.InvalidArgument, "paginate:%v", err)
 	}
 
-	return types.NewCollection(denom, nfts), pageRes, nil
+	return nfts, pageRes, nil
 }
 
 // get denom count
-func (k Keeper) GetTotalSupply(ctx sdk.Context, denomID string) uint64 {
+func (k Keeper) GetTotalSupply(ctx sdk.Context, classID string) uint64 {
 	store := ctx.KVStore(k.storeKey)
-	bz := store.Get(types.KeyCollectionByDenomID(denomID))
+	bz := store.Get(types.KeyCollectionByClassID(classID))
 	if len(bz) == 0 {
 		return 0
 	}
@@ -64,25 +64,25 @@ func (k Keeper) GetTotalSupply(ctx sdk.Context, denomID string) uint64 {
 }
 
 // supply++
-func (k Keeper) increaseSupply(ctx sdk.Context, denomID string) {
-	supply := k.GetTotalSupply(ctx, denomID)
+func (k Keeper) increaseSupply(ctx sdk.Context, classID string) {
+	supply := k.GetTotalSupply(ctx, classID)
 	supply++
 	store := ctx.KVStore(k.storeKey)
 	bz := types.MustMarshalSupply(k.cdc, supply)
-	store.Set(types.KeyCollectionByDenomID(denomID), bz)
+	store.Set(types.KeyCollectionByClassID(classID), bz)
 }
 
 // supply--
-func (k Keeper) decreaseSupply(ctx sdk.Context, denomID string) {
-	supply := k.GetTotalSupply(ctx, denomID)
+func (k Keeper) decreaseSupply(ctx sdk.Context, classID string) {
+	supply := k.GetTotalSupply(ctx, classID)
 	supply--
 	store := ctx.KVStore(k.storeKey)
 
 	if supply == 0 {
-		store.Delete(types.KeyCollectionByDenomID(denomID))
+		store.Delete(types.KeyCollectionByClassID(classID))
 		return
 	}
 
 	bz := types.MustMarshalSupply(k.cdc, supply)
-	store.Set(types.KeyCollectionByDenomID(denomID), bz)
+	store.Set(types.KeyCollectionByClassID(classID), bz)
 }

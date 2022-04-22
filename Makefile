@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-AppVersion ?= $(shell echo $(shell git describe --tags `git rev-list --tags="v*" --max-count=1`) | sed 's/^v//')
+AppVersion ?= $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
 TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 LEDGER_ENABLED ?= true
@@ -187,9 +187,9 @@ tools-clean:
 
 # Run a single testnet locally
 localnet: 
-	@echo "start make install and ./scripts/setup.sh"
+	@echo "start make install and ./scripts/setup-localnet.sh"
 	@make install 
-	./scripts/setup.sh
+	./scripts/setup-localnet.sh
 
 .PHONY: localnet
 
@@ -297,7 +297,7 @@ proto-swagger-gen:
 ###                                Releasing                                ###
 ###############################################################################
 PACKAGE_NAME:=github.com/oracleNetworkProtocol/plugchain
-GOLANG_CROSS_VERSION  = v1.17.6
+GOLANG_CROSS_VERSION  = v1.17.1
 GOPATH ?= '$(HOME)/go'
 release-dry-run:
 	docker run \
@@ -309,7 +309,7 @@ release-dry-run:
 		-v ${GOPATH}/pkg:/go/pkg \
 		-w /go/src/$(PACKAGE_NAME) \
 		ghcr.io/troian/golang-cross:${GOLANG_CROSS_VERSION} \
-		--skip-validate  --snapshot
+		--rm-dist --skip-validate  --snapshot
 
 release:
 	@if [ ! -f ".release-env" ]; then \

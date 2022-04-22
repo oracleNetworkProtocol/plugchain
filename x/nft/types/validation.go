@@ -11,18 +11,17 @@ import (
 const (
 	DefaultStringValue = "[do-not-modify]"
 
-	MinClassLen  = 3
-	MaxClassLen  = 64
 	MaxNFTURILen = 256
 )
 
 var (
-	RegexAlphaNumeric = regexp.MustCompile(`^[a-z0-9]+$`).MatchString
-	RegexAlphaTop     = regexp.MustCompile(`^[a-z].*`).MatchString
-
-	keyWords         = strings.Join([]string{"ibc", "plug"}, "|")
-	regexpKeywordFmt = fmt.Sprintf("^(%s).*", keyWords)
-	regexpKeyword    = regexp.MustCompile(regexpKeywordFmt).MatchString
+	// reClassIDString can be 3 ~ 100 characters long and support letters, followed by either
+	// a letter, a number or a slash ('/') or a colon (':') or ('-').
+	reClassIDString = `[a-zA-Z][a-zA-Z0-9/:-]{2,100}`
+	reClassID       = regexp.MustCompile(fmt.Sprintf(`^%s$`, reClassIDString))
+	// reNFTIDString can be 3 ~ 100 characters long and support letters, followed by either
+	// a letter, a number or a slash ('/') or a colon (':') or ('-').
+	reNFTID = reClassID
 
 	URIMatchWords = strings.Join([]string{"http://", "https://"}, "|")
 	regexURIFmt   = fmt.Sprintf("^(%s).*", URIMatchWords)
@@ -30,31 +29,17 @@ var (
 )
 
 // ValidateClassID verifies whether the  parameters are legal
-func ValidateClassID(classID string) error {
-	if len(classID) < MinClassLen || len(classID) > MaxClassLen {
-		return sdkerrors.Wrapf(ErrInvalidClass, "the length of Class(%s) only accepts value [%d, %d]", classID, MinClassLen, MaxClassLen)
-	}
-	if !RegexAlphaNumeric(classID) || !RegexAlphaTop(classID) {
-		return sdkerrors.Wrapf(ErrInvalidClass, "the Class(%s) only accepts alphanumeric characters, and begin with an english letter", classID)
-	}
-	return ValidateKeywords(classID)
-}
-
-// ValidateKeywords checks if the given classID begins with `DenomKeywords`
-func ValidateKeywords(classID string) error {
-	if regexpKeyword(classID) {
-		return sdkerrors.Wrapf(ErrInvalidClass, "invalid classID: %s, can not begin with keyword: (%s)", classID, keyWords)
+func ValidateClassID(id string) error {
+	if !reClassID.MatchString(id) {
+		return sdkerrors.Wrapf(ErrInvalidClass, "invalid class id: %s", id)
 	}
 	return nil
 }
 
-//ValidateNFTID verify that the nftID is legal
-func ValidateNFTID(nftID string) error {
-	if len(nftID) < MinClassLen || len(nftID) > MaxClassLen {
-		return sdkerrors.Wrapf(ErrInvalidNFTID, "the length of nft id(%s) only accepts value [%d, %d]", nftID, MinClassLen, MaxClassLen)
-	}
-	if !RegexAlphaNumeric(nftID) || !RegexAlphaTop(nftID) {
-		return sdkerrors.Wrapf(ErrInvalidNFTID, "nft id(%s) only accepts alphanumeric characters, and begin with an english letter", nftID)
+// ValidateNFTID returns whether the nft id is valid
+func ValidateNFTID(id string) error {
+	if !reNFTID.MatchString(id) {
+		return sdkerrors.Wrapf(ErrInvalidNFTID, "invalid nft id: %s", id)
 	}
 	return nil
 }

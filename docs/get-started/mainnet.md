@@ -5,7 +5,7 @@ order: 3
 # Join The Mainnet
 
 :::tip
-**Requirements:** [install plugchaind](install.md)
+**Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases] (https://github.com/oracleNetworkProtocol/plugchain/releases)
 :::
 
 ## Run a Full Node
@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-You must use Plug Chain [v1.0.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
+You must use Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
 :::
 
 1. Initialize the node
@@ -25,9 +25,9 @@ plugchaind init <moniker> --chain-id=plugchain_520-1
 2. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
 
 ```bash
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ````
 3. Before starting, if you want to modify the service port, seed information, peering point, sentinel mode, etc., you can modify the file by yourself, and then start the node.
 

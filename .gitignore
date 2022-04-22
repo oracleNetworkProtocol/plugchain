@@ -49,6 +49,7 @@ home*/
 tet/
 
 
+docs-tools-stamp
 
 # goreleaser
 dist/

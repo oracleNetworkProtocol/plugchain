@@ -29,7 +29,6 @@ import (
 	onptypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-	"github.com/spf13/pflag"
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
@@ -110,8 +109,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 
 		debug.Cmd(),
 		config.Cmd(),
-		// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
-		// server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler),
 	)
 
 	a := appCreator{
@@ -126,15 +123,15 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		txCommand(),
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
-	// rootCmd = srvflags.AddTxFlags(rootCmd)
-
 	//register owner global flags
-	rootCmd = AddTxFlags(rootCmd)
+	var err error
+	rootCmd, err = AddTxFlags(rootCmd)
+	if err != nil {
+		panic(err)
+	}
 
-	// overwriteFlagDefaults(rootCmd, map[string]string{
-	// 	flags.FlagChainID:        ChainID,
-	// 	flags.FlagKeyringBackend: "os",
-	// })
+	// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
+	// rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
 
 	return rootCmd, encodingConfig
 }
@@ -293,20 +290,4 @@ func (a appCreator) appExport(
 	}
 
 	return anApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
-}
-
-func overwriteFlagDefaults(c *cobra.Command, defaults map[string]string) {
-	set := func(s *pflag.FlagSet, key, val string) {
-		if f := s.Lookup(key); f != nil {
-			f.DefValue = val
-			f.Value.Set(val)
-		}
-	}
-	for key, val := range defaults {
-		set(c.Flags(), key, val)
-		set(c.PersistentFlags(), key, val)
-	}
-	for _, c := range c.Commands() {
-		overwriteFlagDefaults(c, defaults)
-	}
 }

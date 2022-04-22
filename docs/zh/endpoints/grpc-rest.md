@@ -2,7 +2,7 @@
 order: 3
 ---
 
-# gRPC Gateway JSON REST
+# Restful API
 
 
 ## Query API 激活方式和配置

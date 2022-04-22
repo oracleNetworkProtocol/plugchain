@@ -82,7 +82,7 @@ module.exports = {
                     ["Endpoints", "endpoints"],
                     ["Tools", "tools"],
                     ["Migration", "migration"],
-                    // ["Resources", "resources"]
+                    ["Evm", "evm"]
                 ])
             },
             "/zh/": {
@@ -115,7 +115,7 @@ module.exports = {
                     ["服务端点", "/zh/endpoints"],
                     ["工具", "/zh/tools"],
                     ["迁移", "/zh/migration"],
-                    // ["资源", "/zh/resources"]
+                    ["evm", "/zh/evm"]
                 ])
             }
         },

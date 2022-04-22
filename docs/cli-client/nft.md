@@ -14,10 +14,10 @@
 | [burn-nft](#burn-nft)                    | Destroy Assets |
 | [supply](#supply)                        | Query supply |
 | [owner](#owner)                          | Query by owner |
-| [collection](#collection)                | Query collection |
+| [nft](#nft)                              | Query specified nft |
+| [nfts](#nfts)                | Query nfts |
 | [class](#class)                          | Query class |
 | [classes](#classes)                       | Query classes |
-| [nft](#nft)                              | Query specified nft |
 
 :::tip
 The above commands can use the `-h` parameter to view the description of the function and the meaning of the parameters
@@ -42,12 +42,12 @@ The above `issue-class`,`issue-nft`,`edit-nft`,`transfer-class`,`transfer-nft`,`
 参数规则：
 | 名称               | 类型           | 描述   | 规则 |
 | ----------------- | -----------   | ----  |  ---- |
-| class-id          | string        |  assets class ID  |  only accepts alphanumeric characters, and begin with an english letter. length [3,64] |
+| class-id          | string        |  assets class-id  |  [a-zA-Z][a-zA-Z0-9/:-]{2,100} |
 | class-name        | string        |  assets class name  | none |
 | class-symbol      |  string       |  assets class symbol | none |
 | mint-restricted   | bool          |  MintRestricted is true means that only Class owners can issue NFTs under this category, false means anyone can | none |
 | edit-restricted   | bool          |  EditRestricted is true means that no one in this category can Edit the NFT, false means that only the owner of this NFT can Edit   | none |
-| nft-id            | string        |  nft ID  |  only accepts alphanumeric characters, and begin with an english letter. length [3,64] |
+| nft-id            | string        |  nft ID  |  [a-zA-Z][a-zA-Z0-9/:-]{2,100} |
 | nft-name          | string        |  nft name | none |
 | nft-uri           | string        |  The URI pointing to a JSON object that contains subsequent nftData information off-chain | The maximum length is 256 bytes, starting with `http://`,`https://` |
 | nft-data          | string        |  NFT specifications defined under this category   | none |
@@ -117,7 +117,7 @@ plugchaind tx nft burn-nft [class-id] [nft-id] [flags]
 
 ## supply
 
-Query the total amount of assets based on Denom ID; accept the optional --owner parameter.
+Query the total amount of assets based on class-id; accept the optional --owner parameter.
 
 
 ```bash
@@ -127,25 +127,31 @@ plugchaind q nft supply [class-id] --owner=<myAddress> [flags]
 
 ## owner
 
-Query all assets owned by an account; you can specify the Denom ID parameter.
+Query all assets owned by an account; you can specify the class-id parameter.
 
 
 ```bash
 plugchaind query nft owner [address] [class-id] [flags]
 ```
+## nft
 
-## collection
+Query specific assets based on class-id and ID.
 
-Query all assets based on Denom ID.
+```bash
+plugchaind q nft nft [class-id] [nft-id] [flags]
+```
+## nfts
+
+Query all assets based on class-id.accept the optional --owner parameter.
 
 
 ```bash
-plugchaind q nft collection [class-id] [flags]
+plugchaind q nft nfts [class-id] [flags]
 ```
 
 ## class
 
-Query asset category information based on Denom ID.
+Query asset category information based on class-id.
 
 
 ```bash
@@ -158,12 +164,4 @@ Query all asset class information that has been issued.
 
 ```bash
 plugchaind q nft classes [flags]
-```
-
-## nft
-
-Query specific assets based on Denom ID and ID.
-
-```bash
-plugchaind q nft nft [class-id] [nft-id] [flags]
 ```

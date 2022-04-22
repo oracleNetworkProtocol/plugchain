@@ -1,0 +1,31 @@
+syntax = "proto3";
+package plugchain.prc10;
+
+import "gogoproto/gogo.proto";
+import "cosmos/base/v1beta1/coin.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
+option (gogoproto.goproto_getters_all) = false;
+
+message Token {
+    option (gogoproto.goproto_stringer) = false;
+    option (gogoproto.goproto_getters) = false;
+
+    string symbol = 1;
+    string name = 2;
+    uint32 scale = 3;
+    string min_unit = 4 ;
+    uint64 initial_supply = 5 ;
+    uint64 max_supply = 6 ;
+    bool mintable = 7;
+    string owner = 8;
+}
+
+
+message Params {
+    option (gogoproto.equal) = true;
+    option (gogoproto.goproto_stringer) = false;
+    cosmos.base.v1beta1.Coin issue_token_base_fee = 1 [ (gogoproto.nullable) = false ];
+
+    string operate_token_fee_ratio = 2 [  (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false ];
+}

@@ -5,7 +5,7 @@ order: 7
 # Plug Chain Hub latest version upgrade
 
 This document describes the steps for validators and full node operators to successfully execute the *upgrade plan*. The official is not responsible for the loss of assets due to the upgrade. Please back up your assets when upgrading.
-Plug Chain will stop running the main chain at block height `3000000` and upgrade to the official version `v1.0`.
+Plug Chain will stop running the main chain at block height `3000000` and upgrade to the official version `v1.1.0`.
 
 
 The upgrade contents are as follows:
@@ -17,7 +17,7 @@ The upgrade contents are as follows:
 4. Adjust the maximum number of validators to `50`
 5. Access the EVM module
 6. Enable the function of destroying `uplugcn`
-7. Overall adjustment of `x/liquidity`, `x/token` and other module fee parameters
+7. Overall adjustment of `x/liquidity`, `x/prc10` and other module fee parameters
 8. The wallet supports two key signature algorithms `secp256k1`, `eth_secp256k1`
 
 Precautions:
@@ -43,11 +43,11 @@ Precautions:
 
 # Steps 
 
-1. Get the `v1.0.0` binary file plugchaind
+1. Get the `v1.1.0` binary file plugchaind
 
 ```bash
-# Pull the v1.0.0 version code (you can use `git tag` to view the next tag version locally, if there is `v1.0.0`, skip this step)
-git fetch origin v1.0.0
+# Pull the v1.1.0 version code (you can use `git tag` to view the next tag version locally, if there is `v1.1.0`, skip this step)
+git fetch origin v1.1.0
 
 # Execute the compiled binary
 make install
@@ -64,9 +64,9 @@ plugchaind init myNode --chain-id plugchain_520-1
 
 
 ```bash
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ````
 
 *The fourth step only requires the operation of the validator node, and the rest of the nodes are skipped*

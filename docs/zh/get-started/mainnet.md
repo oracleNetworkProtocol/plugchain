@@ -5,7 +5,7 @@ order: 3
 # 加入主网
 
 :::tip
-需要先 [安装 plugchaind](install.md)
+需要先 [安装 plugchaind](install.md),或者下载对应版本的二进制文件[releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
 :::
 
 ## 运行全节点
@@ -13,7 +13,7 @@ order: 3
 ### Start node from genesis
 
 :::tip
-必须使用 Plug Chain [v1.0.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
+必须使用 Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
 :::
 
 1. 初始化节点
@@ -25,9 +25,9 @@ plugchaind init <moniker> --chain-id=plugchain_520-1
 2. 下载主网公开的 `genesis.json`,`app.toml`,`config.toml`:
 
 ```bash 
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ```
 3. 启动之前如果想修改服务端口,种子信息，对等点，哨兵模式等，可自行修改文件，然后再启动节点。
 
@@ -44,7 +44,8 @@ plugchaind start
 
 | 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.0.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.0.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
 
 
 

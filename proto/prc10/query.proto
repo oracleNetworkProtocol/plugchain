@@ -1,0 +1,70 @@
+syntax = "proto3";
+package plugchain.prc10;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "cosmos_proto/cosmos.proto";
+import "cosmos/base/v1beta1/coin.proto";
+import "google/protobuf/any.proto";
+import "gogoproto/gogo.proto";
+import "prc10/prc10.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    rpc Token (QueryTokenRequest) returns (QueryTokenResponse) {
+        option (google.api.http).get = "/token/tokens/{denom}";
+    }
+    rpc Fees (QueryFeesRequest) returns (QueryFeesResponse)  {
+        option (google.api.http).get = "/token/fee/{symbol}";
+    }
+    rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+        option (google.api.http).get = "/token/params";
+    }
+    rpc Tokens (QueryTokensRequest) returns (QueryTokensResponse) {
+        option (google.api.http).get = "/token/tokens";
+    }
+}
+
+message QueryTokenRequest {
+    string denom =1 ;
+}
+message QueryTokenResponse{
+    google.protobuf.Any Token = 1 [ (cosmos_proto.accepts_interface) = "TokenI" ];;
+}
+
+message QueryParamsRequest {
+}
+
+message QueryParamsResponse {
+    prc10.Params params = 1 [(gogoproto.nullable) = false];
+    cosmos.base.query.v1beta1.PageResponse res =2 ;
+}
+
+message QueryTokensRequest {
+    string owner = 1;
+    cosmos.base.query.v1beta1.PageRequest pagination = 2;
+}
+
+message QueryTokensResponse{
+    repeated google.protobuf.Any Tokens = 1 [ (cosmos_proto.accepts_interface) = "TokenI" ];
+    cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+
+message QueryFeesRequest {
+    string symbol = 1;
+}
+
+message QueryFeesResponse{
+    bool exist = 1;
+    cosmos.base.v1beta1.Coin issue_fee = 2 [
+        (gogoproto.nullable) = false,
+        (gogoproto.casttype) = "github.com/cosmos/cosmos-sdk/types.Coin"
+    ];
+    cosmos.base.v1beta1.Coin operate_fee = 3 [
+        (gogoproto.nullable) = false,
+        (gogoproto.casttype) = "github.com/cosmos/cosmos-sdk/types.Coin"
+    ];
+}

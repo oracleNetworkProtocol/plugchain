@@ -88,9 +88,9 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
 	docs "github.com/oracleNetworkProtocol/plugchain/client"
-	"github.com/oracleNetworkProtocol/plugchain/x/token"
-	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
-	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	token "github.com/oracleNetworkProtocol/plugchain/x/prc10"
+	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/prc10/keeper"
+	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 
 	"github.com/oracleNetworkProtocol/plugchain/x/nft"
 	nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
@@ -576,6 +576,10 @@ func New(
 	)
 
 	app.SetEndBlocker(app.EndBlocker)
+
+	app.RegisterUpgradePlan("v1.2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+		return app.mm.GetVersionMap(), nil
+	})
 
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
