@@ -25013,7 +25013,7 @@ definitions:
       application's
 
       state transition machine.
-  plugchain.token.Params:
+  plugchain.prc10.Params:
     type: object
     properties:
       issue_token_base_fee:
@@ -25030,7 +25030,7 @@ definitions:
           signatures required by gogoproto.
       operate_token_fee_ratio:
         type: string
-  plugchain.token.QueryFeesResponse:
+  plugchain.prc10.QueryFeesResponse:
     type: object
     properties:
       exist:
@@ -25059,7 +25059,7 @@ definitions:
 
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
-  plugchain.token.QueryParamsResponse:
+  plugchain.prc10.QueryParamsResponse:
     type: object
     properties:
       params:
@@ -25107,7 +25107,7 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  plugchain.token.QueryTokenResponse:
+  plugchain.prc10.QueryTokenResponse:
     type: object
     properties:
       Token:
@@ -25269,7 +25269,7 @@ definitions:
                 "@type": "type.googleapis.com/google.protobuf.Duration",
                 "value": "1.212s"
               }
-  plugchain.token.QueryTokensResponse:
+  plugchain.prc10.QueryTokensResponse:
     type: object
     properties:
       Tokens:
