@@ -123,12 +123,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		txCommand(),
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
-	//register owner global flags
-	var err error
-	rootCmd, err = AddTxFlags(rootCmd)
-	if err != nil {
-		panic(err)
-	}
 
 	// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
 	// rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
