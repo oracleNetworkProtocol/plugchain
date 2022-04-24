@@ -34,6 +34,7 @@ import (
 
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/backend"
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
+	pvmtypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/tharsis/ethermint/crypto/hd"
 	ethermint "github.com/tharsis/ethermint/types"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
@@ -117,7 +118,7 @@ func (e *PublicAPI) Ctx() context.Context {
 }
 
 // BalanceOf returns prc20 balance
-func (e *PublicAPI) BalanceOf(trans rpctypes.TransactionArgs, blockNrOrHash rpctypes.BlockNumberOrHash) (hexutil.Bytes, error) {
+func (e *PublicAPI) BalanceOf(trans rpctypes.TransactionArgs, blockNrOrHash rpctypes.BlockNumberOrHash) (interface{}, error) {
 
 	e.logger.Debug("eth_balanceOf")
 
@@ -128,26 +129,36 @@ func (e *PublicAPI) BalanceOf(trans rpctypes.TransactionArgs, blockNrOrHash rpct
 		}
 		trans.Data = (*hexutil.Bytes)(&data)
 	}
-	return e.Call(trans, blockNrOrHash)
+	res, err := e.Call(trans, blockNrOrHash)
+	if err != nil {
+		return nil, err
+	}
+	unRes, err := pvmtypes.ERC20Contract.ABI.Unpack("balanceOf", res)
+	if err != nil {
+		return nil, err
+	}
+	return unRes[0], nil
 }
 
 // Prc20TokenInfo returns to the basic information of prc20 token contract
-func (e *PublicAPI) Prc20TokenInfo(trans rpctypes.TransactionArgs, blockNrOrHash rpctypes.BlockNumberOrHash) map[string]hexutil.Bytes {
-	e.logger.Debug("eth_prc20Info")
+func (e *PublicAPI) Prc20TokenInfo(trans rpctypes.TransactionArgs, blockNrOrHash rpctypes.BlockNumberOrHash) map[string]interface{} {
+	e.logger.Debug("eth_prc20TokenInfo")
 
 	method := []string{"name", "symbol", "decimals", "totalSupply"}
-	var result map[string]hexutil.Bytes
+	var result = make(map[string]interface{})
 	for _, v := range method {
-		data, err := evmtypes.ERC20Contract.ABI.Pack(v, common.BytesToAddress(trans.To.Bytes()))
+		data, err := pvmtypes.ERC20Contract.ABI.Pack(v)
 		if err != nil {
 			continue
 		}
 		trans.Data = (*hexutil.Bytes)(&data)
-		result[v], _ = e.Call(trans, blockNrOrHash)
+		res, _ := e.Call(trans, blockNrOrHash)
+
+		unRes, _ := pvmtypes.ERC20Contract.ABI.Unpack(v, res)
+		result[v] = unRes[0]
 	}
 
 	return result
-
 }
 
 // AddressTranslation returns the byte, hex, eip-55, bech32 type information of the incoming address
@@ -171,7 +182,7 @@ func (e *PublicAPI) AddressTranslation(arg string) (map[string]interface{}, erro
 		return nil, err
 	}
 	return map[string]interface{}{
-		"bytes":  fmt.Sprintln(addr),
+		"bytes":  fmt.Sprint(addr),
 		"bech32": sdk.AccAddress(addr),
 		"hex":    bytes.HexBytes(addr),
 		"EIP-55": common.BytesToAddress(addr),
