@@ -15,6 +15,7 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/miner"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/net"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/personal"
+	plugchainrpc "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/rpc"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/txpool"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/web3"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
@@ -31,6 +32,7 @@ const (
 	TxPoolNamespace   = "txpool"
 	DebugNamespace    = "debug"
 	MinerNamespace    = "miner"
+	RpcNamespace      = "rpc"
 
 	apiVersion = "1.0"
 )
@@ -113,6 +115,15 @@ func GetRPCAPIs(ctx *server.Context, clientCtx client.Context, tmWSClient *rpccl
 					Version:   apiVersion,
 					Service:   miner.NewPrivateAPI(ctx, clientCtx, evmBackend),
 					Public:    false,
+				},
+			)
+		case RpcNamespace:
+			apis = append(apis,
+				rpc.API{
+					Namespace: RpcNamespace,
+					Version:   apiVersion,
+					Service:   plugchainrpc.NewPublicAPI(ctx.Logger, clientCtx, evmBackend, nonceLock),
+					Public:    true,
 				},
 			)
 		default:
