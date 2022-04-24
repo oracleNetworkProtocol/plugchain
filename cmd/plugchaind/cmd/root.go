@@ -35,9 +35,9 @@ import (
 	"github.com/tharsis/ethermint/client/debug"
 
 	// this line is used by starport scaffolding # stargate/root/import
+	plugchainserver "github.com/oracleNetworkProtocol/plugchain/server"
+	servercfg "github.com/oracleNetworkProtocol/plugchain/server/config"
 	ethermintclient "github.com/tharsis/ethermint/client"
-	ethermintserver "github.com/tharsis/ethermint/server"
-	servercfg "github.com/tharsis/ethermint/server/config"
 )
 
 const (
@@ -114,7 +114,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 	a := appCreator{
 		encCfg: encodingConfig,
 	}
-	ethermintserver.AddCommands(rootCmd, app.DefaultNodeHome, a.newApp, a.appExport, addModuleInitFlags)
+	plugchainserver.AddCommands(rootCmd, app.DefaultNodeHome, a.newApp, a.appExport, addModuleInitFlags)
 
 	// add keybase, auxiliary RPC, query, and tx child commands
 	rootCmd.AddCommand(
