@@ -76,11 +76,23 @@ func NewPublicAPI(
 		clientCtx:    clientCtx,
 		queryClient:  rpctypes.NewQueryClient(clientCtx),
 		chainIDEpoch: eip155ChainID,
-		logger:       logger.With("module", "rpc"),
+		logger:       logger.With("client", "json-rpc"),
 		backend:      backend,
 		nonceLock:    nonceLock,
 		signer:       signer,
 	}
 
 	return api
+}
+
+//AccountResult refactored structure address type to sdk.AccAddress
+type ProofAccountResult struct {
+	Address sdk.AccAddress `json:"address"`
+	rpctypes.AccountResult
+}
+
+type RPCTransactionResult struct {
+	From sdk.AccAddress `json:"from"`
+	To   sdk.AccAddress `json:"to"`
+	rpctypes.RPCTransaction
 }
