@@ -24,7 +24,6 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
-	ethermint "github.com/tharsis/ethermint/types"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 )
 
@@ -39,12 +38,6 @@ func (e *PublicAPI) QueryClient() *rpctypes.QueryClient {
 
 func (e *PublicAPI) Ctx() context.Context {
 	return e.ctx
-}
-
-// ProtocolVersion returns the supported Ethereum protocol version.
-func (e *PublicAPI) ProtocolVersion() hexutil.Uint {
-	e.logger.Debug("rpc_protocolVersion")
-	return hexutil.Uint(ethermint.ProtocolVersion)
 }
 
 // ChainId is the EIP-155 replay-protection chain id for the current ethereum chain config.
