@@ -14,9 +14,47 @@ import (
 // internal pkg on geth.
 
 type TransactionArgs struct {
-	From sdk.AccAddress `json:"from"`
-	To   sdk.AccAddress `json:"to"`
+	From                 sdk.AccAddress `json:"from"`
+	To                   sdk.AccAddress `json:"to"`
+	Gas                  uint64         `json:"gas"`
+	GasPrice             uint64         `json:"gasPrice"`
+	MaxFeePerGas         uint64         `json:"maxFeePerGas"`
+	MaxPriorityFeePerGas uint64         `json:"maxPriorityFeePerGas"`
+	Value                uint64         `json:"value"`
+	Nonce                uint64         `json:"nonce"`
 	evmtypes.TransactionArgs
+}
+
+func (trans TransactionArgs) New() evmtypes.TransactionArgs {
+	var args evmtypes.TransactionArgs
+	args = trans.TransactionArgs
+	if trans.From != nil {
+		from := common.BytesToAddress(trans.From)
+		args.From = &from
+	}
+	if trans.To != nil {
+		to := common.BytesToAddress(trans.To)
+		args.To = &to
+	}
+	if trans.Gas > 0 {
+		args.Gas = (*hexutil.Uint64)(&trans.Gas)
+	}
+	if trans.GasPrice > 0 {
+		args.GasPrice = (*hexutil.Big)(big.NewInt(int64(trans.GasPrice)))
+	}
+	if trans.MaxFeePerGas > 0 {
+		args.MaxFeePerGas = (*hexutil.Big)(big.NewInt(int64(trans.MaxFeePerGas)))
+	}
+	if trans.MaxPriorityFeePerGas > 0 {
+		args.MaxPriorityFeePerGas = (*hexutil.Big)(big.NewInt(int64(trans.MaxPriorityFeePerGas)))
+	}
+	if trans.Value > 0 {
+		args.Value = (*hexutil.Big)(big.NewInt(int64(trans.Value)))
+	}
+	if trans.Nonce > 0 {
+		args.Nonce = (*hexutil.Uint64)(&trans.Nonce)
+	}
+	return args
 }
 
 // AccountResult struct for account proof
