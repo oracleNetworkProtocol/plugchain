@@ -8,7 +8,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/ethereum/go-ethereum/crypto"
 
+	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	pvmtypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/tendermint/tendermint/libs/bytes"
 
@@ -41,7 +43,7 @@ func (e *PublicAPI) BalanceOf(trans rpctypes.TransactionArgs, blockNrOrHash rpct
 	if err != nil {
 		return nil, err
 	}
-	return unRes, nil
+	return unRes[0], nil
 }
 
 // Prc20TokenInfo returns to the basic information of prc20 token contract
@@ -59,7 +61,7 @@ func (e *PublicAPI) Prc20TokenInfo(trans rpctypes.TransactionArgs, blockNrOrHash
 		res, _ := e.Call(trans, blockNrOrHash, nil)
 
 		unRes, _ := pvmtypes.ERC20Contract.ABI.Unpack(v, res)
-		result[v] = unRes
+		result[v] = unRes[0]
 	}
 
 	return result
@@ -174,7 +176,6 @@ func (e *PublicAPI) GetProof(addr sdk.AccAddress, storageKeys []string, blockNrO
 		return nil, errors.New("invalid balance")
 	}
 	return &ProofAccountResult{
-		Address: addr,
 		AccountResult: rpctypes.AccountResult{
 			AccountProof: []string{accProofStr},
 			Balance:      (*hexutil.Big)(balance.BigInt()),
@@ -211,36 +212,11 @@ func (e *PublicAPI) GetTransactionByHash(hash common.Hash) (*RPCTransactionResul
 	e.logger.Debug("rpc_getTransactionByHash", "hash", hash.Hex())
 
 	res, err := e.backend.GetTransactionByHash(hash)
-	if err != nil {
+	if err != nil || res == nil {
 		return &RPCTransactionResult{}, err
 	}
-	var (
-		from sdk.AccAddress
-		to   sdk.AccAddress
-	)
-	if len(res.From) > 2 {
-		from = sdk.AccAddress(res.From.Bytes())
-	}
-	if res.To != nil {
-		to = sdk.AccAddress(res.To.Bytes())
-	}
 	return &RPCTransactionResult{
-		From: from,
-		To:   to,
-		RPCTransaction: rpctypes.RPCTransaction{
-			BlockHash:   res.BlockHash,
-			BlockNumber: res.BlockNumber,
-			Type:        res.Type,
-			Gas:         res.Gas,
-			GasPrice:    res.GasPrice,
-			Hash:        res.Hash,
-			Input:       res.Input,
-			Nonce:       res.Nonce,
-			Value:       res.Value,
-			V:           res.V,
-			R:           res.R,
-			S:           res.S,
-		},
+		RPCTransaction: res,
 	}, nil
 }
 
@@ -268,16 +244,129 @@ func (e *PublicAPI) GetBlockByNumber(ethBlockNum rpctypes.BlockNumber, fullTx bo
 }
 
 // EstimateGas returns an estimate of gas usage for the given smart contract call.
-func (e *PublicAPI) EstimateGas(args evmtypes.TransactionArgs, blockNrOptional *rpctypes.BlockNumber) (hexutil.Uint64, error) {
+func (e *PublicAPI) EstimateGas(trans rpctypes.TransactionArgs, blockNrOptional *rpctypes.BlockNumber) (hexutil.Uint64, error) {
 	e.logger.Debug("rpc_estimateGas")
+	args := trans.New()
 	return e.backend.EstimateGas(args, blockNrOptional)
 }
 
-func (e *PublicAPI) getTransactionLogs(txHash common.Hash) ([]*evmtypes.Log, error) {
-	tx, err := e.backend.GetTxByEthHash(txHash)
+// GetTransactionReceipt returns the transaction receipt identified by hash.
+func (e *PublicAPI) GetTransactionReceipt(hash common.Hash) (map[string]interface{}, error) {
+	hexTx := hash.Hex()
+	e.logger.Debug("rpc_getTransactionReceipt", "hash", hexTx)
+
+	res, err := e.backend.GetTxByEthHash(hash)
 	if err != nil {
+		e.logger.Debug("tx not found", "hash", hexTx, "error", err.Error())
+		return nil, nil
+	}
+
+	resBlock, err := e.clientCtx.Client.Block(e.ctx, &res.Height)
+	if err != nil {
+		e.logger.Debug("block not found", "height", res.Height, "error", err.Error())
+		return nil, nil
+	}
+
+	tx, err := e.clientCtx.TxConfig.TxDecoder()(res.Tx)
+	if err != nil {
+		e.logger.Debug("decoding failed", "error", err.Error())
+		return nil, fmt.Errorf("failed to decode tx: %w", err)
+	}
+
+	msg, err := evmtypes.UnwrapEthereumMsg(&tx)
+	if err != nil {
+		e.logger.Debug("invalid tx", "error", err.Error())
 		return nil, err
 	}
 
-	return TxLogsFromEvents(tx.TxResult.Events)
+	txData, err := evmtypes.UnpackTxData(msg.Data)
+	if err != nil {
+		e.logger.Error("failed to unpack tx data", "error", err.Error())
+		return nil, err
+	}
+
+	cumulativeGasUsed := uint64(0)
+	blockRes, err := e.clientCtx.Client.BlockResults(e.ctx, &res.Height)
+	if err != nil {
+		e.logger.Debug("failed to retrieve block results", "height", res.Height, "error", err.Error())
+		return nil, nil
+	}
+
+	for i := 0; i <= int(res.Index) && i < len(blockRes.TxsResults); i++ {
+		cumulativeGasUsed += uint64(blockRes.TxsResults[i].GasUsed)
+	}
+
+	// Get the transaction result from the log
+	var status hexutil.Uint
+	if strings.Contains(res.TxResult.GetLog(), evmtypes.AttributeKeyEthereumTxFailed) {
+		status = hexutil.Uint(ethtypes.ReceiptStatusFailed)
+	} else {
+		status = hexutil.Uint(ethtypes.ReceiptStatusSuccessful)
+	}
+
+	from, err := msg.GetSender(e.chainIDEpoch)
+	if err != nil {
+		return nil, err
+	}
+	to := txData.GetTo()
+
+	logs, err := e.backend.GetTransactionLogs(hash)
+	if err != nil {
+		e.logger.Debug("logs not found", "hash", hexTx, "error", err.Error())
+	}
+
+	// get eth index based on block's txs
+	var txIndex uint64
+	msgs := e.backend.GetEthereumMsgsFromTendermintBlock(resBlock)
+	for i := range msgs {
+		if msgs[i].Hash == hexTx {
+			txIndex = uint64(i)
+			break
+		}
+	}
+
+	receipt := map[string]interface{}{
+		// Consensus fields: These fields are defined by the Yellow Paper
+		"status":            status,
+		"cumulativeGasUsed": hexutil.Uint64(cumulativeGasUsed),
+		"logsBloom":         ethtypes.BytesToBloom(ethtypes.LogsBloom(logs)),
+		"logs":              logs,
+
+		// Implementation fields: These fields are added by geth when processing a transaction.
+		// They are stored in the chain database.
+		"transactionHash": hash,
+		"contractAddress": nil,
+		"gasUsed":         hexutil.Uint64(res.TxResult.GasUsed),
+		"type":            hexutil.Uint(txData.TxType()),
+
+		// Inclusion information: These fields provide information about the inclusion of the
+		// transaction corresponding to this receipt.
+		"blockHash":        common.BytesToHash(resBlock.Block.Header.Hash()).Hex(),
+		"blockNumber":      hexutil.Uint64(res.Height),
+		"transactionIndex": hexutil.Uint64(txIndex),
+
+		// sender and receiver (contract or EOA) addreses
+		"from": sdk.AccAddress(from.Bytes()),
+		"to":   nil,
+	}
+	if to != nil {
+		receipt["to"] = sdk.AccAddress(to.Bytes())
+	}
+	if logs == nil {
+		receipt["logs"] = [][]EthLog{}
+	} else {
+		var newRes []EthLog
+		for _, v := range logs {
+			var result = EthLog{v}
+			newRes = append(newRes, result)
+		}
+		receipt["logs"] = newRes
+	}
+
+	// If the ContractAddress is 20 0x0 bytes, assume it is not a contract creation
+	if txData.GetTo() == nil {
+		contractAddr := crypto.CreateAddress(from, txData.GetNonce())
+		receipt["contractAddress"] = sdk.AccAddress(contractAddr.Bytes())
+	}
+	return receipt, nil
 }
