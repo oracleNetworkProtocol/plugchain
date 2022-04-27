@@ -58,9 +58,15 @@ func (e *PublicAPI) Prc20TokenInfo(trans rpctypes.TransactionArgs, blockNrOrHash
 			continue
 		}
 		trans.Data = (*hexutil.Bytes)(&data)
-		res, _ := e.Call(trans, blockNrOrHash, nil)
+		res, err := e.Call(trans, blockNrOrHash, nil)
+		if err != nil {
+			continue
+		}
 
-		unRes, _ := pvmtypes.ERC20Contract.ABI.Unpack(v, res)
+		unRes, err := pvmtypes.ERC20Contract.ABI.Unpack(v, res)
+		if err != nil {
+			continue
+		}
 		result[v] = unRes[0]
 	}
 
