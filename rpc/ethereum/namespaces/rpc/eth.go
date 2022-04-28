@@ -7,6 +7,7 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/core/vm"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/params"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -38,6 +39,13 @@ func (e *PublicAPI) QueryClient() *rpctypes.QueryClient {
 
 func (e *PublicAPI) Ctx() context.Context {
 	return e.ctx
+}
+
+// Sha3 returns the keccak-256 hash of the passed-in input.
+func (e *PublicAPI) Sha3(input hexutil.Bytes) hexutil.Bytes {
+	e.logger.Debug("rpc_sha3")
+
+	return crypto.Keccak256(input)
 }
 
 // ChainId is the EIP-155 replay-protection chain id for the current ethereum chain config.
