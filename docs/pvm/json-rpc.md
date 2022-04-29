@@ -18,20 +18,20 @@ This can be configured in `~/.plugchain/config/app.toml`:
 | Method                                                                            | Namespace | Implemented | Public | Notes              |
 |-----------------------------------------------------------------------------------|-----------|-------------|--------|--------------------|
 | [`rpc_syncing`](#rpc-syncing)                                                     | Rpc       | ✔           | ✔      |                    |
-| [`rpc_chainId`](#rpc-chainId)                                                     | Rpc       | ✔           | ✔      |                    |
+| [`rpc_chainId`](#rpc-chainid)                                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_gasPrice`](#rpc-gasprice)                                                   | Rpc       | ✔           | ✔      |                    |
 | [`rpc_accounts`](#rpc-accounts)                                                   | Rpc       | ✔           | ✔      |                    |
 | [`rpc_blockNumber`](#rpc-blocknumber)                                             | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getBalance`](#rpc-getbalance)                                               | Rpc       | ✔           | ✔      |                    |
-| [`rpc_balanceOf`](#rpc-balanceOf)                                                 | Rpc       | ✔           | ✔      |                    |
-| [`rpc_prc20TokenInfo`](#rpc-prc20TokenInfo)                                       | Rpc       | ✔           | ✔      |                    |
-| [`rpc_addressTranslation`](#rpc-addressTranslation)                               | Rpc       | ✔           | ✔      |                    |
+| [`rpc_balanceOf`](#rpc-balanceof)                                                 | Rpc       | ✔           | ✔      |                    |
+| [`rpc_prc20TokenInfo`](#rpc-prc20tokeninfo)                                       | Rpc       | ✔           | ✔      |                    |
+| [`rpc_addressTranslation`](#rpc-addresstranslation)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getStorageAt`](#rpc-getstorageat)                                           | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getTransactionCount`](#rpc-gettransactioncount)                             | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getBlockTransactionCountByNumber`](#rpc-getblocktransactioncountbynumber)   | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getBlockTransactionCountByHash`](#rpc-getblocktransactioncountbyhash)       | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getCode`](#rpc-getcode)                                                     | Rpc       | ✔           | ✔      |                    |
-| [`rpc_getTransactionLogs`](#rpc-getTransactionLogs)                               | Rpc       | ✔           | ✔      |                    |
+| [`rpc_getTransactionLogs`](#rpc-gettransactionlogs)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sign`](#rpc-sign)                                                           | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sendTransaction`](#rpc-sendtransaction)                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sendRawTransaction`](#rpc-sendrawtransaction)                               | Rpc       | ✔           | ✔      |                    |
@@ -41,7 +41,7 @@ This can be configured in `~/.plugchain/config/app.toml`:
 | [`rpc_getBlockByHash`](#rpc-getblockbyhash)                                       | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getTransactionByHash`](#rpc-gettransactionbyhash)                           | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getTransactionReceipt`](#rpc-gettransactionreceipt)                         | Rpc       | ✔           | ✔      |                    |
-| [`rpc_getProof`](#rpc-getProof)                                                   | Rpc       | ✔           |        |                    |
+| [`rpc_getProof`](#rpc-getproof)                                                   | Rpc       | ✔           |        |                    |
 
 
 ::: warning
