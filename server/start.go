@@ -42,10 +42,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	ethlog "github.com/ethereum/go-ethereum/log"
+	"github.com/oracleNetworkProtocol/ethermint/log"
 	ethdebug "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/debug"
 	"github.com/oracleNetworkProtocol/plugchain/server/config"
 	srvflags "github.com/oracleNetworkProtocol/plugchain/server/flags"
-	"github.com/tharsis/ethermint/log"
 )
 
 // StartCmd runs the service passed in, either stand-alone or in-process with

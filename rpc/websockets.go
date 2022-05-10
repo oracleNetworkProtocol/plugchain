@@ -26,10 +26,10 @@ import (
 	rpcclient "github.com/tendermint/tendermint/rpc/jsonrpc/client"
 	tmtypes "github.com/tendermint/tendermint/types"
 
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 	rpcfilters "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/namespaces/eth/filters"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
 	"github.com/oracleNetworkProtocol/plugchain/server/config"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 )
 
 type WebsocketsServer interface {

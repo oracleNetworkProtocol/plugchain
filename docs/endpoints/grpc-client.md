@@ -81,7 +81,7 @@ import (
     "encoding/hex"
 	sdk "github.com/cosmos/cosmos-sdk/types"
     _ "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1" 
-    "github.com/tharsis/ethermint/crypto/ethsecp256k1"   
+    "github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"   
 )
     chainID := "plugchain_520-1"
     addr1, _ := sdk.AccAddressFromBech32("gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed")
@@ -94,7 +94,7 @@ import (
 	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
 	accountSeq := uint64(0)
 	acountNumber := uint64(8)
-	//EthAccount type, using package "github.com/tharsis/ethermint/crypto/ethsecp256k1"
+	//EthAccount type, using package "github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
 	//BaseAccount type using package  "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	priv1 := ethsecp256k1.PrivKey{Key: priva}
 ```

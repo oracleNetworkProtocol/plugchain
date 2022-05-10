@@ -16,7 +16,7 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	stderrors "github.com/pkg/errors"

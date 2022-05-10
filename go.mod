@@ -9,6 +9,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
+	github.com/oracleNetworkProtocol/ethermint v0.9.3
 	github.com/oracleNetworkProtocol/liquidity v0.2.1
 	github.com/regen-network/cosmos-proto v0.3.1
 	github.com/spf13/cast v1.4.1
@@ -16,7 +17,6 @@ require (
 	github.com/spf13/pflag v1.0.5
 	github.com/tendermint/tendermint v0.34.15
 	github.com/tendermint/tm-db v0.6.6
-	github.com/tharsis/ethermint v0.9.0
 	google.golang.org/genproto v0.0.0-20211116182654-e63d96a377c4
 	google.golang.org/grpc v1.42.0
 )
