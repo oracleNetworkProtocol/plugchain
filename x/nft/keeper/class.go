@@ -32,7 +32,7 @@ func (k Keeper) GetClasses(ctx sdk.Context) (denoms []types.Class) {
 func (k Keeper) SetClass(ctx sdk.Context, denom types.Class) error {
 
 	if k.HasClassByID(ctx, denom.ID) {
-		return sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s has already exists", denom.ID)
+		return sdkerrors.Wrapf(types.ErrInvalidClass, "classID %s has already exists", denom.ID)
 	}
 
 	store := ctx.KVStore(k.storeKey)
@@ -48,7 +48,7 @@ func (k Keeper) HasClassByID(ctx sdk.Context, id string) bool {
 }
 func (k Keeper) UpdateDenom(ctx sdk.Context, denom types.Class) error {
 	if !k.HasClassByID(ctx, denom.ID) {
-		return sdkerrors.Wrapf(types.ErrInvalidClass, "denomID %s not exists", denom.ID)
+		return sdkerrors.Wrapf(types.ErrInvalidClass, "classID %s not exists", denom.ID)
 	}
 	store := ctx.KVStore(k.storeKey)
 	bz := k.cdc.MustMarshal(&denom)

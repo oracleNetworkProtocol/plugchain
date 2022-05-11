@@ -17,7 +17,7 @@ Plug Chain 将在区块高度 `3000000` 停止主链运行，进行正式版本`
 4. 调整最大验证者个数为`50`个
 5. 接入EVM模块
 6. 开通销毁`uplugcn`功能
-7. 整体调整`x/liquidity`，`x/token`等模块手续费参数
+7. 整体调整`x/liquidity`，`x/prc10`等模块手续费参数
 8. 钱包支持两种密钥签名算法 `secp256k1`，`eth_secp256k1`
 
 注意事项：
@@ -64,9 +64,9 @@ plugchaind init myNode --chain-id plugchain_520-1
 
 
 ```bash 
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ```
 
 *第四步只需要验证者节点操作，其余节点跳过*

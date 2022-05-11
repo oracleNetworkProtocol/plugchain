@@ -88,9 +88,9 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
 	docs "github.com/oracleNetworkProtocol/plugchain/client"
-	"github.com/oracleNetworkProtocol/plugchain/x/token"
-	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/token/keeper"
-	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/token/types"
+	token "github.com/oracleNetworkProtocol/plugchain/x/prc10"
+	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/prc10/keeper"
+	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 
 	"github.com/oracleNetworkProtocol/plugchain/x/nft"
 	nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
@@ -102,17 +102,17 @@ import (
 	feegrantkeeper "github.com/cosmos/cosmos-sdk/x/feegrant/keeper"
 	feegrantmodule "github.com/cosmos/cosmos-sdk/x/feegrant/module"
 
-	"github.com/tharsis/ethermint/x/feemarket"
-	feemarketkeeper "github.com/tharsis/ethermint/x/feemarket/keeper"
-	feemarkettypes "github.com/tharsis/ethermint/x/feemarket/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/feemarket"
+	feemarketkeeper "github.com/oracleNetworkProtocol/ethermint/x/feemarket/keeper"
+	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
 
-	"github.com/tharsis/ethermint/app/ante"
-	srvflags "github.com/tharsis/ethermint/server/flags"
-	ethermint "github.com/tharsis/ethermint/types"
-	"github.com/tharsis/ethermint/x/evm"
-	evmrest "github.com/tharsis/ethermint/x/evm/client/rest"
-	evmkeeper "github.com/tharsis/ethermint/x/evm/keeper"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	"github.com/oracleNetworkProtocol/ethermint/app/ante"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
+	"github.com/oracleNetworkProtocol/ethermint/x/evm"
+	evmrest "github.com/oracleNetworkProtocol/ethermint/x/evm/client/rest"
+	evmkeeper "github.com/oracleNetworkProtocol/ethermint/x/evm/keeper"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	srvflags "github.com/oracleNetworkProtocol/plugchain/server/flags"
 )
 
 func init() {
@@ -576,6 +576,10 @@ func New(
 	)
 
 	app.SetEndBlocker(app.EndBlocker)
+
+	app.RegisterUpgradePlan("v1.2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+		return app.mm.GetVersionMap(), nil
+	})
 
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {

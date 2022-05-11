@@ -5,19 +5,19 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 )
 
-func (k Keeper) setOwner(ctx sdk.Context, denomID, nftID string, owner sdk.AccAddress) {
+func (k Keeper) setOwner(ctx sdk.Context, classID, nftID string, owner sdk.AccAddress) {
 	store := ctx.KVStore(k.storeKey)
 	bz := types.MustMarshalNFTID(k.cdc, nftID)
-	store.Set(types.GetKeyOwner(owner, denomID, nftID), bz)
+	store.Set(types.GetKeyOwner(owner, classID, nftID), bz)
 }
 
-func (k Keeper) delOwner(ctx sdk.Context, denomID, nftID string, owner sdk.AccAddress) {
+func (k Keeper) delOwner(ctx sdk.Context, classID, nftID string, owner sdk.AccAddress) {
 	store := ctx.KVStore(k.storeKey)
-	store.Delete(types.GetKeyOwner(owner, denomID, nftID))
+	store.Delete(types.GetKeyOwner(owner, classID, nftID))
 }
 
-func (k Keeper) swapOwner(ctx sdk.Context, denomID, nftID string, owner, recipient sdk.AccAddress) {
-	k.delOwner(ctx, denomID, nftID, owner)
+func (k Keeper) swapOwner(ctx sdk.Context, classID, nftID string, owner, recipient sdk.AccAddress) {
+	k.delOwner(ctx, classID, nftID, owner)
 
-	k.setOwner(ctx, denomID, nftID, recipient)
+	k.setOwner(ctx, classID, nftID, recipient)
 }

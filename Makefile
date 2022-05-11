@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-AppVersion ?= $(shell echo $(shell git describe --tags `git rev-list --tags="v*" --max-count=1`) | sed 's/^v//')
+AppVersion ?= $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git log -1 --format='%H')
 TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 LEDGER_ENABLED ?= true
@@ -62,8 +62,8 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Version=$(AppVersion) \
  		  	  -X github.com/cosmos/cosmos-sdk/version.Name=onp \
 		  	  -X github.com/cosmos/cosmos-sdk/version.AppName=$(PLUGCHAIN_BINARY) \
 		  	  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-			  -X github.com/tharsis/ethermint/version.AppVersion=$(PLUGCHAIN_BINARY) \
-			  -X github.com/tharsis/ethermint/version.GitCommit=$(AppVersion) \
+			  -X github.com/oracleNetworkProtocol/ethermint/version.AppVersion=$(PLUGCHAIN_BINARY) \
+			  -X github.com/oracleNetworkProtocol/ethermint/version.GitCommit=$(AppVersion) \
 			  -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TMVERSION) \
 		 	    -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 # DB backend selection
@@ -187,9 +187,9 @@ tools-clean:
 
 # Run a single testnet locally
 localnet: 
-	@echo "start make install and ./scripts/setup.sh"
+	@echo "start make install and ./scripts/setup-localnet.sh"
 	@make install 
-	./scripts/setup.sh
+	./scripts/setup-localnet.sh
 
 .PHONY: localnet
 

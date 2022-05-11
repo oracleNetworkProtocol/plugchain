@@ -4236,7 +4236,7 @@ paths:
                             type: string
                             description: >-
                               denom represents the string name of the given
-                              denom unit (e.g plug).
+                              denom unit (e.g uplugcn).
                           exponent:
                             type: integer
                             format: int64
@@ -4249,10 +4249,10 @@ paths:
 
                               1 denom = 1^exponent base_denom
 
-                              (e.g. with a base_denom of plug, one can create a
-                              DenomUnit of 'plug' with
+                              (e.g. with a base_denom of uplugcn, one can create a
+                              DenomUnit of 'plugcn' with
 
-                              exponent = 6, thus: 1 plug = 10^6 plug).
+                              exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
                           aliases:
                             type: array
                             items:
@@ -4424,7 +4424,7 @@ paths:
                           type: string
                           description: >-
                             denom represents the string name of the given denom
-                            unit (e.g plug).
+                            unit (e.g uplugcn).
                         exponent:
                           type: integer
                           format: int64
@@ -4437,10 +4437,10 @@ paths:
 
                             1 denom = 1^exponent base_denom
 
-                            (e.g. with a base_denom of plug, one can create a
-                            DenomUnit of 'plug' with
+                            (e.g. with a base_denom of uplugcn, one can create a
+                            DenomUnit of 'plugcn' with
 
-                            exponent = 6, thus: 1 plug = 10^6 plug).
+                            exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
                         aliases:
                           type: array
                           items:
@@ -8265,7 +8265,7 @@ paths:
                     title: minimum inflation rate
                   goal_bonded:
                     type: string
-                    title: goal of percent bonded plugs
+                    title: goal of percent bonded plugcns
                   blocks_per_year:
                     type: string
                     format: uint64
@@ -15848,7 +15848,7 @@ paths:
                     type: array
                     format: sdk.Coins
                     example:
-                      - denom: plug
+                      - denom: uplugcn
                         amount: '100000000'
                     items:
                       type: object
@@ -19497,7 +19497,7 @@ definitions:
     properties:
       denom:
         type: string
-        description: denom represents the string name of the given denom unit (e.g plug).
+        description: denom represents the string name of the given denom unit (e.g uplugcn).
       exponent:
         type: integer
         format: int64
@@ -19508,10 +19508,10 @@ definitions:
 
           1 denom = 1^exponent base_denom
 
-          (e.g. with a base_denom of plug, one can create a DenomUnit of 'plug'
+          (e.g. with a base_denom of uplugcn, one can create a DenomUnit of 'plugcn'
           with
 
-          exponent = 6, thus: 1 plug = 10^6 plug).
+          exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
       aliases:
         type: array
         items:
@@ -19534,7 +19534,7 @@ definitions:
               type: string
               description: >-
                 denom represents the string name of the given denom unit (e.g
-                plug).
+                uplugcn).
             exponent:
               type: integer
               format: int64
@@ -19546,10 +19546,10 @@ definitions:
 
                 1 denom = 1^exponent base_denom
 
-                (e.g. with a base_denom of plug, one can create a DenomUnit of
-                'plug' with
+                (e.g. with a base_denom of uplugcn, one can create a DenomUnit of
+                'plugcn' with
 
-                exponent = 6, thus: 1 plug = 10^6 plug).
+                exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
             aliases:
               type: array
               items:
@@ -19682,7 +19682,7 @@ definitions:
                   type: string
                   description: >-
                     denom represents the string name of the given denom unit
-                    (e.g plug).
+                    (e.g uplugcn).
                 exponent:
                   type: integer
                   format: int64
@@ -19694,10 +19694,10 @@ definitions:
 
                     1 denom = 1^exponent base_denom
 
-                    (e.g. with a base_denom of plug, one can create a DenomUnit
-                    of 'plug' with
+                    (e.g. with a base_denom of uplugcn, one can create a DenomUnit
+                    of 'plugcn' with
 
-                    exponent = 6, thus: 1 plug = 10^6 plug).
+                    exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
                 aliases:
                   type: array
                   items:
@@ -19758,7 +19758,7 @@ definitions:
                     type: string
                     description: >-
                       denom represents the string name of the given denom unit
-                      (e.g plug).
+                      (e.g uplugcn).
                   exponent:
                     type: integer
                     format: int64
@@ -19770,10 +19770,10 @@ definitions:
 
                       1 denom = 1^exponent base_denom
 
-                      (e.g. with a base_denom of plug, one can create a
-                      DenomUnit of 'plug' with
+                      (e.g. with a base_denom of uplugcn, one can create a
+                      DenomUnit of 'plugcn' with
 
-                      exponent = 6, thus: 1 plug = 10^6 plug).
+                      exponent = 6, thus: 1 plugcn = 10^6 uplugcn).
                   aliases:
                     type: array
                     items:
@@ -21564,7 +21564,7 @@ definitions:
         title: minimum inflation rate
       goal_bonded:
         type: string
-        title: goal of percent bonded plugs
+        title: goal of percent bonded plugcns
       blocks_per_year:
         type: string
         format: uint64
@@ -21611,7 +21611,7 @@ definitions:
             title: minimum inflation rate
           goal_bonded:
             type: string
-            title: goal of percent bonded plugs
+            title: goal of percent bonded plugcns
           blocks_per_year:
             type: string
             format: uint64
@@ -25013,7 +25013,7 @@ definitions:
       application's
 
       state transition machine.
-  plugchain.token.Params:
+  plugchain.prc10.Params:
     type: object
     properties:
       issue_token_base_fee:
@@ -25030,7 +25030,7 @@ definitions:
           signatures required by gogoproto.
       operate_token_fee_ratio:
         type: string
-  plugchain.token.QueryFeesResponse:
+  plugchain.prc10.QueryFeesResponse:
     type: object
     properties:
       exist:
@@ -25059,7 +25059,7 @@ definitions:
 
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
-  plugchain.token.QueryParamsResponse:
+  plugchain.prc10.QueryParamsResponse:
     type: object
     properties:
       params:
@@ -25107,7 +25107,7 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  plugchain.token.QueryTokenResponse:
+  plugchain.prc10.QueryTokenResponse:
     type: object
     properties:
       Token:
@@ -25269,7 +25269,7 @@ definitions:
                 "@type": "type.googleapis.com/google.protobuf.Duration",
                 "value": "1.212s"
               }
-  plugchain.token.QueryTokensResponse:
+  plugchain.prc10.QueryTokensResponse:
     type: object
     properties:
       Tokens:
@@ -26045,7 +26045,7 @@ definitions:
         type: array
         format: sdk.Coins
         example:
-          - denom: plug
+          - denom: uplugcn
             amount: '100000000'
         items:
           type: object
@@ -26418,7 +26418,7 @@ definitions:
             type: array
             format: sdk.Coins
             example:
-              - denom: plug
+              - denom: uplugcn
                 amount: '100000000'
             items:
               type: object

@@ -1,73 +1,86 @@
 version: '3'
 
 services:
-  plugchaindnode0:
-    container_name: plugchaindnode0
+  plugchain_node0:
+    container_name: plugchain_node0
     image: "plugchain"
     ports:
       - "26656-26657:26656-26657"
-      - "1317:1317"
-      - "9090:9090"
-      - "6060:6060"
     environment:
+      - CHAINID=plugchain_521-1
       - ID=0
       - LOG=${LOG:-plugchaind.log}
+      - GENESIS=true
     volumes:
-      - ../plugchain:/code
+      - ../plugchain:/plugchain
     networks:
       localnet:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 192.17.10.2
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: './scripts/setup-docker.sh'
 
-  plugchaindnode1:
-    container_name: plugchaindnode1
+  plugchain_node1:
+    depends_on:
+      - plugchain_node0
+    container_name: plugchain_node1
     image: "plugchain"
     ports:
       - "26659-26660:26656-26657"
-      - "1318:1317"
-      - "9091:9090"
-      - "6061:6060"
     environment:
+      - CHAINID=plugchain_521-1
       - ID=1
       - LOG=${LOG:-plugchaind.log}
+      - GENESIS=false
+      - CONNECTIP=192.17.10.2:26656
     volumes:
-      - ../plugchain:/code
+      - ../plugchain:/plugchain
     networks:
       localnet:
-        ipv4_address: 172.17.0.3
+        ipv4_address: 192.17.10.3
+    # command: './scripts/setup-docker.sh'
+    tty: true
 
-  plugchaindnode2:
-    container_name: plugchaindnode2
+  plugchain_node2:
+    depends_on:
+      - plugchain_node0
+    container_name: plugchain_node2
     image: "plugchain"
     environment:
+      - CHAINID=plugchain_521-1
       - ID=2
       - LOG=${LOG:-plugchaind.log}
+      - GENESIS=false
+      - CONNECTIP=192.17.10.2:26656
     ports:
       - "26661-26662:26656-26657"
-      - "1319:1317"
-      - "9092:9090"
-      - "6062:6060"
     volumes:
-      - ../plugchain:/code
+      - ../plugchain:/plugchain
     networks:
       localnet:
-        ipv4_address: 172.17.0.4
+        ipv4_address: 192.17.10.4
+    command: './scripts/setup-docker.sh'
 
-  plugchaindnode3:
-    container_name: plugchaindnode3
+  plugchain_node3:
+    depends_on:
+      - plugchain_node0
+    container_name: plugchain_node3
     image: "plugchain"
     environment:
+      - CHAINID=plugchain_521-1
       - ID=3
       - LOG=${LOG:-plugchaind.log}
+      - GENESIS=false
+      - CONNECTIP=192.17.10.2:26656
     ports:
       - "26663-26664:26656-26657"
-      - "1320:1317"
-      - "9093:9090"
-      - "6063:6060"
     volumes:
-      - ../plugchain:/code
+      - ../plugchain:/plugchain
     networks:
       localnet:
-        ipv4_address: 172.17.0.5
+        ipv4_address: 192.17.10.5
+    command: './scripts/setup-docker.sh'
 
 networks:
   localnet:
@@ -76,5 +89,5 @@ networks:
       driver: default
       config:
       -
-         : 172.17.0.0/16
+        subnet: 192.17.10.0/16
 

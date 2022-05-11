@@ -17,7 +17,7 @@ The upgrade contents are as follows:
 4. Adjust the maximum number of validators to `50`
 5. Access the EVM module
 6. Enable the function of destroying `uplugcn`
-7. Overall adjustment of `x/liquidity`, `x/token` and other module fee parameters
+7. Overall adjustment of `x/liquidity`, `x/prc10` and other module fee parameters
 8. The wallet supports two key signature algorithms `secp256k1`, `eth_secp256k1`
 
 Precautions:
@@ -64,9 +64,9 @@ plugchaind init myNode --chain-id plugchain_520-1
 
 
 ```bash
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/mainnet/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ````
 
 *The fourth step only requires the operation of the validator node, and the rest of the nodes are skipped*

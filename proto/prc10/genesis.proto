@@ -1,0 +1,14 @@
+syntax = "proto3";
+package plugchain.prc10;
+
+// this line is used by starport scaffolding # genesis/proto/import
+import "prc10/prc10.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/prc10/types";
+
+// GenesisState defines the token module's genesis state.
+message GenesisState {
+    Params params = 1 [ (gogoproto.nullable) = false ];
+    repeated Token tokens = 2 [ (gogoproto.nullable) = false ] ;
+}

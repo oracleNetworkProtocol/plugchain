@@ -2,8 +2,8 @@ package app
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
 	"github.com/oracleNetworkProtocol/plugchain/types"
-	ethermint "github.com/tharsis/ethermint/types"
 )
 
 const (
