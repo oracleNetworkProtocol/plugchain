@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/snapshots"
-	"github.com/tharsis/ethermint/crypto/hd"
-	"github.com/tharsis/ethermint/encoding"
+	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
+	"github.com/oracleNetworkProtocol/ethermint/encoding"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -25,6 +25,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
+	"github.com/oracleNetworkProtocol/ethermint/client/debug"
 	"github.com/oracleNetworkProtocol/plugchain/app"
 	onptypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/spf13/cast"
@@ -32,12 +33,11 @@ import (
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
-	"github.com/tharsis/ethermint/client/debug"
 
 	// this line is used by starport scaffolding # stargate/root/import
+	ethermintclient "github.com/oracleNetworkProtocol/ethermint/client"
 	plugchainserver "github.com/oracleNetworkProtocol/plugchain/server"
 	servercfg "github.com/oracleNetworkProtocol/plugchain/server/config"
-	ethermintclient "github.com/tharsis/ethermint/client"
 )
 
 const (

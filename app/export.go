@@ -12,7 +12,7 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	ethencoding "github.com/tharsis/ethermint/encoding"
+	ethencoding "github.com/oracleNetworkProtocol/ethermint/encoding"
 )
 
 // NewDefaultGenesisState generates the default state for the application.

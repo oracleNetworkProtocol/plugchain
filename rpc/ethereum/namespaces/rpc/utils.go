@@ -6,7 +6,7 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // TxLogsFromEvents parses ethereum logs from cosmos events

@@ -19,7 +19,7 @@ import (
 	"github.com/ethereum/go-ethereum/eth/filters"
 	"github.com/ethereum/go-ethereum/rpc"
 
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // Backend defines the methods requided by the PublicFilterAPI backend

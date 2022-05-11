@@ -19,8 +19,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
-	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 )
 
 // BalanceOf returns prc20 balance
