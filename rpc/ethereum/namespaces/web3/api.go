@@ -1,7 +1,7 @@
 package web3
 
 import (
-	"github.com/tharsis/ethermint/version"
+	"github.com/oracleNetworkProtocol/ethermint/version"
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
