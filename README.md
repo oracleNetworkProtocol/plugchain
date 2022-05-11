@@ -47,5 +47,10 @@ We have active, helpful communities on Twitter, Discord, and Telegram.
 * [Telegram](https://t.me/plugchain)
 
 
+## mainnet Status
+[Main net](https://github.com/oracleNetworkProtocol/mainnet)
+
+
 ## Testnet Status
 [Test process document](https://oraclenetworkprotocol.github.io/plugchain/get-started/testnet.html)
+[Test net](https://github.com/oracleNetworkProtocol/testnet)

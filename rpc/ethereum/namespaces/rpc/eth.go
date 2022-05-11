@@ -7,6 +7,7 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/core/vm"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/params"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -26,6 +27,7 @@ import (
 	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
 	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/ethereum/types"
+
 )
 
 // ClientCtx returns client context
@@ -41,10 +43,11 @@ func (e *PublicAPI) Ctx() context.Context {
 	return e.ctx
 }
 
-// ProtocolVersion returns the supported Ethereum protocol version.
-func (e *PublicAPI) ProtocolVersion() hexutil.Uint {
-	e.logger.Debug("rpc_protocolVersion")
-	return hexutil.Uint(ethermint.ProtocolVersion)
+// Sha3 returns the keccak-256 hash of the passed-in input.
+func (e *PublicAPI) Sha3(input hexutil.Bytes) hexutil.Bytes {
+	e.logger.Debug("rpc_sha3")
+
+	return crypto.Keccak256(input)
 }
 
 // ChainId is the EIP-155 replay-protection chain id for the current ethereum chain config.
