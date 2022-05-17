@@ -581,10 +581,6 @@ func New(
 		return app.mm.GetVersionMap(), nil
 	})
 
-	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
-		return app.mm.GetVersionMap(), nil
-	})
-
 	if loadLatest {
 		if err := app.LoadLatestVersion(); err != nil {
 			tmos.Exit(err.Error())
