@@ -1,10 +1,11 @@
 ---
-order: 5
+order: 1
 ---
 
-# Plug Chain  钱包
+# 钱包工具
 
 这些钱包支持转账和质押，请充分研究其安全性再使用。列示这些信息仅为方便下载，并不代表对钱包使用的安全性负责。
+- [cosmo-wallet 交互工具](https://www.npmjs.com/package/cosmo-wallet-tool)
 
 - [谷歌浏览器插件钱包](https://chrome.google.com/webstore/detail/cosmo-wallet/gmnejkiadidopmfgjfcdbmdhlgfbhajn)
 
