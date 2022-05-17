@@ -24,6 +24,7 @@ The plugchain is built on the Cosmos SDK using the following modules:
 - ibc-go/modules: Communication between blockchains. Hosted in the [cosmos/ibc-go](https://github.com/cosmos/ibc-go) repository.
 - x/params: Process application-level parameters.
 - liquidity:  Automated Market Maker. Hosted in the [oracleNetworkProtocol/liquidity](https://github.com/oracleNetworkProtocol/liquidity) repository.
+- pvm: contract. Host in the [ethermint](https://github.com/oracleNetworkProtocol/ethermint) repository.
 
 The following modules are built on the OracleNetworkProtocol repository:
 
