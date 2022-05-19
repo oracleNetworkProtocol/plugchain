@@ -577,7 +577,11 @@ func New(
 
 	app.SetEndBlocker(app.EndBlocker)
 
+<<<<<<< HEAD
 	app.RegisterUpgradePlan("v1.2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+=======
+	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 		return app.mm.GetVersionMap(), nil
 	})
 

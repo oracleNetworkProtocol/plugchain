@@ -5,7 +5,11 @@ order: 3
 # Join The Mainnet
 
 :::tip
+<<<<<<< HEAD
 **Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases] (https://github.com/oracleNetworkProtocol/plugchain/releases)
+=======
+**Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 :::
 
 ## Run a Full Node
@@ -39,6 +43,20 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 
 plugchaind start --minimum-gas-prices 0.0001uplugcn
 ```
+
+Next, your node will perform all chain upgrade procedures. Between each upgrade, you must sync blocks with a specific version. Don't worry about using an older version at an upgrade height, the node will stop automatically.
+
+| Proposal | Starting Height | Upgrade Height | plugchaind Version |
+| -------- | ------------ | -------------- | ----- |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) |
+
+:::tip
+You may see some connection errors, that's okay, the P2P network is trying to find an available connection
+
+
+:::
 
 ## Upgrade to Validator Node
 

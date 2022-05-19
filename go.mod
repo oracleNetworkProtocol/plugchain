@@ -9,7 +9,11 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
+<<<<<<< HEAD
 	github.com/oracleNetworkProtocol/ethermint v0.9.3
+=======
+	github.com/oracleNetworkProtocol/ethermint v0.9.5
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 	github.com/oracleNetworkProtocol/liquidity v0.2.1
 	github.com/regen-network/cosmos-proto v0.3.1
 	github.com/spf13/cast v1.4.1

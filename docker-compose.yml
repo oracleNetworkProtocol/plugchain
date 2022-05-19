@@ -20,6 +20,10 @@ services:
       context: ./
       dockerfile: Dockerfile
     command: './scripts/setup-docker.sh'
+<<<<<<< HEAD
+=======
+    tty: true
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 
   plugchain_node1:
     depends_on:
@@ -39,7 +43,11 @@ services:
     networks:
       localnet:
         ipv4_address: 192.17.10.3
+<<<<<<< HEAD
     # command: './scripts/setup-docker.sh'
+=======
+    command: './scripts/setup-docker.sh'
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
     tty: true
 
   plugchain_node2:
@@ -61,6 +69,10 @@ services:
       localnet:
         ipv4_address: 192.17.10.4
     command: './scripts/setup-docker.sh'
+<<<<<<< HEAD
+=======
+    tty: true
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 
   plugchain_node3:
     depends_on:
@@ -81,6 +93,10 @@ services:
       localnet:
         ipv4_address: 192.17.10.5
     command: './scripts/setup-docker.sh'
+<<<<<<< HEAD
+=======
+    tty: true
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 
 networks:
   localnet:
