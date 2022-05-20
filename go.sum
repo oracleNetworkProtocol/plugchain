@@ -848,8 +848,8 @@ github.com/openzipkin/zipkin-go v0.1.6/go.mod h1:QgAqvLzwWbR/WpD4A3cGpPtJrZXNIiJ
 github.com/openzipkin/zipkin-go v0.2.1/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/openzipkin/zipkin-go v0.2.5/go.mod h1:KpXfKdgRDnnhsxw4pNIH9Md5lyFqKUa4YDFlwRYAMyE=
-github.com/oracleNetworkProtocol/ethermint v0.9.5 h1:gT+R4Yhnn2SjBqiTQC8e+dfS1+8kqKl/xtXFSVRiOaQ=
-github.com/oracleNetworkProtocol/ethermint v0.9.5/go.mod h1:d5u7laSkNb1PVQck/EXijVyZ+wMwDvlrZuRw60V3518=
+github.com/oracleNetworkProtocol/ethermint v0.9.6 h1:HlaXRCdsLZR5/FplWnA5NbVNYtil98eTNw5oj1I/gIU=
+github.com/oracleNetworkProtocol/ethermint v0.9.6/go.mod h1:d5u7laSkNb1PVQck/EXijVyZ+wMwDvlrZuRw60V3518=
 github.com/oracleNetworkProtocol/liquidity v0.2.1 h1:jDFYdDmBLKpI5WDn1OZaNqWzsLwCmCDRabmmfLUbxII=
 github.com/oracleNetworkProtocol/liquidity v0.2.1/go.mod h1:dqNLhq4Jw1vGdAnXSaH6Hx67cmBA762U+0xSquctu+c=
 github.com/ory/dockertest v3.3.5+incompatible h1:iLLK6SQwIhcbrG783Dghaaa3WPzGc+4Emza6EbVUUGA=
