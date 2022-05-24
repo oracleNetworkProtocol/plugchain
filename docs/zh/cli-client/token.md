@@ -1,6 +1,6 @@
 # Token
 
-token模块用于管理你在PLUGCHAN Hub上发行的资产。
+Token 模块用于管理你在Plug Chain Hub上发行的[PRC-10](../concepts/token.md#prc-10)资产。
 
 ## 可用命令
 
