@@ -18,10 +18,6 @@ This module is in charge of distributing collected transaction fee and inflated 
 3. Community Tax
 4. Proposer Reward
 
-:::tip
-[Calculation Formula](../concepts/general-concepts.md#staking-rewards-calculation-formula)
-:::
-
 ## Usage Scenario
 
 ### Set withdraw address

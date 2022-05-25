@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 3
 ---
 
 # account
@@ -32,7 +32,7 @@ Plug Chain uses `BaseAccount`, `EthAccount` two account types.
 
 ### BaseAccount
 
-````go
+```go
 // BaseAccount defines a base account type. It contains all the necessary fields
 // for basic account functionality. Any custom account type should extend this
 // type for additional functionality (e.g. vesting).
@@ -42,7 +42,7 @@ PubKey *types.Any `protobuf:"bytes,2,opt,name=pub_key,json=pubKey,proto3" json:"
 AccountNumber uint64 `protobuf:"varint,3,opt,name=account_number,json=accountNumber,proto3" json:"account_number,omitempty"`
 Sequence uint64 `protobuf:"varint,4,opt,name=sequence,proto3" json:"sequence,omitempty"`
 }
-````
+```
 
 
 ```bash

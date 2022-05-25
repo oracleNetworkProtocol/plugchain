@@ -18,14 +18,14 @@ The service protocol and enhanced IBC protocol could eventually be contributed b
 
 Client-facing, programming language specific SDKs will also be available to make it easy to provide and consume off-chain services within the *Plug Chain*  network.
 
-## Plug Chain Tokens
+## Plug Chain Token
 
-The Plug Chain hub has its own native token,called Plug Cahin,which serves three functions in the network.
+The *Plug Chain* hub has its own native token, called *plugcn* , which has three roles in the network.
 
-* **Staking.**  Similar to the ATOM token in the Cosmos Hub, the *Plug Chain*  token will be used as a staking token to protect the safe operation of the PoS blockchain.
+** Mortgage. ** Similar to the ATOM token in the Cosmos Hub, the *plugcn* token will be used as a collateral token to protect the safe operation of the PoS blockchain.
 
-* **Transaction Fee.**  The *Plug Chain*  token will also be used to pay fees for all transactions in the *Plug Chain*  network.
+* **transaction fee. ** *plugcn* tokens will also be used to pay for all transactions in the *Plug Chain* network.
 
-* **Service Fee.**  It is required that service providers in the *Plug Chain*  network charge service fees denominated in the *Plug Chain*  token.
+**Service charge. ** Service providers in the *Plug Chain* network need to charge service fees in units of *plugcn* tokens.
 
-Plug Chain network will eventually support all whitelisted fee tokens from the Cosmos network, which can be used to pay the transaction fees and service fees.
+The *Plug Chain* network will eventually support all whitelisted fee tokens, which can be used to pay transaction fees and service fees.
