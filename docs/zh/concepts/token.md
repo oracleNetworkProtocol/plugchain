@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 4
 ---
 
 # 代币标准
@@ -12,7 +12,9 @@ Plug Chain 是一个基于 Cosmos SDK 的链，具有完整的 PVM 支持。由�
 
 ## PLUGCN
 
-`plugcn`代币属于bank模块原生代币，可用于质押，IBC转账，社区治理，手续费等
+在 Plug Chain 上用于质押、治理和 gas 消耗的面额是PLUGCN. PLUGCN提供以下效用：保护权益证明链、用于治理提案的代币、费用分配以及作为在 PVM 上运行智能合约的气体手段。
+
+$$ 1 plugcn = 1 ~ * ~ 10^{6} uplugcn $$
 
 ## PRC-10
 PRC-10是一种是通过 Plug Chain 公链内置的通证。 PRC-10是 Plug Chain 区块链本身支持的技术代币标准,没有使用PVM虚拟机, 在 Plug Chain 网络中，每个帐户都能够通过[`x/prc10`](../cli-client/token.md)模块发行PRC-10代币。 用户可以单独锁定其代币。 要发放代币，发行者需要指定代币名称、总大小、精度、描述、等信息。

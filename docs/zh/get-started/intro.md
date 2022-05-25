@@ -13,7 +13,7 @@ order: 1
 
 ## Plug Chain 
 
-在*Plug Chain* 网络的“中心”是一个称为 *Plug Chain*  的区块链，它是一个基于Cosmos SDK和Tendermint构建的Proof-of-Stake（PoS）区块链。它将成为第一个连接Cosmos枢纽的区域性枢纽。*Plug Chain*  枢纽配备了服务协议，该协议将链上的交易处理与链下的数据处理和业务逻辑执行进行协调。我们还增强了IBC协议，以促进那些链下服务在有需要的情况下被跨链调用。
+在*Plug Chain* 网络的“中心”是一个称为 *Plug Chain*  的区块链，它是一个基于Cosmos SDK和Tendermint构建的Proof-of-Stake（PoS）区块链。它将成为连接Cosmos枢纽的区域性枢纽。*Plug Chain*  枢纽配备了服务协议，该协议将链上的交易处理与链下的数据处理和业务逻辑执行进行协调。我们还增强了IBC协议，以促进那些链下服务在有需要的情况下被跨链调用。
 
 服务协议和增强的IBC协议最终可以回馈到Cosmos SDK中，允许SDK用户开发与*Plug Chain* 网络兼容的区块链。
 
@@ -21,13 +21,13 @@ order: 1
 
 ## Plug Chain 通证
 
-*Plug Chain*  枢纽有自己的原生通证，称为 *Plug Chain* ，在网络中有三个作用。
+*Plug Chain*  枢纽有自己的原生通证，称为 *plugcn* ，在网络中有三个作用。
 
-* **抵押。** 与Cosmos Hub中的ATOM通证类似，*Plug Chain*  通证将用作抵押通证以保护PoS区块链的安全运行。
+* **抵押。** 与Cosmos Hub中的ATOM通证类似，*plugcn*  通证将用作抵押通证以保护PoS区块链的安全运行。
 
-* **交易费用。** *Plug Chain*  通证也将用于支付*Plug Chain*  网络中所有交易的费用。
+* **交易费用。** *plugcn*  通证也将用于支付*Plug Chain*  网络中所有交易的费用。
 
-* **服务费。** *Plug Chain*  网络中的服务提供者需要以*Plug Chain*  通证为单位收取服务费。
+* **服务费。** *Plug Chain*  网络中的服务提供者需要以*plugcn*  通证为单位收取服务费。
 
-*Plug Chain*  网络最终将支持来自Cosmos网络的所有列入白名单的费用通证，它们可用于支付交易费用和服务费用。
+*Plug Chain*  网络最终将支持所有列入白名单的费用通证，它们可用于支付交易费用和服务费用。
 

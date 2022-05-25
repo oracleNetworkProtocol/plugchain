@@ -19,10 +19,6 @@
 3. 社区基金
 4. 出块奖励
 
-:::tip
-[计算公式](../concepts/general-concepts.md#staking-收益计算公式)
-:::
-
 ## 使用场景
 
 ### 设置收益取回地址
