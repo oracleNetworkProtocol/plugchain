@@ -104,13 +104,4 @@ plugchaind tx staking create-validator \
 Backup the `config` directory located in your plugchaind home (default ~/.plugchain/) carefully! It is the only way to recover your validator.
 :::
 
-If there are no errors, then your node is now a validator or candidate (depending on whether your delegation amount is in the top 100)
-
-Read more:
-
-- Concepts
-  - [General Concepts](../concepts/general-concepts.md)
-  - [Validator FAQ](../concepts/validator-faq.md)
-- Validator Security
-  - [Sentry Nodes (DDOS Protection)](../concepts/sentry-nodes.md)
-  - [Key Management](../tools/kms.md)
+If there are no errors, then your node is now a validator or candidate (depending on whether your delegation amount is in the top 50)

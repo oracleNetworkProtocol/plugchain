@@ -104,13 +104,4 @@ plugchaind tx staking create-validator --from mywallet \
 一定要备份好 home（默认为〜/.plugchain/）目录中的 `config` 目录！如果您的服务器磁盘损坏或您准备迁移服务器，这是恢复验证人的唯一方法。
 :::
 
-如果以上命令没有出现错误，则您的节点已经是验证人或候选人了（取决于您的Voting Power是否在前100名中）
-
-阅读更多：
-
-- 概念
-  - [基础概念](../concepts/general-concepts.md)
-  - [验证人问答](../concepts/validator-faq.md)
-- 验证人安全
-  - [哨兵节点 (DDOS 防护)](../concepts/sentry-nodes.md)
-  - [密钥管理](../tools/kms.md)
+如果以上命令没有出现错误，则您的节点已经是验证人或候选人了（取决于您的Voting Power是否在前50名中）
