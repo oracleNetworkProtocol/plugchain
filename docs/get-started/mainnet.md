@@ -2,25 +2,25 @@
 order: 3
 ---
 
-# Join The Mainnet
+# Join mainnet
 
 :::tip
-**Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
+You need to [install plugchaind](install.md) first, or download the corresponding version of the binary file [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
 :::
 
-## Run a Full Node
+## run a full node
 
-### Start node from genesis
+### Using the genesis file
 
 :::tip
-You must use Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) to initialize your node.
+Your node must be initialized with Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git)
 :::
 
 1. Initialize the node
 
 ```bash
 plugchaind init <moniker> --chain-id=plugchain_520-1
-```
+````
 
 2. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
 
@@ -28,25 +28,52 @@ plugchaind init <moniker> --chain-id=plugchain_520-1
 curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
 curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
 curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
-````
-3. Before starting, if you want to modify the service port, seed information, peering point, sentinel mode, etc., you can modify the file by yourself, and then start the node.
+```
+3. Before starting, if you want to modify the service port, seed information, peering point, sentinel mode, etc., you can modify the file yourself, and then synchronize the block.
 
 
-4. Start the node service
+### Sync block
+
+Sync mainnet block data
+#### One snapshot synchronization
+
+Depending on the snapshot height, lock the `plugchaind` binary version to use
+
+
+| Block height | Database | plugchaind version | Download address |
+| ---- | --------- | -------- | ----|
+| 4256215 | goleveldb (default) | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) | [mainnet-4256215-20220602-goleveldb](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4256215-20220602-goleveldb.zip) |
+
+1. Download snapshot data
+
+2. Data override `~/.plugchain/data/` directory
+
+3. Use the corresponding plugchaind version to start `plugchaind start`
+
+
+
+#### 2 Gradual upgrade synchronization
+start node service
+
 ```bash
 # Start the node (you can also use nohup or systemd to run in the background)
 
-
-plugchaind start --minimum-gas-prices 0.0001uplugcn
+plugchaind start
 ```
+
 
 Next, your node will perform all chain upgrade procedures. Between each upgrade, you must sync blocks with a specific version. Don't worry about using an older version at an upgrade height, the node will stop automatically.
 
 | Proposal | Starting Height | Upgrade Height | plugchaind Version |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
-| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
-| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7) | 3000000 | | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1 .1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8) | 3349542 | 3576853 | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/ v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) | 3935641 | 4152263 | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/ v1.5.0) |
+
+
+
+
+
 
 :::tip
 You may see some connection errors, that's okay, the P2P network is trying to find an available connection
@@ -54,40 +81,38 @@ You may see some connection errors, that's okay, the P2P network is trying to fi
 
 :::
 
-## Upgrade to Validator Node
 
-### Create a Wallet
+## Upgrade to validator node
 
-You can [create a new wallet](../cli-client/keys.md#create-a-new-key) or [import an existing one](../cli-client/keys.md#recover-an-existing-key-from-seed-phrase), then get some plugchaind from the exchanges or anywhere else into the wallet you just created, .e.g.
+### Create wallet
+
+You can [create a new wallet](../cli-client/keys.md#create a key) or [import an existing wallet](../cli-client/keys.md#recover the key with the mnemonic phrase key), then transfer some plugs from the exchange or anywhere into the wallet you just created:
 
 ```bash
-# create a new wallet
+# Create a new wallet
 plugchaind keys add <key-name>
 ```
 
 :::warning
-**Important**
-
-write the seed phrase in a safe place! It is the only way to recover your account if you ever forget your password.
+Back up your mnemonic phrases in a safe place! If you forget your password, this is the only way to recover your account.
 :::
 
-### Confirm your node has caught-up
+### Confirm node synchronization status
 
 ```bash
-# if you have not installed jq
+# You can install jq with this command
 # apt-get update && apt-get install -y jq
 
-# if the output is false, means your node has caught-up
+# If the output is false, your node has finished syncing
 plugchaind status 2>&1 | jq -r '.SyncInfo.catching_up'
 ```
 
-### Create Validator
+### Create validator
 
-Only if your node has caught-up, you can run the following command to upgrade your node to be a validator.
+You can run the following command to promote your node to a validator only if the node has finished syncing:
 
 ```bash
-plugchaind tx staking create-validator \
---from mywallet \
+plugchaind tx staking create-validator --from mywallet \
 --amount 1000000uplugcn \
 --pubkey $(plugchaind tendermint show-validator) \
 --moniker="my validator" \
@@ -98,10 +123,11 @@ plugchaind tx staking create-validator \
 --fees 20uplugcn --chain-id plugchain_520-1
 ```
 
-:::warning
-**Important**
 
-Backup the `config` directory located in your plugchaind home (default ~/.plugchain/) carefully! It is the only way to recover your validator.
+:::warning
+**important**
+
+Be sure to back up the `config` directory in your home (~/.plugchain/ by default) directory! This is the only way to recover validators if your server disk is damaged or if you are migrating your server.
 :::
 
-If there are no errors, then your node is now a validator or candidate (depending on whether your delegation amount is in the top 50)
+If the above command gives no errors, your node is already a validator or candidate (depending on whether your Voting Power is in the top 50)
