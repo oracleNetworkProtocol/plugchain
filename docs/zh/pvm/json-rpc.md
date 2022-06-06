@@ -52,7 +52,6 @@ order: 3
 | [`rpc_getCode`](#rpc-getcode)                                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getTransactionLogs`](#rpc-gettransactionlogs)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sign`](#rpc-sign)                                                           | Rpc       | ✔           | ✔      |                    |
-| [`rpc_sendTransaction`](#rpc-sendtransaction)                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sendRawTransaction`](#rpc-sendrawtransaction)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_call`](#rpc-call)                                                           | Rpc       | ✔           | ✔      |                    |
 | [`rpc_estimateGas`](#rpc-estimategas)                                             | Rpc       | ✔           | ✔      |                    |
@@ -78,7 +77,6 @@ order: 3
 | [`eth_getBlockTransactionCountByHash`](#eth-getblocktransactioncountbyhash)       | Eth       | ✔           | ✔      |                    |
 | [`eth_getCode`](#eth-getcode)                                                     | Eth       | ✔           | ✔      |                    |
 | [`eth_sign`](#eth-sign)                                                           | Eth       | ✔           | ✔      |                    |
-| [`eth_sendTransaction`](#eth-sendtransaction)                                     | Eth       | ✔           | ✔      |                    |
 | [`eth_sendRawTransaction`](#eth-sendrawtransaction)                               | Eth       | ✔           | ✔      |                    |
 | [`eth_call`](#eth-call)                                                           | Eth       | ✔           | ✔      |                    |
 | [`eth_estimateGas`](#eth-estimategas)                                             | Eth       | ✔           | ✔      |                    |
@@ -476,37 +474,6 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_sign","params":["gx1vt7svcst
 // Result
 {"jsonrpc":"2.0","id":1,"result":"0x909809c76ed2a5d38733de39207d0f411222b9b49c64a192bf649cb13f63f37b45acb4f6939facb4f1c277bc70fb00407564140c0f18600ac44388f2c1dfd1dc1b"}
 ```
-
-### `rpc_sendTransaction`
-
-将交易从给定帐户发送到给定帐户。
-
-#### 参数
-
-- 交易对象:
-
-    `from`: `DATA`, 20 Bytes - 发送交易的地址。
-
-    `to`: `DATA`, 20 Bytes - （创建新合约时可选）交易指向的地址。
-
-    `gas`: QUANTITY - （可选，默认值：20000）为交易执行提供的气体的整数。它将返回未使用的气体。
-
-    `gasPrice`: QUANTITY - (可选，默认值：待确定）气体的整数用于每个付费气体的价格
-
-    `value`: QUANTITY - 与此交易一起发送的值
-
-    `data`: `DATA` - 合约的编译代码或调用的方法签名和编码参数的哈希值。详见合约 ABI
-
-    `nonce`: QUANTITY - （可选）nonce 的整数。这允许覆盖您自己的使用相同 nonce 的待处理事务。
-
-```json
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_sendTransaction","params":[{"from":"gx1vt7svcst6982ka4c3ufxmqrs05a9e9eq676tyv", "to":"gx1n4m7gafr6cxtj8q4w9mm3480ar4gq3t95k6he9", "value":"0x16345", "gasLimit":"0x5208", "gasPrice":"0x55ae82600"}],"id":1}'  -H "Content-Type: application/json" http://localhost:8545
-
-// Result
-{"jsonrpc":"2.0","id":1,"result":"0x33653249db68ebe5c7ae36d93c9b2abc10745c80a72f591e296f598e2d4709f6"}
-```
-
 ### `rpc_sendRawTransaction`
 
 为已签名的交易创建新的消息调用交易或合同创建。
@@ -933,7 +900,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sign","params":["0x3b7252d00
 {"jsonrpc":"2.0","id":1,"result":"0x909809c76ed2a5d38733de39207d0f411222b9b49c64a192bf649cb13f63f37b45acb4f6939facb4f1c277bc70fb00407564140c0f18600ac44388f2c1dfd1dc1b"}
 ```
 
-### `eth_sendTransaction`
+<!-- ### `eth_sendTransaction`
 
 将交易从给定帐户发送到给定帐户。
 
@@ -961,7 +928,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{
 
 // Result
 {"jsonrpc":"2.0","id":1,"result":"0x33653249db68ebe5c7ae36d93c9b2abc10745c80a72f591e296f598e2d4709f6"}
-```
+``` -->
 
 ### `eth_sendRawTransaction`
 
