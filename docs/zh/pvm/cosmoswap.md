@@ -196,17 +196,27 @@ func addLiquidityPLUG() {
 
 //removeLiquidityPLUG 撤资
 func removeLiquidityPLUG() {
+	lpTokenAddress := getPair()
+	lpToken, _ := token.NewToken(lpTokenAddress, blockchain)
 	//授权给lp合约操作权限
-	myToken.Approve(
+	lpToken.Approve(
 		&bind.TransactOpts{
 			From:   myAddress,
 			Signer: auth.Signer,
 			Value:  nil,
 		},
-		getPair(),        //获取lp地址
-		big.NewInt(1000), //授权数量
+		routerContractAddress, //获取lp地址
+		big.NewInt(1000),      //授权数量
 	)
 
+	// lpBalances, err := lpToken.BalanceOf(
+	// 	&bind.CallOpts{
+	// 		From: myAddress,
+	// 	},
+	// 	myAddress,
+	// )
+
+	//如果mytoken的transfer方法有额外的销毁和转账操作需要使用routerContract.RemoveLiquidityPLUGSupportingFeeOnTransferTokens方法
 	trans, err := routerContract.RemoveLiquidityPLUG(
 		&bind.TransactOpts{
 			From:     myAddress,
@@ -214,12 +224,12 @@ func removeLiquidityPLUG() {
 			Value:    nil,
 			GasPrice: big.NewInt(7),
 		},
-		myTokenAddress,         // mytoken 合约地址
-		big.NewInt(1000),       //lp数量
-		big.NewInt(0),          //最低撤资token数量
-		big.NewInt(0),          //最低撤资plug数量
-		myAddress,              //输出地址
-		big.NewInt(time.Now().Unix()+1200), //超时时间
+		myTokenAddress,   // mytoken 合约地址
+		big.NewInt(1000), //lp数量
+		big.NewInt(0),    //最低撤资token数量
+		big.NewInt(0),    //最低撤资plug数量
+		myAddress,        //输出地址
+		big.NewInt(time.Now().Add(30*time.Minute).Unix()), //超时时间
 	)
 	if err != nil {
 		fmt.Println("remove liquidity err:", err)
