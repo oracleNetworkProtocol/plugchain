@@ -19,7 +19,7 @@ eip55: 0x6A9CdB0d8De5487F96C70b1f7857041e1f1CEd6d
 
 ## addLiquidityPLUG 方法
 ```js
-addLiquidityPLUG(address token,uint amountTokenDesired,uint amountTokenMin,uint amountPLUGMin,address to,uint deadline)
+addLiquidityPLUG(address token,uint256 amountTokenDesired,uint256 amountTokenMin,uint256 amountPLUGMin,address to,uint256 deadline)
 
 ```
 功能描述：
