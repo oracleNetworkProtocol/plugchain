@@ -24,7 +24,7 @@ Plug Chain 使用以下模块构建在 Cosmos SDK 上：
 - ibc-go/modules：区块链间通信。 托管在 [cosmos/ibc-go](https://github.com/cosmos/ibc-go) 存储库中。
 - x/params：处理应用级参数。
 - liquidity:  自动化做市商。 托管在 [oracleNetworkProtocol/liquidity](https://github.com/oracleNetworkProtocol/liquidity) 存储库中。
-- pvm: 只能合约虚拟机. 托管在 [ethermint](https://github.com/oracleNetworkProtocol/ethermint) 存储库中.
+- pvm: 智能合约虚拟机. 托管在 [ethermint](https://github.com/oracleNetworkProtocol/ethermint) 存储库中.
 
 以下模块构建在 OracleNetworkProtocol 仓库上：
 
