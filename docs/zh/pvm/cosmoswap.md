@@ -318,5 +318,4 @@ func sell() {
 	}
 	fmt.Println(trans.Hash().Hex())
 }
-
  ```
