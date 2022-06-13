@@ -33,9 +33,9 @@ This number must be incremented every time the chain is upgraded or forked to av
 
 The format of specifying a chain ID compatible with Plug Chain in genesis is as follows:
 
-```` Bash
+``` Bash
 {identifier}_{EIP155}-{version}
-````
+```
 
 The following table provides an example, where the second row corresponds to the upgrade of the first row:
 

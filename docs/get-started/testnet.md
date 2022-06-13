@@ -26,7 +26,7 @@ Need to [install plugchaind](install.md) first
 
 ```bash
 plugchaind init <moniker> --chain-id=plugchain_521-1
-````
+```
 
 2. Download the [genesis.json](https://github.com/oracleNetworkProtocol/testnet) and seed information published by the testnet:
 
@@ -43,7 +43,7 @@ plugchaind init <moniker> --chain-id=plugchain_521-1
 
 
 plugchaind start
-````
+```
 
 ## Browser && Faucet
 
