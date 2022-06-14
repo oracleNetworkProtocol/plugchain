@@ -68,6 +68,14 @@
         }
       },
       {
+        "url": "./tmp-swagger-gen/cosmos/base/tendermint/v1beta1/query.swagger.json",
+        "operationIds": {
+          "rename": {
+            "Params": "BaseParams"
+          }
+        }
+      },
+      {
         "url": "./tmp-swagger-gen/prc10/query.swagger.json",
         "operationIds": {
           "rename": {
