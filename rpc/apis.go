@@ -21,6 +21,7 @@ import (
 	"github.com/oracleNetworkProtocol/plugchain/rpc/namespaces/ethereum/web3"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/types"
 
+	plugchainrpc "github.com/oracleNetworkProtocol/plugchain/rpc/namespaces/ethereum/rpc"
 	rpcclient "github.com/tendermint/tendermint/rpc/jsonrpc/client"
 )
 
@@ -39,6 +40,7 @@ const (
 	TxPoolNamespace   = "txpool"
 	DebugNamespace    = "debug"
 	MinerNamespace    = "miner"
+	RPCNamespace      = "rpc"
 
 	apiVersion = "1.0"
 )
@@ -129,6 +131,18 @@ func init() {
 					Version:   apiVersion,
 					Service:   miner.NewPrivateAPI(ctx, clientCtx, evmBackend),
 					Public:    false,
+				},
+			}
+		},
+		RPCNamespace: func(ctx *server.Context, clientCtx client.Context, tmWSClient *rpcclient.WSClient) []rpc.API {
+			nonceLock := new(types.AddrLocker)
+			evmBackend := backend.NewBackend(ctx, ctx.Logger, clientCtx)
+			return []rpc.API{
+				{
+					Namespace: RPCNamespace,
+					Version:   apiVersion,
+					Service:   plugchainrpc.NewPublicAPI(ctx.Logger, clientCtx, evmBackend, nonceLock),
+					Public:    true,
 				},
 			}
 		},

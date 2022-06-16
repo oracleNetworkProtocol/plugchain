@@ -3,13 +3,35 @@ package types
 import (
 	"math/big"
 
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
+	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
 )
 
 // Copied the Account and StorageResult types since they are registered under an
 // internal pkg on geth.
+
+type TransactionArgs struct {
+	From sdk.AccAddress `json:"from"`
+	To   sdk.AccAddress `json:"to"`
+	evmtypes.TransactionArgs
+}
+
+func (trans TransactionArgs) New() evmtypes.TransactionArgs {
+	var args evmtypes.TransactionArgs
+	args = trans.TransactionArgs
+	if trans.From != nil {
+		from := common.BytesToAddress(trans.From)
+		args.From = &from
+	}
+	if trans.To != nil {
+		to := common.BytesToAddress(trans.To)
+		args.To = &to
+	}
+	return args
+}
 
 // AccountResult struct for account proof
 type AccountResult struct {
