@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -68,8 +69,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		Short: "CosmosHub PlugChain App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs
-			// cmd.SetOut(cmd.OutOrStdout())
-			// cmd.SetErr(cmd.ErrOrStderr())
+			cmd.SetOut(cmd.OutOrStdout())
+			cmd.SetErr(cmd.ErrOrStderr())
 
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -83,7 +84,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 			if err = client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err
 			}
-			// TODO: define our own token
 			customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.BaseNativeDenom)
 
 			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig)
@@ -124,8 +124,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
 
-	// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
-	// rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
+	rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
 
 	return rootCmd, encodingConfig
 }
@@ -182,6 +181,22 @@ func txCommand() *cobra.Command {
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
+}
+
+// initAppConfig helps to override default appConfig template and configs.
+// return "", nil if no custom configuration is required for the application.
+func initAppConfig() (string, interface{}) {
+	customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.BaseNativeDenom)
+
+	srvCfg, ok := customAppConfig.(servercfg.Config)
+	if !ok {
+		panic(fmt.Errorf("unknown app config type %T", customAppConfig))
+	}
+
+	srvCfg.StateSync.SnapshotInterval = 1500
+	srvCfg.StateSync.SnapshotKeepRecent = 2
+
+	return customAppTemplate, srvCfg
 }
 
 type appCreator struct {

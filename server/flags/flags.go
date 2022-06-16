@@ -24,22 +24,32 @@ const (
 	GRPCWebAddress = "grpc-web.address"
 )
 
+// Cosmos API flags
+const (
+	RPCEnable         = "api.enable"
+	EnabledUnsafeCors = "api.enabled-unsafe-cors"
+)
+
 // JSON-RPC flags
 const (
-	JSONRPCEnable       = "json-rpc.enable"
-	JSONRPCAPI          = "json-rpc.api"
-	JSONRPCAddress      = "json-rpc.address"
-	JSONWsAddress       = "json-rpc.ws-address"
-	JSONRPCGasCap       = "json-rpc.gas-cap"
-	JSONRPCEVMTimeout   = "json-rpc.evm-timeout"
-	JSONRPCTxFeeCap     = "json-rpc.txfee-cap"
-	JSONRPCFilterCap    = "json-rpc.filter-cap"
-	JSONRPFeeHistoryCap = "json-rpc.feehistory-cap"
+	JSONRPCEnable          = "json-rpc.enable"
+	JSONRPCAPI             = "json-rpc.api"
+	JSONRPCAddress         = "json-rpc.address"
+	JSONWsAddress          = "json-rpc.ws-address"
+	JSONRPCGasCap          = "json-rpc.gas-cap"
+	JSONRPCEVMTimeout      = "json-rpc.evm-timeout"
+	JSONRPCTxFeeCap        = "json-rpc.txfee-cap"
+	JSONRPCFilterCap       = "json-rpc.filter-cap"
+	JSONRPCLogsCap         = "json-rpc.logs-cap"
+	JSONRPCBlockRangeCap   = "json-rpc.block-range-cap"
+	JSONRPCHTTPTimeout     = "json-rpc.http-timeout"
+	JSONRPCHTTPIdleTimeout = "json-rpc.http-idle-timeout"
 )
 
 // EVM flags
 const (
-	EVMTracer = "evm.tracer"
+	EVMTracer         = "evm.tracer"
+	EVMMaxTxGasWanted = "evm.max-tx-gas-wanted"
 )
 
 // TLS flags
@@ -52,8 +62,8 @@ const (
 func AddTxFlags(cmd *cobra.Command) (*cobra.Command, error) {
 	cmd.PersistentFlags().String(flags.FlagChainID, "testnet", "Specify Chain ID for sending Tx")
 	cmd.PersistentFlags().String(flags.FlagFrom, "", "Name or address of private key with which to sign")
-	cmd.PersistentFlags().String(flags.FlagFees, "", "Fees to pay along with transaction; eg: 20uplugcn")
-	cmd.PersistentFlags().String(flags.FlagGasPrices, "", "Gas prices to determine the transaction fee (e.g. 10uplugcn)")
+	cmd.PersistentFlags().String(flags.FlagFees, "", "Fees to pay along with transaction; eg: 10aphoton")
+	cmd.PersistentFlags().String(flags.FlagGasPrices, "", "Gas prices to determine the transaction fee (e.g. 10aphoton)")
 	cmd.PersistentFlags().String(flags.FlagNode, "tcp://localhost:26657", "<host>:<port> to tendermint rpc interface for this chain")
 	cmd.PersistentFlags().Float64(flags.FlagGasAdjustment, flags.DefaultGasAdjustment, "adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored ")
 	cmd.PersistentFlags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")

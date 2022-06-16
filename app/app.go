@@ -74,16 +74,16 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	transfer "github.com/cosmos/ibc-go/v2/modules/apps/transfer"
-	ibctransferkeeper "github.com/cosmos/ibc-go/v2/modules/apps/transfer/keeper"
-	ibctransfertypes "github.com/cosmos/ibc-go/v2/modules/apps/transfer/types"
-	ibc "github.com/cosmos/ibc-go/v2/modules/core"
-	ibcclient "github.com/cosmos/ibc-go/v2/modules/core/02-client"
-	ibcclientclient "github.com/cosmos/ibc-go/v2/modules/core/02-client/client"
-	ibcclienttypes "github.com/cosmos/ibc-go/v2/modules/core/02-client/types"
-	porttypes "github.com/cosmos/ibc-go/v2/modules/core/05-port/types"
-	ibchost "github.com/cosmos/ibc-go/v2/modules/core/24-host"
-	ibckeeper "github.com/cosmos/ibc-go/v2/modules/core/keeper"
+	transfer "github.com/cosmos/ibc-go/v3/modules/apps/transfer"
+	ibctransferkeeper "github.com/cosmos/ibc-go/v3/modules/apps/transfer/keeper"
+	ibctransfertypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
+	ibc "github.com/cosmos/ibc-go/v3/modules/core"
+	ibcclient "github.com/cosmos/ibc-go/v3/modules/core/02-client"
+	ibcclientclient "github.com/cosmos/ibc-go/v3/modules/core/02-client/client"
+	ibcclienttypes "github.com/cosmos/ibc-go/v3/modules/core/02-client/types"
+	porttypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
+	ibchost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
+	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
 
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
@@ -396,7 +396,7 @@ func New(
 	tracer := cast.ToString(appOpts.Get(srvflags.EVMTracer))
 
 	app.FeeMarketKeeper = feemarketkeeper.NewKeeper(
-		appCodec, keys[feemarkettypes.StoreKey], app.GetSubspace(feemarkettypes.ModuleName),
+		appCodec, app.GetSubspace(feemarkettypes.ModuleName), keys[feemarkettypes.StoreKey], tkeys[feemarkettypes.TransientKey],
 	)
 
 	//create ethermint keeper
@@ -428,11 +428,11 @@ func New(
 	// Create Transfer Keepers
 	app.TransferKeeper = ibctransferkeeper.NewKeeper(
 		appCodec, keys[ibctransfertypes.StoreKey], app.GetSubspace(ibctransfertypes.ModuleName),
-		app.IBCKeeper.ChannelKeeper, &app.IBCKeeper.PortKeeper,
+		app.IBCKeeper.ChannelKeeper, app.IBCKeeper.ChannelKeeper, &app.IBCKeeper.PortKeeper,
 		app.AccountKeeper, app.BankKeeper, scopedTransferKeeper,
 	)
 	transferModule := transfer.NewAppModule(app.TransferKeeper)
-
+	transferIBCModule := transfer.NewIBCModule(app.TransferKeeper)
 	// Create evidence Keeper for to register the IBC light client misbehaviour evidence route
 	evidenceKeeper := evidencekeeper.NewKeeper(
 		appCodec, keys[evidencetypes.StoreKey], &app.StakingKeeper, app.SlashingKeeper,
@@ -442,7 +442,7 @@ func New(
 
 	// Create static IBC router, add transfer route, then set and seal it
 	ibcRouter := porttypes.NewRouter()
-	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferModule)
+	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferIBCModule)
 	// this line is used by starport scaffolding # ibc/app/router
 	app.IBCKeeper.SetRouter(ibcRouter)
 
@@ -567,13 +567,24 @@ func New(
 	app.SetInitChainer(app.InitChainer)
 	app.SetBeginBlocker(app.BeginBlocker)
 	//use Ethermint's custom AnteHandle
-	app.SetAnteHandler(
-		ante.NewAnteHandler(
-			app.AccountKeeper, app.BankKeeper, app.EvmKeeper, app.FeeGrantKeeper, app.IBCKeeper.ChannelKeeper,
-			app.FeeMarketKeeper,
-			encodingConfig.TxConfig.SignModeHandler(),
-		),
-	)
+	maxGasWanted := cast.ToUint64(appOpts.Get(srvflags.EVMMaxTxGasWanted))
+	options := ante.HandlerOptions{
+		AccountKeeper:   app.AccountKeeper,
+		BankKeeper:      app.BankKeeper,
+		EvmKeeper:       app.EvmKeeper,
+		FeegrantKeeper:  app.FeeGrantKeeper,
+		IBCKeeper:       app.IBCKeeper,
+		FeeMarketKeeper: app.FeeMarketKeeper,
+		SignModeHandler: encodingConfig.TxConfig.SignModeHandler(),
+		SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
+		MaxTxGasWanted:  maxGasWanted,
+	}
+
+	if err := options.Validate(); err != nil {
+		panic(err)
+	}
+
+	app.SetAnteHandler(ante.NewAnteHandler(options))
 
 	app.SetEndBlocker(app.EndBlocker)
 
