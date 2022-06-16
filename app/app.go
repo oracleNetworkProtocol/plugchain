@@ -102,7 +102,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/feegrant"
 	feegrantkeeper "github.com/cosmos/cosmos-sdk/x/feegrant/keeper"
 	feegrantmodule "github.com/cosmos/cosmos-sdk/x/feegrant/module"
-
 	"github.com/oracleNetworkProtocol/ethermint/x/feemarket"
 	feemarketkeeper "github.com/oracleNetworkProtocol/ethermint/x/feemarket/keeper"
 	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
@@ -635,6 +634,18 @@ func New(
 	app.SetEndBlocker(app.EndBlocker)
 
 	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
+		return app.mm.GetVersionMap(), nil
+	})
+	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+		mig := feemarketkeeper.NewMigrator(app.FeeMarketKeeper)
+		err := mig.Migrate1to2(ctx)
+		if err != nil {
+			panic("feemarket params migrate 1to2 error:" + err.Error())
+		}
+		err = mig.Migrate2to3(ctx)
+		if err != nil {
+			panic("feemarket params migrate 2to3 error:" + err.Error())
+		}
 		return app.mm.GetVersionMap(), nil
 	})
 
