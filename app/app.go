@@ -656,8 +656,9 @@ func New(
 
 		depositp := app.GovKeeper.GetDepositParams(ctx)
 		votep := app.GovKeeper.GetVotingParams(ctx)
-		depositp.MaxDepositPeriod = time.Duration(172800)
-		votep.VotingPeriod = time.Duration(432000)
+		depositp.MaxDepositPeriod = time.Duration(48 * time.Hour) // 2days
+
+		votep.VotingPeriod = time.Duration(120 * time.Hour) // 5days
 		app.GovKeeper.SetDepositParams(ctx, depositp)
 		app.GovKeeper.SetVotingParams(ctx, votep)
 
