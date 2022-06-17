@@ -20,7 +20,7 @@ Your node must be initialized with Plug Chain [v1.1.0](https://github.com/oracle
 
 ```bash
 plugchaind init <moniker> --chain-id=plugchain_520-1
-````
+```
 
 2. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
 
@@ -42,7 +42,7 @@ Depending on the snapshot height, lock the `plugchaind` binary version to use
 
 | Block height | Database | plugchaind version | Download address |
 | ---- | --------- | -------- | ----|
-| 4256215 | goleveldb (default) | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) | [mainnet-4256215-20220602-goleveldb](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4256215-20220602-goleveldb.zip) |
+| 4451314 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-4451314-20220614-goleveldb](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4451314-20220614-goleveldb.zip) |
 
 1. Download snapshot data
 
@@ -66,9 +66,9 @@ Next, your node will perform all chain upgrade procedures. Between each upgrade,
 
 | Proposal | Starting Height | Upgrade Height | plugchaind Version |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7) | 3000000 | | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1 .1.0) |
-| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8) | 3349542 | 3576853 | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/ v1.2.1) |
-| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) | 3935641 | 4152263 | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/ v1.5.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7) | 3000000 | | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8) | 3349542 | 3576853 | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) | 3935641 | 4152263 | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
 
 
 

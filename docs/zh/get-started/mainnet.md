@@ -42,7 +42,7 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 
 | 块高 | 数据库  | plugchaind 版本 | 下载地址 |
 | ---- | --------- | -------- | ----|
-| 4256215 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) | [mainnet-4256215-20220602-goleveldb](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4256215-20220602-goleveldb.zip) |
+| 4451314 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-4451314-20220614-goleveldb](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4451314-20220614-goleveldb.zip) |
 
 1. 下载快照数据
 

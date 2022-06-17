@@ -12,7 +12,7 @@ bech32: gx1xulgpeuajthdc52eyqhfpsrf8w3thu97lhguxs
 eip55: 0x373E80e79d92eEdC5159202e90c0693bA2Bbf0Be
 
 
-WPLUG 合约地址：（对标主网plugcn， 类似于以太坊主网的 WETH，波场主网的 WTRX）
+WPLUG 合约地址：
 bech32: gx1d2wdkrvdu4y8l9k8pv0hs4cyrc03emtda8zepz
 eip55: 0x6A9CdB0d8De5487F96C70b1f7857041e1f1CEd6d
 ```
@@ -318,5 +318,4 @@ func sell() {
 	}
 	fmt.Println(trans.Hash().Hex())
 }
-
  ```
