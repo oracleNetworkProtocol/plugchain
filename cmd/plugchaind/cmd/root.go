@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"errors"
-	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -181,22 +180,6 @@ func txCommand() *cobra.Command {
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
-}
-
-// initAppConfig helps to override default appConfig template and configs.
-// return "", nil if no custom configuration is required for the application.
-func initAppConfig() (string, interface{}) {
-	customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.BaseNativeDenom)
-
-	srvCfg, ok := customAppConfig.(servercfg.Config)
-	if !ok {
-		panic(fmt.Errorf("unknown app config type %T", customAppConfig))
-	}
-
-	srvCfg.StateSync.SnapshotInterval = 1500
-	srvCfg.StateSync.SnapshotKeepRecent = 2
-
-	return customAppTemplate, srvCfg
 }
 
 type appCreator struct {

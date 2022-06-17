@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec/types"
@@ -93,8 +94,8 @@ import (
 	tokenkeeper "github.com/oracleNetworkProtocol/plugchain/x/prc10/keeper"
 	tokentypes "github.com/oracleNetworkProtocol/plugchain/x/prc10/types"
 
-	"github.com/oracleNetworkProtocol/plugchain/x/nft"
-	nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
+	// "github.com/oracleNetworkProtocol/plugchain/x/nft"
+	// nftkeeper "github.com/oracleNetworkProtocol/plugchain/x/nft/keeper"
 	nfttypes "github.com/oracleNetworkProtocol/plugchain/x/nft/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
@@ -163,7 +164,7 @@ var (
 		vesting.AppModuleBasic{},
 		//onp
 		token.AppModuleBasic{},
-		nft.AppModuleBasic{},
+		// nft.AppModuleBasic{},
 		liquidity.AppModuleBasic{},
 		//evm
 		evm.AppModuleBasic{},
@@ -234,8 +235,8 @@ type App struct {
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 
 	// onp keeper
-	TokenKeeper     tokenkeeper.Keeper
-	NftKeeper       nftkeeper.Keeper
+	TokenKeeper tokenkeeper.Keeper
+	// NftKeeper       nftkeeper.Keeper
 	LiquidityKeeper liquiditykeeper.Keeper
 
 	//ethermint keepers
@@ -290,7 +291,8 @@ func New(
 		//ibc keys
 		ibchost.StoreKey, ibctransfertypes.StoreKey,
 		//onp keys
-		tokentypes.StoreKey, nfttypes.StoreKey, liquiditytypes.StoreKey,
+		tokentypes.StoreKey, liquiditytypes.StoreKey,
+		// nfttypes.StoreKey,
 		//ethermint keys
 		evmtypes.StoreKey, feemarkettypes.StoreKey,
 	)
@@ -388,10 +390,10 @@ func New(
 	)
 	tokenModule := token.NewAppModule(appCodec, app.TokenKeeper)
 
-	app.NftKeeper = *nftkeeper.NewKeeper(
-		appCodec, keys[nfttypes.StoreKey], app.AccountKeeper, app.BankKeeper,
-	)
-	nftModule := nft.NewAppModule(appCodec, app.NftKeeper)
+	// app.NftKeeper = *nftkeeper.NewKeeper(
+	// 	appCodec, keys[nfttypes.StoreKey], app.AccountKeeper, app.BankKeeper,
+	// )
+	// nftModule := nft.NewAppModule(appCodec, app.NftKeeper)
 
 	app.LiquidityKeeper = liquiditykeeper.NewKeeper(
 		appCodec, keys[liquiditytypes.StoreKey], app.GetSubspace(liquiditytypes.ModuleName),
@@ -489,7 +491,7 @@ func New(
 
 		// onp modules
 		tokenModule,
-		nftModule,
+		// nftModule,
 		liquidity.NewAppModule(appCodec, app.LiquidityKeeper, app.AccountKeeper, app.BankKeeper, app.DistrKeeper),
 
 		//ethermint app modules
@@ -513,7 +515,7 @@ func New(
 		evidencetypes.ModuleName,
 		stakingtypes.ModuleName,
 		ibchost.ModuleName,
-		nfttypes.ModuleName,
+		// nfttypes.ModuleName,
 		tokentypes.ModuleName,
 		liquiditytypes.ModuleName,
 		feemarkettypes.ModuleName,
@@ -539,7 +541,7 @@ func New(
 		evmtypes.ModuleName,
 		feemarkettypes.ModuleName,
 		tokentypes.ModuleName,
-		nfttypes.ModuleName,
+		// nfttypes.ModuleName,
 
 		// no-op modules
 		ibchost.ModuleName,
@@ -591,7 +593,7 @@ func New(
 
 		//onp modules
 		tokentypes.ModuleName,
-		nfttypes.ModuleName,
+		// nfttypes.ModuleName,
 		liquiditytypes.ModuleName,
 
 		// NOTE: crisis module must go at the end to check for invariants on each module
@@ -637,6 +639,7 @@ func New(
 		return app.mm.GetVersionMap(), nil
 	})
 	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+
 		mig := feemarketkeeper.NewMigrator(app.FeeMarketKeeper)
 		err := mig.Migrate1to2(ctx)
 		if err != nil {
@@ -646,6 +649,18 @@ func New(
 		if err != nil {
 			panic("feemarket params migrate 2to3 error:" + err.Error())
 		}
+		return app.mm.GetVersionMap(), nil
+	})
+	app.RegisterUpgradePlan("v3", &store.StoreUpgrades{Deleted: []string{nfttypes.StoreKey}}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+		delete(fromVM, nfttypes.ModuleName)
+
+		depositp := app.GovKeeper.GetDepositParams(ctx)
+		votep := app.GovKeeper.GetVotingParams(ctx)
+		depositp.MaxDepositPeriod = time.Duration(172800)
+		votep.VotingPeriod = time.Duration(432000)
+		app.GovKeeper.SetDepositParams(ctx, depositp)
+		app.GovKeeper.SetVotingParams(ctx, votep)
+
 		return app.mm.GetVersionMap(), nil
 	})
 
