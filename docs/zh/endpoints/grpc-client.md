@@ -11,8 +11,20 @@ Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要
 `grpc.Server` 是一个具体的 gRPC 服务，它产生并服务任何gRPC请求。可以在 `~/.plugchain/config/app.toml` 中配置：
 
 - `grpc.enable = true|false` 字段定义了 gRPC 服务是否可用，默认为 `true`。
-- `grpc.address = {string}` 字段定义了服务绑定的地址（实际上是端口，因为主机必须保持为 `0.0.0.0`），默认为 `0.0.0.0:9000`。
+- `grpc.address = {string}` 字段定义了服务绑定的地址（实际上是端口，因为主机必须保持为 `0.0.0.0`），默认为 `0.0.0.0:9090`。
+```
+###############################################################################
+###                           gRPC Configuration                            ###
+###############################################################################
 
+[grpc]
+
+# Enable defines if the gRPC server should be enabled.
+enable = true
+
+# Address defines the gRPC server address to bind to.
+address = "0.0.0.0:9090"
+```
 gRPC 服务启动后，您可以使用 gRPC 客户端向其发送请求。
 
 ## gRPC 端点

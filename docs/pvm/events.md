@@ -56,7 +56,7 @@ has `sender` and `recipient` as `attributes`. Subscribing to this `event` would 
 }
 ```
 
-where `hexAddress` is an Ethereum hex address (eg: `0x1122334455667788990011223344556677889900`).
+where `hexAddress` is an EIP-55 address (eg: `0x1122334455667788990011223344556677889900`).
 
 ### Ethereum JSON-RPC Events
 
