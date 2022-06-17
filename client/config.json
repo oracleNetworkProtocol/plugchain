@@ -51,20 +51,18 @@
         }
       },
       {
-        "url": "./tmp-swagger-gen/cosmos/mint/v1beta1/query.swagger.json",
-        "operationIds": {
-          "rename": {
-            "Params": "MintParams"
-          }
-        }
-      },
-      {
         "url": "./tmp-swagger-gen/cosmos/staking/v1beta1/query.swagger.json",
         "operationIds": {
           "rename": {
             "Params": "StakingParams",
             "DelegatorValidators": "StakingDelegatorValidators"
           }
+        }
+      },
+      {
+        "url": "./tmp-swagger-gen/cosmos/tx/v1beta1/service.swagger.json",
+        "dereference": {
+          "circular": "ignore"
         }
       },
       {
@@ -80,14 +78,6 @@
         "operationIds": {
           "rename": {
             "Params": "TokenParams"
-          }
-        }
-      },
-      {
-        "url": "./tmp-swagger-gen/nft/query.swagger.json",
-        "operationIds": {
-          "rename": {
-            "Params": "nftParams"
           }
         }
       },
