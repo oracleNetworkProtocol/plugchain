@@ -13,7 +13,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
-	sdkupgrade "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -829,7 +828,7 @@ func (app *App) RegisterTendermintService(clientCtx client.Context) {
 func (app *App) RegisterUpgradePlan(
 	planName string,
 	upgrades *store.StoreUpgrades,
-	upgradeHandler sdkupgrade.UpgradeHandler,
+	upgradeHandler upgradetypes.UpgradeHandler,
 ) {
 	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
 	if err != nil {
@@ -841,7 +840,7 @@ func (app *App) RegisterUpgradePlan(
 		// this configures a no-op upgrade handler for the planName upgrade
 		app.UpgradeKeeper.SetUpgradeHandler(planName, upgradeHandler)
 		// configure store loader that checks if version+1 == upgradeHeight and applies store upgrades
-		app.SetStoreLoader(sdkupgrade.UpgradeStoreLoader(upgradeInfo.Height, upgrades))
+		app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, upgrades))
 	}
 }
 
