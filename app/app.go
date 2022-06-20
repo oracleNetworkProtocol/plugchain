@@ -41,6 +41,11 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
+
+	"github.com/cosmos/cosmos-sdk/x/authz"
+	authzkeeper "github.com/cosmos/cosmos-sdk/x/authz/keeper"
+	authzmodule "github.com/cosmos/cosmos-sdk/x/authz/module"
+
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -160,6 +165,7 @@ var (
 		feegrantmodule.AppModuleBasic{},
 		upgrade.AppModuleBasic{},
 		evidence.AppModuleBasic{},
+		authzmodule.AppModuleBasic{},
 		transfer.AppModuleBasic{},
 		vesting.AppModuleBasic{},
 		//onp
@@ -225,6 +231,7 @@ type App struct {
 	CrisisKeeper     crisiskeeper.Keeper
 	UpgradeKeeper    upgradekeeper.Keeper
 	ParamsKeeper     paramskeeper.Keeper
+	AuthzKeeper      authzkeeper.Keeper
 	IBCKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
 	EvidenceKeeper   evidencekeeper.Keeper
 	TransferKeeper   ibctransferkeeper.Keeper
@@ -288,6 +295,7 @@ func New(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, capabilitytypes.StoreKey, feegrant.StoreKey,
+		authzkeeper.StoreKey,
 		//ibc keys
 		ibchost.StoreKey, ibctransfertypes.StoreKey,
 		//onp keys
@@ -358,7 +366,7 @@ func New(
 	app.StakingKeeper = *stakingKeeper.SetHooks(
 		stakingtypes.NewMultiStakingHooks(app.DistrKeeper.Hooks(), app.SlashingKeeper.Hooks()),
 	)
-
+	app.AuthzKeeper = authzkeeper.NewKeeper(keys[authzkeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
 	// set the governance module account as the authority for conducting upgrades
 	// UpgradeKeeper must be created before IBCKeeper
 	app.UpgradeKeeper = upgradekeeper.NewKeeper(
@@ -484,6 +492,7 @@ func New(
 		evidence.NewAppModule(app.EvidenceKeeper),
 		params.NewAppModule(app.ParamsKeeper),
 		feegrantmodule.NewAppModule(appCodec, app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.interfaceRegistry),
+		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 
 		//ibc modules
 		ibc.NewAppModule(app.IBCKeeper),
@@ -527,6 +536,7 @@ func New(
 		govtypes.ModuleName,
 		crisistypes.ModuleName,
 		genutiltypes.ModuleName,
+		authz.ModuleName,
 		feegrant.ModuleName,
 		paramstypes.ModuleName,
 		vestingtypes.ModuleName,
@@ -554,6 +564,7 @@ func New(
 		minttypes.ModuleName,
 		genutiltypes.ModuleName,
 		evidencetypes.ModuleName,
+		authz.ModuleName,
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
@@ -586,6 +597,7 @@ func New(
 
 		evidencetypes.ModuleName,
 		ibctransfertypes.ModuleName,
+		authz.ModuleName,
 		feegrant.ModuleName,
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
@@ -638,8 +650,14 @@ func New(
 	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
 		return app.mm.GetVersionMap(), nil
 	})
-	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{
+		Added:   []string{authz.ModuleName},
+		Deleted: []string{nfttypes.StoreKey},
+	}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+		delete(fromVM, nfttypes.ModuleName)
+		delete(fromVM, authz.ModuleName)
 
+		//feemarket migrator params
 		mig := feemarketkeeper.NewMigrator(app.FeeMarketKeeper)
 		err := mig.Migrate1to2(ctx)
 		if err != nil {
@@ -649,20 +667,18 @@ func New(
 		if err != nil {
 			panic("feemarket params migrate 2to3 error:" + err.Error())
 		}
-		return app.mm.GetVersionMap(), nil
-	})
-	app.RegisterUpgradePlan("v3", &store.StoreUpgrades{Deleted: []string{nfttypes.StoreKey}}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
-		delete(fromVM, nfttypes.ModuleName)
-
+		// gov update
 		depositp := app.GovKeeper.GetDepositParams(ctx)
 		votep := app.GovKeeper.GetVotingParams(ctx)
 		depositp.MaxDepositPeriod = time.Duration(48 * time.Hour) // 2days
+		// depositp.MaxDepositPeriod = time.Duration(2 * time.Minute) // 2 minute
 
 		votep.VotingPeriod = time.Duration(120 * time.Hour) // 5days
+		// votep.VotingPeriod = time.Duration(5 * time.Minute) // 5 mintute
 		app.GovKeeper.SetDepositParams(ctx, depositp)
 		app.GovKeeper.SetVotingParams(ctx, votep)
 
-		return app.mm.GetVersionMap(), nil
+		return app.mm.RunMigrations(ctx, app.configurator, fromVM)
 	})
 
 	if loadLatest {
