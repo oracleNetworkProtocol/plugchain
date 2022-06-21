@@ -295,7 +295,7 @@ func sell() {
 	}
 	fmt.Println(result.Hash().Hex())
 
-	//如果mytoken的transfer方法有额外的销毁和转账操作需要使用routerContract.SwapExactTokensForTokensSupportingFeeOnTransferTokens()
+	//如果mytoken的transfer方法有额外的销毁和转账操作需要使用routerContract.SwapExactTokensForPLUGSupportingFeeOnTransferTokens()
 	trans, err := routerContract.SwapExactTokensForPLUG(
 		&bind.TransactOpts{
 			From:     myAddress,
