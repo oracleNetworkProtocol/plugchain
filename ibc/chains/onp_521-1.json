@@ -1,0 +1,17 @@
+{
+  "type": "cosmos",
+  "value": {
+    "key": "ibconp",
+    "chain-id": "onp_521-1",
+    "rpc-addr": "http://127.0.0.1:26657",
+    "grpc-addr": "",
+    "account-prefix": "gx",
+    "keyring-backend": "test",
+    "gas-adjustment": 1.5,
+    "gas-prices": "0.001onp",
+    "debug": true,
+    "timeout": "10s",
+    "output-format": "json",
+    "sign-mode": "direct"
+  } 
+}
