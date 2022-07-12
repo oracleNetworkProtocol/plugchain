@@ -130,7 +130,7 @@ Querying a transaction using the gRPC-gateway REST endpoint can be done by sendi
     ``` bash
     curl -X GET \
         -H "accept: application/json" \
-        "http://localhost:1317/cosmos/tx/v1beta1/txs?events={eventType}.{eventAttribute}={value}&events={eventType}.{eventAttribute}={value}"
+        "http://localhost:1317/cosmos/tx/v1beta1/txs?events={eventType}.{eventAttribute}={value}&events={eventType}.{eventAttribute}={value}&pagination.limit=100&pagination.offset=0"
     ```
 ## event
 
@@ -141,6 +141,7 @@ An event contains:
 
 * A "type" for advanced categorization of events; for example, the Cosmos SDK uses the `"message"` type to filter events by `Msg`.
 * The `attributes` list is a key-value pair that provides more information about classified events. For example, for the `"message"` type, we can filter events using `message.action={some_action}`, `message.module={some_module}`, or `message.sender={some_sender} key-value pairs`.
+* Pagination query requires parameters `pagination.limit` and `pagination.offset` to be used together. egg: Query 100 records, starting from 0: `pagination.limit=100&pagination.offset=0` Query the parameters of the second page `pagination.limit=100&pagination.offset=100` The maximum value of the pagination.limit parameter is `100`
 
 ::: warning
 To parse property values ​​as strings, be sure to add `'` (single quotes) around each property value.

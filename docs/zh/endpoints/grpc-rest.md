@@ -141,7 +141,7 @@ address = "tcp://0.0.0.0:1317"
 
 * 用于对事件进行高级分类的"类型"; 例如，Cosmos SDK 使用 `"message"` 类型通过 `Msg` 过滤事件。
 * `attributes` 列表是提供有关分类事件的更多信息的键值对。 例如，对于 `"message"` 类型，我们可以使用 `message.action={some_action}`、`message.module={some_module}` 或 `message.sender={some_sender} 按键值对过滤事件 `。
-* 分页查询需要参数`pagination.limit`和 `pagination.offset` 配合使用。egg: 查询100条记录，从第0条开始:`pagination.limit=100&pagination.offset=0`  查询第二页参数 `pagination.limit=100&pagination.offset=100`
+* 分页查询需要参数`pagination.limit`和 `pagination.offset` 配合使用。egg: 查询100条记录，从第0条开始:`pagination.limit=100&pagination.offset=0`  查询第二页参数 `pagination.limit=100&pagination.offset=100` pagination.limit 参数最大值为`100`
 
 ::: warning
 要将属性值解析为字符串，请确保在每个属性值周围添加 `'`（单引号）。
