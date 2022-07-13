@@ -155,10 +155,10 @@ address = "tcp://0.0.0.0:1317"
 
 | Event                                            | 描述                                                                                                                                              |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tx.height=23`                                   | 查询23块高的所有交易                                                                                                                   |
-| `tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651'`                                   | 查询指定hash交易                                        |
-| `message.action='/cosmos.bank.v1beta1.MsgSend'` | 查询所有包含 x/bank `Send` 的交易。                 |
-| `message.module='bank'`                          | 查询所有包含来自 `x/bank` 模块的消息的交易。                                                  |
+| tx.height=23                                   | 查询23块高的所有交易                                                                                                                   |
+| tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651'                                 | 查询指定hash交易                                        |
+| [message.action](./action.md#messageaction)='/cosmos.bank.v1beta1.MsgSend' | 查询所有包含 x/bank `Send` 的交易。                 |
+| [message.module](./action.md#messagemodule)='bank'                          | 查询所有包含来自 `x/bank` 模块的消息的交易。                                                  |
 
 
 

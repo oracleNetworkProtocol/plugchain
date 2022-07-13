@@ -153,10 +153,10 @@ The following example shows how to query events using the Cosmos SDK.
 
 | Event | Description |
 | ------------------------- | ------------------------------- |
-| `tx.height=23` | Query all transactions with height 23 |
-| `tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651'` | Query the specified hash transaction |
-| `message.action='/cosmos.bank.v1beta1.MsgSend'` | Query all transactions containing x/bank `Send`. |
-| `message.module='bank'` | Query all transactions that contain messages from the `x/bank` module. |
+| tx.height=23 | Query all transactions with height 23 |
+| tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651' | Query the specified hash transaction |
+| [message.action](./action.md#messageaction)=='/cosmos.bank.v1beta1.MsgSend' | Query all transactions containing x/bank `Send`. |
+| [message.module](./action.md#messagemodule)='bank' | Query all transactions that contain messages from the `x/bank` module. |
 
 
 
