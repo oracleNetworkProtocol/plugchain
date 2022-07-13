@@ -294,7 +294,7 @@ if err != nil {
 }
 fmt.Println(result.Hash().Hex())
 
-//If the transfer method of mytoken has additional destruction and transfer operations, you need to use routerContract.SwapExactTokensForTokensSupportingFeeOnTransferTokens()
+//If the transfer method of mytoken has additional destruction and transfer operations, you need to use routerContract.SwapExactTokensForPLUGSupportingFeeOnTransferTokens()
 trans, err := routerContract.SwapExactTokensForPLUG(
     &bind.TransactOpts{
         From: myAddress,
