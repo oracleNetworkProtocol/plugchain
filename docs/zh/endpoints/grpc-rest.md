@@ -153,18 +153,41 @@ address = "tcp://0.0.0.0:1317"
 
 以下示例展示了如何使用 Cosmos SDK 查询事件。
 
-| Event                                            | 描述                                                                                                                                              |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| tx.height=23                                   | 查询23块高的所有交易                                                                                                                   |
-| tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651'                                 | 查询指定hash交易                                        |
-| [message.action](./action.md#messageaction)='/cosmos.bank.v1beta1.MsgSend' | 查询所有包含 x/bank `Send` 的交易。                 |
-| [message.module](./action.md#messagemodule)='bank'                          | 查询所有包含来自 `x/bank` 模块的消息的交易。                                                  |
+| Event       | 描述        | 
+|--------------------- | -------------------- |
+| tx.height=23 | 查询23块高的所有交易    |
+| tx.hash='DF9738772AAECE...' | 查询指定hash交易  |
+| message.action='/cosmos.bank.v1beta1.MsgSend' | 查询所有包含 x/bank `Send` 的交易。                 |
+| message.module='bank'                          | 查询所有包含来自 `x/bank` 模块的消息的交易。                                                  |
 
 
-
-
-
-
+|        | message.module | message.action |
+| ------ | ------------- | ----------------------- |
+|  交易  |  bank       |  /cosmos.bank.v1beta1.MsgSend |
+|  批量交易  | bank       |  /cosmos.bank.v1beta1.MsgMultiSend |
+|  资助社区池  | distribution  | /cosmos.distribution.v1beta1.MsgFundCommunityPool |
+|  设置提现地址  | distribution  | /cosmos.distribution.v1beta1.MsgSetWithdrawAddress |
+|  提取质押收益  | distribution  | /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward |
+|  验证者提取佣金  | distribution  | /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission |
+|  投票  | governance | /cosmos.gov.v1beta1.MsgVote |
+|  加权投票  | governance | /cosmos.gov.v1beta1.MsgVoteWeighted |
+|  发起提案  | governance | /cosmos.gov.v1beta1.MsgSubmitProposal |
+|  向现有提案提交存款  | governance | /cosmos.gov.v1beta1.MsgDeposit |
+|  把现有质押从当前节点转质押到另一个节点  | staking | /cosmos.staking.v1beta1.MsgBeginRedelegate |
+|  创建验证者  | staking | /cosmos.staking.v1beta1.MsgCreateValidator |
+|  质押到验证者获取收益  | staking | /cosmos.staking.v1beta1.MsgDelegate |
+|  修改验证者信息  | staking | /cosmos.staking.v1beta1.MsgEditValidator |
+|  赎回质押  | staking | /cosmos.staking.v1beta1.MsgUndelegate |
+|  验证者解除监禁  | slashing | /cosmos.slashing.v1beta1.MsgUnjail |
+|  销毁prc10 代币  | token | /plugchain.prc10.MsgBurnToken |
+|  修改prc10 代币信息  | token | /plugchain.prc10.MsgEditToken |
+|  创建prc10 代币  | token | /plugchain.prc10.MsgIssueToken |
+|  增发prc10 代币  | token | /plugchain.prc10.MsgMintToken |
+|  pvm交易  | evm | /ethermint.evm.v1.MsgEthereumTx |
+|    | liquidity | /tendermint.liquidity.v1beta1.MsgCreatePool |
+|    | liquidity | /tendermint.liquidity.v1beta1.MsgDepositWithinBatch |
+|    | liquidity | /tendermint.liquidity.v1beta1.MsgSwapWithinBatch |
+|    | liquidity | /tendermint.liquidity.v1beta1.MsgWithdrawWithinBatch |
 
 ## 构造和签名交易
 
