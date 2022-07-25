@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="简体中文">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gRPC | Plug Chain 文档</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Plug Chain 文档">
+    
+    <link rel="preload" href="/plugchain/assets/css/0.styles.63d000b8.css" as="style"><link rel="preload" href="/plugchain/assets/js/app.d39d4ca0.js" as="script"><link rel="preload" href="/plugchain/assets/js/2.27ddde56.js" as="script"><link rel="preload" href="/plugchain/assets/js/101.2e697d0f.js" as="script"><link rel="prefetch" href="/plugchain/assets/js/10.afa430f4.js"><link rel="prefetch" href="/plugchain/assets/js/100.cbc5b3cc.js"><link rel="prefetch" href="/plugchain/assets/js/102.3063b8be.js"><link rel="prefetch" href="/plugchain/assets/js/103.5763eff4.js"><link rel="prefetch" href="/plugchain/assets/js/104.39c0aa70.js"><link rel="prefetch" href="/plugchain/assets/js/105.a2a931a1.js"><link rel="prefetch" href="/plugchain/assets/js/106.2b7a662f.js"><link rel="prefetch" href="/plugchain/assets/js/107.6dadcb1e.js"><link rel="prefetch" href="/plugchain/assets/js/108.21465a65.js"><link rel="prefetch" href="/plugchain/assets/js/109.0a9541c6.js"><link rel="prefetch" href="/plugchain/assets/js/11.b94cb90d.js"><link rel="prefetch" href="/plugchain/assets/js/110.08566d11.js"><link rel="prefetch" href="/plugchain/assets/js/111.7bac7dca.js"><link rel="prefetch" href="/plugchain/assets/js/112.fb7b9951.js"><link rel="prefetch" href="/plugchain/assets/js/113.cab17121.js"><link rel="prefetch" href="/plugchain/assets/js/114.6b3b13cd.js"><link rel="prefetch" href="/plugchain/assets/js/115.fbd225c6.js"><link rel="prefetch" href="/plugchain/assets/js/116.97336231.js"><link rel="prefetch" href="/plugchain/assets/js/117.d1b1427b.js"><link rel="prefetch" href="/plugchain/assets/js/118.1e61f510.js"><link rel="prefetch" href="/plugchain/assets/js/119.84d3c2b2.js"><link rel="prefetch" href="/plugchain/assets/js/12.a65c2500.js"><link rel="prefetch" href="/plugchain/assets/js/120.be17e49b.js"><link rel="prefetch" href="/plugchain/assets/js/121.09c2efd5.js"><link rel="prefetch" href="/plugchain/assets/js/122.e6b99951.js"><link rel="prefetch" href="/plugchain/assets/js/123.d587739a.js"><link rel="prefetch" href="/plugchain/assets/js/124.d45d11ba.js"><link rel="prefetch" href="/plugchain/assets/js/125.d418d97d.js"><link rel="prefetch" href="/plugchain/assets/js/126.8456053c.js"><link rel="prefetch" href="/plugchain/assets/js/127.18b54a89.js"><link rel="prefetch" href="/plugchain/assets/js/128.dc107f49.js"><link rel="prefetch" href="/plugchain/assets/js/13.cd7fc471.js"><link rel="prefetch" href="/plugchain/assets/js/14.62b8c815.js"><link rel="prefetch" href="/plugchain/assets/js/15.d397e553.js"><link rel="prefetch" href="/plugchain/assets/js/16.b4384910.js"><link rel="prefetch" href="/plugchain/assets/js/17.c57dc891.js"><link rel="prefetch" href="/plugchain/assets/js/18.569f26b1.js"><link rel="prefetch" href="/plugchain/assets/js/19.54b7b6e1.js"><link rel="prefetch" href="/plugchain/assets/js/20.e49ed34a.js"><link rel="prefetch" href="/plugchain/assets/js/21.308bc2ab.js"><link rel="prefetch" href="/plugchain/assets/js/22.36d50bdf.js"><link rel="prefetch" href="/plugchain/assets/js/23.c0dc7c9d.js"><link rel="prefetch" href="/plugchain/assets/js/24.506f633f.js"><link rel="prefetch" href="/plugchain/assets/js/25.107f2fe7.js"><link rel="prefetch" href="/plugchain/assets/js/26.9b7d2602.js"><link rel="prefetch" href="/plugchain/assets/js/27.4fd4697d.js"><link rel="prefetch" href="/plugchain/assets/js/28.a11ce556.js"><link rel="prefetch" href="/plugchain/assets/js/29.3a27d2eb.js"><link rel="prefetch" href="/plugchain/assets/js/3.b269ed9d.js"><link rel="prefetch" href="/plugchain/assets/js/30.4c915ede.js"><link rel="prefetch" href="/plugchain/assets/js/31.30ad34a7.js"><link rel="prefetch" href="/plugchain/assets/js/32.ce91df36.js"><link rel="prefetch" href="/plugchain/assets/js/33.d459b2c0.js"><link rel="prefetch" href="/plugchain/assets/js/34.35c6ea88.js"><link rel="prefetch" href="/plugchain/assets/js/35.dfbe2231.js"><link rel="prefetch" href="/plugchain/assets/js/36.ca42780e.js"><link rel="prefetch" href="/plugchain/assets/js/37.d370b627.js"><link rel="prefetch" href="/plugchain/assets/js/38.f06a46eb.js"><link rel="prefetch" href="/plugchain/assets/js/39.31105c9a.js"><link rel="prefetch" href="/plugchain/assets/js/4.07b21cdd.js"><link rel="prefetch" href="/plugchain/assets/js/40.691e121d.js"><link rel="prefetch" href="/plugchain/assets/js/41.c880e967.js"><link rel="prefetch" href="/plugchain/assets/js/42.e5e37eb3.js"><link rel="prefetch" href="/plugchain/assets/js/43.a7edb2b8.js"><link rel="prefetch" href="/plugchain/assets/js/44.8d88b676.js"><link rel="prefetch" href="/plugchain/assets/js/45.e4957d58.js"><link rel="prefetch" href="/plugchain/assets/js/46.ae78fde4.js"><link rel="prefetch" href="/plugchain/assets/js/47.1ed7e4aa.js"><link rel="prefetch" href="/plugchain/assets/js/48.b278925a.js"><link rel="prefetch" href="/plugchain/assets/js/49.5603bf10.js"><link rel="prefetch" href="/plugchain/assets/js/5.a9dcfc36.js"><link rel="prefetch" href="/plugchain/assets/js/50.fb6f2642.js"><link rel="prefetch" href="/plugchain/assets/js/51.2ac15085.js"><link rel="prefetch" href="/plugchain/assets/js/52.cc217690.js"><link rel="prefetch" href="/plugchain/assets/js/53.5171a605.js"><link rel="prefetch" href="/plugchain/assets/js/54.cd57ddbc.js"><link rel="prefetch" href="/plugchain/assets/js/55.14bdddcb.js"><link rel="prefetch" href="/plugchain/assets/js/56.7209c793.js"><link rel="prefetch" href="/plugchain/assets/js/57.23f6f82f.js"><link rel="prefetch" href="/plugchain/assets/js/58.71691dc5.js"><link rel="prefetch" href="/plugchain/assets/js/59.dfb58043.js"><link rel="prefetch" href="/plugchain/assets/js/6.89300679.js"><link rel="prefetch" href="/plugchain/assets/js/60.f6d056c4.js"><link rel="prefetch" href="/plugchain/assets/js/61.addd307e.js"><link rel="prefetch" href="/plugchain/assets/js/62.ecbbdd93.js"><link rel="prefetch" href="/plugchain/assets/js/63.d219536e.js"><link rel="prefetch" href="/plugchain/assets/js/64.620690e7.js"><link rel="prefetch" href="/plugchain/assets/js/65.ce399262.js"><link rel="prefetch" href="/plugchain/assets/js/66.e52d2cd5.js"><link rel="prefetch" href="/plugchain/assets/js/67.25213d9a.js"><link rel="prefetch" href="/plugchain/assets/js/68.9fe31297.js"><link rel="prefetch" href="/plugchain/assets/js/69.79d01799.js"><link rel="prefetch" href="/plugchain/assets/js/7.ca934c7b.js"><link rel="prefetch" href="/plugchain/assets/js/70.6752bf41.js"><link rel="prefetch" href="/plugchain/assets/js/71.8624db1d.js"><link rel="prefetch" href="/plugchain/assets/js/72.ce13cb73.js"><link rel="prefetch" href="/plugchain/assets/js/73.e3331781.js"><link rel="prefetch" href="/plugchain/assets/js/74.8c2a0771.js"><link rel="prefetch" href="/plugchain/assets/js/75.0751b238.js"><link rel="prefetch" href="/plugchain/assets/js/76.720e5b9b.js"><link rel="prefetch" href="/plugchain/assets/js/77.692d6591.js"><link rel="prefetch" href="/plugchain/assets/js/78.23e1762e.js"><link rel="prefetch" href="/plugchain/assets/js/79.e0c3f84f.js"><link rel="prefetch" href="/plugchain/assets/js/8.cbfcb66e.js"><link rel="prefetch" href="/plugchain/assets/js/80.4f66c614.js"><link rel="prefetch" href="/plugchain/assets/js/81.ac6768f3.js"><link rel="prefetch" href="/plugchain/assets/js/82.f53cca02.js"><link rel="prefetch" href="/plugchain/assets/js/83.4ce136db.js"><link rel="prefetch" href="/plugchain/assets/js/84.1c82d775.js"><link rel="prefetch" href="/plugchain/assets/js/85.cd959df7.js"><link rel="prefetch" href="/plugchain/assets/js/86.db5fb841.js"><link rel="prefetch" href="/plugchain/assets/js/87.ff055ddd.js"><link rel="prefetch" href="/plugchain/assets/js/88.956dd5c5.js"><link rel="prefetch" href="/plugchain/assets/js/89.c893873c.js"><link rel="prefetch" href="/plugchain/assets/js/9.414d3e7f.js"><link rel="prefetch" href="/plugchain/assets/js/90.c6b94a88.js"><link rel="prefetch" href="/plugchain/assets/js/91.f2ee3795.js"><link rel="prefetch" href="/plugchain/assets/js/92.0a4e963d.js"><link rel="prefetch" href="/plugchain/assets/js/93.bfab0c8e.js"><link rel="prefetch" href="/plugchain/assets/js/94.8bd75939.js"><link rel="prefetch" href="/plugchain/assets/js/95.4358b59b.js"><link rel="prefetch" href="/plugchain/assets/js/96.c552befc.js"><link rel="prefetch" href="/plugchain/assets/js/97.1499a0b3.js"><link rel="prefetch" href="/plugchain/assets/js/98.6e8667f5.js"><link rel="prefetch" href="/plugchain/assets/js/99.abfd2496.js">
+    <link rel="stylesheet" href="/plugchain/assets/css/0.styles.63d000b8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/plugchain/zh/" class="home-link router-link-active"><!----> <span class="site-name">Plug Chain 文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://zh.plugchain.info/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Plug Chain 官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/oracleNetworkProtocol/plugchain" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="社区" class="dropdown-title"><span class="title">加入我们</span> <span class="arrow down"></span></button> <button type="button" aria-label="社区" class="mobile-dropdown-title"><span class="title">加入我们</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://t.me/plugchain" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Telegram
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://twitter.com/Plugchainclub" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Twitter
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/plugchain/endpoints/grpc-client.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/plugchain/zh/endpoints/grpc-client.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://zh.plugchain.info/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Plug Chain 官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/oracleNetworkProtocol/plugchain" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="社区" class="dropdown-title"><span class="title">加入我们</span> <span class="arrow down"></span></button> <button type="button" aria-label="社区" class="mobile-dropdown-title"><span class="title">加入我们</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://t.me/plugchain" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Telegram
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://twitter.com/Plugchainclub" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Twitter
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/plugchain/endpoints/grpc-client.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/plugchain/zh/endpoints/grpc-client.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>快速开始</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>概念</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>功能模块</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>守护进程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>命令行客户端</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>服务端点</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/plugchain/zh/endpoints/intro.html" class="sidebar-link">简介</a></li><li><a href="/plugchain/zh/endpoints/grpc-rest.html" class="sidebar-link">Restful API</a></li><li><a href="/plugchain/zh/endpoints/grpc-client.html" aria-current="page" class="active sidebar-link">gRPC</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/plugchain/zh/endpoints/grpc-client.html#grpc-服务端口、激活方式和配置" class="sidebar-link">gRPC 服务端口、激活方式和配置</a></li><li class="sidebar-sub-header"><a href="/plugchain/zh/endpoints/grpc-client.html#grpc-端点" class="sidebar-link">gRPC 端点</a></li><li class="sidebar-sub-header"><a href="/plugchain/zh/endpoints/grpc-client.html#构造、签名和广播交易" class="sidebar-link">构造、签名和广播交易</a></li><li class="sidebar-sub-header"><a href="/plugchain/zh/endpoints/grpc-client.html#完整代码" class="sidebar-link">完整代码</a></li></ul></li><li><a href="/plugchain/zh/endpoints/proto-docs.html" class="sidebar-link">Protobuf Documentation</a></li><li><a href="/plugchain/zh/endpoints/subscription.html" class="sidebar-link">订阅</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>迁移</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>pvm</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="grpc"><a href="#grpc" class="header-anchor">#</a> gRPC</h1> <p>Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的<a href="https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md" target="_blank" rel="noopener noreferrer">编码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 <a href="https://grpc.io" target="_blank" rel="noopener noreferrer">gRPC<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。</p> <h2 id="grpc-服务端口、激活方式和配置"><a href="#grpc-服务端口、激活方式和配置" class="header-anchor">#</a> gRPC 服务端口、激活方式和配置</h2> <p><code>grpc.Server</code> 是一个具体的 gRPC 服务，它产生并服务任何gRPC请求。可以在 <code>~/.plugchain/config/app.toml</code> 中配置：</p> <ul><li><code>grpc.enable = true|false</code> 字段定义了 gRPC 服务是否可用，默认为 <code>true</code>。</li> <li><code>grpc.address = {string}</code> 字段定义了服务绑定的地址（实际上是端口，因为主机必须保持为 <code>0.0.0.0</code>），默认为 <code>0.0.0.0:9090</code>。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>###############################################################################
+###                           gRPC Configuration                            ###
+###############################################################################
+
+[grpc]
+
+# Enable defines if the gRPC server should be enabled.
+enable = true
+
+# Address defines the gRPC server address to bind to.
+address = &quot;0.0.0.0:9090&quot;
+</code></pre></div><p>gRPC 服务启动后，您可以使用 gRPC 客户端向其发送请求。</p> <h2 id="grpc-端点"><a href="#grpc-端点" class="header-anchor">#</a> gRPC 端点</h2> <p>Plug Chain Hub 附带的所有可用 gRPC 端点的概述见<a href="/plugchain/zh/endpoints/proto-docs.html">Protobuf 文档</a>。</p> <h2 id="构造、签名和广播交易"><a href="#构造、签名和广播交易" class="header-anchor">#</a> 构造、签名和广播交易</h2> <p>可以使用 Cosmos SDK 的 <code>TxBuilder</code> 接口，通过 Golang 以编程方式处理交易。</p> <h3 id="构造一个交易"><a href="#构造一个交易" class="header-anchor">#</a> 构造一个交易</h3> <p>在生成交易之前，需要创建一个新的 <code>TxBuilder</code> 实例。 由于 SDK 支持 Amino 和 Protobuf 交易，因此第一步将是确定要使用哪种编码方案。无论您使用的是 Amino 还是 Protobuf，所有后续步骤均保持不变，因为 <code>TxBuilder</code> 抽象了编码机制。在以下代码段中，我们将使用 Protobuf。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/oracleNetworkProtocol/plugchain/app&quot;</span>
+    sdk <span class="token string">&quot;github.com/cosmos/cosmos-sdk/types&quot;</span>
+    plugchainapp <span class="token string">&quot;github.com/oracleNetworkProtocol/plugchain/app&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">sendTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 选择您的编解码器：Amino 或 Protobuf</span>
+    encCfg <span class="token operator">:=</span> ethencoding<span class="token punctuation">.</span><span class="token function">MakeConfig</span><span class="token punctuation">(</span>plugchainapp<span class="token punctuation">.</span>ModuleBasics<span class="token punctuation">)</span>
+
+	config <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">GetConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	plugchainapp<span class="token punctuation">.</span><span class="token function">SetBech32Prefixes</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+
+    <span class="token comment">// 创建一个新的 TxBuilder。</span>
+    txBuilder <span class="token operator">:=</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">NewTxBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// --剪断--</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>// TxBuilder 定义了一个应用程序定义的具体事务的接口
+// 类型必须实现。 即，它必须能够设置消息，生成
+// 签名，并提供规范字节进行签名。 交易必须
+// 也知道如何编码自己。</p> <div class="language-go extra-class"><pre class="language-go"><code>TxBuilder <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token function">GetTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> signing<span class="token punctuation">.</span>Tx
+
+    <span class="token function">SetMsgs</span><span class="token punctuation">(</span>msgs <span class="token operator">...</span>sdk<span class="token punctuation">.</span>Msg<span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token function">SetSignatures</span><span class="token punctuation">(</span>signatures <span class="token operator">...</span>signingtypes<span class="token punctuation">.</span>SignatureV2<span class="token punctuation">)</span> <span class="token builtin">error</span>
+    <span class="token function">SetMemo</span><span class="token punctuation">(</span>memo <span class="token builtin">string</span><span class="token punctuation">)</span>
+    <span class="token function">SetFeeAmount</span><span class="token punctuation">(</span>amount sdk<span class="token punctuation">.</span>Coins<span class="token punctuation">)</span>
+    <span class="token function">SetGasLimit</span><span class="token punctuation">(</span>limit <span class="token builtin">uint64</span><span class="token punctuation">)</span>
+    <span class="token function">SetTimeoutHeight</span><span class="token punctuation">(</span>height <span class="token builtin">uint64</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>根据自己操作的不同功能，需要准备不同的数据，以下以转账为例，需要准备：</p> <ul><li>发送方地址 <code>gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed</code>  节点上name是 <code>walletName</code></li> <li>发起者地址的私钥  可以通过 <code>plugchaind keys export walletName --unarmored-hex --unsafe</code> 得到</li> <li>发起者地址的 <code>accountNumber</code> 和 <code>Sequence</code> 可以通过查询 <code>节点ip:1317/cosmos/auth/v1beta1/accounts/{address}</code></li> <li>接收者地址</li></ul> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;encoding/hex&quot;</span>
+	sdk <span class="token string">&quot;github.com/cosmos/cosmos-sdk/types&quot;</span>
+    <span class="token boolean">_</span> <span class="token string">&quot;github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1&quot;</span> 
+    <span class="token string">&quot;github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1&quot;</span>   
+<span class="token punctuation">)</span>
+    chainID <span class="token operator">:=</span> <span class="token string">&quot;plugchain_520-1&quot;</span>
+    addr1<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">AccAddressFromBech32</span><span class="token punctuation">(</span><span class="token string">&quot;gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed&quot;</span><span class="token punctuation">)</span>
+	addr2<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">AccAddressFromBech32</span><span class="token punctuation">(</span><span class="token string">&quot;gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds&quot;</span><span class="token punctuation">)</span>
+	addr3<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">AccAddressFromBech32</span><span class="token punctuation">(</span><span class="token string">&quot;gx1pq9yjvqwpmd5r6gpjs8cathhcljmymvp66sjjp&quot;</span><span class="token punctuation">)</span>
+    <span class="token comment">//发起者私钥</span>
+	priv <span class="token operator">:=</span> <span class="token string">&quot;55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0&quot;</span>
+	privB<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> hex<span class="token punctuation">.</span><span class="token function">DecodeString</span><span class="token punctuation">(</span>priv<span class="token punctuation">)</span>
+	<span class="token comment">// 如下查询地址的信息,使用account_number,sequence,需要根据 `@type` 类型 来锁定私钥类型，EthAcount 类型为`eth_secp256k1`,BaseAccount为`secp256k1`</span>
+	<span class="token comment">//curl -X GET &quot;http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7&quot; -H  &quot;accept: application/json&quot;</span>
+	accountSeq <span class="token operator">:=</span> <span class="token function">uint64</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+	acountNumber <span class="token operator">:=</span> <span class="token function">uint64</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+	<span class="token comment">//EthAccount 类型， 使用包 &quot;github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1&quot;</span>
+	<span class="token comment">//BaseAccount 类型 ，使用包 &quot;github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1&quot;</span>
+	priv1 <span class="token operator">:=</span> ethsecp256k1<span class="token punctuation">.</span>PrivKey<span class="token punctuation">{</span>Key<span class="token punctuation">:</span> priva<span class="token punctuation">}</span>
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+	banktypes <span class="token string">&quot;github.com/cosmos/cosmos-sdk/x/bank/types&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">sendTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --剪断--</span>
+
+    <span class="token comment">//发送一笔转账:</span>
+    <span class="token comment">//地址addr1 到 addr2</span>
+    <span class="token comment">//地址addr1 到 addr3</span>
+    <span class="token comment">//交易需要 addr1 签名</span>
+    msg1 <span class="token operator">:=</span> banktypes<span class="token punctuation">.</span><span class="token function">NewMsgSend</span><span class="token punctuation">(</span>addr1<span class="token punctuation">,</span> addr2<span class="token punctuation">,</span> types<span class="token punctuation">.</span><span class="token function">NewCoins</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">NewInt64Coin</span><span class="token punctuation">(</span><span class="token string">&quot;uplugcn&quot;</span><span class="token punctuation">,</span> <span class="token number">5000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    msg2 <span class="token operator">:=</span> banktypes<span class="token punctuation">.</span><span class="token function">NewMsgSend</span><span class="token punctuation">(</span>addr1<span class="token punctuation">,</span> addr3<span class="token punctuation">,</span> types<span class="token punctuation">.</span><span class="token function">NewCoins</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">NewInt64Coin</span><span class="token punctuation">(</span><span class="token string">&quot;uplugcn&quot;</span><span class="token punctuation">,</span> <span class="token number">4000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    err <span class="token operator">:=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetMsgs</span><span class="token punctuation">(</span>msg1<span class="token punctuation">,</span> msg2<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    txBuilder<span class="token punctuation">.</span><span class="token function">SetGasLimit</span><span class="token punctuation">(</span><span class="token number">200000</span><span class="token punctuation">)</span>
+    txBuilder<span class="token punctuation">.</span><span class="token function">SetFeeAmount</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">NewCoins</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">NewInt64Coin</span><span class="token punctuation">(</span><span class="token string">&quot;uplugcn&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    txBuilder<span class="token punctuation">.</span><span class="token function">SetMemo</span><span class="token punctuation">(</span><span class="token string">&quot;give your my friend to LiLei&quot;</span><span class="token punctuation">)</span>
+    <span class="token comment">// txBuilder.SetTimeoutHeight(...)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>至此，以 <code>TxBuilder</code> 为基础的交易已经准备好进行签名。</p> <h3 id="签名一个交易"><a href="#签名一个交易" class="header-anchor">#</a> 签名一个交易</h3> <p>我们将编码设置为使用 Protobuf，默认情况下将使用 <code>SIGN_MODE_DIRECT</code>。 根据<a href="https://github.com/cosmos/cosmos-sdk/blob/v0.41.0/docs/architecture/adr-020-protobuf-transaction-encoding.md" target="_blank" rel="noopener noreferrer">ADR-020<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，每个签名者都需要对所有其他签名者的 <code>SignerInfo</code>s 进行签名。这意味着我们需要依次执行两个步骤：</p> <ul><li>对于每个签名者，在 <code>TxBuilder</code> 中设置签名者的 <code>SignerInfo</code>，</li> <li>设置所有 <code>SignerInfo</code> 之后，每个签名者对 <code>SignDoc</code>（要签名的有效数据）进行签名。</li></ul> <p>在当前的 <code>TxBuilder</code> API中，两个步骤都使用相同的方法 <code>SetSignatures()</code> 完成。当前的 API 要求我们首先循环执行带不带签名的 <code>SetSignatures()</code>，仅设置 <code>SignerInfo</code>s，然后进行第二轮 <code>SetSignatures()</code> 来对正确的有效数据进行签名。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    cryptotypes <span class="token string">&quot;github.com/cosmos/cosmos-sdk/crypto/types&quot;</span>
+	<span class="token string">&quot;github.com/cosmos/cosmos-sdk/types/tx/signing&quot;</span>
+	xauthsigning <span class="token string">&quot;github.com/cosmos/cosmos-sdk/x/auth/signing&quot;</span>
+    cliTx <span class="token string">&quot;github.com/cosmos/cosmos-sdk/client/tx&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">sendTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --剪断--</span>
+    
+    <span class="token comment">//第一轮：我们收集所有签名者信息。 我们使用“设置空签名”技巧来做到这一点</span>
+    sign <span class="token operator">:=</span> signing<span class="token punctuation">.</span>SignatureV2<span class="token punctuation">{</span>
+		PubKey<span class="token punctuation">:</span> priv1<span class="token punctuation">.</span><span class="token function">PubKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		Data<span class="token punctuation">:</span> <span class="token operator">&amp;</span>signing<span class="token punctuation">.</span>SingleSignatureData<span class="token punctuation">{</span>
+			SignMode<span class="token punctuation">:</span>  encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">SignModeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DefaultMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			Signature<span class="token punctuation">:</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+		Sequence<span class="token punctuation">:</span> accountSeq<span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+
+	err <span class="token operator">=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetSignatures</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+
+    <span class="token comment">//第二轮： 设置所有签名者信息，因此每个签名者都可以签名。</span>
+    sign <span class="token operator">=</span> signing<span class="token punctuation">.</span>SignatureV2<span class="token punctuation">{</span><span class="token punctuation">}</span>
+	signerD <span class="token operator">:=</span> xauthsigning<span class="token punctuation">.</span>SignerData<span class="token punctuation">{</span>
+		ChainID<span class="token punctuation">:</span>       chainID<span class="token punctuation">,</span>
+		AccountNumber<span class="token punctuation">:</span> acountNumber<span class="token punctuation">,</span>
+		Sequence<span class="token punctuation">:</span>      accountSeq<span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	sign<span class="token punctuation">,</span> err <span class="token operator">=</span> cliTx<span class="token punctuation">.</span><span class="token function">SignWithPrivKey</span><span class="token punctuation">(</span>
+		encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">SignModeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DefaultMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> signerD<span class="token punctuation">,</span>
+		txBuilder<span class="token punctuation">,</span> cryptotypes<span class="token punctuation">.</span><span class="token function">PrivKey</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>priv1<span class="token punctuation">)</span><span class="token punctuation">,</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">,</span> accountSeq<span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	err <span class="token operator">=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetSignatures</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>现在已经正确配置了 <code>TxBuilder</code>。 要打印它，您可以使用初始编码配置 <code>encCfg</code> 中的 <code>TxConfig</code> 接口：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">sendTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --剪断--</span>
+
+    <span class="token comment">// 生成的 Protobuf 编码字节。</span>
+    txBytes<span class="token punctuation">,</span> err <span class="token operator">:=</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">TxEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>txBuilder<span class="token punctuation">.</span><span class="token function">GetTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Generate a JSON string.</span>
+    <span class="token comment">// txJSONBytes, err := encCfg.TxConfig.TxJSONEncoder()(txBuilder.GetTx())</span>
+    <span class="token comment">// if err != nil {</span>
+    <span class="token comment">//     return err</span>
+    <span class="token comment">// }</span>
+    <span class="token comment">// txJSON := string(txJSONBytes)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="广播一个交易"><a href="#广播一个交易" class="header-anchor">#</a> 广播一个交易</h3> <p>广播交易的首选方法是使用 gRPC，尽管也可以使用 REST（通过 <code>gRPC-gateway</code>）或 Tendermint RPC。 本教程中，我们仅介绍 gRPC 方法。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;context&quot;</span>
+    <span class="token string">&quot;fmt&quot;</span>
+
+	<span class="token string">&quot;google.golang.org/grpc&quot;</span>
+
+	<span class="token string">&quot;github.com/cosmos/cosmos-sdk/types/tx&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">sendTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --剪断--</span>
+
+    <span class="token comment">// 创建一个grpc服务</span>
+    grpcConn<span class="token punctuation">,</span>ger <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span>
+        <span class="token string">&quot;127.0.0.1:9090&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 你的 gRPC 服务器地址。</span>
+        grpc<span class="token punctuation">.</span><span class="token function">WithInsecure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// SDK 不支持任何传输安全机制。</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">if</span> ger <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>ger<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+    <span class="token keyword">defer</span> grpcConn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 通过 gRPC 广播 tx。 我们为 Protobuf Tx 服务创建了一个新客户端。</span>
+    txClient <span class="token operator">:=</span> tx<span class="token punctuation">.</span><span class="token function">NewServiceClient</span><span class="token punctuation">(</span>grpcConn<span class="token punctuation">)</span>
+    <span class="token comment">//然后我们在这个客户端上调用 BroadcastTx 方法。</span>
+    grpcRes<span class="token punctuation">,</span> err <span class="token operator">:=</span> txClient<span class="token punctuation">.</span><span class="token function">BroadcastTx</span><span class="token punctuation">(</span>
+        context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token operator">&amp;</span>tx<span class="token punctuation">.</span>BroadcastTxRequest<span class="token punctuation">{</span>
+            Mode<span class="token punctuation">:</span>    tx<span class="token punctuation">.</span>BroadcastMode_BROADCAST_MODE_ASYNC<span class="token punctuation">,</span>
+            TxBytes<span class="token punctuation">:</span> txBytes<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>grpcRes<span class="token punctuation">.</span><span class="token function">GetTxResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="完整代码"><a href="#完整代码" class="header-anchor">#</a> 完整代码</h2> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;context&quot;</span>
+	<span class="token string">&quot;encoding/base64&quot;</span>
+	<span class="token string">&quot;encoding/hex&quot;</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;io/ioutil&quot;</span>
+	<span class="token string">&quot;log&quot;</span>
+	<span class="token string">&quot;net/http&quot;</span>
+
+	cliTx <span class="token string">&quot;github.com/cosmos/cosmos-sdk/client/tx&quot;</span>
+	<span class="token string">&quot;github.com/cosmos/cosmos-sdk/crypto/keys/ed25519&quot;</span>
+	cryptotypes <span class="token string">&quot;github.com/cosmos/cosmos-sdk/crypto/types&quot;</span>
+	sdk <span class="token string">&quot;github.com/cosmos/cosmos-sdk/types&quot;</span>
+	<span class="token string">&quot;github.com/cosmos/cosmos-sdk/types/tx&quot;</span>
+	<span class="token string">&quot;github.com/cosmos/cosmos-sdk/types/tx/signing&quot;</span>
+	xauthsigning <span class="token string">&quot;github.com/cosmos/cosmos-sdk/x/auth/signing&quot;</span>
+	banktypes <span class="token string">&quot;github.com/cosmos/cosmos-sdk/x/bank/types&quot;</span>
+
+	plugchainapp <span class="token string">&quot;github.com/oracleNetworkProtocol/plugchain/app&quot;</span>
+	<span class="token string">&quot;github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1&quot;</span>
+	ethencoding <span class="token string">&quot;github.com/oracleNetworkProtocol/ethermint/encoding&quot;</span>
+	<span class="token string">&quot;google.golang.org/grpc&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> chainID <span class="token operator">=</span> <span class="token string">&quot;plugchain_520-1&quot;</span>
+    
+	encCfg <span class="token operator">:=</span> ethencoding<span class="token punctuation">.</span><span class="token function">MakeConfig</span><span class="token punctuation">(</span>plugchainapp<span class="token punctuation">.</span>ModuleBasics<span class="token punctuation">)</span>
+	config <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">GetConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	plugchainapp<span class="token punctuation">.</span><span class="token function">SetBech32Prefixes</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+
+	txBuilder <span class="token operator">:=</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">NewTxBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	addr1<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">AccAddressFromBech32</span><span class="token punctuation">(</span><span class="token string">&quot;gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7&quot;</span><span class="token punctuation">)</span>
+	addr2<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> sdk<span class="token punctuation">.</span><span class="token function">AccAddressFromBech32</span><span class="token punctuation">(</span><span class="token string">&quot;gx1r4ffuq72pmny390lkk4l4x8wzamkcnru24wxaq&quot;</span><span class="token punctuation">)</span>
+	priv <span class="token operator">:=</span> <span class="token string">&quot;30116C43525488477CA78BB9C5653FB421334C7117070DFDD80240C895234505&quot;</span>
+	priva<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> hex<span class="token punctuation">.</span><span class="token function">DecodeString</span><span class="token punctuation">(</span>priv<span class="token punctuation">)</span>
+	<span class="token comment">// 如下查询地址的信息,使用account_number,sequence,需要根据 `@type` 类型 来锁定私钥类型，EthAcount 类型为`eth_secp256k1`,BaseAccount为`secp256k1`</span>
+	<span class="token comment">//curl -X GET &quot;http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7&quot; -H  &quot;accept: application/json&quot;</span>
+	accountSeq <span class="token operator">:=</span> <span class="token function">uint64</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+	acountNumber <span class="token operator">:=</span> <span class="token function">uint64</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+	<span class="token comment">//EthAccount 类型， 使用包 &quot;github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1&quot;</span>
+	<span class="token comment">//BaseAccount 类型 ，使用包 &quot;github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1&quot;</span>
+	priv1 <span class="token operator">:=</span> ethsecp256k1<span class="token punctuation">.</span>PrivKey<span class="token punctuation">{</span>Key<span class="token punctuation">:</span> priva<span class="token punctuation">}</span>
+
+	msg1 <span class="token operator">:=</span> banktypes<span class="token punctuation">.</span><span class="token function">NewMsgSend</span><span class="token punctuation">(</span>addr1<span class="token punctuation">,</span> addr2<span class="token punctuation">,</span> sdk<span class="token punctuation">.</span><span class="token function">NewCoins</span><span class="token punctuation">(</span>sdk<span class="token punctuation">.</span><span class="token function">NewInt64Coin</span><span class="token punctuation">(</span><span class="token string">&quot;uplugcn&quot;</span><span class="token punctuation">,</span> <span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token comment">// msg2 := banktypes.NewMsgSend(addr2, addr1, sdk.NewCoins(sdk.NewInt64Coin(&quot;uplugcn&quot;, 222)))</span>
+	err <span class="token operator">:=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetMsgs</span><span class="token punctuation">(</span>msg1<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	txBuilder<span class="token punctuation">.</span><span class="token function">SetGasLimit</span><span class="token punctuation">(</span><span class="token number">200000</span><span class="token punctuation">)</span>
+	txBuilder<span class="token punctuation">.</span><span class="token function">SetFeeAmount</span><span class="token punctuation">(</span>sdk<span class="token punctuation">.</span><span class="token function">NewCoins</span><span class="token punctuation">(</span>sdk<span class="token punctuation">.</span><span class="token function">NewInt64Coin</span><span class="token punctuation">(</span><span class="token string">&quot;uplugcn&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	txBuilder<span class="token punctuation">.</span><span class="token function">SetMemo</span><span class="token punctuation">(</span><span class="token string">&quot;test send&quot;</span><span class="token punctuation">)</span>
+	<span class="token comment">// txBuilder.SetTimeoutHeight(61111800)</span>
+
+	sign <span class="token operator">:=</span> signing<span class="token punctuation">.</span>SignatureV2<span class="token punctuation">{</span>
+		PubKey<span class="token punctuation">:</span> priv1<span class="token punctuation">.</span><span class="token function">PubKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		Data<span class="token punctuation">:</span> <span class="token operator">&amp;</span>signing<span class="token punctuation">.</span>SingleSignatureData<span class="token punctuation">{</span>
+			SignMode<span class="token punctuation">:</span>  encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">SignModeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DefaultMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			Signature<span class="token punctuation">:</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+		Sequence<span class="token punctuation">:</span> accountSeq<span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	err <span class="token operator">=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetSignatures</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+	sign <span class="token operator">=</span> signing<span class="token punctuation">.</span>SignatureV2<span class="token punctuation">{</span><span class="token punctuation">}</span>
+	signerD <span class="token operator">:=</span> xauthsigning<span class="token punctuation">.</span>SignerData<span class="token punctuation">{</span>
+		ChainID<span class="token punctuation">:</span>       chainID<span class="token punctuation">,</span>
+		AccountNumber<span class="token punctuation">:</span> acountNumber<span class="token punctuation">,</span>
+		Sequence<span class="token punctuation">:</span>      accountSeq<span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	sign<span class="token punctuation">,</span> err <span class="token operator">=</span> cliTx<span class="token punctuation">.</span><span class="token function">SignWithPrivKey</span><span class="token punctuation">(</span>
+		encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">SignModeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DefaultMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> signerD<span class="token punctuation">,</span>
+		txBuilder<span class="token punctuation">,</span> cryptotypes<span class="token punctuation">.</span><span class="token function">PrivKey</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>priv1<span class="token punctuation">)</span><span class="token punctuation">,</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">,</span> accountSeq<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	err <span class="token operator">=</span> txBuilder<span class="token punctuation">.</span><span class="token function">SetSignatures</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+
+	<span class="token punctuation">}</span>
+
+	txBytes<span class="token punctuation">,</span> er <span class="token operator">:=</span> encCfg<span class="token punctuation">.</span>TxConfig<span class="token punctuation">.</span><span class="token function">TxEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>txBuilder<span class="token punctuation">.</span><span class="token function">GetTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> er <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+
+	<span class="token punctuation">}</span>
+
+	grpcConn<span class="token punctuation">,</span> ger <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span>
+		<span class="token string">&quot;localhost:9090&quot;</span><span class="token punctuation">,</span>
+		grpc<span class="token punctuation">.</span><span class="token function">WithInsecure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> ger <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>ger<span class="token punctuation">)</span>
+
+	<span class="token punctuation">}</span>
+	<span class="token keyword">defer</span> grpcConn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment">// base64 encode the encoded tx bytes</span>
+	<span class="token comment">// txBytes1 := base64.StdEncoding.EncodeToString(txBytes)</span>
+	txClient <span class="token operator">:=</span> tx<span class="token punctuation">.</span><span class="token function">NewServiceClient</span><span class="token punctuation">(</span>grpcConn<span class="token punctuation">)</span>
+
+	grpcRes<span class="token punctuation">,</span> gerr <span class="token operator">:=</span> txClient<span class="token punctuation">.</span><span class="token function">BroadcastTx</span><span class="token punctuation">(</span>
+		context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token operator">&amp;</span>tx<span class="token punctuation">.</span>BroadcastTxRequest<span class="token punctuation">{</span>
+			Mode<span class="token punctuation">:</span>    tx<span class="token punctuation">.</span>BroadcastMode_BROADCAST_MODE_ASYNC<span class="token punctuation">,</span>
+			TxBytes<span class="token punctuation">:</span> txBytes<span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+	log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;broadcast-tx::::&quot;</span><span class="token punctuation">,</span> gerr<span class="token punctuation">,</span> grpcRes<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> gerr <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>grpcRes<span class="token punctuation">.</span><span class="token function">GetTxResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/plugchain/zh/endpoints/grpc-rest.html" class="prev">
+        Restful API
+      </a></span> <span class="next"><a href="/plugchain/zh/endpoints/proto-docs.html">
+        Protobuf Documentation
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/plugchain/assets/js/app.d39d4ca0.js" defer></script><script src="/plugchain/assets/js/2.27ddde56.js" defer></script><script src="/plugchain/assets/js/101.2e697d0f.js" defer></script>
+  </body>
+</html>
