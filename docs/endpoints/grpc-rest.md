@@ -155,12 +155,37 @@ The following example shows how to query events using the Cosmos SDK.
 | ------------------------- | ------------------------------- |
 | tx.height=23 | Query all transactions with height 23 |
 | tx.hash='DF9738772AAECE776187EFF106190FF169F00C725968A15D23FA1DC9B4A1B651' | Query the specified hash transaction |
-| [message.action](./action.md#messageaction)=='/cosmos.bank.v1beta1.MsgSend' | Query all transactions containing x/bank `Send`. |
-| [message.module](./action.md#messagemodule)='bank' | Query all transactions that contain messages from the `x/bank` module. |
+| message.action='/cosmos.bank.v1beta1.MsgSend' | Query all transactions containing x/bank `Send`. |
+| message.module='bank' | Query all transactions that contain messages from the `x/bank` module. |
 
 
-
-
+| message.module | message.action |
+| ------ | ------------- | 
+| bank       |  /cosmos.bank.v1beta1.MsgSend | 
+| bank       |  /cosmos.bank.v1beta1.MsgMultiSend | 
+| distribution  | /cosmos.distribution.v1beta1.MsgFundCommunityPool | 
+| distribution  | /cosmos.distribution.v1beta1.MsgSetWithdrawAddress | 
+| distribution  | /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward | 
+| distribution  | /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission | 
+| governance | /cosmos.gov.v1beta1.MsgVote | 
+| governance | /cosmos.gov.v1beta1.MsgVoteWeighted | 
+| governance | /cosmos.gov.v1beta1.MsgSubmitProposal | 
+| governance | /cosmos.gov.v1beta1.MsgDeposit | 
+| staking | /cosmos.staking.v1beta1.MsgBeginRedelegate |
+| staking | /cosmos.staking.v1beta1.MsgCreateValidator | 
+| staking | /cosmos.staking.v1beta1.MsgDelegate | 
+| staking | /cosmos.staking.v1beta1.MsgEditValidator | 
+| staking | /cosmos.staking.v1beta1.MsgUndelegate |
+| slashing | /cosmos.slashing.v1beta1.MsgUnjail | 
+| token | /plugchain.prc10.MsgBurnToken | 
+| token | /plugchain.prc10.MsgEditToken | 
+| token | /plugchain.prc10.MsgIssueToken | 
+| token | /plugchain.prc10.MsgMintToken | 
+| evm | /ethermint.evm.v1.MsgEthereumTx | 
+| liquidity | /tendermint.liquidity.v1beta1.MsgCreatePool |
+| liquidity | /tendermint.liquidity.v1beta1.MsgDepositWithinBatch |
+| liquidity | /tendermint.liquidity.v1beta1.MsgSwapWithinBatch |
+| liquidity | /tendermint.liquidity.v1beta1.MsgWithdrawWithinBatch |
 
 
 
