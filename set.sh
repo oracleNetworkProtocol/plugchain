@@ -1,4 +1,4 @@
-rm -rf /Users/jcl/.relayer
+rm -rf $HOME/.relayer
 rly config init
 rly config add-chains ibc/chains
 
