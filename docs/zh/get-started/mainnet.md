@@ -40,9 +40,10 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 根据快照高度，锁定`plugchaind`二进制版本使用
 
 
-| 块高 | 数据库  | plugchaind 版本 | 下载地址 |
-| ---- | --------- | -------- | ----|
-| 4879326 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-4879326-20220712-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4879326-20220712-goleveldb.zip.zip) |
+| 块高 | 数据库  | plugchaind 版本 | 下载地址 | 描述 |
+| ---- | --------- | -------- | ----| ----|
+| 4879326 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-4879326-20220712-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-4879326-20220712-goleveldb.zip.zip) |（63.154GB） 裁剪数据|
+| 5098752 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5098752-archive-20220726-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5098752-archive-20220726-goleveldb.zip) | （153.079GB）存档数据-仅供存档节点使用|
 
 1. 下载快照数据
 
