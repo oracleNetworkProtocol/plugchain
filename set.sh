@@ -25,3 +25,6 @@ rly transact link aa --home relayer
 ###2022-08-04T06:08:09.928161Z     info    Client Created  {"src_chain_id": "plugchain_520-1", "src_client_id": "07-tendermint-3", "dst_chain_id": "evm_100-1"}
 
 # rly start ibc-plug --home relayer
+
+# plugchaind keys add ibcplug --recover --home node/node1 --keyring-backend file --algo s
+# ecp256k1 --coin-type 118 --output json

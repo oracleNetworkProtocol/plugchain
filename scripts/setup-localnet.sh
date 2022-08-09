@@ -36,44 +36,13 @@ cat $NODEDIR/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]=
 cat $NODEDIR/config/genesis.json | jq '.app_state["feemarket"]["params"]["base_fee"]="7"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["liquidity"]["params"]["pool_creation_fee"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
-# increase block time (?)
-cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="30000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-
-# Set gas limit in genesis
-cat $NODEDIR/config/genesis.json | jq '.consensus_params["block"]["max_gas"]="10000000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-
 # disable produce empty block
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    sed -i '' 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
     sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
   else
-    sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $NODEDIR/config/config.toml
     sed -i '' 's/172800s/300s/g' $NODEDIR/config/genesis.json
 fi
 
-if [[ $1 == "pending" ]]; then
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' 's/create_empty_blocks_interval = "0s"/create_empty_blocks_interval = "30s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_propose = "3s"/timeout_propose = "30s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_commit = "5s"/timeout_commit = "150s"/g' $NODEDIR/config/config.toml
-      sed -i '' 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' $NODEDIR/config/config.toml
-  else
-      sed -i 's/create_empty_blocks_interval = "0s"/create_empty_blocks_interval = "30s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_propose = "3s"/timeout_propose = "30s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_commit = "5s"/timeout_commit = "150s"/g' $NODEDIR/config/config.toml
-      sed -i 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' $NODEDIR/config/config.toml
-  fi
-fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
 plugchaind add-genesis-account $KEY 100000000000000000000000000uplugcn --keyring-backend $KEYRING --home $NODEDIR
