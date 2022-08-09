@@ -1,17 +1,13 @@
 {
     "src": {
-        "chain-id": "onp_521-1",
-        "client-id": "07-tendermint-1",
-        "connection-id": "connection-1",
-        "channel-id": "channel-1",
+        "chain-id": "evm_100-1",
+        "client-id": "07-tendermint-0",
         "port-id": "transfer",
         "version": "ics20-1"
     },
     "dst": {
       "chain-id": "plugchain_520-1",
-      "client-id": "07-tendermint-1",
-      "connection-id": "connection-1",
-      "channel-id": "channel-0",
+      "client-id": "07-tendermint-3",
       "port-id": "transfer",
       "version": "ics20-1"
     },
