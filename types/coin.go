@@ -15,10 +15,10 @@ const (
 	BaseNativeDenom string = "uplugcn"
 
 	//DisplayNativeDenom defines the denomination displayed to users in client applications.
-	DisplayNativeDenom string = "plugcn"
+	DisplayNativeDenom string = "pc"
 
 	// BaseDenomUnit defines the base denomination unit for plugcns.
-	// 1 plugcn = 1x10^{BaseDenomUnit} uplugcn
+	// 1 pc = 1x10^{BaseDenomUnit} uplugcn
 	BaseDenomUnit = 6
 
 	// DefaultGasPrice is default gas price for evm transactions

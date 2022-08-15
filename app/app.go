@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -14,6 +15,7 @@ import (
 	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	pctypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
@@ -676,6 +678,27 @@ func New(
 		// votep.VotingPeriod = time.Duration(5 * time.Minute) // 5 mintute
 		app.GovKeeper.SetDepositParams(ctx, depositp)
 		app.GovKeeper.SetVotingParams(ctx, votep)
+		plugdenom, ok := app.BankKeeper.GetDenomMetaData(ctx, pctypes.BaseNativeDenom)
+		if !ok {
+			panic("get uplugcn metadata err")
+		}
+		plugdenom.Symbol = strings.ToUpper(pctypes.DisplayNativeDenom)
+		plugdenom.Display = pctypes.DisplayNativeDenom
+		for k, v := range plugdenom.DenomUnits {
+			if v.Exponent == 6 {
+				plugdenom.DenomUnits[k].Denom = pctypes.DisplayNativeDenom
+			}
+		}
+		app.BankKeeper.SetDenomMetaData(ctx, plugdenom)
+
+		tokenplug, err := app.TokenKeeper.GetToken(ctx, pctypes.BaseNativeDenom)
+		if err != nil {
+			panic("get token for plug err:" + err.Error())
+		}
+		newToken := tokenplug.(*tokentypes.Token)
+		newToken.Symbol = pctypes.DisplayNativeDenom
+		app.TokenKeeper.DeleteUpgradeToken(ctx, pctypes.BaseNativeDenom)
+		app.TokenKeeper.SetUpgradeToken(ctx, *newToken)
 
 		return app.mm.RunMigrations(ctx, app.configurator, fromVM)
 	})
