@@ -123,14 +123,13 @@ func (k Keeper) DeleteUpgradeToken(ctx sdk.Context, denom string) error {
 	// query token by symbol
 	token, err = k.getTokenBySymbol(ctx, denom)
 	if err != nil {
-		return err
+		// query token by min unit
+		token, err = k.getTokenByMinUnit(ctx, denom)
+		if err != nil {
+			return err
+		}
 	}
 
-	// query token by min unit
-	token, err = k.getTokenByMinUnit(ctx, denom)
-	if err != nil {
-		return err
-	}
 	store := ctx.KVStore(k.storeKey)
 	store.Delete(types.KeySymbol(token.Symbol))
 	store.Delete(types.KeyMinUint(token.MinUnit))
