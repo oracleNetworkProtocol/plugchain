@@ -140,6 +140,9 @@ func (k Keeper) DeleteUpgradeToken(ctx sdk.Context, denom string) error {
 
 //SetUpgradeToken upgrade set token func
 func (k Keeper) SetUpgradeToken(ctx sdk.Context, token types.Token) {
+	//To prevent duplicates, delete newly created symbols
+	k.DeleteUpgradeToken(ctx, token.Symbol)
+
 	store := ctx.KVStore(k.storeKey)
 	bz := k.cdc.MustMarshal(&token)
 	store.Set(types.KeySymbol(token.Symbol), bz)

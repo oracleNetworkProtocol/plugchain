@@ -19,7 +19,7 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	evmtypes "github.com/evmos/ethermint/x/evm/types"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/types"
 )
 

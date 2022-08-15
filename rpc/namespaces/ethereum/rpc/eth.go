@@ -23,7 +23,7 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	evmtypes "github.com/evmos/ethermint/x/evm/types"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/backend"
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/types"
 )

@@ -16,7 +16,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
-	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
+	"github.com/evmos/ethermint/crypto/hd"
 	"github.com/spf13/cobra"
 )
 

@@ -14,9 +14,9 @@ import (
 
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
-	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
-	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
+	"github.com/evmos/ethermint/crypto/hd"
+	ethermint "github.com/evmos/ethermint/types"
+	evmtypes "github.com/evmos/ethermint/x/evm/types"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/backend"
 	rpctypes "github.com/oracleNetworkProtocol/plugchain/rpc/types"
 )

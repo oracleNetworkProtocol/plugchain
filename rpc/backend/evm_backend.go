@@ -27,9 +27,9 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 
-	ethermint "github.com/oracleNetworkProtocol/ethermint/types"
-	evmtypes "github.com/oracleNetworkProtocol/ethermint/x/evm/types"
-	feemarkettypes "github.com/oracleNetworkProtocol/ethermint/x/feemarket/types"
+	ethermint "github.com/evmos/ethermint/types"
+	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	feemarkettypes "github.com/evmos/ethermint/x/feemarket/types"
 	"github.com/oracleNetworkProtocol/plugchain/rpc/types"
 )
 

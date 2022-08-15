@@ -12,9 +12,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/server/types"
 	ethlog "github.com/ethereum/go-ethereum/log"
 	ethrpc "github.com/ethereum/go-ethereum/rpc"
-	"github.com/oracleNetworkProtocol/ethermint/rpc"
+	"github.com/evmos/ethermint/rpc"
 
-	"github.com/oracleNetworkProtocol/ethermint/server/config"
+	"github.com/evmos/ethermint/server/config"
 )
 
 // StartJSONRPC starts the JSON-RPC server
@@ -35,9 +35,9 @@ func StartJSONRPC(ctx *server.Context, clientCtx client.Context, tmRPCAddr, tmEn
 	}))
 
 	rpcServer := ethrpc.NewServer()
-
+	allowUnprotectedTxs := config.JSONRPC.AllowUnprotectedTxs
 	rpcAPIArr := config.JSONRPC.API
-	apis := rpc.GetRPCAPIs(ctx, clientCtx, tmWsClient, rpcAPIArr)
+	apis := rpc.GetRPCAPIs(ctx, clientCtx, tmWsClient, allowUnprotectedTxs, rpcAPIArr)
 
 	for _, api := range apis {
 		if err := rpcServer.RegisterName(api.Namespace, api.Service); err != nil {
