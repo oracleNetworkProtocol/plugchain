@@ -10,16 +10,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-	github.com/oracleNetworkProtocol/ethermint v0.9.3
-=======
-	github.com/oracleNetworkProtocol/ethermint v0.9.5
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
-	github.com/oracleNetworkProtocol/liquidity v0.2.1
-=======
 	github.com/oracleNetworkProtocol/liquidity v0.4.5
->>>>>>> 23b68f6f49b89bd86a18b106e04a8917371ee61f
 	github.com/regen-network/cosmos-proto v0.3.1
 	github.com/spf13/cast v1.5.0
 	github.com/spf13/cobra v1.5.0
@@ -165,8 +156,7 @@ require (
 )
 
 replace (
-	google.golang.org/grpc => google.golang.org/grpc v1.33.2
-	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
+	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )
-
