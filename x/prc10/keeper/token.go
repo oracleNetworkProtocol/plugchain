@@ -114,6 +114,41 @@ func (k Keeper) AddToken(ctx sdk.Context, token types.Token) error {
 	return nil
 }
 
+//DeleteUpgradeToken upgrade del token func
+func (k Keeper) DeleteUpgradeToken(ctx sdk.Context, denom string) error {
+	var (
+		token types.Token
+		err   error
+	)
+	// query token by symbol
+	token, err = k.getTokenBySymbol(ctx, denom)
+	if err != nil {
+		// query token by min unit
+		token, err = k.getTokenByMinUnit(ctx, denom)
+		if err != nil {
+			return err
+		}
+	}
+
+	store := ctx.KVStore(k.storeKey)
+	store.Delete(types.KeySymbol(token.Symbol))
+	store.Delete(types.KeyMinUint(token.MinUnit))
+	store.Delete(types.KeyTokens(token.GetOwner(), token.Symbol))
+	return nil
+}
+
+//SetUpgradeToken upgrade set token func
+func (k Keeper) SetUpgradeToken(ctx sdk.Context, token types.Token) {
+	//To prevent duplicates, delete newly created symbols
+	k.DeleteUpgradeToken(ctx, token.Symbol)
+
+	store := ctx.KVStore(k.storeKey)
+	bz := k.cdc.MustMarshal(&token)
+	store.Set(types.KeySymbol(token.Symbol), bz)
+	k.setWithOwner(ctx, token.GetOwner(), token.Symbol)
+	k.setWithMinUnit(ctx, token.MinUnit, token.Symbol)
+}
+
 func (k Keeper) setWithMinUnit(ctx sdk.Context, minUnit, symbol string) {
 	store := ctx.KVStore(k.storeKey)
 	bz := k.cdc.MustMarshal(&gogotypes.StringValue{Value: symbol})
