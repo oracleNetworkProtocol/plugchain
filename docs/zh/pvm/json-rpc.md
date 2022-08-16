@@ -31,7 +31,6 @@ order: 3
 | `admin`                                       | The `admin` API gives you access to several non-standard RPC methods, which will allow you to have a fine grained control over your nodeinstance, including but not limited to network peer and RPC endpoint management.     | ❌        |                    |
 | [`personal`](#personal-methods) | The `personal` API manages private keys in the key store.                                                                                                                                                                    | ✔        | ❌                 |
 
-
 ## 端点
 
 | Method                                                                            | Namespace | Implemented | Public | Notes              |
@@ -280,6 +279,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_blockNumber","params":[],"id
 
 - bech32 Address
 
+
 - Block Number or 块hash（0x...........） 
 
 ```json
@@ -352,7 +352,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_addressTranslation","params"
 #### 参数
 
 - bech32 Address
-
+- Block Number  or Block Hash 
 - 存储位置的整数
 
 - Block Number  or 块hash（0x...........） 
@@ -422,6 +422,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_getBlockTransactionCountByHa
 #### 参数
 
 - bech32 Address
+
 
 - Block Number  or 块hash（0x...........） 
 
@@ -509,6 +510,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_sendRawTransaction","params"
     `value`: QUANTITY - 与此交易一起发送的值
 
     `data`: `DATA` - 可选）方法签名和编码参数的哈希。有关详细信息，请参阅 Solidity 文档中的以太坊合约 ABI
+
 
 - 块高（0x0）  or 块hash（0x...........） 
 
@@ -1712,3 +1714,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setEtherbase","params":["0
 ```
 
 ## TxPool Methods
+>>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472

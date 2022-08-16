@@ -29,4 +29,3 @@ The plugchain is built on the Cosmos SDK using the following modules:
 The following modules are built on the OracleNetworkProtocol repository:
 
 - x/prc10: token logic.
-- x/nft: nft logic Off-chain assets on-chain.

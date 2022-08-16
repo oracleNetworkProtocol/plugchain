@@ -5,6 +5,7 @@ order: 3
 # 加入主网
 
 :::tip
+
 需要先 [安装 plugchaind](install.md),或者下载对应版本的二进制文件 [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
 :::
 
