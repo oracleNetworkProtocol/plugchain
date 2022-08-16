@@ -62,10 +62,10 @@ plugchaind collect-gentxs
 
 ### plugchaind start
 
-修改默认token为 `plug`
+修改默认token为 `plugcn`
 
 ```bash
-sed -i 's/stake/plug/g' $HOME/.plugchain/config/genesis.json
+sed -i 's/stake/plugcn/g' $HOME/.plugchain/config/genesis.json
 ```
 
 现在可以启动 `plugchaind` 了

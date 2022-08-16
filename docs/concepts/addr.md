@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 3
 ---
 
 # account
@@ -32,7 +32,7 @@ Plug Chain uses `BaseAccount`, `EthAccount` two account types.
 
 ### BaseAccount
 
-````go
+```go
 // BaseAccount defines a base account type. It contains all the necessary fields
 // for basic account functionality. Any custom account type should extend this
 // type for additional functionality (e.g. vesting).
@@ -42,7 +42,7 @@ PubKey *types.Any `protobuf:"bytes,2,opt,name=pub_key,json=pubKey,proto3" json:"
 AccountNumber uint64 `protobuf:"varint,3,opt,name=account_number,json=accountNumber,proto3" json:"account_number,omitempty"`
 Sequence uint64 `protobuf:"varint,4,opt,name=sequence,proto3" json:"sequence,omitempty"`
 }
-````
+```
 
 
 ```bash
@@ -62,7 +62,7 @@ sequence: "0"
 - Hierarchical deterministic wallet based on [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).
 - BIP44 defines a logical hierarchy of deterministic wallets based on the algorithm described in [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki), which allows the processing of multiple tokens , multiple accounts, external and internal chains per account, and millions of addresses per chain, such as Bitcoin and Ethereum.
 - pubkey type `secp256k1` .
-- The root HD path of the account is `44'/118'/0'/0/0` .
+- The root HD path of the account is `m/44'/118'/0'/0/0` .
 - coin-type is 118 .
 - Those that support the [PRC-10](./token.md#prc-10) protocol do not support the [PRC-20](./token.md#prc-20) protocol
 - bech32 identified as (gx...)

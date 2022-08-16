@@ -11,8 +11,20 @@ Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要
 `grpc.Server` 是一个具体的 gRPC 服务，它产生并服务任何gRPC请求。可以在 `~/.plugchain/config/app.toml` 中配置：
 
 - `grpc.enable = true|false` 字段定义了 gRPC 服务是否可用，默认为 `true`。
-- `grpc.address = {string}` 字段定义了服务绑定的地址（实际上是端口，因为主机必须保持为 `0.0.0.0`），默认为 `0.0.0.0:9000`。
+- `grpc.address = {string}` 字段定义了服务绑定的地址（实际上是端口，因为主机必须保持为 `0.0.0.0`），默认为 `0.0.0.0:9090`。
+```
+###############################################################################
+###                           gRPC Configuration                            ###
+###############################################################################
 
+[grpc]
+
+# Enable defines if the gRPC server should be enabled.
+enable = true
+
+# Address defines the gRPC server address to bind to.
+address = "0.0.0.0:9090"
+```
 gRPC 服务启动后，您可以使用 gRPC 客户端向其发送请求。
 
 ## gRPC 端点
@@ -80,7 +92,7 @@ import (
     "encoding/hex"
 	sdk "github.com/cosmos/cosmos-sdk/types"
     _ "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1" 
-    "github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"   
+    "github.com/evmos/ethermint/crypto/ethsecp256k1"   
 )
     chainID := "plugchain_520-1"
     addr1, _ := sdk.AccAddressFromBech32("gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed")
@@ -93,7 +105,7 @@ import (
 	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
 	accountSeq := uint64(0)
 	acountNumber := uint64(8)
-	//EthAccount 类型， 使用包 "github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
+	//EthAccount 类型， 使用包 "github.com/evmos/ethermint/crypto/ethsecp256k1"
 	//BaseAccount 类型 ，使用包 "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	priv1 := ethsecp256k1.PrivKey{Key: priva}
 ```
@@ -279,8 +291,8 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	plugchainapp "github.com/oracleNetworkProtocol/plugchain/app"
-	"github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
-	ethencoding "github.com/oracleNetworkProtocol/ethermint/encoding"
+	"github.com/evmos/ethermint/crypto/ethsecp256k1"
+	ethencoding "github.com/evmos/ethermint/encoding"
 	"google.golang.org/grpc"
 )
 
@@ -301,7 +313,7 @@ func main() {
 	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
 	accountSeq := uint64(0)
 	acountNumber := uint64(8)
-	//EthAccount 类型， 使用包 "github.com/oracleNetworkProtocol/ethermint/crypto/ethsecp256k1"
+	//EthAccount 类型， 使用包 "github.com/evmos/ethermint/crypto/ethsecp256k1"
 	//BaseAccount 类型 ，使用包 "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	priv1 := ethsecp256k1.PrivKey{Key: priva}
 

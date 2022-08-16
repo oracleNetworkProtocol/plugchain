@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 3
 ---
 
 # 账户
@@ -62,7 +62,7 @@ sequence: "0"
 - 基于[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)的分层确定性钱包。
 - BIP44基于[BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)中描述的算法定义确定性钱包的逻辑层次结构，该算法允许处理多种代币，多个帐户，每个帐户的外部和内部链以及每个链的数百万个地址，例如比特币和以太坊。
 - pubkey类型 `secp256k1` 。
-- 账户的根 HD 路径是 `44'/118'/0'/0/0` 。 
+- 账户的根 HD 路径是 `m/44'/118'/0'/0/0` 。 
 - coin-type是 118 。
 - 支持 [PRC-10](./token.md#prc-10)协议的，不支持[PRC-20](./token.md#prc-20)协议
 - bech32标识为（gx...）

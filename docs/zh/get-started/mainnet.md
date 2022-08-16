@@ -14,7 +14,7 @@ order: 3
 
 ## 运行全节点
 
-### Start node from genesis
+### 使用创世文件
 
 :::tip
 必须使用 Plug Chain [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点
@@ -33,9 +33,32 @@ curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracl
 curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
 curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
 ```
-3. 启动之前如果想修改服务端口,种子信息，对等点，哨兵模式等，可自行修改文件，然后再启动节点。
+3. 启动之前如果想修改服务端口,种子信息，对等点，哨兵模式等，可自行修改文件，然后再同步区块。
 
-4. 启动节点服务
+
+###  同步区块
+
+同步主网块数据
+#### 一 快照同步
+
+根据快照高度，锁定`plugchaind`二进制版本使用
+
+
+| 块高 | 数据库  | plugchaind 版本 | 下载地址 | 描述 |
+| ---- | --------- | -------- | ----| ----|
+| 5205489 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5205489-20220802-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5205489-20220802-goleveldb.zip) | （68.864GB） 裁剪数据|
+| 5098752 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5098752-archive-20220726-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5098752-archive-20220726-goleveldb.zip) | （153.079GB）存档数据-仅供存档节点使用|
+
+1. 下载快照数据
+
+2. 数据覆盖 `~/.plugchain/data/` 目录
+
+3. 使用 对应plugchaind版本启动 `plugchaind start`
+
+
+
+#### 二 逐步升级同步
+启动节点服务
 
 ```bash
 # 启动节点（也可使用 nohup 或 systemd 等方式后台运行）
@@ -55,6 +78,10 @@ plugchaind start
 =======
 | [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
 >>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
+
+
+
+
 
 
 :::tip
@@ -112,13 +139,4 @@ plugchaind tx staking create-validator --from mywallet \
 一定要备份好 home（默认为〜/.plugchain/）目录中的 `config` 目录！如果您的服务器磁盘损坏或您准备迁移服务器，这是恢复验证人的唯一方法。
 :::
 
-如果以上命令没有出现错误，则您的节点已经是验证人或候选人了（取决于您的Voting Power是否在前100名中）
-
-阅读更多：
-
-- 概念
-  - [基础概念](../concepts/general-concepts.md)
-  - [验证人问答](../concepts/validator-faq.md)
-- 验证人安全
-  - [哨兵节点 (DDOS 防护)](../concepts/sentry-nodes.md)
-  - [密钥管理](../tools/kms.md)
+如果以上命令没有出现错误，则您的节点已经是验证人或候选人了（取决于您的Voting Power是否在前50名中）

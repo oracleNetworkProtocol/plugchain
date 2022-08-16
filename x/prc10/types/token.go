@@ -15,9 +15,9 @@ var (
 )
 
 const (
-	MinMinUnitLen     = 3
+	MinMinUnitLen     = 2
 	MaxMinUnitLen     = 8
-	MinSymbolLen      = 3
+	MinSymbolLen      = 2
 	MaxSymbolLen      = 8
 	MaximumMaxSupply  = math.MaxUint64
 	MaximumInitSupply = uint64(100000000000)

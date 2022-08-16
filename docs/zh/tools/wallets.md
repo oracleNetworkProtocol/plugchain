@@ -11,6 +11,6 @@ order: 1
 
 - [安卓 Cosmo Wallet](https://cosmo-wallet.oss-accelerate.aliyuncs.com/app-release.apk)
 
-- [MacOS Cosmo Wallet 桌面版](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.dmg)
+- [MacOS Cosmo Wallet 桌面版 (仅支持PRC-10协议地址)](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.dmg)
 
-- [Windows Cosmo Wallet 桌面版](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.exe)
+- [Windows Cosmo Wallet 桌面版 (仅支持PRC-10协议地址)](https://cosmo-wallet-desktop.oss-ap-southeast-1.aliyuncs.com/wallet-desktop.exe)

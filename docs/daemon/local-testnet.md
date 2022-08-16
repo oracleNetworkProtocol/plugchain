@@ -62,10 +62,10 @@ plugchaind collect-gentxs
 
 ### plugchaind start
 
-Change the default token denom to `plug`
+Change the default token denom to `plugcn`
 
 ```bash
-sed -i 's/stake/plug/g' $HOME/.plugchain/config/genesis.json
+sed -i 's/stake/plugcn/g' $HOME/.plugchain/config/genesis.json
 ```
 
 Now it‘s ready to start `plugchaind`

@@ -8,8 +8,8 @@ order: 3
 The Plug Chain Hub client SDK is a software development kit based on the Endpoint provided by Plug Chain Hub, which provides great convenience for users to quickly develop applications based on the Plug Chain Hub chain.
 
 - [plugchain-sdk-go](https://github.com/oracleNetworkProtocol/plugchain-sdk-go)
-- [Java in development]()
-- [Python in development]()
+<!-- - [Java in development]() -->
+<!-- - [Python in development]() -->
 
 ## Design goals and concepts
 

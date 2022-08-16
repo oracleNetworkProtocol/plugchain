@@ -9,9 +9,12 @@ const DefaultConfigTemplate = `
 [evm]
 
 # Tracer defines the 'vm.Tracer' type that the EVM will use when the node is run in
-# debug mode. To enable tracing use the '--trace' flag when starting your node.
+# debug mode. To enable tracing use the '--evm.tracer' flag when starting your node.
 # Valid types are: json|struct|access_list|markdown
 tracer = "{{ .EVM.Tracer }}"
+
+# MaxTxGasWanted defines the gas wanted for each eth tx returned in ante handler in check tx mode.
+max-tx-gas-wanted = {{ .EVM.MaxTxGasWanted }}
 
 ###############################################################################
 ###                           JSON RPC Configuration                        ###
@@ -47,6 +50,17 @@ filter-cap = {{ .JSONRPC.FilterCap }}
 # FeeHistoryCap sets the global cap for total number of blocks that can be fetched
 feehistory-cap = {{ .JSONRPC.FeeHistoryCap }}
 
+# LogsCap defines the max number of results can be returned from single 'eth_getLogs' query.
+logs-cap = {{ .JSONRPC.LogsCap }}
+
+# BlockRangeCap defines the max block range allowed for 'eth_getLogs' query.
+block-range-cap = {{ .JSONRPC.BlockRangeCap }}
+
+# HTTPTimeout is the read/write timeout of http json-rpc server.
+http-timeout = "{{ .JSONRPC.HTTPTimeout }}"
+
+# HTTPIdleTimeout is the idle timeout of http json-rpc server.
+http-idle-timeout = "{{ .JSONRPC.HTTPIdleTimeout }}"
 
 ###############################################################################
 ###                             TLS Configuration                           ###

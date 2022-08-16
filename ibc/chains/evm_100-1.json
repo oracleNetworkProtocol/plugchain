@@ -1,0 +1,17 @@
+{
+  "type": "cosmos",
+  "value": {
+    "key": "ibcevm",
+    "chain-id": "evm_100-1",
+    "rpc-addr": "http://192.168.3.12:26667",
+    "grpc-addr": "",
+    "account-prefix": "ethm",
+    "keyring-backend": "test",
+    "gas-adjustment": 1.5,
+    "gas-prices": "0.001ueth",
+    "debug": true,
+    "timeout": "10s",
+    "output-format": "json",
+    "sign-mode": "direct"
+  } 
+}

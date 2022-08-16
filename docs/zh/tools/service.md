@@ -8,8 +8,8 @@ order: 3
 Plug Chain Hub 客户端 SDK 是根据 Plug Chain Hub 提供的 Endpoint 制作的软件开发工具包，为用户快速开发基于 Plug Chain Hub 链的应用程序提供了极大的便利。
 
 - [plugchain-sdk-go](https://github.com/oracleNetworkProtocol/plugchain-sdk-go)
-- [Java 开发中]()
-- [Python 开发中]()
+<!-- - [Java 开发中]() -->
+<!-- - [Python 开发中]() -->
 
 ## 设计目标和概念
 

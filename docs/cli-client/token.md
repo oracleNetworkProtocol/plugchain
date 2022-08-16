@@ -1,6 +1,6 @@
 # Token
 
-Token module allows you to manage assets on Plug Chain Hub
+The Token module is used to manage your [PRC-10](../concepts/token.md#prc-10) assets issued on Plug Chain Hub.
 
 ## Available Commands
 

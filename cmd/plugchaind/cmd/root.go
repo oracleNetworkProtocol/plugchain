@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/snapshots"
-	"github.com/oracleNetworkProtocol/ethermint/crypto/hd"
-	"github.com/oracleNetworkProtocol/ethermint/encoding"
+	"github.com/evmos/ethermint/crypto/hd"
+	"github.com/evmos/ethermint/encoding"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -25,7 +25,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
-	"github.com/oracleNetworkProtocol/ethermint/client/debug"
+	"github.com/evmos/ethermint/client/debug"
 	"github.com/oracleNetworkProtocol/plugchain/app"
 	onptypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/spf13/cast"
@@ -35,7 +35,7 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	// this line is used by starport scaffolding # stargate/root/import
-	ethermintclient "github.com/oracleNetworkProtocol/ethermint/client"
+	ethermintclient "github.com/evmos/ethermint/client"
 	plugchainserver "github.com/oracleNetworkProtocol/plugchain/server"
 	servercfg "github.com/oracleNetworkProtocol/plugchain/server/config"
 )
@@ -68,8 +68,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		Short: "CosmosHub PlugChain App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs
-			// cmd.SetOut(cmd.OutOrStdout())
-			// cmd.SetErr(cmd.ErrOrStderr())
+			cmd.SetOut(cmd.OutOrStdout())
+			cmd.SetErr(cmd.ErrOrStderr())
 
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -83,7 +83,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 			if err = client.SetCmdClientContextHandler(initClientCtx, cmd); err != nil {
 				return err
 			}
-			// TODO: define our own token
 			customAppTemplate, customAppConfig := servercfg.AppConfig(onptypes.BaseNativeDenom)
 
 			return server.InterceptConfigsPreRunHandler(cmd, customAppTemplate, customAppConfig)
@@ -124,8 +123,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		ethermintclient.KeyCommands(app.DefaultNodeHome),
 	)
 
-	// TODO: The Rosetta server is still a beta feature. Please do not use it in production.
-	// rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
+	rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
 
 	return rootCmd, encodingConfig
 }

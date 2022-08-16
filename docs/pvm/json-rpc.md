@@ -52,7 +52,6 @@ This can be configured in `~/.plugchain/config/app.toml`:
 | [`rpc_getCode`](#rpc-getcode)                                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_getTransactionLogs`](#rpc-gettransactionlogs)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sign`](#rpc-sign)                                                           | Rpc       | ✔           | ✔      |                    |
-| [`rpc_sendTransaction`](#rpc-sendtransaction)                                     | Rpc       | ✔           | ✔      |                    |
 | [`rpc_sendRawTransaction`](#rpc-sendrawtransaction)                               | Rpc       | ✔           | ✔      |                    |
 | [`rpc_call`](#rpc-call)                                                           | Rpc       | ✔           | ✔      |                    |
 | [`rpc_estimateGas`](#rpc-estimategas)                                             | Rpc       | ✔           | ✔      |                    |
@@ -81,7 +80,7 @@ This can be configured in `~/.plugchain/config/app.toml`:
 | [`eth_getBlockTransactionCountByHash`](#eth-getblocktransactioncountbyhash)       | Eth       | ✔           | ✔      |                    |
 | [`eth_getCode`](#eth-getcode)                                                     | Eth       | ✔           | ✔      |                    |
 | [`eth_sign`](#eth-sign)                                                           | Eth       | ✔           | ✔      |                    |
-| [`eth_sendTransaction`](#eth-sendtransaction)                                     | Eth       | ✔           | ✔      |                    |
+<!-- | [`eth_sendTransaction`](#eth-sendtransaction)                                     | Eth       | ✔           | ✔      |                    | -->
 | [`eth_sendRawTransaction`](#eth-sendrawtransaction)                               | Eth       | ✔           | ✔      |                    |
 | [`eth_call`](#eth-call)                                                           | Eth       | ✔           | ✔      |                    |
 | [`eth_estimateGas`](#eth-estimategas)                                             | Eth       | ✔           | ✔      |                    |
@@ -483,37 +482,6 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_sign","params":["gx1vt7svcst
 // Result
 { "Jsonrpc": "2.0", "id": 1, "result": "0x909809c76ed2a5d38733de39207d0f411222b9b49c64a192bf649cb13f63f37b45acb4f6939facb4f1c277bc70fb00407564140c0f18600ac44388f2c1dfd1dc1b"}
 ```
-
-### `rpc_sendTransaction`
-
-Send a transaction from the given account to the given account.
-
-#### parameters
-
-- Trading partners:
-
-    `from`: `DATA`, 20 Bytes - The address to send the transaction to.
-
-    `to`: `DATA`, 20 Bytes - (optional when creating a new contract) The address to which the transaction points.
-
-    `gas`: QUANTITY - (optional, default: 20000) Integer of gas provided for transaction execution. It will return unused gas.
-
-    `gasPrice`: QUANTITY - (optional, default: to be determined) Integer of gas to use for the price of each paid gas
-
-    `value`: QUANTITY - the value sent with this transaction
-
-    `data`: `DATA` - The compiled code of the contract or the hash of the method signature and encoded parameters of the call. See contract ABI for details
-
-    `nonce`: QUANTITY - (optional) an integer for the nonce. This allows overriding your own pending transactions that use the same nonce.
-
-```json
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_sendTransaction","params":[{"from":"gx1vt7svcst6982ka4c3ufxmqrs05a9e9eq676tyv", "to":"gx1n4m7gafr6cxtj8q4w9mm3480ar4gq3t95k6he9", "value" :"0x16345", "gasLimit":"0x5208", "gasPrice":"0x55ae82600"}],"id":1}' -H "Content-Type: application/json" http://localhost:8545
-
-// Result
-{"jsonrpc":"2.0","id":1,"result":"0x33653249db68ebe5c7ae36d93c9b2abc10745c80a72f591e296f598e2d4709f6"}
-```
-
 ### `rpc_sendRawTransaction`
 
 Create a new message for a signed transaction to invoke transaction or contract creation.
@@ -942,7 +910,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sign","params":["0x3b7252d00
 {"jsonrpc":"2.0","id":1,"result":"0x909809c76ed2a5d38733de39207d0f411222b9b49c64a192bf649cb13f63f37b45acb4f6939facb4f1c277bc70fb00407564140c0f18600ac44388f2c1dfd1dc1b"}
 ```
 
-### `eth_sendTransaction`
+<!-- ### `eth_sendTransaction`
 
 Sends transaction from given account to a given account.
 
@@ -970,7 +938,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params":[{
 
 // Result
 {"jsonrpc":"2.0","id":1,"result":"0x33653249db68ebe5c7ae36d93c9b2abc10745c80a72f591e296f598e2d4709f6"}
-```
+``` -->
 
 ### `eth_sendRawTransaction`
 

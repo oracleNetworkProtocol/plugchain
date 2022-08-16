@@ -11,9 +11,9 @@ order: 4
 :::
 ## 公共端点
 
-- [GRPC:8.210.180.240:9090]()
-- [RPC:http://8.210.180.240:26657/](http://8.210.180.240:26657/)
-- [REST:http://8.210.180.240:1317/](http://8.210.180.240:1317/)
+- [GRPC:47.108.75.227:9090]()
+- [RPC:http://47.108.75.227:26657/](http://47.108.75.227:26657/)
+- [REST:http://47.108.75.227:1317/](http://47.108.75.227:1317/)
 
 
 
@@ -21,9 +21,6 @@ order: 4
 
 #### 从genesis开始运行节点
 
-:::提示
-使用 Plug Chain[dev分支](https://github.com/oracleNetworkProtocol/plugchain.git) 初始化你的节点::
-:::
 
 1. 初始化节点
 
@@ -31,26 +28,13 @@ order: 4
 plugchaind init <moniker> --chain-id=plugchain_521-1
 ```
 
-2. 下载测试网公开的 genesis.json和种子信息 或者 进入clone下来的 plugchain 目录里面：
+2. 下载测试网公开的 [genesis.json](https://github.com/oracleNetworkProtocol/testnet)和对等点信息:
 
-```bash 
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/plugchain/main/testnet/latest/genesis.json
-```
-
-:::warning 
-如下第三步可跳过，如跳过需要在第四步加上参数 `--p2p.seeds` 参数）
-:::
-
-3. 覆盖数据目录的genesis.json之后,修改 ~/.plugchain/config/config.toml 里面 seeds 参数，添加种子信息
-
-把 ./testnet/latest/seeds.txt 文件中提供的 seeds , 修改 ~/.plugchain/config/config.toml 中的`seeds`参数以设置链接的种子节点,种子信息以英文逗号分隔
-
+3. 修改配置config.toml文件，`private_peer_ids` 赋值增加对等点。
 
 4. 启动节点服务
 ```bash
 # 启动节点（也可使用 nohup 或 systemd 等方式后台运行）
-
-# 第三步未修改种子信息，运行start时，添加参数 --p2p.seeds="5f81625b69d192d3ef5bf47b83484326e0546491@47.100.161.102:26656"
 
 # 如果修改服务端口配置，需要在使用服务的地方加上参数:
 # 比如修改默认的tendermint rpc服务: tcp://localhost:26657 => tcp://localhost:5000 
@@ -61,13 +45,7 @@ curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracl
 plugchaind start
 ```
 
-
-
-## 水龙头
-
-欢迎加入我们的水龙头链接[test explorers](http://test.plugchain.network/wallet/receive)
-
-## 浏览器
+## 浏览器&&水龙头
 
 <http://test.plugchain.network/>
 
