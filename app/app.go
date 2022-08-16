@@ -651,7 +651,7 @@ func New(
 	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
 		return app.mm.GetVersionMap(), nil
 	})
-	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{
+	app.RegisterUpgradePlan("v1.7", &store.StoreUpgrades{
 		Added:   []string{authz.ModuleName},
 		Deleted: []string{nfttypes.StoreKey},
 	}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
