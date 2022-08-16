@@ -10,10 +10,6 @@ order: 1
 
 - [Restful API](./grpc-rest.md)
 - [gRPC](./grpc-client.md)
-<<<<<<< HEAD
 - [Client SDKs](./sdk.md) 
-=======
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
-
 
 *本社区诚邀各位同道朋友参与工具开发，社区会根据贡献奖励。*
