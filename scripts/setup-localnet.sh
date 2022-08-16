@@ -33,7 +33,7 @@ cat $NODEDIR/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["den
 cat $NODEDIR/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["evm"]["params"]["evm_denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
-cat $NODEDIR/config/genesis.json | jq '.app_state["feemarket"]["params"]["base_fee"]="7"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
+# cat $NODEDIR/config/genesis.json | jq '.app_state["feemarket"]["params"]["initial_base_fee"]="1000"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 cat $NODEDIR/config/genesis.json | jq '.app_state["liquidity"]["params"]["pool_creation_fee"][0]["denom"]="uplugcn"' > $NODEDIR/config/tmp_genesis.json && mv $NODEDIR/config/tmp_genesis.json $NODEDIR/config/genesis.json
 
 # disable produce empty block
