@@ -5,11 +5,8 @@ order: 3
 # 加入主网
 
 :::tip
-<<<<<<< HEAD
-需要先 [安装 plugchaind](install.md),或者下载对应版本的二进制文件[releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
-=======
+
 需要先 [安装 plugchaind](install.md),或者下载对应版本的二进制文件 [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 :::
 
 ## 运行全节点
@@ -73,11 +70,7 @@ plugchaind start
 | -------- | ------------ | -------------- | ----- |
 | [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
 | [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
-<<<<<<< HEAD
-
-=======
 | [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
 
 
 

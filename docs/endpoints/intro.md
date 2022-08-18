@@ -12,9 +12,4 @@ Each node can be configured with the following endpoints, and each type of endpo
 
 - [Restful API](./grpc-rest.md)
 - [gRPC](./grpc-client.md)
-<<<<<<< HEAD
 - [socker subscription](./subscription.md)
-- [SDKs](./sdk.md) (In development)
-=======
-- [socker subscription](./subscription.md)
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472

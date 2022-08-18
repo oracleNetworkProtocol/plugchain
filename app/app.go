@@ -651,7 +651,7 @@ func New(
 	app.RegisterUpgradePlan("v1.5", &store.StoreUpgrades{}, func(ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap) (module.VersionMap, error) {
 		return app.mm.GetVersionMap(), nil
 	})
-	app.RegisterUpgradePlan("v2", &store.StoreUpgrades{
+	app.RegisterUpgradePlan("v1.7", &store.StoreUpgrades{
 		Added:   []string{authz.ModuleName},
 		Deleted: []string{nfttypes.StoreKey},
 	}, func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
@@ -672,12 +672,10 @@ func New(
 		depositp := app.GovKeeper.GetDepositParams(ctx)
 		votep := app.GovKeeper.GetVotingParams(ctx)
 		depositp.MaxDepositPeriod = time.Duration(48 * time.Hour) // 2days
-		// depositp.MaxDepositPeriod = time.Duration(2 * time.Minute) // 2 minute
-
-		votep.VotingPeriod = time.Duration(120 * time.Hour) // 5days
-		// votep.VotingPeriod = time.Duration(5 * time.Minute) // 5 mintute
+		votep.VotingPeriod = time.Duration(120 * time.Hour)       // 5days
 		app.GovKeeper.SetDepositParams(ctx, depositp)
 		app.GovKeeper.SetVotingParams(ctx, votep)
+		//bank update metadata
 		plugdenom, ok := app.BankKeeper.GetDenomMetaData(ctx, pctypes.BaseNativeDenom)
 		if !ok {
 			panic("get uplugcn metadata err")
@@ -691,6 +689,7 @@ func New(
 		}
 		app.BankKeeper.SetDenomMetaData(ctx, plugdenom)
 
+		//token update
 		tokenplug, err := app.TokenKeeper.GetToken(ctx, pctypes.BaseNativeDenom)
 		if err != nil {
 			panic("get token for plug err:" + err.Error())

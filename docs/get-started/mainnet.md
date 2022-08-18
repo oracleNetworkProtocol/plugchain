@@ -5,15 +5,10 @@ order: 3
 # Join mainnet
 
 :::tip
-<<<<<<< HEAD
-<<<<<<< HEAD
-**Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases] (https://github.com/oracleNetworkProtocol/plugchain/releases)
-=======
+
 **Requirements:** [install plugchaind](install.md) or download the corresponding version of the binary file [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
->>>>>>> d79323fb0f7dd4dd7b9baf4a27f51c8e5ac75472
-=======
+
 You need to [install plugchaind](install.md) first, or download the corresponding version of the binary file [releases](https://github.com/oracleNetworkProtocol/plugchain/releases)
->>>>>>> 23b68f6f49b89bd86a18b106e04a8917371ee61f
 :::
 
 ## run a full node
