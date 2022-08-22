@@ -20,12 +20,12 @@ Client-facing, programming language specific SDKs will also be available to make
 
 ## Plug Chain Token
 
-The *Plug Chain* hub has its own native token, called *plugcn* , which has three roles in the network.
+The *Plug Chain* hub has its own native token, called *pc* , which has three roles in the network.
 
-** Mortgage. ** Similar to the ATOM token in the Cosmos Hub, the *plugcn* token will be used as a collateral token to protect the safe operation of the PoS blockchain.
+** Mortgage. ** Similar to the ATOM token in the Cosmos Hub, the *pc* token will be used as a collateral token to protect the safe operation of the PoS blockchain.
 
-* **transaction fee. ** *plugcn* tokens will also be used to pay for all transactions in the *Plug Chain* network.
+* **transaction fee. ** *pc* tokens will also be used to pay for all transactions in the *Plug Chain* network.
 
-**Service charge. ** Service providers in the *Plug Chain* network need to charge service fees in units of *plugcn* tokens.
+**Service charge. ** Service providers in the *Plug Chain* network need to charge service fees in units of *pc* tokens.
 
 The *Plug Chain* network will eventually support all whitelisted fee tokens, which can be used to pay transaction fees and service fees.
