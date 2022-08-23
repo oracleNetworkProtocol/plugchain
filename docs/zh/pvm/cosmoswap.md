@@ -7,10 +7,13 @@ order: 5
 
 相关合约信息：
 ```
-cosmoSwap 池子合约地址:
+Router:
 bech32: gx1xulgpeuajthdc52eyqhfpsrf8w3thu97lhguxs
 eip55: 0x373E80e79d92eEdC5159202e90c0693bA2Bbf0Be
 
+Factory:
+bech32: gx18g7wv6uq6p08mkupr8j2cze8hhhz5twu0ml2cz
+eip55: 0x3A3Ce66B80D05E7dDB8119E4ac0b27Bdee2a2dDC
 
 WPLUG 合约地址：
 bech32: gx1d2wdkrvdu4y8l9k8pv0hs4cyrc03emtda8zepz
