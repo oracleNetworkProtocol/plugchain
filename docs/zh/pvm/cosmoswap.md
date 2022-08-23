@@ -34,7 +34,7 @@ addLiquidityPLUG(address token,uint256 amountTokenDesired,uint256 amountTokenMin
 | token | address | 代币合约地址 |
 | amountTokenDesired | uint256 | 注入池子token代币数量 |
 | amountTokenMin | uint256 | 最低提出池子token代币数量，最低可填写0 |
-| amountPLUGMin | uint256 | 最低提出池子`plugcn`数量，最低可填写0 |
+| amountPLUGMin | uint256 | 最低提出池子`pc`数量，最低可填写0 |
 | to | address | LP输出地址，一般为from地址 |
 | deadline | uint256 | UTC时区的时间戳  必须大于当前时间 |
 

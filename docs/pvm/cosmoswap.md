@@ -33,7 +33,7 @@ Parameter Description:
 | token | address | Token contract address |
 | amountTokenDesired | uint256 | Amount of tokens injected into the pool |
 | amountTokenMin | uint256 | The minimum number of tokens to withdraw from the pool, the minimum value can be 0 |
-| amountPLUGMin | uint256 | The minimum amount of `plugcn` in the pool, the minimum can be filled in 0 |
+| amountPLUGMin | uint256 | The minimum amount of `pc` in the pool, the minimum can be filled in 0 |
 | to | address | LP output address, usually from address |
 | deadline | uint256 | UTC time zone timestamp must be greater than current time |
 
