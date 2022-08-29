@@ -47,7 +47,7 @@ plugchaind start
 
 ## 浏览器&&水龙头
 
-<http://test.plugchain.network/>
+<https://test.plugchain.network/v2>
 
 
 

@@ -68,9 +68,10 @@ plugchaind start
 
 | 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
-| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
-| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) |
+| [v1.7](https://www.plugchain.network/v2/communityDetail?id=10)  |  5420512     |  5633000  | [v1.7.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) |
 
 
 
