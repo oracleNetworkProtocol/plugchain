@@ -7,11 +7,15 @@ order: 5
 
 Related contract information:
 ```
-cosmoSwap pool contract address:
+Router:
 bech32: gx1xulgpeuajthdc52eyqhfpsrf8w3thu97lhguxs
 eip55: 0x373E80e79d92eEdC5159202e90c0693bA2Bbf0Be
 
-WPLUG contract address:
+Factory:
+bech32: gx18g7wv6uq6p08mkupr8j2cze8hhhz5twu0ml2cz
+eip55: 0x3A3Ce66B80D05E7dDB8119E4ac0b27Bdee2a2dDC
+
+WPLUG 合约地址：
 bech32: gx1d2wdkrvdu4y8l9k8pv0hs4cyrc03emtda8zepz
 eip55: 0x6A9CdB0d8De5487F96C70b1f7857041e1f1CEd6d
 ```
@@ -33,7 +37,7 @@ Parameter Description:
 | token | address | Token contract address |
 | amountTokenDesired | uint256 | Amount of tokens injected into the pool |
 | amountTokenMin | uint256 | The minimum number of tokens to withdraw from the pool, the minimum value can be 0 |
-| amountPLUGMin | uint256 | The minimum amount of `plugcn` in the pool, the minimum can be filled in 0 |
+| amountPLUGMin | uint256 | The minimum amount of `pc` in the pool, the minimum can be filled in 0 |
 | to | address | LP output address, usually from address |
 | deadline | uint256 | UTC time zone timestamp must be greater than current time |
 

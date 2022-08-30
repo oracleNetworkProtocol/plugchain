@@ -99,7 +99,7 @@ Self-delegation is delegation from a validator to himself. This amount can be in
 
 ### Is there a minimum amount of plugchaind that must be delegated to be an active (=bonded) validator
 
-The minimum mortgage `1plugcn`, on the chain is `1*10^6 uplugcn`, you can create a validator, but whether you can become an active validator depends on whether the number of your mortgage (including delegated) exceeds the 100th validator.
+The minimum mortgage `1pc`, on the chain is `1*10^6 uplugcn`, you can create a validator, but whether you can become an active validator depends on whether the number of your mortgage (including delegated) exceeds the 100th validator.
 
 ### Can a validator run away with their delegators' funds
 

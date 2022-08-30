@@ -7,10 +7,13 @@ order: 5
 
 相关合约信息：
 ```
-cosmoSwap 池子合约地址:
+Router:
 bech32: gx1xulgpeuajthdc52eyqhfpsrf8w3thu97lhguxs
 eip55: 0x373E80e79d92eEdC5159202e90c0693bA2Bbf0Be
 
+Factory:
+bech32: gx18g7wv6uq6p08mkupr8j2cze8hhhz5twu0ml2cz
+eip55: 0x3A3Ce66B80D05E7dDB8119E4ac0b27Bdee2a2dDC
 
 WPLUG 合约地址：
 bech32: gx1d2wdkrvdu4y8l9k8pv0hs4cyrc03emtda8zepz
@@ -34,7 +37,7 @@ addLiquidityPLUG(address token,uint256 amountTokenDesired,uint256 amountTokenMin
 | token | address | 代币合约地址 |
 | amountTokenDesired | uint256 | 注入池子token代币数量 |
 | amountTokenMin | uint256 | 最低提出池子token代币数量，最低可填写0 |
-| amountPLUGMin | uint256 | 最低提出池子`plugcn`数量，最低可填写0 |
+| amountPLUGMin | uint256 | 最低提出池子`pc`数量，最低可填写0 |
 | to | address | LP输出地址，一般为from地址 |
 | deadline | uint256 | UTC时区的时间戳  必须大于当前时间 |
 

@@ -51,3 +51,18 @@ plugchaind start
 
 
 
+## cosmoswap 相关信息
+
+```
+router路由合约:
+bech32: gx14ewpfal7g758zjv0vu9sthcfllagnehh8s28np
+eip55: 0xae5C14F7FE47a871498F670B05dF09fffa89e6F7
+
+fac工厂合约:
+bech32: gx1anezwnqmssja3phgtz6rjmx5utkry3mptxh0qw
+eip55: 0xecf2274c1B8425D886E858b4396cd4E2EC324761
+
+WPLUG 合约地址：
+bech32: gx1nqtlcdxd0yq5ydtqv95qguptpzx9cmpa8ga2r5
+eip55: 0x9817fC34CD7901423560616804702b088C5C6C3D
+```
