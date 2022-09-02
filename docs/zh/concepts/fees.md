@@ -26,10 +26,9 @@ order: 6
 
 PVM 和 Cosmos 状态转换之间的主要区别在于，PVM 对每个 OPCODE 使用 [gas table](https://github.com/ethereum/go-ethereum/blob/master/params/protocol_params.go)，而 Cosmos 使用“GasConfig”，通过设置访问数据库的单位和每字节成本来为每个 CRUD 操作收取 gas。
 
-PVM和EVM的Gas使用计算方式相同， 但PVM `gas`使用 不同于EVM `gas`使用流程，EVM当gas足够支付交易时，多余的gas会返回。PVM手续费gas不会返回。
+PVM和EVM的Gas使用计算方式相同， 但PVM `gas`使用 与 EVM `gas`使用流程相同，当gas足够支付交易时，多余的gas会返回。
 
 * PVM交易首先要满足`fees`大于Cosmos SDK`要求的最低手续费（目前最低手续费为0.0001*200000=20uplugcn）`
 * 交易提供的gas应大于或等于根据[gas table](https://github.com/ethereum/go-ethereum/blob/master/params)交易字节计算的gas总和
 * `gasPrice` 最低为 `7`
-* 公式: `fees = math.Ceil( (gas*gasPrice) / 1000 )` (提案[v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) 升级之后的算法)
-* 例如: `gas=654321`,`gasPrice=7`,`fees=4581uplugcn`
+* 公式: `fees = gas * gasPrice / 1000000` (提案[v1.7.0](https://www.plugchain.network/v2/communityDetail?id=10) 升级之后的算法)

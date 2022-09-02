@@ -45,8 +45,7 @@ Depending on the snapshot height, lock the `plugchaind` binary version to use
 
 | Block height | Database | plugchaind version | Download address | Desc |
 | ---- | --------- | -------- | ----| ----- |
-| 5205489 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5205489-20220802-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5205489-20220802-goleveldb.zip) | （68.864GB）crop data |
-| 5098752 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5098752-archive-20220726-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5098752-archive-20220726-goleveldb.zip) | （153.079GB）Archive data - for use by archive nodes only|
+| 5633285 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5633285-20220830-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5633285-20220830-goleveldb.zip) | （77.709GB）crop data |
 
 1. Download snapshot data
 
