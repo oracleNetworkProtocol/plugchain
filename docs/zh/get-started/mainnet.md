@@ -26,9 +26,9 @@ plugchaind init <moniker> --chain-id=plugchain_520-1
 2. 下载主网公开的 `genesis.json`,`app.toml`,`config.toml`:
 
 ```bash 
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/config.toml
 ```
 3. 启动之前如果想修改服务端口,种子信息，对等点，哨兵模式等，可自行修改文件，然后再同步区块。
 
@@ -43,8 +43,7 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 
 | 块高 | 数据库  | plugchaind 版本 | 下载地址 | 描述 |
 | ---- | --------- | -------- | ----| ----|
-| 5205489 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5205489-20220802-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5205489-20220802-goleveldb.zip) | （68.864GB） 裁剪数据|
-| 5098752 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5098752-archive-20220726-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5098752-archive-20220726-goleveldb.zip) | （153.079GB）存档数据-仅供存档节点使用|
+| 5633285 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5633285-20220830-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5633285-20220830-goleveldb.zip) | （77.709GB） 裁剪数据|
 
 1. 下载快照数据
 
@@ -68,9 +67,10 @@ plugchaind start
 
 | 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
-| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
-| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) |
+| [v1.7](https://www.plugchain.network/v2/communityDetail?id=10)  |  5420512     |  5633000  | [v1.7.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) |
 
 
 

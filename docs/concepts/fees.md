@@ -30,6 +30,5 @@ The gas usage of PVM and EVM is calculated in the same way, but the PVM `gas` us
 
 * PVM transactions must first meet the minimum handling fee required by `fees` greater than Cosmos SDK` (currently the minimum handling fee is 0.0001*200000=20uplugcn)`
 * The gas provided by the transaction should be greater than or equal to the gas sum calculated according to the [gas table](https://github.com/ethereum/go-ethereum/blob/master/params) transaction bytes /protocol_params.go)
-* Minimum gasPrice is `7`
-* EQ: fees = `math.Ceil( (gas*gasPrice) / 1000 )` (Proposal [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) algorithm after upgrade)
-* For example: `gas=654321`,`gasPrice=7`,`fees=4581uplugcn`
+* `gasPrice` 最低为 `7`
+* 公式: `fees = gas * gasPrice / 1000000` (Proposal [v1.7.0](https://www.plugchain.network/v2/communityDetail?id=10) algorithm after upgrade)

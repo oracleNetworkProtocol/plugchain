@@ -28,9 +28,9 @@ plugchaind init <moniker> --chain-id=plugchain_520-1
 2. Download the `genesis.json`, `app.toml`, `config.toml` public on the mainnet:
 
 ```bash
-curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/genesis.json
-curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/app.toml
-curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/v1/config.toml
+curl -o ~/.plugchain/config/genesis.json https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/genesis.json
+curl -o ~/.plugchain/config/app.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/app.toml
+curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracleNetworkProtocol/mainnet/main/version/v1/config.toml
 ```
 3. Before starting, if you want to modify the service port, seed information, peering point, sentinel mode, etc., you can modify the file yourself, and then synchronize the block.
 
@@ -45,8 +45,7 @@ Depending on the snapshot height, lock the `plugchaind` binary version to use
 
 | Block height | Database | plugchaind version | Download address | Desc |
 | ---- | --------- | -------- | ----| ----- |
-| 5205489 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5205489-20220802-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5205489-20220802-goleveldb.zip) | （68.864GB）crop data |
-| 5098752 | goleveldb (default） | [v1.5](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5098752-archive-20220726-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5098752-archive-20220726-goleveldb.zip) | （153.079GB）Archive data - for use by archive nodes only|
+| 5633285 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5633285-20220830-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5633285-20220830-goleveldb.zip) | （77.709GB）crop data |
 
 1. Download snapshot data
 
@@ -70,11 +69,10 @@ Next, your node will perform all chain upgrade procedures. Between each upgrade,
 
 | Proposal | Starting Height | Upgrade Height | plugchaind Version |
 | -------- | ------------ | -------------- | ----- |
-| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7) | 3000000 | | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.1.0) |
-| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8) | 3349542 | 3576853 | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.2.1) |
-| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9) | 3935641 | 4152263 | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/tree/v1.5.0) |
-
-
+| [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
+| [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
+| [v1.5.0](https://www.plugchain.network/v2/communityDetail?id=9)  |  3935641     |  4152263  | [v1.5.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) |
+| [v1.7](https://www.plugchain.network/v2/communityDetail?id=10)  |  5420512     |  5633000  | [v1.7.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) |
 
 
 
