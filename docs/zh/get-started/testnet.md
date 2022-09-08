@@ -51,7 +51,7 @@ plugchaind start
 
 
 
-## cosmoswap 相关信息
+## Gxswap 相关信息
 
 ```
 router路由合约:

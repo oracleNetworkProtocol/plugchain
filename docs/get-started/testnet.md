@@ -50,7 +50,7 @@ plugchaind start
 <http://test.plugchain.network/>
 
 
-## cosmoswap 
+## Gxswap
 
 ```
 Router:
