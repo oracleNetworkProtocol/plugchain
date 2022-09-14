@@ -22,9 +22,9 @@ Tokens `pc`, `dhw1`, `kingdm`, `joey`, etc. belong to PRC-10 protocol tokens
 
 ## PRC-20
 
-PRC-20 is a set of standards for issuing assets by deploying smart contracts on the Plug Chain blockchain through `Pvm`. It is compatible with [ERC-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) is fully compatible.
+PRC-20 is a set of standards for issuing assets by deploying smart contracts on the Plug Chain blockchain through `Pvm`. It is compatible with [ERC-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md).
 
 
 ## PRC-721
 
-PRC-721 is a set of standards for issuing non-fungible asset NFTs on the Plug Chain blockchain by deploying smart contracts through `Pvm`. It is consistent with [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md) is fully compatible.
+PRC-721 is a set of standards for issuing non-fungible asset NFTs on the Plug Chain blockchain by deploying smart contracts through `Pvm`. It is consistent with [ERC-721](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md).
