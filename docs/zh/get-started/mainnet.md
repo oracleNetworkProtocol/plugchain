@@ -65,7 +65,7 @@ plugchaind start
 
 接下来，你的节点将执行所有链升级过程。在每次升级之间，你必须使用特定的版本同步区块。不用担心在升级高度使用旧版本，节点会自动停止。
 
-| 提案 | 起始高度 | 升级高度 | plugchaind 版本 |
+| 提案 | 提案高度 | 升级高度 | plugchaind 版本 |
 | -------- | ------------ | -------------- | ----- |
 | [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
 | [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
