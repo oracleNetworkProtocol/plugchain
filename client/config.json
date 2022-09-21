@@ -43,6 +43,14 @@
         }
       },
       {
+        "url": "./tmp-swagger-gen/cosmos/evidence/v1beta1/query.swagger.json",
+        "operationIds": {
+          "rename": {
+            "Params": "EvidenceParams"
+          }
+        }
+      },
+      {
         "url": "./tmp-swagger-gen/cosmos/gov/v1beta1/query.swagger.json",
         "operationIds": {
           "rename": {
@@ -55,6 +63,14 @@
         "operationIds": {
           "rename": {
             "Params": "MintParams"
+          }
+        }
+      },
+      {
+        "url": "./tmp-swagger-gen/cosmos/slashing/v1beta1/query.swagger.json",
+        "operationIds": {
+          "rename": {
+            "Params": "SlashingParams"
           }
         }
       },
