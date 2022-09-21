@@ -45,7 +45,7 @@ Depending on the snapshot height, lock the `plugchaind` binary version to use
 
 | Block height | Database | plugchaind version | Download address | Desc |
 | ---- | --------- | -------- | ----| ----- |
-| 5633285 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.5.0) | [mainnet-5633285-20220830-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5633285-20220830-goleveldb.zip) | （77.709GB）crop data |
+| 5877006 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) | [mainnet-5877006-20220915-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-5877006-20220915-goleveldb.zip) | （82.833GB）crop data |
 
 1. Download snapshot data
 
@@ -67,7 +67,7 @@ plugchaind start
 
 Next, your node will perform all chain upgrade procedures. Between each upgrade, you must sync blocks with a specific version. Don't worry about using an older version at an upgrade height, the node will stop automatically.
 
-| Proposal | Starting Height | Upgrade Height | plugchaind Version |
+| Proposal | Gov Height | Upgrade Height | plugchaind Version |
 | -------- | ------------ | -------------- | ----- |
 | [v1.0](https://www.plugchain.network/v2/communityDetail?id=7)  |  3000000     |    | [v1.1.0](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.1.0) |
 | [v1.2.1](https://www.plugchain.network/v2/communityDetail?id=8)  |  3349542     |  3576853  | [v1.2.1](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.2.1) |
