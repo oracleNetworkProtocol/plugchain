@@ -11,10 +11,10 @@ Need to [install plugchaind](install.md) first
 :::
 ## public endpoint
 
-- [Cosmos-GRPC:47.108.75.227:9090]()
-- [Cosmos-REST:http://47.108.75.227:1317/](http://47.108.75.227:1317/)
-- [Tendermint-RPC:http://47.108.75.227:26657/](http://47.108.75.227:26657/)
-- [JSON-RPC:http://47.108.75.227:8545/](http://47.108.75.227:8545/)
+- [Cosmos-GRPC:47.243.255.151:9090]()
+- [Cosmos-REST:http://47.243.255.151:1317/](http://47.243.255.151:1317/)
+- [Tendermint-RPC:http://47.243.255.151:26657/](http://47.243.255.151:26657/)
+- [JSON-RPC:http://47.243.255.151:8545/](http://47.243.255.151:8545/)
 
 
 ## run a full node
@@ -50,7 +50,7 @@ plugchaind start
 <http://test.plugchain.network/>
 
 
-## cosmoswap 
+## Gxswap
 
 ```
 Router:
