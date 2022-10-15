@@ -12,8 +12,8 @@ plugchaind可执行程序是运行Plug Chain Hub节点的入口，包括验证�
 
 ### 最低硬件要求
 
-- 2 CPU
-- 内存：4GB
+- 4 CPU
+- 内存：8GB
 - 磁盘：500GB SSD
 - 系统：Ubuntu 16.04 LTS +
 - 带宽：5Mbps
