@@ -26,6 +26,16 @@ Mgoogle/protobuf/any.proto=github.com/cosmos/cosmos-sdk/codec/types:. \
 done
 
 
+# command to generate docs using protoc-gen-doc
+buf protoc \
+-I "proto" \
+-I "third_party/proto" \
+--doc_out=./docs/endpoints \
+--doc_opt=./docs/endpoints/protodoc-markdown.tmpl,proto-docs.md \
+$(find "$(pwd)/proto/prc10"  "$(pwd)/third_party/proto/cosmos/auth" "$(pwd)/third_party/proto/cosmos/bank" "$(pwd)/third_party/proto/cosmos/gov" "$(pwd)/third_party/proto/cosmos/staking"  "$(pwd)/third_party/proto/cosmos/slashing"   "$(pwd)/third_party/proto/cosmos/mint" "$(pwd)/third_party/proto/cosmos/tx" "$(pwd)/third_party/proto/cosmos/crypto" "$(pwd)/third_party/proto/ethermint/crypto" "$(pwd)/third_party/proto/ethermint/types" -maxdepth 5 -name '*.proto')
+# go mod tidy
+
+
 # move proto files to the right places
 cp -r github.com/oracleNetworkProtocol/plugchain/* ./
 rm -rf github.com

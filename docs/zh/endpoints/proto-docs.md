@@ -7,174 +7,217 @@ order: 6
 
 ## Table of Contents
 
-- [nft/nft.proto](#nft/nft.proto)
-    - [Class](#plugchain.nft.Class)
-    - [Collection](#plugchain.nft.Collection)
-    - [CollectionID](#plugchain.nft.CollectionID)
-    - [NFT](#plugchain.nft.NFT)
-    - [Owner](#plugchain.nft.Owner)
+- [cosmos/tx/v1beta1/tx.proto](#cosmos/tx/v1beta1/tx.proto)
+    - [AuthInfo](#cosmos.tx.v1beta1.AuthInfo)
+    - [Fee](#cosmos.tx.v1beta1.Fee)
+    - [ModeInfo](#cosmos.tx.v1beta1.ModeInfo)
+    - [ModeInfo.Multi](#cosmos.tx.v1beta1.ModeInfo.Multi)
+    - [ModeInfo.Single](#cosmos.tx.v1beta1.ModeInfo.Single)
+    - [SignDoc](#cosmos.tx.v1beta1.SignDoc)
+    - [SignerInfo](#cosmos.tx.v1beta1.SignerInfo)
+    - [Tx](#cosmos.tx.v1beta1.Tx)
+    - [TxBody](#cosmos.tx.v1beta1.TxBody)
+    - [TxRaw](#cosmos.tx.v1beta1.TxRaw)
   
-- [nft/genesis.proto](#nft/genesis.proto)
-    - [GenesisState](#plugchain.nft.GenesisState)
+- [cosmos/tx/v1beta1/service.proto](#cosmos/tx/v1beta1/service.proto)
+    - [BroadcastTxRequest](#cosmos.tx.v1beta1.BroadcastTxRequest)
+    - [BroadcastTxResponse](#cosmos.tx.v1beta1.BroadcastTxResponse)
+    - [GetTxRequest](#cosmos.tx.v1beta1.GetTxRequest)
+    - [GetTxResponse](#cosmos.tx.v1beta1.GetTxResponse)
+    - [GetTxsEventRequest](#cosmos.tx.v1beta1.GetTxsEventRequest)
+    - [GetTxsEventResponse](#cosmos.tx.v1beta1.GetTxsEventResponse)
+    - [SimulateRequest](#cosmos.tx.v1beta1.SimulateRequest)
+    - [SimulateResponse](#cosmos.tx.v1beta1.SimulateResponse)
   
-- [nft/query.proto](#nft/query.proto)
-    - [QueryClassRequest](#plugchain.nft.QueryClassRequest)
-    - [QueryClassResponse](#plugchain.nft.QueryClassResponse)
-    - [QueryClassesRequest](#plugchain.nft.QueryClassesRequest)
-    - [QueryClassesResponse](#plugchain.nft.QueryClassesResponse)
-    - [QueryNFTRequest](#plugchain.nft.QueryNFTRequest)
-    - [QueryNFTResponse](#plugchain.nft.QueryNFTResponse)
-    - [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest)
-    - [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse)
-    - [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest)
-    - [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse)
-    - [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest)
-    - [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse)
+    - [BroadcastMode](#cosmos.tx.v1beta1.BroadcastMode)
+    - [OrderBy](#cosmos.tx.v1beta1.OrderBy)
   
-    - [Query](#plugchain.nft.Query)
-  
-- [nft/tx.proto](#nft/tx.proto)
-    - [MsgBurnNFT](#plugchain.nft.MsgBurnNFT)
-    - [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse)
-    - [MsgEditNFT](#plugchain.nft.MsgEditNFT)
-    - [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse)
-    - [MsgIssueClass](#plugchain.nft.MsgIssueClass)
-    - [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse)
-    - [MsgIssueNFT](#plugchain.nft.MsgIssueNFT)
-    - [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse)
-    - [MsgTransferClass](#plugchain.nft.MsgTransferClass)
-    - [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse)
-    - [MsgTransferNFT](#plugchain.nft.MsgTransferNFT)
-    - [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse)
-  
-    - [Msg](#plugchain.nft.Msg)
-  
-- [prc10/prc10.proto](#prc10/prc10.proto)
-    - [Params](#plugchain.prc10.Params)
-    - [Token](#plugchain.prc10.Token)
-  
-- [prc10/genesis.proto](#prc10/genesis.proto)
-    - [GenesisState](#plugchain.prc10.GenesisState)
-  
-- [prc10/query.proto](#prc10/query.proto)
-    - [QueryFeesRequest](#plugchain.prc10.QueryFeesRequest)
-    - [QueryFeesResponse](#plugchain.prc10.QueryFeesResponse)
-    - [QueryParamsRequest](#plugchain.prc10.QueryParamsRequest)
-    - [QueryParamsResponse](#plugchain.prc10.QueryParamsResponse)
-    - [QueryTokenRequest](#plugchain.prc10.QueryTokenRequest)
-    - [QueryTokenResponse](#plugchain.prc10.QueryTokenResponse)
-    - [QueryTokensRequest](#plugchain.prc10.QueryTokensRequest)
-    - [QueryTokensResponse](#plugchain.prc10.QueryTokensResponse)
-  
-    - [Query](#plugchain.prc10.Query)
-  
-- [prc10/tx.proto](#prc10/tx.proto)
-    - [MsgBurnToken](#plugchain.prc10.MsgBurnToken)
-    - [MsgBurnTokenResponse](#plugchain.prc10.MsgBurnTokenResponse)
-    - [MsgEditToken](#plugchain.prc10.MsgEditToken)
-    - [MsgEditTokenResponse](#plugchain.prc10.MsgEditTokenResponse)
-    - [MsgIssueToken](#plugchain.prc10.MsgIssueToken)
-    - [MsgIssueTokenResponse](#plugchain.prc10.MsgIssueTokenResponse)
-    - [MsgMintToken](#plugchain.prc10.MsgMintToken)
-    - [MsgMintTokenResponse](#plugchain.prc10.MsgMintTokenResponse)
-    - [MsgTransferOwnerToken](#plugchain.prc10.MsgTransferOwnerToken)
-    - [MsgTransferOwnerTokenResponse](#plugchain.prc10.MsgTransferOwnerTokenResponse)
-  
-    - [Msg](#plugchain.prc10.Msg)
+    - [Service](#cosmos.tx.v1beta1.Service)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="nft/nft.proto"></a>
+<a name="cosmos/tx/v1beta1/tx.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## nft/nft.proto
+## cosmos/tx/v1beta1/tx.proto
 
 
 
-<a name="plugchain.nft.Class"></a>
+<a name="cosmos.tx.v1beta1.AuthInfo"></a>
 
-### Class
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `schema` | [string](#string) |  |  |
-| `symbol` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `mint_restricted` | [bool](#bool) |  |  |
-| `edit_restricted` | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.Collection"></a>
-
-### Collection
-
+### AuthInfo
+AuthInfo describes the fee and signer modes that are used to sign a
+transaction.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `class` | [Class](#plugchain.nft.Class) |  |  |
-| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
+| `signer_infos` | [SignerInfo](#cosmos.tx.v1beta1.SignerInfo) | repeated | signer_infos defines the signing modes for the required signers. The number and order of elements must match the required signers from TxBody's messages. The first element is the primary signer and the one which pays the fee. |
+| `fee` | [Fee](#cosmos.tx.v1beta1.Fee) |  | Fee is the fee and gas limit for the transaction. The first signer is the primary signer and the one which pays the fee. The fee can be calculated based on the cost of evaluating the body and doing signature verification of the signers. This can be estimated via simulation. |
 
 
 
 
 
 
-<a name="plugchain.nft.CollectionID"></a>
+<a name="cosmos.tx.v1beta1.Fee"></a>
 
-### CollectionID
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `Class_id` | [string](#string) |  |  |
-| `nft_ids` | [string](#string) | repeated |  |
-
-
-
-
-
-
-<a name="plugchain.nft.NFT"></a>
-
-### NFT
-
+### Fee
+Fee includes the amount of coins paid in fees and the maximum
+gas to be used by the transaction. The ratio yields an effective "gasprice",
+which must be above some miminum to be accepted into the mempool.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `uri` | [string](#string) |  |  |
-| `data` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated | amount is the amount of coins to be paid as a fee |
+| `gas_limit` | [uint64](#uint64) |  | gas_limit is the maximum gas that can be used in transaction processing before an out of gas error occurs |
+| `payer` | [string](#string) |  | if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees. the payer must be a tx signer (and thus have signed this field in AuthInfo). setting this field does *not* change the ordering of required signers for the transaction. |
+| `granter` | [string](#string) |  | if set, the fee payer (either the first signer or the value of the payer field) requests that a fee grant be used to pay fees instead of the fee payer's own balance. If an appropriate fee grant does not exist or the chain does not support fee grants, this will fail |
 
 
 
 
 
 
-<a name="plugchain.nft.Owner"></a>
+<a name="cosmos.tx.v1beta1.ModeInfo"></a>
 
-### Owner
-
+### ModeInfo
+ModeInfo describes the signing mode of a single or nested multisig signer.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `address` | [string](#string) |  |  |
-| `collection_ids` | [CollectionID](#plugchain.nft.CollectionID) | repeated |  |
+| `single` | [ModeInfo.Single](#cosmos.tx.v1beta1.ModeInfo.Single) |  | single represents a single signer |
+| `multi` | [ModeInfo.Multi](#cosmos.tx.v1beta1.ModeInfo.Multi) |  | multi represents a nested multisig signer |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.ModeInfo.Multi"></a>
+
+### ModeInfo.Multi
+Multi is the mode info for a multisig public key
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `bitarray` | [cosmos.crypto.multisig.v1beta1.CompactBitArray](#cosmos.crypto.multisig.v1beta1.CompactBitArray) |  | bitarray specifies which keys within the multisig are signing |
+| `mode_infos` | [ModeInfo](#cosmos.tx.v1beta1.ModeInfo) | repeated | mode_infos is the corresponding modes of the signers of the multisig which could include nested multisig public keys |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.ModeInfo.Single"></a>
+
+### ModeInfo.Single
+Single is the mode info for a single signer. It is structured as a message
+to allow for additional fields such as locale for SIGN_MODE_TEXTUAL in the
+future
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `mode` | [cosmos.tx.signing.v1beta1.SignMode](#cosmos.tx.signing.v1beta1.SignMode) |  | mode is the signing mode of the single signer |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.SignDoc"></a>
+
+### SignDoc
+SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `body_bytes` | [bytes](#bytes) |  | body_bytes is protobuf serialization of a TxBody that matches the representation in TxRaw. |
+| `auth_info_bytes` | [bytes](#bytes) |  | auth_info_bytes is a protobuf serialization of an AuthInfo that matches the representation in TxRaw. |
+| `chain_id` | [string](#string) |  | chain_id is the unique identifier of the chain this transaction targets. It prevents signed transactions from being used on another chain by an attacker |
+| `account_number` | [uint64](#uint64) |  | account_number is the account number of the account in state |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.SignerInfo"></a>
+
+### SignerInfo
+SignerInfo describes the public key and signing mode of a single top-level
+signer.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `public_key` | [google.protobuf.Any](#google.protobuf.Any) |  | public_key is the public key of the signer. It is optional for accounts that already exist in state. If unset, the verifier can use the required \ signer address for this position and lookup the public key. |
+| `mode_info` | [ModeInfo](#cosmos.tx.v1beta1.ModeInfo) |  | mode_info describes the signing mode of the signer and is a nested structure to support nested multisig pubkey's |
+| `sequence` | [uint64](#uint64) |  | sequence is the sequence of the account, which describes the number of committed transactions signed by a given address. It is used to prevent replay attacks. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.Tx"></a>
+
+### Tx
+Tx is the standard type used for broadcasting transactions.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `body` | [TxBody](#cosmos.tx.v1beta1.TxBody) |  | body is the processable content of the transaction |
+| `auth_info` | [AuthInfo](#cosmos.tx.v1beta1.AuthInfo) |  | auth_info is the authorization related content of the transaction, specifically signers, signer modes and fee |
+| `signatures` | [bytes](#bytes) | repeated | signatures is a list of signatures that matches the length and order of AuthInfo's signer_infos to allow connecting signature meta information like public key and signing mode by position. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.TxBody"></a>
+
+### TxBody
+TxBody is the body of a transaction that all signers sign over.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `messages` | [google.protobuf.Any](#google.protobuf.Any) | repeated | messages is a list of messages to be executed. The required signers of those messages define the number and order of elements in AuthInfo's signer_infos and Tx's signatures. Each required signer address is added to the list only the first time it occurs. By convention, the first required signer (usually from the first message) is referred to as the primary signer and pays the fee for the whole transaction. |
+| `memo` | [string](#string) |  | memo is any arbitrary note/comment to be added to the transaction. WARNING: in clients, any publicly exposed text should not be called memo, but should be called `note` instead (see https://github.com/cosmos/cosmos-sdk/issues/9122). |
+| `timeout_height` | [uint64](#uint64) |  | timeout is the block height after which this transaction will not be processed by the chain |
+| `extension_options` | [google.protobuf.Any](#google.protobuf.Any) | repeated | extension_options are arbitrary options that can be added by chains when the default options are not sufficient. If any of these are present and can't be handled, the transaction will be rejected |
+| `non_critical_extension_options` | [google.protobuf.Any](#google.protobuf.Any) | repeated | extension_options are arbitrary options that can be added by chains when the default options are not sufficient. If any of these are present and can't be handled, they will be ignored |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.TxRaw"></a>
+
+### TxRaw
+TxRaw is a variant of Tx that pins the signer's exact binary representation
+of body and auth_info. This is used for signing, broadcasting and
+verification. The binary `serialize(tx: TxRaw)` is stored in Tendermint and
+the hash `sha256(serialize(tx: TxRaw))` becomes the "txhash", commonly used
+as the transaction ID.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `body_bytes` | [bytes](#bytes) |  | body_bytes is a protobuf serialization of a TxBody that matches the representation in SignDoc. |
+| `auth_info_bytes` | [bytes](#bytes) |  | auth_info_bytes is a protobuf serialization of an AuthInfo that matches the representation in SignDoc. |
+| `signatures` | [bytes](#bytes) | repeated | signatures is a list of signatures that matches the length and order of AuthInfo's signer_infos to allow connecting signature meta information like public key and signing mode by position. |
 
 
 
@@ -190,22 +233,144 @@ order: 6
 
 
 
-<a name="nft/genesis.proto"></a>
+<a name="cosmos/tx/v1beta1/service.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## nft/genesis.proto
+## cosmos/tx/v1beta1/service.proto
 
 
 
-<a name="plugchain.nft.GenesisState"></a>
+<a name="cosmos.tx.v1beta1.BroadcastTxRequest"></a>
 
-### GenesisState
-GenesisState defines the nft module's genesis state.
+### BroadcastTxRequest
+BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
+RPC method.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `collections` | [Collection](#plugchain.nft.Collection) | repeated |  |
+| `tx_bytes` | [bytes](#bytes) |  | tx_bytes is the raw transaction. |
+| `mode` | [BroadcastMode](#cosmos.tx.v1beta1.BroadcastMode) |  |  |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.BroadcastTxResponse"></a>
+
+### BroadcastTxResponse
+BroadcastTxResponse is the response type for the
+Service.BroadcastTx method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `tx_response` | [cosmos.base.abci.v1beta1.TxResponse](#cosmos.base.abci.v1beta1.TxResponse) |  | tx_response is the queried TxResponses. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.GetTxRequest"></a>
+
+### GetTxRequest
+GetTxRequest is the request type for the Service.GetTx
+RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `hash` | [string](#string) |  | hash is the tx hash to query, encoded as a hex string. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.GetTxResponse"></a>
+
+### GetTxResponse
+GetTxResponse is the response type for the Service.GetTx method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `tx` | [Tx](#cosmos.tx.v1beta1.Tx) |  | tx is the queried transaction. |
+| `tx_response` | [cosmos.base.abci.v1beta1.TxResponse](#cosmos.base.abci.v1beta1.TxResponse) |  | tx_response is the queried TxResponses. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.GetTxsEventRequest"></a>
+
+### GetTxsEventRequest
+GetTxsEventRequest is the request type for the Service.TxsByEvents
+RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `events` | [string](#string) | repeated | events is the list of transaction event type. |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  | pagination defines an pagination for the request. |
+| `order_by` | [OrderBy](#cosmos.tx.v1beta1.OrderBy) |  |  |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.GetTxsEventResponse"></a>
+
+### GetTxsEventResponse
+GetTxsEventResponse is the response type for the Service.TxsByEvents
+RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `txs` | [Tx](#cosmos.tx.v1beta1.Tx) | repeated | txs is the list of queried transactions. |
+| `tx_responses` | [cosmos.base.abci.v1beta1.TxResponse](#cosmos.base.abci.v1beta1.TxResponse) | repeated | tx_responses is the list of queried TxResponses. |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  | pagination defines an pagination for the response. |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.SimulateRequest"></a>
+
+### SimulateRequest
+SimulateRequest is the request type for the Service.Simulate
+RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `tx` | [Tx](#cosmos.tx.v1beta1.Tx) |  | **Deprecated.** tx is the transaction to simulate. Deprecated. Send raw tx bytes instead. |
+| `tx_bytes` | [bytes](#bytes) |  | tx_bytes is the raw transaction.
+
+Since: cosmos-sdk 0.43 |
+
+
+
+
+
+
+<a name="cosmos.tx.v1beta1.SimulateResponse"></a>
+
+### SimulateResponse
+SimulateResponse is the response type for the
+Service.SimulateRPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `gas_info` | [cosmos.base.abci.v1beta1.GasInfo](#cosmos.base.abci.v1beta1.GasInfo) |  | gas_info is the information about gas used in the simulation. |
+| `result` | [cosmos.base.abci.v1beta1.Result](#cosmos.base.abci.v1beta1.Result) |  | result is the result of the simulation. |
 
 
 
@@ -213,840 +378,49 @@ GenesisState defines the nft module's genesis state.
 
  <!-- end messages -->
 
- <!-- end enums -->
 
- <!-- end HasExtensions -->
+<a name="cosmos.tx.v1beta1.BroadcastMode"></a>
 
- <!-- end services -->
+### BroadcastMode
+BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method.
 
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| BROADCAST_MODE_UNSPECIFIED | 0 | zero-value for mode ordering |
+| BROADCAST_MODE_BLOCK | 1 | BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for the tx to be committed in a block. |
+| BROADCAST_MODE_SYNC | 2 | BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for a CheckTx execution response only. |
+| BROADCAST_MODE_ASYNC | 3 | BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns immediately. |
 
 
-<a name="nft/query.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
 
-## nft/query.proto
+<a name="cosmos.tx.v1beta1.OrderBy"></a>
 
+### OrderBy
+OrderBy defines the sorting order
 
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ORDER_BY_UNSPECIFIED | 0 | ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. |
+| ORDER_BY_ASC | 1 | ORDER_BY_ASC defines ascending order |
+| ORDER_BY_DESC | 2 | ORDER_BY_DESC defines descending order |
 
-<a name="plugchain.nft.QueryClassRequest"></a>
-
-### QueryClassRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryClassResponse"></a>
-
-### QueryClassResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class` | [Class](#plugchain.nft.Class) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryClassesRequest"></a>
-
-### QueryClassesRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryClassesResponse"></a>
-
-### QueryClassesResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `classes` | [Class](#plugchain.nft.Class) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryNFTRequest"></a>
-
-### QueryNFTRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-| `nft_id` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryNFTResponse"></a>
-
-### QueryNFTResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `nft` | [NFT](#plugchain.nft.NFT) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryNFTsRequest"></a>
-
-### QueryNFTsRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryNFTsResponse"></a>
-
-### QueryNFTsResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `nfts` | [NFT](#plugchain.nft.NFT) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryOwnerRequest"></a>
-
-### QueryOwnerRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-| `address` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QueryOwnerResponse"></a>
-
-### QueryOwnerResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `owner` | [Owner](#plugchain.nft.Owner) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QuerySupplyRequest"></a>
-
-### QuerySupplyRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `class_id` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.QuerySupplyResponse"></a>
-
-### QuerySupplyResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `amount` | [uint64](#uint64) |  |  |
-
-
-
-
-
- <!-- end messages -->
 
  <!-- end enums -->
 
  <!-- end HasExtensions -->
 
 
-<a name="plugchain.nft.Query"></a>
+<a name="cosmos.tx.v1beta1.Service"></a>
 
-### Query
-Query defines the gRPC querier service.
+### Service
+Service defines a gRPC service for interacting with transactions.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Class` | [QueryClassRequest](#plugchain.nft.QueryClassRequest) | [QueryClassResponse](#plugchain.nft.QueryClassResponse) |  | GET|/nft/classes/{class_id}|
-| `Classes` | [QueryClassesRequest](#plugchain.nft.QueryClassesRequest) | [QueryClassesResponse](#plugchain.nft.QueryClassesResponse) |  | GET|/nft/classes|
-| `NFT` | [QueryNFTRequest](#plugchain.nft.QueryNFTRequest) | [QueryNFTResponse](#plugchain.nft.QueryNFTResponse) |  | GET|/nft/nfts/{class_id}/{nft_id}|
-| `NFTs` | [QueryNFTsRequest](#plugchain.nft.QueryNFTsRequest) | [QueryNFTsResponse](#plugchain.nft.QueryNFTsResponse) |  | GET|/nft/nfts|
-| `Supply` | [QuerySupplyRequest](#plugchain.nft.QuerySupplyRequest) | [QuerySupplyResponse](#plugchain.nft.QuerySupplyResponse) |  | GET|/nft/supply/{class_id}|
-| `Owner` | [QueryOwnerRequest](#plugchain.nft.QueryOwnerRequest) | [QueryOwnerResponse](#plugchain.nft.QueryOwnerResponse) |  | GET|/nft/{address}/{class_id}|
-
- <!-- end services -->
-
-
-
-<a name="nft/tx.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## nft/tx.proto
-
-
-
-<a name="plugchain.nft.MsgBurnNFT"></a>
-
-### MsgBurnNFT
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `class_id` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgBurnNFTResponse"></a>
-
-### MsgBurnNFTResponse
-
-
-
-
-
-
-
-<a name="plugchain.nft.MsgEditNFT"></a>
-
-### MsgEditNFT
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `class_id` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `uri` | [string](#string) |  |  |
-| `data` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgEditNFTResponse"></a>
-
-### MsgEditNFTResponse
-
-
-
-
-
-
-
-<a name="plugchain.nft.MsgIssueClass"></a>
-
-### MsgIssueClass
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `schema` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `symbol` | [string](#string) |  |  |
-| `mint_restricted` | [bool](#bool) |  |  |
-| `edit_restricted` | [bool](#bool) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgIssueClassResponse"></a>
-
-### MsgIssueClassResponse
-
-
-
-
-
-
-
-<a name="plugchain.nft.MsgIssueNFT"></a>
-
-### MsgIssueNFT
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `class_id` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `uri` | [string](#string) |  |  |
-| `data` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `recipient` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgIssueNFTResponse"></a>
-
-### MsgIssueNFTResponse
-
-
-
-
-
-
-
-<a name="plugchain.nft.MsgTransferClass"></a>
-
-### MsgTransferClass
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `recipient` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgTransferClassResponse"></a>
-
-### MsgTransferClassResponse
-
-
-
-
-
-
-
-<a name="plugchain.nft.MsgTransferNFT"></a>
-
-### MsgTransferNFT
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `id` | [string](#string) |  |  |
-| `class_id` | [string](#string) |  |  |
-| `recipient` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.nft.MsgTransferNFTResponse"></a>
-
-### MsgTransferNFTResponse
-
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="plugchain.nft.Msg"></a>
-
-### Msg
-Msg defines the Msg service.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `IssueClass` | [MsgIssueClass](#plugchain.nft.MsgIssueClass) | [MsgIssueClassResponse](#plugchain.nft.MsgIssueClassResponse) | IssueClass defines a method for issue a class | |
-| `IssueNFT` | [MsgIssueNFT](#plugchain.nft.MsgIssueNFT) | [MsgIssueNFTResponse](#plugchain.nft.MsgIssueNFTResponse) | IssueNFT defines a method for Issue a new nft | |
-| `EditNFT` | [MsgEditNFT](#plugchain.nft.MsgEditNFT) | [MsgEditNFTResponse](#plugchain.nft.MsgEditNFTResponse) | EditNFT defines a method for edit a nft | |
-| `BurnNFT` | [MsgBurnNFT](#plugchain.nft.MsgBurnNFT) | [MsgBurnNFTResponse](#plugchain.nft.MsgBurnNFTResponse) | BurnNFT define a method for burning a nft | |
-| `TransferNFT` | [MsgTransferNFT](#plugchain.nft.MsgTransferNFT) | [MsgTransferNFTResponse](#plugchain.nft.MsgTransferNFTResponse) | TransferNFT define a method for transferring a nft | |
-| `TransferClass` | [MsgTransferClass](#plugchain.nft.MsgTransferClass) | [MsgTransferClassResponse](#plugchain.nft.MsgTransferClassResponse) | TransferClass define a method for transferring a class | |
-
- <!-- end services -->
-
-
-
-<a name="prc10/prc10.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## prc10/prc10.proto
-
-
-
-<a name="plugchain.prc10.Params"></a>
-
-### Params
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `issue_token_base_fee` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
-| `operate_token_fee_ratio` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.Token"></a>
-
-### Token
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `scale` | [uint32](#uint32) |  |  |
-| `min_unit` | [string](#string) |  |  |
-| `initial_supply` | [uint64](#uint64) |  |  |
-| `max_supply` | [uint64](#uint64) |  |  |
-| `mintable` | [bool](#bool) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="prc10/genesis.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## prc10/genesis.proto
-
-
-
-<a name="plugchain.prc10.GenesisState"></a>
-
-### GenesisState
-GenesisState defines the token module's genesis state.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#plugchain.prc10.Params) |  |  |
-| `tokens` | [Token](#plugchain.prc10.Token) | repeated |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="prc10/query.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## prc10/query.proto
-
-
-
-<a name="plugchain.prc10.QueryFeesRequest"></a>
-
-### QueryFeesRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryFeesResponse"></a>
-
-### QueryFeesResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `exist` | [bool](#bool) |  |  |
-| `issue_fee` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
-| `operate_fee` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryParamsRequest"></a>
-
-### QueryParamsRequest
-
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryParamsResponse"></a>
-
-### QueryParamsResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#plugchain.prc10.Params) |  |  |
-| `res` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryTokenRequest"></a>
-
-### QueryTokenRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryTokenResponse"></a>
-
-### QueryTokenResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `Token` | [google.protobuf.Any](#google.protobuf.Any) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryTokensRequest"></a>
-
-### QueryTokensRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.QueryTokensResponse"></a>
-
-### QueryTokensResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `Tokens` | [google.protobuf.Any](#google.protobuf.Any) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="plugchain.prc10.Query"></a>
-
-### Query
-Query defines the gRPC querier service.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Token` | [QueryTokenRequest](#plugchain.prc10.QueryTokenRequest) | [QueryTokenResponse](#plugchain.prc10.QueryTokenResponse) |  | GET|/token/tokens/{denom}|
-| `Fees` | [QueryFeesRequest](#plugchain.prc10.QueryFeesRequest) | [QueryFeesResponse](#plugchain.prc10.QueryFeesResponse) |  | GET|/token/fee/{symbol}|
-| `Params` | [QueryParamsRequest](#plugchain.prc10.QueryParamsRequest) | [QueryParamsResponse](#plugchain.prc10.QueryParamsResponse) |  | GET|/token/params|
-| `Tokens` | [QueryTokensRequest](#plugchain.prc10.QueryTokensRequest) | [QueryTokensResponse](#plugchain.prc10.QueryTokensResponse) |  | GET|/token/tokens|
-
- <!-- end services -->
-
-
-
-<a name="prc10/tx.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## prc10/tx.proto
-
-
-
-<a name="plugchain.prc10.MsgBurnToken"></a>
-
-### MsgBurnToken
-MsgBurnToken defines an SDK message for burning some tokens
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `amount` | [uint64](#uint64) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgBurnTokenResponse"></a>
-
-### MsgBurnTokenResponse
-
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgEditToken"></a>
-
-### MsgEditToken
-MsgEditToken defines an SDK message for editing a new token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `max_supply` | [uint64](#uint64) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgEditTokenResponse"></a>
-
-### MsgEditTokenResponse
-
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgIssueToken"></a>
-
-### MsgIssueToken
-MsgIssueToken defines an SDK message for issuing a new token
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `name` | [string](#string) |  |  |
-| `scale` | [uint32](#uint32) |  |  |
-| `min_unit` | [string](#string) |  |  |
-| `initial_supply` | [uint64](#uint64) |  |  |
-| `max_supply` | [uint64](#uint64) |  |  |
-| `mintable` | [bool](#bool) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgIssueTokenResponse"></a>
-
-### MsgIssueTokenResponse
-
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgMintToken"></a>
-
-### MsgMintToken
-MsgMintTokenResponse defines the Msg/MintToken response type
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `to` | [string](#string) |  |  |
-| `amount` | [uint64](#uint64) |  |  |
-| `owner` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgMintTokenResponse"></a>
-
-### MsgMintTokenResponse
-
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgTransferOwnerToken"></a>
-
-### MsgTransferOwnerToken
-MsgTransferOwnerToken defines an SDK message for transferring the token owner
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `symbol` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `to` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="plugchain.prc10.MsgTransferOwnerTokenResponse"></a>
-
-### MsgTransferOwnerTokenResponse
-
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="plugchain.prc10.Msg"></a>
-
-### Msg
-Msg defines the Msg service.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `IssueToken` | [MsgIssueToken](#plugchain.prc10.MsgIssueToken) | [MsgIssueTokenResponse](#plugchain.prc10.MsgIssueTokenResponse) |  | |
-| `MintToken` | [MsgMintToken](#plugchain.prc10.MsgMintToken) | [MsgMintTokenResponse](#plugchain.prc10.MsgMintTokenResponse) |  | |
-| `EditToken` | [MsgEditToken](#plugchain.prc10.MsgEditToken) | [MsgEditTokenResponse](#plugchain.prc10.MsgEditTokenResponse) |  | |
-| `BurnToken` | [MsgBurnToken](#plugchain.prc10.MsgBurnToken) | [MsgBurnTokenResponse](#plugchain.prc10.MsgBurnTokenResponse) |  | |
-| `TransferOwnerToken` | [MsgTransferOwnerToken](#plugchain.prc10.MsgTransferOwnerToken) | [MsgTransferOwnerTokenResponse](#plugchain.prc10.MsgTransferOwnerTokenResponse) |  | |
+| `Simulate` | [SimulateRequest](#cosmos.tx.v1beta1.SimulateRequest) | [SimulateResponse](#cosmos.tx.v1beta1.SimulateResponse) | Simulate simulates executing a transaction for estimating gas usage. | POST|/cosmos/tx/v1beta1/simulate|
+| `GetTx` | [GetTxRequest](#cosmos.tx.v1beta1.GetTxRequest) | [GetTxResponse](#cosmos.tx.v1beta1.GetTxResponse) | GetTx fetches a tx by hash. | GET|/cosmos/tx/v1beta1/txs/{hash}|
+| `BroadcastTx` | [BroadcastTxRequest](#cosmos.tx.v1beta1.BroadcastTxRequest) | [BroadcastTxResponse](#cosmos.tx.v1beta1.BroadcastTxResponse) | BroadcastTx broadcast transaction. | POST|/cosmos/tx/v1beta1/txs|
+| `GetTxsEvent` | [GetTxsEventRequest](#cosmos.tx.v1beta1.GetTxsEventRequest) | [GetTxsEventResponse](#cosmos.tx.v1beta1.GetTxsEventResponse) | GetTxsEvent fetches txs by event. | GET|/cosmos/tx/v1beta1/txs|
 
  <!-- end services -->
 
