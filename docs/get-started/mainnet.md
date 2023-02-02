@@ -48,8 +48,11 @@ Depending on the snapshot height, lock the `plugchaind` binary version to use
 | 8021377 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) | [mainnet-8021377-20230201-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-8021377-20230201-goleveldb.zip) | （130.654GB）crop data |
 
 1. Download snapshot data
+```bash
+wget -b -c https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-8021377-20230201-goleveldb.zip
+```
 
-2. Data override `~/.plugchain/data/` directory
+2.Unzip Data override `~/.plugchain/data/` directory
 
 3. Use the corresponding plugchaind version to start `plugchaind start`
 
