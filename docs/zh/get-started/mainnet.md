@@ -47,7 +47,6 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 
 1. 下载快照数据
 ```bash
-
 wget -b -c https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-8021377-20230201-goleveldb.zip
 ```
 
