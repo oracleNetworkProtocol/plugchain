@@ -11,7 +11,7 @@ order: 6
 - 通过导入或者创建PRC-20账户,并且保证PRC-20账户中有足够的 **余额** ,用于保证发行合约的手续费
 ![create-account](../pics/prc20-create-account-chrome.png)
 ### 3. 准备ERC-20的合约代码文件
-- [代码示例](https://github.com/oracleNetworkProtocol/PRC20-Contract-Template/blob/main/pvm20.sol)
+- [代码示例](https://github.com/oracleNetworkProtocol/PVM-Contract-Template/blob/main/prc20/zh_CN/pvm20.sol)
 ![prc-20](../pics/prc20-token-template.png)
 - 在代码的最下方可修改你的 **代币名称,代币符号,精度**
     ```sol

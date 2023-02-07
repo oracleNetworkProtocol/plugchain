@@ -11,7 +11,7 @@ order: 6
 - By importing or creating an account, and ensuring that there is enough** balance** in the account, it is used to guarantee the handling fee for issuing the contract
 ![create-account](../pics/prc20-create-account-chrome.png)
 ### 3. Prepare ERC20 contract code file
-- [code example](https://github.com/oracleNetworkProtocol/PRC20-Contract-Template/blob/main/pvm20.sol)
+- [code example](https://github.com/oracleNetworkProtocol/PVM-Contract-Template/blob/main/prc20/zh_CN/pvm20.sol)
 ![prc-20](../pics/prc20-token-template.png)
 - You can modify your** Token Name, Token Symbol, Precision** at the bottom of the code
     ```sol
