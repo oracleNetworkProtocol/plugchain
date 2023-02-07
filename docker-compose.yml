@@ -19,7 +19,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: './scripts/setup-docker.sh'
+    # command: './scripts/setup-docker.sh'
     tty: true
 
   plugchain_node1:
@@ -82,7 +82,7 @@ services:
     networks:
       localnet:
         ipv4_address: 192.17.10.5
-    # command: './scripts/setup-docker.sh'
+    command: './scripts/setup-docker.sh'
     tty: true
 
 networks:
