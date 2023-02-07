@@ -4,7 +4,7 @@ order: 4
 
 # gRPC 
 
-Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.42）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
+Plug Chain Hub v1.0.0（依赖Cosmos-SDK v0.45）引入了 Protobuf 作为主要的[编码](https://github.com/cosmos/cosmos-sdk/blob/master/docs/core/encoding.md)库，这带来了可插入 SDK 的各种基于 Protobuf 的工具。一种这样的工具是 [gRPC](https://grpc.io)，这是一种现代的开源高性能 RPC 框架，具有多语言客户端支持。
 
 ## gRPC 服务端口、激活方式和配置
 
@@ -39,22 +39,36 @@ Plug Chain Hub 附带的所有可用 gRPC 端点的概述见[Protobuf 文档](./
 
 在生成交易之前，需要创建一个新的 `TxBuilder` 实例。 由于 SDK 支持 Amino 和 Protobuf 交易，因此第一步将是确定要使用哪种编码方案。无论您使用的是 Amino 还是 Protobuf，所有后续步骤均保持不变，因为 `TxBuilder` 抽象了编码机制。在以下代码段中，我们将使用 Protobuf。
 
+### gomod 中添加
+```
+	require (
+		github.com/cosmos/cosmos-sdk v0.45.9
+		github.com/oracleNetworkProtocol/plugchain v1.7.2	
+	)
+
+	replace (
+	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
+	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+	google.golang.org/grpc => google.golang.org/grpc v1.33.2
+)
+```
+
 ```go
 import (
-    "github.com/oracleNetworkProtocol/plugchain/app"
     sdk "github.com/cosmos/cosmos-sdk/types"
     plugchainapp "github.com/oracleNetworkProtocol/plugchain/app"
+	ethencoding "github.com/evmos/ethermint/encoding"
 )
 
 func sendTx() error {
-    // 选择您的编解码器：Amino 或 Protobuf
-    encCfg := ethencoding.MakeConfig(plugchainapp.ModuleBasics)
+	// 选择您的编解码器：Amino 或 Protobuf
+	encCfg := ethencoding.MakeConfig(plugchainapp.ModuleBasics)
 
 	config := sdk.GetConfig()
 	plugchainapp.SetBech32Prefixes(config)
 
-    // 创建一个新的 TxBuilder。
-    txBuilder := encCfg.TxConfig.NewTxBuilder()
+	// 创建一个新的 TxBuilder。
+	txBuilder := encCfg.TxConfig.NewTxBuilder()
 
     // --剪断--
 }
@@ -78,11 +92,9 @@ TxBuilder interface {
 
 ```
 
-
-
 根据自己操作的不同功能，需要准备不同的数据，以下以转账为例，需要准备：
 
-* 发送方地址 `gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed`  节点上name是 `walletName`
+* 发送方地址 `gx14z0773hnqq0qvwpr95stvn5tmtgvp8033e7aky`  节点上name是 `walletName`
 * 发起者地址的私钥  可以通过 `plugchaind keys export walletName --unarmored-hex --unsafe` 得到
 * 发起者地址的 `accountNumber` 和 `Sequence` 可以通过查询 `节点ip:1317/cosmos/auth/v1beta1/accounts/{address}`
 * 接收者地址
@@ -95,19 +107,18 @@ import (
     "github.com/evmos/ethermint/crypto/ethsecp256k1"   
 )
     chainID := "plugchain_520-1"
-    addr1, _ := sdk.AccAddressFromBech32("gx1s65azh0yj7n8yn4u0q449wt50eqr4qtyjzmhed")
+    addr1, _ := sdk.AccAddressFromBech32("gx14z0773hnqq0qvwpr95stvn5tmtgvp8033e7aky")
 	addr2, _ := sdk.AccAddressFromBech32("gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds")
-	addr3, _ := sdk.AccAddressFromBech32("gx1pq9yjvqwpmd5r6gpjs8cathhcljmymvp66sjjp")
     //发起者私钥
 	priv := "55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0"
 	privB, _ := hex.DecodeString(priv)
 	// 如下查询地址的信息,使用account_number,sequence,需要根据 `@type` 类型 来锁定私钥类型，EthAcount 类型为`eth_secp256k1`,BaseAccount为`secp256k1`
 	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
-	accountSeq := uint64(0)
-	acountNumber := uint64(8)
+	accountSeq := uint64(2)
+	acountNumber := uint64(73991)
 	//EthAccount 类型， 使用包 "github.com/evmos/ethermint/crypto/ethsecp256k1"
 	//BaseAccount 类型 ，使用包 "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-	priv1 := ethsecp256k1.PrivKey{Key: priva}
+	priv1 := ethsecp256k1.PrivKey{Key: privB}
 ```
 
 
@@ -121,18 +132,17 @@ func sendTx() error {
 
     //发送一笔转账:
     //地址addr1 到 addr2
-    //地址addr1 到 addr3
     //交易需要 addr1 签名
-    msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 5000000)))
-    msg2 := banktypes.NewMsgSend(addr1, addr3, types.NewCoins(types.NewInt64Coin("uplugcn", 4000000)))
-    err := txBuilder.SetMsgs(msg1, msg2)
-    if err != nil {
-        return err
-    }
+	msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 1000000)))
 
-    txBuilder.SetGasLimit(200000)
-    txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
-    txBuilder.SetMemo("give your my friend to LiLei")
+	err := txBuilder.SetMsgs(msg1)
+	if err != nil {
+		return err
+	}
+	txBuilder.SetGasLimit(200000)
+	txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
+	txBuilder.SetMemo("give your my friend to LiLei")
+
     // txBuilder.SetTimeoutHeight(...)
 }
 ```
@@ -172,7 +182,7 @@ func sendTx() error {
 
 	err = txBuilder.SetSignatures(sign)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 
@@ -188,11 +198,11 @@ func sendTx() error {
 		txBuilder, cryptotypes.PrivKey(&priv1), encCfg.TxConfig, accountSeq)
 
 	if err != nil {
-		panic(err)
+		return err
 	}
 	err = txBuilder.SetSignatures(sign)
 	if err != nil {
-		panic(err)
+		return err
 	}
 }
 ```
@@ -205,10 +215,10 @@ func sendTx() error {
     // --剪断--
 
     // 生成的 Protobuf 编码字节。
-    txBytes, err := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
-    if err != nil {
-        return err
-    }
+	txBytes, err := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
+	if err != nil {
+		return err
+	}
 
     // Generate a JSON string.
     // txJSONBytes, err := encCfg.TxConfig.TxJSONEncoder()(txBuilder.GetTx())
@@ -236,34 +246,33 @@ import (
 func sendTx() error {
     // --剪断--
 
-    // 创建一个grpc服务
-    grpcConn,ger := grpc.Dial(
-        "127.0.0.1:9090", // 你的 gRPC 服务器地址。
-        grpc.WithInsecure(), // SDK 不支持任何传输安全机制。
-    )
-    if ger != nil {
-		panic(ger)
+    grpcConn, err := grpc.Dial(
+		"127.0.0.1:9090", // 你的 gRPC 服务器地址。
+		grpc.WithInsecure(),   // SDK 不支持任何传输安全机制。
+	)
+	if err != nil {
+		return err
 	}
 
-    defer grpcConn.Close()
+	defer grpcConn.Close()
 
-    // 通过 gRPC 广播 tx。 我们为 Protobuf Tx 服务创建了一个新客户端。
-    txClient := tx.NewServiceClient(grpcConn)
-    //然后我们在这个客户端上调用 BroadcastTx 方法。
-    grpcRes, err := txClient.BroadcastTx(
-        context.Background(),
-        &tx.BroadcastTxRequest{
-            Mode:    tx.BroadcastMode_BROADCAST_MODE_ASYNC,
-            TxBytes: txBytes,
-        },
-    )
-    if err != nil {
-        return err
-    }
+	// 通过 gRPC 广播 tx。 我们为 Protobuf Tx 服务创建了一个新客户端。
+	txClient := tx.NewServiceClient(grpcConn)
+	//然后我们在这个客户端上调用 BroadcastTx 方法。
+	grpcRes, err := txClient.BroadcastTx(
+		context.Background(),
+		&tx.BroadcastTxRequest{
+			Mode:    tx.BroadcastMode_BROADCAST_MODE_SYNC,
+			TxBytes: txBytes,
+		},
+	)
+	if err != nil {
+		return err
+	}
 
-    fmt.Println(grpcRes.GetTxResponse())
+	fmt.Println(grpcRes.GetTxResponse())
 
-    return nil
+	return nil
 }
 ```
 
@@ -274,60 +283,69 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
 	"encoding/hex"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
+
+	"github.com/cosmos/cosmos-sdk/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"google.golang.org/grpc"
+
+	ethencoding "github.com/evmos/ethermint/encoding"
+	plugchainapp "github.com/oracleNetworkProtocol/plugchain/app"
+
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+
+	_ "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	"github.com/evmos/ethermint/crypto/ethsecp256k1"
 
 	cliTx "github.com/cosmos/cosmos-sdk/client/tx"
-	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	xauthsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-
-	plugchainapp "github.com/oracleNetworkProtocol/plugchain/app"
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
-	ethencoding "github.com/evmos/ethermint/encoding"
-	"google.golang.org/grpc"
 )
 
 func main() {
-    var chainID = "plugchain_520-1"
-    
+	err := sendTx()
+	fmt.Println(err)
+}
+
+func sendTx() error {
+
+	// 选择您的编解码器：Amino 或 Protobuf
 	encCfg := ethencoding.MakeConfig(plugchainapp.ModuleBasics)
+
 	config := sdk.GetConfig()
 	plugchainapp.SetBech32Prefixes(config)
 
+	// 创建一个新的 TxBuilder。
 	txBuilder := encCfg.TxConfig.NewTxBuilder()
 
-	addr1, _ := sdk.AccAddressFromBech32("gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7")
-	addr2, _ := sdk.AccAddressFromBech32("gx1r4ffuq72pmny390lkk4l4x8wzamkcnru24wxaq")
-	priv := "30116C43525488477CA78BB9C5653FB421334C7117070DFDD80240C895234505"
-	priva, _ := hex.DecodeString(priv)
-	// 如下查询地址的信息,使用account_number,sequence,需要根据 `@type` 类型 来锁定私钥类型，EthAcount 类型为`eth_secp256k1`,BaseAccount为`secp256k1`
-	//curl -X GET "http://8.210.180.240:1317/cosmos/auth/v1beta1/accounts/gx13udxpqpmq6herxqk9yqa3agln8a0va9whjuqe7" -H  "accept: application/json"
-	accountSeq := uint64(0)
-	acountNumber := uint64(8)
+	// --剪断--
+	chainID := "plugchain_520-1"
+	addr1, _ := sdk.AccAddressFromBech32("gx14z0773hnqq0qvwpr95stvn5tmtgvp8033e7aky")
+	addr2, _ := sdk.AccAddressFromBech32("gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds")
+	//发起者私钥
+	priv := "55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0"
+	privB, _ := hex.DecodeString(priv)
+
+	accountSeq := uint64(1)
+	acountNumber := uint64(73991)
 	//EthAccount 类型， 使用包 "github.com/evmos/ethermint/crypto/ethsecp256k1"
 	//BaseAccount 类型 ，使用包 "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-	priv1 := ethsecp256k1.PrivKey{Key: priva}
+	priv1 := ethsecp256k1.PrivKey{Key: privB}
 
-	msg1 := banktypes.NewMsgSend(addr1, addr2, sdk.NewCoins(sdk.NewInt64Coin("uplugcn", 111)))
-	// msg2 := banktypes.NewMsgSend(addr2, addr1, sdk.NewCoins(sdk.NewInt64Coin("uplugcn", 222)))
+	msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 1000000)))
+
 	err := txBuilder.SetMsgs(msg1)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	txBuilder.SetGasLimit(200000)
-	txBuilder.SetFeeAmount(sdk.NewCoins(sdk.NewInt64Coin("uplugcn", 20)))
-	txBuilder.SetMemo("test send")
-	// txBuilder.SetTimeoutHeight(61111800)
+	txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
+	txBuilder.SetMemo("give your my friend to LiLei")
 
+	//第一轮：我们收集所有签名者信息。 我们使用“设置空签名”技巧来做到这一点
 	sign := signing.SignatureV2{
 		PubKey: priv1.PubKey(),
 		Data: &signing.SingleSignatureData{
@@ -337,11 +355,13 @@ func main() {
 
 		Sequence: accountSeq,
 	}
+
 	err = txBuilder.SetSignatures(sign)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
+	//第二轮： 设置所有签名者信息，因此每个签名者都可以签名。
 	sign = signing.SignatureV2{}
 	signerD := xauthsigning.SignerData{
 		ChainID:       chainID,
@@ -351,48 +371,57 @@ func main() {
 	sign, err = cliTx.SignWithPrivKey(
 		encCfg.TxConfig.SignModeHandler().DefaultMode(), signerD,
 		txBuilder, cryptotypes.PrivKey(&priv1), encCfg.TxConfig, accountSeq)
+
 	if err != nil {
-		panic(err)
+		return err
 	}
 	err = txBuilder.SetSignatures(sign)
 	if err != nil {
-		panic(err)
-
+		return err
 	}
 
-	txBytes, er := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
-
-	if er != nil {
-		panic(err)
-
+	// 生成的 Protobuf 编码字节。
+	txBytes, err := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
+	if err != nil {
+		return err
 	}
 
-	grpcConn, ger := grpc.Dial(
-		"localhost:9090",
-		grpc.WithInsecure(),
+	// Generate a JSON string.
+	txJSONBytes, err := encCfg.TxConfig.TxJSONEncoder()(txBuilder.GetTx())
+	if err != nil {
+		return err
+	}
+	txJSON := string(txJSONBytes)
+
+	fmt.Println(txJSON)
+
+	// 创建一个grpc服务
+	grpcConn, err := grpc.Dial(
+		"127.0.0.1:9090", // 你的 gRPC 服务器地址。
+		grpc.WithInsecure(),   // SDK 不支持任何传输安全机制。
 	)
-
-	if ger != nil {
-		panic(ger)
-
+	if err != nil {
+		return err
 	}
-	defer grpcConn.Close()
-	// base64 encode the encoded tx bytes
-	// txBytes1 := base64.StdEncoding.EncodeToString(txBytes)
-	txClient := tx.NewServiceClient(grpcConn)
 
-	grpcRes, gerr := txClient.BroadcastTx(
+	defer grpcConn.Close()
+
+	// 通过 gRPC 广播 tx。 我们为 Protobuf Tx 服务创建了一个新客户端。
+	txClient := tx.NewServiceClient(grpcConn)
+	//然后我们在这个客户端上调用 BroadcastTx 方法。
+	grpcRes, err := txClient.BroadcastTx(
 		context.Background(),
 		&tx.BroadcastTxRequest{
-			Mode:    tx.BroadcastMode_BROADCAST_MODE_ASYNC,
+			Mode:    tx.BroadcastMode_BROADCAST_MODE_SYNC,
 			TxBytes: txBytes,
 		},
 	)
-	log.Println("broadcast-tx::::", gerr, grpcRes)
-	if gerr != nil {
-		panic(err)
+	if err != nil {
+		return err
 	}
+
 	fmt.Println(grpcRes.GetTxResponse())
 
+	return nil
 }
 ```
