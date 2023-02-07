@@ -279,7 +279,7 @@ func sendTx(ctx context.Context) error {
 }
 ```
 
-## 完整代码
+## Full code
 ```go
 package main
 
@@ -314,27 +314,27 @@ func main() {
 
 func sendTx() error {
 
-	// 选择您的编解码器：Amino 或 Protobuf
+	// Select your codec：Amino 或 Protobuf
 	encCfg := ethencoding.MakeConfig(plugchainapp.ModuleBasics)
 
 	config := sdk.GetConfig()
 	plugchainapp.SetBech32Prefixes(config)
 
-	// 创建一个新的 TxBuilder。
+	// Create a new TxBuilder。
 	txBuilder := encCfg.TxConfig.NewTxBuilder()
 
-	// --剪断--
+	// --cut--
 	chainID := "plugchain_520-1"
 	addr1, _ := sdk.AccAddressFromBech32("gx14z0773hnqq0qvwpr95stvn5tmtgvp8033e7aky")
 	addr2, _ := sdk.AccAddressFromBech32("gx1d0ug2e7ehy6prw6msrtqwt55mydmxdsx4em9ds")
-	//发起者私钥
+	//Initiator private key
 	priv := "55e2413b83e590944c6a4bcb443374c60bba847fc079788bd97ea455cb555bf0"
 	privB, _ := hex.DecodeString(priv)
 
 	accountSeq := uint64(1)
 	acountNumber := uint64(73991)
-	//EthAccount 类型， 使用包 "github.com/evmos/ethermint/crypto/ethsecp256k1"
-	//BaseAccount 类型 ，使用包 "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	//EthAccount type， use "github.com/evmos/ethermint/crypto/ethsecp256k1"
+	//BaseAccount type，use "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	priv1 := ethsecp256k1.PrivKey{Key: privB}
 
 	msg1 := banktypes.NewMsgSend(addr1, addr2, types.NewCoins(types.NewInt64Coin("uplugcn", 1000000)))
@@ -347,7 +347,7 @@ func sendTx() error {
 	txBuilder.SetFeeAmount(types.NewCoins(types.NewInt64Coin("uplugcn", 20)))
 	txBuilder.SetMemo("give your my friend to LiLei")
 
-	//第一轮：我们收集所有签名者信息。 我们使用“设置空签名”技巧来做到这一点
+	//Round 1: We collect all signer information. We use the "set empty signature" technique to do this
 	sign := signing.SignatureV2{
 		PubKey: priv1.PubKey(),
 		Data: &signing.SingleSignatureData{
@@ -363,7 +363,7 @@ func sendTx() error {
 		return err
 	}
 
-	//第二轮： 设置所有签名者信息，因此每个签名者都可以签名。
+	//Round 2: Set all signer information, so each signer can sign.
 	sign = signing.SignatureV2{}
 	signerD := xauthsigning.SignerData{
 		ChainID:       chainID,
@@ -382,7 +382,7 @@ func sendTx() error {
 		return err
 	}
 
-	// 生成的 Protobuf 编码字节。
+	// Generated Protobuf encoded bytes.
 	txBytes, err := encCfg.TxConfig.TxEncoder()(txBuilder.GetTx())
 	if err != nil {
 		return err
@@ -397,10 +397,10 @@ func sendTx() error {
 
 	fmt.Println(txJSON)
 
-	// 创建一个grpc服务
+	// Create a grpc service
 	grpcConn, err := grpc.Dial(
-		"127.0.0.1:9090", // 你的 gRPC 服务器地址。
-		grpc.WithInsecure(),   // SDK 不支持任何传输安全机制。
+		"127.0.0.1:9090", // 
+		grpc.WithInsecure(),   // SDK No transport security mechanism is supported.
 	)
 	if err != nil {
 		return err
@@ -408,9 +408,9 @@ func sendTx() error {
 
 	defer grpcConn.Close()
 
-	// 通过 gRPC 广播 tx。 我们为 Protobuf Tx 服务创建了一个新客户端。
+	// Broadcast tx via gRPC. We have created a new client for the Protobuf Tx service.
 	txClient := tx.NewServiceClient(grpcConn)
-	//然后我们在这个客户端上调用 BroadcastTx 方法。
+	//Then we call the BroadcastTx method on this client.
 	grpcRes, err := txClient.BroadcastTx(
 		context.Background(),
 		&tx.BroadcastTxRequest{
