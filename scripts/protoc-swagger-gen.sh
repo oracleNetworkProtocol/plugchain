@@ -55,14 +55,7 @@ tendermintURL=https://github.com/tendermint/liquidity/blob/develop
 onpURL=https://github.com/oracleNetworkProtocol/liquidity/tree/main
 sed -i '' "s#${tendermintURL}#${onpURL}#g" ./client/static/openapi.yml
 
-# generate proto doc  Use tools for protoc-gen-doc
 
-buf protoc \
-    -I "proto" \
-    -I "third_party/proto" \
-    --doc_out=./docs/endpoints \
-    --doc_opt=./docs/endpoints/protodoc-markdown.tmpl,proto-docs.md \
-    $(find "$(pwd)/proto" -maxdepth 5 -name '*.proto')
 go mod tidy
 
 cp ./docs/endpoints/proto-docs.md ./docs/zh/endpoints/proto-docs.md

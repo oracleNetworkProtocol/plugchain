@@ -54,7 +54,7 @@ plugchaind tx token issue \
 
 ### 发送通证
 
-您可以像[发送plug](./bank.md#plugchaind-tx-bank-send)一样发送任何通证。
+您可以像[发送PC](./bank.md#plugchaind-tx-bank-send)一样发送任何通证。
 
 #### 发送通证
 

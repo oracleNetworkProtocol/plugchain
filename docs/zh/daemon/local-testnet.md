@@ -37,7 +37,7 @@ plugchaind keys add MyValidator
 将该钱包地址添加到 genesis 文件中的 genesis.app_state.accounts 数组中
 
 :::tip
-此命令使您可以设置通证数量。确保此帐户有 plug，这是 Plug Chain Hub 上唯一的质押通证
+此命令使您可以设置通证数量。确保此帐户有 `pc`，这是 Plug Chain Hub 上唯一的质押通证
 :::
 
 ```bash

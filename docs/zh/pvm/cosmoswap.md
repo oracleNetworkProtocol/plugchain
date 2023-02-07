@@ -3,7 +3,7 @@ order: 5
 ---
 
 
-# Cosmoswap 
+# Gxswap 
 
 相关合约信息：
 ```
@@ -49,7 +49,7 @@ swapExactPLUGForTokens(uint256 amountOutMin,address[] path,address to,uint256 de
 ```
 功能描述：
 
-plug兑换token
+pc兑换token
 
 参数描述：
 | 参数 | 类型 | 描述 |
@@ -67,15 +67,15 @@ swapExactTokensForPLUG(uint256 amountIn,uint256 amountOutMin,address[] path,addr
 ```
 功能描述：
 
-token兑换plug
+token兑换pc
 
 参数描述：
 | 参数 | 类型 | 描述 |
 | --- | ---| --- |
 | amountIn | uint256 | 注入的token数量 |
-| amountOutMin | uint256 | 最低要兑换的plug数量 |
+| amountOutMin | uint256 | 最低要兑换的pc数量 |
 | path | address[] | 交易对合约地址(0:token,1:wplug) |
-| to | address |  plug输出地址 |
+| to | address |  pc输出地址 |
 | deadline | uint256 | UTC时区的时间戳  必须大于当前时间 |
 
 
@@ -96,7 +96,7 @@ removeLiquidityPLUG(address token,uint256 liquidity,uint256 amountTokenMin,uint2
 | liquidity | uint256 | 撤资lp数量 |
 | amountTokenMin | uint256 | 最低提出池子token代币数量，最低可填写0 |
 | amountPLUGMin | uint256 | 最低提出池子`uplugcn`数量，最低可填写0 |
-| to | address |  token和plug输出地址 |
+| to | address |  token和pc输出地址 |
 | deadline | uint256 | UTC时区的时间戳  必须大于当前时间 |
  ## 完整代码
 
@@ -156,7 +156,7 @@ func main() {
 	// buy()
 }
 
-//addLiquidity 创建/注资token兑plug资金池
+//addLiquidity 创建/注资token兑pc资金池
 func addLiquidityPLUG() {
 	//进行代币授权
 	result, err := myToken.Approve(
@@ -230,7 +230,7 @@ func removeLiquidityPLUG() {
 		myTokenAddress,   // mytoken 合约地址
 		big.NewInt(1000), //lp数量
 		big.NewInt(0),    //最低撤资token数量
-		big.NewInt(0),    //最低撤资plug数量
+		big.NewInt(0),    //最低撤资pc数量
 		myAddress,        //输出地址
 		big.NewInt(time.Now().Add(30*time.Minute).Unix()), //超时时间
 	)
@@ -257,7 +257,7 @@ func getPair() common.Address {
 }
 
 
-//buy plug兑换token
+//buy pc兑换token
 func buy() {
 	trans, err := routerContract.SwapExactPLUGForTokens(
 		&bind.TransactOpts{
@@ -280,7 +280,7 @@ func buy() {
 	fmt.Println("tx sent: ", trans.Hash().Hex())
 }
 
-//sell token兑换plug
+//sell token兑换pc
 func sell() {
 	result, err := myToken.Approve(
 		&bind.TransactOpts{
