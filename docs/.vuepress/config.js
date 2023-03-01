@@ -82,7 +82,8 @@ module.exports = {
                     ["Endpoints", "endpoints"],
                     ["Tools", "tools"],
                     ["Migration", "migration"],
-                    ["Pvm", "pvm"]
+                    ["Pvm", "pvm"],
+                    ["Api", "http-api"]
                 ])
             },
             "/zh/": {
@@ -115,7 +116,8 @@ module.exports = {
                     ["服务端点", "/zh/endpoints"],
                     ["工具", "/zh/tools"],
                     ["迁移", "/zh/migration"],
-                    ["pvm", "/zh/pvm"]
+                    ["pvm", "/zh/pvm"],
+                    ["api", "/zh/http-api"]
                 ])
             }
         },
