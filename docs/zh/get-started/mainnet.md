@@ -43,11 +43,11 @@ curl -o ~/.plugchain/config/config.toml https://raw.githubusercontent.com/oracle
 
 | 块高 | 数据库  | plugchaind 版本 | 下载地址 | 描述 |
 | ---- | --------- | -------- | ----| ----|
-| 8021377 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) | [mainnet-8021377-20230201-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-8021377-20230201-goleveldb.zip) | （130.654GB） 裁剪数据|
+| 9082592 | goleveldb (default） | [v1.7](https://github.com/oracleNetworkProtocol/plugchain/releases/tag/v1.7.0) | [mainnet-9082592-20230411-goleveldb.zip](https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-9082592-20230411-goleveldb.zip) | （135.289GB） 裁剪数据|
 
 1. 下载快照数据
 ```bash
-wget -b -c https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-8021377-20230201-goleveldb.zip
+wget -b -c https://snapshot-node-mainnet.oss-cn-hangzhou.aliyuncs.com/mainnet-9082592-20230411-goleveldb.zip
 ```
 
 2. 解压数据覆盖 `~/.plugchain/data/` 目录
