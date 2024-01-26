@@ -1,0 +1,28 @@
+syntax = "proto3";
+package plugchain.oracle;
+
+option go_package = "github.com/oracleNetworkProtocol/plugchian/x/oracle/types";
+import "gogoproto/gogo.proto";
+
+// Vote is a vote for a given claim by a validator
+message Vote {
+  uint64 roundId = 1; // use int in case we need to enforce sequential ordering
+  bytes claimHash = 2 [(gogoproto.casttype) = "github.com/tendermint/tendermint/libs/bytes.HexBytes"];
+  string consensusId = 3; //  used to compare claims when tallying votes
+  string claimType = 4;
+  bytes validator = 5 [(gogoproto.casttype) = "github.com/cosmos/cosmos-sdk/types.ValAddress"];
+}
+
+// Round contains all claim votes for a given round
+message Round {
+  uint64 roundId = 1;
+  string claimType = 2; // namespace so we can have multiple oracles
+  repeated Vote votes = 3 [(gogoproto.nullable) = false];
+}
+
+// TestClaim is a concrete Claim type we use for testing
+message TestClaim {
+  int64 blockHeight = 1;
+  string claimType = 2;
+  string content = 3;
+}

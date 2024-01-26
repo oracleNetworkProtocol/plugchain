@@ -1,0 +1,159 @@
+syntax = "proto3";
+package plugchain.oracle;
+
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "gogoproto/gogo.proto";
+import "google/protobuf/any.proto";
+import "google/api/annotations.proto";
+import "oracle/params.proto";
+import "oracle/oracle.proto";
+import "cosmos_proto/cosmos.proto";
+
+// this line is used by starport scaffolding # 1
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/oracle/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Params queries the parameters of othe racle module
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/params";
+  }
+
+  // PendingRounds queries the pending Rounds of the oracle module
+  rpc PendingRounds(QueryPendingRoundsRequest) returns (QueryPendingRoundsResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/pending_rounds/{claim_type}";
+  }
+
+  // LastFinalizedRound queries the pending Rounds of the oracle module
+  rpc LastFinalizedRound(QueryLastFinalizedRoundRequest) returns (QueryLastFinalizedRoundResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/finalized_round/{claim_type}";
+  }
+
+  // Vote queries the parameters of the oracle module
+  rpc Round(QueryRoundRequest) returns (QueryRoundResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/round/{claimType}/{roundId}";
+  }
+
+  // Votes queries the parameters of the oracle module
+  rpc AllRounds(QueryAllRoundsRequest) returns (QueryAllRoundsResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/all_rounds";
+  }
+
+  // AllClaims queries all claims with pagination.
+	rpc AllClaims(QueryAllClaimsRequest) returns (QueryAllClaimsResponse){
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/allclaims";
+  };
+
+  // Claim queries claims based on claim hash.
+  rpc Claim(QueryClaimRequest) returns (QueryClaimResponse){
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/claim/{claim_hash}";
+  };
+
+  rpc QueryDelegeateAddress(QueryDelegeateAddressRequest) returns (QueryDelegeateAddressResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/delegate/{validator}";
+  }
+  rpc QueryValidatorAddress(QueryValidatorAddressRequest) returns (QueryValidatorAddressResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/oracle/validator/{delegate}";
+  }
+}
+
+// QueryRoundResponse is the request type for the Query/Params RPC method
+message QueryRoundRequest {
+  string claimType = 1;
+  uint64 roundId = 2;
+}
+
+// QueryRoundResponse is the response type for the Query/Params RPC method
+message QueryRoundResponse {
+  Round round = 1 [(gogoproto.nullable) = false];
+}
+
+
+
+// QueryAllRoundsRequest is the request type for the Query/Params RPC method
+message QueryAllRoundsRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllRoundsResponse is the response type for the Query/Params RPC method
+message QueryAllRoundsResponse {
+  repeated Round rounds = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+
+
+// QueryPendingRoundsRequest is the request type for the Query/Params RPC method
+message QueryPendingRoundsRequest {
+  string claim_type = 1;
+}
+
+// QueryParamsResponse is the response type for the Query/Params RPC method
+message QueryPendingRoundsResponse {
+  repeated uint64 pending_rounds = 1 [(gogoproto.nullable) = false];
+}
+
+
+
+// LastFinalizedRround is the request type for the Query/Params RPC method
+message QueryLastFinalizedRoundRequest {
+  string claim_type = 1;
+}
+
+// LastFinalizedRround is the response type for the Query/Params RPC method
+message QueryLastFinalizedRoundResponse {
+  uint64 lastFinalizedRound = 1;
+}
+
+
+
+// QueryParamsRequest is the request type for the Query/Params RPC method
+message QueryParamsRequest {}
+
+// QueryParamsResponse is the response type for the Query/Params RPC method
+message QueryParamsResponse {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+
+
+// QueryClaimRequest is the request type for the Query/Claim RPC method
+message QueryClaimRequest {
+  string claim_hash = 1;
+}
+
+// QueryClaimResponse is the response type for the Query/Claim RPC method.
+message QueryClaimResponse {
+  // claim returns the requested claim.
+  google.protobuf.Any claim = 1 [(cosmos_proto.accepts_interface) = "Claim"];
+}
+
+
+
+// this line is used by starport scaffolding # 3
+
+// QueryAllClaimsRequest is the request type for the Query/AllClaims RPC method
+message QueryAllClaimsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryAllClaimsResponse is the response type for the Query/Claims RPC method.
+message QueryAllClaimsResponse {
+	repeated google.protobuf.Any claims = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryValidatorAddressRequest {
+  string delegate = 1;
+}
+message QueryValidatorAddressResponse {
+  string validator = 1;
+}
+
+message QueryDelegeateAddressRequest {
+  string validator = 1;
+}
+message QueryDelegeateAddressResponse {
+  string delegate = 2;
+}

@@ -1,0 +1,61 @@
+syntax = "proto3";
+package plugchain.oracle;
+
+option go_package            = "github.com/oracleNetworkProtocol/plugchain/x/oracle/types";
+option (gogoproto.equal_all) = true;
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/any.proto";
+import "cosmos_proto/cosmos.proto";
+
+// Msg defines the clim Msg service.
+service Msg {  
+  // Vote submits an arbitrary oracle Claim 
+  rpc Vote(MsgVote) returns (MsgVoteResponse);
+
+  // Prevote submits a prevote for a Claim 
+  rpc Prevote (MsgPrevote)   returns (MsgPrevoteResponse);
+
+  // Delegate delegates oracle claim submission permission from the validator to
+  // an arbitrary address
+  rpc Delegate (MsgDelegate) returns (MsgDelegateResponse);
+}
+
+
+// MsgVote represents a message that supports submitting a vote for 
+// an arbitrary oracle Claim.
+message MsgVote {
+  option (gogoproto.equal)           = false;
+  option (gogoproto.goproto_getters) = false;
+
+  string              signer = 1;
+  google.protobuf.Any claim  = 2 [(cosmos_proto.accepts_interface) = "Claim"];
+  string              salt = 3;
+}
+
+// MsgVoteResponse defines the Msg/SubmitEvidence response type.
+message MsgVoteResponse {
+  // hash defines the hash of the evidence.
+  bytes hash = 4;
+}
+
+// MsgPrevote - sdk.Msg for prevoting on an array of oracle claim types.
+// The purpose of the prevote is to hide vote for data with hashes formatted as hex string: 
+// SHA256("{salt}:{data_cannonical_json}:{voter}")
+message MsgPrevote {
+  bytes  hash = 1;
+  string signer = 2;
+}
+
+message MsgPrevoteResponse {}
+
+
+// MsgDelegate - sdk.Msg for delegating oracle voting rights from a validator
+// to another address, must be signed by an active validator
+message MsgDelegate {
+  string delegate  = 1;
+  string validator = 2;
+}
+
+// MsgDelegateResponse delegation response
+message MsgDelegateResponse {}
