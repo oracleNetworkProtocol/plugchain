@@ -1,0 +1,34 @@
+syntax = "proto3";
+package plugchain.oracle;
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/oracle/types";
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/any.proto";
+
+import "oracle/params.proto";
+import "oracle/oracle.proto";
+import "oracle/tx.proto";
+ 
+
+// GenesisState defines the oracle module's genesis state.
+message GenesisState {
+    option (gogoproto.equal)           = false;
+    option (gogoproto.goproto_getters) = false;
+  
+    // params defines all the paramaters of related to deposit.
+    Params params = 1 [(gogoproto.nullable) = false];
+    repeated google.protobuf.Any claims  =2;
+    repeated Round rounds = 3 [(gogoproto.nullable) = false];
+    message ListOfUint {
+        repeated uint64 pending = 1 [(gogoproto.nullable) = false];
+    }
+    map<string, ListOfUint> pending = 4 [(gogoproto.nullable) = false];
+    repeated MsgDelegate delegations =5 [
+        (gogoproto.nullable) = false
+    ];
+    repeated bytes prevotes = 6 [(gogoproto.nullable) = false];
+    map<string, uint64> finalizedRounds = 7 [(gogoproto.nullable) = false];
+
+}
+
