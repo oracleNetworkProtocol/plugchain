@@ -1,0 +1,29 @@
+syntax = "proto3";
+package relevantcommunity.oracle.atom;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+
+import "cosmos_proto/cosmos.proto";
+import "atom/atom.proto";
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/atom/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // AtomUsd queries the AtomUSD price
+  rpc AtomUsd(QueryAtomUsdRequest) returns (QueryAtomUsdResponse) {
+    option (google.api.http).get = "/relevantcommunity/oracle/atome/atomusd";
+  }
+}
+
+
+// QueryAtomUsdRequest is the request type for the Query/AtomUsd RPC method
+message QueryAtomUsdRequest {
+}
+
+// QueryAtomUsdResponse is the response type for the Query/AtomUsd RPC method
+message QueryAtomUsdResponse {
+  AtomUsd atomUsd = 1;
+}
+

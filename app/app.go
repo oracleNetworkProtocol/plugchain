@@ -120,6 +120,15 @@ import (
 	evmkeeper "github.com/evmos/ethermint/x/evm/keeper"
 	evmtypes "github.com/evmos/ethermint/x/evm/types"
 	srvflags "github.com/oracleNetworkProtocol/plugchain/server/flags"
+
+	"github.com/oracleNetworkProtocol/plugchain/x/oracle"
+	oraclekeeper "github.com/oracleNetworkProtocol/plugchain/x/oracle/keeper"
+	oracletypes "github.com/oracleNetworkProtocol/plugchain/x/oracle/types"
+
+	// this line is used by starport scaffolding # stargate/app/moduleImport
+	"github.com/oracleNetworkProtocol/plugchain/x/atom"
+	atomkeeper "github.com/oracleNetworkProtocol/plugchain/x/atom/keeper"
+	atomtypes "github.com/oracleNetworkProtocol/plugchain/x/atom/types"
 )
 
 func init() {
@@ -250,6 +259,10 @@ type App struct {
 	//ethermint keepers
 	EvmKeeper       *evmkeeper.Keeper
 	FeeMarketKeeper feemarketkeeper.Keeper
+
+	OracleKeeper oraclekeeper.Keeper
+	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
+	atomKeeper atomkeeper.Keeper
 
 	// the module manager
 	mm *module.Manager
@@ -456,6 +469,22 @@ func New(
 	// If evidence needs to be handled for the app, set routes in router here and seal
 	app.EvidenceKeeper = *evidenceKeeper
 
+	app.OracleKeeper = *oraclekeeper.NewKeeper(
+		appCodec,
+		keys[oracletypes.StoreKey],
+		keys[oracletypes.MemStoreKey],
+		app.StakingKeeper,
+		app.GetSubspace(oracletypes.ModuleName),
+	)
+
+	// this line is used by starport scaffolding # stargate/app/keeperDefinition
+	app.atomKeeper = *atomkeeper.NewKeeper(
+		appCodec,
+		keys[atomtypes.StoreKey],
+		keys[atomtypes.MemStoreKey],
+		app.OracleKeeper,
+	)
+
 	// Create static IBC router, add transfer route, then set and seal it
 	ibcRouter := porttypes.NewRouter()
 	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferIBCModule)
@@ -507,6 +536,10 @@ func New(
 		//ethermint app modules
 		evm.NewAppModule(app.EvmKeeper, app.AccountKeeper),
 		feemarket.NewAppModule(app.FeeMarketKeeper),
+
+		oracle.NewAppModule(appCodec, app.OracleKeeper),
+		// this line is used by starport scaffolding # stargate/app/appModule
+		atom.NewAppModule(appCodec, app.atomKeeper),
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -896,6 +929,9 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	//ethermint subspaces
 	paramsKeeper.Subspace(evmtypes.ModuleName)
 	paramsKeeper.Subspace(feemarkettypes.ModuleName)
+
+	//oracle subspaces
+	paramsKeeper.Subspace(oracletypes.ModuleName)
 
 	return paramsKeeper
 }

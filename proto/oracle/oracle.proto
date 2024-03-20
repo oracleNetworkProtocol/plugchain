@@ -1,7 +1,7 @@
 syntax = "proto3";
-package plugchain.oracle;
+package relevantcommunity.oracle.oracle;
 
-option go_package = "github.com/oracleNetworkProtocol/plugchian/x/oracle/types";
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/oracle/types";
 import "gogoproto/gogo.proto";
 
 // Vote is a vote for a given claim by a validator

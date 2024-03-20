@@ -1,0 +1,22 @@
+[module]
+description = "The Oracle module allows validators to run arbitrary off-chain worker processes and report the results for inclusion in the on-chain state"
+homepage = "https://relevant-community.github.io/oracle/"
+keywords = [
+  "oracle",
+  "offchain worker",
+  "relevant",
+]
+
+name = "x/oracle"
+
+[bug_tracker]
+url = "https://github.com/oracleNetworkProtocol/plugchain/issues"
+
+[[authors]]
+name = "balasan"
+
+[version]
+documentation = "https://raw.githubusercontent.com/relevant-community/oracle/v0.1.1/readme.md"
+repo = "https://github.com/oracleNetworkProtocol/plugchain"
+sdk_compat = "v0.41.0"
+version = "v0.1.2"

@@ -37,3 +37,11 @@ genesis:
     evm:
       params:
         evm_denom: "uplugcn"
+    oracle:
+      params:
+        claim_params:
+          AtomClaim: # This is our oracle 'type'
+            vote_period: 3 # Voting round duration in blocks
+            claim_type: 'AtomClaim' # Oracle type again
+            prevote: true # Require commit-reveal type voting to avoid free-rider problem
+            vote_threshold: '0.5' # Validator power threshold required to reach consensus

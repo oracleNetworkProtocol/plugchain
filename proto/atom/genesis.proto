@@ -1,0 +1,11 @@
+syntax = "proto3";
+package relevantcommunity.oracle.atom;
+
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/atom/types";
+
+// GenesisState defines the atom module's genesis state.
+message GenesisState {
+    // this line is used by starport scaffolding # genesis/proto/state
+}

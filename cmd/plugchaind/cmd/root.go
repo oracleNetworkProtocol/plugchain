@@ -14,6 +14,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/server"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
@@ -27,6 +28,7 @@ import (
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/evmos/ethermint/client/debug"
 	"github.com/oracleNetworkProtocol/plugchain/app"
+	"github.com/oracleNetworkProtocol/plugchain/cmd/plugchaind/cmd/worker"
 	onptypes "github.com/oracleNetworkProtocol/plugchain/types"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
@@ -38,6 +40,7 @@ import (
 	ethermintclient "github.com/evmos/ethermint/client"
 	plugchainserver "github.com/oracleNetworkProtocol/plugchain/server"
 	servercfg "github.com/oracleNetworkProtocol/plugchain/server/config"
+	oraclecli "github.com/oracleNetworkProtocol/plugchain/x/oracle/client/cli"
 )
 
 const (
@@ -124,6 +127,16 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 	)
 
 	rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
+
+	//add keybase
+	oraclecli.InitializeWorker(worker.HandleBlock, worker.HandleTx)
+
+	rootCmd.AddCommand(
+		rpc.StatusCommand(),
+		queryCommand(),
+		txCommand(),
+		keys.Commands(app.DefaultNodeHome),
+	)
 
 	return rootCmd, encodingConfig
 }

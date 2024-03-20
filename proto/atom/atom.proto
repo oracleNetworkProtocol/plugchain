@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "gogoproto/gogo.proto";
+option go_package = "github.com/oracleNetworkProtocol/plugchain/x/atom/types";
+
+message AtomUsd {
+  string price = 1 [
+		(gogoproto.jsontag)    = "price",
+		(gogoproto.moretags)   = "yaml:\"price\"",
+		(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+		(gogoproto.nullable)   = false
+	];
+	int64 blockHeight = 2; 
+}
